@@ -1,0 +1,57 @@
+{
+  "pier": "226",
+  "loc": {
+    "lon": "-88.529364",
+    "lat": "42.573363",
+    "geohash": "dp941qnzu60",
+    "pluscode": "HFFC+87R Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Cedar Point Park",
+    "established": "1922",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Cedar Point Park Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "James", "m": "", "l": "Ahern", "s": "" },
+        { "t": "", "f": "JoAnne", "m": "", "l": "Ahern", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Dr. & Mrs. Raymond Copeland", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Peter", "m": "", "l": "Russell", "s": "" },
+        { "t": "", "f": "Paula", "m": "", "l": "Russell", "s": "" }
+      ]
+    }
+  ]
+}

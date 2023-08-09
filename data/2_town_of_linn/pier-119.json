@@ -1,0 +1,31 @@
+{
+  "pier": "119",
+  "loc": {
+    "lon": "-88.499276",
+    "lat": "42.574773",
+    "geohash": "dp944nsb120",
+    "pluscode": "HGF2+W75 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Elgin Club",
+    "established": "1874",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4047 Elgin Club Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Restmore",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "David", "m": "W", "l": "King", "s": "" }
+      ]
+    }
+  ]
+}

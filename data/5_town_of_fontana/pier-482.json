@@ -1,0 +1,31 @@
+{
+  "pier": "482",
+  "loc": {
+    "lon": "-88.559544",
+    "lat": "42.546688",
+    "geohash": "dp940c2umj0",
+    "pluscode": "GCWR+M5G Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "620a S Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Susan L. Origer Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

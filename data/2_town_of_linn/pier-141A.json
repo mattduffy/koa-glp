@@ -1,0 +1,29 @@
+{
+  "pier": "141A",
+  "loc": {
+    "lon": "-88.508079",
+    "lat": "42.576155",
+    "geohash": "dp941yy2h60",
+    "pluscode": "HFGR+FQ7 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Ara Glen",
+    "established": "1977",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": []
+    }
+  ]
+}

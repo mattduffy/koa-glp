@@ -1,0 +1,31 @@
+{
+  "pier": "679A",
+  "loc": {
+    "lon": "-88.482651",
+    "lat": "42.564143",
+    "geohash": "dp944s8fhg0",
+    "pluscode": "HG78+MW5 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1988 Birches Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Linn Township Pier", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

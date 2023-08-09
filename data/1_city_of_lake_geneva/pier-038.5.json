@@ -1,0 +1,29 @@
+{
+  "pier": "038.5",
+  "loc": {
+    "lon": "-88.451669",
+    "lat": "42.581114",
+    "geohash": "dp945pxkyw0",
+    "pluscode": "HGJX+C8W Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Geneva Bay Estates",
+    "established": "1956",
+    "address": {
+      "street": "W3139 Snake Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Dave", "m": "", "l": "Fiedler", "s": "" }
+      ]
+    }
+  ]
+}

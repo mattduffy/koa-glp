@@ -1,0 +1,32 @@
+{
+  "pier": "075.5",
+  "loc": {
+    "lon": "-88.481876",
+    "lat": "42.571700",
+    "geohash": "dp944tcqnu0",
+    "pluscode": "HGC9+M6H Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Bonnie Brae",
+    "established": "1916",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2224 Bonnie Brae Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Blossom Hill",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Margie", "m": "", "l": "Riordan", "s": "" },
+        { "t": "", "f": "Tom", "m": "", "l": "Riordan", "s": "" }
+      ]
+    }
+  ]
+}

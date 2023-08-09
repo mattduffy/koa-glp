@@ -1,0 +1,31 @@
+{
+  "pier": "675C",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Birches",
+    "established": "1924",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1967 Birches Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Brian", "m": "", "l": "Nix", "s": "" }
+      ]
+    }
+  ]
+}

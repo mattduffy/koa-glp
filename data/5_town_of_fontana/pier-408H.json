@@ -1,0 +1,32 @@
+{
+  "pier": "408H",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Buena Vista",
+    "established": "1912",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "146 Brooks St",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Barbara", "m": "", "l": "Palmer", "s": "" },
+        { "t": "", "f": "Vincent", "m": "", "l": "Palmer", "s": "" }
+      ]
+    }
+  ]
+}

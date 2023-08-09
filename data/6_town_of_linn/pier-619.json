@@ -1,0 +1,32 @@
+{
+  "pier": "619",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Edgewater Terrace",
+    "established": "1925",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Kristin", "m": "", "l": "Hatch", "s": "" },
+        { "t": "", "f": "Mark", "m": "", "l": "Hatch", "s": "" }
+      ]
+    }
+  ]
+}

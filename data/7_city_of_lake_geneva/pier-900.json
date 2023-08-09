@@ -1,0 +1,38 @@
+{
+  "pier": "900",
+  "loc": {
+    "lon": "-88.436883",
+    "lat": "42.589268",
+    "geohash": "dp94794hrr0",
+    "pluscode": "HHQ7+P72 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "+1(262) 248-6206",
+    "address": {
+      "street": "Summer Harbor Office - Riviera Docks, 812 Wrigley Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Riviera Dock", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Lake Geneva Cruise Line", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

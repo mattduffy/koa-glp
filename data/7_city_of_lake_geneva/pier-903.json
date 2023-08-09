@@ -1,0 +1,30 @@
+{
+  "pier": "903",
+  "loc": {
+    "lon": "-88.441881",
+    "lat": "42.590837",
+    "geohash": "dp9473qtdg0",
+    "pluscode": "HHR5+86Q Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "1200 W Main St",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "LG Municipal Pier Slips", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

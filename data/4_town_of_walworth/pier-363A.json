@@ -1,0 +1,32 @@
+{
+  "pier": "363A",
+  "loc": {
+    "lon": "-88.562552",
+    "lat": "42.562416",
+    "geohash": "dp940sq8nc0",
+    "pluscode": "HC6P+XX8 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1982 N Lakeshore Dr",
+      "city": "Walworth",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Angels Landing",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Tim", "m": "", "l": "Feltes", "s": "" },
+        { "t": "", "f": "Karla", "m": "", "l": "Feltes", "s": "" }
+      ]
+    }
+  ]
+}

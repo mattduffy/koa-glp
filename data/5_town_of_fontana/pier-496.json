@@ -1,0 +1,145 @@
+{
+  "pier": "496",
+  "loc": {
+    "lon": "-88.553199",
+    "lat": "42.548251",
+    "geohash": "dp940ctt8b0",
+    "pluscode": "GCXW+8P3 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Harvard Club",
+    "established": "1875",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Harvard Geneva Lake Club", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Willard", "m": "", "l": "Bell", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Sustaining",
+      "members": [
+        { "t": "", "f": "Diane", "m": "", "l": "Brassel", "s": "" },
+        { "t": "", "f": "Jeff", "m": "", "l": "Brassel", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Laurie", "m": "", "l": "Buss", "s": "" },
+        { "t": "", "f": "Bill", "m": "", "l": "Buss", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Chris", "m": "", "l": "Church", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Brad", "m": "", "l": "Holden", "s": "" },
+        { "t": "", "f": "Becky", "m": "", "l": "Holden", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Jamie", "m": "", "l": "Holden", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "R. Bradford", "m": "", "l": "Huss", "s": "" },
+        { "t": "", "f": "Charity", "m": "A", "l": "Huss", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Michael", "m": "", "l": "Nolan", "s": "" },
+        { "t": "", "f": "Kathleen", "m": "", "l": "Nolan", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "O’Malley", "s": "" },
+        { "t": "", "f": "Jill", "m": "", "l": "O’Malley", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Don", "m": "", "l": "Quigley", "s": "" },
+        { "t": "", "f": "Chris", "m": "", "l": "Quigley", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Sustaining",
+      "members": [
+        { "t": "", "f": "Tom", "m": "", "l": "Scoville", "s": "" },
+        { "t": "", "f": "Linda", "m": "", "l": "Scoville", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Char", "m": "", "l": "Voris", "s": "" },
+        { "t": "", "f": "Frank", "m": "", "l": "Voris", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Scott", "m": "", "l": "Voris", "s": "" },
+        { "t": "", "f": "Michelle", "m": "", "l": "Voris", "s": "" }
+      ]
+    }
+  ]
+}

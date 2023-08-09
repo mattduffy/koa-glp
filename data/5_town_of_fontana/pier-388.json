@@ -1,0 +1,32 @@
+{
+  "pier": "388",
+  "loc": {
+    "lon": "-88.569011",
+    "lat": "42.557841",
+    "geohash": "dp940e6j2k0",
+    "pluscode": "HC5J+49Q Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Cranks' Roost",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Tom", "m": "", "l": "O'Brien", "s": "" },
+        { "t": "", "f": "Sharon", "m": "", "l": "O'Brien", "s": "" }
+      ]
+    }
+  ]
+}

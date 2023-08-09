@@ -1,0 +1,32 @@
+{
+  "pier": "372",
+  "loc": {
+    "lon": "-88.565227",
+    "lat": "42.560839",
+    "geohash": "dp940euybe0",
+    "pluscode": "HC6M+8WJ Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "585 N Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Embree House",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Blythe", "m": "", "l": "Youngquist", "s": "" },
+        { "t": "", "f": "Bob", "m": "", "l": "Youngquist", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "780",
+  "loc": {
+    "lon": "-88.445973",
+    "lat": "42.563106",
+    "geohash": "dp945k7s530",
+    "pluscode": "HH73+6JR Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W2930 S Lakeshore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Casa del Sueno",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "JB", "m": "", "l": "Pritzker", "s": "" },
+        { "t": "", "f": "MK", "m": "", "l": "Pritzker", "s": "" }
+      ]
+    }
+  ]
+}

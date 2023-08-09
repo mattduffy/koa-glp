@@ -1,0 +1,29 @@
+{
+  "pier": "331",
+  "loc": {
+    "lon": "-88.546847",
+    "lat": "42.566747",
+    "geohash": "dp941j41kb0",
+    "pluscode": "HF83+M7R Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": []
+    }
+  ]
+}

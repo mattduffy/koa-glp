@@ -1,0 +1,49 @@
+{
+  "pier": "405A",
+  "loc": {
+    "lon": "-88.571839",
+    "lat": "42.552828",
+    "geohash": "dp9406xbnw0",
+    "pluscode": "HC3H+47M Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Buena Vista",
+    "established": "1912",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "385 Sylvan Ln",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Rolander", "s": "" },
+        { "t": "", "f": "Dana", "m": "", "l": "Rolander", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "William", "m": "", "l": "Rolander", "s": "" },
+        { "t": "", "f": "Susan", "m": "", "l": "Rolander", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "William R. Rolander, Jr. Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "342",
+  "loc": {
+    "lon": "-88.550743",
+    "lat": "42.566968",
+    "geohash": "dp940vp6d10",
+    "pluscode": "HC8X+QPJ Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Dartmouth Woods Assn. (Formerly Rockford Camp)",
+    "established": "1984",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "Dartmouth Rd",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Bally Bay",
+      "member": true,
+      "membershipType": "Sustaining",
+      "members": [
+        { "t": "", "f": "Jill", "m": "", "l": "Plaza", "s": "" },
+        { "t": "", "f": "Wayne", "m": "", "l": "Plaza", "s": "" }
+      ]
+    }
+  ]
+}

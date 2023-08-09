@@ -1,0 +1,29 @@
+{
+  "pier": "074E",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Bonnie Brae",
+    "established": "1916",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": []
+    }
+  ]
+}

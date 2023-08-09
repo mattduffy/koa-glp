@@ -1,0 +1,32 @@
+{
+  "pier": "443",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Glenwood Springs",
+    "established": "1892",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "423 Harvard Ave",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Donovan", "m": "", "l": "Eckhardt", "s": "" },
+        { "t": "", "f": "Erica", "m": "", "l": "Eckhardt", "s": "" }
+      ]
+    }
+  ]
+}

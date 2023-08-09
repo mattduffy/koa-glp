@@ -1,0 +1,49 @@
+{
+  "pier": "700",
+  "loc": {
+    "lon": "-88.474001",
+    "lat": "42.563468",
+    "geohash": "dp944srnnm0",
+    "pluscode": "HG7G+99Q Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "700 Lake Shore Drive Association",
+    "established": "1950",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing Membership",
+      "members": [
+        { "t": "", "f": "700 Lake Shore Drive Association", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Kevin", "m": "", "l": "Goggin", "s": "" },
+        { "t": "", "f": "DeeDee", "m": "", "l": "Goggin", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Larry", "m": "", "l": "Moelmann", "s": "" },
+        { "t": "", "f": "Colleen", "m": "", "l": "Moelmann", "s": "" }
+      ]
+    }
+  ]
+}

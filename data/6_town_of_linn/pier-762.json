@@ -1,0 +1,32 @@
+{
+  "pier": "762",
+  "loc": {
+    "lon": "-88.458082",
+    "lat": "42.557616",
+    "geohash": "dp94556u160",
+    "pluscode": "HG5R+2QV Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3170 S Lakeshore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Larry", "m": "", "l": "Larkin", "s": "" },
+        { "t": "", "f": "Sue", "m": "", "l": "Larkin", "s": "" }
+      ]
+    }
+  ]
+}

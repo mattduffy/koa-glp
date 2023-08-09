@@ -1,0 +1,41 @@
+{
+  "pier": "396",
+  "loc": {
+    "lon": "-88.570234",
+    "lat": "42.555449",
+    "geohash": "dp940dcp7y0",
+    "pluscode": "HC4H+3R5 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "363 N Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Windward Point",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Greg", "m": "", "l": "Huck", "s": "" },
+        { "t": "", "f": "Julie", "m": "", "l": "Huck", "s": "" }
+      ]
+    },
+    {
+      "estateName": "Windward Point",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "William", "m": "C", "l": "Huck", "s": "" },
+        { "t": "", "f": "Barbara", "m": "A", "l": "Huck", "s": "" }
+      ]
+    }
+  ]
+}

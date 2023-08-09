@@ -1,0 +1,31 @@
+{
+  "pier": "446",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Glenwood Springs",
+    "established": "1892",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "269 Fontana Blvd",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Sheila", "m": "", "l": "Sammons", "s": "" }
+      ]
+    }
+  ]
+}

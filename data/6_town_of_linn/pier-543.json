@@ -1,0 +1,32 @@
+{
+  "pier": "543",
+  "loc": {
+    "lon": "-88.529164",
+    "lat": "42.550382",
+    "geohash": "dp9416p1by0",
+    "pluscode": "HF2C+584 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1532 Shore Haven Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Tom", "m": "", "l": "Tevebaugh", "s": "" },
+        { "t": "", "f": "Kathy", "m": "", "l": "Tevebaugh", "s": "" }
+      ]
+    }
+  ]
+}

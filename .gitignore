@@ -21,8 +21,11 @@ __tests__/images/copy*
 __tests__/images/*_original
 src/exiftool.config
 keys/*
+!keys/Readme.md
 archive/*
+!archive/Readme.md
 uploads/*
+!uploads/Readme.md
 public/a/*
 private/a/*
 migrations/*
@@ -93,6 +96,7 @@ typings/
 .env
 .env.test
 config/*.env
+!config/Readme.md
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache

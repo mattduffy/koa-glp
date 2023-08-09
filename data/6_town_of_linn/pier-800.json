@@ -1,0 +1,32 @@
+{
+  "pier": "800",
+  "loc": {
+    "lon": "-88.440510",
+    "lat": "42.564815",
+    "geohash": "dp945kxw4b0",
+    "pluscode": "HH75+WQH Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Lance", "m": "", "l": "Champagne", "s": "" },
+        { "t": "", "f": "Susan", "m": "", "l": "Champagne", "s": "" }
+      ]
+    }
+  ]
+}

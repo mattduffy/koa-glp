@@ -1,0 +1,31 @@
+{
+  "pier": "347",
+  "loc": {
+    "lon": "-88.551930",
+    "lat": "42.566721",
+    "geohash": "dp940vn3nk0",
+    "pluscode": "HC8X+M6P Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "259 Constance Blvd",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Peter A. Perkins Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

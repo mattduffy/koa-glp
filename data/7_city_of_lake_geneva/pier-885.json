@@ -1,0 +1,31 @@
+{
+  "pier": "885",
+  "loc": {
+    "lon": "-88.434160",
+    "lat": "42.584473",
+    "geohash": "dp9478k0w90",
+    "pluscode": "HHM8+Q8P Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "648 S Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Ed", "m": "", "l": "McCarthy", "s": "" },
+        { "t": "", "f": "Mary", "m": "", "l": "McCarthy", "s": "" }
+      ]
+    }
+  ]
+}

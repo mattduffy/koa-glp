@@ -1,0 +1,41 @@
+{
+  "pier": "696A",
+  "loc": {
+    "lon": "-88.475413",
+    "lat": "42.564941",
+    "geohash": "dp944swntr0",
+    "pluscode": "HG7F+XRG Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "700 Lake Shore Drive Association",
+    "established": "1950",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2018 700 Club Ln N",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Bob", "m": "", "l": "Schmidt", "s": "" },
+        { "t": "", "f": "Meg", "m": "", "l": "Schmidt", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "John", "m": "R", "l": "Schmidt", "s": "" },
+        { "t": "", "f": "Janet", "m": "", "l": "Gilboy", "s": "" }
+      ]
+    }
+  ]
+}

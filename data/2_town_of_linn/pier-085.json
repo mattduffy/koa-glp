@@ -1,0 +1,32 @@
+{
+  "pier": "085",
+  "loc": {
+    "lon": "-88.486162",
+    "lat": "42.571343",
+    "geohash": "dp944myk4c0",
+    "pluscode": "HGC7+GGP Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Alta Vista",
+    "established": "1954",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2206 Alta Vista Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Paul", "m": "", "l": "Gurinas", "s": "" },
+        { "t": "", "f": "Jessica", "m": "", "l": "Gurinas", "s": "" }
+      ]
+    }
+  ]
+}

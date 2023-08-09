@@ -1,0 +1,32 @@
+{
+  "pier": "099",
+  "loc": {
+    "lon": "-88.493540",
+    "lat": "42.574159",
+    "geohash": "dp944q2urn0",
+    "pluscode": "HGF4+MH8 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "S. B. Chapin",
+    "established": "1921",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2331 Geneva Oak Trl",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Willow Bend",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Annette", "m": "", "l": "Ebert", "s": "" },
+        { "t": "", "f": "Jim", "m": "", "l": "Ebert", "s": "" }
+      ]
+    }
+  ]
+}

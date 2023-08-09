@@ -1,0 +1,48 @@
+{
+  "pier": "535",
+  "loc": {
+    "lon": "-88.531794",
+    "lat": "42.550014",
+    "geohash": "dp9413vpg90",
+    "pluscode": "HF29+274 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "The Chicago Club of Lake Geneva",
+    "established": "1875",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "The Chicago Club of Lake Geneva", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Peggy", "m": "Mathy", "l": "Diamond", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Tom", "m": "", "l": "Tully", "s": "" },
+        { "t": "", "f": "Ellen", "m": "", "l": "Tully", "s": "" }
+      ]
+    }
+  ]
+}

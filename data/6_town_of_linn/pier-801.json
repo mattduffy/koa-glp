@@ -1,0 +1,31 @@
+{
+  "pier": "801",
+  "loc": {
+    "lon": "-88.439849",
+    "lat": "42.564890",
+    "geohash": "dp945s8n6n0",
+    "pluscode": "HH76+X32 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1995 S Lakeshore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Ralph", "m": "", "l": "Russo", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "392",
+  "loc": {
+    "lon": "-88.569416",
+    "lat": "42.556815",
+    "geohash": "dp940e1xrj0",
+    "pluscode": "HC4J+P6G Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "425B N Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Boulder Lodge",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Porter", "s": "" },
+        { "t": "", "f": "Annie", "m": "", "l": "Porter", "s": "" }
+      ]
+    }
+  ]
+}

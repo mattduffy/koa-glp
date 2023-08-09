@@ -1,0 +1,40 @@
+{
+  "pier": "200",
+  "loc": {
+    "lon": "-88.528834",
+    "lat": "42.566870",
+    "geohash": "dp941mp3bx0",
+    "pluscode": "HF8C+PFV Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Cedar Point Park",
+    "established": "1922",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "254 Cir Pkwy",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Scott", "m": "", "l": "Kiley", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+          { "t": "", "f": "Mark", "m": "", "l": "Soderquist", "s": "" },
+          { "t": "", "f": "Wendy", "m": "", "l": "Soderquist", "s": "" }
+      ]
+    }
+  ]
+}

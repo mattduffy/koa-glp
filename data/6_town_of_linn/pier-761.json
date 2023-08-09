@@ -1,0 +1,31 @@
+{
+  "pier": "761",
+  "loc": {
+    "lon": "-88.458668",
+    "lat": "42.557434",
+    "geohash": "dp945567580",
+    "pluscode": "HG4R+XGG Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3174 S Lakeshore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Dr. & Mrs.R. Zimmerman", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

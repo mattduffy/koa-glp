@@ -1,0 +1,32 @@
+{
+  "pier": "082",
+  "loc": {
+    "lon": "-88.484686",
+    "lat": "42.570960",
+    "geohash": "dp944mz3v60",
+    "pluscode": "HGC8+94P Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Bonnie Brae",
+    "established": "1916",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2263 Bonnie Brae Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Nebel North",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Jack", "m": "", "l": "Nebel", "s": "" },
+        { "t": "", "f": "Maureen", "m": "", "l": "Nebel", "s": "" }
+      ]
+    }
+  ]
+}

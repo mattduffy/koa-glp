@@ -1,0 +1,29 @@
+{
+  "pier": "054",
+  "loc": {
+    "lon": "-88.464947",
+    "lat": "42.575889",
+    "geohash": "dp944yty930",
+    "pluscode": "HGGP+923 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "estateName": "Lakewood",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "William", "m": "", "l": "Wrigley", "s": "Jr." }
+      ]
+    }
+  ]
+}

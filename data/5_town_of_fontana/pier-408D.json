@@ -1,0 +1,32 @@
+{
+  "pier": "408D",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Buena Vista",
+    "established": "1912",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "340 Home Ave",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Bob", "m": "", "l": "Chanson", "s": "" },
+        { "t": "", "f": "Jean", "m": "", "l": "Chanson", "s": "" }
+      ]
+    }
+  ]
+}

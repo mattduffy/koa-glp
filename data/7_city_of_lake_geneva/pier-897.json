@@ -1,0 +1,30 @@
+{
+  "pier": "897",
+  "loc": {
+    "lon": "-88.433510",
+    "lat": "42.588028",
+    "geohash": "dp9478utjz0",
+    "pluscode": "HHQ8+6H9 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "+1(262) 248-2100",
+    "address": {
+      "street": "335 Wrigley Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Bella Vista", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

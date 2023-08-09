@@ -1,0 +1,31 @@
+{
+  "pier": "363",
+  "loc": {
+    "lon": "-88.562151",
+    "lat": "42.562659",
+    "geohash": "dp940sr12q0",
+    "pluscode": "HC7Q+349 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1984 N Lakeshore Dr",
+      "city": "Walworth",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Angel's Flight",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Dr. & Mrs.Keith Gibson", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

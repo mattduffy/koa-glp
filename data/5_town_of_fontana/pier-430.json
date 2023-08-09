@@ -1,0 +1,57 @@
+{
+  "pier": "430",
+  "loc": {
+    "lon": "-88.570864",
+    "lat": "42.548338",
+    "geohash": "dp94098wj30",
+    "pluscode": "GCXH+8MJ Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "Lake St",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Fontana Municipal Pier #1", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Brian", "m": "", "l": "McKeough", "s": "" },
+        { "t": "", "f": "Julie", "m": "", "l": "McKeough", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Karen", "m": "", "l": "Rechtoris", "s": "" },
+        { "t": "", "f": "Ken", "m": "", "l": "Rechtoris", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Todd", "m": "", "l": "Reschke", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "096",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "S. B. Chapin",
+    "established": "1921",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Anthony", "m": "", "l": "Costello", "s": "" },
+        { "t": "", "f": "Christine", "m": "", "l": "Costello", "s": "" }
+      ]
+    }
+  ]
+}

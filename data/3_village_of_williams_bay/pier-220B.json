@@ -1,0 +1,32 @@
+{
+  "pier": "220B",
+  "loc": {
+    "lon": "-88.529357",
+    "lat": "42.571552",
+    "geohash": "dp941myvk20",
+    "pluscode": "HFCC+J7C Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Cedar Point Park",
+    "established": "1922",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "136 Birch Walnut Dr",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Craig", "m": "", "l": "Hudson", "s": "" },
+        { "t": "", "f": "Kathie", "m": "", "l": "Hudson", "s": "" }
+      ]
+    }
+  ]
+}

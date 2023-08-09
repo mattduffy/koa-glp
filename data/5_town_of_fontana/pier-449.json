@@ -1,0 +1,31 @@
+{
+  "pier": "449",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Glenwood Springs",
+    "established": "1892",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "434 Oakwood Ave",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Raymond", "m": "", "l": "Morelli", "s": "" }
+      ]
+    }
+  ]
+}

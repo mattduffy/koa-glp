@@ -1,0 +1,32 @@
+{
+  "pier": "371",
+  "loc": {
+    "lon": "-88.565097",
+    "lat": "42.561030",
+    "geohash": "dp940euzgw0",
+    "pluscode": "HC6M+CX6 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "585 N Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Blythe", "m": "", "l": "Youngquist", "s": "" },
+        { "t": "", "f": "Bob", "m": "", "l": "Youngquist", "s": "" }
+      ]
+    }
+  ]
+}

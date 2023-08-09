@@ -1,0 +1,32 @@
+{
+  "pier": "049",
+  "loc": {
+    "lon": "-88.462399",
+    "lat": "42.576349",
+    "geohash": "dp944yz9hw0",
+    "pluscode": "HGGQ+G2Q Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3263 Snake Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Green Gables",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Karl", "m": "", "l": "Otzen", "s": "" },
+        { "t": "", "f": "Lucy", "m": "", "l": "Otzen", "s": "" }
+      ]
+    }
+  ]
+}

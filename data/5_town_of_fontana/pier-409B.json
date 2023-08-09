@@ -1,0 +1,32 @@
+{
+  "pier": "409B",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Buena Vista",
+    "established": "1912",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "326 Fontana Ln",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Dale", "m": "", "l": "Gustafson", "s": "" },
+        { "t": "", "f": "Trina", "m": "", "l": "Gustafson", "s": "" }
+      ]
+    }
+  ]
+}

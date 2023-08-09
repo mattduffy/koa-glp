@@ -1,0 +1,31 @@
+{
+  "pier": "209",
+  "loc": {
+    "lon": "-88.529666",
+    "lat": "42.568675",
+    "geohash": "dp941mqst20",
+    "pluscode": "HF9C+F48 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Cedar Point Park",
+    "established": "1922",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "218 Cir Pkwy",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Kathleen Corry Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

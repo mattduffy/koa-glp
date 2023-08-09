@@ -1,0 +1,32 @@
+{
+  "pier": "009A",
+  "loc": {
+    "lon": "-88.445588",
+    "lat": "42.588895",
+    "geohash": "dp94735fk30",
+    "pluscode": "HHQ3+HQ3 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "725 S Curtis St #138",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Paul", "m": "", "l": "Lagerlof", "s": "" },
+        { "t": "", "f": "Harriet", "m": "", "l": "Lagerlof", "s": "" }
+      ]
+    }
+  ]
+}

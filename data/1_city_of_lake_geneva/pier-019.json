@@ -1,0 +1,32 @@
+{
+  "pier": "019",
+  "loc": {
+    "lon": "-88.446627",
+    "lat": "42.587153",
+    "geohash": "dp9472g0hh0",
+    "pluscode": "HHP3+V89 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Lake Geneva Manor",
+    "established": "1924",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "1620 Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Willows Retreat",
+      "member": true,
+      "membershipType": "",
+      "members": [
+        { "t": "", "f": "Thomas", "m": "D", "l": "Langer", "s": "" },
+        { "t": "", "f": "Audrey ", "m": "J", "l": "Langer", "s": "" }
+      ]
+    }
+  ]
+}

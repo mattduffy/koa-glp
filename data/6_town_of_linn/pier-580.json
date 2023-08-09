@@ -1,0 +1,31 @@
+{
+  "pier": "580",
+  "loc": {
+    "lon": "-88.512528",
+    "lat": "42.558445",
+    "geohash": "dp941ge0ut0",
+    "pluscode": "HF5P+9XH Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Estates of Black Point",
+    "established": "1888",
+    "associationUrl": "https://blackpointestate.wisconsinhistory.org",
+    "tel": "+1(262) 248-1888",
+    "address": {
+      "street": "W4270 Southland Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Black Point",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Black Point Historic Preserve", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

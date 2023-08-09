@@ -1,0 +1,31 @@
+{
+  "pier": "518B",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Clear Sky Lodge Assn.",
+    "established": "1989",
+    "associationUrl": "http://www.clearskylodge.com/",
+    "tel": "",
+    "address": {
+      "street": "1100 S Lakeshore Dr #d",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Margaret Lombardo Trust", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

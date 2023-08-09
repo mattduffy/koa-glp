@@ -1,0 +1,64 @@
+{
+  "pier": "777",
+  "loc": {
+    "lon": "-88.448292",
+    "lat": "42.561988",
+    "geohash": "dp945k1vt30",
+    "pluscode": "HH62+QMW Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "WF Association",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "WF Association Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "Burdock Manor",
+      "member": true,
+      "membershipType": "Sustaining",
+      "members": [
+        { "t": "", "f": "Mr. & Mrs. Richard H. Baker III", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Mr. & Mrs.William J. Ring", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Boyd", "m": "", "l": "Whiting", "s": "" },
+        { "t": "", "f": "Beth", "m": "", "l": "Whiting", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Susan", "m": "D", "l": "Whiting", "s": "" }
+      ]
+    }
+  ]
+}

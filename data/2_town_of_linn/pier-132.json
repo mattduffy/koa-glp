@@ -1,0 +1,32 @@
+{
+  "pier": "132",
+  "loc": {
+    "lon": "-88.502798",
+    "lat": "42.574862",
+    "geohash": "dp944nd0x30",
+    "pluscode": "HFFW+WVW Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4119 Jerseyhurst Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "El Nido",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Brent", "m": "", "l": "Brodeski", "s": "" },
+        { "t": "", "f": "Sharon", "m": "", "l": "Brodeski", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "pier": "502",
+  "loc": {
+    "lon": "-88.547795",
+    "lat": "42.547935",
+    "geohash": "dp941197wv0",
+    "pluscode": "GFX2+5VG Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Westgate",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "956 S Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Westgate Association Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Bradley", "m": "", "l": "Fideler", "s": "" },
+        { "t": "", "f": "Rebecca", "m": "", "l": "Fideler", "s": "" }
+      ]
+    },
+    {
+      "estateName": "Flower Cottage",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Bob", "m": "", "l": "Kelly", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Charley", "m": "", "l": "Zeches", "s": "" },
+        { "t": "", "f": "Bob", "m": "", "l": "Zeches", "s": "" }
+      ]
+    }
+  ]
+}

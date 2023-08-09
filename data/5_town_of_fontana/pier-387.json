@@ -1,0 +1,29 @@
+{
+  "pier": "387",
+  "loc": {
+    "lon": "-88.568984",
+    "lat": "42.557875",
+    "geohash": "dp940e6j950",
+    "pluscode": "HC5J+4CR Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": []
+    }
+  ]
+}

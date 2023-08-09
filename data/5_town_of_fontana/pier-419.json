@@ -1,0 +1,31 @@
+{
+  "pier": "419",
+  "loc": {
+    "lon": "-88.571557",
+    "lat": "42.549811",
+    "geohash": "dp9409bnt50",
+    "pluscode": "GCXH+W9G Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "+1(262) 275-5222",
+    "address": {
+      "street": "352 Lake St",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Jerry’s Marine", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

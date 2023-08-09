@@ -1,0 +1,32 @@
+{
+  "pier": "408A",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Buena Vista",
+    "established": "1912",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "375 Sylvan Ln",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Graff", "s": "" },
+        { "t": "", "f": "Judy", "m": "", "l": "Graff", "s": "" }
+      ]
+    }
+  ]
+}

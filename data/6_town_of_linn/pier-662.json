@@ -1,0 +1,32 @@
+{
+  "pier": "662",
+  "loc": {
+    "lon": "-88.490572",
+    "lat": "42.560661",
+    "geohash": "dp9447gju40",
+    "pluscode": "HG65+7Q7 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Lackey Lane",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3862 Lackey Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Sam", "m": "", "l": "Skinner", "s": "" },
+        { "t": "", "f": "Honey", "m": "", "l": "Skinner", "s": "" }
+      ]
+    }
+  ]
+}

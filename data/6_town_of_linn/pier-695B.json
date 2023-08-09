@@ -1,0 +1,32 @@
+{
+  "pier": "695B",
+  "loc": {
+    "lon": "-88.476087",
+    "lat": "42.565616",
+    "geohash": "dp944svdtw0",
+    "pluscode": "HG8F+6HV Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "700 Lake Shore Drive Association",
+    "established": "1950",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Allview Estate",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Arvid", "m": "", "l": "Dahlstrom", "s": "" },
+        { "t": "", "f": "Sue", "m": "", "l": "Dahlstrom", "s": "" }
+      ]
+    }
+  ]
+}

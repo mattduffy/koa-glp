@@ -1,0 +1,40 @@
+{
+  "pier": "134",
+  "loc": {
+    "lon": "-88.505424",
+    "lat": "42.575091",
+    "geohash": "dp944n83fh0",
+    "pluscode": "HFGV+2RP Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2308 Windwood Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Windwood",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Brian", "m": "", "l": "Griffith", "s": "" },
+        { "t": "", "f": "Sue", "m": "", "l": "Griffith", "s": "" }
+      ]
+    },
+    {
+      "estateName": "Windwood",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Lois", "m": "", "l": "Griffith", "s": "" }
+      ]
+    }
+  ]
+}

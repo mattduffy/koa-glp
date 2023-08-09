@@ -1,0 +1,31 @@
+{
+  "pier": "094",
+  "loc": {
+    "lon": "-88.491863",
+    "lat": "42.573214",
+    "geohash": "dp944q4nyn0",
+    "pluscode": "HGF5+77J Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "S. B. Chapin",
+    "established": "1921",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2262 Chapin Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Sustaining",
+      "members": [
+        { "t": "", "f": "The Graber Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "061",
+  "loc": {
+    "lon": "-88.470064",
+    "lat": "42.573457",
+    "geohash": "dp944y60650",
+    "pluscode": "HGFH+9XM Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3415 Snake Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Edgewood",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "MacDonald Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

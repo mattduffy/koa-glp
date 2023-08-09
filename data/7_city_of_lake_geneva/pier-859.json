@@ -1,0 +1,31 @@
+{
+  "pier": "859",
+  "loc": {
+    "lon": "-88.439388",
+    "lat": "42.577945",
+    "geohash": "dp945x06sb0",
+    "pluscode": "HHH6+56H Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "1084 La Grange Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Michael", "m": "", "l": "Lynch", "s": "" },
+        { "t": "", "f": "Katie", "m": "", "l": "Lynch", "s": "" }
+      ]
+    }
+  ]
+}

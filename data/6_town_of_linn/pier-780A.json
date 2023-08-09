@@ -1,0 +1,31 @@
+{
+  "pier": "780A",
+  "loc": {
+    "lon": "-88.445400",
+    "lat": "42.563304",
+    "geohash": "dp945kkj0z0",
+    "pluscode": "HH73+8RH Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1925 Hunt Club Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Casa Blanka",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Casa East", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

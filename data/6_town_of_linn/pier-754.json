@@ -1,0 +1,32 @@
+{
+  "pier": "754",
+  "loc": {
+    "lon": "-88.461248",
+    "lat": "42.557856",
+    "geohash": "dp94552mrx0",
+    "pluscode": "HG5Q+4GR Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Lake Geneva Beach Association",
+    "established": "1925",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3276 Park Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Play 'N Lazy",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Kent", "m": "", "l": "Taubensee", "s": "" },
+        { "t": "", "f": "Christine", "m": "", "l": "Taubensee", "s": "" }
+      ]
+    }
+  ]
+}

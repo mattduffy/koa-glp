@@ -1,0 +1,31 @@
+{
+  "pier": "774A",
+  "loc": {
+    "lon": "-88.452529",
+    "lat": "42.560200",
+    "geohash": "dp9455yg4s0",
+    "pluscode": "HG6W+3XQ Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Loramoor",
+    "established": "1981",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1893 Loramoor Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Mr. & Mrs. Donald Geller", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

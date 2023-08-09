@@ -1,0 +1,31 @@
+{
+  "pier": "481",
+  "loc": {
+    "lon": "-88.560078",
+    "lat": "42.546702",
+    "geohash": "dp940c2s880",
+    "pluscode": "GCWQ+MXM Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "606 Mohr Rd",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Michael", "m": "", "l": "O'Halleran", "s": "" }
+      ]
+    }
+  ]
+}

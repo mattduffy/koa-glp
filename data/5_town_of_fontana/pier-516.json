@@ -1,0 +1,32 @@
+{
+  "pier": "516",
+  "loc": {
+    "lon": "-88.540875",
+    "lat": "42.548743",
+    "geohash": "dp9411y82h0",
+    "pluscode": "GFX5+FMR Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "1096b S Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Whippoorwill",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Peter", "m": "", "l": "Wright", "s": "" },
+        { "t": "", "f": "Dina", "m": "", "l": "Wright", "s": "" }
+      ]
+    }
+  ]
+}

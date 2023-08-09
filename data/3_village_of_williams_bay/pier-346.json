@@ -1,0 +1,32 @@
+{
+  "pier": "346",
+  "loc": {
+    "lon": "-88.551778",
+    "lat": "42.566717",
+    "geohash": "dp940vn9450",
+    "pluscode": "HC8X+M7Q Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "257 Constance Blvd",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Melissa", "m": "", "l": "Herrman", "s": "" },
+        { "t": "", "f": "Bob", "m": "", "l": "Herrman", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "pier": "519",
+  "loc": {
+    "lon": "-88.539253",
+    "lat": "42.549215",
+    "geohash": "dp9411zeju0",
+    "pluscode": "GFX6+M7Q Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Brookwood",
+    "established": "1956",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "1160 Lower Brookwood Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "William", "m": "", "l": "Pope", "s": "" }
+      ]
+    },
+    {
+      "estateName": "The Echoes",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Theodore", "m": "R", "l": "Tetzlaff", "s": "" }
+      ]
+    }
+  ]
+}

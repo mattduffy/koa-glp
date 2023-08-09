@@ -1,0 +1,32 @@
+{
+  "pier": "455A",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Glenwood Springs",
+    "established": "1892",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "458 Harvard Ave",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Thomas", "m": "", "l": "Gibbs", "s": "" },
+        { "t": "", "f": "Catherine", "m": "", "l": "Gibbs", "s": "" }
+      ]
+    }
+  ]
+}

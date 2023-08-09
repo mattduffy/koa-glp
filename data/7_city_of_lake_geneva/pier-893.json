@@ -1,0 +1,30 @@
+{
+  "pier": "893",
+  "loc": {
+    "lon": "-88.433173",
+    "lat": "42.587329",
+    "geohash": "dp9478ucjt0",
+    "plusecode": "HHP8+WPP Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Wrigley Drive Residences, LLC",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "523-699 Campbell St",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Wrigley Drive Residences", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

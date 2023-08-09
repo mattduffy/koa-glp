@@ -1,0 +1,48 @@
+{
+  "pier": "286",
+  "loc": {
+    "lon": "-88.538707",
+    "lat": "42.574715",
+    "geohash": "dp941q2pdt0",
+    "pluscode": "HFF6+VGM Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Bay Colony 286 North Condo",
+    "established": "1967",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "9 S Walworth Ave",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Bay Colony North Condo Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Barry", "m": "", "l": "Diekelman", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Todd", "m": "", "l": "Hitzeman", "s": "" },
+        { "t": "", "f": "Susan", "m": "", "l": "Hitzeman", "s": "" }
+      ]
+    }
+  ]
+}

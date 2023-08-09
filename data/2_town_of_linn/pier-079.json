@@ -1,0 +1,32 @@
+{
+  "pier": "079",
+  "loc": {
+    "lon": "-88.483483",
+    "lat": "42.571088",
+    "geohash": "dp944tb6960",
+    "pluscode": "HGC8+CJJ Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Bonnie Brae",
+    "established": "1916",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2205 Bonnie Brae Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Lane’s End",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Melissa", "m": "", "l": "McClayton", "s": "" },
+        { "t": "", "f": "William", "m": "", "l": "McClayton", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "350A",
+  "loc": {
+    "lon": "-88.556740",
+    "lat": "42.565584",
+    "geohash": "dp940uffqr0",
+    "pluscode": "HC8V+68J Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "George Williams College of Aurora University",
+    "established": "1886",
+    "associationUrl": "",
+    "tel": "+1(262) 245-5531",
+    "address": {
+      "street": "",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "George Williams College Boat Dock", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "343",
+  "loc": {
+    "lon": "-88.550977",
+    "lat": "42.566885",
+    "geohash": "dp940vp4hd0",
+    "pluscode": "HC8X+QJ2 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "243B Constance Blvd",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Phyllis", "m": "", "l": "Steindl", "s": "" }
+      ]
+    }
+  ]
+}

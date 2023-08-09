@@ -1,0 +1,47 @@
+{
+  "pier": "497",
+  "loc": {
+    "lon": "-88.552536",
+    "lat": "42.548223",
+    "geohash": "dp940cwj270",
+    "pluscode": "GCXW+7XP Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Abbey Springs",
+    "established": "1971",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Abbey Springs Condo Assoc.", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Jeff", "m": "", "l": "Germanotta", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Mr. & Mrs. John L. Simpson, Jr.", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

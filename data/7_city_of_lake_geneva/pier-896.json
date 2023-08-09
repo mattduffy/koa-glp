@@ -1,0 +1,30 @@
+{
+  "pier": "896",
+  "loc": {
+    "lon": "-88.433287",
+    "lat": "42.587745",
+    "geohash": "dp9478uge50",
+    "pluscode": "HHQ8+3MW Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "308-300 Wrigley Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Harbor Watch at the East Bank Condominium", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

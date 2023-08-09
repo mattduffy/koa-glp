@@ -1,0 +1,57 @@
+{
+  "pier": "710",
+  "loc": {
+    "lon": "-88.471709",
+    "lat": "42.562925",
+    "geohash": "dp944u2g5b0",
+    "pluscode": "HG7H+58F Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Lake Geneva Country Club",
+    "established": "1895",
+    "associationUrl": "",
+    "tel": "+1(262) 248-2752",
+    "address": {
+      "street": "W3398 S Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Lake Geneva Country Club", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Sarah", "m": "E", "l": "Bogan", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Sustaining",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Foxley", "s": "" },
+        { "t": "", "f": "Mary Ann", "m": "", "l": "Foxley", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Bob", "m": "", "l": "Klockars", "s": "" },
+        { "t": "", "f": "Jane", "m": "", "l": "Klockars", "s": "" }
+      ]
+    }
+  ]
+}

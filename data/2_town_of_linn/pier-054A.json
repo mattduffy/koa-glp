@@ -1,0 +1,31 @@
+{
+  "pier": "054A",
+  "loc": {
+    "lon": "-88.465059",
+    "lat": "42.575853",
+    "geohash": "dp944ytwqd0",
+    "pluscode": "HGGM+8XW Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3337 Snake Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "William", "m": "", "l": "Wrigley", "s": "Jr." }
+      ]
+    }
+  ]
+}

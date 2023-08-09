@@ -1,0 +1,31 @@
+{
+  "pier": "700A",
+  "loc": {
+    "lon": "-88.474046",
+    "lat": "42.563136",
+    "geohash": "dp944srhjr0",
+    "pluscode": "HG7G+794 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "700 Lake Shore Drive Association",
+    "established": "1950",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3580 700 Club Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Welcome Home",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Carol", "m": "", "l": "Bernick", "s": "" }
+      ]
+    }
+  ]
+}

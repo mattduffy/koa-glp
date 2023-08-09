@@ -1,0 +1,75 @@
+{
+  "pier": "437AY",
+  "loc": {
+    "lon": "-88.570152",
+    "lat": "42.546636",
+    "geohash": "dp94093hjg0",
+    "pluscode": "GCWH+MW5 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Abbey Harbor Yacht Club",
+    "established": "",
+    "associationUrl": "",
+    "tel": "+1(262) 394-5544",
+    "address": {
+      "street": "271 Fontana Blvd",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Abbey Harbor Y.C. Docks", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Edward", "m": "", "l": "Breen", "s": "" },
+        { "t": "", "f": "Elizabeth", "m": "", "l": "Davis", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Jodi", "m": "", "l": "Boudart", "s": "" },
+        { "t": "", "f": "Scott", "m": "", "l": "Kaufman", "s": "" }
+      ]
+    },
+    {
+      "estateName": "Bay View",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Daniel ", "m": "", "l": "Keck", "s": "" },
+        { "t": "", "f": "Victoria ", "m": "", "l": "Tilly", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Todd", "m": "", "l": "Hitzeman", "s": "" },
+        { "t": "", "f": "Susan", "m": "", "l": "Hitzeman", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "William", "m": "", "l": "Urbanus", "s": "" }
+      ]
+    }
+  ]
+}

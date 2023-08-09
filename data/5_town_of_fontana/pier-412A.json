@@ -1,0 +1,32 @@
+{
+  "pier": "412A",
+  "loc": {
+    "lon": "-88.572313",
+    "lat": "42.550848",
+    "geohash": "dp9406pses0",
+    "pluscode": "HC2H+83M Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "127 Brooks St",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Barbara", "m": "", "l": "Sullivan", "s": "" },
+        { "t": "", "f": "Ginny", "m": "", "l": "Cavanagh", "s": "" }
+      ]
+    }
+  ]
+}

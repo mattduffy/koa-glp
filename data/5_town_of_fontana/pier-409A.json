@@ -1,0 +1,32 @@
+{
+  "pier": "409A",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Buena Vista",
+    "established": "1912",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "176 Brooks St",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Reynolds", "s": "" },
+        { "t": "", "f": "Karen", "m": "", "l": "Reynolds", "s": "" }
+      ]
+    }
+  ]
+}

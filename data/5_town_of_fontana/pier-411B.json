@@ -1,0 +1,49 @@
+{
+  "pier": "411B",
+  "loc": {
+    "lon": "-88.572165",
+    "lat": "42.551320",
+    "geohash": "dp9406pxqv0",
+    "pluscode": "HC2H+G4G Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Buena Vista",
+    "established": "1912",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "150 Lake St",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Frank", "m": "H", "l": "Voris", "s": "" },
+        { "t": "", "f": "Michele", "m": "", "l": "Voris", "s": "" }
+      ]
+    },
+    {
+      "estateName": "Pi Cottage",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Frank", "m": "H", "l": "Wehrstein", "s": "" },
+        { "t": "", "f": "Jennifer", "m": "H", "l": "Wehrstein", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-Member",
+      "members": [
+        { "t": "", "f": "Geraldine", "m": "H", "l": "Audino", "s": "" }
+      ]
+    }
+  ]
+}

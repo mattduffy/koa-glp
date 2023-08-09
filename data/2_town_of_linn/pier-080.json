@@ -1,0 +1,32 @@
+{
+  "pier": "080",
+  "loc": {
+    "lon": "-88.482896",
+    "lat": "42.571199",
+    "geohash": "dp944tbepn0",
+    "pluscode": "HGC8+GGH Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Bonnie Brae",
+    "established": "1916",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2201 Bonnie Brae Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Daniel", "m": "", "l": "Affetto", "s": "" },
+        { "t": "", "f": "Anisa", "m": "", "l": "Affetto", "s": "" }
+      ]
+    }
+  ]
+}

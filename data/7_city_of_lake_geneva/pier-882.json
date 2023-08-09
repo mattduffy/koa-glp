@@ -1,0 +1,30 @@
+{
+  "pier": "882",
+  "loc": {
+    "lon": "-88.434555",
+    "lat": "42.583623",
+    "geohash": "dp94785gtd0",
+    "pluscode": "HHM8+C5W Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "700 S Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Peng", "m": "", "l": "Zhao", "s": "" }
+      ]
+    }
+  ]
+}

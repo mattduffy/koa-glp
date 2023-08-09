@@ -1,0 +1,32 @@
+{
+  "pier": "163",
+  "loc": {
+    "lon": "-88.515849",
+    "lat": "42.573128",
+    "geohash": "dp941y0wrn0",
+    "pluscode": "HFFM+7M2 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4443 N Lake Shore Dr",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Three Bridges",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Warren", "m": "", "l": "Mula", "s": "" },
+        { "t": "", "f": "Maureen", "m": "", "l": "Mula", "s": "" }
+      ]
+    }
+  ]
+}

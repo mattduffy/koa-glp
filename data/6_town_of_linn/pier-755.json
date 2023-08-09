@@ -1,0 +1,49 @@
+{
+  "pier": "755",
+  "loc": {
+    "lon": "-88.460307",
+    "lat": "42.558141",
+    "geohash": "dp94553pjk0",
+    "pluscode": "HG5Q+7V4 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Lake Geneva Beach Association",
+    "established": "1925",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Geneva Beach Association Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "The Cottage",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Peter", "m": "", "l": "King", "s": "" },
+        { "t": "", "f": "Pat", "m": "", "l": "King", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Carl", "m": "", "l": "Rathmann", "s": "" },
+        { "t": "", "f": "Joyce Ann", "m": "", "l": "Rathmann", "s": "" }
+      ]
+    }
+  ]
+}

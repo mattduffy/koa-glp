@@ -1,0 +1,32 @@
+{
+  "pier": "464",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Glenwood Springs",
+    "established": "1892",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "643 Maple Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Paula", "m": "", "l": "Rogers", "s": "" },
+        { "t": "", "f": "David", "m": "", "l": "Rogers", "s": "" }
+      ]
+    }
+  ]
+}

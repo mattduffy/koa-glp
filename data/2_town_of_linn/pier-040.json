@@ -1,0 +1,32 @@
+{
+  "pier": "040",
+  "loc": {
+    "lon": "-88.453724",
+    "lat": "42.580252",
+    "geohash": "dp945pmzyy0",
+    "pluscode": "HGJW+4G2 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2443 Forest Rest Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Dean", "m": "", "l": "Athans", "s": "" },
+        { "t": "", "f": "Eilena", "m": "", "l": "Athans", "s": "" }
+      ]
+    }
+  ]
+}

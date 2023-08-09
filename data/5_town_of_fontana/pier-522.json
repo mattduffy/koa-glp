@@ -1,0 +1,48 @@
+{
+  "pier": "522",
+  "loc": {
+    "lon": "-88.536408",
+    "lat": "42.549322",
+    "geohash": "dp9413cgb00",
+    "pluscode": "GFX7+PG6 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Ten Acre Wood",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "1244 S Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Noreen", "m": "", "l": "Heron", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Norma", "m": "", "l": "Jann", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "James", "m": "", "l": "Purcell", "s": "" },
+        { "t": "", "f": "Stacy", "m": "", "l": "Purcell", "s": "" }
+      ]
+    }
+  ]
+}

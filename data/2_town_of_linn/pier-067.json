@@ -1,0 +1,32 @@
+{
+  "pier": "067",
+  "loc": {
+    "lon": "-88.476510",
+    "lat": "42.572389",
+    "geohash": "dp944wj65u0",
+    "pluscode": "HGCF+X95 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3577 Snake Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "House in the Woods",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Patrick", "m": "", "l": "Ryan", "s": "" },
+        { "t": "", "f": "Shirley", "m": "", "l": "Ryan", "s": "" }
+      ]
+    }
+  ]
+}

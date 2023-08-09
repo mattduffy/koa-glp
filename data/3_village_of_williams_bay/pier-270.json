@@ -1,0 +1,48 @@
+{
+  "pier": "270",
+  "loc": {
+    "lon": "-88.539019",
+    "lat": "42.577287",
+    "geohash": "dp941nzyem0",
+    "pluscode": "HFG6+W99 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "69 N Walworth Ave",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Kirsh's Pier Slips", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Joshua", "m": "", "l": "LaCroix", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Dale", "m": "", "l": "Vavra", "s": "" },
+        { "t": "", "f": "Sue", "m": "", "l": "Vavra", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "550C",
+  "loc": {
+    "lon": "-88.524067",
+    "lat": "42.551093",
+    "geohash": "dp941d4wpd0",
+    "pluscode": "HF2G+C9M Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1609 N Creekside Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Jim", "m": "", "l": "Bell", "s": "" },
+        { "t": "", "f": "Nancy", "m": "", "l": "Bell", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "pier": "265",
+  "loc": {
+    "lon": "-88.536954",
+    "lat": "42.577886",
+    "geohash": "dp941r165m0",
+    "pluscode": "HFH7+563 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Williams Bay Village Recreation Department",
+    "established": "",
+    "associationUrl": "",
+    "tel": "+1(262) 245-2700",
+    "address": {
+      "street": "15 E Geneva St",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Williams Bay West Dock", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Elizabeth", "m": "", "l": "Cox", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Dr. & Mrs. Clifford Poplar", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Robert", "m": "", "l": "Quinn", "s": "" }
+      ]
+    }
+  ]
+}

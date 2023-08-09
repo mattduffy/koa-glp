@@ -1,0 +1,31 @@
+{
+  "pier": "606",
+  "loc": {
+    "lon": "-88.504942",
+    "lat": "42.559481",
+    "geohash": "dp94458wvq0",
+    "pluscode": "HF5W+Q2V Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Lake Geneva Highlands",
+    "established": "1922",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4156 Lakeview Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Stone Hurst",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Lynda", "m": "Z", "l": "McKeaney", "s": "" }
+      ]
+    }
+  ]
+}

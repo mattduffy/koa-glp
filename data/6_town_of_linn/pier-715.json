@@ -1,0 +1,40 @@
+{
+  "pier": "715",
+  "loc": {
+    "lon": "-88.466422",
+    "lat": "42.560210",
+    "geohash": "dp944gueny0",
+    "pluscode": "HG6M+3CP Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3396 S Lakeshore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Duck Island",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Bates Family", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "Duck Island",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Larry", "m": "", "l": "Crum", "s": "" },
+        { "t": "", "f": "Chris", "m": "", "l": "Crum", "s": "" }
+      ]
+    }
+  ]
+}

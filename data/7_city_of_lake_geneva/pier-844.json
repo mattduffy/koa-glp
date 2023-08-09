@@ -1,0 +1,31 @@
+{
+  "pier": "844",
+  "loc": {
+    "lon": "-88.439193",
+    "lat": "42.573008",
+    "geohash": "dp945w0t9r0",
+    "pluscode": "HHF6+683 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Ceylon Court Estates",
+    "established": "1948",
+    "tel": "",
+    "address": {
+      "street": "910 Maytag Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Kathy", "m": "", "l": "Uhler", "s": "" },
+        { "t": "", "f": "Steve", "m": "", "l": "Uhler", "s": "" }
+      ]
+    }
+  ]
+}

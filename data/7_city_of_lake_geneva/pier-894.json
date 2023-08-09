@@ -1,0 +1,39 @@
+{
+  "pier": "894",
+  "loc": {
+    "lon": "-88.433211",
+    "lat": "42.587463",
+    "geohash": "dp9478ucuy0",
+    "pluscode": "HHP8+XPM Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "308-300 Wrigley Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Richard", "m": "", "l": "Adams", "s": "" },
+        { "t": "", "f": "Rita", "m": "", "l": "Adams", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Margaret", "m": "", "l": "Clark", "s": "" }
+      ]
+    }
+  ]
+}

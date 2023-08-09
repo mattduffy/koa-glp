@@ -1,0 +1,30 @@
+{
+  "pier": "884",
+  "loc": {
+    "lon": "-88.434344",
+    "lat": "42.584011",
+    "geohash": "dp9478hjf70",
+    "pluscode": "HHM8+J72 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "670 S Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Biedler", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "676",
+  "loc": {
+    "lon": "-88.483925",
+    "lat": "42.563738",
+    "geohash": "dp944krzxp0",
+    "pluscode": "HG78+FCW Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Birches",
+    "established": "1924",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1979 Birches Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Hostetler Family Trust", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

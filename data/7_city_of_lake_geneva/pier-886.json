@@ -1,0 +1,31 @@
+{
+  "pier": "886",
+  "loc": {
+    "lon": "-88.433844",
+    "lat": "42.584993",
+    "geohash": "dp9478k7w10",
+    "pluscode": "HHM8+XFR Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "620 S Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Jim", "m": "", "l": "Heimann", "s": "" },
+        { "t": "", "f": "Lynette", "m": "", "l": "Heimann", "s": "" }
+      ]
+    }
+  ]
+}

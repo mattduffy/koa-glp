@@ -1,0 +1,40 @@
+{
+  "pier": "519A",
+  "loc": {
+    "lon": "-88.537732",
+    "lat": "42.549388",
+    "geohash": "dp9413bu1k0",
+    "pluscode": "GFX6+QW2 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Brookwood",
+    "established": "1956",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Brookwood Subdivision Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Francis", "m": "", "l": "Maus", "s": "" },
+        { "t": "", "f": "Terry", "m": "", "l": "Maus", "s": "" }
+      ]
+    }
+  ]
+}

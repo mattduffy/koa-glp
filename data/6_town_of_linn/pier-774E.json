@@ -1,0 +1,41 @@
+{
+  "pier": "774E",
+  "loc": {
+    "lon": "-88.450553",
+    "lat": "42.560937",
+    "geohash": "dp9457br2t0",
+    "pluscode": "HG6X+9QG Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Loramoor",
+    "established": "1981",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1939 Loramoor Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "The Lake House",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Gary", "m": "", "l": "Jouris", "s": "" },
+        { "t": "", "f": "Sally", "m": "", "l": "Jouris", "s": "" }
+      ]
+    },
+    {
+      "estateName": "The Lake House",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Jon", "m": "", "l": "Jouris", "s": "" },
+        { "t": "", "f": "Kelly", "m": "", "l": "Jouris", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "175",
+  "loc": {
+    "lon": "-88.521098",
+    "lat": "42.570345",
+    "geohash": "dp941tsyhz0",
+    "pluscode": "HFCH+4HJ Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "679 Cedar Point Dr",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Stone Gates",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Marjorie", "m": "H", "l": "Greenfield", "s": "" }
+      ]
+    }
+  ]
+}

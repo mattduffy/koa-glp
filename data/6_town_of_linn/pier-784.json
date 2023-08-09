@@ -1,0 +1,32 @@
+{
+  "pier": "784",
+  "loc": {
+    "lon": "-88.444307",
+    "lat": "42.563521",
+    "geohash": "dp945kky6r0",
+    "pluscode": "HH74+C74 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W2916 Walcowis Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Villa di Nova",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Michael", "m": "", "l": "Bungert", "s": "" },
+        { "t": "", "f": "Patricia", "m": "", "l": "Bungert", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "204",
+  "loc": {
+    "lon": "-88.529400",
+    "lat": "42.567613",
+    "geohash": "dp941mny760",
+    "pluscode": "HF9C+26X Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Cedar Point Park",
+    "established": "1922",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "244 Cir Pkwy",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Port Phillip",
+      "member": true,
+      "membershipType": "Sustaining",
+      "members": [
+        { "t": "", "f": "Mr. & Mrs.James", "m": "R", "l": "Phillip", "s": "" }
+      ]
+    }
+  ]
+}

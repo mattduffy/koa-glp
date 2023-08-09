@@ -1,0 +1,32 @@
+{
+  "pier": "206",
+  "loc": {
+    "lon": "-88.529689",
+    "lat": "42.568123",
+    "geohash": "dp941mq9k90",
+    "pluscode": "HF9C+64V Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Cedar Point Park",
+    "established": "1922",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "230 Cir Pkwy",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Sunset Point",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Jeff", "m": "", "l": "Liljeberg", "s": "" },
+        { "t": "", "f": "Ellen", "m": "", "l": "Liljeberg", "s": "" }
+      ]
+    }
+  ]
+}

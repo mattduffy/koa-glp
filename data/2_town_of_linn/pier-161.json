@@ -1,0 +1,32 @@
+{
+  "pier": "161",
+  "loc": {
+    "lon": "-88.514437",
+    "lat": "42.573725",
+    "geohash": "dp941y3cbj0",
+    "pluscode": "HFFP+F6P Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4433 N Lake Shore Dr",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Christie", "m": "", "l": "Eddins", "s": "" },
+        { "t": "", "f": "Sam", "m": "", "l": "Eddins", "s": "" }
+      ]
+    }
+  ]
+}

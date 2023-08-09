@@ -1,0 +1,31 @@
+{
+  "pier": "749",
+  "loc": {
+    "lon": "-88.462451",
+    "lat": "42.558698",
+    "geohash": "dp944gxd7k0",
+    "pluscode": "HG5Q+F2F Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Robinson Hillside",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Robinson Hillside", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

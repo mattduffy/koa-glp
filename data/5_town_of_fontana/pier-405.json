@@ -1,0 +1,32 @@
+{
+  "pier": "405",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Buena Vista",
+    "established": "1912",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "266 Sylvan Ln",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Dan", "m": "", "l": "Pecora", "s": "" },
+        { "t": "", "f": "Kristin", "m": "", "l": "Pecora", "s": "" }
+      ]
+    }
+  ]
+}

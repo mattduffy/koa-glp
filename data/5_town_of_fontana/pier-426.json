@@ -1,0 +1,31 @@
+{
+  "pier": "426",
+  "loc": {
+    "lon": "-88.571024",
+    "lat": "42.548658",
+    "geohash": "dp94098xcs0",
+    "pluscode": "GCXH+FH9 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "Lake St",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Fontana Municipal Pier #2", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

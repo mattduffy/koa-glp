@@ -1,0 +1,38 @@
+{
+  "pier": "763",
+  "loc": {
+    "lon": "-88.457628",
+    "lat": "42.557632",
+    "geohash": "dp94557h5v0",
+    "pluscode": "HG5R+3W5 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3166 S Lakeshore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Timeless",
+      "member": true,
+      "membershipType": "",
+      "members": [
+        { "t": "", "f": "Joe", "m": "", "l": "Cosenza", "s": "" },
+        { "t": "", "f": "Judy", "m": "", "l": "Cosenza", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": []
+    }
+  ]
+}

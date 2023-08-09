@@ -1,0 +1,39 @@
+{
+  "pier": "865",
+  "loc": {
+    "lon": "-88.437696",
+    "lat": "42.580482",
+    "geohash": "dp945x99k30",
+    "pluscode": "HHJ6+5WV Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "978 N Knoll Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Bayer Trust",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Ernie", "m": "", "l": "Bayer", "s": "" },
+        { "t": "", "f": "Liz", "m": "", "l": "Bayer", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Jenny", "m": "", "l": "Powers", "s": "" }
+      ]
+    }
+  ]
+}

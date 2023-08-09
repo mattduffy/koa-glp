@@ -1,0 +1,31 @@
+{
+  "pier": "809",
+  "loc": {
+    "lon": "-88.438369",
+    "lat": "42.564845",
+    "geohash": "dp945s9nhw0",
+    "pluscode": "HH76+WMJ Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2033 S Lakeshore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Michael Lazzeroni Trust", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

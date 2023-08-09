@@ -1,0 +1,31 @@
+{
+  "pier": "760",
+  "loc": {
+    "lon": "-88.459205",
+    "lat": "42.557564",
+    "geohash": "dp94553gz00",
+    "pluscode": "HG5R+28F Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "760 Club, Inc.",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1730 E Beach Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "760 Club", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

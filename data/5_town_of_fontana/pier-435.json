@@ -1,0 +1,31 @@
+{
+  "pier": "435",
+  "loc": {
+    "lon": "-88.570510",
+    "lat": "42.547011",
+    "geohash": "dp94092ym90",
+    "pluscode": "GCWH+RQ5 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "S Lake Shore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Fontana Municipal Swim Pier", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

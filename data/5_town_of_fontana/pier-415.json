@@ -1,0 +1,31 @@
+{
+  "pier": "415",
+  "loc": {
+    "lon": "-88.572151",
+    "lat": "42.550428",
+    "geohash": "dp9406pdpq0",
+    "pluscode": "HC2H+54H Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "+1(262) 275-1580",
+    "address": {
+      "street": "340 Lake St",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Gordy’s Lakefront Marine, Inc. - Lighthouse", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

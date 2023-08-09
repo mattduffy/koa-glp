@@ -1,0 +1,31 @@
+{
+  "pier": "333",
+  "loc": {
+    "lon": "-88.549230",
+    "lat": "42.567056",
+    "geohash": "dp941j07j60",
+    "pluscode": "HF82+R8C Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Wesley Woods Retreat Center",
+    "established": "",
+    "associationUrl": "",
+    "tel": "+1(262) 245-6631",
+    "address": {
+      "street": "200 Stam St",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Wesley Woods Retreat Center", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

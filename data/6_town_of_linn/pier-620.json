@@ -1,0 +1,31 @@
+{
+  "pier": "620",
+  "loc": {
+    "lon": "-88.501110",
+    "lat": "42.559232",
+    "geohash": "dp9445emqx0",
+    "pluscode": "HF5X+MHR Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Edgewater Terrace",
+    "established": "1925",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4078 Walnut Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Phil", "m": "", "l": "Connley", "s": "" }
+      ]
+    }
+  ]
+}

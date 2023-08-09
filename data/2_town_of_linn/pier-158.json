@@ -1,0 +1,31 @@
+{
+  "pier": "158",
+  "loc": {
+    "lon": "-88.513626",
+    "lat": "42.574175",
+    "geohash": "dp941y6ke10",
+    "pluscode": "HFFP+MG9 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2280 Aspen Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "", "m": "", "l": "O’Malley", "s": "" }
+      ]
+    }
+  ]
+}

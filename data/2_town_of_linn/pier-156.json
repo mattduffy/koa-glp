@@ -1,0 +1,34 @@
+{
+  "pier": "156",
+  "loc": {
+    "lon": "-88.512839",
+    "lat": "42.574545",
+    "geohash": "dp941y6ytq0",
+    "pluscode": "HFFP+RX6 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4351 N Lake Shore Dr",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Chateau North",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Nancy", "m": "", "l": "Baird", "s": "" },
+        { "t": "", "f": "Lanny", "m": "", "l": "Baird", "s": "" },
+        { "t": "", "f": "Nolan ", "m": "", "l": "Baird", "s": "III" },
+        { "t": "", "f": "Karen ", "m": "", "l": "Baird", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "783",
+  "loc": {
+    "lon": "-88.444761",
+    "lat": "42.563562",
+    "geohash": "dp945kkqxw0",
+    "pluscode": "HH74+C3H Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Subdiv. Pier Southeast LG Assn.", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "563A",
+  "loc": {
+    "lon": "-88.516875",
+    "lat": "42.552970",
+    "geohash": "dp941dxcp20",
+    "pluscode": "HF3M+57J Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4374 Basswood Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "The Vagabond",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Meghan", "m": "", "l": "Norton", "s": "" },
+        { "t": "", "f": "Matt", "m": "", "l": "Norton", "s": "" }
+      ]
+    }
+  ]
+}

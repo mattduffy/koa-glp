@@ -1,0 +1,31 @@
+{
+  "pier": "468",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Indian Hills",
+    "established": "1927",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "514 Sauk Trl",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Carylsue", "m": "", "l": "Ambel", "s": "" }
+      ]
+    }
+  ]
+}

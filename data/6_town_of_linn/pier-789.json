@@ -1,0 +1,32 @@
+{
+  "pier": "789",
+  "loc": {
+    "lon": "-88.443207",
+    "lat": "42.563891",
+    "geohash": "dp945kt8eu0",
+    "pluscode": "HH74+HP3 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Holly Bush",
+    "established": "1948",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W2903 Hollybush Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Ed", "m": "", "l": "Dean", "s": "" },
+        { "t": "", "f": "Bonnie", "m": "", "l": "Dean", "s": "" }
+      ]
+    }
+  ]
+}

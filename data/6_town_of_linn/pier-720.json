@@ -1,0 +1,31 @@
+{
+  "pier": "720",
+  "loc": {
+    "lon": "-88.465237",
+    "lat": "42.558635",
+    "geohash": "dp944gtd480",
+    "pluscode": "HG5M+FW2 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Trinke Estates",
+    "established": "1951",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1864 Wildwood Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Kelly", "m": "", "l": "Smith", "s": "" }
+      ]
+    }
+  ]
+}

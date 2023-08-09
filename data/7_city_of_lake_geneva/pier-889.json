@@ -1,0 +1,30 @@
+{
+  "pier": "889",
+  "loc": {
+    "lon": "-88.433282",
+    "lat": "42.587092",
+    "geohash": "dp9478szg10",
+    "pluscode": "HHP8+HH5 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "East Bank Condominium",
+    "established": "1987",
+    "tel": "",
+    "address": {
+      "street": "Seaver Ln A",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "East Bank Condominium Pier", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

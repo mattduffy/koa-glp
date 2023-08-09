@@ -1,0 +1,32 @@
+{
+  "pier": "294",
+  "loc": {
+    "lon": "-88.539791",
+    "lat": "42.571273",
+    "geohash": "dp941jz79k0",
+    "pluscode": "HFC6+G34 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "132 Conference Point Rd",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Mark", "m": "", "l": "Tresnowski", "s": "" },
+        { "t": "", "f": "Rita", "m": "", "l": "Tresnowski", "s": "" }
+      ]
+    }
+  ]
+}

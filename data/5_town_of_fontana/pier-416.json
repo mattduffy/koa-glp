@@ -1,0 +1,31 @@
+{
+  "pier": "416",
+  "loc": {
+    "lon": "-88.571964",
+    "lat": "42.550129",
+    "geohash": "dp9406pb7x0",
+    "pluscode": "HC2H+363 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "+1(262) 275-1580",
+    "address": {
+      "street": "320 Lake St",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Gordy's Lakefront Marine, Inc. - Main Pier", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

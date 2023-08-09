@@ -1,0 +1,41 @@
+{
+  "pier": "106A",
+  "loc": {
+    "lon": "-88.496935",
+    "lat": "42.574437",
+    "geohash": "dp944nqqpf0",
+    "pluscode": "HGF3+Q6G Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Camp Highview",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Stephanie", "m": "", "l": "Bragg", "s": "" },
+        { "t": "", "f": "Scott", "m": "", "l": "Bragg", "s": "" }
+      ]
+    },
+    {
+      "estateName": "Camp Highview",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Debbie", "m": "", "l": "Saran", "s": "" },
+        { "t": "", "f": "Mark", "m": "", "l": "Saran", "s": "" }
+      ]
+    }
+  ]
+}

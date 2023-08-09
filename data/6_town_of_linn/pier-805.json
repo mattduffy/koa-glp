@@ -1,0 +1,31 @@
+{
+  "pier": "805",
+  "loc": {
+    "lon": "-88.439360",
+    "lat": "42.564985",
+    "geohash": "dp945s8rj80",
+    "pluscode": "HH76+X7R Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "http://www.genevainn.com/",
+    "tel": "+1(262) 248-5680",
+    "address": {
+      "street": "N2009 S Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "The Geneva Inn", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

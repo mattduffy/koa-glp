@@ -1,0 +1,31 @@
+{
+  "pier": "146",
+  "loc": {
+    "lon": "-88.510004",
+    "lat": "42.576043",
+    "geohash": "dp941yszrm0",
+    "pluscode": "HFGQ+CX9 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Knollwood",
+    "established": "1926",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4265 Oriole Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Catherine", "m": "", "l": "Carpenter", "s": "" }
+      ]
+    }
+  ]
+}

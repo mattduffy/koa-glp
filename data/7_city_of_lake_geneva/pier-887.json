@@ -1,0 +1,30 @@
+{
+  "pier": "887",
+  "loc": {
+    "lon": "-88.433866",
+    "lat": "42.585449",
+    "geohash": "dp9478kqjw0",
+    "pluscode": "HHP8+5FC Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "590 S Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Tom", "m": "", "l": "Tisbo", "s": "" }
+      ]
+    }
+  ]
+}

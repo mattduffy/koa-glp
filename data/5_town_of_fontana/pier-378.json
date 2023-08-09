@@ -1,0 +1,32 @@
+{
+  "pier": "378",
+  "loc": {
+    "lon": "-88.566023",
+    "lat": "42.559162",
+    "geohash": "dp940esjn40",
+    "pluscode": "HC5M+MH9 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "533 N Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Summer Wind",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Kristen", "m": "", "l": "Freytag", "s": "" },
+        { "t": "", "f": "Tom", "m": "", "l": "Freytag", "s": "" }
+      ]
+    }
+  ]
+}

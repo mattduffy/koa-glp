@@ -1,0 +1,32 @@
+{
+  "pier": "181",
+  "loc": {
+    "lon": "-88.523178",
+    "lat": "42.569492",
+    "geohash": "dp941te3k20",
+    "pluscode": "HF9G+QPW Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "619 Cedar Point Dr",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Paul", "m": "", "l": "Daugerdaus", "s": "" },
+        { "t": "", "f": "Eleanor", "m": "", "l": "Daugerdaus", "s": "" }
+      ]
+    }
+  ]
+}

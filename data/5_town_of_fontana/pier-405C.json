@@ -1,0 +1,32 @@
+{
+  "pier": "405C",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Buena Vista",
+    "established": "1912",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "334 Fontana Ln",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Stephen", "m": "", "l": "Dawson", "s": "" },
+        { "t": "", "f": "Tammi", "m": "", "l": "Dawson", "s": "" }
+      ]
+    }
+  ]
+}

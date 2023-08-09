@@ -1,0 +1,31 @@
+{
+  "pier": "407",
+  "loc": {
+    "lon": "-88.571913",
+    "lat": "42.552251",
+    "geohash": "dp9406ruuf0",
+    "pluscode": "HC2H+W64 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Buena Vista",
+    "established": "1912",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Buena Vista Swim Pier", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

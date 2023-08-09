@@ -1,0 +1,30 @@
+{
+  "pier": "879",
+  "loc": {
+    "lon": "-88.435280",
+    "lat": "42.582444",
+    "geohash": "dp945xgksx0",
+    "pluscode": "HHJ7+XVH Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "880 S Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Stone Manor",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Tina", "m": "", "l": "Trahan", "s": "" }
+      ]
+    }
+  ]
+}

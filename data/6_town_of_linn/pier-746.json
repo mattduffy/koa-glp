@@ -1,0 +1,32 @@
+{
+  "pier": "746",
+  "loc": {
+    "lon": "-88.463039",
+    "lat": "42.558040",
+    "geohash": "dp944grntc0",
+    "pluscode": "HG5P+6Q8 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Trinke Estates",
+    "established": "1951",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1813 Hillside Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Denis", "m": "", "l": "O'Brien", "s": "" },
+        { "t": "", "f": "Erin", "m": "", "l": "O'Brien", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "573",
+  "loc": {
+    "lon": "-88.513223",
+    "lat": "42.556343",
+    "geohash": "dp941g4ssm0",
+    "pluscode": "HF4P+GPJ Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4265 Southland Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Jim", "m": "", "l": "Heinz", "s": "" },
+        { "t": "", "f": "Nancy", "m": "", "l": "Heinz", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "pier": "046",
+  "loc": {
+    "lon": "-88.457396",
+    "lat": "42.578513",
+    "geohash": "dp945p5mc60",
+    "pluscode": "HGHV+C25 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3203 Snake Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Shoreside",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Dana", "m": "", "l": "Hagenah", "s": "" },
+        { "t": "", "f": "John", "m": "", "l": "Hagenah", "s": "" }
+      ]
+    },
+    {
+      "estateName": "The Lodge",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Susan", "m": "", "l": "Hagenah", "s": "" },
+        { "t": "", "f": "Phil", "m": "", "l": "Hagenah", "s": "" }
+      ]
+    },
+    {
+      "estateName": "Northwoodside",
+      "member": true,
+      "membershipType": "Benefactor",
+      "owners": [
+        { "t": "", "f": "Tricia", "m": "", "l": "Hagenah", "s": "" },
+        { "t": "", "f": "Will", "m": "", "l": "Hagenah", "s": "" }
+      ]
+    }
+  ]
+}

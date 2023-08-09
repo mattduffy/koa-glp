@@ -1,0 +1,31 @@
+{
+  "pier": "569",
+  "loc": {
+    "lon": "-88.514198",
+    "lat": "42.555069",
+    "geohash": "dp941fcvjx0",
+    "pluscode": "HF4P+28F Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Lindens Association",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Lindens Association Pier", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

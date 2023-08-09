@@ -1,0 +1,31 @@
+{
+  "pier": "287",
+  "loc": {
+    "lon": "-88.539098",
+    "lat": "42.574426",
+    "geohash": "dp941nry120",
+    "pluscode": "HFF6+Q9C Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "23 S Walworth Ave",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Tom", "m": "", "l": "Klein", "s": "" }
+      ]
+    }
+  ]
+}

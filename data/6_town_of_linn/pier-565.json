@@ -1,0 +1,32 @@
+{
+  "pier": "565",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Robert", "m": "", "l": "Flannery", "s": "" },
+        { "t": "", "f": "Janice", "m": "", "l": "Flannery", "s": "" }
+      ]
+    }
+  ]
+}

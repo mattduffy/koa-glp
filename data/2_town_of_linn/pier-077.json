@@ -1,0 +1,31 @@
+{
+  "pier": "077",
+  "loc": {
+    "lon": "-88.482007",
+    "lat": "42.571505",
+    "geohash": "dp944tckgz0",
+    "pluscode": "HGC9+J55 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Bonnie Brae",
+    "established": "1916",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2218 Bonnie Brae Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "The Cliffs",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Carol", "m": "", "l": "Pankau", "s": "" }
+      ]
+    }
+  ]
+}

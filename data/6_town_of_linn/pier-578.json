@@ -1,0 +1,31 @@
+{
+  "pier": "578",
+  "loc": {
+    "lon": "-88.512881",
+    "lat": "42.557351",
+    "geohash": "dp941g6fs30",
+    "pluscode": "HF4P+WRX Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4278 Southland Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Heather", "m": "", "l": "Scott", "s": "" }
+      ]
+    }
+  ]
+}

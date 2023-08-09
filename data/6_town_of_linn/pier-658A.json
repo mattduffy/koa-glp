@@ -1,0 +1,31 @@
+{
+  "pier": "658A",
+  "loc": {
+    "lon": "-88.492811",
+    "lat": "42.560324",
+    "geohash": "dp9447ceb50",
+    "pluscode": "HG64+4VG Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1836 Fair Oaks Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "Dr.", "f": "Rick", "m": "", "l": "Karana", "s": "" }
+      ]
+    }
+  ]
+}

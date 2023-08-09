@@ -1,0 +1,31 @@
+{
+  "pier": "802",
+  "loc": {
+    "lon": "-88.440137",
+    "lat": "42.564820",
+    "geohash": "dp945kxy530",
+    "pluscode": "HH75+WWH Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1991 S Lakeshore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Richard", "m": "C", "l": "Malmin", "s": "" }
+      ]
+    }
+  ]
+}

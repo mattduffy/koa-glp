@@ -1,0 +1,29 @@
+{
+  "pier": "065",
+  "loc": {
+    "lon": "-88.474588",
+    "lat": "42.572910",
+    "geohash": "dp944wnv0t0",
+    "pluscode": "HGFG+557 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2273 Mallory Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": []
+    }
+  ]
+}

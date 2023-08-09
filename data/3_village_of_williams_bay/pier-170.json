@@ -1,0 +1,32 @@
+{
+  "pier": "170",
+  "loc": {
+    "lon": "-88.519989",
+    "lat": "42.571193",
+    "geohash": "dp941tvenv0",
+    "pluscode": "HFCJ+F2C Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "703 Cedar Point Dr",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Dan", "m": "", "l": "Casey", "s": "" },
+        { "t": "", "f": "Donna", "m": "", "l": "Casey", "s": "" }
+      ]
+    }
+  ]
+}

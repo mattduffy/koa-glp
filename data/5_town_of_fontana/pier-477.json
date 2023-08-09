@@ -1,0 +1,31 @@
+{
+  "pier": "477",
+  "loc": {
+    "lon": "-88.561619",
+    "lat": "42.546891",
+    "geohash": "dp9409rmse0",
+    "pluscode": "GCWQ+Q92 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Club Unique",
+    "established": "1927",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "572 Middleton Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Blue Haven",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "George H. Kiefer, Jr. Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "pier": "293",
+  "loc": {
+    "lon": "-88.539196",
+    "lat": "42.572535",
+    "geohash": "dp941npdzp0",
+    "pluscode": "HFF6+287 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Oakwood Estates",
+    "established": "1921",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "102 Healy Dr",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "",
+      "members": [
+        { "t": "", "f": "Oakwood Estates Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "",
+      "members": [
+        { "t": "", "f": "Wendy", "m": "", "l": "Darre", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "",
+      "members": [
+        { "t": "", "f": "Connie", "m": "", "l": "Gluth", "s": "" },
+        { "t": "", "f": "Rich", "m": "", "l": "Gluth", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "",
+      "members": [
+        { "t": "", "f": "Bob", "m": "", "l": "Jelinek", "s": "" },
+        { "t": "", "f": "Susan", "m": "", "l": "Collins", "s": "" }
+      ]
+    }
+  ]
+}

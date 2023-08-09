@@ -1,0 +1,32 @@
+{
+  "pier": "456",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Glenwood Springs",
+    "established": "1892",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "659 Linden Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Robert", "m": "", "l": "Hoffman", "s": "" },
+        { "t": "", "f": "Jane", "m": "", "l": "Hoffman", "s": "" }
+      ]
+    }
+  ]
+}

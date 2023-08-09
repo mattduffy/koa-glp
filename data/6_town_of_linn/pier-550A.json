@@ -1,0 +1,31 @@
+{
+  "pier": "550A",
+  "loc": {
+    "lon": "-88.523083",
+    "lat": "42.550965",
+    "geohash": "dp941d5mqd0",
+    "pluscode": "HF2G+9QM Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Academy Estates",
+    "established": "1975",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Academy Estates Pier", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "pier": "672",
+  "loc": {
+    "lon": "-88.486661",
+    "lat": "42.562965",
+    "geohash": "dp944kmgpr0",
+    "pluscode": "HG77+58P Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Birches",
+    "established": "1924",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1955 Linn Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Birches Association", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Ellen", "m": "", "l": "Bentsen", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Jill", "m": "", "l": "Kirk", "s": "" },
+        { "t": "", "f": "John", "m": "", "l": "Darrow", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Bill", "m": "", "l": "Tookey", "s": "" },
+        { "t": "", "f": "Dotty", "m": "", "l": "Tookey", "s": "" }
+      ]
+    }
+  ]
+}

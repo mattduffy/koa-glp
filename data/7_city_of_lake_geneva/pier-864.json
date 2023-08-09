@@ -1,0 +1,31 @@
+{
+  "pier": "864",
+  "loc": {
+    "lon": "-88.438065",
+    "lat": "42.580030",
+    "geohash": "dp945x3qes0",
+    "pluscode": "HHJ6+2Q7 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "994 S Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "The Knoll",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Robin", "m": "", "l": "Tebbe", "s": "" },
+        { "t": "", "f": "Mark", "m": "", "l": "Tebbe", "s": "" }
+      ]
+    }
+  ]
+}

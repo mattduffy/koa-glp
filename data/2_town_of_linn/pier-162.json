@@ -1,0 +1,31 @@
+{
+  "pier": "162",
+  "loc": {
+    "lon": "-88.515003",
+    "lat": "42.573420",
+    "geohash": "dp941y324u0",
+    "pluscode": "HFFM+9X9 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4437 N Lake Shore Dr",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Aaron", "m": "", "l": "Taylor", "s": "" }
+      ]
+    }
+  ]
+}

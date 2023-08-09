@@ -1,0 +1,31 @@
+{
+  "pier": "104",
+  "loc": {
+    "lon": "-88.495636",
+    "lat": "42.574008",
+    "geohash": "dp944nr7w40",
+    "pluscode": "HGF3+JP5 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Sunset Hills",
+    "established": "1926",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Sunset Hills Association", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

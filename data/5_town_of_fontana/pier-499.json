@@ -1,0 +1,32 @@
+{
+  "pier": "499",
+  "loc": {
+    "lon": "-88.549604",
+    "lat": "42.547713",
+    "geohash": "dp941184ks0",
+    "pluscode": "GFX2+35J Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "880 S Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Dean", "m": "L", "l": "Buntrock", "s": "" },
+        { "t": "", "f": "Rosemarie", "m": "", "l": "Buntrock", "s": "" }
+      ]
+    }
+  ]
+}

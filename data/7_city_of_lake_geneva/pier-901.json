@@ -1,0 +1,30 @@
+{
+  "pier": "901",
+  "loc": {
+    "lon": "-88.437711",
+    "lat": "42.590300",
+    "geohash": "dp94793d7z0",
+    "pluscode": "HHR7+83 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "LG Beach Swim Pier #1", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

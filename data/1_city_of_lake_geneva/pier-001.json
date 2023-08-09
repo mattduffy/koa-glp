@@ -1,0 +1,32 @@
+{
+  "pier": "001",
+  "loc": {
+    "lon": "-88.442671",
+    "lat": "42.590727",
+    "geohash": "dp9473qhbq0",
+    "pluscode": "HHR4+7WW Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "1224 W Main St",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Sustaining",
+      "members": [
+        { "t": "", "f": "Alan", "m": "", "l": "Bosworth", "s": "" },
+        { "t": "", "f": "Kathi", "m": "", "l": "Bosworth", "s": "" }
+      ]
+    }
+  ]
+}

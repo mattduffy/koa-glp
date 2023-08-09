@@ -1,0 +1,32 @@
+{
+  "pier": "785",
+  "loc": {
+    "lon": "-88.443944",
+    "lat": "42.563590",
+    "geohash": "dp945kmnfs0",
+    "pluscode": "HH74+CCM Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W2912 Walcowis Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Doug", "m": "", "l": "Powell", "s": "" },
+        { "t": "", "f": "Kristie", "m": "", "l": "Powell", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "pier": "034",
+  "loc": {
+    "lon": "-88.450495",
+    "lat": "42.582308",
+    "geohash": "dp945rb7fj0",
+    "pluscode": "HGJX+WRC Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Geneva Bay Estates",
+    "established": "1956",
+    "address": {
+      "street": "845 Bayview Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Somervilla",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Debbie", "m": "", "l": "Somerville", "s": "" }
+      ]
+    }
+  ]
+}

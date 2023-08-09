@@ -1,0 +1,29 @@
+{
+  "pier": "760A",
+  "loc": {
+    "lon": "-88.459047",
+    "lat": "42.557384",
+    "geohash": "dp945564dz0",
+    "pluscode": "HG4R+X94 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": []
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "060",
+  "loc": {
+    "lon": "-88.466567",
+    "lat": "42.574550",
+    "geohash": "dp944ykwex0",
+    "pluscode": "HGFM+R97 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3373 Snake Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Wychwood",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "William", "m": "", "l": "Wrigley", "s": "Jr." }
+      ]
+    }
+  ]
+}

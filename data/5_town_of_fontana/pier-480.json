@@ -1,0 +1,31 @@
+{
+  "pier": "480",
+  "loc": {
+    "lon": "-88.560552",
+    "lat": "42.546746",
+    "geohash": "dp940c2hv80",
+    "pluscode": "GCWQ+MQW Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Club Unique",
+    "established": "1927",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "620 Cherry Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Adreani Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

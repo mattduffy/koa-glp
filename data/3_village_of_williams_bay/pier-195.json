@@ -1,0 +1,32 @@
+{
+  "pier": "195",
+  "loc": {
+    "lon": "-88.525562",
+    "lat": "42.567211",
+    "geohash": "dp941t1euz0",
+    "pluscode": "HF8F+VQP Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Cedar Point Park",
+    "established": "1922",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "247 Cir Pkwy",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "La Hacienda",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Paul", "m": "", "l": "Darley", "s": "" },
+        { "t": "", "f": "Peter", "m": "", "l": "Darley", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "554",
+  "loc": {
+    "lon": "-88.521063",
+    "lat": "42.550752",
+    "geohash": "dp941dhuje0",
+    "pluscode": "HF2H+8H3 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4476 Basswood Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Happy 'ours",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Gregg", "m": "", "l": "Liebovich", "s": "" },
+        { "t": "", "f": "Gail", "m": "", "l": "Liebovich", "s": "" }
+      ]
+    }
+  ]
+}

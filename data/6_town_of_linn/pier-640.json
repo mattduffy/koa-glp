@@ -1,0 +1,32 @@
+{
+  "pier": "640",
+  "loc": {
+    "lon": "-88.496860",
+    "lat": "42.559676",
+    "geohash": "dp9445y81d0",
+    "pluscode": "HG53+V7C Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1829 Livingston Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "James", "m": "", "l": "Livingston", "s": "" },
+        { "t": "", "f": "Karen", "m": "", "l": "Livingston", "s": "" }
+      ]
+    }
+  ]
+}

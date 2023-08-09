@@ -1,0 +1,32 @@
+{
+  "pier": "782",
+  "loc": {
+    "lon": "-88.445020",
+    "lat": "42.563446",
+    "geohash": "dp945kkq190",
+    "pluscode": "HH73+9XH Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1964 Hunt Club Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Dean", "m": "", "l": "Gatziolis", "s": "" },
+        { "t": "", "f": "Susan", "m": "", "l": "Gatziolis", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "053",
+  "loc": {
+    "lon": "-88.464916",
+    "lat": "42.575978",
+    "geohash": "dp944ytz410",
+    "pluscode": "HGGP+92W Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Boathouse",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "William", "m": "", "l": "Wrigley", "s": "Jr." }
+      ]
+    }
+  ]
+}

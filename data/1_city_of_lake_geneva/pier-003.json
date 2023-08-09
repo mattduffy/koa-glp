@@ -1,0 +1,31 @@
+{
+  "pier": "003",
+  "loc": {
+    "lon": "-88.443439",
+    "lat": "42.590371",
+    "geohash": "dp9473m6ys0",
+    "pluscode": "HHR4+4JV Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "1310 W Main St",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "ESBRO",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Betty", "m": "J.", "l": "Burch-Spanjer", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "693",
+  "loc": {
+    "lon": "-88.477572",
+    "lat": "42.566098",
+    "geohash": "dp944sut7p0",
+    "pluscode": "HG8C+CXM Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Maple Lane",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3594 Maple Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Casa del Sol",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Amanda", "m": "", "l": "Rutledge", "s": "" },
+        { "t": "", "f": "John", "m": "", "l": "Rutledge", "s": "" }
+      ]
+    }
+  ]
+}

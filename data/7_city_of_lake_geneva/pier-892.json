@@ -1,0 +1,30 @@
+{
+  "pier": "892",
+  "loc": {
+    "lon": "-88.433278",
+    "lat": "42.587083",
+    "geohash": "dp9478szer0",
+    "pluscode": "HHP8+MMF Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "523-699 Campbell St",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Gary", "m": "", "l": "Milliette", "s": "" }
+      ]
+    }
+  ]
+}

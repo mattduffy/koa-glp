@@ -1,0 +1,31 @@
+{
+  "pier": "567",
+  "loc": {
+    "lon": "-88.515268",
+    "lat": "42.553946",
+    "geohash": "dp941f9nsy0",
+    "pluscode": "HF3M+HVH Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4356 Basswood Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Grey Oaks",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Michelle", "m": "", "l": "Moore", "s": "" }
+      ]
+    }
+  ]
+}

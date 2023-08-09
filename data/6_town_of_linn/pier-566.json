@@ -1,0 +1,31 @@
+{
+  "pier": "566",
+  "loc": {
+    "lon": "-88.515477",
+    "lat": "42.553758",
+    "geohash": "dp941f8vxg0",
+    "pluscode": "HF3M+GR2 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4362 Basswood Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Robert", "m": "B", "l": "Flannery", "s": "Jr" }
+      ]
+    }
+  ]
+}

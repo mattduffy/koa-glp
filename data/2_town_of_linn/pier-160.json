@@ -1,0 +1,32 @@
+{
+  "pier": "160",
+  "loc": {
+    "lon": "-88.513764",
+    "lat": "42.574103",
+    "geohash": "dp941y6hpu0",
+    "pluscode": "HFFP+JFX Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4409 N Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Crystal Falls",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Michael", "m": "", "l": "Loeber", "s": "" },
+        { "t": "", "f": "Julie", "m": "", "l": "Loeber", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "395",
+  "loc": {
+    "lon": "-88.570234",
+    "lat": "42.555449",
+    "geohash": "dp940dcp7y0",
+    "pluscode": "HC4H+5WC Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "383 N Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Longview",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Chip", "m": "", "l": "Mulaney", "s": "" },
+        { "t": "", "f": "Ellen", "m": "", "l": "Mulaney", "s": "" }
+      ]
+    }
+  ]
+}

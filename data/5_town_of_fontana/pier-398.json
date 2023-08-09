@@ -1,0 +1,40 @@
+{
+  "pier": "398",
+  "loc": {
+    "lon": "-88.570716",
+    "lat": "42.554425",
+    "geohash": "dp940dbc2x0",
+    "pluscode": "HC3H+QP7 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "333b N Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Deepwood",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Bridgid", "m": "", "l": "Kyle", "s": "" },
+        { "t": "", "f": "Mike", "m": "", "l": "Kyle", "s": "" }
+      ]
+    },
+    {
+      "estateName": "Deepwood",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Mary", "m": "M", "l": "Reed", "s": "" }
+      ]
+    }
+  ]
+}

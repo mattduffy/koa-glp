@@ -1,0 +1,31 @@
+{
+  "pier": "774C",
+  "loc": {
+    "lon": "-88.451220",
+    "lat": "42.560568",
+    "geohash": "dp9455zv300",
+    "pluscode": "HG6X+6GC Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Loramoor",
+    "established": "1981",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1917 Loramoor Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Sue", "m": "", "l": "Oja", "s": "" }
+      ]
+    }
+  ]
+}

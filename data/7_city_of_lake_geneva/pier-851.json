@@ -1,0 +1,31 @@
+{
+  "pier": "851",
+  "loc": {
+    "lon": "-88.440675",
+    "lat": "42.575398",
+    "geohash": "dp945qx7wv0",
+    "pluscode": "HHG5+5P4 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Ceylon Court Estates",
+    "established": "1948",
+    "tel": "",
+    "address": {
+      "street": "1172 S Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Daniel", "m": "", "l": "Ferguson", "s": "" },
+        { "t": "", "f": "Betsy", "m": "", "l": "Ferguson", "s": "" }
+      ]
+    }
+  ]
+}

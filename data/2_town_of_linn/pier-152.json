@@ -1,0 +1,32 @@
+{
+  "pier": "152",
+  "loc": {
+    "lon": "-88.511871",
+    "lat": "42.574795",
+    "geohash": "dp941ye85v0",
+    "pluscode": "HFFQ+W76 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4321 N Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Daniel", "m": "", "l": "Hodgman", "s": "" },
+        { "t": "", "f": "Susan", "m": "", "l": "Hodgman", "s": "" }
+      ]
+    }
+  ]
+}

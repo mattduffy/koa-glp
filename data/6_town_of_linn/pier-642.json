@@ -1,0 +1,32 @@
+{
+  "pier": "642",
+  "loc": {
+    "lon": "-88.496188",
+    "lat": "42.559646",
+    "geohash": "dp9445xpck0",
+    "pluscode": "HG53+VG3 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1923 Beach Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Thomas", "m": "", "l": "Gardiner", "s": "" },
+        { "t": "", "f": "Margaret", "m": "", "l": "Lass-Gardiner", "s": "" }
+      ]
+    }
+  ]
+}

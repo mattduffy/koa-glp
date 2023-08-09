@@ -1,0 +1,32 @@
+{
+  "pier": "366",
+  "loc": {
+    "lon": "-88.563428",
+    "lat": "42.561871",
+    "geohash": "dp940snhfe0",
+    "pluscode": "HC6P+PJW Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1960 N Lakeshore Dr",
+      "city": "Walworth",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Edward", "m": "", "l": "O’Reilly", "s": "" },
+        { "t": "", "f": "Elizabeth", "m": "", "l": "O’Reilly", "s": "" }
+      ]
+    }
+  ]
+}

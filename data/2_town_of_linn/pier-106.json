@@ -1,0 +1,32 @@
+{
+  "pier": "106",
+  "loc": {
+    "lon": "-88.496197",
+    "lat": "42.574407",
+    "geohash": "dp944nrjch0",
+    "pluscode": "HGF3+QG7 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3995 Glen Fern Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Glen Fern",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Bob", "m": "", "l": "Clifford", "s": "" },
+        { "t": "", "f": "Joan", "m": "", "l": "Clifford", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "004",
+  "loc": {
+    "lon": "-88.443673",
+    "lat": "42.590190",
+    "geohash": "dp9473m3c50",
+    "pluscode": "HHR4+3GG Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "1320 W Main St",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Maple Lawn",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Jim", "m": "", "l": " Willett", "s": "" },
+        { "t": "", "f": "Kathi", "m": "", "l": " Willett", "s": "" }
+      ]
+    }
+  ]
+}

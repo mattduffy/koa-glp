@@ -1,0 +1,31 @@
+{
+  "pier": "890",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "600 Campbell St",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Andy", "m": "", "l": "Loughlin", "s": "" },
+        { "t": "", "f": "Linda", "m": "", "l": "Learn", "s": "" }
+      ]
+    }
+  ]
+}

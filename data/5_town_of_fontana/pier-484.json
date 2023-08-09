@@ -1,0 +1,32 @@
+{
+  "pier": "484",
+  "loc": {
+    "lon": "-88.558563",
+    "lat": "42.546908",
+    "geohash": "dp940c3tey0",
+    "pluscode": "GCWR+QH7 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "644 S Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Sans Souci",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Skip", "m": "", "l": "Bliss", "s": "" },
+        { "t": "", "f": "Linda", "m": "", "l": "Bliss", "s": "" }
+      ]
+    }
+  ]
+}

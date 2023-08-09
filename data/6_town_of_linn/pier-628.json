@@ -1,0 +1,40 @@
+{
+  "pier": "628",
+  "loc": {
+    "lon": "-88.498978",
+    "lat": "42.559054",
+    "geohash": "dp9445th2q0",
+    "pluscode": "HG52+JCC Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Valley Park Association",
+    "established": "1970",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Valley Park Swim Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Grud", "s": "" },
+        { "t": "", "f": "Ursula", "m": "", "l": "Grud", "s": "" }
+      ]
+    }
+  ]
+}

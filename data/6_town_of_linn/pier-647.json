@@ -1,0 +1,31 @@
+{
+  "pier": "647",
+  "loc": {
+    "lon": "-88.495246",
+    "lat": "42.559743",
+    "geohash": "dp9445z8rr0",
+    "pluscode": "HG53+VWR Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Wooddale Lakeshore Property Owners Association",
+    "established": "1942",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1907 Bluff Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Mario", "m": "M", "l": "Savino", "s": "" }
+      ]
+    }
+  ]
+}

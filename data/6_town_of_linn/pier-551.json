@@ -1,0 +1,32 @@
+{
+  "pier": "551",
+  "loc": {
+    "lon": "-88.522475",
+    "lat": "42.550742",
+    "geohash": "dp941d5uhc0",
+    "pluscode": "HF2H+72R Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4510 Basswood Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Twin Pines",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Richard", "m": "", "l": "Cucco", "s": "" },
+        { "t": "", "f": "Martha", "m": "", "l": "Cucco", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "750",
+  "loc": {
+    "lon": "-88.462244",
+    "lat": "42.558139",
+    "geohash": "dp944grz0k0",
+    "pluscode": "HG5Q+742 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Lake Geneva Beach Association",
+    "established": "1925",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3298 Park Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Sharon", "m": "", "l": "Mehr", "s": "" }
+      ]
+    }
+  ]
+}

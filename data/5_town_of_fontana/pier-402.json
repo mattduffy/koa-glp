@@ -1,0 +1,108 @@
+{
+  "pier": "402",
+  "loc": {
+    "lon": "-88.570851",
+    "lat": "42.553806",
+    "geohash": "dp940d8tvs0",
+    "pluscode": "HC3H+GMC Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Buena Vista",
+    "established": "1912",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Buena Vista Club", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Robert", "m": "", "l": "Ahern", "s": "" },
+        { "t": "", "f": "Sharna", "m": "", "l": "Ahern", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Gwen", "m": "", "l": "Clausius", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Bob", "m": "", "l": "Doherty", "s": "" },
+        { "t": "", "f": "Maggie", "m": "", "l": "Doherty", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Rick", "m": "", "l": "Dousman", "s": "" },
+        { "t": "", "f": "Michele", "m": "", "l": "Dousman", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Karen", "m": "", "l": "Gizzi", "s": "" },
+        { "t": "", "f": "Alec", "m": "", "l": "Gizzi", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Michael", "m": "", "l": "Keeling", "s": "" },
+        { "t": "", "f": "Mary", "m": "", "l": "Keeling", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Libit Family", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Doris", "m": "", "l": "Mosser", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "James", "m": "", "l": "Winquist", "s": "" }
+      ]
+    }
+  ]
+}

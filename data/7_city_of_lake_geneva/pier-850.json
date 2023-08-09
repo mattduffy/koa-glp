@@ -1,0 +1,31 @@
+{
+  "pier": "850",
+  "loc": {
+    "lon": "-88.440740",
+    "lat": "42.574635",
+    "geohash": "dp945qrrjr0",
+    "pluscode": "HHF5+VP2 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Ceylon Court Estates",
+    "established": "1948",
+    "tel": "",
+    "address": {
+      "street": "946 Ceylon Ct",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Victoria Shores",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Wendy", "m": "", "l": "Fisher", "s": "" },
+        { "t": "", "f": "Roger", "m": "", "l": "Fisher", "s": "" }
+      ]
+    }
+  ]
+}

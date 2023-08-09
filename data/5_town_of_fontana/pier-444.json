@@ -1,0 +1,32 @@
+{
+  "pier": "444",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Glenwood Springs",
+    "established": "1892",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "410 Harvard Ave",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Erick", "m": "", "l": "Haglund", "s": "" },
+        { "t": "", "f": "Betty", "m": "", "l": "Haglund", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "pier": "141B",
+  "loc": {
+    "lon": "-88.508409",
+    "lat": "42.575966",
+    "geohash": "dp941ywnux0",
+    "pluscode": "HFGR+9JP Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Ara Glen",
+    "established": "1977",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4237 Oriole Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Ara Glen Association Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Gene", "m": "", "l": "Needles", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Charlene", "m": "", "l": "Needles", "s": "" },
+        { "t": "", "f": "Chad", "m": "", "l": "Black", "s": "" },
+        { "t": "", "f": "Jennifer", "m": "", "l": "Ahlstrand", "s": "" }
+      ]
+    }
+  ]
+}

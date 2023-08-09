@@ -1,0 +1,31 @@
+{
+  "pier": "141",
+  "loc": {
+    "lon": "-88.507632",
+    "lat": "42.575824",
+    "geohash": "dp941ywwns0",
+    "pluscode": "HFGR+8WH Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Sylvan Trail",
+    "established": "1923",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2323 Sylvan Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Michael", "m": "", "l": "Ramlet", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "142",
+  "loc": {
+    "lon": "-88.508852",
+    "lat": "42.576073",
+    "geohash": "dp941ytzd70",
+    "pluscode": "HFGR+CFC Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Knollwood",
+    "established": "1926",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4245 Oriole Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Bob", "m": "", "l": "Karlblom", "s": "" },
+        { "t": "", "f": "Carol", "m": "", "l": "Karlblom", "s": "" }
+      ]
+    }
+  ]
+}

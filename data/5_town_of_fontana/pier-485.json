@@ -1,0 +1,31 @@
+{
+  "pier": "485",
+  "loc": {
+    "lon": "-88.558238",
+    "lat": "42.547048",
+    "geohash": "dp940c3ye20",
+    "pluscode": "GCWR+RP6 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "652 S Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Joan", "m": "", "l": "Bates", "s": "" }
+      ]
+    }
+  ]
+}

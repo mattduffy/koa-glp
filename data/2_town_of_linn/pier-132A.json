@@ -1,0 +1,32 @@
+{
+  "pier": "132A",
+  "loc": {
+    "lon": "-88.503579",
+    "lat": "42.574935",
+    "geohash": "dp944n98vp0",
+    "pluscode": "HFFW+XHF Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4135 Jerseyhurst Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "mmembers": [
+        { "t": "", "f": "Lee", "m": "", "l": "Tenzer", "s": "" },
+        { "t": "", "f": "Marilyn", "m": "", "l": "Tenzer", "s": "" }
+      ]
+    }
+  ]
+}

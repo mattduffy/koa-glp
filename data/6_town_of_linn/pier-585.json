@@ -1,0 +1,31 @@
+{
+  "pier": "585",
+  "loc": {
+    "lon": "-88.511631",
+    "lat": "42.559247",
+    "geohash": "dp941gev9d0",
+    "pluscode": "HF5Q+M8X Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Estates of Black Point",
+    "established": "1888",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4268 Southland Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Petersen - Snyder Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

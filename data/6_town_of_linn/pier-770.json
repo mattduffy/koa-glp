@@ -1,0 +1,32 @@
+{
+  "pier": "770",
+  "loc": {
+    "lon": "-88.454592",
+    "lat": "42.558969",
+    "geohash": "dp9455t7fw0",
+    "pluscode": "HG5W+H5M Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1807 Sidney Smith Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Glen Arden",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Allison", "m": "", "l": "Childers", "s": "" },
+        { "t": "", "f": "Michael", "m": "", "l": "Childers", "s": "" }
+      ]
+    }
+  ]
+}

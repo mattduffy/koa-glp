@@ -1,0 +1,29 @@
+{
+  "pier": "033",
+  "loc": {
+    "lon": "-88.450452",
+    "lat": "42.582655",
+    "geohash": "dp945rbmgn0",
+    "pluscode": "HGMX+3R7 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Geneva Bay Estates",
+    "established": "1956",
+    "address": {
+      "street": "837 Bayview Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "George", "m": "", "l": "Roth", "s": "" }
+      ]
+    }
+  ]
+}

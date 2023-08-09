@@ -1,0 +1,28 @@
+{
+  "pier": "843",
+  "loc": {
+    "lon": "-88.438902",
+    "lat": "42.572847",
+    "geohash": "dp945w0ub10",
+    "pluscode": "HHF6+4CQ Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Ceylon Court Estates",
+    "established": "1948",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": []
+    }
+  ]
+}

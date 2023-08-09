@@ -1,0 +1,30 @@
+{
+  "pier": "039",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Kevin", "m": "", "l": "Rubash", "s": "" },
+        { "t": "", "f": "Kathy", "m": "", "l": "Rubash", "s": "" }
+      ]
+    }
+  ]
+}

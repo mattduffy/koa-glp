@@ -1,0 +1,32 @@
+{
+  "pier": "381",
+  "loc": {
+    "lon": "-88.567162",
+    "lat": "42.558466",
+    "geohash": "dp940ee3590",
+    "pluscode": "HC5M+94P Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "483B N Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Terry", "m": "", "l": "Reuland", "s": "" },
+        { "t": "", "f": "Debbie", "m": "", "l": "Reuland", "s": "" }
+      ]
+    }
+  ]
+}

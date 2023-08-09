@@ -1,0 +1,64 @@
+{
+  "pier": "420",
+  "loc": {
+    "lon": "-88.571436",
+    "lat": "42.549487",
+    "geohash": "dp9409bhxz0",
+    "pluscode": "GCXH+QCW Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "Lake St",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Fontana Municipal Pier #4", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Geneva Lake Conservancy", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Patrick", "m": "", "l": "Kenny", "s": "" },
+        { "t": "", "f": "Lisa", "m": "", "l": "Kenny", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Robert", "m": "", "l": "Rauland", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Dan", "m": "", "l": "Wieber", "s": "" }
+      ]
+    }
+  ]
+}

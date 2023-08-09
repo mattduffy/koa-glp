@@ -1,0 +1,57 @@
+{
+  "pier": "313",
+  "loc": {
+    "lon": "-88.541508",
+    "lat": "42.567947",
+    "geohash": "dp941jq0320",
+    "pluscode": "HF95+59H Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Congress Club",
+    "established": "1882",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Congress Club South Dock", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Jane", "m": "", "l": "Harker", "s": "" },
+        { "t": "", "f": "Hagen", "m": "", "l": "Harker", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Carol", "m": "", "l": "Swed", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Andrew", "m": "", "l": "Turza", "s": "" },
+        { "t": "", "f": "Virginia", "m": "", "l": "Turza", "s": "" }
+      ]
+    }
+  ]
+}

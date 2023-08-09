@@ -1,0 +1,32 @@
+{
+  "pier": "610",
+  "loc": {
+    "lon": "-88.503317",
+    "lat": "42.559281",
+    "geohash": "dp94459vg00",
+    "pluscode": "HF5W+PM7 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Lake Geneva Highlands",
+    "established": "1922",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4122 Lakeview Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Tuck-ER Inn",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Tucker", "s": "" },
+        { "t": "", "f": "Ellie", "m": "", "l": "Tucker", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "pier": "440",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Country Club Estates",
+    "established": "1926",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Country Club Estates Swim Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Rob", "m": "", "l": "Clow", "s": "" },
+        { "t": "", "f": "Kelly", "m": "", "l": "Clow", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Sustaining",
+      "members": [
+        { "t": "", "f": "Jon", "m": "", "l": "Eklund", "s": "" },
+        { "t": "", "f": "Susan", "m": "", "l": "Eklund", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Tricia", "m": "", "l": "Forbeck", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Peter", "m": "", "l": "Hannon", "s": "" },
+        { "t": "", "f": "Coby", "m": "", "l": "Hannon", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Steve", "m": "", "l": "Kaufman", "s": "" },
+        { "t": "", "f": "Maureen", "m": "", "l": "Kaufman", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Kirk", "m": "", "l": "Kreutzig", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Walt", "m": "", "l": "Liptak", "s": "" },
+        { "t": "", "f": "Bonnie", "m": "", "l": "Liptak", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Hugh", "m": "", "l": "Masterson", "s": "" },
+        { "t": "", "f": "Susan", "m": "", "l": "Masterson", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Tom", "m": "", "l": "O’Connell", "s": "" },
+        { "t": "", "f": "Kathy", "m": "", "l": "Kroll", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Arvid", "m": "", "l": "Petersen", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Dan", "m": "", "l": "Schuld", "s": "" },
+        { "t": "", "f": "Peggy", "m": "", "l": "Schuld", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Tim", "m": "", "l": "Thompson", "s": "" },
+        { "t": "", "f": "Meg", "m": "", "l": "Thompson", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Bob", "m": "", "l": "Webster", "s": "Jr." }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Sustaining",
+      "members": [
+        { "t": "", "f": "Cindy", "m": "", "l": "Wilson", "s": "" }
+      ]
+    }
+  ]
+}

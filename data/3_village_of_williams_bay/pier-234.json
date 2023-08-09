@@ -1,0 +1,32 @@
+{
+  "pier": "234",
+  "loc": {
+    "lon": "-88.529719",
+    "lat": "42.576342",
+    "geohash": "dp941qy9hj0",
+    "pluscode": "HFGC+G4J Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Cedar Point Park",
+    "established": "1922",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "8 Bayview Rd",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Ed", "m": "", "l": "Stocker", "s": "Jr." },
+        { "t": "", "f": "Margaret", "m": "", "l": "Stocker", "s": "" }
+      ]
+    }
+  ]
+}

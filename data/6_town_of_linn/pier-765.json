@@ -1,0 +1,31 @@
+{
+  "pier": "765",
+  "loc": {
+    "lon": "-88.456115",
+    "lat": "42.558290",
+    "geohash": "dp9455s0p00",
+    "pluscode": "HG5V+8H6 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3150 S Lakeshore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Allegheny",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "E. C. Styberg Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

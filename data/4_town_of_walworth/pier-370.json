@@ -1,0 +1,32 @@
+{
+  "pier": "370",
+  "loc": {
+    "lon": "-88.564623",
+    "lat": "42.561378",
+    "geohash": "dp940sj4n80",
+    "pluscode": "HC6P+H52 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1903 N Lakeshore Dr",
+      "city": "Walworth",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Devil’s Descent",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Rosemary", "m": "", "l": "White-Traut", "s": "" },
+        { "t": "", "f": "David", "m": "", "l": "Traut", "s": "" }
+      ]
+    }
+  ]
+}

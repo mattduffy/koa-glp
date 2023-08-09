@@ -1,0 +1,31 @@
+{
+  "pier": "788",
+  "loc": {
+    "lon": "-88.443530",
+    "lat": "42.563925",
+    "geohash": "dp945kt2u60",
+    "pluscode": "HH74+HH9 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Holly Bush",
+    "established": "1948",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Holly Bush Association Pier", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

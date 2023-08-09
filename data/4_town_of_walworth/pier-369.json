@@ -1,0 +1,32 @@
+{
+  "pier": "369",
+  "loc": {
+    "lon": "-88.564289",
+    "lat": "42.561494",
+    "geohash": "dp940sj6wm0",
+    "pluscode": "HC6P+H7W Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1904 N Lakeshore Dr",
+      "city": "Walworth",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Alan", "m": "", "l": "Heine", "s": "" },
+        { "t": "", "f": "Sandee", "m": "", "l": "Heine", "s": "" }
+      ]
+    }
+  ]
+}

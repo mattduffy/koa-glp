@@ -1,0 +1,31 @@
+{
+  "pier": "645",
+  "loc": {
+    "lon": "-88.495569",
+    "lat": "42.559770",
+    "geohash": "dp9445z2xu0",
+    "pluscode": "HG53+WQ3 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Wooddale Lakeshore Property Owners Association",
+    "established": "1942",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1930 Beach Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Keith", "m": "", "l": "Jaffe", "s": "" }
+      ]
+    }
+  ]
+}

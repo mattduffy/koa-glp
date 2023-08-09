@@ -1,0 +1,31 @@
+{
+  "pier": "811",
+  "loc": {
+    "lon": "-88.437508",
+    "lat": "42.565697",
+    "geohash": "dp945scg0t0",
+    "pluscode": "HH86+7XH Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "http://boathouseh2o.com/",
+    "tel": "+1(262) 742-3898",
+    "address": {
+      "street": "N2062 S Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Boat House", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

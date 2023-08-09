@@ -1,0 +1,31 @@
+{
+  "pier": "351",
+  "loc": {
+    "lon": "-88.557811",
+    "lat": "42.565066",
+    "geohash": "dp940udpmr0",
+    "pluscode": "HC8R+2VG Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "George Williams College of Aurora University",
+    "established": "1886",
+    "associationUrl": "",
+    "tel": "+1(262) 245-5531",
+    "address": {
+      "street": "",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Geneva Lake Water Safety Patrol", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

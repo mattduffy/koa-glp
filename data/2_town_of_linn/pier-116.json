@@ -1,0 +1,31 @@
+{
+  "pier": "116",
+  "loc": {
+    "lon": "-88.498789",
+    "lat": "42.574731",
+    "geohash": "dp944nmpuc0",
+    "pluscode": "HGF2+VFW Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Elgin Club",
+    "established": "1874",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4037 Elgin Club Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Couffer Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

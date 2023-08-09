@@ -1,0 +1,31 @@
+{
+  "pier": "009",
+  "loc": {
+    "lon": "-88.445376",
+    "lat": "42.588992",
+    "geohash": "dp9473h4c70",
+    "pluscode": "HHQ3+HRX Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "9 Hillside Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "", "m": "", "l": "Simkus", "s": "" }
+      ]
+    }
+  ]
+}

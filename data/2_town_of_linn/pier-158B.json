@@ -1,0 +1,32 @@
+{
+  "pier": "158B",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Tyler", "m": "", "l": "Anderson", "s": "" },
+        { "t": "", "f": "Nancy", "m": "", "l": "Anderson", "s": "" }
+      ]
+    }
+  ]
+}

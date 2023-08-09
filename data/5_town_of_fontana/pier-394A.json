@@ -1,0 +1,32 @@
+{
+  "pier": "394A",
+  "loc": {
+    "lon": "-88.570229",
+    "lat": "42.556007",
+    "geohash": "dp940e14sn0",
+    "pluscode": "HC4H+CW2 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "403 N Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Camp Lake Geneva",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Gary", "m": "", "l": "Neilson", "s": "" },
+        { "t": "", "f": "Trudy", "m": "", "l": "Havens", "s": "" }
+      ]
+    }
+  ]
+}

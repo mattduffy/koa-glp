@@ -1,0 +1,31 @@
+{
+  "pier": "600",
+  "loc": {
+    "lon": "-88.506012",
+    "lat": "42.559367",
+    "geohash": "dp941gxyk20",
+    "pluscode": "HF5V+PHX Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4190 Southland Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Marc", "m": "", "l": "Lifshin", "s": "" }
+      ]
+    }
+  ]
+}

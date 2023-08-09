@@ -1,0 +1,31 @@
+{
+  "pier": "466",
+  "loc": {
+    "lon": "-88.565071",
+    "lat": "42.546101",
+    "geohash": "dp9409kch20",
+    "pluscode": "GCWM+CXV Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Glenwood Springs",
+    "established": "1892",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Little Glenwood Swim Pier", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

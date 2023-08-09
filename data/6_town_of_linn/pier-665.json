@@ -1,0 +1,32 @@
+{
+  "pier": "665",
+  "loc": {
+    "lon": "-88.489728",
+    "lat": "42.560875",
+    "geohash": "dp9447gxpf0",
+    "pluscode": "HG66+942 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Lackey Lane",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3838 Lackey Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Don", "m": "", "l": "Zaraza", "s": "" },
+        { "t": "", "f": "Laura", "m": "", "l": "Zaraza", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "074",
+  "loc": {
+    "lon": "-88.480361",
+    "lat": "42.571993",
+    "geohash": "dp944tfxf40",
+    "pluscode": "HGC9+QVR Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Bonnie Brae",
+    "established": "1916",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2308 Bonnie Brae Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Erik", "m": "", "l": "Eiseman", "s": "" }
+      ]
+    }
+  ]
+}

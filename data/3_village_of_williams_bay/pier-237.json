@@ -1,0 +1,29 @@
+{
+  "pier": "237",
+  "loc": {
+    "lon": "-88.530346",
+    "lat": "42.577217",
+    "geohash": "dp941qynm20",
+    "pluscode": "HFG9+XX7 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Cedar Point Park",
+    "established": "1922",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": []
+    }
+  ]
+}

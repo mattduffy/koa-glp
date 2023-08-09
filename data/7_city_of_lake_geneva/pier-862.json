@@ -1,0 +1,31 @@
+{
+  "pier": "862",
+  "loc": {
+    "lon": "-88.438168",
+    "lat": "42.579775",
+    "geohash": "dp945x3m1m0",
+    "pluscode": "HHH6+WP4 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "1002 S Knoll Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Scott", "m": "", "l": "Forsythe", "s": "" },
+        { "t": "", "f": "Joyce", "m": "", "l": "Forsythe", "s": "" }
+      ]
+    }
+  ]
+}

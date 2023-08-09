@@ -1,0 +1,40 @@
+{
+  "pier": "773",
+  "loc": {
+    "lon": "-88.453300",
+    "lat": "42.559845",
+    "geohash": "dp9455y30d0",
+    "pluscode": "HG5W+WMP Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1880 Sidney Smith Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Lake View",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Michael", "m": "", "l": "Ramsey", "s": "" },
+        { "t": "", "f": "Ruth", "m": "", "l": "Ramsey", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Thomas", "m": "", "l": "Ramsey", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "587",
+  "loc": {
+    "lon": "-88.509523",
+    "lat": "42.559965",
+    "geohash": "dp941gv3f80",
+    "pluscode": "HF5R+X5Q Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Estates of Black Point",
+    "established": "1888",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1884 N Black Point Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Mary Ann", "m": "", "l": "Langas", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "087",
+  "loc": {
+    "lon": "-88.487377",
+    "lat": "42.571796",
+    "geohash": "dp944mvqww0",
+    "pluscode": "HGC7+P29 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Alta Vista",
+    "established": "1954",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Alta Vista Association Pier", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "509",
+  "loc": {
+    "lon": "-88.544558",
+    "lat": "42.548071",
+    "geohash": "dp9411eu6r0",
+    "pluscode": "GFX4+65G Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "1028 S Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Glen Croft Haven",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Dana", "m": "", "l": "Mecum", "s": "" },
+        { "t": "", "f": "Patti", "m": "", "l": "Mecum", "s": "" }
+      ]
+    }
+  ]
+}

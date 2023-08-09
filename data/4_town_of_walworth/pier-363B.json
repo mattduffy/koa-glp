@@ -1,0 +1,31 @@
+{
+  "pier": "363B",
+  "loc": {
+    "lon": "-88.563139",
+    "lat": "42.562381",
+    "geohash": "dp940snrc60",
+    "pluscode": "HC6P+XP5 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1980 N Lakeshore Dr",
+      "city": "Walworth",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Conte", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

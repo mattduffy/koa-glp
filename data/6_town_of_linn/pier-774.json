@@ -1,0 +1,66 @@
+{
+  "pier": "774",
+  "loc": {
+    "lon": "-88.452988",
+    "lat": "42.560058",
+    "geohash": "dp9455y6rc0",
+    "pluscode": "HG6W+2RC Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Loramoor",
+    "established": "1981",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Loramoor West Association Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Jeff", "m": "", "l": "Noll", "s": "" },
+        { "t": "", "f": "Ann", "m": "", "l": "Callison", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Loramoor East Association Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Nanna", "s": "" },
+        { "t": "", "f": "Marilyn", "m": "", "l": "Nanna", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Engerman", "s": "" },
+        { "t": "", "f": "Madeleine", "m": "", "l": "Engerman", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "699",
+  "loc": {
+    "lon": "-88.474433",
+    "lat": "42.563855",
+    "geohash": "dp944swbkm0",
+    "pluscode": "HG7G+G6W Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "700 Lake Shore Drive Association",
+    "established": "1950",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1984 700 Club Ln N",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Sandner Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

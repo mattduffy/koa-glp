@@ -1,0 +1,31 @@
+{
+  "pier": "888",
+  "loc": {
+    "lon": "-88.433436",
+    "lat": "42.585998",
+    "geohash": "dp9478s9rt0",
+    "pluscode": "HHP8+9JW Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "550 S Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Arrowhead",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Greg", "m": "", "l": "Fletcher", "s": "" },
+        { "t": "", "f": "Jane", "m": "", "l": "Fletcher", "s": "" }
+      ]
+    }
+  ]
+}

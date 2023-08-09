@@ -1,0 +1,40 @@
+{
+  "pier": "779",
+  "loc": {
+    "lon": "-88.447118",
+    "lat": "42.562610",
+    "geohash": "dp945k6c0v0",
+    "pluscode": "HH73+25R Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W2990 S Lakeshore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Cooney", "s": "" },
+        { "t": "", "f": "Barbara", "m": "", "l": "Cooney", "s": "" }
+      ]
+    },
+    {
+      "estateName": "Burdock Manor",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Richard", "m": "", "l": "Marra", "s": "" }
+      ]
+    }
+  ]
+}

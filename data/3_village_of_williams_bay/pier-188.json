@@ -1,0 +1,32 @@
+{
+  "pier": "188",
+  "loc": {
+    "lon": "-88.525009",
+    "lat": "42.567754",
+    "geohash": "dp941t4p1u0",
+    "pluscode": "HF9F+4X5 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Cedar Point Park",
+    "established": "1922",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "173 Lincoln Pkwy",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Hays Acre",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Carol", "m": "", "l": "Hays", "s": "" },
+        { "t": "", "f": "Andy", "m": "", "l": "Hays", "s": "" }
+      ]
+    }
+  ]
+}

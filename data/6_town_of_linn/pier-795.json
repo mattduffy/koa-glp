@@ -1,0 +1,32 @@
+{
+  "pier": "795",
+  "loc": {
+    "lon": "-88.440895",
+    "lat": "42.564718",
+    "geohash": "dp945kxm3y0",
+    "pluscode": "HH75+VJQ Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W2862 Swinghurst Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "William", "m": "", "l": "Millman", "s": "" },
+        { "t": "", "f": "Linda", "m": "", "l": "Millman", "s": "" }
+      ]
+    }
+  ]
+}

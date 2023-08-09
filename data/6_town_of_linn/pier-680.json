@@ -1,0 +1,31 @@
+{
+  "pier": "680",
+  "loc": {
+    "lon": "-88.482237",
+    "lat": "42.563982",
+    "geohash": "dp944s91nm0",
+    "pluscode": "HG79+H4R Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Maple Lane",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1994 Linn Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Manny & Shelly Yonan & Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

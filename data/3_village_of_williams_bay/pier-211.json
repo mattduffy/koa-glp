@@ -1,0 +1,32 @@
+{
+  "pier": "211",
+  "loc": {
+    "lon": "-88.529649",
+    "lat": "42.569039",
+    "geohash": "dp941mqwte0",
+    "pluscode": "HF9C+J49 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Cedar Point Park",
+    "established": "1922",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "212 Cir Pkwy",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Sweet Water",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "David", "m": "", "l": "Bruskin", "s": "" },
+        { "t": "", "f": "Tiffany", "m": "", "l": "Bruskin", "s": "" }
+      ]
+    }
+  ]
+}

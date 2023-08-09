@@ -1,0 +1,31 @@
+{
+  "pier": "505",
+  "loc": {
+    "lon": "-88.546329",
+    "lat": "42.547843",
+    "geohash": "dp9411de0u0",
+    "pluscode": "GFX3+4FM Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "988 S Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Grace Allen Newton", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "512",
+  "loc": {
+    "lon": "-88.543354",
+    "lat": "42.548334",
+    "geohash": "dp9411swn20",
+    "pluscode": "GFX4+8MJ Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "1056 S Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Festina Lente",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Hugh", "m": "", "l": "Plunkett", "s": "" }
+      ]
+    }
+  ]
+}

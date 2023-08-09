@@ -1,0 +1,32 @@
+{
+  "pier": "093",
+  "loc": {
+    "lon": "-88.491552",
+    "lat": "42.572991",
+    "geohash": "dp944q4mtk0",
+    "pluscode": "HGF5+59W Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "S. B. Chapin",
+    "established": "1921",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3885 Creek Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Solliden",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Ulla", "m": "E", "l": "Brunk", "s": "" },
+        { "t": "", "f": "Anna", "m": "", "l": "Brunk Peterson", "s": "" }
+      ]
+    }
+  ]
+}

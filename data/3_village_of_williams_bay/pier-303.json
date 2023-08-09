@@ -1,0 +1,31 @@
+{
+  "pier": "303",
+  "loc": {
+    "lon": "-88.540873",
+    "lat": "42.569341",
+    "geohash": "dp941jw82h0",
+    "pluscode": "HF95+PMJ Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Loch Vista Club",
+    "established": "1921",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "22 Upper Loch Vista Dr",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Lanan-Rapp", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

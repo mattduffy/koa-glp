@@ -1,0 +1,31 @@
+{
+  "pier": "348",
+  "loc": {
+    "lon": "-88.552389",
+    "lat": "42.566741",
+    "geohash": "dp940vn15z0",
+    "pluscode": "HC8X+M2X Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "301 Constance Blvd",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Team E-IA LLC", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

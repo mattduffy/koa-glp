@@ -1,0 +1,32 @@
+{
+  "pier": "558",
+  "loc": {
+    "lon": "-88.519544",
+    "lat": "42.551439",
+    "geohash": "dp941dq0150",
+    "pluscode": "HF2J+H5G Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4430 Basswood Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Anderson", "s": "" },
+        { "t": "", "f": "Linda", "m": "", "l": "Anderson", "s": "" }
+      ]
+    }
+  ]
+}

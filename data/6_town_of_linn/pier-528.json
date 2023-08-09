@@ -1,0 +1,31 @@
+{
+  "pier": "528",
+  "loc": {
+    "lon": "-88.533828",
+    "lat": "42.549964",
+    "geohash": "dp9413gxs20",
+    "pluscode": "GFX8+XFM Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Oak Shores",
+    "established": "1950",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Oak Shores Boat Pier", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

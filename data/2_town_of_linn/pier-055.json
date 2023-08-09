@@ -1,0 +1,31 @@
+{
+  "pier": "055",
+  "loc": {
+    "lon": "-88.465993",
+    "lat": "42.575462",
+    "geohash": "dp944yth0c0",
+    "pluscode": "HGGM+5JJ Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3353 Snake Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Deadwood",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Walter", "m": "G", "l": "Larkin", "s": "" }
+      ]
+    }
+  ]
+}

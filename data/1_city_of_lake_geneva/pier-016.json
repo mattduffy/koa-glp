@@ -1,0 +1,57 @@
+{
+  "pier": "016",
+  "loc": {
+    "lon": "-88.445935",
+    "lat": "42.587735",
+    "geohash": "dp9472ges30",
+    "pluscode": "HHQ3+3JW Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Lake Geneva Manor",
+    "established": "1924",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "1-1699 Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "",
+      "members": [
+        { "t": "", "f": "Lake Geneva Manor Swim Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "",
+      "members": [
+        { "t": "", "f": "James", "m": "", "l": "Birk", "s": "" },
+        { "t": "", "f": "Liane", "m": "", "l": "Birk", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "",
+      "members": [
+        { "t": "", "f": "Catherine", "m": "", "l": "Green", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "",
+      "members": [
+        { "t": "", "f": "David", "m": "", "l": "McConnell", "s": "" },
+        { "t": "", "f": "Sarah", "m": "", "l": "McConnell", "s": "" }
+      ]
+    }
+  ]
+}

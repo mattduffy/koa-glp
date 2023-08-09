@@ -1,0 +1,31 @@
+{
+  "pier": "290",
+  "loc": {
+    "lon": "-88.538726",
+    "lat": "42.572708",
+    "geohash": "dp941q0h400",
+    "pluscode": "HFF6+3GJ Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "PIER 290",
+    "established": "",
+    "associationUrl": "",
+    "tel": "+1(262) 245-2100",
+    "address": {
+      "street": "3 Liechty Dr",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Pier 290/Gage Marine", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

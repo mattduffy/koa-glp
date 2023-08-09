@@ -1,0 +1,32 @@
+{
+  "pier": "164",
+  "loc": {
+    "lon": "-88.516771",
+    "lat": "42.572236",
+    "geohash": "dp941y011x0",
+    "pluscode": "HFCM+V7X Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4461 N Lake Shore Dr",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Pebble Point",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Charles", "m": "", "l": "Colman", "s": "" },
+        { "t": "", "f": "Dianna", "m": "", "l": "Colman", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "402C",
+  "loc": {
+    "lon": "-88.571213",
+    "lat": "42.553629",
+    "geohash": "dp940d8kv50",
+    "pluscode": "HC3H+FG3 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Buena Vista",
+    "established": "1912",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "282 Sylvan Ln",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Anthony", "m": "", "l": "Zielinski", "s": "" },
+        { "t": "", "f": "Mary", "m": "", "l": "Zielinski", "s": "" }
+      ]
+    }
+  ]
+}

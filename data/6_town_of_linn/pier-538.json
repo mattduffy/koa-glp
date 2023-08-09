@@ -1,0 +1,31 @@
+{
+  "pier": "538",
+  "loc": {
+    "lon": "-88.530307",
+    "lat": "42.549985",
+    "geohash": "dp9413ypwk0",
+    "pluscode": "GFX9+XVW Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4678 S Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Dan", "m": "", "l": "Caballero", "s": "" }
+      ]
+    }
+  ]
+}

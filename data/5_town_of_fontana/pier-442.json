@@ -1,0 +1,32 @@
+{
+  "pier": "442",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Glenwood Springs",
+    "established": "1892",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "404 Harvard Ave",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Stone’s Throw",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Frank", "m": "", "l": "Sottrel", "s": "" },
+        { "t": "", "f": "Lisa", "m": "", "l": "Sottrel", "s": "" }
+      ]
+    }
+  ]
+}

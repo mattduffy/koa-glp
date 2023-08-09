@@ -1,0 +1,32 @@
+{
+  "pier": "441C",
+  "loc": {
+    "lon": "",
+    "lat": "",
+    "geohash": "",
+    "pluscode": ""
+  },
+  "property": {
+    "association": "Glenwood Springs",
+    "established": "1892",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "3 Geneva Ln",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Villa Tarantino",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Kristina", "m": "", "l": "Tarantino", "s": "" },
+        { "t": "", "f": "James", "m": "", "l": "Tarantino", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "064",
+  "loc": {
+    "lon": "-88.473589",
+    "lat": "42.572727",
+    "geohash": "dp944wpkpg0",
+    "pluscode": "HGFG+3HV Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2261 Mallory Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Flowerside",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Rasin Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

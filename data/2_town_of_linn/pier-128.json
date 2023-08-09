@@ -1,0 +1,39 @@
+{
+  "pier": "128",
+  "loc": {
+    "lon": "-88.501759",
+    "lat": "42.574739",
+    "geohash": "dp944n6zzd0",
+    "pluscode": "HFFX+V7X Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Elgin Club",
+    "established": "1874",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4097 Elgin Club Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Martha", "m": "", "l": "Craven", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Scott", "m": "", "l": "Craven Jones", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "pier": "629",
+  "loc": {
+    "lon": "-88.498546",
+    "lat": "42.559240",
+    "geohash": "dp9445tmd30",
+    "pluscode": "HG52+MHW Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Valley Park Association",
+    "established": "1970",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1824 E Valley Park Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Benjamin", "m": "John", "l": "Brown", "s": "" }
+      ]
+    }
+  ]
+}

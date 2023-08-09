@@ -1,0 +1,32 @@
+{
+  "pier": "686",
+  "loc": {
+    "lon": "-88.480052",
+    "lat": "42.565174",
+    "geohash": "dp944sfb170",
+    "pluscode": "HG89+3X8 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Maple Lane",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W3644 Maple Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Beth", "m": "", "l": "Cunningham", "s": "" },
+        { "t": "", "f": "Bob", "m": "", "l": "Cunningham", "s": "" }
+      ]
+    }
+  ]
+}

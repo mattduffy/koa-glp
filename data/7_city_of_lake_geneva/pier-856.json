@@ -1,0 +1,28 @@
+{
+  "pier": "856",
+  "loc": {
+    "lon": "-88.439713",
+    "lat": "42.577336",
+    "geohash": "dp945wbnvq0",
+    "pluscode": "HHG6+W4M Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "1108 S Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": []
+    }
+  ]
+}

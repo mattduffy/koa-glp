@@ -1,0 +1,32 @@
+{
+  "pier": "282",
+  "loc": {
+    "lon": "-88.538887",
+    "lat": "42.575584",
+    "geohash": "dp941nxuwr0",
+    "pluscode": "HFG6+6CQ Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "15 N Walworth Ave",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "O’Sullivan", "s": "" },
+        { "t": "", "f": "Colleen", "m": "", "l": "O’Sullivan", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "641",
+  "loc": {
+    "lon": "-88.496272",
+    "lat": "42.559662",
+    "geohash": "dp9445ybp20",
+    "pluscode": "HG53+VF9 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1874 Cain Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Gordy", "m": "", "l": "Erickson", "s": "" },
+        { "t": "", "f": "Connie", "m": "", "l": "Erickson", "s": "" }
+      ]
+    }
+  ]
+}

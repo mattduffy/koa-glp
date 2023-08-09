@@ -1,0 +1,31 @@
+{
+  "pier": "008C",
+  "loc": {
+    "lon": "-88.445294",
+    "lat": "42.589294",
+    "geohash": "dp9473hhe70",
+    "pluscode": "HHQ3+PV8 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "8 Hillside Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "James", "m": "", "l": "Owens", "s": "" }
+      ]
+    }
+  ]
+}

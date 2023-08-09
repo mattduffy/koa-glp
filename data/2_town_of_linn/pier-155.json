@@ -1,0 +1,32 @@
+{
+  "pier": "155",
+  "loc": {
+    "lon": "-88.512459",
+    "lat": "42.574610",
+    "geohash": "dp941y7pn40",
+    "pluscode": "HFFQ+R2V Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4331 N Lake Shore Dr",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Oak View",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Terry", "m": "", "l": "Bolger", "s": "" },
+        { "t": "", "f": "Mary Jeanne", "m": "", "l": "Bolger", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "404G",
+  "loc": {
+    "lon": "-88.571626",
+    "lat": "42.553060",
+    "geohash": "dp940d81e90",
+    "pluscode": "HC3H+68H Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Buena Vista",
+    "established": "1912",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "350 Spring St",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Thomas", "m": "", "l": "Hibbard", "s": "" },
+        { "t": "", "f": "Gail", "m": "", "l": "Hibbard", "s": "" }
+      ]
+    }
+  ]
+}

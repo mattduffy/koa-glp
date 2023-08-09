@@ -1,0 +1,32 @@
+{
+  "pier": "278",
+  "loc": {
+    "lon": "-88.538931",
+    "lat": "42.576122",
+    "geohash": "dp941nxzvk0",
+    "pluscode": "HFG6+CCW Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "31 N Walworth Ave",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Sustaining",
+      "members": [
+        { "t": "", "f": "Keith", "m": "E", "l": "Snidtker", "s": "" },
+        { "t": "", "f": "Ayla", "m": "", "l": "Snidtker De Bosschere", "s": "" }
+      ]
+    }
+  ]
+}

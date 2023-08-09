@@ -1,0 +1,32 @@
+{
+  "pier": "695",
+  "loc": {
+    "lon": "-88.476372",
+    "lat": "42.565815",
+    "geohash": "dp944sv7z40",
+    "pluscode": "HG8F+8FC Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "700 Lake Shore Drive Association",
+    "established": "1950",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2030 700 Club Ln N",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Kalmwaters",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "The Kirch Foundation", "m": "", "l": "", "s": "" },
+        { "t": "", "f": "Terry", "m": "", "l": "Kirch", "s": "" }
+      ]
+    }
+  ]
+}

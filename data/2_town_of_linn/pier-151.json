@@ -1,0 +1,32 @@
+{
+  "pier": "151",
+  "loc": {
+    "lon": "-88.511615",
+    "lat": "42.574911",
+    "geohash": "dp941yebcf0",
+    "pluscode": "HFFQ+X96 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2301 Knollwood Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Rod", "m": "", "l": "Bolhous", "s": "" },
+        { "t": "", "f": "Kathy", "m": "", "l": "Bolhous", "s": "" }
+      ]
+    }
+  ]
+}

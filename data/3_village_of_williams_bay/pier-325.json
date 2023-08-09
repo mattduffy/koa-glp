@@ -1,0 +1,32 @@
+{
+  "pier": "325",
+  "loc": {
+    "lon": "-88.541423",
+    "lat": "42.567599",
+    "geohash": "dp941jnn5r0",
+    "pluscode": "HF95+2CP Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Conference Point Center",
+    "established": "1873",
+    "associationUrl": "",
+    "tel": "+1(262) 248-5500",
+    "estateName": "",
+    "address": {
+      "street": "300 Conference Point Rd",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Conference Point Conference Center", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

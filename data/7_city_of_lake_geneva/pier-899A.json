@@ -1,0 +1,30 @@
+{
+  "pier": "899A",
+  "loc": {
+    "lon": "-88.435518",
+    "lat": "42.589889",
+    "geohash": "dp947970p40",
+    "pluscode": "HHQ7+XQ5 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "195 Wrigley Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Zingle Boat Rentals", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

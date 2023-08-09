@@ -1,0 +1,31 @@
+{
+  "pier": "008A",
+  "loc": {
+    "lon": "-88.445218",
+    "lat": "42.589617",
+    "geohash": "dp9473hnt00",
+    "pluscode": "HHQ3+RWV Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "1504 W Main St",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Blue Hill",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "W.", "m": "J.", "l": "Goes", "s": "" }
+      ]
+    }
+  ]
+}

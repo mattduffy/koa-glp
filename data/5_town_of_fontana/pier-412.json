@@ -1,0 +1,40 @@
+{
+  "pier": "412",
+  "loc": {
+    "lon": "-88.572019",
+    "lat": "42.551013",
+    "geohash": "dp9406pvd70",
+    "pluscode": "HC2H+C55 Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Fontana Shores Condo",
+    "established": "1968",
+    "associationUrl": "",
+    "tel": "+1(815) 404-6762",
+    "address": {
+      "street": "150 Lake St",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Fontana Shores Condo. Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "Best View on the Lake",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Bob", "m": "", "l": "Tangredi", "s": "" },
+        { "t": "", "f": "Erin", "m": "", "l": "Tangredi", "s": "" }
+      ]
+    }
+  ]
+}

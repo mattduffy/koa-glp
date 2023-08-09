@@ -1,0 +1,31 @@
+{
+  "pier": "617",
+  "loc": {
+    "lon": "-88.501292",
+    "lat": "42.559235",
+    "geohash": "dp9445emd20",
+    "pluscode": "HF5X+MFW Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Edgewater Terrace",
+    "established": "1925",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Lindner Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

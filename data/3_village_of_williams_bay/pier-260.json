@@ -1,0 +1,39 @@
+{
+  "pier": "260",
+  "loc": {
+    "lon": "-88.536230",
+    "lat": "42.577928",
+    "geohash": "dp941r1fkm0",
+    "pluscode": "HFH7+5GC Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "Williams Bay Village Recreation Department",
+    "established": "",
+    "associationUrl": "",
+    "tel": "+1(262) 245-2700",
+    "address": {
+      "street": "15 E Geneva St",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Williams Bay Municipal Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Gallagher", "s": "" }
+      ]
+    }
+  ]
+}

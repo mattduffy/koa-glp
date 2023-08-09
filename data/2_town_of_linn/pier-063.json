@@ -1,0 +1,31 @@
+{
+  "pier": "063",
+  "loc": {
+    "lon": "-88.473029",
+    "lat": "42.572785",
+    "geohash": "dp944wpumn0",
+    "pluscode": "HGFG+4Q9 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2294 Mallory Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Hodge Podge Cottage",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Rasin Family", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "568A",
+  "loc": {
+    "lon": "-88.514404",
+    "lat": "42.554585",
+    "geohash": "dp941fcf2v0",
+    "pluscode": "HF3P+R6Q Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "W4350 Basswood Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Woodhill",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Doug", "m": "", "l": "Perks", "s": "" },
+        { "t": "", "f": "Mary", "m": "", "l": "Perks", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "pier": "386",
+  "loc": {
+    "lon": "-88.568665",
+    "lat": "42.557937",
+    "geohash": "dp940e6mbw0",
+    "pluscode": "HC5J+5GG Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Belvidere Park",
+    "established": "1875",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "465L N Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Belvidere Park Association Swim Pier", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Pierce", "s": "" },
+        { "t": "", "f": "Debra", "m": "", "l": "Pierce", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Laurance", "m": "", "l": "Pierce", "s": "" }
+      ]
+    }
+  ]
+}

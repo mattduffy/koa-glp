@@ -1,0 +1,74 @@
+{
+  "pier": "450",
+  "loc": {
+    "lon": "-88.568008",
+    "lat": "42.545818",
+    "geohash": "dp94094xrg0",
+    "pluscode": "GCWJ+8QH Fontana-On-Geneva Lake, Wisconsin"
+  },
+  "property": {
+    "association": "Glenwood Springs",
+    "established": "1892",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Subdiv. Pier Glenwood Springs", "m": "", "l": "", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Ann", "m": "", "l": "Hagerty", "s": "" },
+        { "t": "", "f": "Jack", "m": "", "l": "Hagerty", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Michael", "m": "", "l": "Kallergis", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Donor",
+      "members": [
+        { "t": "", "f": "Edward", "m": "", "l": "Maloney", "s": "" },
+        { "t": "", "f": "Cheryl", "m": "", "l": "Maloney", "s": "" }
+      ]
+    },
+    {
+      "estateName": "Maus Haus",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "James", "m": "", "l": "Maus", "s": "" },
+        { "t": "", "f": "Michelle", "m": "", "l": "Maus", "s": "" }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "Peggy", "m": "", "l": "Pollitt", "s": "" }
+      ]
+    }
+  ]
+}

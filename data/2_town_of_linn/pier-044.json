@@ -1,0 +1,31 @@
+{
+  "pier": "044",
+  "loc": {
+    "lon": "-88.455024",
+    "lat": "42.579726",
+    "geohash": "dp945pmhbs0",
+    "pluscode": "HGHV+VXX Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Shady Lane Pier Association",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2431 Forest Rest Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Grieco", "s": "" }
+      ]
+    }
+  ]
+}

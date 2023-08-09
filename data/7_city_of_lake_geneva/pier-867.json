@@ -1,0 +1,31 @@
+{
+  "pier": "867",
+  "loc": {
+    "lon": "-88.437483",
+    "lat": "42.580667",
+    "geohash": "dp945x9f370",
+    "pluscode": "HHJ7+726 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Syverstad",
+    "established": "1955",
+    "tel": "",
+    "address": {
+      "street": "962 Marianne Terrace",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Keith", "m": "", "l": "Rozolis", "s": "" },
+        { "t": "", "f": "Linda", "m": "", "l": "Rozolis", "s": "" }
+      ]
+    }
+  ]
+}

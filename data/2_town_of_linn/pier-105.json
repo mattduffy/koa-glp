@@ -1,0 +1,32 @@
+{
+  "pier": "105",
+  "loc": {
+    "lon": "-88.495899",
+    "lat": "42.574275",
+    "geohash": "dp944nrm0h0",
+    "pluscode": "HGF3+PJ9 Williams Bay, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2291 W Main Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Huguenard", "s": "" },
+        { "t": "", "f": "Kelly", "m": "", "l": "Huguenard", "s": "" }
+      ]
+    }
+  ]
+}

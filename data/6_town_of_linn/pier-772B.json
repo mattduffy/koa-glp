@@ -1,0 +1,32 @@
+{
+  "pier": "772B",
+  "loc": {
+    "lon": "-88.453566",
+    "lat": "42.559659",
+    "geohash": "dp9455wpfx0",
+    "pluscode": "HG5W+VH7 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1882 Sidney Smith Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        { "t": "", "f": "Tim", "m": "", "l": "Kilpin", "s": "" },
+        { "t": "", "f": "Heidi", "m": "", "l": "Kilpin", "s": "" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "pier": "670",
+  "loc": {
+    "lon": "-88.487542",
+    "lat": "42.562504",
+    "geohash": "dp944km2dc0",
+    "pluscode": "HG76+2X4 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Birches",
+    "established": "1924",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1959 Solar Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        { "t": "", "f": "John", "m": "", "l": "Hatch", "s": "" },
+        { "t": "", "f": "Sandra", "m": "", "l": "Hatch", "s": "" }
+      ]
+    }
+  ]
+}

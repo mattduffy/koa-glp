@@ -1,0 +1,31 @@
+{
+  "pier": "011",
+  "loc": {
+    "lon": "-88.445632",
+    "lat": "42.588580",
+    "geohash": "dp94735b7q0",
+    "pluscode": "HHQ3+CPQ Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "Lake Geneva Manor",
+    "established": "1924",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "1540 Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "Cindy", "m": "", "l": "Barich", "s": "" }
+      ]
+    }
+  ]
+}

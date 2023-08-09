@@ -1,0 +1,32 @@
+{
+  "pier": "781",
+  "loc": {
+    "lon": "-88.445208",
+    "lat": "42.563393",
+    "geohash": "dp945kkjtr0",
+    "pluscode": "HH73+9W3 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N1931 Hunt Club Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Honeyside",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Claudia", "m": "", "l": "Bauer", "s": "" },
+        { "t": "", "f": "Jay", "m": "", "l": "Bauer", "s": "" }
+      ]
+    }
+  ]
+}

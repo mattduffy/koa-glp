@@ -1,0 +1,30 @@
+{
+  "pier": "904",
+  "loc": {
+    "lon": "-88.442448",
+    "lat": "42.591045",
+    "geohash": "dp9473qnvd0",
+    "pluscode": "HHR5+C27 Lake Geneva, Wisconsin"
+  },
+  "property": {
+    "association": "",
+    "established": "",
+    "tel": "",
+    "address": {
+      "street": "1240-1200 WI-50",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        { "t": "", "f": "LG Fishing/Dinghy Pier", "m": "", "l": "", "s": "" }
+      ]
+    }
+  ]
+}
