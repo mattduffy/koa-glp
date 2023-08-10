@@ -1,18 +1,18 @@
 {
-  "name": "@mattduffy/koa-stub",
+  "name": "@mattduffy/koa-glp",
   "version": "1.0.0",
-  "description": "A simple Koa-based stub server to test new packages and middle wares.",
+  "description": "A web app to view the piers of Geneva Lake, WI.",
   "author": "Matthew Duffy",
   "license": "ISC",
   "main": "index.js",
   "type": "module",
-  "homepage": "https://github.com/mattduffy/koa-stub#readme",
+  "homepage": "https://github.com/mattduffy/koa-glp#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mattduffy/koa-stub.git"
+    "url": "https://github.com/mattduffy/koa-glp.git"
   },
   "bugs": {
-    "url": "https://github.com/mattduffy/koa-stub/issues"
+    "url": "https://github.com/mattduffy/koa-glp/issues"
   },
   "exports": {
     ".": "src/index.js",
@@ -30,10 +30,11 @@
   "dependencies": {
     "@koa/ejs": "5.0.0",
     "@koa/router": "12.0.0",
+    "@mattduffy/albums": "/home/matt/node_package_development/albums",
+    "@mattduffy/exiftool": "file:../exiftool",
     "@mattduffy/koa-migrations": "/home/matt/node_package_development/koa-migrations",
     "@mattduffy/users": "/home/matt/node_package_development/users",
     "@mattduffy/webfinger": "/home/matt/node_package_development/webfinger",
-    "@mattduffy/albums": "/home/matt/node_package_development/albums",
     "debug": "4.3.4",
     "dotenv": "16.0.3",
     "formidable": "2.1.1",
@@ -50,7 +51,6 @@
     "ulid": "2.3.0"
   },
   "keywords": [
-    "Koa",
-    "stub server"
+    "Koa"
   ]
 }

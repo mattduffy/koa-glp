@@ -1,7 +1,7 @@
 /**
- * @module @mattduffy/koa-stub
+ * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/index.js The entry point to set up a koa test app.
+ * @file src/index.js The entry point the Geneva Lake Piers app.
  */
 
 import path from 'node:path'
@@ -45,6 +45,13 @@ const showDebug = process.env.NODE_ENV !== 'production'
 dotenv.config({ path: path.resolve(appRoot, 'config/app.env'), debug: showDebug })
 // dotenv.config({ path: path.resolve(appRoot, 'config/test.env'), debug: showDebug })
 
+console.info('****************************************************')
+console.info('*                                                  *')
+console.info(`* Starting up: ${process.env.SITE_NAME}                   *`)
+console.info(`*       local: http://${process.env.HOST}:${process.env.PORT}           *`)
+console.info(`*      public: https://${process.env.DOMAIN_NAME}         *`)
+console.info('****************************************************')
+
 const key1 = process.env.KEY1
 const key2 = process.env.KEY2
 const key3 = process.env.KEY3
@@ -58,6 +65,7 @@ app.host = `${process.env.HOST}:${port}` ?? `127.0.0.1:${port}`
 app.origin = app.host
 // app.host = `${process.env.HOST}` ?? '127.0.0.1'
 app.domain = process.env.DOMAIN_NAME ?? 'website.com'
+
 app.proxy = true
 app.root = appRoot
 app.templateName = 'default'

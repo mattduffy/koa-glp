@@ -21,12 +21,13 @@ const dbHost = process.env.MONGODB_HOST
 const dbPort1 = process.env.MONGODB_PORT_1
 const dbPort2 = process.env.MONGODB_PORT_2
 const dbPort3 = process.env.MONGODB_PORT_3
+const dbName = process.env.MONGODB_DBNAME
 const appName = process.env.MONGODB_APPNAME
 const authMechanism = 'MONGODB-X509'
 const authSource = '$external'
 const clientPEMFile = encodeURIComponent(process.env.MONGODB_CLIENT_KEY)
 const dbCAKeyFile = encodeURIComponent(process.env.MONGODB_CAKEYFILE)
-const uri = `mongodb://${clientDn}@${dbHost}:${dbPort1},${dbHost}:${dbPort2},${dbHost}:${dbPort3}/mattmadethese?replicaSet=myReplicaSet&authMechanism=${authMechanism}&tls=true&tlsCertificateKeyFile=${clientPEMFile}&tlsCAFile=${dbCAKeyFile}&authSource=${authSource}&appName=${appName}`
+const uri = `mongodb://${clientDn}@${dbHost}:${dbPort1},${dbHost}:${dbPort2},${dbHost}:${dbPort3}/${dbName}?replicaSet=myReplicaSet&authMechanism=${authMechanism}&tls=true&tlsCertificateKeyFile=${clientPEMFile}&tlsCAFile=${dbCAKeyFile}&authSource=${authSource}&appName=${appName}`
 
 const client = new MongoClient(uri)
 
