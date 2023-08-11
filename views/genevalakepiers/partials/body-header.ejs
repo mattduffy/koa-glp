@@ -1,0 +1,19 @@
+<header>
+  <a id="skipnav" href="#main-content">Skip to main content</a>
+  <div id="masthead">
+    <h1><a href="/">Mattmadethese.com</a></h1>
+    <p>I am Matt.  This is a site to display some of the different things that I have made.</p> 
+    <nav id="main-nav" aria-label="Main">
+      <ol>
+        <li class="crumbs"><a href="/">Home</a></li>
+        <li class="crumbs"><a href="/galleries">Galleries</a></li>
+        <li class="crumbs"><a href="/blog">Blog</a></li>
+        <li class="crumbs"><a href="/about">About</a></li>
+        <li class="crumbs"><a href="/contact">Contact</a></li>
+      </ol>
+    </nav>
+    <% if (locals) { %>
+      <%- '<!-- html comment -->' %>
+    <% } %>
+  </div>
+</header>

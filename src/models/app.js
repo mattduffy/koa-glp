@@ -44,7 +44,7 @@ class App {
   async keys() {
     const log = appLog.extend('keys')
     const error = appError.extend('keys')
-    this._keys = (await this._db.findOne({ name: this._siteName }, { projection: { keys: 1 } })).keys
+    this._keys = (await this._db.findOne({ name: this._siteName }, { projection: { keys: 1 } }))?.keys
     let needToUpdate = false
     const numSigKeys = this._keys.signing?.length ?? 0
     const numEncKeys = this._keys.encrypting?.length ?? 0

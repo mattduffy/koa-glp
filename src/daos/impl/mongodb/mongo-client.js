@@ -32,6 +32,7 @@ const uri = `mongodb://${clientDn}@${dbHost}:${dbPort1},${dbHost}:${dbPort2},${d
 const client = new MongoClient(uri)
 
 export {
+  uri,
   client,
   ObjectId,
 }

@@ -68,7 +68,7 @@ app.domain = process.env.DOMAIN_NAME ?? 'website.com'
 
 app.proxy = true
 app.root = appRoot
-app.templateName = 'default'
+app.templateName = 'genevalakepiers'
 app.dirs = {
   archive: {
     archive: `${appRoot}/archive`,
@@ -100,7 +100,8 @@ if (app.env === 'development') {
 
 render(app, {
   root: `${appRoot}/views/${app.templateName}`,
-  layout: 'grid-template',
+  // layout: 'grid-template',
+  layout: 'glp',
   viewExt: 'ejs',
   cache: false,
   debug: true,
@@ -218,6 +219,7 @@ async function isMongo(ctx, next) {
   const logg = log.extend('isMongo')
   const err = log.extend('isMongo')
   // const { client, ObjectId } = mongoClient
+  // logg(mongoClient.uri)
   ctx.state.mongodb = mongoClient
   try {
     logg(mongoClient.client.s.namespace)
