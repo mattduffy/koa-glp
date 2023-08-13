@@ -6,13 +6,18 @@
  */
 
 import path from 'node:path'
-import { stat, readFile, writeFile, mkdir } from 'node:fs/promises'
+import {
+  stat,
+  readFile,
+  writeFile,
+  mkdir,
+} from 'node:fs/promises'
 import { CryptoKeys } from './cryptoKeys.js'
 import { _log, _error } from '../utils/logging.js'
 
 const appLog = _log.extend('App_class')
 const appError = _error.extend('App_class')
-const DATABASE = process.env.MONGODB_DBNAME ?? 'koastub'
+// const DATABASE = process.env.MONGODB_DBNAME ?? 'koastub'
 const COLLECTION = 'app'
 
 class App {
@@ -32,13 +37,58 @@ class App {
 
   constructor(config = {}) {
     const log = appLog.extend('constructor')
-    const error = appError.extend('constructor')
+    // const error = appError.extend('constructor')
+    log('The App model constructor')
 
     this._keyDir = config.keyDir ?? './keys'
+    this._dbHandle = config?.db
     this._db = config?.db.db().collection(COLLECTION)
     this._siteName = process.env.SITE_NAME ?? 'website'
     this._keys = config.keys ?? { signing: [], encrypting: [] }
     this.#cryptoKeys = new CryptoKeys({ dirs: { public: this._keyDir, private: this._keyDir } })
+  }
+
+  async init() {
+    const log = appLog.extend('init')
+    const error = appError.extend('init')
+    let dirExists
+    try {
+      stat(this._keyDir)
+      log(`keyDir exists: ${path.resolve(this._keyDir)}`)
+      dirExists = true
+    } catch (e) {
+      error(`Missing app key dir: ${path.resolve(this._keyDir)}`)
+      log(`Need to create app key dir at: ${this._keyDir}`)
+      dirExists = false
+    }
+    if (!dirExists) {
+      // Create the missing app keys directory.
+      try {
+        log(`Creating app key dir at: ${this._keyDir}`)
+        mkdir(path.resolve(this._keyDir, { recursive: true }))
+      } catch (e) {
+        error('Failed to create the required app key dir.')
+        throw new Error('App init Failed: ', { cause: e })
+      }
+    }
+    // Okay to continue init procedure.
+    // Check that db app collection is created with properties set.
+    try {
+      const isAppCollectionSetup = await this._db.findOne({ name: this._siteName })
+      if (isAppCollectionSetup === null) {
+        // Populate the app collection with this app's info.
+        const doc = {
+          keys: this._keys,
+          name: this._siteName,
+          schemaVer: 1,
+        }
+        const result = await this._db.insertOne(doc)
+        log(result)
+      }
+    } catch (e) {
+      error(e)
+      throw new Error('DB setup failed.', { cause: e })
+    }
   }
 
   async keys() {
