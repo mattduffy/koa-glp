@@ -20,16 +20,17 @@ const error = _error.extend('index')
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const appRoot = path.resolve(`${__dirname}/../..`)
+const appEnv = {}
 dotenv.config({ path: path.resolve(appRoot, 'config/app.env'), debug: true })
-// dotenv.config({ path: path.resolve(appRoot, 'config/mongodb.env'), debug: true })
-dotenv.config({ path: path.resolve(appRoot, 'config/redis.env'), debug: true })
-log(process.env.DOMAIN_NAME)
-log(process.env.SITE_NAME)
-log(process.env.MONGODB_CLIENT_DN)
-log(mongoClient.uri)
-log(process.env.REDIS_KEY_PREFIX)
-log(process.env.REDIS_SENTINEL_USER)
+// log(appEnv)
+const mongoEnv = {}
+dotenv.config({ path: path.resolve(appRoot, 'config/mongodb.env'), processEnv: mongoEnv, debug: true })
+// log(mongoEnv)
 
+// const redisEnv = {}
+// dotenv.config({ path: path.resolve(appRoot, 'config/redis.env'), processEnv: redisEnv, debug: true })
+// log(process.env.REDIS_KEY_PREFIX)
+// log(process.env.REDIS_SENTINEL_USER)
 // let pier = await readFile(path.resolve(appRoot, 'data/1_city_of_lake_geneva/pier-001.json'), { encoding: 'utf-8' })
 // pier = pier.replace(/\n/g, '')
 // // pier = JSON.parse(pier)
@@ -39,6 +40,7 @@ log(process.env.REDIS_SENTINEL_USER)
 // redis.redis.quit()
 
 // Bootstrap the app collection in the db.
+log(mongoClient.uri)
 const config = {
   keyDir: `${appRoot}/keys`,
   db: mongoClient.client,
@@ -66,6 +68,10 @@ const adminProps = {
   emails: [{ primary: 'matt@genevalakepiers.com', verified: false }],
   description: 'The first user account created.',
   username: 'matttheadmin',
+  password: '9@zzw0rd',
+  jwts: { token: '', refresh: '' },
+  client: mongoClient.client,
+  dbName: mongoEnv.MONGODB_DBNAME,
 }
 const firstUser = Users.newAdminUser(adminProps)
 const savedFirstUser = await firstUser.save()
