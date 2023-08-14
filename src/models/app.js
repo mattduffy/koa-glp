@@ -38,7 +38,7 @@ class App {
   constructor(config = {}) {
     const log = appLog.extend('constructor')
     // const error = appError.extend('constructor')
-    log('The App model constructor')
+    log('The App model constructor.')
 
     this._keyDir = config.keyDir ?? './keys'
     this._dbHandle = config?.db

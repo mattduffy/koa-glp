@@ -8,8 +8,8 @@
 import Debug from 'debug'
 
 Debug.log = console.log.bind(console)
-const _log = Debug('koa-stub-LOG')
-const _error = Debug('koa-stub-ERROR')
+const _log = Debug('koa-glp-LOG')
+const _error = Debug('koa-glp-ERROR')
 
 export {
   _log,
