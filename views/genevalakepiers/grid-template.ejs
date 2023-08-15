@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <%# document head %>
-    <%#- await include('./partials/head.ejs') -%>
+    <%- await include('./partials/head.ejs') -%>
     <%# document head %>
   </head>
   <body>
@@ -13,25 +13,15 @@
         <%# header end %>
       </div>
 
-      <div class="grid-sidebar-left">
-        <%# page left sidebar %>
-        <%#- await include('./partials/content-gutter-left.ejs') -%>
-        <%# page left sidebar end %>
-      </div>
       <div class="grid-content" id="main-content">
         <%# main %>
         <%- body %>
         <%# main end %>
       </div>
-      <div class="grid-gutter-right">
-        <%# page right gutter %>
-        <%#- await include('./partials/content-gutter-right.ejs') -%>
-        <%# page right gutter end %>
-      </div>
 
       <div class="grid-footer">
         <%# footer %>
-        <%#- await include('./partials/body-footer.ejs') -%>
+        <%- await include('./partials/body-footer.ejs') -%>
         <%# footer end %>
       </div>
     </div>

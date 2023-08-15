@@ -1,0 +1,62 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Avenir Next', 'HelveticaNeue-Light', 'Helvetica Neue', 'Helvetica, Arial, san-serif';
+  font-size: 1.0em;
+}
+
+h1 { font-size: 1.5em; }
+h2 { font-size: 1.4em; }
+h3 { font-size: 1.3em; }
+h4 { font-size: 1.2em; }
+
+.smallem {
+  font-style: italic;
+  font-size: .9em;
+}
+
+a#skipnav {
+  position: absolute;
+  top: -1000px;
+}
+
+header {
+  max-width: 100%;
+  position: relative;
+  top: -15px;
+}
+
+header > div > picture > img {
+  max-width: 100%;
+}
+
+header > h1 {
+  margin: 0px 5px;
+}
+header > h1 > a:active,
+header > h1 > a:visited, 
+header > h1 > a:link {
+  color: black;
+  text-align: center;
+  max-width: 100%;
+}
+
+header > p {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+/* iPhone 6/7/8 Plus size */
+@media screen and (max-width: 414px) {
+
+}
+
+/* iPad sizes */
+@media screen and (min-width: 768px) and (max-width: 1180px) {
+
+}
+
+/* Desktop sizes */
+@media screen and (min-width: 1181px) {
+
+}

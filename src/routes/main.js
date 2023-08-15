@@ -19,6 +19,7 @@ function sanitize(param) {
   // fill in with some effective input scubbing logic
   return param
 }
+
 const router = new Router()
 async function hasFlash(ctx, next) {
   const log = mainLog.extend('hasFlash')
@@ -42,6 +43,10 @@ router.get('index', '/', hasFlash, async (ctx) => {
     body: ctx.body,
     flash: ctx.flash?.index ?? {},
     title: `${ctx.app.site}: Home`,
+    stylesheets: [],
+    siteName: ctx.app.site,
+    // appName: ctx.app.domain.toProperCase(),
+    appName: ctx.app.site.toProperCase(),
     isAuthenticated: ctx.state.isAuthenticated,
   })
 })

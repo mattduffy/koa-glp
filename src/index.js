@@ -100,8 +100,7 @@ if (app.env === 'development') {
 
 render(app, {
   root: `${appRoot}/views/${app.templateName}`,
-  // layout: 'grid-template',
-  layout: 'glp',
+  layout: 'grid-template',
   viewExt: 'ejs',
   cache: false,
   debug: true,
