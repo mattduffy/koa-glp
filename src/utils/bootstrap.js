@@ -68,7 +68,7 @@ const adminProps = {
   emails: [{ primary: 'matt@genevalakepiers.com', verified: false }],
   description: 'The first user account created.',
   username: 'matttheadmin',
-  password: '9@zzw0rd',
+  password: appEnv.TEST_PASSWORD,
   jwts: { token: '', refresh: '' },
   client: mongoClient.client,
   dbName: mongoEnv.MONGODB_DBNAME,
