@@ -7,8 +7,8 @@
 
 // import Debug from 'debug'
 import { METHODS } from 'node:http'
-import { subtle } from 'node:crypto'
-import { stat, readFile } from 'node:fs/promises'
+// import { subtle } from 'node:crypto'
+// import { stat, readFile } from 'node:fs/promises'
 import { _log, _error } from './utils/logging.js'
 import { Users } from './models/users.js'
 import { App } from './models/app.js'
@@ -20,6 +20,7 @@ const middlewareError = _error.extend('middlewares')
 export async function checkServerJWKs(ctx, next) {
   const log = middlewareLog.extend('checkServerJWKs')
   const error = middlewareLog.extend('checkServerJWKs')
+  log()
   try {
     const o = {
       db: ctx.state.mongodb.client,
@@ -343,6 +344,7 @@ export async function errors(ctx, next) {
 export async function errorHandlers(ctx, next) {
   const log = middlewareLog.extend('errorHandler')
   const error = middlewareError.extend('errorHandler')
+  log()
   try {
     await next()
     if (!ctx.body) {
