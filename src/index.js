@@ -168,9 +168,12 @@ async function csp(ctx, next) {
     + `style-src 'self' ${ctx.request.origin} 'unsafe-inline' 'nonce-${ctx.app.nonce}'; `
     + `style-src-attr ${ctx.request.origin} 'self' 'unsafe-inline' 'nonce-${ctx.app.nonce}'; `
     + `style-src-elem ${ctx.request.origin} 'self' 'unsafe-inline' 'nonce-${ctx.app.nonce}'; `
-    + `script-src 'self' ${ctx.request.origin} 'unsafe-inline' 'strict-dynamic' 'nonce-${ctx.app.nonce}'; `
-    + `script-src-attr 'self' ${ctx.request.origin} 'unsafe-inline' 'strict-dynamic' 'nonce-${ctx.app.nonce}'; `
-    + `script-src-elem 'self' ${ctx.request.origin} 'unsafe-inline' 'strict-dynamic' 'nonce-${ctx.app.nonce}'; `
+    // + `script-src 'self' ${ctx.request.origin} 'unsafe-inline' 'strict-dynamic' 'nonce-${ctx.app.nonce}'; `
+    + `script-src 'self' ${ctx.request.origin} 'nonce-${ctx.app.nonce}'; `
+    // + `script-src-attr 'self' ${ctx.request.origin} 'unsafe-inline' 'strict-dynamic' 'nonce-${ctx.app.nonce}'; `
+    + `script-src-attr 'self' ${ctx.request.origin} 'nonce-${ctx.app.nonce}'; `
+    // + `script-src-elem 'self' ${ctx.request.origin} 'unsafe-inline' 'strict-dynamic' 'nonce-${ctx.app.nonce}'; `
+    + `script-src-elem 'self' ${ctx.request.origin} 'nonce-${ctx.app.nonce}'; `
     + `img-src 'self' data: blob: ${ctx.request.origin}; `
     + `font-src 'self' ${ctx.request.origin}; `
     + `media-src 'self' data: ${ctx.request.origin}; `
