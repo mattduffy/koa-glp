@@ -1,0 +1,26 @@
+<main>
+  <article>
+    <h1>View Account Tokens</h1>
+    
+    <% if (view.message) { %>
+    <div id="messages" class="messages">
+      <span><%= view.message %></span>
+    </div>
+    <% } %>
+    <% if (view.error) { %>
+    <div id="errors" class="errors">
+      <span><%= view.error%></span>
+    </div>
+    <% } %>
+    <div class="account-tokens">
+      <dl>
+        <dt>Identity:</dt>
+        <dd><%- sessionUser.jwts.token %></dd>
+
+        <dt>Refresh:</dt>
+        <dd><%- sessionUser.jwts.refresh %></dt>
+      </dl>
+    </div>
+  </article>
+</main>
+

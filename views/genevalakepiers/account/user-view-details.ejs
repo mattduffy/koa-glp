@@ -1,0 +1,130 @@
+<main>
+  <article>
+    <h1>View User Details</h1>
+    
+    <p>This is the user detail page for <%= sessionUser.name %>.</p>
+    <% if (isAuthenticated) { %>
+      <p><a href="/account/edit">Edit</a></p>
+    <% } %>
+    <% if (edit?.info) { %>
+    <div id="info" class="info">
+      <span><%= edit.info %></span>
+    </div>
+    <% } %>
+    <% if (edit?.message) { %>
+    <div id="messages" class="messages">
+      <span><%= edit.message %></span>
+    </div>
+    <% } %>
+    <% if (edit?.error) { %>
+    <div id="errors" class="errors">
+      <span><%= edit.error%></span>
+    </div>
+    <% } %>
+      <dl class="" >
+        <div class="wrapper account-details">
+          <dt>First Name: </dt>
+          <dd><% if (sessionUser) { %><%=sessionUser?.firstName %><% } %></dd>
+
+          <dt>Last Name: </dt>
+          <dd><% if (sessionUser) { %><%=sessionUser?.lastName %><% } %></dd>
+
+          <dt>Display Name: </dt>
+          <dd><% if (sessionUser) { %><%=sessionUser?.displayName%><% } %></dd>
+
+          <dt>Username: </dt>
+          <dd><% if (sessionUser) { %><%=sessionUser?.username%><% } %></dd>
+
+          <dt>Url: </dt>
+          <dd><% if (sessionUser) { %><%= `${origin}/${sessionUser?.url}` %><% } %></dd>
+
+          <dt>JWK Set: </dt>
+          <dd><% if (sessionUser?._keys.signing.length > 0 || sessionUser?._keys.encrypting.length > 0) { %>
+              <a href="<%= `${origin}/@${sessionUser.username}/jwks.json` %>"><%= `${origin}/@${sessionUser.username}/jwks.json` %></a>
+              <% } else { %>
+              No public keys available. 
+              <% } %>
+          </dd>
+
+          <dt>Webfinger: </dt>
+          <dd><% if (sessionUser) { %>
+            <a href="<%= `${origin}/.well-known/webfinger?resource=acct:${sessionUser?.username}` %>"><%= `${origin}/.well-known/webfinger?resource=acct:${sessionUser?.username}` %></a>
+            <% } %>
+          </dd>
+
+          <dt>Primary Email Address: </dt>
+          <dd><% if (sessionUser) { %><%=sessionUser?.primaryEmail.primary %><% } %></dd>
+          
+          <dt>Secondary Email Address: </dt>
+          <dd><% if (sessionUser) {
+            %><%-sessionUser?.email.secondaryEmail?.secondary || '<span class="smallem">none provided</span>' %><% } %></dd>
+              
+          <dt>Account Type: </dt>
+          <dd><% if (sessionUser) { %><%=sessionUser?.type %><% } %></dd>
+
+          <dt>Description: </dt>
+          <dd><% if (sessionUser) { %><%=sessionUser?.description %><% } %></dd>
+
+          <dt>Account Status: </dt>
+          <dd><% if (sessionUser) { %><%=sessionUser?.status %><% } %></dd>
+
+          <dt>Require Follow Requests: </dt>
+          <dd><% if (sessionUser) { %><%= (sessionUser?.locked) ? 'Yes': 'No' %><% } %></dd>
+
+          <dt>Discoverable: </dt>
+          <dd><% if (sessionUser) { %><%= (sessionUser?.discoverable) ? 'Yes' : 'No' %><% } %></dd>
+
+          <dt>Bot Account: </dt>
+          <dd><% if (sessionUser) { %><%= (sessionUser?.bot) ? 'Yes': 'No' %><% } %></dd>
+
+          <dt>Group Actions: </dt>
+          <dd><% if (sessionUser) { %><%= (sessionUser?.group) ? 'Yes' : 'No' %><% } %></dd>
+
+          <dt>User Upload Dir: </dt>
+          <dd><% if (sessionUser.publicDir !== '') { %><%= `${origin}/${sessionUser?.publicDir}` %><% } else { %>
+            <span class="smallem">not set yet</span>
+          <% } %>
+          </dd>
+
+          <dt>Avatar: </dt>
+          <dd>
+            <figure>
+              <picture>
+                <% if (sessionUser.avatar !== '') { %>
+                <source srcset="<%= `${origin}/${sessionUser?.avatar}`%>" media="(min-width: 1200px)" id="avatar-big" width="350px" alt="avatar image">
+                <source srcset="<%= `${origin}/${sessionUser?.avatar}`%>" media="(min-width: 600px)" id="avatar-med" width="300px" alt="avatar image">
+                <source srcset="<%= `${origin}/${sessionUser?.avatar}`%>" media="(min-width: 300px)" id="avatar-sml" width="250px" alt="avatar image">
+                <% } %>
+                <img src="<%= defaultAvatar %>" id="defaultAvatar" alt="default avatar image">
+                <% if (sessionUser.avatar === '') { %>
+                <figcaption>
+                  <span class="smallem">Default avatar.  No avatar image uploaded yet.</span><br>
+                </figcaption>
+                <% } %>
+              </picture>
+            </figure>
+          </dd>
+
+          <dt>Header: </dt>
+          <dd>
+            <figure>
+              <picture>
+                <% if (sessionUser.header !== '') { %>
+                <source srcset="<%= `${origin}/${sessionUser?.header}` %>" media="(min-width: 1000px)" id="header-big" width="350px" alt="header image">
+                <source srcset="<%= `${origin}/${sessionUser?.header}` %>" media="(min-width: 600px)" id="header-med" width="300px" alt="header image">
+                <source srcset="<%= `${origin}/${sessionUser?.header}` %>" media="(min-width: 300px)" id="header-sml" width="250px" alt="header image">
+                <% } %>
+                <img src="<%= defaultHeader %>" id="defaultHeader" alt="default header image">
+                <% if (sessionUser.header === '') { %>
+                <figcaption>
+                  <span class="smallem">Default header.  No header image uploaded yet.</span><br>
+                </figcaption>
+                <% } %>
+              </picture>
+            </figure>
+          </dd>
+      </div>
+    </dl>
+  </article>
+</main>
+

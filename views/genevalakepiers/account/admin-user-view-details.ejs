@@ -1,0 +1,147 @@
+<main>
+  <article>
+    <h1>View User Details</h1>
+
+    <p>This is the user detail page for <%= displayUser.name %>.</p>
+    <% if (isAuthenticated) { %>
+      <p><a href="/admin/account/edit/@<%- displayUser.username %>">Edit</a></p>
+    <% } %>
+    <% if (view?.info) { %>
+    <div id="info" class="info">
+      <span><%= view.info %></span>
+    </div>
+    <% } %>
+    <% if (view?.message) { %>
+    <div id="messages" class="messages">
+      <span><%= view.message %></span>
+    </div>
+    <% } %>
+    <% if (view?.error) { %>
+    <div id="errors" class="errors">
+      <span><%= view.error%></span>
+    </div>
+    <% } %>
+    <dl class="viewUser">
+      <div class="wrapper account-details">
+        <dt>First Name: </dt>
+        <dd><% if (displayUser) { %><%=displayUser?.firstName %><% } %></dd>
+
+        <dt>Last Name: </dt>
+        <dd><% if (displayUser) { %><%=displayUser?.lastName %><% } %></dd>
+
+        <dt>Display Name: </dt>
+        <dd><% if (displayUser) { %><%=displayUser?.displayName%><% } %></dd>
+
+        <dt>Username: </dt>
+        <dd><% if (displayUser) { %><%=displayUser?.username%><% } %></dd>
+          
+        <dt>Url: </dt>
+        <dd><% if (displayUser) { %><%= `${origin}/${displayUser?.url}` %><% } %></dd>
+
+        <dt>JWK Set: </dt>
+        <dd><% if (displayUser._keys.signing.length > 0 || displayUser._keys.encrypting.length > 0) { %>
+            <a href="<%= `${origin}/@${displayUser.username}/jwks.json` %>"><%= `${origin}/@${displayUser.username}/jwks.json` %></a>
+            <% } else { %>
+              <span id="noKeys">No public keys available.</span>  [<span
+                class="link" id="createKeys" data-href="<%= `${origin}/account/${displayUser.username}/createKeys` %>">create key pairs</span>]
+            <% } %>
+        </dd>
+
+        <dt>Webfinger: </dt>
+        <dd><% if (displayUser) { %>
+          <a href="<%= `${origin}/.well-known/webfinger?resource=acct:${displayUser?.username}` %>"><%= `${origin}/.well-known/webfinger?resource=acct:${displayUser?.username}` %></a>
+          <% } %>
+        </dd>
+
+        <dt>Primary Email Address: </dt>
+        <dd><% if (displayUser) { %><%=displayUser?.primaryEmail.primary %><% } %></dd>
+        
+        <dt>Secondary Email Address: </dt>
+        <dd><% if (displayUser) {
+          %><%-displayUser?.email.secondaryEmail?.secondary || '<span class="smallem">none provided</span>' %><% } %></dd>
+            
+        <dt>Account Type: </dt>
+        <dd><% if (displayUser) { %><%=displayUser?.type %><% } %></dd>
+
+        <dt>Description: </dt>
+        <dd><% if (displayUser) { %><%=displayUser?.description %><% } %></dd>
+
+        <dt>Account Status: </dt>
+        <dd><% if (displayUser) { %><%=displayUser?.status %><% } %></dd>
+
+        <dt>Require Follow Requests: </dt>
+        <dd><% if (displayUser) { %><%= (displayUser.locked) ? 'Yes': 'No' %><% } %></dd>
+
+        <dt>Discoverable: </dt>
+        <dd><% if (displayUser) { %><%= (displayUser.discoverable) ? 'Yes' : 'No' %><% } %></dd>
+
+        <dt>Bot Account: </dt>
+        <dd><% if (displayUser) { %><%= (displayUser.bot) ? 'Yes': 'No' %><% } %></dd>
+
+        <dt>Group Actions: </dt>
+        <dd><% if (displayUser) { %><%= (displayUser.group) ? 'Yes' : 'No' %><% } %></dd>
+
+        <dt>User Upload Dir: </dt>
+        <dd><% if (displayUser.publicDir !== '') { %><%= `${origin}/${displayUser?.publicDir}` %><% } else { %>
+        <span class="smallem">not set yet</span>
+        <% } %></dd>
+
+        <dt>User Private Dir: </dt>
+        <dd><% if (displayUser.privateDir !== '') { %><%= `${privateDir}/${displayUser?.privateDir}` %><% } else { %>
+        <span class="smallem">not set yet</span>
+        <% } %></dd>
+
+        <dt>Avatar: </dt>
+        <dd>
+          <figure>
+            <picture>
+              <% if (displayUser.avatar !== '') { %>
+              <source srcset="<%= `${origin}/${displayUser?.avatar}`%>" media="(min-width: 1200px)" id="avatar-big" width="350px" alt="avatar image">
+              <source srcset="<%= `${origin}/${displayUser?.avatar}`%>" media="(min-width: 600px)" id="avatar-med" width="300px" alt="avatar image">
+              <source srcset="<%= `${origin}/${displayUser?.avatar}`%>" media="(min-width: 300px)" id="avatar-sml" width="250px" alt="avatar image">
+              <% } %>
+              <img src="<%= defaultAvatar %>" id="defaultAvatar" alt="default avatar image">
+              <% if (displayUser.avatar === '') { %>
+              <figcaption>
+                <span class="smallem">Default avatar.  No avatar image uploaded yet.</span><br>
+              </figcaption>
+              <% } %>
+            </picture>
+          </figure>
+        </dd>
+
+        <dt>Header: </dt>
+        <dd>
+          <figure>
+            <picture>
+              <% if (displayUser.header !== '') { %>
+              <source srcset="<%= `${origin}/${displayUser?.header}` %>" media="(min-width: 1000px)" id="header-big" width="350px" alt="header image">
+              <source srcset="<%= `${origin}/${displayUser?.header}` %>" media="(min-width: 600px)" id="header-med" width="300px" alt="header image">
+              <source srcset="<%= `${origin}/${displayUser?.header}` %>" media="(min-width: 300px)" id="header-sml" width="250px" alt="header image">
+              <% } %>
+              <img src="<%= defaultHeader %>" id="defaultHeader" alt="default header image">
+              <% if (displayUser.header  === '') { %>
+              <figcaption>
+                <span class="smallem">Default header.  No header image uploaded yet.</span><br>
+              </figcaption>
+              <% } %>
+            </picture>
+          </figure>
+        </dd>
+      </div>
+    </dl>
+    <script nonce="<%- nonce -%>">
+      let origin = '<%- origin -%>'
+      let jwtAccess = '<%- jwtAccess -%>'
+      let csrfToken = '<%- csrfToken -%>'
+      let atUsername = '@<%- displayUser.username -%>'
+      const link = document.querySelector('span#createKeys')
+    </script>
+    <script src="<%- origin -%>/j/vud.js" nonce="<%- nonce -%>"></script>
+    <script nonce="<%- nonce -%>">
+      if (link !== null) {
+        createKeysAdmin(link)
+      }
+    </script>  </article>
+</main>
+

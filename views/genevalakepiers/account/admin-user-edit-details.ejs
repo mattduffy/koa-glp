@@ -1,0 +1,78 @@
+<main>
+  <article>
+    <h1>Edit User Details</h1>
+    
+    <p>This is the user detail page for <%= displayUser.name %>.</p>
+    <% if (isAuthenticated) { %>
+      <p><a href="/admin/account/view/@<%- displayUser.username %>">View</a></p>
+    <% } %>
+    <form name="userEdit" id="edit" action="/admin/account/edit" method="POST" enctype="multipart/form-data">
+        <fieldset id="edit_fieldset" name="edit_fieldset" form="edit" class="edit_fieldset" title="edit Form">
+          <legend>Mattmadethese</legend>
+            <% if (edit?.info) { %>
+            <div id="info" class="info">
+              <span><%= edit.info%></span>
+            </div>
+            <% } %>
+            <% if (edit?.message) { %>
+            <div id="messages" class="messages">
+              <span><%= edit.message %></span>
+            </div>
+            <% } %>
+            <% if (edit?.error) { %>
+            <div id="errors" class="errors">
+              <span><%= edit.error %></span>
+            </div>
+            <% } %>
+            <div class="wrapper">
+              <label for="firstname">First Name: </label>
+              <input type="text" size="100%" tabindex="1" id="firstname" name="firstname" required autocomplete="given-name" value="<% if (displayUser) { %><%=displayUser?.firstName %><% } %>">
+
+              <label for="lastname">Last Name: </label>
+              <input type="text" size="100%" tabindex="2" id="lastname" name="lastname" required autocomplete="family-name" value="<% if (displayUser) { %><%=displayUser?.lastName %><% } %>">
+              
+              <label for="displayname">Display Name: </label>
+              <input type="text" size="100%" tabindex="4" id="displayname" name="displayname" required value="<% if (displayUser) { %><%=displayUser?.displayName %><% } %>">
+              
+              <label for="username">User Name: </label>
+              <input type="text" size="100%" tabindex="3" id="username" name="username" required autocomplete="username" value="<% if (displayUser) { %><%=displayUser?.username %><% } %>">
+              
+              <label for="url">Url: </label>
+              <input tpye="text" size="100%" tabindex="14" id="url" name="url" value="<% if (displayUser) { %><%=displayUser.url%><% } %>">
+
+              <label for="primaryEmail">Primary Email Address: </label>
+              <input type="email" size="100%" tabindex="5" id="primaryEmail" name="primaryEmail" required autocomplete="email" value="<% if (displayUser) { %><%=displayUser?.primaryEmail.primary%><% } %>">
+           
+              <label for="secondaryEmail">Secondary Email Address: </label>
+              <input type="email" size="100%" tabindex="6" id="secondaryEmail" name="secondaryEmail" autocomplete="email" value="<% if (displayUser) { %><%=displayUser?.email.secondaryEmail?.secondary%><% } %>">
+              
+              <label for="description">Description: </label>
+              <input type="text" size="100%" tabindex="7" id="description" name="description" value="<% if (displayUser) { %><%=displayUser?.description%><% } %>">
+              
+              <label for="isLocked">Require Follow Requests: </label>
+              <input type="checkbox" tabindex="8" id="isLocked" name="isLocked" <% if (displayUser) { %><%= (displayUser.locked) ? 'checked' : '' %><% } %>>
+
+              <label for="isDiscoverable">Discoverable: </label>
+              <input type="checkbox" tabindex="11" id="isDiscoverable" name="isDiscoverable" <% if (displayUser) { %><%= (displayUser.discoverable) ? 'checked' : ''%><% } %>>
+              
+              <label for="isBot">Is Bot Account: </label>
+              <input type="checkbox" tabindex="9" id="isBot" name="isBot" <% if (displayUser) { %><%= (displayUser.bot) ? 'checked' : ''%><% } %>> 
+
+              <label for="isGroup">Is Group Account: </label>
+              <input type="checkbox" tabindex="10" id="isGroup" name="isGroup" <% if (displayUser) { %><%= (displayUser.group) ? 'checked' : ''%><% } %>>
+              
+              <label for="avatar">Avatar:</label>
+              <input type="file" tabindex="12" id="avatar" name="avatar" accept="image/png, image/jpeg, image/gif">
+
+              <label for="header">Header: </label>
+              <input type="file" tabindex="13" id="header" name="header" accept="image/png, image/jpeg, image/gif">
+
+              <input type="hidden" id="csrf-token" name="csrf-token" value="<%= csrfToken %>">
+            </div> 
+            <input type="submit" tabindex="15" id="submit" name="submit" value="Save">
+            <input type="reset" tabindex="16" id="reset" name="reset" value="Reset">
+        </fieldset>
+      </form>  
+  </article>
+</main>
+

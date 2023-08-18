@@ -1,0 +1,109 @@
+<main>
+  <article>
+    <h1>This is the admin list users page.</h1>
+    
+    <% if (isAuthenticated) { %>
+      <%# <p><a href="/account/edit">Edit</a></p> %>
+    <% } %>
+    <% if (list?.message) { %>
+    <div id="messages" class="messages">
+      <span><%= list.message %></span>
+    </div>
+    <% } %>
+    <% if (list?.info) { %>
+    <div id="info" class="info">
+      <span><%= list.info%></span>
+    </div>
+    <% } %>
+    <% if (list?.error) { %>
+    <div id="errors" class="errors">
+      <span><%= list.error%></span>
+    </div>
+    <% } %>
+    <section class="adminList" >
+    <% if (Admin && Admin.length > 0) { %>
+      <h4 id="admins" class="admins">Admins (<%- Admin.length -%>)</h3>
+      <div class="account-list">
+        <% Admin.forEach((u) => { %>
+          <div class="user"><a href="<%- origin -%>/@<%- u.username -%>">@<%- u.username -%></a></div>
+          <div class="status"><%-u.status-%></div>
+          <div class="edit">
+            <span class="edit">
+              <a href="<%- origin -%>/admin/account/view/@<%- u.username -%>">view</a>
+            </span>
+          </div>
+          <div class="view">
+              <span class="view">
+                <a href="<%- origin -%>/admin/account/edit/@<%- u.username -%>">edit</a>
+              </span>
+          </div>
+          <div class="delete">
+            <img src="<%- origin -%>/i/delete.svg" class="trashcan" data-username="<%- u.username -%>" data-id="<%- u.id -%>" data-csrfToken="<%- csrfToken -%>" >
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      No Admin users created
+    <% } %>
+    </section>
+
+    <section class="creatorList" >
+    <% if (Creator && Creator.length > 0) { %>
+      <h4 id="creators" class="creators">Creators (<%- Creator.length -%>)</h4>
+      <div class="account-list">
+        <% Creator.forEach((u) => { %>
+          <div class="user"><a href="<%-origin-%>/@<%- u.username -%>">@<%- u.username -%></a></div>
+          <div class="status"><%-u.status-%></div>
+          <div class="edit">
+            <span class="edit">
+              <a href="<%- origin -%>/admin/account/view/@<%- u.username -%>">view</a>
+            </span>
+          </div>
+          <div class="view">
+            <span class="view">
+              <a href="<%- origin -%>/admin/account/edit/@<%- u.username -%>">edit</a>
+            </span>
+          </div>
+          <div class="delete">
+            <img src="<%- origin -%>/i/delete.svg" class="trashcan" data-username="<%- u.username -%>" data-id="<%- u.id -%>" data-csrfToken="<%- csrfToken -%>" >
+          </div>
+        <% }) %>
+      </div>  
+    <% } else { %>
+      No Creator accounts created
+    <% } %>
+    </section>
+
+    <section class="userList" >
+    <% if (User && User.length > 0) { %>
+      <h4 id="users" class="users">Users (<%- User.length -%>)</h4>
+      <div class="account-list">
+        <% User.forEach((u) => { %>
+            <div class="user"><a href="<%-origin-%>/@<%- u.username -%>">@<%- u.username -%></a></div>
+            <div class="status"><%-u.status-%></div>
+            <div class="edit">
+              <span class="edit">
+                <a href="<%- origin -%>/admin/account/view/@<%- u.username -%>">view</a>
+              </span>
+            </div>
+            <div class="view">
+              <span class="view">
+                <a href="<%- origin -%>/admin/account/edit/@<%- u.username -%>">edit</a>
+              </span>
+            </div>
+            <div class="delete">
+              <img src="<%- origin -%>/i/delete.svg" class="trashcan" data-username="<%- u.username -%>" data-id="<%- u.id -%>" data-csrfToken="<%- csrfToken -%>" >
+            </div>
+        <% }) %>
+      </div>  
+    <% } else { %>
+      No User accounts created
+    <% } %>
+    </section>
+    <script nonce="<%- nonce -%>">
+      let origin = '<%- origin -%>'
+      let jwtAccess = '<%- jwtAccess -%>'
+    </script>
+    <script src="<%- origin -%>/j/adminlist.js" nonce="<%- nonce -%>"></script>
+  </article>
+</main>

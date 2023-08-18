@@ -1,0 +1,41 @@
+<main id="main-content">
+  <article>
+    <section>
+      <h1 class="login">Login</h1>
+      <form name="login" id="login" action="/login" method="POST" enctype="multipart/form-data">
+        <fieldset id="login_fieldset" name="login_fieldset" form="login" class="login_fieldset" title="Login Form">
+          <legend>Mattmadethese</legend>
+            <% if (login?.info) { %>
+            <div id="info" class="info">
+              <span><%= login.info %></span>
+            </div>
+            <% } %>
+            <% if (login?.message) { %>
+            <div id="messages" class="messages">
+              <span><%= login.message %></span>
+            </div>
+            <% } %>
+            <% if (login?.error) { %>
+            <div id="errors" class="errors">
+              <span><%= login.error %></span>
+            </div>
+            <% } %>
+            <div class="wrapper">
+              <label for="username">Username: </label>
+              <input type="text" size="45" tabindex="1" id="username" name="username" required autocomplete="username" value="<% if (login) { %><%=login?.username %><% } %>">
+
+              <label for="password">Password: </label>
+              <input type="password" size="45" tabindex="2" id="password" name="password" required autocomplete="current-password" value="">
+
+              <input type="hidden" id="csrf-token" name="csrf-token" value="<%= csrfToken   %>">
+            </div>
+            <input type="submit" tabindex="3" id="submit" name="submit" value="Login">
+            <input type="reset" id="reset" name="reset" value="Reset">
+        </fieldset>
+      </form>
+      <script nonce="<%- nonce -%>">
+        document.querySelector('input[type="text"]#username').focus()
+      </script>
+    </section>
+  </article>
+</main>

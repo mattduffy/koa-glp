@@ -1,0 +1,73 @@
+<main>
+  <article>
+    <h1>View Account Public Keys</h1>
+    
+    <% if (view.message) { %>
+    <div id="messages" class="messages">
+      <span><%= view.message %></span>
+    </div>
+    <% } %>
+    <% if (view.error) { %>
+    <div id="errors" class="errors">
+      <span><%= view.error%></span>
+    </div>
+    <% } %>
+    <div class="account-pubkey">
+      <dl>
+        <dt>
+          <%
+          const sigK = await sessionUser.publicSigningKey
+          const encK = await sessionUser.publicEncryptingKey
+          if (sigK === null && encK === null) { %>
+          <div id="noKeys">
+            <span>No JWKs created yet.</span>
+            <br>
+            <span id="createKeys" class="link" data-href="<%= `${origin}/account/${sessionUser.username}/createKeys` %>">Create keys pairs.</span>
+          </div>
+          <% } else { %>
+          <a href="<%= origin %>/@<%= sessionUser.username %>/jwks.json">
+            <%= origin %>/@<%= sessionUser.username %>/jwks.json
+          </a>
+          <% } %>
+        </dt>
+        <dd>
+        </dd>
+
+        <dt>Public Signing Key:</dt>
+          <pre data-sig><%- await sessionUser.publicSigningKey %></pre>
+        </dd>
+
+        <dt>Signing JWK</dt>
+        <dd>
+          <pre data-sig-jwk><%- await sessionUser.signingJwk %></pre>
+        </dd>
+
+        <dt>Public Encrypting Key:</dt>
+        <dd>
+          <pre data-enc><%- await sessionUser.publicEncryptingKey %></pre>
+        </dd>
+        
+        <dt>Encrypting JWK</dt>
+        <dd>
+          <pre data-enc-jwk><%- await sessionUser.encryptingJwk %></pre>
+        </dd>
+      </dl>
+    </div>
+    <script nonce="<%- nonce -%>">
+      let page = '<%- pageName -%>'
+      let origin = '<%- origin -%>'
+      let csrfToken = '<%- csrfToken -%>'
+      let jwtAccess = '<%- jwtAccess -%>'
+      let atUsername = '@<%- sessionUser.username -%>'
+      const link = document.querySelector('span#createKeys')
+      console.log(link)
+    </script>
+    <script src="<%- origin -%>/j/vud.js" nonce="<%- nonce -%>"></script>
+    <script nonce="<%- nonce -%>">
+      if (link !== null) {
+        createKeysUser(link)
+      }
+    </script>
+  </article>
+</main>
+
