@@ -3,7 +3,7 @@
     <title><%- title -%></title>
     <link rel="icon" type="image/x-icon" href="/i/favicon.ico"> 
     <link rel="stylesheet" href="/c/glp.css">
-    <% if (stylesheets !== undefined) { %>
+    <% if (typeof stylesheets !== 'undefined') { %>
     <% stylesheets.forEach((css) => { %>
         <link rel="stylesheet" href="<%= css %>">
     <% }) %>

@@ -61,10 +61,9 @@ export const app = new Koa.default()
 app.keys = new Keygrip([key1, key2, key3])
 app.env = process.env.APP_ENV ?? 'development'
 app.site = process.env.SITE_NAME ?? 'Web site'
+app.domain = process.env.DOMAIN_NAME ?? 'website.com'
 app.host = `${process.env.HOST}:${port}` ?? `127.0.0.1:${port}`
 app.origin = app.host
-// app.host = `${process.env.HOST}` ?? '127.0.0.1'
-app.domain = process.env.DOMAIN_NAME ?? 'website.com'
 
 app.proxy = true
 app.root = appRoot
@@ -108,36 +107,6 @@ render(app, {
   async: true,
 })
 
-// x-response-time
-// async function xResponseTime(ctx, next) {
-//   const start = Date.now()
-//   try {
-//     await next()
-//     const ms = Date.now() - start
-//     ctx.set('X-Response-Time', `${ms}`)
-//     log(`${ctx.method} ${ctx.url} - ${ms}`)
-//     // log('session: %o', ctx.session)
-//   } catch (e) {
-//     error(e)
-//   }
-// }
-
-// logging
-// async function logging(ctx, next) {
-//   log('ctx.state: %o', ctx.state)
-//   await next()
-// }
-
-// session? cookie?
-// async function sessionViews(ctx, next) {
-//   await next()
-//   if (!ctx.session) return
-//   if (/favicon/.test(ctx.path)) return
-//   const n = ctx.session?.views ?? 0
-//   ctx.session.views = n + 1
-//   ctx.cookies.set('views', ctx.session.views)
-// }
-
 async function proxyCheck(ctx, next) {
   const logg = log.extend('proxyCheck')
   const err = error.extend('proxyCheck')
@@ -160,6 +129,7 @@ async function csp(ctx, next) {
   const logg = log.extend('CSP')
   const err = error.extend('CSP')
   ctx.app.nonce = crypto.randomBytes(16).toString('base64')
+  ctx.state.nonce = ctx.app.nonce
   const policy = 'base-uri \'none\'; '
     + 'default-src \'self\'; '
     + 'frame-ancestors \'none\'; '
@@ -168,11 +138,8 @@ async function csp(ctx, next) {
     + `style-src 'self' ${ctx.request.origin} 'unsafe-inline' 'nonce-${ctx.app.nonce}'; `
     + `style-src-attr ${ctx.request.origin} 'self' 'unsafe-inline' 'nonce-${ctx.app.nonce}'; `
     + `style-src-elem ${ctx.request.origin} 'self' 'unsafe-inline' 'nonce-${ctx.app.nonce}'; `
-    // + `script-src 'self' ${ctx.request.origin} 'unsafe-inline' 'strict-dynamic' 'nonce-${ctx.app.nonce}'; `
     + `script-src 'self' ${ctx.request.origin} 'nonce-${ctx.app.nonce}'; `
-    // + `script-src-attr 'self' ${ctx.request.origin} 'unsafe-inline' 'strict-dynamic' 'nonce-${ctx.app.nonce}'; `
     + `script-src-attr 'self' ${ctx.request.origin} 'nonce-${ctx.app.nonce}'; `
-    // + `script-src-elem 'self' ${ctx.request.origin} 'unsafe-inline' 'strict-dynamic' 'nonce-${ctx.app.nonce}'; `
     + `script-src-elem 'self' ${ctx.request.origin} 'nonce-${ctx.app.nonce}'; `
     + `img-src 'self' data: blob: ${ctx.request.origin}; `
     + `font-src 'self' ${ctx.request.origin}; `
@@ -196,14 +163,6 @@ async function cors(ctx, next) {
   const logg = log.extend('CORS')
   const err = error.extend('CORS')
   logg('Cors middleware checking headers.')
-  // const keys = Object.keys(ctx.request.headers)
-  // keys.forEach((k) => {
-  //   // logg(`header: ${k} : ${ctx.request.headers[k]}`)
-  //   if (/^access-control-|origin/i.test(k)) {
-  //     ctx.set('Vary', 'Origin')
-  //     ctx.set('Access-Control-Allow-Origin', '*')
-  //   }
-  // })
   ctx.set('Vary', 'Origin')
   ctx.set('Access-Control-Allow-Origin', ctx.request.origin)
   ctx.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
@@ -232,6 +191,13 @@ async function isMongo(ctx, next) {
   }
 }
 
+app.use(async (ctx, next) => {
+  ctx.state.origin = ctx.request.origin
+  ctx.state.siteName = ctx.app.site
+  ctx.state.appName = ctx.app.site.toProperCase()
+  ctx.state.stylesheets = []
+  await next()
+})
 app.use(errors)
 app.use(httpMethodOverride())
 app.use(isMongo)
@@ -243,9 +209,6 @@ app.use(checkServerJWKs)
 app.use(proxyCheck)
 app.use(csp)
 app.use(cors)
-// app.use(xResponseTime)
-// app.use(sessionViews)
-// app.use(logging)
 app.use(serve(app.dirs.public.dir))
 app.use(theApp.routes())
 app.use(Auth.routes())

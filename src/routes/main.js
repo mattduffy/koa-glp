@@ -39,14 +39,14 @@ router.get('index', '/', hasFlash, async (ctx) => {
   ctx.status = 200
   // log(ctx.state.sessionUser)
   await ctx.render('index', {
-    origin: ctx.request.origin,
+    // origin: ctx.request.origin,
+    // siteName: ctx.app.site,
+    // appName: ctx.app.site.toProperCase(),
+    // stylesheets: [],
     sessionUser: ctx.state.sessionUser,
     body: ctx.body,
     flash: ctx.flash?.index ?? {},
     title: `${ctx.app.site}: Home`,
-    stylesheets: [],
-    siteName: ctx.app.site,
-    appName: ctx.app.site.toProperCase(),
     isAuthenticated: ctx.state.isAuthenticated,
     nonce: ctx.app.nonce,
   })
