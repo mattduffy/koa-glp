@@ -1,8 +1,8 @@
 const permButtonDiv = document.querySelector('div#permissionButton') ?? null
 if (permButtonDiv !== null) {
-  permButtonDiv.appendChild(deviceOrientationPermissionButton)
   const deviceOrientationPermissionButton = document.createElement('button')
   deviceOrientationPermissionButton.innerText = 'Can I please?'
+  permButtonDiv.appendChild(deviceOrientationPermissionButton)
   if (deviceOrientationPermissionButton !== null) {
     window.addEventListener('touchend', async (e) => {
       if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
