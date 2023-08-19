@@ -72,6 +72,8 @@ const adminProps = {
   jwts: { token: '', refresh: '' },
   client: mongoClient.client,
   dbName: mongoEnv.MONGODB_DBNAME,
+  userStatus: 'active',
+  schemaVer: 0,
 }
 const firstUser = Users.newAdminUser(adminProps)
 const savedFirstUser = await firstUser.save()
