@@ -41,28 +41,29 @@ const error = _error.extend('index')
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const appRoot = path.resolve(`${__dirname}/..`)
+const appEnv = {}
 const showDebug = process.env.NODE_ENV !== 'production'
-dotenv.config({ path: path.resolve(appRoot, 'config/app.env'), debug: showDebug })
+dotenv.config({ path: path.resolve(appRoot, 'config/app.env'), processEnv: appEnv, debug: showDebug })
 // dotenv.config({ path: path.resolve(appRoot, 'config/test.env'), debug: showDebug })
 
 console.info('****************************************************')
 console.info('*                                                  *')
-console.info(`* Starting up: ${process.env.SITE_NAME}                   *`)
-console.info(`*       local: http://${process.env.HOST}:${process.env.PORT}           *`)
-console.info(`*      public: https://${process.env.DOMAIN_NAME}         *`)
+console.info(`* Starting up: ${appEnv.SITE_NAME}                   *`)
+console.info(`*       local: http://${appEnv.HOST}:${appEnv.PORT}           *`)
+console.info(`*      public: https://${appEnv.DOMAIN_NAME}         *`)
 console.info('****************************************************')
 
-const key1 = process.env.KEY1
-const key2 = process.env.KEY2
-const key3 = process.env.KEY3
-const port = process.env.PORT ?? 3333
+const key1 = appEnv.KEY1
+const key2 = appEnv.KEY2
+const key3 = appEnv.KEY3
+const port = appEnv.PORT ?? 3333
 
 export const app = new Koa.default()
 app.keys = new Keygrip([key1, key2, key3])
-app.env = process.env.APP_ENV ?? 'development'
-app.site = process.env.SITE_NAME ?? 'Web site'
-app.domain = process.env.DOMAIN_NAME ?? 'website.com'
-app.host = `${process.env.HOST}:${port}` ?? `127.0.0.1:${port}`
+app.env = appEnv.APP_ENV ?? 'development'
+app.site = appEnv.SITE_NAME ?? 'Web site'
+app.domain = appEnv.DOMAIN_NAME ?? 'website.com'
+app.host = `${appEnv.HOST}:${port}` ?? `127.0.0.1:${port}`
 app.origin = app.host
 
 app.proxy = true
@@ -86,11 +87,11 @@ app.dirs = {
     accounts: `${appRoot}/private/a`,
   },
 }
-process.env.UPLOADSDIR = app.dirs.private.uploads
+appEnv.UPLOADSDIR = app.dirs.private.uploads
 
 const o = {
   db: path.resolve(`${app.root}/src`, 'daos/impl/mongodb/mongo-client.js'),
-  db_name: process.env.MONGODB_DBNAME ?? 'test',
+  db_name: mongoClient.dbname ?? appEnv.MONGODB_DBNAME ?? 'test',
 }
 app.use(session(config, app))
 if (app.env === 'development') {
@@ -128,19 +129,20 @@ async function proxyCheck(ctx, next) {
 async function csp(ctx, next) {
   const logg = log.extend('CSP')
   const err = error.extend('CSP')
-  ctx.app.nonce = crypto.randomBytes(16).toString('base64')
-  ctx.state.nonce = ctx.app.nonce
+  // nonce assignment moved to the viewGlobals() middleware function.
+  // ctx.app.nonce = crypto.randomBytes(16).toString('base64')
+  const { nonce } = ctx.state
   const policy = 'base-uri \'none\'; '
     + 'default-src \'self\'; '
     + 'frame-ancestors \'none\'; '
     + 'object-src \'none\'; '
     + 'form-action \'self\'; '
-    + `style-src 'self' ${ctx.request.origin} 'unsafe-inline' 'nonce-${ctx.app.nonce}'; `
-    + `style-src-attr ${ctx.request.origin} 'self' 'unsafe-inline' 'nonce-${ctx.app.nonce}'; `
-    + `style-src-elem ${ctx.request.origin} 'self' 'unsafe-inline' 'nonce-${ctx.app.nonce}'; `
-    + `script-src 'self' ${ctx.request.origin} 'nonce-${ctx.app.nonce}'; `
-    + `script-src-attr 'self' ${ctx.request.origin} 'nonce-${ctx.app.nonce}'; `
-    + `script-src-elem 'self' ${ctx.request.origin} 'nonce-${ctx.app.nonce}'; `
+    + `style-src 'self' ${ctx.request.origin} 'unsafe-inline' 'nonce-${nonce}'; `
+    + `style-src-attr ${ctx.request.origin} 'self' 'unsafe-inline' 'nonce-${nonce}'; `
+    + `style-src-elem ${ctx.request.origin} 'self' 'unsafe-inline' 'nonce-${nonce}'; `
+    + `script-src 'self' ${ctx.request.origin} 'nonce-${nonce}'; `
+    + `script-src-attr 'self' ${ctx.request.origin} 'nonce-${nonce}'; `
+    + `script-src-elem 'self' ${ctx.request.origin} 'nonce-${nonce}'; `
     + `img-src 'self' data: blob: ${ctx.request.origin}; `
     + `font-src 'self' ${ctx.request.origin}; `
     + `media-src 'self' data: ${ctx.request.origin}; `
@@ -178,12 +180,13 @@ async function cors(ctx, next) {
 // checking to see if mongodb client is working
 async function isMongo(ctx, next) {
   const logg = log.extend('isMongo')
-  const err = log.extend('isMongo')
+  const err = error.extend('isMongo')
   // const { client, ObjectId } = mongoClient
   // logg(mongoClient.uri)
   ctx.state.mongodb = mongoClient
   try {
-    logg(mongoClient.client.s.namespace)
+    logg(mongoClient.uri)
+    // logg(mongoClient.client)
     await next()
   } catch (e) {
     err(e)
@@ -191,13 +194,32 @@ async function isMongo(ctx, next) {
   }
 }
 
-app.use(async (ctx, next) => {
+async function viewGlobals(ctx, next) {
+  ctx.state.nonce = crypto.randomBytes(16).toString('base64')
   ctx.state.origin = ctx.request.origin
   ctx.state.siteName = ctx.app.site
   ctx.state.appName = ctx.app.site.toProperCase()
   ctx.state.stylesheets = []
   await next()
-})
+}
+
+async function logRequest(ctx, next) {
+  const logg = log.extend('logRequest')
+  const err = error.extend('logRequest')
+  try {
+    logg(`Request href:       ${ctx.request.href}`)
+    logg(`Request remote ips: ${ctx.request.ips}`)
+    logg(`Request remote ip:  ${ctx.request.ip}`)
+    logg('Request headers:    %O', ctx.request.headers)
+    await next()
+  } catch (e) {
+    err(e)
+    ctx.throw(500, 'Rethrown in logRequest middleware.')
+  }
+}
+
+app.use(logRequest)
+app.use(viewGlobals)
 app.use(errors)
 app.use(httpMethodOverride())
 app.use(isMongo)
