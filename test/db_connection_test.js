@@ -4,7 +4,7 @@
 
 import * as Dotenv from 'dotenv'
 import { MongoClient } from 'mongodb'
-import bcrypt from 'bcrypt'
+// import bcrypt from 'bcrypt'
 import crypto from 'node:crypto'
 import jwt from 'jsonwebtoken'
 import fs from 'node:fs'
@@ -12,21 +12,22 @@ import Debug from 'debug'
 
 const debug = Debug('users:db_conn_test')
 
-Dotenv.config({ path: './config/.env' })
+const mongodbEnv = {}
+Dotenv.config({ path: './config/mongodb.env', processEnv: mongodbEnv })
 
-const jwtIssuer = process.env.JWT_ISSUER
+const jwtIssuer = mongodbEnv.JWT_ISSUER
 
-const dbName = process.env.DB_NAME
-// const colName = process.env.COLLECTION_NAME
-const clientDn = process.env.MONGODB_CLIENT_DN
-const dbHost = process.env.MONGODB_HOST
-const dbPort1 = process.env.MONGODB_PORT_1
-const dbPort2 = process.env.MONGODB_PORT_2
-const dbPort3 = process.env.MONGODB_PORT_3
+const dbName = mongodbEnv.DB_NAME
+// const colName = mongodbEnv.COLLECTION_NAME
+const clientDn = mongodbEnv.MONGODB_CLIENT_DN
+const dbHost = mongodbEnv.MONGODB_HOST
+const dbPort1 = mongodbEnv.MONGODB_PORT_1
+const dbPort2 = mongodbEnv.MONGODB_PORT_2
+const dbPort3 = mongodbEnv.MONGODB_PORT_3
 const authMechanism = 'MONGODB-X509'
 const authSource = '$external'
-const clientPEMFile = encodeURIComponent(process.env.MONGODB_CLIENT_KEY)
-const dbCAKeyFile = encodeURIComponent(process.env.MONGODB_CAKEYFILE)
+const clientPEMFile = encodeURIComponent(mongodbEnv.MONGODB_CLIENT_KEY)
+const dbCAKeyFile = encodeURIComponent(mongodbEnv.MONGODB_CAKEYFILE)
 const uri = `mongodb://${clientDn}@${dbHost}:${dbPort1},${dbHost}:${dbPort2},${dbHost}:${dbPort3}/${dbName}?replicaSet=myReplicaSet&authMechanism=${authMechanism}&tls=true&tlsCertificateKeyFile=${clientPEMFile}&tlsCAFile=${dbCAKeyFile}&authSource=${authSource}`
 
 // debug(uri)
@@ -42,7 +43,7 @@ function gID() {
 }
 
 function gT() {
-  const secret = fs.readFileSync(process.env.JWT_PRIKEY)
+  const secret = fs.readFileSync(mongodbEnv.JWT_PRIKEY)
   const toptions = {
     algorithm: 'HS256', expiresIn: '30m', issuer: jwtIssuer, subject: 'matt', audience: 'access', jwtid: gID(),
   }
