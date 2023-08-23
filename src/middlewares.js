@@ -13,6 +13,7 @@ import { _log, _error } from './utils/logging.js'
 import { Users } from './models/users.js'
 import { App } from './models/app.js'
 
+// const DBNAME = 'genevalakepiers'
 const USERS = 'users'
 const middlewareLog = _log.extend('middlewares')
 const middlewareError = _error.extend('middlewares')
@@ -23,8 +24,9 @@ export async function checkServerJWKs(ctx, next) {
   log()
   try {
     const o = {
-      db: ctx.state.mongodb.client,
+      db: ctx.state.mongodb.client.db(ctx.state.mongodb.client.dbName),
       keyDir: ctx.app.dirs.keys,
+      siteName: ctx.app.site,
     }
     const theApp = new App(o)
     ctx.state.keys = await theApp.keys()
@@ -46,7 +48,7 @@ export async function getSessionUser(ctx, next) {
     try {
       log(`restoring session user: ${ctx.session.id}`)
       log(`requested url: ${ctx.request.originalUrl}`)
-      const db = ctx.state.mongodb.client.db()
+      const db = ctx.state.mongodb.client.db(ctx.state.mongodb.client.dbName)
       const collection = db.collection(USERS)
       const users = new Users(collection, ctx)
       const user = await users.getById(ctx.session.id)

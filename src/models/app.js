@@ -42,8 +42,8 @@ class App {
 
     this._keyDir = config.keyDir ?? './keys'
     this._dbHandle = config?.db
-    this._db = config?.db.db().collection(COLLECTION)
-    this._siteName = process.env.SITE_NAME ?? 'website'
+    this._db = config?.db.collection(COLLECTION)
+    this._siteName = config.siteName ?? process.env.SITE_NAME ?? 'website'
     this._keys = config.keys ?? { signing: [], encrypting: [] }
     this.#cryptoKeys = new CryptoKeys({ dirs: { public: this._keyDir, private: this._keyDir } })
   }
