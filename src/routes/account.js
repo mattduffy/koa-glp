@@ -35,6 +35,15 @@ function sanitize(param) {
   return param
 }
 
+function sanitizeFilename(filename) {
+  // Remove white space characters from filename.
+  // Remove non-word characters from filename.
+  /* eslint-disable-next-line */
+  const cleanName = filename.replace(/[\s!@#\$%&*\(\)](?!(\.\w{1,4}$))/g, '_')
+  console.info(`Sanitizing filename ${filename} to ${cleanName}`)
+  return cleanName
+}
+
 async function hasFlash(ctx, next) {
   const log = accountLog.extend('hasFlash')
   const error = accountError.extend('hasFlash')
@@ -441,16 +450,22 @@ router.post('accountEditPost', '/account/edit', hasFlash, async (ctx) => {
       }
       const { avatar } = ctx.request.files
       if (avatar.size > 0) {
-        const avatarSaved = path.resolve(`${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}avatar-${avatar.originalFilename}`)
+        const avatarOriginalFilenameCleaned = sanitizeFilename(avatar.originalFilename)
+        // const avatarSaved = path.resolve(`${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}avatar-${avatar.originalFilename}`)
+        const avatarSaved = path.resolve(`${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}avatar-${avatarOriginalFilenameCleaned}`)
         await rename(avatar.filepath, avatarSaved)
-        ctx.state.sessionUser.avatar = `${ctx.state.sessionUser.publicDir}avatar-${avatar.originalFilename}`
+        // ctx.state.sessionUser.avatar = `${ctx.state.sessionUser.publicDir}avatar-${avatar.originalFilename}`
+        ctx.state.sessionUser.avatar = `${ctx.state.sessionUser.publicDir}avatar-${avatarOriginalFilenameCleaned}`
       }
       // log('header file: %O', ctx.request.files.header)
       const { header } = ctx.request.files
       if (header.size > 0) {
-        const headerSaved = path.resolve(`${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}header-${header.originalFilename}`)
+        const headerOriginalFilenameCleaned = sanitizeFilename(header.originalFilename)
+        // const headerSaved = path.resolve(`${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}header-${header.originalFilename}`)
+        const headerSaved = path.resolve(`${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}header-${headerOriginalFilenameCleaned}`)
         await rename(header.filepath, headerSaved)
-        ctx.state.sessionUser.header = `${ctx.state.sessionUser.publicDir}header-${header.originalFilename}`
+        // ctx.state.sessionUser.header = `${ctx.state.sessionUser.publicDir}header-${header.originalFilename}`
+        ctx.state.sessionUser.header = `${ctx.state.sessionUser.publicDir}header-${headerOriginalFilenameCleaned}`
       }
       try {
         ctx.state.sessionUser = await ctx.state.sessionUser.update()
@@ -706,16 +721,22 @@ router.post('adminEditUserPost', '/admin/account/edit', hasFlash, async (ctx) =>
         }
         const { avatar } = ctx.request.files
         if (avatar.size > 0) {
-          const avatarSaved = path.resolve(`${ctx.app.dirs.public.dir}/${displayUser.publicDir}avatar-${avatar.originalFilename}`)
+          const avatarOriginalFilenameCleaned = sanitizeFilename(avatar.originalFilename)
+          // const avatarSaved = path.resolve(`${ctx.app.dirs.public.dir}/${displayUser.publicDir}avatar-${avatar.originalFilename}`)
+          const avatarSaved = path.resolve(`${ctx.app.dirs.public.dir}/${displayUser.publicDir}avatar-${avatarOriginalFilenameCleaned}`)
           await rename(avatar.filepath, avatarSaved)
-          displayUser.avatar = `${displayUser.publicDir}avatar-${avatar.originalFilename}`
+          // displayUser.avatar = `${displayUser.publicDir}avatar-${avatar.originalFilename}`
+          displayUser.avatar = `${displayUser.publicDir}avatar-${avatarOriginalFilenameCleaned}`
         }
         // log('header file: %O', ctx.request.files.header)
         const { header } = ctx.request.files
         if (header.size > 0) {
-          const headerSaved = path.resolve(`${ctx.app.dirs.public.dir}/${displayUser.publicDir}header-${header.originalFilename}`)
+          const headerOriginalFilenameCleaned = sanitizeFilename(header.originalFilename)
+          // const headerSaved = path.resolve(`${ctx.app.dirs.public.dir}/${displayUser.publicDir}header-${header.originalFilename}`)
+          const headerSaved = path.resolve(`${ctx.app.dirs.public.dir}/${displayUser.publicDir}header-${headerOriginalFilenameCleaned}`)
           await rename(header.filepath, headerSaved)
-          displayUser.header = `${displayUser.publicDir}header-${header.originalFilename}`
+          // displayUser.header = `${displayUser.publicDir}header-${header.originalFilename}`
+          displayUser.header = `${displayUser.publicDir}header-${headerOriginalFilenameCleaned}`
         }
         const { url } = ctx.request.body
         if (url !== '') displayUser.url = url

@@ -49,6 +49,7 @@ const client = new MongoClient(uri)
 
 export {
   uri,
+  dbName,
   client,
   ObjectId,
 }
