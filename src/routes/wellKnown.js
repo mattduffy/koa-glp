@@ -20,7 +20,13 @@ router.get('jwks-json', '/.well-known/jwks.json', async (ctx) => {
   const log = wellKnownLog.extend('GET-jwks_json')
   const error = wellKnownError.extend('GET-jwks_json')
   log('server-wide JWK set')
-  const theApp = new App({ db: ctx.state.mongodb.client, keyDir: ctx.app.dirs.keys })
+  const o = {
+    db: ctx.state.mongodb.client.db(ctx.state.mongodb.client.dbName),
+    keyDir: ctx.app.dirs.keys,
+    siteName: ctx.app.site,
+  }
+  const theApp = new App(o)
+  // const theApp = new App({ db: ctx.state.mongodb.client, keyDir: ctx.app.dirs.keys })
   let keys
   try {
     keys = await theApp.keys()

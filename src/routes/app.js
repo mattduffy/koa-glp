@@ -28,7 +28,13 @@ router.get('appKeys', '/admin/app/keys', async (ctx) => {
     ctx.status = 401
     ctx.redirect('/')
   } else {
-    const theApp = new App({ db: ctx.state.mongodb.client, keyDir: ctx.app.dirs.keys })
+    const o = {
+      db: ctx.state.mongodb.client.db(ctx.state.mongodb.client.dbName),
+      keyDir: ctx.app.dirs.keys,
+      siteName: ctx.app.site,
+    }
+    const theApp = new App(o)
+    // const theApp = new App({ db: ctx.state.mongodb.client, keyDir: ctx.app.dirs.keys })
     const keys = await theApp.keys()
     log(keys)
     const csrfToken = ulid()
