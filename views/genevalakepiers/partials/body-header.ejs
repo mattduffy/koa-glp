@@ -11,5 +11,9 @@
   </div>
     <h1><a href="/"><%= appName %></a></h1>
     <p>The piers of Geneva Lake, Wisconsin.</p> 
- 
+    <% if (isAuthenticated) { %>
+    <p><a href="/logout">Logout</a></p>
+    <% } else { %>
+    <p><a href="/login">Login</a></p>
+    <% } %>
 </header>

@@ -37,18 +37,19 @@ router.get('index', '/', hasFlash, async (ctx) => {
   // const error = mainError.extend('index')
   log('inside main router: /')
   ctx.status = 200
-  // log(ctx.state.sessionUser)
+  log(`sessionUser.isAuthenticated: ${ctx.state.isAuthenticated}`)
   await ctx.render('index', {
     // origin: ctx.request.origin,
     // siteName: ctx.app.site,
     // appName: ctx.app.site.toProperCase(),
     // stylesheets: [],
+    // nonce: ctx.app.nonce,
     sessionUser: ctx.state.sessionUser,
     body: ctx.body,
     flash: ctx.flash?.index ?? {},
     title: `${ctx.app.site}: Home`,
     isAuthenticated: ctx.state.isAuthenticated,
-    nonce: ctx.app.nonce,
+    items: ['thing one to do.', 'thing two to do'],
   })
 })
 

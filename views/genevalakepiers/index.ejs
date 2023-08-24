@@ -1,3 +1,30 @@
-<div id="permissionButton">
+<% if (flash?.info) { %>
+  <div id="info" class="info">
+    <span><%= flash.info %></span>
+  </div>
+<% } %>
+<% if (flash?.message) { %>
+  <div id="messages" class="messages">
+    <span><%= flash.message %></span>
+  </div>
+<% } %>
+<% if (flash?.error) { %>
+  <div id="errors" class="errors">
+    <span><%= flash.error %></span>
+  </div>
+<% } %>
+<% if (isAuthenticated) { %>
+  <p><a href="/account/view">Your account page</a></p>
+  <% if (sessionUser) { %>
+    <h2>Hi, <%= sessionUser.displayName %></h2>
+    <% if (items.length > 0) { %>
+      <p>You have <a href="/#"><%= items.length %></a> items waiting for you.</p> 
+    <% } %>
+  <% } %>
+<% } %>
+<article>
+  <section>
+    Does this show up?
+  </section>
+</article>
 
-</div>

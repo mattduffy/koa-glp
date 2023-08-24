@@ -1,4 +1,5 @@
-body {
+html, body {
+  min-height: 100vh;
   margin: 0px;
   padding: 0px;
   font-family: 'Avenir Next', 'HelveticaNeue-Light', 'Helvetica Neue', 'Helvetica, Arial, san-serif';
@@ -18,6 +19,31 @@ h4 { font-size: 1.2em; }
 a#skipnav {
   position: absolute;
   top: -1000px;
+}
+
+div.grid-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: auto;
+}
+
+div.grid-header {
+  display: inherit;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+div.grid-content {
+  display: inherit;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+div.grid-footer {
+  display: inherit;
+  grid-row-start: 3;
+  grid-row-end: 4;
 }
 
 header {
@@ -44,6 +70,17 @@ header > h1 > a:link {
 header > p {
   margin-top: 5px;
   margin-left: 5px;
+}
+
+footer {
+  width: 100%;
+  padding: 0px 0px;
+  margin: 0px auto;
+  border-bottom: 1px solid black;
+}
+
+footer > section {
+
 }
 
 /* iPhone 6/7/8 Plus size */
