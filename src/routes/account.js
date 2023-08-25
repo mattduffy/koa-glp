@@ -272,10 +272,10 @@ router.get('accountPublicKeys', '/account/pubkeys', hasFlash, async (ctx) => {
         csrfToken,
         body: ctx.body,
         pageName: 'pubkeys',
-        nonce: ctx.app.nonce,
+        // nonce: ctx.app.nonce,
+        // origin: ctx.request.origin,
+        // sessionUser: ctx.state.sessionUser,
         view: ctx.flash.view ?? {},
-        origin: ctx.request.origin,
-        sessionUser: ctx.state.sessionUser,
         title: `${ctx.app.site}: View Public Key`,
         isAuthenticated: ctx.state.isAuthenticated,
         jwtAccess: (ctx.state.sessionUser.jwts).token,
@@ -526,9 +526,9 @@ router.get('adminListUsers', '/admin/account/listusers', hasFlash, async (ctx) =
       locals.list = ctx.flash
       locals.jwtAccess = (ctx.state.sessionUser.jwts).token
       locals.csrfToken = csrfToken
-      locals.nonce = ctx.app.nonce
-      locals.origin = ctx.request.origin
-      locals.title = `${ctx.app.site}: List Users`
+      // locals.nonce = ctx.app.nonce
+      // locals.origin = ctx.request.origin
+      locals.title = `${ctx.state.siteName}: List Users`
       locals.isAuthenticated = ctx.state.isAuthenticated
       allUsers.map((u) => {
         locals[u._id] = u.users
@@ -570,11 +570,11 @@ router.get('adminViewUser', '/admin/account/view/:username', hasFlash, async (ct
       const csrfToken = ulid()
       ctx.session.csrfToken = csrfToken
       ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })
-      locals.nonce = ctx.app.nonce
+      // locals.nonce = ctx.app.nonce
       locals.csrfToken = csrfToken
       locals.displayUser = displayUser
       locals.view = ctx.flash.view ?? {}
-      locals.origin = ctx.request.origin
+      // locals.origin = ctx.request.origin
       locals.pageName = 'admin_account_view'
       // locals.privateDir = ctx.app.privateDir
       locals.privateDir = ctx.app.dirs.private.dir
