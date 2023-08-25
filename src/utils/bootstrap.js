@@ -7,6 +7,7 @@
 import path from 'node:path'
 import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
+import crypto from 'node:crypto'
 import * as Users from '@mattduffy/users/Users.js'
 import * as mongoClient from '../daos/impl/mongodb/mongo-client.js'
 // import * as redis from '../daos/impl/redis/redis-client.js'
@@ -21,8 +22,10 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const appRoot = path.resolve(`${__dirname}/../..`)
 const appEnv = {}
-dotenv.config({ path: path.resolve(appRoot, 'config/app.env'), debug: true })
+dotenv.config({ path: path.resolve(appRoot, 'config/app.env'), processEnv: appEnv, debug: true })
 // log(appEnv)
+const bootEnv = {}
+dotenv.config({ path: path.resolve(appRoot, 'config/bootstrap.env'), processEnv: bootEnv, debug: true })
 const mongoEnv = {}
 dotenv.config({ path: path.resolve(appRoot, 'config/mongodb.env'), processEnv: mongoEnv, debug: true })
 // log(mongoEnv)
@@ -62,13 +65,16 @@ try {
 }
 
 // Bootstrap an admin user account.
+const rando = crypto.randomBytes(2).toString('hex')
+const at = bootEnv.EMAIL.indexOf('@')
+const email = `${bootEnv.EMAIL.slice(0, at)}${rando}${bootEnv.EMAIL.slice(at)}`
 const adminProps = {
-  first: 'Matt',
-  last: 'The Admin',
-  emails: [{ primary: 'matt@genevalakepiers.com', verified: false }],
-  description: 'The first user account created.',
-  username: 'matttheadmin',
-  password: appEnv.TEST_PASSWORD,
+  first: bootEnv.FIRST_NAME ?? 'First',
+  last: bootEnv.LAST_NAME ?? 'User',
+  emails: [{ primary: email ?? 'first_user@genevalakepiers.com', verified: false }],
+  description: bootEnv.DESCRIPTION ?? 'The first user account created.',
+  username: bootEnv.USERNAME ?? 'firstuser',
+  password: bootEnv.PASSWORD,
   jwts: { token: '', refresh: '' },
   client: mongoClient.client,
   dbName: mongoEnv.MONGODB_DBNAME,
@@ -76,7 +82,9 @@ const adminProps = {
   schemaVer: 0,
 }
 const firstUser = Users.newAdminUser(adminProps)
+firstUser.publicDir('public/a/')
 const savedFirstUser = await firstUser.save()
+
 log(savedFirstUser)
 
 // Bootstrapping done, exit process.
