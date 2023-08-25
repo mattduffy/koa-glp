@@ -85,7 +85,7 @@ router.post('postLogin', '/login', async (ctx) => {
     const db = ctx.state.mongodb.client.db()
     // await next()
     const collection = db.collection('users')
-    const users = new Users(collection)
+    const users = new Users(collection, ctx)
     const authUser = await users.authenticateAndGetUser(username, password)
     if (!authUser.user) {
       error(authUser.error)
