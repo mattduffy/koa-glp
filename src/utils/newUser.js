@@ -34,7 +34,6 @@ dotenv.config({ path: path.resolve(appRoot, 'config/app.env'), processEnv: appEn
 
 const program = new Command()
 program.name('newUser')
-  // .description(`Create a new user account for the ${appEnv.SITE_NAME} site.`)
   .requiredOption('--first <name>', 'User\'s first name')
   .requiredOption('--last <name>', 'User\'s last name')
   .requiredOption('--email <addr>', 'User\'s email address')
@@ -53,10 +52,6 @@ if (options?.test === true) {
   const at = options.email.indexOf('@')
   email = `${options.email.slice(0, at)}-${rando}${options.email.slice(at)}`
 }
-const db = mongoClient.client.db()
-const collection = db.collection('users')
-const _id = new mongoClient.ObjectId()
-log(`new mongo _id: ${_id}`)
 
 const ctx = {
   app: {
@@ -72,6 +67,9 @@ const ctx = {
   },
 }
 
+const _id = new mongoClient.ObjectId()
+log(`new mongo _id: ${_id}`)
+
 const userProps = {
   _id,
   first: options.first ?? 'First',
@@ -86,12 +84,13 @@ const userProps = {
   ctx,
   env: appEnv,
   dbName: mongoClient.dbName,
-  // client: mongoClient.client,
-  client: collection,
+  client: mongoClient.client,
 }
 
-log(mongoClient.uri)
-log(userProps)
+// log(mongoClient.uri)
+// log('[newUser] DB credentials in use: %O', userProps.client.options.credentials)
+// log('[newUser] DB name in use: ', userProps.client.options.dbName)
+
 let newUser
 if (options.admin === true) {
   newUser = Users.newAdminUser(userProps)
@@ -116,13 +115,5 @@ try {
   error(e)
   throw new Error(e.message, { cause: e })
 }
-// try {
-//   const updateResult = await savedNewUser.update()
-//   log(updateResult)
-// } catch (e) {
-//   error(e)
-//   throw new Error(e.message, { cause: e })
-// }
-
 // Done creating new user account, exit process.
 process.exit()
