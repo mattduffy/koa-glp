@@ -8,6 +8,7 @@ import path from 'node:path'
 import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
 import crypto from 'node:crypto'
+/* eslint-disable-next-line */
 import * as Users from '@mattduffy/users/Users.js'
 import * as mongoClient from '../daos/impl/mongodb/mongo-client.js'
 // import * as redis from '../daos/impl/redis/redis-client.js'
@@ -15,8 +16,8 @@ import { App } from '../models/app.js'
 // import { Users } from '../models/users.js'
 import { _log, _error } from './logging.js'
 
-const log = _log.extend('index')
-const error = _error.extend('index')
+const log = _log.extend('utils-bootstrap')
+const error = _error.extend('utils-bootstrap')
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -68,6 +69,19 @@ try {
 const rando = crypto.randomBytes(2).toString('hex')
 const at = bootEnv.EMAIL.indexOf('@')
 const email = `${bootEnv.EMAIL.slice(0, at)}${rando}${bootEnv.EMAIL.slice(at)}`
+const ctx = {
+  app: {
+    root: appRoot,
+    dirs: {
+      public: {
+        dir: `${appRoot}/public`,
+      },
+      private: {
+        dir: `${appRoot}/private`,
+      },
+    },
+  },
+}
 const adminProps = {
   first: bootEnv.FIRST_NAME ?? 'First',
   last: bootEnv.LAST_NAME ?? 'User',
@@ -76,16 +90,26 @@ const adminProps = {
   username: bootEnv.USERNAME ?? 'firstuser',
   password: bootEnv.PASSWORD,
   jwts: { token: '', refresh: '' },
-  client: mongoClient.client,
-  dbName: mongoEnv.MONGODB_DBNAME,
   userStatus: 'active',
   schemaVer: 0,
-}
-const firstUser = Users.newAdminUser(adminProps)
-firstUser.publicDir('public/a/')
-const savedFirstUser = await firstUser.save()
+  ctx,
+  env: appEnv,
+  dbName: mongoClient.dbName,
+  client: mongoClient.client,
 
-log(savedFirstUser)
+}
+try {
+  const firstUser = Users.newAdminUser(adminProps)
+  firstUser.publicDir('public/a/')
+  // firstUser.privateDir('private/a/')
+  const userKeys = await firstUser.generateKeys()
+  log(userKeys)
+  const savedFirstUser = await firstUser.save()
+  log(savedFirstUser)
+} catch (e) {
+  error(e)
+  throw new Error(e.message, { cause: e })
+}
 
 // Bootstrapping done, exit process.
 process.exit()
