@@ -22,7 +22,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "bootstrap": "DEBUG_DEPTH=2 DEBUG=* node src/utils/bootstrap.js",
     "newUser": "DEBUG_DEPTH=2 DEBUG=* node src/utils/newUser.js",
-    "newAdminUser": "DEBUG_DEPTH=2 DEBUG=* node src/utils/newAdminUser.js",
+    "loadData": "DEBUG_DEPTH=2 DEBUG=* node src/utils/loadData.js",
     "dev": "DEBUG_DEPTH=2 DEBUG=* node src/index.js"
   },
   "devDependencies": {
