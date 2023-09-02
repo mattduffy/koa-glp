@@ -55,8 +55,13 @@ try {
     let buffer = []
     let pier
     while ((pier = await dir.read()) !== null) {
-      log(pier.name)
-      buffer.push(pier.name)
+      log(path.resolve(dataDir, d, pier.name))
+      /* eslint-disable no-await-in-loop */
+      let pierJson = await readFile(path.resolve(dataDir, d, pier.name), 'utf-8')
+      pierJson = pierJson.replace(/\n/g, '')
+      pierJson = JSON.parse(pierJson)
+      // buffer.push(pier.name)
+      buffer.push(pierJson)
       counter += 1
       ttlCounter += 1
       // if (counter <= options.batchSize) {
