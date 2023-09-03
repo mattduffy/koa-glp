@@ -59,7 +59,7 @@ const redis = new Redis(redisConnOpts)
 const redisClient = await new redisOm().use(redis)
 export {
   redis,
-  redisClient as Client,
+  redisClient as ClientOm,
   Entity,
   Schema,
   Repository,
