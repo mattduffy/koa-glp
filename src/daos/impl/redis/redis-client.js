@@ -8,12 +8,6 @@ import path from 'node:path'
 import fs from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { Redis } from 'ioredis'
-import {
-  Repository,
-  Entity,
-  Schema,
-  Client as redisOm,
-} from 'redis-om'
 import * as Dotenv from 'dotenv'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -56,11 +50,6 @@ const redisConnOpts = {
 }
 console.log(redisConnOpts)
 const redis = new Redis(redisConnOpts)
-const redisClient = await new redisOm().use(redis)
 export {
   redis,
-  redisClient as ClientOm,
-  Entity,
-  Schema,
-  Repository,
 }
