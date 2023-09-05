@@ -10,7 +10,16 @@ import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
 import { Command } from 'commander'
 // import * as mongoClient from '../daos/impl/mongodb/mongo-client.js'
-// import * as redis from '../daos/impl/redis/redis-client.js'
+// import { Schema } from 'redis-om'
+import {
+  redis,
+  clientOm,
+  // Client,
+  // EntityId,
+  Schema,
+  Repository,
+} from '../daos/impl/redis/redis-om.js'
+// } from '../daos/impl/redis/redis-client.js'
 import { _log, _error } from './logging.js'
 
 const log = _log.extend('utils:load-data')
@@ -31,11 +40,72 @@ const program = new Command()
 program.name('loadData')
   .requiredOption('--data-dir <dir>', 'Directory containing JSON data files to load.', 'data/')
   .option('--batch-size <size>', 'Number of records to load in Redis pipeline.  Default is 25', 25)
-  .option('--key-prefix <prefix>', 'The key prefix for Redis to use to namespace loaded data.', 'loadtest')
+  .option('--key-prefix <prefix>', 'The key prefix for Redis to use to namespace loaded data.', 'test:load:')
 
 program.parse(process.argv)
 const options = program.opts()
 log(options)
+
+// const testSchema = new Schema('test', {
+//   pier: { type: 'string' },
+//   location: { type: 'point' },
+// }, {
+//   dataStructure: 'JSON',
+// })
+// const testRepo = new Repository(testSchema, clientOm)
+// const testPier = { pier: '001', location: { longitude: '-88.442671', latitude: '42.590727' } }
+// const savedPier = await testRepo.save(testPier)
+// log(savedPier)
+// process.exit()
+
+const pierSchema = new Schema('glp:test:piers', {
+  pier: { type: 'string', path: '$.pier' },
+  loc: { type: 'point', path: '$.loc' },
+  geohash: { type: 'string', path: '$.geohash' },
+  pluscode: { type: 'string', path: '$.pluscode' },
+  tel: { type: 'string', path: '$.property.tel' },
+  street: { type: 'string', path: '$.property.address.street' },
+  city: { type: 'string', path: '$.property.address.city' },
+  state: { type: 'string', path: '$.property.address.state' },
+  zip: { type: 'string', path: '$.property.address.zip' },
+  estateName: { type: 'string', path: '$.owners.estateName' },
+  member: { type: 'boolean', path: '$.owners.member' },
+  membershipType: { type: 'string', path: '$.owners.membershipType' },
+}, {
+  dataStructure: 'JSON',
+})
+
+const pierRepository = new Repository(pierSchema, clientOm)
+const pier001 = {
+  pier: '001',
+  location: { longitude: -88.442671, latitude: 42.590727 },
+  loc: ['-88.442671,42.590727'],
+  geohash: 'dp9473qhbq0',
+  pluscode: 'HHR4+7WW Lake Geneva, Wisconsin',
+  property: {
+    tel: '(123) 456-7890',
+    address: {
+      street: '1224 W Main St',
+      city: 'Lake Geneva',
+      state: 'WI',
+      zip: '53147',
+    },
+  },
+  owners: [
+    {
+      estateName: '',
+      member: true,
+      membershipType: 'Sustaining',
+      members: [
+        { t: '', f: 'Alan', m: '', l: 'Bosworth', s: '' },
+        { t: '', f: 'Kathi', m: '', l: 'Bosworth', s: '' },
+      ],
+    },
+  ],
+}
+const saved = await pierRepository.save(pier001.pier, pier001)
+log(saved)
+process.exit()
 
 const dataDir = path.resolve(appRoot, options.dataDir)
 let subDirs
