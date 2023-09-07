@@ -19,12 +19,13 @@
     }
   },
   "owners": [
-  {
-    "estateName": "",
-    "member": true,
-    "membershipType": "Contributing",
-    "members": [
-      { "t": "", "f": "Mark", "m": "", "l": "Magnuson", "s": "" }
-    ]
-  }]
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Contributing",
+      "members": [
+        { "t": "", "f": "Mark", "m": "", "l": "Magnuson", "s": "" }
+      ]
+    }
+  ]
 }

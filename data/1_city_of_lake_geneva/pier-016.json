@@ -30,7 +30,7 @@
     {
       "estateName": "",
       "member": true,
-      "membershipType": "",
+      "membershipType": "Contributing",
       "members": [
         { "t": "", "f": "James", "m": "", "l": "Birk", "s": "" },
         { "t": "", "f": "Liane", "m": "", "l": "Birk", "s": "" }
@@ -39,7 +39,7 @@
     {
       "estateName": "",
       "member": true,
-      "membershipType": "",
+      "membershipType": "Contributing",
       "members": [
         { "t": "", "f": "Catherine", "m": "", "l": "Green", "s": "" }
       ]
@@ -47,7 +47,7 @@
     {
       "estateName": "",
       "member": true,
-      "membershipType": "",
+      "membershipType": "Sustaining",
       "members": [
         { "t": "", "f": "David", "m": "", "l": "McConnell", "s": "" },
         { "t": "", "f": "Sarah", "m": "", "l": "McConnell", "s": "" }

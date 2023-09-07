@@ -22,7 +22,7 @@
     {
       "estateName": "Willows Retreat",
       "member": true,
-      "membershipType": "",
+      "membershipType": "Benefactor",
       "members": [
         { "t": "", "f": "Thomas", "m": "D", "l": "Langer", "s": "" },
         { "t": "", "f": "Audrey ", "m": "J", "l": "Langer", "s": "" }

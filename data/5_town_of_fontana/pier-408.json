@@ -56,7 +56,7 @@
     {
       "estateName": "",
       "member": true,
-      "membershipType": "",
+      "membershipType": "Contributing",
       "members": [
         { "t": "", "f": "Rob", "m": "", "l": "Rowe", "s": "" },
         { "t": "", "f": "Suzette", "m": "", "l": "Rowe", "s": "" }

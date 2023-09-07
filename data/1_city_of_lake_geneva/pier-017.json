@@ -30,7 +30,7 @@
     {
       "estateName": "",
       "member": true,
-      "membershipType": "",
+      "membershipType": "Regular",
       "members": [
         { "t": "", "f": "Hugh", "m": "", "l": "Connolly", "s": "" },
         { "t": "", "f": "Carrie", "m": "", "l": "Connolly", "s": "" }
@@ -39,7 +39,7 @@
     {
       "estateName": "",
       "member": true,
-      "membershipType": "",
+      "membershipType": "Regular",
       "members": [
         { "t": "", "f": "Tom", "m": "", "l": "Myers", "s": "" },
         { "t": "", "f": "Mary", "m": "", "l": "Myers", "s": "" }
@@ -48,7 +48,7 @@
     {
       "estateName": "",
       "member": true,
-      "membershipType": "",
+      "membershipType": "Regular",
       "members": [
         { "t": "", "f": "Tom", "m": "", "l": "Nickols", "s": "" },
         { "t": "", "f": "Janet", "m": "", "l": "Nickols", "s": "" }
@@ -57,7 +57,7 @@
     {
       "estateName": "",
       "member": true,
-      "membershipType": "",
+      "membershipType": "Regular",
       "owners": [
         { "t": "", "f": "David", "m": "", "l": "Pezza", "s": "" },
         { "t": "", "f": "Paula", "m": "", "l": "Pezza", "s": "" }
@@ -66,7 +66,7 @@
     {
       "estateName": "",
       "member": true,
-      "membershipType": "",
+      "membershipType": "Benefactor",
       "members": [
         { "t": "", "f": "David", "m": "", "l": "Tanking", "s": "" },
         { "t": "", "f": "Aimee", "m": "", "l": "Tanking", "s": "" }
@@ -75,7 +75,7 @@
     {
       "estateName": "",
       "member": true,
-      "membershipType": "",
+      "membershipType": "Benefactor",
       "members": [
         { "t": "", "f": "Carol", "m": "", "l": "Zimmermann", "s": "" },
         { "t": "", "f": "George", "m": "", "l": "Zimmermann", "s": "" }
