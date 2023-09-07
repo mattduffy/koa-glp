@@ -3,14 +3,15 @@
  * @author Matthew Duffy <mattduffy@gmail.com>
  * @file src/utils/loadData.js The script to load pier data into the database.
  */
-
+/* eslint-disable import/no-extraneous-dependencies */
 import path from 'node:path'
 import { opendir, readdir, readFile } from 'node:fs/promises'
 import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
 import { Command } from 'commander'
+import { SchemaFieldTypes } from '@redis/search'
 import {
-  // redis,
+  redis,
   clientOm,
   // Client,
   // EntityId,
@@ -19,6 +20,7 @@ import {
 } from '../daos/impl/redis/redis-om.js'
 // } from '../daos/impl/redis/redis-client.js'
 import { _log, _error } from './logging.js'
+/* eslint-enable import/no-extraneous-dependencies */
 
 const log = _log.extend('utils:load-data')
 const error = _error.extend('utils:load-data')
@@ -46,6 +48,8 @@ log(options)
 
 const appPrefix = (options.keyPrefix !== undefined) ? `:${options.keyPrefix}` : ''
 const prefix = `${DB_PREFIX}${appPrefix}:${options.keyName}`
+log(`appPrefix: ${appPrefix}`)
+log(`prefix: ${prefix}`)
 const pierSchema = new Schema(prefix, {
   pier: { type: 'string', path: '$.pier' },
   loc: { type: 'point', path: '$.loc' },
@@ -98,6 +102,56 @@ const pierRepository = new Repository(pierSchema, clientOm)
 // const saved = await pierrepository.save(pier001.pier, pier001)
 // log(saved)
 // process.exit()
+// create the indexes for pier data
+const pierNumberIndex = `${DB_PREFIX}:idx:piers:number`
+try {
+  log(`pierNumberIndex name: ${pierNumberIndex}`)
+  await redis.ft.create(
+    pierNumberIndex,
+    {
+      '$.pier': {
+        type: SchemaFieldTypes.TAG,
+      },
+    },
+    {
+      ON: 'JSON',
+      PREFIX: prefix,
+    },
+  )
+} catch (e) {
+  if (e.message === 'Index already exists') {
+    log(`${pierNumberIndex} ${e.message}.  Skipping ahead.`)
+  } else {
+    error(e)
+    throw new Error(e.message, { cause: e })
+  }
+}
+// create an index for estateName
+const pierOwnerEstatename = `${DB_PREFIX}:idx:piers:estateName`
+try {
+  log(`pierOwnerEstatename name: ${pierOwnerEstatename}`)
+  await redis.ft.create(
+    pierOwnerEstatename,
+    {
+      '$.owners[*].estateName': {
+        type: SchemaFieldTypes.TEXT,
+        SORTABLE: true,
+        AS: 'estateName',
+      },
+    },
+    {
+      ON: 'JSON',
+      PREFIX: prefix,
+    },
+  )
+} catch (e) {
+  if (e.message === 'Index already exists') {
+    log(`${pierOwnerEstatename} ${e.message}.  Skipping ahead.`)
+  } else {
+    error(e)
+    throw new Error(e.message, { cause: e })
+  }
+}
 
 const dataDir = path.resolve(appRoot, options.dataDir)
 let subDirs
@@ -114,12 +168,18 @@ try {
     const dir = await opendir(path.resolve(dataDir, d), { withFileTypes: true })
     let ttlCounter = 0
     let pier
+    /* eslint-disable-next-line */
     while ((pier = await dir.read()) !== null) {
       // log(path.resolve(dataDir, d, pier.name))
       /* eslint-disable no-await-in-loop */
       let pierJson = await readFile(path.resolve(dataDir, d, pier.name), 'utf-8')
       pierJson = pierJson.replace(/\n/g, '')
       pierJson = JSON.parse(pierJson)
+      pierJson.owners.forEach((owner, i) => {
+        if (owner.member === false) {
+          log(`${i}: membership type: ${owner.membershipType}`)
+        }
+      })
       if (pierJson.loc.lon === '' && pierJson.loc.lat === '' && pierJson.loc.geohash === '') {
         missingLocCounter += 1
       }
@@ -127,7 +187,7 @@ try {
       delete pierJson.loc.geohash
       pierJson.pluscode = pierJson.loc.pluscode
       delete pierJson.loc.pluscode
-      log(dataDir, d, pier.name)
+      log(`${d}/${pier.name}`)
       pierJson.loc.longitude = pierJson.loc.lon
       pierJson.loc.latitude = pierJson.loc.lat
       delete pierJson.loc.lon
@@ -135,7 +195,11 @@ try {
       log('loc: ', pierJson.loc)
       log('geohash: ', pierJson.geohash)
       log('pluscode: ', pierJson.pluscode)
-      log()
+      log(' ')
+
+      // save the pier with redis-om repository
+      const saved = await pierRepository.save(pierJson.pier, pierJson)
+      log(saved)
       ttlCounter += 1
       // if (counter <= options.batchSize) {
     }
