@@ -15,7 +15,6 @@ const __dirname = path.dirname(__filename)
 const root = path.resolve(`${__dirname}/../../../..`)
 console.log('redis-client.js >>root = ', root)
 const showDebug = process.env.NODE_ENV !== 'production'
-// Dotenv.config({ path: path.resolve(root, 'config/redis.env'), debug: showDebug })
 const redisEnv = {}
 Dotenv.config({ path: path.resolve(root, 'config/redis.env'), processEnv: redisEnv, debug: showDebug })
 
@@ -47,6 +46,18 @@ const redisConnOpts = {
     requestCert: true,
   },
   showFriendlyErrorStack: true,
+  retryStrategy(times) {
+    const delay = Math.min(times * 50, 2000)
+    return delay
+  },
+  /* eslint-disable consistent-return */
+  reconnectOnError(err) {
+    const targetError = 'closed'
+    if (err.message.includes(targetError)) {
+      return true
+    }
+    // return false
+  },
 }
 console.log(redisConnOpts)
 const redis = new Redis(redisConnOpts)
