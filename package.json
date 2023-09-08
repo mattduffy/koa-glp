@@ -23,6 +23,7 @@
     "bootstrap": "DEBUG_DEPTH=2 DEBUG=* node src/utils/bootstrap.js",
     "newUser": "DEBUG_DEPTH=2 DEBUG=* node src/utils/newUser.js",
     "loadData": "DEBUG_DEPTH=2 DEBUG=* node src/utils/loadData.js",
+    "deleteData": "DEBUG_DEPTH=2 DEBUG=* node src/utils/deleteData.js",
     "dev": "DEBUG_DEPTH=2 DEBUG=* node src/index.js"
   },
   "devDependencies": {
