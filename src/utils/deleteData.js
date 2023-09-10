@@ -31,70 +31,75 @@ program.name('loadData')
   // .requiredOption('--database <num>', 'Redis database to delete keys from.')
   .requiredOption('--key-prefix <prefix>', 'The app-specific key prefix for Redis to use.')
   .requiredOption('--key-name <name>', 'The key name for Redis to append to the app-specific key prefix.')
+  .requiredOption('--key-type <type>', 'The redis data type of the keys to delete.')
+  .option('--key-count <count>', 'The number of keys to return per cursor.', 500)
 
 program.parse(process.argv)
 const options = program.opts()
 options.dbPrefix = DB_PREFIX
 log(options)
 
-const keyPath = (DB_PREFIX !== options.keyPrefix) ? `${DB_PREFIX}:${options.keyPrefix}:${options.keyName}:*` : `${options.keyPrefix}:${options.keyName}:*`
+const transparentKeyPrefix = redis?.options?.keyPrefix
+let keyPath
+if (transparentKeyPrefix === null || transparentKeyPrefix === undefined || transparentKeyPrefix === '') {
+  keyPath = `${DB_PREFIX}:${options.keyPrefix}:${options.keyName}:*`
+} else {
+  keyPath = `${transparentKeyPrefix}${options.keyName}:*`
+}
 log(`prefix: ${keyPath}`)
+// log(`redis.optins.keyPrefix: ${redis.options.keyPrefix}`)
+// process.exit()
 
 async function del() {
   return new Promise((resolve, reject) => {
     let deletedKeys = 0
     const scanArgs = {
       match: keyPath,
-      type: 'ReJSON-RL',
-      count: 20,
+      type: options.keyType,
+      count: options.keyCount,
     }
     log(scanArgs)
     const stream = redis.scanStream(scanArgs)
-    stream.on('data', (keys) => {
-      log(keys.length)
+    stream.on('data', async (keys) => {
+      log(`Current scan cursor size: ${keys.length}`)
+      let result
       if (keys.length > 0) {
-        keys.forEach((key) => {
-          log(key)
+        stream.pause()
+        const pipeline = redis.pipeline()
+        keys.forEach(async (key) => {
+          log(`current cursor key: ${key}`)
+          // result = await redis.call('UNLINK', key)
+          // result = await redis.call('DEL', key)
+          // log(`delete result for ${key}: ${result}`)
+          // Super sketchy hack to get around ioredis client config with transparent key prefix set.
+          // May be super fragile...
+          const k = key.split(':').slice(-1)[0]
+          pipeline.del(`${options.keyName}:${k}`)
+          // pipeline.del(key)
           deletedKeys += 1
         })
+        result = await pipeline.exec()
+        log(`pipeline result: ${result}`)
+        stream.resume()
       } else {
         log(`no keys found matching ${keyPath}`)
       }
     })
     stream.on('end', () => {
-      log(`Deleted ${deletedKeys} from ${keyPath}`)
-      resolve()
+      resolve(`Deleted ${deletedKeys} from ${keyPath}`)
+    })
+    stream.on('error', (e) => {
+      reject(e)
     })
   })
 }
-await del()
-
-// try {
-//  let deletedKeys = 0
-//  const scanArgs = {
-//    match: keyPath,
-//    type: 'ReJSON-RL',
-//    count: 30,
-//  }
-//  log(scanArgs)
-//  const stream = await redis.scanStream(scanArgs)
-//  log(stream)
-//  stream.on('data', (resultKeys) => {
-//    stream.pause()
-//    log(resultKeys)
-//    resultKeys.forEach((key) => {
-//      log(key)
-//      deletedKeys += 1
-//    })
-//    stream.resume()
-//  })
-//  stream.on('end', () => {
-//    log(`Deleted ${deletedKeys} from ${keyPath}`)
-//  })
-// } catch (e) {
-//   error(e)
-//   throw new Error(e.message, { cause: e })
-// }
+try {
+  const result = await del()
+  log(result)
+} catch (e) {
+  error(e)
+  throw new Error(e.message, { cause: e })
+}
 
 // Done deleting the data, exit process.
 process.exit()
