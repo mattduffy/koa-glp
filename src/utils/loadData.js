@@ -130,6 +130,7 @@ try {
 
 const dataDir = path.resolve(appRoot, options.dataDir)
 let subDirs
+let town
 try {
   subDirs = (await readdir(dataDir)).sort()
   log(subDirs)
@@ -140,8 +141,11 @@ try {
   for await (const d of subDirs) {
     const pierDir = path.resolve(dataDir, d)
     log(`pier dir: ${pierDir}`)
+    town = d.slice(2)
+    log(`piers for town: ${town}`)
     const dir = (await readdir(pierDir)).sort()
     let ttlCounter = 0
+    ttlCounts[d] = 0
     /* eslint-disable-next-line */
     for await (const pier of dir) {
       let pierJson = await readFile(path.resolve(dataDir, d, pier), 'utf-8')
@@ -152,14 +156,14 @@ try {
           log(`${i}: membership type: ${owner.membershipType}`)
         }
       })
-      if (pierJson.loc.lon === '' && pierJson.loc.lat === '' && pierJson.loc.geohash === '') {
+      if (pierJson.loc.lon === 0.0 && pierJson.loc.lat === 0.0) {
         missingLocCounter += 1
       }
       pierJson.geohash = pierJson.loc.geohash
       delete pierJson.loc.geohash
       pierJson.pluscode = pierJson.loc.pluscode
       delete pierJson.loc.pluscode
-      log(`${d}/${pier.name}`)
+      log(`${d}/${pier}`)
       pierJson.loc.longitude = pierJson.loc.lon
       pierJson.loc.latitude = pierJson.loc.lat
       delete pierJson.loc.lon
@@ -173,8 +177,16 @@ try {
       const saved = await pierRepository.save(pierJson.pier, pierJson)
       log(saved)
       ttlCounter += 1
+
+      // Create a redis sorted set for each town, containing only its piers.
+      const key = `${options.keyPrefix}:piers_by_town:${town}`
+      log(`${key} ${pierJson.pier}`)
+      // const list = await redis.rPush(key, pierJson.pier)
+      // const set = await redis.zAdd(key, pierJson.pier)
+      const sortedSet = await redis.zAdd(key, [{ score: 0, value: pierJson.pier }])
+      log(`Add pier ${pierJson.pier} to set ${key}`, sortedSet)
     }
-    ttlCounts[d] = ttlCounter
+    ttlCounts[d] += ttlCounter
     ttlGrand += ttlCounter
   }
   log(`Grand Total number of pier files processed: ${ttlGrand}`)
