@@ -6,10 +6,11 @@
     <%# document head %>
   </head>
   <body>
+    <a id="skipnav" href="#main-content">Skip to main content</a>
     <div class="grid-layout">
       <div class="grid-header">
         <%# header %>
-        <%- await include('./partials/body-header.ejs') -%>
+        <%- await include('./partials/body-header-lite.ejs') -%>
         <%# header end %>
       </div>
 
@@ -21,7 +22,7 @@
 
       <div class="grid-footer">
         <%# footer %>
-        <%- await include('./partials/body-footer.ejs') -%>
+        <%- await include('./partials/body-footer-lite.ejs') -%>
         <%# footer end %>
       </div>
     </div>

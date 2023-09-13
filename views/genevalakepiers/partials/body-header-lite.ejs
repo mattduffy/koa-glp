@@ -1,0 +1,29 @@
+<header>
+  <h1><a href="/"><%= appName %></a></h1>
+  <span class="hamburger"></span>
+  <ul class="header-links">
+    <li><a href="/#">City of Lake Geneva</a></li>
+    <li><a href="/towns/">Town of Linn</a></li>
+    <li><a href="/towns/">Village of Williams Bay</a></li>
+    <li><a href="/towns/">Town of Walworth</a></li>
+    <li><a href="/towns/">Village of Fontana-on-Geneva-Lake</a></li>
+  </ul>
+  <script nonce="<%= nonce %>">
+    const hammy = document.querySelector('span.hamburger')
+    hammy.addEventListener('click', (e) => {
+      const links = document.querySelector('ul.header-links')
+      let toggle = links.style.display
+      console.log(toggle)
+      if (toggle === 'none' || toggle === '' || toggle === undefined) {
+          links.style.display = 'block'
+      } else {
+          links.style.display = 'none'
+      }
+    })
+  </script>
+</header>
+<% if (isAuthenticated) { %>
+<p><a href="/logout">Logout</a></p>
+<% } else { %>
+<p><a href="/login">Login</a></p>
+<% } %>
