@@ -139,8 +139,8 @@ async function csp(ctx, next) {
     + 'object-src \'none\'; '
     + 'form-action \'self\'; '
     + `style-src 'self' ${ctx.request.origin} 'unsafe-inline' 'nonce-${nonce}'; `
-    + `style-src-attr ${ctx.request.origin} 'self' 'unsafe-inline' 'nonce-${nonce}'; `
-    + `style-src-elem ${ctx.request.origin} 'self' 'unsafe-inline' 'nonce-${nonce}'; `
+    + `style-src-attr 'self' ${ctx.request.origin} 'unsafe-inline'; `
+    + `style-src-elem 'self' ${ctx.request.origin} 'unsafe-inline'; `
     + `script-src 'self' ${ctx.request.origin} 'nonce-${nonce}'; `
     + `script-src-attr 'self' ${ctx.request.origin} 'nonce-${nonce}'; `
     + `script-src-elem 'self' ${ctx.request.origin} 'nonce-${nonce}'; `
