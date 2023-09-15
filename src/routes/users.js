@@ -179,9 +179,10 @@ router.get('@username', /^\/@(?<username>[^@+?.:\s][a-zA-Z0-9_-]{2,30})$/, async
   const locals = {}
   // await next()
   try {
-    const db = ctx.state.mongodb.client.db()
-    const collection = db.collection(USERS_COL)
-    const users = new Users(collection, ctx)
+    // const db = ctx.state.mongodb.client.db()
+    // const collection = db.collection(USERS_COL)
+    // const users = new Users(collection, ctx)
+    const users = new Users(ctx.state.mongodb, ctx)
     user = await users.getByUsername(username, { archived: false })
     if (!user) {
       locals.title = `${ctx.app.site}: User Details`

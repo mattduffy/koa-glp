@@ -434,13 +434,33 @@ router.post('accountEditPost', '/account/edit', hasFlash, async (ctx) => {
       const { description } = ctx.request.body
       if (description !== '') ctx.state.sessionUser.description = description
       const { isLocked } = ctx.request.body
-      if (isLocked === 'on') ctx.state.sessionUser.locked = true
+      // if (isLocked === 'on') ctx.state.sessionUser.locked = true
+      if (isLocked === 'on') {
+        ctx.state.sessionUser.locked = true
+      } else {
+        ctx.state.sessionUser.locked = false
+      }
       const { isBot } = ctx.request.body
-      if (isBot === 'on') ctx.state.sessionUser.bot = true
+      // if (isBot === 'on') ctx.state.sessionUser.bot = true
+      if (isBot === 'on') {
+        ctx.state.sessionUser.bot = true
+      } else {
+        ctx.state.sessionUser.bot = false
+      }
       const { isGroup } = ctx.request.body
-      if (isGroup === 'on') ctx.state.sessionUser.group = true
+      // if (isGroup === 'on') ctx.state.sessionUser.group = true
+      if (isGroup === 'on') {
+        ctx.state.sessionUser.group = true
+      } else {
+        ctx.state.sessionUser.group = false
+      }
       const { isDiscoverable } = ctx.request.body
-      if (isDiscoverable === 'on') ctx.state.sessionUser.discoverable = true
+      // if (isDiscoverable === 'on') ctx.state.sessionUser.discoverable = true
+      if (isDiscoverable === 'on') {
+        ctx.state.sessionUser.discoverable = true
+      } else {
+        ctx.state.sessionUser.discoverable = false
+      }
       // log('avatar file: %O', ctx.request.files.avatar.size)
       // log('avatar file: %O', ctx.request.files.avatar.filepath)
       if (ctx.state.sessionUser.publicDir === '') {
@@ -552,7 +572,7 @@ router.get('adminViewUser', '/admin/account/view/:username', hasFlash, async (ct
         error: 'You need to be logged in to do that.',
       },
     }
-    error('Tried view something without being authenticated.')
+    error('Tried to view something without being authenticated.')
     ctx.status = 401
     ctx.redirect('/')
   } else {
@@ -560,9 +580,10 @@ router.get('adminViewUser', '/admin/account/view/:username', hasFlash, async (ct
     try {
       let displayUser = ctx.params.username
       log(`Admin view of user: ${displayUser}`)
-      const db = ctx.state.mongodb.client.db()
-      const collection = db.collection(USERS)
-      const users = new Users(collection, ctx)
+      // const db = ctx.state.mongodb.client.db()
+      // const collection = db.collection(USERS)
+      // const users = new Users(collection, ctx)
+      const users = new Users(ctx.state.mongodb, ctx)
       if (displayUser[0] === '@') {
         displayUser = displayUser.slice(1)
       }
@@ -610,9 +631,10 @@ router.get('adminEditUserGet', '/admin/account/edit/:username', hasFlash, async 
     try {
       let displayUser = ctx.params.username
       log(`Admin edit of user ${displayUser}`)
-      const db = ctx.state.mongodb.client.db()
-      const collection = db.collection(USERS)
-      const users = new Users(collection, ctx)
+      // const db = ctx.state.mongodb.client.db()
+      // const collection = db.collection(USERS)
+      // const users = new Users(collection, ctx)
+      const users = new Users(ctx.state.mongodb, ctx)
       if (displayUser[0] === '@') {
         displayUser = displayUser.slice(1)
       }
@@ -621,7 +643,6 @@ router.get('adminEditUserGet', '/admin/account/edit/:username', hasFlash, async 
       locals.title = `${ctx.app.site}: Edit ${ctx.params.username}`
       locals.origin = ctx.request.origin
       locals.isAuthenticated = ctx.state.isAuthenticated
-      // const csrfToken = new ObjectId().toString()
       const csrfToken = ulid()
       ctx.session.csrfToken = csrfToken
       ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })
@@ -678,9 +699,10 @@ router.post('adminEditUserPost', '/admin/account/edit', hasFlash, async (ctx) =>
       const csrfTokenCookie = ctx.cookies.get('csrfToken')
       const csrfTokenSession = ctx.session.csrfToken
       const csrfTokenHidden = ctx.request.body['csrf-token']
-      const db = ctx.state.mongodb.client.db()
-      const collection = db.collection(USERS)
-      const users = new Users(collection, ctx)
+      // const db = ctx.state.mongodb.client.db()
+      // const collection = db.collection(USERS)
+      // const users = new Users(collection, ctx)
+      const users = new Users(ctx.state.mongodb, ctx)
       if (csrfTokenCookie === csrfTokenSession && csrfTokenSession === csrfTokenHidden) {
         const { username } = ctx.request.body
         let displayUser = await users.getByUsername(username)
@@ -712,6 +734,24 @@ router.post('adminEditUserPost', '/admin/account/edit', hasFlash, async (ctx) =>
         if (secondaryEmail !== '') displayUser.secondaryEmail = secondaryEmail
         const { description } = ctx.request.body
         if (description !== '') displayUser.description = description
+        const { isLocked } = ctx.request.body
+        if (isLocked === 'on') {
+          displayUser.locked = true
+        } else {
+          displayUser.locked = false
+        }
+        const { isBot } = ctx.request.body
+        if (isBot === 'on') {
+          displayUser.bot = true
+        } else {
+          displayUser.bot = false
+        }
+        const { isGroup } = ctx.request.body
+        if (isGroup === 'on') {
+          displayUser.group = true
+        } else {
+          displayUser.group = false
+        }
         log('avatar file: %O', ctx.request.files.avatar.size)
         log('avatar file: %O', ctx.request.files.avatar.filepath)
         if (displayUser.publicDir === '') {
