@@ -6,12 +6,51 @@
  */
 
 import Router from '@koa/router'
-import { ulid } from 'ulid'
+// import { ulid } from 'ulid'
+import { redis } from '../daos/impl/redis/redis-om.js'
 import { _log, _error } from '../utils/logging.js'
 
-const log = _log.extend('towns')
-const error = _error.extend('towns')
+const Log = _log.extend('towns')
+const Error = _error.extend('towns')
 const router = new Router()
+
+const TOWNS = [
+  'city_of_lake_geneva',
+  'town_of_linn',
+  'village_of_williams_bay',
+  'town_of_fontana',
+  'town_of_walworth',
+]
+
+/*
+ * Convert URL parameter :town to redis set name.
+ */
+function getSetName(t = '') {
+  let setName
+  const town = t.toLowerCase().replace(/-/g, ' ')
+  _log(town)
+  switch (town) {
+    case town.match(/lake genava/)?.input:
+      [setName] = TOWNS
+      break
+    case town.match(/linn/)?.input:
+      [, setName] = TOWNS
+      break
+    case town.match(/williams bay/)?.input:
+      [, , setName] = TOWNS
+      break
+    case town.match(/fontana/)?.input:
+      [, , , setName] = TOWNS
+      break
+    case town.match(/walworth/)?.input:
+      [, , , , setName] = TOWNS
+      break
+    default:
+      _log('no match found');
+      [setName] = TOWNS
+  }
+  return setName
+}
 
 /*
  * Fill in the body for parameter sanitizing function.
@@ -20,13 +59,23 @@ function sanitize(param) {
   return param
 }
 
-router.get('piersByTown', '/towns/:town', async (ctx, next) => {
+router.get('piersByTown', '/towns/:town', async (ctx) => {
+  const log = Log.extend('GET-piersByTown')
+  const error = Error.extend('GET-piersByTown')
+  const town = getSetName(sanitize(ctx.params.town))
+  log(town)
+  let piersInTown
+  const key = `glp:piers_by_town:${town}`
+  log(`key: ${key}`)
   try {
-    await next()
+    piersInTown = await redis.zRange(key, 0, -1)
   } catch (e) {
-    ctx.throw(500, 'Error', { town: sanitize(ctx.params.town) })
+    error(e)
+    ctx.throw(500, 'Error', { town })
   }
-  ctx.body = sanitize(ctx.params.town)
+  ctx.status = 200
+  ctx.type = 'application/json'
+  ctx.body = { town, piersInTown }
 })
 
 // router.get('appKeys', '/admin/app/keys', async (ctx) => {
