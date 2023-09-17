@@ -198,7 +198,7 @@ router.get('@username', /^\/@(?<username>[^@+?.:\s][a-zA-Z0-9_-]{2,30})$/, async
   locals.displayUser = user
   locals.isAuthenticated = ctx.state.isAuthenticated
   locals.sessionUser = ctx.state.sessionUser
-  await ctx.render('user', locals)
+  await ctx.render('../default/user', locals)
 })
 
 router.get('jwks', /^\/@(?<username>[^@+?.:\s][a-zA-Z0-9_-]{2,30})\/jwks.json$/, async (ctx) => {
