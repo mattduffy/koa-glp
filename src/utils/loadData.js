@@ -132,7 +132,7 @@ const dataDir = path.resolve(appRoot, options.dataDir)
 let subDirs
 let town
 try {
-  subDirs = (await readdir(dataDir)).sort()
+  subDirs = (await readdir(dataDir)).sort().filter((x) => /^\d/.test(x))
   log(subDirs)
   let ttlGrand = 0
   let missingLocCounter = 0
