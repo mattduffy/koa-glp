@@ -24,7 +24,7 @@
     "newUser": "DEBUG_DEPTH=2 DEBUG=* node src/utils/newUser.js",
     "loadData": "DEBUG_DEPTH=2 DEBUG=* node src/utils/loadData.js",
     "deleteData": "DEBUG_DEPTH=2 DEBUG=* node src/utils/deleteData.js",
-    "createShapefiles": "DEBUG_DEPTH=2 DEBUG=* node src/utils/createGeoJsonFiles.js",
+    "createGeoJson": "DEBUG_DEPTH=4 DEBUG=* node src/utils/createGeoJsonFiles.js",
     "dev": "DEBUG_DEPTH=2 DEBUG=* node src/index.js"
   },
   "devDependencies": {

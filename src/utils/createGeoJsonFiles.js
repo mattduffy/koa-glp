@@ -5,10 +5,12 @@
  */
 /* eslint-disable import/no-extraneous-dependencies */
 import path from 'node:path'
+import { Buffer } from 'node:buffer'
 import {
 // opendir,
 // readdir,
 // readFile,
+  writeFile,
 } from 'node:fs/promises'
 import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
@@ -64,15 +66,64 @@ if (options?.town === undefined) {
   })
 }
 const setName = `${DB_PREFIX}:piers_by_town:${setTown}`
+const geojson = {
+  type: 'FeatureCollection',
+  features: [
+    {
+      type: 'Feature',
+      properties: {
+        id: setTown,
+        name: setTown,
+        numberOfPiers: 0,
+      },
+      geometry: {
+        type: 'Polygon',
+        coordinates: [[]],
+      },
+    },
+  ],
+}
+let piers
+let firstPier = null
+let nullIsland = 0
+console.log('%o', geojson)
 try {
+  let x = 0
   log(`using redis set ${setName}`)
-  const piers = await redis.zRange(setName, 0, -1)
-  log(piers)
+  piers = await redis.zRange(setName, 0, -1)
   const setSize = await redis.zCard(setName)
-  log(setSize)
+  geojson.features[0].properties.numberOfPiers = setSize
+  log(piers, piers.length, setSize)
+  if (piers.length > 0) {
+    /* eslint-disable-next-line */
+    for await (const p of piers) {
+      const key = `glp:piers:${p}`
+      // log(i, p, key)
+      const pier = await redis.json.get(key)
+      const loc = pier.loc.split(',')
+      loc[0] = parseFloat(loc[0])
+      loc[1] = parseFloat(loc[1])
+      if (firstPier === null) {
+        firstPier = loc
+      }
+      if (loc[0] === 0 || loc[1] === 0) {
+        nullIsland += 1
+      } else {
+        geojson.features[x].geometry.coordinates[0].push(loc)
+        // log(pier.pier, loc)
+        // log(pier)
+      }
+    }
+    geojson.features[x].geometry.coordinates[0].push(firstPier)
+    const geojsonData = new Uint8Array(Buffer.from(JSON.stringify(geojson)))
+    const geoJsonFile = await writeFile(path.resolve(appRoot, 'data', 'geojson', `${setTown}.geojson`), geojsonData)
+    log(geoJsonFile)
+  }
+  x += 1
+  console.dir(geojson, { depth: null })
+  log(`Piers without a location: ${nullIsland}`)
 } catch (e) {
   error(e)
   throw new Error(e.message, { cause: e })
 }
-
 process.exit()
