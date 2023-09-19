@@ -42,7 +42,6 @@ const DB_PREFIX = redisEnv.REDIS_KEY_PREFIX
 const program = new Command()
 program.name('loadData')
   .option('--town <town>', 'Create a GeoJSON shapefile for this town only.')
-  // .requiredOption('--key-name <name>', 'The key name for Redis to append to the app-specific key prefix.')
 
 program.parse(process.argv)
 const options = program.opts()
@@ -58,6 +57,7 @@ const TOWNS = [
 let setTown
 if (options?.town === undefined) {
   setTown = 'all'
+  log(setTown)
 } else {
   const r = new RegExp(`${options.town}`)
   setTown = TOWNS.find((e) => {
@@ -65,40 +65,41 @@ if (options?.town === undefined) {
     return m?.input === e
   })
 }
-const setName = `${DB_PREFIX}:piers_by_town:${setTown}`
-const geojson = {
-  type: 'FeatureCollection',
-  features: [
-    {
-      type: 'Feature',
-      properties: {
-        id: setTown,
-        name: setTown,
-        numberOfPiers: 0,
+
+async function generateGeoJSON(s) {
+  if (s === null || s === undefined) {
+    throw new Error('Missing required town name.')
+  }
+  const geojson = {
+    type: 'FeatureCollection',
+    features: [
+      {
+        type: 'Feature',
+        properties: {
+          id: s,
+          name: s,
+          numberOfPiers: 0,
+        },
+        geometry: {
+          type: 'Polygon',
+          coordinates: [[]],
+        },
       },
-      geometry: {
-        type: 'Polygon',
-        coordinates: [[]],
-      },
-    },
-  ],
-}
-let piers
-let firstPier = null
-let nullIsland = 0
-console.log('%o', geojson)
-try {
-  let x = 0
-  log(`using redis set ${setName}`)
-  piers = await redis.zRange(setName, 0, -1)
-  const setSize = await redis.zCard(setName)
+    ],
+  }
+  log(`using redis set ${s}`)
+  const piers = await redis.zRange(s, 0, -1)
+  const setSize = await redis.zCard(s)
   geojson.features[0].properties.numberOfPiers = setSize
   log(piers, piers.length, setSize)
+  let firstPier = null
+  let nullIsland = 0
+  let x = 0
   if (piers.length > 0) {
     /* eslint-disable-next-line */
     for await (const p of piers) {
       const key = `glp:piers:${p}`
-      // log(i, p, key)
+      // log(p, key)
       const pier = await redis.json.get(key)
       const loc = pier.loc.split(',')
       loc[0] = parseFloat(loc[0])
@@ -110,18 +111,39 @@ try {
         nullIsland += 1
       } else {
         geojson.features[x].geometry.coordinates[0].push(loc)
-        // log(pier.pier, loc)
-        // log(pier)
       }
     }
+    // williams bay correction points
+    // [-88.54234, 42.563805]
+    // [-88.52719, 42.565257]
+    if (/williams/.test(s)) {
+      geojson.features[x].geometry.coordinates[0].push([-88.54234, 42.563805])
+      geojson.features[x].geometry.coordinates[0].push([-88.52719, 42.565257])
+    }
     geojson.features[x].geometry.coordinates[0].push(firstPier)
+    geojson.features[x].properties.nullIslands = nullIsland
     const geojsonData = new Uint8Array(Buffer.from(JSON.stringify(geojson)))
-    const geoJsonFile = await writeFile(path.resolve(appRoot, 'data', 'geojson', `${setTown}.geojson`), geojsonData)
+    // const geoJsonFile = await writeFile(path.resolve(appRoot, 'data', 'geojson', `${setTown}.geojson`), geojsonData)
+    const geoJsonFile = await writeFile(path.resolve(appRoot, 'data', 'geojson', `${s.slice(s.lastIndexOf(':') + 1)}.geojson`), geojsonData)
     log(geoJsonFile)
+    x += 1
   }
-  x += 1
-  console.dir(geojson, { depth: null })
-  log(`Piers without a location: ${nullIsland}`)
+  return geojson
+}
+
+try {
+  if (setTown === 'all') {
+    /* eslint-disable-next-line */
+    for await (const t of TOWNS) {
+      const setName = `${DB_PREFIX}:piers_by_town:${t}`
+      const geoj = await generateGeoJSON(setName)
+      console.log(geoj, { depth: null })
+    }
+  } else {
+    const setName = `${DB_PREFIX}:piers_by_town:${setTown}`
+    const geoj = await generateGeoJSON(setName)
+    console.dir(geoj, { depth: null })
+  }
 } catch (e) {
   error(e)
   throw new Error(e.message, { cause: e })
