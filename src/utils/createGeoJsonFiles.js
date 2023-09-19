@@ -42,9 +42,13 @@ const DB_PREFIX = redisEnv.REDIS_KEY_PREFIX
 const program = new Command()
 program.name('loadData')
   .option('--town <town>', 'Create a GeoJSON shapefile for this town only.')
+  .option('--combined', 'Create one GeoJSON shapefile with all towns included.')
 
 program.parse(process.argv)
 const options = program.opts()
+if (options?.combined === true && options?.town !== undefined) {
+  throw new Error('The --combined and --town options do not work together.')
+}
 log(options)
 log(options?.town)
 const TOWNS = [
@@ -64,6 +68,12 @@ if (options?.town === undefined) {
     const m = e.match(r)
     return m?.input === e
   })
+}
+
+async function saveGeoJsonFile(data, town) {
+  const geojsonData = new Uint8Array(Buffer.from(JSON.stringify(data)))
+  const file = await writeFile(path.resolve(appRoot, 'data', 'geojson', `${town}.geojson`), geojsonData)
+  return file
 }
 
 async function generateGeoJSON(s) {
@@ -120,12 +130,19 @@ async function generateGeoJSON(s) {
       geojson.features[x].geometry.coordinates[0].push([-88.54234, 42.563805])
       geojson.features[x].geometry.coordinates[0].push([-88.52719, 42.565257])
     }
+    // walworth correction points
+    // [-88.564359,42.561333],
+    // [-88.56213,42.562485],
+    if (/walworth/.test(s)) {
+      geojson.features[x].geometry.coordinates[0].push([-88.564359, 42.561333])
+      geojson.features[x].geometry.coordinates[0].push([-88.56213, 42.562485])
+    }
     geojson.features[x].geometry.coordinates[0].push(firstPier)
     geojson.features[x].properties.nullIslands = nullIsland
-    const geojsonData = new Uint8Array(Buffer.from(JSON.stringify(geojson)))
+    // const geojsonData = new Uint8Array(Buffer.from(JSON.stringify(geojson)))
     // const geoJsonFile = await writeFile(path.resolve(appRoot, 'data', 'geojson', `${setTown}.geojson`), geojsonData)
-    const geoJsonFile = await writeFile(path.resolve(appRoot, 'data', 'geojson', `${s.slice(s.lastIndexOf(':') + 1)}.geojson`), geojsonData)
-    log(geoJsonFile)
+    // const geoJsonFile = await writeFile(path.resolve(appRoot, 'data', 'geojson', `${s.slice(s.lastIndexOf(':') + 1)}.geojson`), geojsonData)
+    // log(geoJsonFile)
     x += 1
   }
   return geojson
@@ -133,15 +150,29 @@ async function generateGeoJSON(s) {
 
 try {
   if (setTown === 'all') {
+    const combinedGeoJson = {
+      type: 'FeatureCollection',
+      features: [
+      ],
+    }
     /* eslint-disable-next-line */
     for await (const t of TOWNS) {
       const setName = `${DB_PREFIX}:piers_by_town:${t}`
       const geoj = await generateGeoJSON(setName)
+      if (options.combined === true) {
+        combinedGeoJson.features.push(geoj.features[0])
+      }
+      await saveGeoJsonFile(geoj, t)
       console.log(geoj, { depth: null })
+    }
+    if (options.combined === true) {
+      await saveGeoJsonFile(combinedGeoJson, 'combined_geneva_lake')
+      console.log(combinedGeoJson, { depth: null })
     }
   } else {
     const setName = `${DB_PREFIX}:piers_by_town:${setTown}`
     const geoj = await generateGeoJSON(setName)
+    await saveGeoJsonFile(geoj, setTown)
     console.dir(geoj, { depth: null })
   }
 } catch (e) {
