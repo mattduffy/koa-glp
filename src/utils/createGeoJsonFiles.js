@@ -6,23 +6,11 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import path from 'node:path'
 import { Buffer } from 'node:buffer'
-import {
-// opendir,
-// readdir,
-// readFile,
-  writeFile,
-} from 'node:fs/promises'
+import { writeFile } from 'node:fs/promises'
 import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
 import { Command } from 'commander'
-import {
-  redis,
-  // clientOm,
-  // Client,
-  // EntityId,
-  // Schema,
-  // Repository,
-} from '../daos/impl/redis/redis-om.js'
+import { redis } from '../daos/impl/redis/redis-om.js'
 import { _log, _error } from './logging.js'
 /* eslint-enable import/no-extraneous-dependencies */
 
@@ -50,7 +38,6 @@ if (options?.combined === true && options?.town !== undefined) {
   throw new Error('The --combined and --town options do not work together.')
 }
 log(options)
-log(options?.town)
 const TOWNS = [
   'city_of_lake_geneva',
   'town_of_linn',
@@ -80,14 +67,15 @@ async function generateGeoJSON(s) {
   if (s === null || s === undefined) {
     throw new Error('Missing required town name.')
   }
+  const name = s.slice(s.lastIndexOf(':'))
   const geojson = {
     type: 'FeatureCollection',
     features: [
       {
         type: 'Feature',
         properties: {
-          id: s,
-          name: s,
+          id: name,
+          name,
           numberOfPiers: 0,
         },
         geometry: {
@@ -139,16 +127,13 @@ async function generateGeoJSON(s) {
     }
     geojson.features[x].geometry.coordinates[0].push(firstPier)
     geojson.features[x].properties.nullIslands = nullIsland
-    // const geojsonData = new Uint8Array(Buffer.from(JSON.stringify(geojson)))
-    // const geoJsonFile = await writeFile(path.resolve(appRoot, 'data', 'geojson', `${setTown}.geojson`), geojsonData)
-    // const geoJsonFile = await writeFile(path.resolve(appRoot, 'data', 'geojson', `${s.slice(s.lastIndexOf(':') + 1)}.geojson`), geojsonData)
-    // log(geoJsonFile)
     x += 1
   }
   return geojson
 }
 
 try {
+  let rSaved
   if (setTown === 'all') {
     const combinedGeoJson = {
       type: 'FeatureCollection',
@@ -163,15 +148,20 @@ try {
         combinedGeoJson.features.push(geoj.features[0])
       }
       await saveGeoJsonFile(geoj, t)
+      rSaved = await redis.json.set(`${DB_PREFIX}:geojson:${t}`, '$', geoj)
       console.log(geoj, { depth: null })
     }
     if (options.combined === true) {
       await saveGeoJsonFile(combinedGeoJson, 'combined_geneva_lake')
+      rSaved = await redis.json.set(`${DB_PREFIX}:geojson:combined_geneva_lake`, '$', combinedGeoJson)
       console.log(combinedGeoJson, { depth: null })
     }
+    log(rSaved)
   } else {
     const setName = `${DB_PREFIX}:piers_by_town:${setTown}`
     const geoj = await generateGeoJSON(setName)
+    rSaved = await redis.json.set(`${DB_PREFIX}:geojson:${setTown}`, '$', geoj)
+    log(rSaved)
     await saveGeoJsonFile(geoj, setTown)
     console.dir(geoj, { depth: null })
   }
