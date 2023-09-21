@@ -7,9 +7,18 @@ html, body {
 }
 
 h1 { font-size: 1.5em; }
-h2 { font-size: 1.4em; }
-h3 { font-size: 1.3em; }
-h4 { font-size: 1.2em; }
+h2 {
+  font-size: 1.4em;
+  font-weight: 400;
+}
+h3 {
+  font-size: 1.3em;
+  font-weight: 400;
+}
+h4 {
+  font-size: 1.0em;
+  font-weight: 400;
+}
 
 .smallem {
   font-style: italic;
@@ -64,6 +73,7 @@ header > div > picture > img {
 }
 
 header > h1 {
+  display: inline-block;
   margin: 0px 5px;
 }
 header > h1 > a:active,
@@ -105,15 +115,37 @@ header > p {
   margin-left: 5px;
 }
 
+div#map {
+  width: 100%;
+  height: 500px;
+  background-color: lightblue;
+}
+
 footer {
   width: 100%;
   padding: 0px 0px;
   margin: 0px auto;
-  border-bottom: 1px solid black;
 }
 
 footer > section {
 
+}
+
+@media screen and (max-width: 935px) and (orientation: landscape) {
+  header {
+    width: 5.6em;
+    height: 100%;
+  }
+
+  header > h1 {
+    display: none;
+  }
+
+  div#map {
+    width: auto;
+    height: 75%;
+    background-color: darkblue;
+  }
 }
 
 /* iPhone 6/7/8 Plus size */

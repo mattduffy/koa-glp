@@ -58,6 +58,12 @@ function getSetName(t = '') {
 function sanitize(param) {
   return param
 }
+/*
+ * Capitalize a word
+ */
+function capitalize(word) {
+  return word[0].toUpperCase() + word.substring(1).toLowerCase()
+}
 
 router.get('piersByTown', '/towns/:town', async (ctx) => {
   const log = Log.extend('GET-piersByTown')
@@ -73,9 +79,16 @@ router.get('piersByTown', '/towns/:town', async (ctx) => {
     error(e)
     ctx.throw(500, 'Error', { town })
   }
-  ctx.status = 200
-  ctx.type = 'application/json'
-  ctx.body = { town, piersInTown }
+  // ctx.status = 200
+  // ctx.type = 'application/json'
+  // ctx.body = { town, piersInTown }
+  const locals = {}
+  locals.piers = piersInTown
+  locals.town = town.split('_').map((e) => capitalize(e)).join(' ')
+  locals.flash = ctx.flash.view ?? {}
+  locals.title = `${ctx.app.site}: App keys`
+  locals.isAuthenticated = ctx.state.isAuthenticated
+  await ctx.render('towns/town', locals)
 })
 
 // router.get('appKeys', '/admin/app/keys', async (ctx) => {

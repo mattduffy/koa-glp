@@ -13,19 +13,14 @@
     <span><%= flash.error %></span>
   </div>
 <% } %>
-<% if (isAuthenticated) { %>
-  <p><a href="/account/view">Your account page</a></p>
-  <% if (sessionUser) { %>
-    <h2>Hi, <%= sessionUser.displayName %></h2>
-    <% if (items.length > 0) { %>
-      <p>You have <a href="/#"><%= items.length %></a> items waiting for you.</p> 
-    <% } %>
-  <% } %>
-<% } %>
 <article>
   <section>
+    <h2><%= town %>
+    <h3><%= piers.length %> Piers<h3>
+  </section>
+  <section>
     <%# map embed %>
-    <%- await include('./map-embed.ejs') -%>
+    <%- await include('../map-embed.ejs') -%>
     <%# map embed %>
     <script nonce="<%= nonce %>">
       const map = document.querySelector('div#map')
