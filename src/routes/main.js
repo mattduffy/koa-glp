@@ -9,8 +9,9 @@ import Router from '@koa/router'
 // import { ObjectId } from 'mongodb'
 import { Albums } from '@mattduffy/albums/Albums' // eslint-disable-line import/no-unresolved
 // import { Users } from '../models/users.js'
-import { _log, _error } from '../utils/logging.js'
-import { redis } from '../daos/impl/redis/redis-client.js'
+import { _log, _error, getSetName } from '../utils/logging.js'
+import { redis } from '../daos/impl/redis/redis-om.js'
+import { redis as ioredis } from '../daos/impl/redis/redis-client.js'
 
 const mainLog = _log.extend('main')
 const mainError = _error.extend('main')
@@ -53,6 +54,49 @@ router.get('index', '/', hasFlash, async (ctx) => {
   })
 })
 
+router.get('piersByTown', '/towns/:town', hasFlash, async (ctx) => {
+  const log = mainLog.extend('GET-piersByTown')
+  const error = mainError.extend('GET-piersByTown')
+  const town = getSetName(sanitize(ctx.params.town))
+  log(town)
+  let piersInTown
+  const key = `glp:piers_by_town:${town}`
+  log(`key: ${key}`)
+  try {
+    piersInTown = await redis.zRange(key, 0, -1)
+  } catch (e) {
+    error(e)
+    ctx.throw(500, 'Error', { town })
+  }
+  const locals = {}
+  locals.piers = piersInTown
+  locals.flash = ctx.flash.view ?? {}
+  locals.title = `${ctx.app.site}: ${town}`
+  locals.sessionUser = ctx.state.sessionUser
+  locals.isAuthenticated = ctx.state.isAuthenticated
+  locals.town = town.split('_').map((e) => e.toProperCase()).join(' ')
+  await ctx.render('town', locals)
+})
+
+router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
+  const log = mainLog.extend('GET-pierByNumber')
+  const error = mainLog.extend('GET-pierByNumber')
+  const pier = sanitize(ctx.params.pier)
+  log(pier)
+  if (pier.length > 6 || !/^\d/.test(pier)) {
+    error('Pier number looks invalid')
+    error(pier.length, !/^\d/.test(pier))
+    ctx.throw(404, 'Error', { pier })
+  }
+  const locals = {}
+  locals.pier = pier
+  locals.flash = ctx.flash.view ?? {}
+  locals.title = `${ctx.app.site}: Pier ${pier}`
+  locals.sessionUser = ctx.state.sessionUser
+  locals.isAuthenticated = ctx.state.isAuthenticated
+  await ctx.render('pier', locals)
+})
+
 router.get('galleries', '/galleries', hasFlash, async (ctx) => {
   const log = mainLog.extend('galleries')
   const error = mainError.extend('galleries')
@@ -60,7 +104,7 @@ router.get('galleries', '/galleries', hasFlash, async (ctx) => {
   ctx.status = 200
   let recent10
   try {
-    recent10 = await Albums.recentlyAdded(redis)
+    recent10 = await Albums.recentlyAdded(ioredis)
   } catch (e) {
     error(e)
   }

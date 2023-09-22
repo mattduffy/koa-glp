@@ -1,0 +1,30 @@
+<% if (flash?.info) { %>
+  <div id="info" class="info">
+    <span><%= flash.info %></span>
+  </div>
+<% } %>
+<% if (flash?.message) { %>
+  <div id="messages" class="messages">
+    <span><%= flash.message %></span>
+  </div>
+<% } %>
+<% if (flash?.error) { %>
+  <div id="errors" class="errors">
+    <span><%= flash.error %></span>
+  </div>
+<% } %>
+<article>
+  <section>
+    <h2>Pier <%= pier %>
+  </section>
+  <section>
+    <%# map embed %>
+    <%- await include('./map-embed.ejs') -%>
+    <%# map embed %>
+    <script nonce="<%= nonce %>">
+      const map = document.querySelector('div#map')
+      console.log(map)
+    </script>
+  </section>
+</article>
+

@@ -34,7 +34,6 @@ import { wellKnown } from './routes/wellKnown.js'
 import { users as Users } from './routes/users.js'
 import { app as theApp } from './routes/app.js'
 import { account as Account } from './routes/account.js'
-import { towns as Towns } from './routes/towns.js'
 
 const log = _log.extend('index')
 const error = _error.extend('index')
@@ -237,7 +236,6 @@ app.use(serve(app.dirs.public.dir))
 app.use(theApp.routes())
 app.use(Auth.routes())
 app.use(Main.routes())
-app.use(Towns.routes())
 app.use(Users.routes())
 app.use(Account.routes())
 app.use(wellKnown.routes())

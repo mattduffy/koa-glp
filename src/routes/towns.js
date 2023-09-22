@@ -8,61 +8,20 @@
 import Router from '@koa/router'
 // import { ulid } from 'ulid'
 import { redis } from '../daos/impl/redis/redis-om.js'
-import { _log, _error } from '../utils/logging.js'
+import {
+  _log,
+  _error,
+  // TOWNS,
+  getSetName,
+  capitalize,
+} from '../utils/logging.js'
 
 const Log = _log.extend('towns')
 const Error = _error.extend('towns')
 const router = new Router()
 
-const TOWNS = [
-  'city_of_lake_geneva',
-  'town_of_linn',
-  'village_of_williams_bay',
-  'town_of_fontana',
-  'town_of_walworth',
-]
-
-/*
- * Convert URL parameter :town to redis set name.
- */
-function getSetName(t = '') {
-  let setName
-  const town = t.toLowerCase().replace(/-/g, ' ')
-  _log(town)
-  switch (town) {
-    case town.match(/lake genava/)?.input:
-      [setName] = TOWNS
-      break
-    case town.match(/linn/)?.input:
-      [, setName] = TOWNS
-      break
-    case town.match(/williams bay/)?.input:
-      [, , setName] = TOWNS
-      break
-    case town.match(/fontana/)?.input:
-      [, , , setName] = TOWNS
-      break
-    case town.match(/walworth/)?.input:
-      [, , , , setName] = TOWNS
-      break
-    default:
-      _log('no match found');
-      [setName] = TOWNS
-  }
-  return setName
-}
-
-/*
- * Fill in the body for parameter sanitizing function.
- */
 function sanitize(param) {
   return param
-}
-/*
- * Capitalize a word
- */
-function capitalize(word) {
-  return word[0].toUpperCase() + word.substring(1).toLowerCase()
 }
 
 router.get('piersByTown', '/towns/:town', async (ctx) => {
