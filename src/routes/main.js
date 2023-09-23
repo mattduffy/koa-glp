@@ -33,6 +33,10 @@ async function hasFlash(ctx, next) {
   await next()
 }
 
+// async function pierInTown(pier) {
+//   const towns = 0
+// }
+
 router.get('index', '/', hasFlash, async (ctx) => {
   const log = mainLog.extend('index')
   // const error = mainError.extend('index')
@@ -81,17 +85,50 @@ router.get('piersByTown', '/towns/:town', hasFlash, async (ctx) => {
 router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-pierByNumber')
   const error = mainLog.extend('GET-pierByNumber')
-  const pier = sanitize(ctx.params.pier)
-  log(pier)
-  if (pier.length > 6 || !/^\d/.test(pier)) {
-    error('Pier number looks invalid')
-    error(pier.length, !/^\d/.test(pier))
-    ctx.throw(404, 'Error', { pier })
-  }
+  const pierNumber = sanitize(ctx.params.pier)
   const locals = {}
+  const key = `glp:piers:${pierNumber}`
+  let pier
+  let town
+  log(pierNumber)
+  if (pierNumber.length > 6 || !/^\d/.test(pierNumber)) {
+    error('Pier number looks invalid')
+    error(pierNumber.length, !/^\d/.test(pierNumber))
+    locals.pier = `${pierNumber} is not a valid pier number.`
+  }
+  try {
+    /* eslint-disable-next-line */
+    for (const set of ctx.state.TOWNS) {
+      let found = false
+      const setkey = `glp:piers_by_town:${set}`
+      log(setkey, pierNumber)
+      /* eslint-disable-next-line */
+      for await (const { value } of redis.zScanIterator(setkey, { MATCH: pierNumber, COUNT: 900 })) {
+        if (value !== null) {
+          town = set.split('_').map((e) => e.toProperCase()).join(' ')
+          log(`Found ${value} in ${set}`)
+          found = true
+        }
+      }
+      if (found) break
+    }
+  } catch (e) {
+    error(e)
+    throw new Error(`Could not match pier ${pierNumber} to any town set in redis.`, { cause: e })
+  }
+  try {
+    pier = await redis.json.get(key)
+    log(pier)
+  } catch (e) {
+    error(e)
+  }
+  log(ctx.state.TOWNS)
   locals.pier = pier
+  locals.town = town
+  locals.photo = false
+  locals.pierNumber = pierNumber
   locals.flash = ctx.flash.view ?? {}
-  locals.title = `${ctx.app.site}: Pier ${pier}`
+  locals.title = `${ctx.app.site}: Pier ${pierNumber}`
   locals.sessionUser = ctx.state.sessionUser
   locals.isAuthenticated = ctx.state.isAuthenticated
   await ctx.render('pier', locals)

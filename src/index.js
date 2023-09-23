@@ -17,14 +17,14 @@ import { _log, _error } from './utils/logging.js'
 import * as mongoClient from './daos/impl/mongodb/mongo-client.js'
 import { session, config } from './session-handler.js'
 import {
-  getSessionUser,
-  flashMessage,
-  prepareRequest,
-  tokenAuthMiddleware,
-  // errorHandlers,
   errors,
-  httpMethodOverride,
+  townSetNames,
+  flashMessage,
+  getSessionUser,
+  prepareRequest,
   checkServerJWKs,
+  httpMethodOverride,
+  tokenAuthMiddleware,
 } from './middlewares.js'
 import { apiV1 } from './routes/api_v1.js'
 import { activityV1 } from './routes/activity_stream.js'
@@ -225,6 +225,7 @@ app.use(errors)
 app.use(httpMethodOverride())
 app.use(isMongo)
 app.use(getSessionUser)
+app.use(townSetNames)
 app.use(flashMessage({}, app))
 app.use(prepareRequest())
 app.use(tokenAuthMiddleware())

@@ -12,11 +12,41 @@ import { METHODS } from 'node:http'
 import { _log, _error } from './utils/logging.js'
 import { Users } from './models/users.js'
 import { App } from './models/app.js'
+import { redis } from './daos/impl/redis/redis-om.js'
 
 // const DBNAME = 'genevalakepiers'
 const USERS = 'users'
 const middlewareLog = _log.extend('middlewares')
 const middlewareError = _error.extend('middlewares')
+
+export async function townSetNames(ctx, next) {
+  const log = middlewareLog.extend('townSetNames')
+  const error = middlewareError.extend('townSetNames')
+  try {
+    const townSets = await redis.scanIterator({
+      TYPE: 'zset',
+      MATCH: 'glp:piers_by_town:*',
+      COUNT: 900,
+    })
+    const towns = []
+    /* eslint-disable-next-line */
+    for await (const t of townSets) {
+      const name = t.substr(t.lastIndexOf(':') + 1)
+      towns.push(name)
+    }
+    log(`${towns.length} town sets found.`)
+    ctx.state.TOWNS = towns
+  } catch (e) {
+    error(e)
+    throw new Error(e.message, { cause: e })
+  }
+  try {
+    await next()
+  } catch (e) {
+    error(e)
+    ctx.throw(500, 'Error after getting redis set names for pier-by-town.', e)
+  }
+}
 
 export async function checkServerJWKs(ctx, next) {
   const log = middlewareLog.extend('checkServerJWKs')

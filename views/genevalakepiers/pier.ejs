@@ -15,7 +15,20 @@
 <% } %>
 <article>
   <section>
-    <h2>Pier <%= pier %>
+    <% if (!pier?.pier) { %>
+      <h2><%= pierNumber %> is not a valid pier number on Geneva Lake</h2>
+    <% } else { %>
+      <h2>Pier <%= pier.pier %>, located in the
+      <h2><%= town %></h2>
+      <% if (photo) { %>
+      <picture>
+        <source media="(max-width:820px)" srcset="">
+        <source media="(min-width:821px)" srcset="">
+        <img alt="Photo of pier <%= pier %> in <%= town %>." src="">
+      </picture>
+      <% } %>
+      <%= pier %>
+    <% } %>
   </section>
   <section>
     <%# map embed %>
