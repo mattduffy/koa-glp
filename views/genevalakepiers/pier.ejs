@@ -27,7 +27,55 @@
         <img alt="Photo of pier <%= pier %> in <%= town %>." src="">
       </picture>
       <% } %>
-      <%= pier %>
+      <h3 id="location">Location:</h3>
+      <ul class="location">
+        <li>lat: <%= pier.loc.split(',')[1] %></li>
+        <li>lon: <%= pier.loc.split(',')[0] %></li>
+        <li>geohash: <%= pier.geohash %></li>
+        <li>pluscode: <a href="https://www.google.com/maps/place/<%= encodeURIComponent(pier.pluscode) %>"><%= pier.pluscode %></a></li>
+      </ul>
+      <h3 id="address">Street Address:</h3>
+      <ul class="location">
+        <% if (pier.property?.association !== '') {
+          let assoc
+          if (pier.property?.associationUrl !== '' ) {
+            assoc = `<a href="${pier.property.associationUrl}">${pier.property.association}</a>`
+          } else {
+            assoc = pier.property.association
+          } %>
+          <li><%= assoc %></li>
+        <% } %>
+        <% if (pier.property?.established !== '') { %>
+          <li>Established in <%= pier.property.established %></li>
+        <% } %>
+        <% if (pier.property?.estateName !== '') { %>
+          <li><span class="emphasis"><%= pier.property.estateName %></span></li>
+        <% } %>
+        <% if (pier.property?.address?.street !== '') { %>
+          <li><%= pier.property.address.street %></li>
+        <% } %>
+        <% if (pier.property?.address?.city !== '') { %>
+          <li><%= pier.property.address.city %></li>
+        <% } %>
+          <li>WI, <%= pier.property.address?.zip %></li>
+      </ul>
+      <h3 id="owners">Owners:</h3>
+      <% if (pier?.owners.length < 1) { %>
+        Pier owner information is missing.  
+      <% } else { %>
+        <% pier.owners.forEach((owner) => {
+          let o = ''
+          if (owner?.members.length > 0) {
+            owner.members.forEach((m) => {
+              o += `<p>${m.t} ${m.f} ${m.m} ${m.l} ${m.s}</p>`
+            })
+          }
+          if (owner.member === true) {
+            o += `<p>GLA memberhip level: ${owner.membershipType}</p>`
+          } %>
+          <%- o %>
+        <% }) %>
+      <% } %>
     <% } %>
   </section>
   <section>
