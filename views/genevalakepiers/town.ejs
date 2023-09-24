@@ -17,6 +17,15 @@
   <section>
     <h2><%= town %>
     <h3><%= piers.length %> Piers<h3>
+
+    <p><% piers.forEach((p, i) => {
+     let a = `<a href="/pier/${p}">${p}</a>, `
+     if (i === (piers.length - 1)) {
+       a = a.substr(0, a.lastIndexOf(', '))
+     }
+     %>
+     <%- a %>
+   <% }) %></p>
   </section>
   <section>
     <%# map embed %>

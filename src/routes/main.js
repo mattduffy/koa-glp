@@ -96,6 +96,7 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
     error(pierNumber.length, !/^\d/.test(pierNumber))
     locals.pier = `${pierNumber} is not a valid pier number.`
   }
+  let setTown
   try {
     /* eslint-disable-next-line */
     for (const set of ctx.state.TOWNS) {
@@ -106,6 +107,7 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
       for await (const { value } of redis.zScanIterator(setkey, { MATCH: pierNumber, COUNT: 900 })) {
         if (value !== null) {
           town = set.split('_').map((e) => e.toProperCase()).join(' ')
+          setTown = set
           log(`Found ${value} in ${set}`)
           found = true
         }
@@ -126,6 +128,7 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
   locals.pier = pier
   locals.town = town
   locals.photo = false
+  locals.setTown = setTown
   locals.pierNumber = pierNumber
   locals.flash = ctx.flash.view ?? {}
   locals.title = `${ctx.app.site}: Pier ${pierNumber}`
