@@ -14,7 +14,7 @@
   </div>
 <% } %>
 <article>
-  <section>
+  <section class="main">
     <h2><%= town %>
     <h3><%= piers.length %> Piers<h3>
 
@@ -27,7 +27,7 @@
      <%- a %>
    <% }) %></p>
   </section>
-  <section>
+  <section class="map">
     <%# map embed %>
     <%- await include('./map-embed.ejs') -%>
     <%# map embed %>

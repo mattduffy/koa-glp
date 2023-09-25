@@ -116,6 +116,10 @@ header > p {
   margin-left: 5px;
 }
 
+section.main {
+  padding-left: 10px;
+}
+
 ul.location {
   list-style: none;
   margin: 5px 0px;
@@ -123,7 +127,19 @@ ul.location {
 
 ul.location > li {
   position: relative;
-  left: -15px;
+  left: -25px;
+}
+
+ul.owners > li {
+  list-style: none;
+  margin: 10px 0px;
+  position: relative;
+  left: -30px;
+}
+
+:nth-child(even of ul.owners > li) {
+  background-color: #f9f9f9;
+  border-bottom: 1px solid lightgrey;
 }
 
 h3#owners ~ p {
@@ -131,8 +147,12 @@ h3#owners ~ p {
 }
 
 .emphasis {
-  font-style: italics;
-  text-decoration: underline;
+  font-family: cursive;
+  /* font-style: italic; */
+}
+
+section.map {
+  padding-left: 0px;
 }
 
 div#map {

@@ -14,12 +14,11 @@
   </div>
 <% } %>
 <article>
-  <section>
+  <section class="main">
     <% if (!pier?.pier) { %>
       <h2><%= pierNumber %> is not a valid pier number on Geneva Lake</h2>
     <% } else { %>
-      <h2>Pier <%= pier.pier %>, located in the
-        <h2><a href="/towns/<%= setTown %>"><%= town %></a></h2>
+      <h2>Pier <%= pier.pier %>, Located in the <nobr><a href="/towns/<%= setTown %>"><%= town %></a></nobr></h2>
       <% if (photo) { %>
       <picture>
         <source media="(max-width:820px)" srcset="">
@@ -36,49 +35,56 @@
       </ul>
       <h3 id="address">Street Address:</h3>
       <ul class="location">
-        <% if (pier.property?.association !== undefined) {
+        <% if (pier.property?.association !== undefined && pier.property?.association?.length !== 0) {
           let assoc
-          if (pier.property?.associationUrl !== undefined ) {
+          if (pier.property?.associationUrl !== undefined && pier.property?.associationUrl.length !== 0) {
             assoc = `<a href="${pier.property.associationUrl}">${pier.property.association}</a>`
           } else {
             assoc = pier.property.association
           } %>
-          <li><%- assoc %></li>
+          <li>Association: <%- assoc %></li>
         <% } %>
-        <% if (pier.property?.established !== undefined) { %>
+        <% if (pier?.property?.tel !== undefined && pier?.property?.tel.length !== 0) { %>
+          <li>Telephone: <a href="tel:<%= pier.property.tel %>"><%= pier.property.tel %></a></li>
+        <% } %>
+        <% if (pier?.property?.established !== undefined && pier?.property?.established?.length !== 0) { %>
           <li>Established in <%= pier.property.established %></li>
         <% } %>
-        <% if (pier.property?.estateName !== undefined) { %>
-          <li><span class="emphasis"><%= pier.property.estateName %></span></li>
+        <% if (pier.owners[0]?.estateName !== "") { %>
+          <li><span class="emphasis"><%= pier.owners[0]?.estateName %></span></li>
         <% } %>
         <% if (pier.property?.address?.street !== undefined) { %>
           <li><%= pier.property.address.street %></li>
         <% } %>
         <% if (pier.property?.address?.city !== undefined) { %>
-          <li><%= pier.property.address.city %></li>
+          <li><%= pier.property.address.city %>, WI <%= pier.property.address?.zip %></li>
         <% } %>
-          <li>WI, <%= pier.property.address?.zip %></li>
       </ul>
       <h3 id="owners">Owners:</h3>
       <% if (pier?.owners.length < 1) { %>
         Pier owner information is missing.  
       <% } else { %>
+        <ul class="owners">
         <% pier.owners.forEach((owner) => {
-          let o = ''
-          if (owner?.members.length > 0) {
+          let o = '' %>
+          <li>
+          <ul class="owners">
+          <% if (owner?.members.length > 0) {
             owner.members.forEach((m) => {
-              o += `<p>${m.t} ${m.f} ${m.m} ${m.l} ${m.s}</p>`
+              o += `<div>${m.t} ${m.f} ${m.m} ${m.l} ${m.s}</div>`
             })
           }
           if (owner.member === true) {
-            o += `<p>GLA memberhip level: ${owner.membershipType}</p>`
+            o += `<div>GLA memberhip level: ${owner.membershipType}</div>`
           } %>
-          <%- o %>
+          <li><%- o %></li>
+          </ul></li>
         <% }) %>
+        </ul>
       <% } %>
     <% } %>
   </section>
-  <section>
+  <section class="map">
     <%# map embed %>
     <%- await include('./map-embed.ejs') -%>
     <%# map embed %>
