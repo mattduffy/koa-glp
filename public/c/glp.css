@@ -151,6 +151,11 @@ h3#owners ~ p {
   /* font-style: italic; */
 }
 
+.estateName {
+  font-style: italic;
+  font-size: 1.25em;
+}
+
 section.map {
   padding-left: 0px;
 }

@@ -51,7 +51,7 @@
           <li>Established in <%= pier.property.established %></li>
         <% } %>
         <% if (pier.owners[0]?.estateName !== "") { %>
-          <li><span class="emphasis"><%= pier.owners[0]?.estateName %></span></li>
+          <li><span class="estateName"><%= pier.owners[0]?.estateName %></span></li>
         <% } %>
         <% if (pier.property?.address?.street !== undefined) { %>
           <li><%= pier.property.address.street %></li>
