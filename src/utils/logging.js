@@ -30,17 +30,19 @@ const TOWNS = [
  * Convert URL parameter :town to redis set name.
  */
 function getSetName(t = '') {
+  const log = _log.extend('getSetName')
+  const error = _error.extend('getSetName')
   let setName
   const town = t.toLowerCase().replace(/-/g, ' ')
-  _log(town)
+  log(town)
   switch (town) {
-    case town.match(/lake genava/)?.input:
+    case town.match(/lake.geneva/)?.input:
       [setName] = TOWNS
       break
     case town.match(/linn/)?.input:
       [, setName] = TOWNS
       break
-    case town.match(/williams bay/)?.input:
+    case town.match(/williams.bay/)?.input:
       [, , setName] = TOWNS
       break
     case town.match(/fontana/)?.input:
@@ -50,7 +52,7 @@ function getSetName(t = '') {
       [, , , , setName] = TOWNS
       break
     default:
-      _log('no match found');
+      error('no match found');
       [setName] = TOWNS
   }
   return setName
