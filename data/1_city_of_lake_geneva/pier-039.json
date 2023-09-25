@@ -9,6 +9,8 @@
   "property": {
     "association": "",
     "established": "",
+    "associationUrl": "",
+    "tel": "",
     "address": {
       "street": "",
       "city": "Lake Geneva",

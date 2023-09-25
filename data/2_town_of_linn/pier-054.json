@@ -8,7 +8,8 @@
   },
   "property": {
     "association": "",
-    "estateName": "Lakewood",
+    "established": "",
+    "associationUrl": "",
     "tel": "",
     "address": {
       "street": "",
@@ -19,6 +20,7 @@
   },
   "owners": [
     {
+      "estateName": "Lakewood",
       "member": true,
       "membershipType": "Benefactor",
       "members": [
