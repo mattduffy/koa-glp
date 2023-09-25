@@ -120,6 +120,22 @@ section.main {
   padding-left: 10px;
 }
 
+div.previousPier {
+  display: inline-block;
+  width: 45%;
+  margin: auto;
+  position: relative;
+  text-align: left;
+}
+
+div.nextPier {
+  display: inline-block;
+  width: 50%;
+  position: relative;
+  right: 0px;
+  text-align: right;
+}
+
 ul.location {
   list-style: none;
   margin: 5px 0px;

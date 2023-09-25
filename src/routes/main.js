@@ -33,10 +33,6 @@ async function hasFlash(ctx, next) {
   await next()
 }
 
-// async function pierInTown(pier) {
-//   const towns = 0
-// }
-
 router.get('index', '/', hasFlash, async (ctx) => {
   const log = mainLog.extend('index')
   // const error = mainError.extend('index')
@@ -87,7 +83,7 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
   const error = mainLog.extend('GET-pierByNumber')
   const pierNumber = sanitize(ctx.params.pier)
   const locals = {}
-  const key = `glp:piers:${pierNumber}`
+  let key = `glp:piers:${pierNumber}`
   let pier
   let town
   log(pierNumber)
@@ -123,11 +119,39 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
     log(pier)
   } catch (e) {
     error(e)
+    throw new Error(`Failed to get pier ${pierNumber}`, { cause: e })
   }
+  let nextPier
+  let previousPier
+  key = 'glp:all_piers_in_order'
+  try {
+    // const args = [key, '[643', '+', 'bylex', 'limit', '1', '1']
+    nextPier = await redis.zRange(key, `[${pierNumber}`, '+', { BY: 'LEX', LIMIT: { offset: 1, count: 1 } })
+    if (Number.isNaN(parseInt(nextPier, 10))) {
+      nextPier = '001'
+    }
+    log(`next pier >> ${nextPier}`)
+  } catch (e) {
+    error(e)
+    throw new Error(`Failed creating next pier link for pier ${pierNumber}`, { cause: e })
+  }
+  try {
+    previousPier = await redis.zRange(key, `[${pierNumber}`, '-', { BY: 'LEX', REV: true, LIMIT: { offset: '1', count: '1' } })
+    if (Number.isNaN(parseInt(previousPier, 10))) {
+      previousPier = await redis.zRange(key, '0', '-1', { REV: true, BY: 'SCORE', LIMIT: { offset: '0', count: '1' } })
+    }
+    log(`prev pier >> ${previousPier}`)
+  } catch (e) {
+    error(e)
+    throw new Error(`Failed creating previous pier link for pier ${pierNumber}`, { cause: e })
+  }
+
   log(ctx.state.TOWNS)
   locals.pier = pier
   locals.town = town
   locals.photo = false
+  locals.nextPier = nextPier
+  locals.previousPier = previousPier
   locals.setTown = setTown
   locals.pierNumber = pierNumber
   locals.flash = ctx.flash.view ?? {}
