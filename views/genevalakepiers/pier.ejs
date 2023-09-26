@@ -21,14 +21,14 @@
       <h2>Pier <%= pier.pier %>, Located in the <nobr><a href="/towns/<%= setTown %>"><%= town %></a></nobr></h2>
       <div class="previousPier">
         <% if (previousPier.length !== 0) { %>
-        <a href="/pier/<%= previousPier %>"><< Pier <%= previousPier %></a>
+        <a href="/pier/<%= previousPier %>">< Pier <%= previousPier %></a>
         <% } else { %>
         Pier <%= pier.pier %> 
         <% } %>
       </div>
       <div class="nextPier">
         <% if (nextPier.length !== 0) { %>
-        <a href="/pier/<%= nextPier %>">Pier <%= nextPier %> >></a>
+        <a href="/pier/<%= nextPier %>">Pier <%= nextPier %> ></a>
         <% } else { %>
         Pier <%= pier.pier %> 
         <% } %>

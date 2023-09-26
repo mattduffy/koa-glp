@@ -56,6 +56,13 @@ div.grid-footer {
   grid-row-end: 4;
 }
 
+.header-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 20px;
+  grid-template-rows: auto;
+}
+
 header {
   max-width: 100%;
   position: relative;
@@ -67,6 +74,7 @@ header {
 .hamburger:before {
   content: "\002630";
   font-size: 2.5em;
+  margin: 0px 0px 0px 15px;
 }
 
 header > div > picture > img {
@@ -74,8 +82,8 @@ header > div > picture > img {
 }
 
 header > h1 {
-  display: inline-block;
-  margin: 0px 5px;
+  display: block;
+  text-align: -webkit-auto;
 }
 header > h1 > a:active,
 header > h1 > a:visited, 
@@ -90,6 +98,10 @@ header > h1 > a:link {
 header > ul.header-links {
   list-style: none;
   display: none;
+  grid-column-start: 2;
+  position: relative;
+  left: -10%;
+  margin-top: -5px;
 }
 
 header > ul > li {
@@ -146,9 +158,13 @@ ul.location > li {
   left: -25px;
 }
 
+ul.owners {
+  margin: 5px 0px 0px 0px;
+}
+
 ul.owners > li {
   list-style: none;
-  margin: 10px 0px;
+  margin: 0px 0px 10px 0px;
   position: relative;
   left: -30px;
 }
