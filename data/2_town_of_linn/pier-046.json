@@ -41,7 +41,7 @@
       "estateName": "Northwoodside",
       "member": true,
       "membershipType": "Benefactor",
-      "owners": [
+      "members": [
         { "t": "", "f": "Tricia", "m": "", "l": "Hagenah", "s": "" },
         { "t": "", "f": "Will", "m": "", "l": "Hagenah", "s": "" }
       ]

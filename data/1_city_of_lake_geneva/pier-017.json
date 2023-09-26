@@ -58,7 +58,7 @@
       "estateName": "",
       "member": true,
       "membershipType": "Regular",
-      "owners": [
+      "members": [
         { "t": "", "f": "David", "m": "", "l": "Pezza", "s": "" },
         { "t": "", "f": "Paula", "m": "", "l": "Pezza", "s": "" }
       ]
