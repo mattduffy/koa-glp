@@ -19,20 +19,24 @@
       <h2><%= pierNumber %> is not a valid pier number on Geneva Lake</h2>
     <% } else { %>
       <h2>Pier <%= pier.pier %>, located in the <nobr><a href="/towns/<%= setTown %>"><%= town %></a></nobr></h2>
-      <div class="previousPier">
-        <% if (previousPier.length !== 0) { %>
-        <a href="/pier/<%= previousPier %>">< Pier <%= previousPier %></a>
-        <% } else { %>
-        Pier <%= pier.pier %> 
-        <% } %>
-      </div>
-      <div class="nextPier">
-        <% if (nextPier.length !== 0) { %>
-        <a href="/pier/<%= nextPier %>">Pier <%= nextPier %> ></a>
-        <% } else { %>
-        Pier <%= pier.pier %> 
-        <% } %>
-      </div>
+      <form id="pierEdit" name="pierEdit" action="/pier/edit" method="POST" enctype="multipart/form-data">
+        <fieldset id="pierPhoto" name="pierPhoto" form="pierEdit" class="edit_fieldset" title="Pier Photo Form">
+          <legend>Pier Photo</legend>
+
+        </fieldset>
+        <fieldset id="pierLocation" id="pierLocation" form="pierEdit" class="edit_fieldset" title="Pier Location Form">
+          <legend>Pier Location</legend>
+
+        </fieldset>
+        <fieldset id="pierAddress" id="pierAddress" form="pierEdit" class="edit_fieldset" title="Pier Address Form">
+          <legend>Pier Address</legend>
+
+        </fieldset>
+        <fieldset id="pierOwners" id="pierOwners" form="pierEdit" class="edit_fieldset" title="Pier Address Form">
+          <legend>Pier Owners</legend>
+
+        </fieldset>
+      </form>
       <% if (photo) { %>
       <picture>
         <source media="(max-width:820px)" srcset="">
