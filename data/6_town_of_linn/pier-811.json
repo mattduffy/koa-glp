@@ -7,9 +7,9 @@
     "pluscode": "HH86+7XH Lake Geneva, Wisconsin"
   },
   "property": {
-    "association": "",
-    "established": "",
-    "associationUrl": "http://boathouseh2o.com/",
+    "association": "The Boat House Bar & Grill",
+    "established": "2017",
+    "associationUrl": "https://www.theboathouselakegeneva.com/",
     "tel": "+1(262) 742-3898",
     "address": {
       "street": "N2062 S Lake Shore Dr",
@@ -24,7 +24,7 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Boat House", "m": "", "l": "", "s": "" }
+        { "t": "", "f": "The Boat House Bar & Grill", "m": "", "l": "", "s": "" }
       ]
     }
   ]

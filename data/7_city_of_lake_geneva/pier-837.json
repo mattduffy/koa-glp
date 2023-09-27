@@ -7,12 +7,12 @@
     "pluscode": "HHC6+RQX Lake Geneva, Wisconsin"
   },
   "property": {
-    "association": "Big Foot State Park",
-    "established": "",
-    "associationUrl": "",
-    "tel": "",
+    "association": "Lake Geneva Youth Camp",
+    "established": "1873",
+    "associationUrl": "https://www.lgyc.org/",
+    "tel": "(262) 248-5500",
     "address": {
-      "street": "2023-1975 S Lake Shore Dr",
+      "street": "W2655 W. South Street",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
