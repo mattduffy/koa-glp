@@ -74,15 +74,47 @@ try {
           log(`${i}: membership type: ${owner.membershipType}`)
         }
       })
-      pierJson.geohash = pierJson.loc.geohash
-      delete pierJson.loc.geohash
-      pierJson.pluscode = pierJson.loc.pluscode
-      delete pierJson.loc.pluscode
+      if (pierJson.loc?.geohash && pierJson.loc?.geohash !== '') {
+        pierJson.geohash = pierJson.loc.geohash
+        delete pierJson.loc.geohash
+      }
+      if (pierJson.loc?.pluscode && pierJson.loc?.pluscode !== '') {
+        pierJson.pluscode = pierJson.loc.pluscode
+        delete pierJson.loc.pluscode
+      }
+      if (pierJson.loc?.lon && pierJson.loc?.lon !== '') {
+        pierJson.loc.longitude = pierJson.loc.lon
+        pierJson.loc.latitude = pierJson.loc.lat
+        delete pierJson.loc.lon
+        delete pierJson.loc.lat
+      }
+      if (pierJson.owners.length < 1) {
+        pierJson.owners.push({
+          estateName: '',
+          member: false,
+          membershipType: 'Residential Non-member',
+          members: [],
+        })
+      }
+      if (pierJson.owners[0].members?.length < 1) {
+        pierJson.owners[0].members.push({
+          t: '',
+          f: '',
+          m: '',
+          l: '',
+          s: '',
+        })
+      }
+      if ((pierJson.owners[0].members.length === 1) && (pierJson.owners[0].members[0]?.l === undefined)) {
+        pierJson.owners[0].members[0] = {
+          t: '',
+          f: '',
+          m: '',
+          l: '',
+          s: '',
+        }
+      }
       log(`${d}/${pier}`)
-      pierJson.loc.longitude = pierJson.loc.lon
-      pierJson.loc.latitude = pierJson.loc.lat
-      delete pierJson.loc.lon
-      delete pierJson.loc.lat
       log('loc: ', pierJson.loc)
       log('geohash: ', pierJson.geohash)
       log('pluscode: ', pierJson.pluscode)

@@ -80,6 +80,7 @@ const pierRepository = new Repository(pierSchema, clientOm)
 // create the indexes for pier data
 const pierNumberIndex = `${DB_PREFIX}:idx:piers:number`
 try {
+  log(await redis.ft.dropIndex(pierNumberIndex))
   log(`pierNumberIndex name: ${pierNumberIndex}`)
   await redis.ft.create(
     pierNumberIndex,
@@ -103,11 +104,12 @@ try {
   }
 }
 // create an index for estateName
-const pierOwnerEstatename = `${DB_PREFIX}:idx:piers:estateName`
+const pierOwnerEstatenameIndex = `${DB_PREFIX}:idx:piers:estateName`
 try {
-  log(`pierOwnerEstatename name: ${pierOwnerEstatename}`)
+  log(await redis.ft.dropIndex(pierOwnerEstatenameIndex))
+  log(`pierOwnerEstatenameIndex name: ${pierOwnerEstatenameIndex}`)
   await redis.ft.create(
-    pierOwnerEstatename,
+    pierOwnerEstatenameIndex,
     {
       '$.owners[*].estateName': {
         type: SchemaFieldTypes.TEXT,
@@ -122,7 +124,7 @@ try {
   )
 } catch (e) {
   if (e.message === 'Index already exists') {
-    log(`${pierOwnerEstatename} ${e.message}.  Skipping ahead.`)
+    log(`${pierOwnerEstatenameIndex} ${e.message}.  Skipping ahead.`)
   } else {
     error(e)
     throw new Error(e.message, { cause: e })
@@ -130,20 +132,21 @@ try {
 }
 
 // create an index for owner's firstname and lastname
-const pierOwnerNames = `${DB_PREFIX}:idx:piers:ownerNames`
+const pierOwnerNamesIndex = `${DB_PREFIX}:idx:piers:ownerNames`
 try {
-  log(`pierOwnerNames name: ${pierOwnerNames}`)
+  log(await redis.ft.dropIndex(pierOwnerNamesIndex))
+  log(`pierOwnerNamesIndex name: ${pierOwnerNamesIndex}`)
   await redis.ft.create(
-    pierOwnerNames,
+    pierOwnerNamesIndex,
     {
-      '$.owners[*].members[*].f': {
+      // '$.owners[*].members[*].f': {
+      '$.owners.*.members.*.f': {
         type: SchemaFieldTypes.TEXT,
         SORTABLE: true,
         AS: 'firstname',
       },
-    },
-    {
-      '$.owners[*].members[*].l': {
+      // '$.owners[*].members[*].l': {
+      '$.owners.*.members.*.l': {
         type: SchemaFieldTypes.TEXT,
         SORTABLE: true,
         AS: 'lastname',
@@ -156,7 +159,7 @@ try {
   )
 } catch (e) {
   if (e.message === 'Index already exists') {
-    log(`${pierOwnerEstatename} ${e.message}.  Skipping ahead.`)
+    log(`${pierOwnerNamesIndex} ${e.message}.  Skipping ahead.`)
   } else {
     error(e)
     throw new Error(e.message, { cause: e })

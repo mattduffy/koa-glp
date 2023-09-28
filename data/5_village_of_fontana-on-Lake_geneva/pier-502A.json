@@ -21,7 +21,15 @@
       "estateName": "",
       "member": false,
       "membershipType": "Residential Non-member",
-      "members": []
+      "members": [
+        {
+          "t": "",
+          "f": "",
+          "m": "",
+          "s": "",
+          "l": ""
+        }
+      ]
     }
   ],
   "geohash": "dp941195xt0",

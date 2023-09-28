@@ -16,7 +16,22 @@
       "zip": "53147"
     }
   },
-  "owners": [],
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        {
+          "t": "",
+          "f": "",
+          "m": "",
+          "s": "",
+          "l": ""
+        }
+      ]
+    }
+  ],
   "geohash": "dp945xfcjq0",
   "pluscode": "HHJ7+PJM Lake Geneva, Wisconsin"
 }
