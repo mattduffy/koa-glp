@@ -1,10 +1,8 @@
 {
   "pier": "468",
   "loc": {
-    "lon": 0.00,
-    "lat": 0.00,
-    "geohash": "",
-    "pluscode": ""
+    "longitude": 0,
+    "latitude": 0
   },
   "property": {
     "association": "Indian Hills",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Carylsue", "m": "", "l": "Ambel", "s": "" }
+        {
+          "t": "",
+          "f": "Carylsue",
+          "m": "",
+          "l": "Ambel",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "",
+  "pluscode": ""
 }

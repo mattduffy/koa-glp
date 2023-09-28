@@ -1,10 +1,8 @@
 {
   "pier": "103A",
   "loc": {
-    "lon": -88.495518,
-    "lat": 42.574010,
-    "geohash": "dp944nre8f0",
-    "pluscode": "HGF3+JQ5 Williams Bay, Wisconsin"
+    "longitude": -88.495518,
+    "latitude": 42.57401
   },
   "property": {
     "association": "Sunset Hills",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Sunset Hills Association", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Sunset Hills Association",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944nre8f0",
+  "pluscode": "HGF3+JQ5 Williams Bay, Wisconsin"
 }

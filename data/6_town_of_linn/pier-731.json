@@ -1,10 +1,8 @@
 {
   "pier": "731",
   "loc": {
-    "lon": -88.464369,
-    "lat": 42.558091,
-    "geohash": "dp944gqnyg0",
-    "pluscode": "HG5P+67J Lake Geneva, Wisconsin"
+    "longitude": -88.464369,
+    "latitude": 42.558091
   },
   "property": {
     "association": "Trinke Estates",
@@ -24,7 +22,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Christopher", "m": "H", "l": "Bouma", "s": "" }
+        {
+          "t": "",
+          "f": "Christopher",
+          "m": "H",
+          "l": "Bouma",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Ralph", "m": "", "l": "Bouma", "s": "" },
-        { "t": "", "f": "Chris", "m": "", "l": "Bouma", "s": "" }
+        {
+          "t": "",
+          "f": "Ralph",
+          "m": "",
+          "l": "Bouma",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Chris",
+          "m": "",
+          "l": "Bouma",
+          "s": ""
+        }
       ]
     },
     {
@@ -41,8 +57,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Janet", "m": "", "l": "Hodge", "s": "" }
+        {
+          "t": "",
+          "f": "Janet",
+          "m": "",
+          "l": "Hodge",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944gqnyg0",
+  "pluscode": "HG5P+67J Lake Geneva, Wisconsin"
 }

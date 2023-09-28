@@ -1,10 +1,8 @@
 {
   "pier": "074B",
   "loc": {
-    "lon": -88.480930,
-    "lat": 42.571999,
-    "geohash": "dp944tfpug0",
-    "pluscode": "HGC9+QJW Lake Geneva, Wisconsin"
+    "longitude": -88.48093,
+    "latitude": 42.571999
   },
   "property": {
     "association": "Bonnie Brae",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Dvorak Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Dvorak Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944tfpug0",
+  "pluscode": "HGC9+QJW Lake Geneva, Wisconsin"
 }

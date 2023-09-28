@@ -1,10 +1,8 @@
 {
   "pier": "707",
   "loc": {
-    "lon": -88.472994,
-    "lat": 42.563027,
-    "geohash": "dp944srgtg0",
-    "pluscode": "HG7G+5W2 Lake Geneva, Wisconsin"
+    "longitude": -88.472994,
+    "latitude": 42.563027
   },
   "property": {
     "association": "700 Lake Shore Drive Association",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Hamale Llc", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Hamale Llc",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944srgtg0",
+  "pluscode": "HG7G+5W2 Lake Geneva, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "084",
   "loc": {
-    "lon": -88.485381,
-    "lat": 42.571088,
-    "geohash": "dp944myft40",
-    "pluscode": "HGC7+CRQ Lake Geneva, Wisconsin"
+    "longitude": -88.485381,
+    "latitude": 42.571088
   },
   "property": {
     "association": "Bonnie Brae",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Paul", "m": "", "l": "Gurinas", "s": "" },
-        { "t": "", "f": "Jessica", "m": "", "l": "Gurinas", "s": "" }
+        {
+          "t": "",
+          "f": "Paul",
+          "m": "",
+          "l": "Gurinas",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Jessica",
+          "m": "",
+          "l": "Gurinas",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944myft40",
+  "pluscode": "HGC7+CRQ Lake Geneva, Wisconsin"
 }

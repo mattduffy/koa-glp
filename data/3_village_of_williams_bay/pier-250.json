@@ -1,10 +1,8 @@
 {
   "pier": "250",
   "loc": {
-    "lon": -88.531722,
-    "lat": 42.577412,
-    "geohash": "dp941qvpmk0",
-    "pluscode": "HFG9+X86 Williams Bay, Wisconsin"
+    "longitude": -88.531722,
+    "latitude": 42.577412
   },
   "property": {
     "association": "Williams Bay Village Recreation Department",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Williams Bay East Dock", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Williams Bay East Dock",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Carolyn", "m": "", "l": "Hager", "s": "" }
+        {
+          "t": "",
+          "f": "Carolyn",
+          "m": "",
+          "l": "Hager",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,9 +50,23 @@
       "member": true,
       "membershipType": "Sustaining",
       "members": [
-        { "t": "", "f": "Mark", "m": "", "l": "Thorne", "s": "" },
-        { "t": "", "f": "Judy", "m": "", "l": "Thorne", "s": "" }
+        {
+          "t": "",
+          "f": "Mark",
+          "m": "",
+          "l": "Thorne",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Judy",
+          "m": "",
+          "l": "Thorne",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941qvpmk0",
+  "pluscode": "HFG9+X86 Williams Bay, Wisconsin"
 }

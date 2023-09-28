@@ -1,10 +1,8 @@
 {
   "pier": "494",
   "loc": {
-    "lon": -88.554550,
-    "lat": 42.547836,
-    "geohash": "dp940cse170",
-    "pluscode": "GCXW+45P Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.55455,
+    "latitude": 42.547836
   },
   "property": {
     "association": "Sylvan Glen",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Sylvan Glen Association", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Sylvan Glen Association",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940cse170",
+  "pluscode": "GCXW+45P Fontana-On-Geneva Lake, Wisconsin"
 }

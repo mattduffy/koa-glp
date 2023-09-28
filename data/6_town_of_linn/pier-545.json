@@ -1,10 +1,8 @@
 {
   "pier": "545",
   "loc": {
-    "lon": -88.527696,
-    "lat": 42.550315,
-    "geohash": "dp941d01e10",
-    "pluscode": "HF2C+4WF Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.527696,
+    "latitude": 42.550315
   },
   "property": {
     "association": "South Shore Club",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "South Shore Club", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "South Shore Club",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Frank", "m": "", "l": "Catalano", "s": "" },
-        { "t": "", "f": "Debra", "m": "", "l": "Catalano", "s": "" }
+        {
+          "t": "",
+          "f": "Frank",
+          "m": "",
+          "l": "Catalano",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Debra",
+          "m": "",
+          "l": "Catalano",
+          "s": ""
+        }
       ]
     },
     {
@@ -41,8 +57,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Debbie", "m": "", "l": "Kallergis", "s": "" },
-        { "t": "", "f": "Nick", "m": "", "l": "Kallergis", "s": "" }
+        {
+          "t": "",
+          "f": "Debbie",
+          "m": "",
+          "l": "Kallergis",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Nick",
+          "m": "",
+          "l": "Kallergis",
+          "s": ""
+        }
       ]
     },
     {
@@ -50,8 +78,20 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Ken", "m": "", "l": "Koranda", "s": "" },
-        { "t": "", "f": "Susan", "m": "", "l": "Koranda", "s": "" }
+        {
+          "t": "",
+          "f": "Ken",
+          "m": "",
+          "l": "Koranda",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Susan",
+          "m": "",
+          "l": "Koranda",
+          "s": ""
+        }
       ]
     },
     {
@@ -59,8 +99,20 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "John", "m": "", "l": "Matustik", "s": "" },
-        { "t": "", "f": "Kathy", "m": "", "l": "Matustik", "s": "" }
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "Matustik",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Kathy",
+          "m": "",
+          "l": "Matustik",
+          "s": ""
+        }
       ]
     },
     {
@@ -68,8 +120,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Todd", "m": "", "l": "Mintz", "s": "" }
+        {
+          "t": "",
+          "f": "Todd",
+          "m": "",
+          "l": "Mintz",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941d01e10",
+  "pluscode": "HF2C+4WF Fontana-On-Geneva Lake, Wisconsin"
 }

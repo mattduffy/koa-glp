@@ -1,10 +1,8 @@
 {
   "pier": "518",
   "loc": {
-    "lon": -88.539977,
-    "lat": 42.549031,
-    "geohash": "dp9411z4j40",
-    "pluscode": "GFX6+J26 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.539977,
+    "latitude": 42.549031
   },
   "property": {
     "association": "Clear Sky Lodge Assn.",
@@ -24,8 +22,20 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Dan", "m": "", "l": "Gallagher", "s": "" },
-        { "t": "", "f": "Sarah", "m": "", "l": "Gallagher", "s": "" }
+        {
+          "t": "",
+          "f": "Dan",
+          "m": "",
+          "l": "Gallagher",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Sarah",
+          "m": "",
+          "l": "Gallagher",
+          "s": ""
+        }
       ]
     },
     {
@@ -33,8 +43,20 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Murray", "m": "", "l": "Peretz", "s": "" },
-        { "t": "", "f": "Anne Marie", "m": "", "l": "Peretz", "s": "" }
+        {
+          "t": "",
+          "f": "Murray",
+          "m": "",
+          "l": "Peretz",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Anne Marie",
+          "m": "",
+          "l": "Peretz",
+          "s": ""
+        }
       ]
     },
     {
@@ -42,8 +64,16 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "The Lombardo Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "The Lombardo Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9411z4j40",
+  "pluscode": "GFX6+J26 Fontana-On-Geneva Lake, Wisconsin"
 }

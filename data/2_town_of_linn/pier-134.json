@@ -1,10 +1,8 @@
 {
   "pier": "134",
   "loc": {
-    "lon": -88.505424,
-    "lat": 42.575091,
-    "geohash": "dp944n83fh0",
-    "pluscode": "HFGV+2RP Williams Bay, Wisconsin"
+    "longitude": -88.505424,
+    "latitude": 42.575091
   },
   "property": {
     "association": "",
@@ -24,8 +22,20 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Brian", "m": "", "l": "Griffith", "s": "" },
-        { "t": "", "f": "Sue", "m": "", "l": "Griffith", "s": "" }
+        {
+          "t": "",
+          "f": "Brian",
+          "m": "",
+          "l": "Griffith",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Sue",
+          "m": "",
+          "l": "Griffith",
+          "s": ""
+        }
       ]
     },
     {
@@ -33,8 +43,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Lois", "m": "", "l": "Griffith", "s": "" }
+        {
+          "t": "",
+          "f": "Lois",
+          "m": "",
+          "l": "Griffith",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944n83fh0",
+  "pluscode": "HFGV+2RP Williams Bay, Wisconsin"
 }

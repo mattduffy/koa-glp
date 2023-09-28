@@ -1,10 +1,8 @@
 {
   "pier": "227",
   "loc": {
-    "lon": -88.529479,
-    "lat": 42.574412,
-    "geohash": "dp941qqvct0",
-    "pluscode": "HFFC+Q66 Williams Bay, Wisconsin"
+    "longitude": -88.529479,
+    "latitude": 42.574412
   },
   "property": {
     "association": "Cedar Point Park",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Arthur", "m": "", "l": "Holmer", "s": "" },
-        { "t": "", "f": "Robin", "m": "", "l": "Holmer", "s": "" }
+        {
+          "t": "",
+          "f": "Arthur",
+          "m": "",
+          "l": "Holmer",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Robin",
+          "m": "",
+          "l": "Holmer",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941qqvct0",
+  "pluscode": "HFFC+Q66 Williams Bay, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "457A",
   "loc": {
-    "lon": 0.00,
-    "lat": 0.00,
-    "geohash": "",
-    "pluscode": ""
+    "longitude": 0,
+    "latitude": 0
   },
   "property": {
     "association": "Glenwood Springs",
@@ -25,5 +23,7 @@
       "membershipType": "Residential Non-member",
       "members": []
     }
-  ]
+  ],
+  "geohash": "",
+  "pluscode": ""
 }

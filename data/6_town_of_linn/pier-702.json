@@ -1,10 +1,8 @@
 {
   "pier": "702",
   "loc": {
-    "lon": -88.473557,
-    "lat": 42.563027,
-    "geohash": "dp944sre8e0",
-    "pluscode": "HG7G+6H8 Lake Geneva, Wisconsin"
+    "longitude": -88.473557,
+    "latitude": 42.563027
   },
   "property": {
     "association": "700 Lake Shore Drive Association",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "Jo", "m": "", "l": "Terlato", "s": "" }
+        {
+          "t": "",
+          "f": "Jo",
+          "m": "",
+          "l": "Terlato",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944sre8e0",
+  "pluscode": "HG7G+6H8 Lake Geneva, Wisconsin"
 }

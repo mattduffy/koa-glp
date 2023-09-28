@@ -1,10 +1,8 @@
 {
   "pier": "409",
   "loc": {
-    "lon": 0.00,
-    "lat": 0.00,
-    "geohash": "",
-    "pluscode": ""
+    "longitude": 0,
+    "latitude": 0
   },
   "property": {
     "association": "Buena Vista",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Barry Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Barry Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "",
+  "pluscode": ""
 }

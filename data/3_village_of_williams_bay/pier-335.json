@@ -1,10 +1,8 @@
 {
   "pier": "335",
   "loc": {
-    "lon": -88.549874,
-    "lat": 42.567098,
-    "geohash": "dp940vpgq60",
-    "pluscode": "HF82+R3J Williams Bay, Wisconsin"
+    "longitude": -88.549874,
+    "latitude": 42.567098
   },
   "property": {
     "association": "Dartmouth Woods Assn. (Formerly Rockford Camp)",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Gregory", "m": "", "l": "Wolf", "s": "" },
-        { "t": "", "f": "Linda", "m": "", "l": "Wolf", "s": "" }
+        {
+          "t": "",
+          "f": "Gregory",
+          "m": "",
+          "l": "Wolf",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Linda",
+          "m": "",
+          "l": "Wolf",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940vpgq60",
+  "pluscode": "HF82+R3J Williams Bay, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "341",
   "loc": {
-    "lon": -88.550743,
-    "lat": 42.566968,
-    "geohash": "dp940vp6d10",
-    "pluscode": ""
+    "longitude": -88.550743,
+    "latitude": 42.566968
   },
   "property": {
     "association": "Dartmouth Woods Assn. (Formerly Rockford Camp)",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Caroline", "m": "F", "l": "Wettersten", "s": "" }
+        {
+          "t": "",
+          "f": "Caroline",
+          "m": "F",
+          "l": "Wettersten",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940vp6d10",
+  "pluscode": ""
 }

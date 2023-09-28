@@ -1,10 +1,8 @@
 {
   "pier": "175",
   "loc": {
-    "lon": -88.521098,
-    "lat": 42.570345,
-    "geohash": "dp941tsyhz0",
-    "pluscode": "HFCH+4HJ Williams Bay, Wisconsin"
+    "longitude": -88.521098,
+    "latitude": 42.570345
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Marjorie", "m": "H", "l": "Greenfield", "s": "" }
+        {
+          "t": "",
+          "f": "Marjorie",
+          "m": "H",
+          "l": "Greenfield",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941tsyhz0",
+  "pluscode": "HFCH+4HJ Williams Bay, Wisconsin"
 }

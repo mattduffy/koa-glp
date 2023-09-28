@@ -1,10 +1,8 @@
 {
   "pier": "132",
   "loc": {
-    "lon": -88.502798,
-    "lat": 42.574862,
-    "geohash": "dp944nd0x30",
-    "pluscode": "HFFW+WVW Williams Bay, Wisconsin"
+    "longitude": -88.502798,
+    "latitude": 42.574862
   },
   "property": {
     "association": "",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Brent", "m": "", "l": "Brodeski", "s": "" },
-        { "t": "", "f": "Sharon", "m": "", "l": "Brodeski", "s": "" }
+        {
+          "t": "",
+          "f": "Brent",
+          "m": "",
+          "l": "Brodeski",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Sharon",
+          "m": "",
+          "l": "Brodeski",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944nd0x30",
+  "pluscode": "HFFW+WVW Williams Bay, Wisconsin"
 }

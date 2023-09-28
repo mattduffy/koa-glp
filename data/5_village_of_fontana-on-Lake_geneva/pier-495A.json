@@ -1,10 +1,8 @@
 {
   "pier": "495A",
   "loc": {
-    "lon": -88.554073,
-    "lat": 42.547842,
-    "geohash": "dp940csghs0",
-    "pluscode": "GCXW+49M Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.554073,
+    "latitude": 42.547842
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Cantalupo Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Cantalupo Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940csghs0",
+  "pluscode": "GCXW+49M Fontana-On-Geneva Lake, Wisconsin"
 }

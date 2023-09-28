@@ -1,10 +1,8 @@
 {
   "pier": "661",
   "loc": {
-    "lon": -88.491335,
-    "lat": 42.560685,
-    "geohash": "dp9447ftfq0",
-    "pluscode": "HG65+7FF Williams Bay, Wisconsin"
+    "longitude": -88.491335,
+    "latitude": 42.560685
   },
   "property": {
     "association": "Lackey Lane",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "David", "m": "", "l": "Anderson", "s": "" },
-        { "t": "", "f": "Colleen", "m": "", "l": "Anderson", "s": "" }
+        {
+          "t": "",
+          "f": "David",
+          "m": "",
+          "l": "Anderson",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Colleen",
+          "m": "",
+          "l": "Anderson",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9447ftfq0",
+  "pluscode": "HG65+7FF Williams Bay, Wisconsin"
 }

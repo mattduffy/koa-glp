@@ -1,10 +1,8 @@
 {
   "pier": "400",
   "loc": {
-    "lon": -88.570864,
-    "lat": 42.554110,
-    "geohash": "dp940d8xtk0",
-    "pluscode": "HC3H+JMR Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.570864,
+    "latitude": 42.55411
   },
   "property": {
     "association": "Buena Vista",
@@ -24,8 +22,20 @@
       "member": true,
       "membershipType": "",
       "members": [
-        { "t": "", "f": "Mark", "m": "", "l": "Cavin", "s": "" },
-        { "t": "", "f": "Sarah", "m": "", "l": "Cavin", "s": "" }
+        {
+          "t": "",
+          "f": "Mark",
+          "m": "",
+          "l": "Cavin",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Sarah",
+          "m": "",
+          "l": "Cavin",
+          "s": ""
+        }
       ]
     },
     {
@@ -33,9 +43,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Kris", "m": "", "l": "Larsen", "s": "" },
-        { "t": "", "f": "Kirsten", "m": "", "l": "Larsen", "s": "" }
+        {
+          "t": "",
+          "f": "Kris",
+          "m": "",
+          "l": "Larsen",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Kirsten",
+          "m": "",
+          "l": "Larsen",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940d8xtk0",
+  "pluscode": "HC3H+JMR Fontana-On-Geneva Lake, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "586",
   "loc": {
-    "lon": -88.5102,
-    "lat": 42.5599,
-    "geohash": "dp941guc6u0",
-    "pluscode": "HF5Q+XW3 Williams Bay, Wisconsin"
+    "longitude": -88.5102,
+    "latitude": 42.5599
   },
   "property": {
     "association": "Estates of Black Point",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Steve", "m": "", "l": "Poulos", "s": "" }
+        {
+          "t": "",
+          "f": "Steve",
+          "m": "",
+          "l": "Poulos",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941guc6u0",
+  "pluscode": "HF5Q+XW3 Williams Bay, Wisconsin"
 }

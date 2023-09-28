@@ -1,10 +1,8 @@
 {
   "pier": "332",
   "loc": {
-    "lon": -88.547038,
-    "lat": 42.566921,
-    "geohash": "dp941j44230",
-    "pluscode": "HF83+Q58 Williams Bay, Wisconsin"
+    "longitude": -88.547038,
+    "latitude": 42.566921
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Richard C. Lyons Trust", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Richard C. Lyons Trust",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941j44230",
+  "pluscode": "HF83+Q58 Williams Bay, Wisconsin"
 }

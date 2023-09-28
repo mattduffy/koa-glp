@@ -1,10 +1,8 @@
 {
   "pier": "793",
   "loc": {
-    "lon": -88.441659,
-    "lat": 42.564567,
-    "geohash": "dp945kwsxf0",
-    "pluscode": "HH75+R8G Lake Geneva, Wisconsin"
+    "longitude": -88.441659,
+    "latitude": 42.564567
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "James", "m": "", "l": "Hanny", "s": "" }
+        {
+          "t": "",
+          "f": "James",
+          "m": "",
+          "l": "Hanny",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945kwsxf0",
+  "pluscode": "HH75+R8G Lake Geneva, Wisconsin"
 }

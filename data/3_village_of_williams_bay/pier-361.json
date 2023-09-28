@@ -1,10 +1,8 @@
 {
   "pier": "361",
   "loc": {
-    "lon": -88.560979,
-    "lat": 42.563798,
-    "geohash": "dp940sxb5d0",
-    "pluscode": "HC7Q+GJ6 Williams Bay, Wisconsin"
+    "longitude": -88.560979,
+    "latitude": 42.563798
   },
   "property": {
     "association": "Lake Geneva Fresh Air Association (Holiday Home)",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Lake Geneva Fresh Air Association", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Lake Geneva Fresh Air Association",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940sxb5d0",
+  "pluscode": "HC7Q+GJ6 Williams Bay, Wisconsin"
 }

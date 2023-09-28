@@ -1,10 +1,8 @@
 {
   "pier": "524",
   "loc": {
-    "lon": -88.535571,
-    "lat": 42.549672,
-    "geohash": "dp9413fmg90",
-    "pluscode": "GFX7+VQ7 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.535571,
+    "latitude": 42.549672
   },
   "property": {
     "association": "Lake Geneva Yacht Club",
@@ -24,7 +22,13 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Yacht Club East Main Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Yacht Club East Main Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Hans", "m": "", "l": "Melges", "s": "" }
+        {
+          "t": "",
+          "f": "Hans",
+          "m": "",
+          "l": "Melges",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,9 +50,23 @@
       "member": true,
       "membershipType": "Sustaining",
       "members": [
-        { "t": "", "f": "James", "m": "", "l": "Smith", "s": "" },
-        { "t": "", "f": "Kathleen", "m": "", "l": "Smith", "s": "" }
+        {
+          "t": "",
+          "f": "James",
+          "m": "",
+          "l": "Smith",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Kathleen",
+          "m": "",
+          "l": "Smith",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9413fmg90",
+  "pluscode": "GFX7+VQ7 Fontana-On-Geneva Lake, Wisconsin"
 }

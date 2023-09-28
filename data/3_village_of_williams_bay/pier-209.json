@@ -1,10 +1,8 @@
 {
   "pier": "209",
   "loc": {
-    "lon": -88.529666,
-    "lat": 42.568675,
-    "geohash": "dp941mqst20",
-    "pluscode": "HF9C+F48 Williams Bay, Wisconsin"
+    "longitude": -88.529666,
+    "latitude": 42.568675
   },
   "property": {
     "association": "Cedar Point Park",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Kathleen Corry Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Kathleen Corry Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941mqst20",
+  "pluscode": "HF9C+F48 Williams Bay, Wisconsin"
 }

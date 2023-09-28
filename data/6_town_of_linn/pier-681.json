@@ -1,10 +1,8 @@
 {
   "pier": "681",
   "loc": {
-    "lon": -88.481942,
-    "lat": 42.564114,
-    "geohash": "dp944s93vm0",
-    "pluscode": "HG79+J6V Lake Geneva, Wisconsin"
+    "longitude": -88.481942,
+    "latitude": 42.564114
   },
   "property": {
     "association": "Maple Lane",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Barbara T. Reddy Trust", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Barbara T. Reddy Trust",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944s93vm0",
+  "pluscode": "HG79+J6V Lake Geneva, Wisconsin"
 }

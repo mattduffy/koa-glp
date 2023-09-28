@@ -1,10 +1,8 @@
 {
   "pier": "357",
   "loc": {
-    "lon": -88.559037,
-    "lat": 42.564640,
-    "geohash": "dp940u9m0b0",
-    "pluscode": "HC7R+V94 Williams Bay, Wisconsin"
+    "longitude": -88.559037,
+    "latitude": 42.56464
   },
   "property": {
     "association": "Oak Bank",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "William", "m": "J", "l": "Morrissey", "s": "" }
+        {
+          "t": "",
+          "f": "William",
+          "m": "J",
+          "l": "Morrissey",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940u9m0b0",
+  "pluscode": "HC7R+V94 Williams Bay, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "497",
   "loc": {
-    "lon": -88.552536,
-    "lat": 42.548223,
-    "geohash": "dp940cwj270",
-    "pluscode": "GCXW+7XP Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.552536,
+    "latitude": 42.548223
   },
   "property": {
     "association": "Abbey Springs",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Abbey Springs Condo Assoc.", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Abbey Springs Condo Assoc.",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Jeff", "m": "", "l": "Germanotta", "s": "" }
+        {
+          "t": "",
+          "f": "Jeff",
+          "m": "",
+          "l": "Germanotta",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,8 +50,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Mr. & Mrs. John L. Simpson, Jr.", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Mr. & Mrs. John L. Simpson, Jr.",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940cwj270",
+  "pluscode": "GCXW+7XP Fontana-On-Geneva Lake, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "180",
   "loc": {
-    "lon": -88.522027,
-    "lat": 42.569663,
-    "geohash": "dp941ts4r20",
-    "pluscode": "HF9H+V59 Williams Bay, Wisconsin"
+    "longitude": -88.522027,
+    "latitude": 42.569663
   },
   "property": {
     "association": "",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Charles", "m": "", "l": "Wegner", "s": "" },
-        { "t": "", "f": "Tara", "m": "", "l": "Wegner", "s": "" }
+        {
+          "t": "",
+          "f": "Charles",
+          "m": "",
+          "l": "Wegner",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Tara",
+          "m": "",
+          "l": "Wegner",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941ts4r20",
+  "pluscode": "HF9H+V59 Williams Bay, Wisconsin"
 }

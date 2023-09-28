@@ -1,10 +1,8 @@
 {
   "pier": "780",
   "loc": {
-    "lon": -88.445973,
-    "lat": 42.563106,
-    "geohash": "dp945k7s530",
-    "pluscode": "HH73+6JR Lake Geneva, Wisconsin"
+    "longitude": -88.445973,
+    "latitude": 42.563106
   },
   "property": {
     "association": "",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "JB", "m": "", "l": "Pritzker", "s": "" },
-        { "t": "", "f": "MK", "m": "", "l": "Pritzker", "s": "" }
+        {
+          "t": "",
+          "f": "JB",
+          "m": "",
+          "l": "Pritzker",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "MK",
+          "m": "",
+          "l": "Pritzker",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945k7s530",
+  "pluscode": "HH73+6JR Lake Geneva, Wisconsin"
 }

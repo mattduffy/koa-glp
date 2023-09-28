@@ -1,10 +1,8 @@
 {
   "pier": "626",
   "loc": {
-    "lon": -88.499311,
-    "lat": 42.559202,
-    "geohash": "dp9445sv2d0",
-    "pluscode": "HG52+M7P Williams Bay, Wisconsin"
+    "longitude": -88.499311,
+    "latitude": 42.559202
   },
   "property": {
     "association": "Valley Park Assn.",
@@ -24,7 +22,13 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "Valley Park Boat Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Valley Park Boat Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Tom", "m": "", "l": "Dorn", "s": "" }
+        {
+          "t": "",
+          "f": "Tom",
+          "m": "",
+          "l": "Dorn",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,8 +50,20 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Mary", "m": "", "l": "Kirchhoefer", "s": "" },
-        { "t": "", "f": "Gregg", "m": "", "l": "Kirchhoefer", "s": "" }
+        {
+          "t": "",
+          "f": "Mary",
+          "m": "",
+          "l": "Kirchhoefer",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Gregg",
+          "m": "",
+          "l": "Kirchhoefer",
+          "s": ""
+        }
       ]
     },
     {
@@ -49,8 +71,20 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Mark", "m": "", "l": "Lillie", "s": "" },
-        { "t": "", "f": "Celine", "m": "", "l": "Lillie", "s": "" }
+        {
+          "t": "",
+          "f": "Mark",
+          "m": "",
+          "l": "Lillie",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Celine",
+          "m": "",
+          "l": "Lillie",
+          "s": ""
+        }
       ]
     },
     {
@@ -58,8 +92,20 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Mike", "m": "", "l": "Moran", "s": "" },
-        { "t": "", "f": "Kathy", "m": "", "l": "Moran", "s": "" }
+        {
+          "t": "",
+          "f": "Mike",
+          "m": "",
+          "l": "Moran",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Kathy",
+          "m": "",
+          "l": "Moran",
+          "s": ""
+        }
       ]
     },
     {
@@ -67,8 +113,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Paul", "m": "M", "l": "Schulz", "s": "" }
+        {
+          "t": "",
+          "f": "Paul",
+          "m": "M",
+          "l": "Schulz",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9445sv2d0",
+  "pluscode": "HG52+M7P Williams Bay, Wisconsin"
 }

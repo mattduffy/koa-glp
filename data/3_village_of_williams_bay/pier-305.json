@@ -1,10 +1,8 @@
 {
   "pier": "305",
   "loc": {
-    "lon": -88.541345,
-    "lat": 42.568900,
-    "geohash": "dp941jqjv10",
-    "pluscode": "HF95+HHR Williams Bay, Wisconsin"
+    "longitude": -88.541345,
+    "latitude": 42.5689
   },
   "property": {
     "association": "Loch Vista Club",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Karen", "m": "", "l": "Heidkamp", "s": "" }
+        {
+          "t": "",
+          "f": "Karen",
+          "m": "",
+          "l": "Heidkamp",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941jqjv10",
+  "pluscode": "HF95+HHR Williams Bay, Wisconsin"
 }

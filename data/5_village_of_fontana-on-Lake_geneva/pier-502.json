@@ -1,10 +1,8 @@
 {
   "pier": "502",
   "loc": {
-    "lon": -88.547795,
-    "lat": 42.547935,
-    "geohash": "dp941197wv0",
-    "pluscode": "GFX2+5VG Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.547795,
+    "latitude": 42.547935
   },
   "property": {
     "association": "Westgate",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Westgate Association Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Westgate Association Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Bradley", "m": "", "l": "Fideler", "s": "" },
-        { "t": "", "f": "Rebecca", "m": "", "l": "Fideler", "s": "" }
+        {
+          "t": "",
+          "f": "Bradley",
+          "m": "",
+          "l": "Fideler",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Rebecca",
+          "m": "",
+          "l": "Fideler",
+          "s": ""
+        }
       ]
     },
     {
@@ -41,7 +57,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Bob", "m": "", "l": "Kelly", "s": "" }
+        {
+          "t": "",
+          "f": "Bob",
+          "m": "",
+          "l": "Kelly",
+          "s": ""
+        }
       ]
     },
     {
@@ -49,9 +71,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Charley", "m": "", "l": "Zeches", "s": "" },
-        { "t": "", "f": "Bob", "m": "", "l": "Zeches", "s": "" }
+        {
+          "t": "",
+          "f": "Charley",
+          "m": "",
+          "l": "Zeches",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Bob",
+          "m": "",
+          "l": "Zeches",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941197wv0",
+  "pluscode": "GFX2+5VG Fontana-On-Geneva Lake, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "836",
   "loc": {
-    "lon": -88.437909,
-    "lat": 42.571664,
-    "geohash": "dp945tcmzm0",
-    "pluscode": "HHC6+MR8 Lake Geneva, Wisconsin"
+    "longitude": -88.437909,
+    "latitude": 42.571664
   },
   "property": {
     "association": "Lake Geneva Youth Camp",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Lake Geneva Youth Camp", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Lake Geneva Youth Camp",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945tcmzm0",
+  "pluscode": "HHC6+MR8 Lake Geneva, Wisconsin"
 }

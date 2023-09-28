@@ -1,10 +1,8 @@
 {
   "pier": "529",
   "loc": {
-    "lon": -88.533466,
-    "lat": 42.549727,
-    "geohash": "dp9413gyhe0",
-    "pluscode": "GFX8+VJV Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.533466,
+    "latitude": 42.549727
   },
   "property": {
     "association": "Oak Shores",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Oak Shores Swim Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Oak Shores Swim Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,16 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Vince", "m": "", "l": "DiVincenzo", "s": "" }
+        {
+          "t": "",
+          "f": "Vince",
+          "m": "",
+          "l": "DiVincenzo",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9413gyhe0",
+  "pluscode": "GFX8+VJV Fontana-On-Geneva Lake, Wisconsin"
 }

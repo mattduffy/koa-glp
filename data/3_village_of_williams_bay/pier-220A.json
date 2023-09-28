@@ -1,10 +1,8 @@
 {
   "pier": "220A",
   "loc": {
-    "lon": -88.528961,
-    "lat": 42.571551,
-    "geohash": "dp941mzjm80",
-    "pluscode": "HFCC+JCF Williams Bay, Wisconsin"
+    "longitude": -88.528961,
+    "latitude": 42.571551
   },
   "property": {
     "association": "Cedar Point Park",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Yianny", "m": "", "l": "Caparos", "s": "" }
+        {
+          "t": "",
+          "f": "Yianny",
+          "m": "",
+          "l": "Caparos",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941mzjm80",
+  "pluscode": "HFCC+JCF Williams Bay, Wisconsin"
 }

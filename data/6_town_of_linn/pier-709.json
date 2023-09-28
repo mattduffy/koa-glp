@@ -1,10 +1,8 @@
 {
   "pier": "709",
   "loc": {
-    "lon": -88.472994,
-    "lat": 42.563027,
-    "geohash": "dp944srgtg0",
-    "pluscode": "HG7G+6R6 Lake Geneva, Wisconsin"
+    "longitude": -88.472994,
+    "latitude": 42.563027
   },
   "property": {
     "association": "Linnwood",
@@ -24,8 +22,20 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Mr. & Mrs. Thomas Cashman", "m": "", "l": "", "s": "" },
-        { "t": "", "f": "Brigid", "m": "", "l": "Cashman", "s": "" }
+        {
+          "t": "",
+          "f": "Mr. & Mrs. Thomas Cashman",
+          "m": "",
+          "l": "",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Brigid",
+          "m": "",
+          "l": "Cashman",
+          "s": ""
+        }
       ]
     },
     {
@@ -33,8 +43,20 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "Drs.", "f": "Robert", "m": "", "l": "Conlon", "s": "" },
-        { "t": "", "f": "Cynthia", "m": "", "l": "Conlon", "s": "" }
+        {
+          "t": "Drs.",
+          "f": "Robert",
+          "m": "",
+          "l": "Conlon",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Cynthia",
+          "m": "",
+          "l": "Conlon",
+          "s": ""
+        }
       ]
     },
     {
@@ -42,8 +64,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "David", "m": "", "l": "Dermenjian", "s": "" },
-        { "t": "", "f": "Michelle", "m": "", "l": "Dermenjian", "s": "" }
+        {
+          "t": "",
+          "f": "David",
+          "m": "",
+          "l": "Dermenjian",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Michelle",
+          "m": "",
+          "l": "Dermenjian",
+          "s": ""
+        }
       ]
     },
     {
@@ -51,8 +85,20 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "Drs.", "f": "Vicki", "m": "", "l": "Galbraith", "s": "" },
-        { "t": "", "f": "Jack", "m": "", "l": "Galbraith", "s": "" }
+        {
+          "t": "Drs.",
+          "f": "Vicki",
+          "m": "",
+          "l": "Galbraith",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Jack",
+          "m": "",
+          "l": "Galbraith",
+          "s": ""
+        }
       ]
     },
     {
@@ -60,7 +106,13 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Marilyn", "m": "", "l": "Hedberg", "s": "" }
+        {
+          "t": "",
+          "f": "Marilyn",
+          "m": "",
+          "l": "Hedberg",
+          "s": ""
+        }
       ]
     },
     {
@@ -68,7 +120,13 @@
       "member": true,
       "membershipType": "",
       "members": [
-        { "t": "", "f": "Tobey", "m": "E", "l": "Lannert", "s": "" }
+        {
+          "t": "",
+          "f": "Tobey",
+          "m": "E",
+          "l": "Lannert",
+          "s": ""
+        }
       ]
     },
     {
@@ -76,8 +134,20 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Roselyn", "m": "", "l": "Lanzito", "s": "" },
-        { "t": "", "f": "Joseph", "m": "", "l": "Lanzito", "s": "" }
+        {
+          "t": "",
+          "f": "Roselyn",
+          "m": "",
+          "l": "Lanzito",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Joseph",
+          "m": "",
+          "l": "Lanzito",
+          "s": ""
+        }
       ]
     },
     {
@@ -85,7 +155,13 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "John", "m": "K", "l": "Notz", "s": "Jr." }
+        {
+          "t": "",
+          "f": "John",
+          "m": "K",
+          "l": "Notz",
+          "s": "Jr."
+        }
       ]
     },
     {
@@ -93,8 +169,20 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Greg", "m": "", "l": "Pace", "s": "" },
-        { "t": "", "f": "Patsy", "m": "", "l": "Pace", "s": "" }
+        {
+          "t": "",
+          "f": "Greg",
+          "m": "",
+          "l": "Pace",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Patsy",
+          "m": "",
+          "l": "Pace",
+          "s": ""
+        }
       ]
     },
     {
@@ -102,8 +190,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Bill", "m": "", "l": "Poggensee", "s": "" },
-        { "t": "", "f": "Stella", "m": "", "l": "Poggensee", "s": "" }
+        {
+          "t": "",
+          "f": "Bill",
+          "m": "",
+          "l": "Poggensee",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Stella",
+          "m": "",
+          "l": "Poggensee",
+          "s": ""
+        }
       ]
     },
     {
@@ -111,9 +211,23 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "David", "m": "", "l": "Williams", "s": "" },
-        { "t": "", "f": "Nancy", "m": "", "l": "Williams", "s": "" }
+        {
+          "t": "",
+          "f": "David",
+          "m": "",
+          "l": "Williams",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Nancy",
+          "m": "",
+          "l": "Williams",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944srgtg0",
+  "pluscode": "HG7G+6R6 Lake Geneva, Wisconsin"
 }

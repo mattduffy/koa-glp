@@ -1,10 +1,8 @@
 {
   "pier": "073",
   "loc": {
-    "lon": -88.479873,
-    "lat": 42.571979,
-    "geohash": "dp944tfzv80",
-    "pluscode": "HGCC+Q3R Lake Geneva, Wisconsin"
+    "longitude": -88.479873,
+    "latitude": 42.571979
   },
   "property": {
     "association": "The Folly",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Nick", "m": "", "l": "Calamos", "s": "" }
+        {
+          "t": "",
+          "f": "Nick",
+          "m": "",
+          "l": "Calamos",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944tfzv80",
+  "pluscode": "HGCC+Q3R Lake Geneva, Wisconsin"
 }

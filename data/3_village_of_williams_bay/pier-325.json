@@ -1,10 +1,8 @@
 {
   "pier": "325",
   "loc": {
-    "lon": -88.541423,
-    "lat": 42.567599,
-    "geohash": "dp941jnn5r0",
-    "pluscode": "HF95+2CP Williams Bay, Wisconsin"
+    "longitude": -88.541423,
+    "latitude": 42.567599
   },
   "property": {
     "association": "Conference Point Center",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Conference Point Conference Center", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Conference Point Conference Center",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941jnn5r0",
+  "pluscode": "HF95+2CP Williams Bay, Wisconsin"
 }

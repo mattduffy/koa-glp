@@ -1,10 +1,8 @@
 {
   "pier": "683",
   "loc": {
-    "lon": -88.481066,
-    "lat": 42.564763,
-    "geohash": "dp944sdj9w0",
-    "pluscode": "HG79+WH3 Lake Geneva, Wisconsin"
+    "longitude": -88.481066,
+    "latitude": 42.564763
   },
   "property": {
     "association": "Maple Lane",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Barbara", "m": "D", "l": "Schwanke", "s": "" }
+        {
+          "t": "",
+          "f": "Barbara",
+          "m": "D",
+          "l": "Schwanke",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944sdj9w0",
+  "pluscode": "HG79+WH3 Lake Geneva, Wisconsin"
 }

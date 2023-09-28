@@ -1,10 +1,8 @@
 {
   "pier": "062",
   "loc": {
-    "lon": -88.472458,
-    "lat": 42.572659,
-    "geohash": "dp944y07dq0",
-    "pluscode": "HGFH+327 Lake Geneva, Wisconsin"
+    "longitude": -88.472458,
+    "latitude": 42.572659
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Ashburton Estate", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Ashburton Estate",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944y07dq0",
+  "pluscode": "HGFH+327 Lake Geneva, Wisconsin"
 }

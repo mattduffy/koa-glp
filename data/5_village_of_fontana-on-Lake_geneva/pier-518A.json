@@ -1,10 +1,8 @@
 {
   "pier": "518A",
   "loc": {
-    "lon": -88.539614,
-    "lat": 42.549130,
-    "geohash": "dp9411z6tk0",
-    "pluscode": "GFX6+M52 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.539614,
+    "latitude": 42.54913
   },
   "property": {
     "association": "Clear Sky Lodge Assn.",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "The Lombardo Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "The Lombardo Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9411z6tk0",
+  "pluscode": "GFX6+M52 Fontana-On-Geneva Lake, Wisconsin"
 }

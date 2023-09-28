@@ -1,10 +1,8 @@
 {
   "pier": "265",
   "loc": {
-    "lon": -88.536954,
-    "lat": 42.577886,
-    "geohash": "dp941r165m0",
-    "pluscode": "HFH7+563 Williams Bay, Wisconsin"
+    "longitude": -88.536954,
+    "latitude": 42.577886
   },
   "property": {
     "association": "Williams Bay Village Recreation Department",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Williams Bay West Dock", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Williams Bay West Dock",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Elizabeth", "m": "", "l": "Cox", "s": "" }
+        {
+          "t": "",
+          "f": "Elizabeth",
+          "m": "",
+          "l": "Cox",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,7 +50,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Dr. & Mrs. Clifford Poplar", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Dr. & Mrs. Clifford Poplar",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -48,8 +64,16 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Robert", "m": "", "l": "Quinn", "s": "" }
+        {
+          "t": "",
+          "f": "Robert",
+          "m": "",
+          "l": "Quinn",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941r165m0",
+  "pluscode": "HFH7+563 Williams Bay, Wisconsin"
 }

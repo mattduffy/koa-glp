@@ -1,10 +1,8 @@
 {
   "pier": "292",
   "loc": {
-    "lon": -88.538992,
-    "lat": 42.573374,
-    "geohash": "dp941npzgg0",
-    "pluscode": "HFF6+8CR Williams Bay, Wisconsin"
+    "longitude": -88.538992,
+    "latitude": 42.573374
   },
   "property": {
     "association": "Gage Marine",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "",
       "members": [
-        { "t": "", "f": "Gage Marine / Pier Service", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Gage Marine / Pier Service",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941npzgg0",
+  "pluscode": "HFF6+8CR Williams Bay, Wisconsin"
 }

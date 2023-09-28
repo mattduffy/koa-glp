@@ -1,10 +1,8 @@
 {
   "pier": "856",
   "loc": {
-    "lon": -88.439713,
-    "lat": 42.577336,
-    "geohash": "dp945wbnvq0",
-    "pluscode": "HHG6+W4M Lake Geneva, Wisconsin"
+    "longitude": -88.439713,
+    "latitude": 42.577336
   },
   "property": {
     "association": "",
@@ -25,5 +23,7 @@
       "membershipType": "Residential Non-member",
       "members": []
     }
-  ]
+  ],
+  "geohash": "dp945wbnvq0",
+  "pluscode": "HHG6+W4M Lake Geneva, Wisconsin"
 }

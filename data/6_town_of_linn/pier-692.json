@@ -1,10 +1,8 @@
 {
   "pier": "692",
   "loc": {
-    "lon": -88.478021,
-    "lat": 42.566129,
-    "geohash": "dp944sum8t0",
-    "pluscode": "HG8C+FQ5 Lake Geneva, Wisconsin"
+    "longitude": -88.478021,
+    "latitude": 42.566129
   },
   "property": {
     "association": "Maple Lane",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Beth", "m": "", "l": "Bovis", "s": "" },
-        { "t": "", "f": "David", "m": "", "l": "Feldstein", "s": "" }
+        {
+          "t": "",
+          "f": "Beth",
+          "m": "",
+          "l": "Bovis",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "David",
+          "m": "",
+          "l": "Feldstein",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944sum8t0",
+  "pluscode": "HG8C+FQ5 Lake Geneva, Wisconsin"
 }

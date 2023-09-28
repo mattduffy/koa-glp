@@ -1,10 +1,8 @@
 {
   "pier": "450",
   "loc": {
-    "lon": -88.568008,
-    "lat": 42.545818,
-    "geohash": "dp94094xrg0",
-    "pluscode": "GCWJ+8QH Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.568008,
+    "latitude": 42.545818
   },
   "property": {
     "association": "Glenwood Springs",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Subdiv. Pier Glenwood Springs", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Subdiv. Pier Glenwood Springs",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Ann", "m": "", "l": "Hagerty", "s": "" },
-        { "t": "", "f": "Jack", "m": "", "l": "Hagerty", "s": "" }
+        {
+          "t": "",
+          "f": "Ann",
+          "m": "",
+          "l": "Hagerty",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Jack",
+          "m": "",
+          "l": "Hagerty",
+          "s": ""
+        }
       ]
     },
     {
@@ -41,7 +57,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Michael", "m": "", "l": "Kallergis", "s": "" }
+        {
+          "t": "",
+          "f": "Michael",
+          "m": "",
+          "l": "Kallergis",
+          "s": ""
+        }
       ]
     },
     {
@@ -49,8 +71,20 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "Edward", "m": "", "l": "Maloney", "s": "" },
-        { "t": "", "f": "Cheryl", "m": "", "l": "Maloney", "s": "" }
+        {
+          "t": "",
+          "f": "Edward",
+          "m": "",
+          "l": "Maloney",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Cheryl",
+          "m": "",
+          "l": "Maloney",
+          "s": ""
+        }
       ]
     },
     {
@@ -58,8 +92,20 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "James", "m": "", "l": "Maus", "s": "" },
-        { "t": "", "f": "Michelle", "m": "", "l": "Maus", "s": "" }
+        {
+          "t": "",
+          "f": "James",
+          "m": "",
+          "l": "Maus",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Michelle",
+          "m": "",
+          "l": "Maus",
+          "s": ""
+        }
       ]
     },
     {
@@ -67,8 +113,16 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Peggy", "m": "", "l": "Pollitt", "s": "" }
+        {
+          "t": "",
+          "f": "Peggy",
+          "m": "",
+          "l": "Pollitt",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp94094xrg0",
+  "pluscode": "GCWJ+8QH Fontana-On-Geneva Lake, Wisconsin"
 }

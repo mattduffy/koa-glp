@@ -1,10 +1,8 @@
 {
   "pier": "483",
   "loc": {
-    "lon": -88.558970,
-    "lat": 42.546774,
-    "geohash": "dp940c3kfm0",
-    "pluscode": "GCWR+PC2 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.55897,
+    "latitude": 42.546774
   },
   "property": {
     "association": "",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "John", "m": "", "l": "Pagliari", "s": "" },
-        { "t": "", "f": "Rose", "m": "", "l": "Pagliari", "s": "" }
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "Pagliari",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Rose",
+          "m": "",
+          "l": "Pagliari",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940c3kfm0",
+  "pluscode": "GCWR+PC2 Fontana-On-Geneva Lake, Wisconsin"
 }

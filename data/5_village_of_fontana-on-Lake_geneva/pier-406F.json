@@ -1,10 +1,8 @@
 {
   "pier": "406F",
   "loc": {
-    "lon": -88.572167,
-    "lat": 42.552559,
-    "geohash": "dp9406rwwg0",
-    "pluscode": "HC3H+24G Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.572167,
+    "latitude": 42.552559
   },
   "property": {
     "association": "Buena Vista",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Dr. A. Garrett Berley, Jr.", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Dr. A. Garrett Berley, Jr.",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9406rwwg0",
+  "pluscode": "HC3H+24G Fontana-On-Geneva Lake, Wisconsin"
 }

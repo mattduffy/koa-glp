@@ -1,10 +1,8 @@
 {
   "pier": "299",
   "loc": {
-    "lon": -88.540261,
-    "lat": 42.570028,
-    "geohash": "dp941jwuqk0",
-    "pluscode": "HFC5+2V9 Williams Bay, Wisconsin"
+    "longitude": -88.540261,
+    "latitude": 42.570028
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "James", "m": "A", "l": "Kirchschlager", "s": "" }
+        {
+          "t": "",
+          "f": "James",
+          "m": "A",
+          "l": "Kirchschlager",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941jwuqk0",
+  "pluscode": "HFC5+2V9 Williams Bay, Wisconsin"
 }

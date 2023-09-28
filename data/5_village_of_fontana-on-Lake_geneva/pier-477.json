@@ -1,10 +1,8 @@
 {
   "pier": "477",
   "loc": {
-    "lon": -88.561619,
-    "lat": 42.546891,
-    "geohash": "dp9409rmse0",
-    "pluscode": "GCWQ+Q92 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.561619,
+    "latitude": 42.546891
   },
   "property": {
     "association": "Club Unique",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "George H. Kiefer, Jr. Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "George H. Kiefer, Jr. Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9409rmse0",
+  "pluscode": "GCWQ+Q92 Fontana-On-Geneva Lake, Wisconsin"
 }

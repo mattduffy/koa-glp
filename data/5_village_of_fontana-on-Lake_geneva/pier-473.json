@@ -1,10 +1,8 @@
 {
   "pier": "473",
   "loc": {
-    "lon": -88.562906,
-    "lat": 42.546490,
-    "geohash": "dp9409q7q80",
-    "pluscode": "GCWP+HRX Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.562906,
+    "latitude": 42.54649
   },
   "property": {
     "association": "Indian Hills",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Janess/Smith Families", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Janess/Smith Families",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9409q7q80",
+  "pluscode": "GCWP+HRX Fontana-On-Geneva Lake, Wisconsin"
 }

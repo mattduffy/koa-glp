@@ -1,10 +1,8 @@
 {
   "pier": "090",
   "loc": {
-    "lon": -88.489646,
-    "lat": 42.572614,
-    "geohash": "dp944q5g3y0",
-    "pluscode": "HGF6+24X Williams Bay, Wisconsin"
+    "longitude": -88.489646,
+    "latitude": 42.572614
   },
   "property": {
     "association": "S. B. Chapin",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Matthew", "m": "", "l": "Walsh", "s": "" },
-        { "t": "", "f": "Joyce", "m": "", "l": "Walsh", "s": "" }
+        {
+          "t": "",
+          "f": "Matthew",
+          "m": "",
+          "l": "Walsh",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Joyce",
+          "m": "",
+          "l": "Walsh",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944q5g3y0",
+  "pluscode": "HGF6+24X Williams Bay, Wisconsin"
 }

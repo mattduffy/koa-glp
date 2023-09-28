@@ -1,10 +1,8 @@
 {
   "pier": "860",
   "loc": {
-    "lon": -88.439402,
-    "lat": 42.578208,
-    "geohash": "dp945x0kh90",
-    "pluscode": "HHH6+76Q Lake Geneva, Wisconsin"
+    "longitude": -88.439402,
+    "latitude": 42.578208
   },
   "property": {
     "association": "East Shore Estates",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "East Shore Estates Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "East Shore Estates Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,16 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "John", "m": "", "l": "Johnston", "s": "" }
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "Johnston",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945x0kh90",
+  "pluscode": "HHH6+76Q Lake Geneva, Wisconsin"
 }

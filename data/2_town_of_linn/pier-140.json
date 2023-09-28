@@ -1,10 +1,8 @@
 {
   "pier": "140",
   "loc": {
-    "lon": -88.507090,
-    "lat": 42.575597,
-    "geohash": "dp941yxhg60",
-    "pluscode": "HFGV+65M Williams Bay, Wisconsin"
+    "longitude": -88.50709,
+    "latitude": 42.575597
   },
   "property": {
     "association": "Sylvan Trail",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Howard", "m": "A", "l": "Vaughan", "s": "Jr." }
+        {
+          "t": "",
+          "f": "Howard",
+          "m": "A",
+          "l": "Vaughan",
+          "s": "Jr."
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941yxhg60",
+  "pluscode": "HFGV+65M Williams Bay, Wisconsin"
 }

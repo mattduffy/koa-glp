@@ -1,10 +1,8 @@
 {
   "pier": "861",
   "loc": {
-    "lon": -88.439180,
-    "lat": 42.578288,
-    "geohash": "dp945x0s980",
-    "pluscode": "HHH6+888 Lake Geneva, Wisconsin"
+    "longitude": -88.43918,
+    "latitude": 42.578288
   },
   "property": {
     "association": "Vista de Lago 861 Homeowners Assn.",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Vista de Lago", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Vista de Lago",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Mark", "m": "", "l": "Davids", "s": "" },
-        { "t": "", "f": "Wendy", "m": "", "l": "Davids", "s": "" }
+        {
+          "t": "",
+          "f": "Mark",
+          "m": "",
+          "l": "Davids",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Wendy",
+          "m": "",
+          "l": "Davids",
+          "s": ""
+        }
       ]
     },
     {
@@ -41,8 +57,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Daniel", "m": "", "l": "Lawlor", "s": "" },
-        { "t": "", "f": "Laurie", "m": "", "l": "Lawlor", "s": "" }
+        {
+          "t": "",
+          "f": "Daniel",
+          "m": "",
+          "l": "Lawlor",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Laurie",
+          "m": "",
+          "l": "Lawlor",
+          "s": ""
+        }
       ]
     },
     {
@@ -50,7 +78,13 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Beth & John Long Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Beth & John Long Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -58,9 +92,23 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Ryan", "m": "", "l": "Southwick", "s": "" },
-        { "t": "", "f": "Naomi", "m": "", "l": "Southwick", "s": "" }
+        {
+          "t": "",
+          "f": "Ryan",
+          "m": "",
+          "l": "Southwick",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Naomi",
+          "m": "",
+          "l": "Southwick",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945x0s980",
+  "pluscode": "HHH6+888 Lake Geneva, Wisconsin"
 }

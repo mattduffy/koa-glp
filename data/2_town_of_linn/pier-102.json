@@ -1,10 +1,8 @@
 {
   "pier": "102",
   "loc": {
-    "lon": -88.494687,
-    "lat": 42.574139,
-    "geohash": "dp944q2hk60",
-    "pluscode": "HGF4+M44 Williams Bay, Wisconsin"
+    "longitude": -88.494687,
+    "latitude": 42.574139
   },
   "property": {
     "association": "S. B. Chapin",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Jim", "m": "", "l": "Peck", "s": "" },
-        { "t": "", "f": "Vickie", "m": "", "l": "Peck", "s": "" }
+        {
+          "t": "",
+          "f": "Jim",
+          "m": "",
+          "l": "Peck",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Vickie",
+          "m": "",
+          "l": "Peck",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944q2hk60",
+  "pluscode": "HGF4+M44 Williams Bay, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "669A",
   "loc": {
-    "lon": -88.487746,
-    "lat": 42.562261,
-    "geohash": "dp944kjpnh0",
-    "pluscode": "HG66+WW2 Lake Geneva, Wisconsin"
+    "longitude": -88.487746,
+    "latitude": 42.562261
   },
   "property": {
     "association": "Birches",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Kathleen", "m": "", "l": "Menzer", "s": "" }
+        {
+          "t": "",
+          "f": "Kathleen",
+          "m": "",
+          "l": "Menzer",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944kjpnh0",
+  "pluscode": "HG66+WW2 Lake Geneva, Wisconsin"
 }

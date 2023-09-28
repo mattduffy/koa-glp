@@ -1,10 +1,8 @@
 {
   "pier": "501",
   "loc": {
-    "lon": -88.548665,
-    "lat": 42.547855,
-    "geohash": "dp94118g4x0",
-    "pluscode": "GFX2+4GW Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.548665,
+    "latitude": 42.547855
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Ryan Trust", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Ryan Trust",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp94118g4x0",
+  "pluscode": "GFX2+4GW Fontana-On-Geneva Lake, Wisconsin"
 }

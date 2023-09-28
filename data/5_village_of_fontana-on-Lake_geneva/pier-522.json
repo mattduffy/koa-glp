@@ -1,10 +1,8 @@
 {
   "pier": "522",
   "loc": {
-    "lon": -88.536408,
-    "lat": 42.549322,
-    "geohash": "dp9413cgb00",
-    "pluscode": "GFX7+PG6 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.536408,
+    "latitude": 42.549322
   },
   "property": {
     "association": "Ten Acre Wood",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Noreen", "m": "", "l": "Heron", "s": "" }
+        {
+          "t": "",
+          "f": "Noreen",
+          "m": "",
+          "l": "Heron",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Norma", "m": "", "l": "Jann", "s": "" }
+        {
+          "t": "",
+          "f": "Norma",
+          "m": "",
+          "l": "Jann",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,9 +50,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "James", "m": "", "l": "Purcell", "s": "" },
-        { "t": "", "f": "Stacy", "m": "", "l": "Purcell", "s": "" }
+        {
+          "t": "",
+          "f": "James",
+          "m": "",
+          "l": "Purcell",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Stacy",
+          "m": "",
+          "l": "Purcell",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9413cgb00",
+  "pluscode": "GFX7+PG6 Fontana-On-Geneva Lake, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "667",
   "loc": {
-    "lon": -88.488976,
-    "lat": 42.561193,
-    "geohash": "dp944kh2cm0",
-    "pluscode": "HG66+FCC Lake Geneva, Wisconsin"
+    "longitude": -88.488976,
+    "latitude": 42.561193
   },
   "property": {
     "association": "Lackey Lane",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Mark", "m": "", "l": "Licht", "s": "" }
+        {
+          "t": "",
+          "f": "Mark",
+          "m": "",
+          "l": "Licht",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944kh2cm0",
+  "pluscode": "HG66+FCC Lake Geneva, Wisconsin"
 }

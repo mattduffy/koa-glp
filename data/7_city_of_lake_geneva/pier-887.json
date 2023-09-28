@@ -1,10 +1,8 @@
 {
   "pier": "887",
   "loc": {
-    "lon": -88.433866,
-    "lat": 42.585449,
-    "geohash": "dp9478kqjw0",
-    "pluscode": "HHP8+5FC Lake Geneva, Wisconsin"
+    "longitude": -88.433866,
+    "latitude": 42.585449
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Tom", "m": "", "l": "Tisbo", "s": "" }
+        {
+          "t": "",
+          "f": "Tom",
+          "m": "",
+          "l": "Tisbo",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9478kqjw0",
+  "pluscode": "HHP8+5FC Lake Geneva, Wisconsin"
 }

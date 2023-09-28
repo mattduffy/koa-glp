@@ -1,10 +1,8 @@
 {
   "pier": "517A",
   "loc": {
-    "lon": -88.540508,
-    "lat": 42.548587,
-    "geohash": "dp9411wz2x0",
-    "pluscode": "GFX5+CQQ Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.540508,
+    "latitude": 42.548587
   },
   "property": {
     "association": "Clear Sky Lodge Assn.",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Louis", "m": "", "l": "Schreiber", "s": "" }
+        {
+          "t": "",
+          "f": "Louis",
+          "m": "",
+          "l": "Schreiber",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9411wz2x0",
+  "pluscode": "GFX5+CQQ Fontana-On-Geneva Lake, Wisconsin"
 }

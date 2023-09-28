@@ -1,10 +1,8 @@
 {
   "pier": "150",
   "loc": {
-    "lon": -88.511014,
-    "lat": 42.574978,
-    "geohash": "dp941ys1pz0",
-    "pluscode": "HFFQ+XHX Williams Bay, Wisconsin"
+    "longitude": -88.511014,
+    "latitude": 42.574978
   },
   "property": {
     "association": "Knollwood",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Knollwood Association Piers", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Knollwood Association Piers",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,20 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Farrell", "m": "", "l": "Frentress", "s": "" },
-        { "t": "", "f": "Doris", "m": "", "l": "Frentress", "s": "" }
+        {
+          "t": "",
+          "f": "Farrell",
+          "m": "",
+          "l": "Frentress",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Doris",
+          "m": "",
+          "l": "Frentress",
+          "s": ""
+        }
       ]
     },
     {
@@ -41,9 +57,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Bruce", "m": "", "l": "Johnson", "s": "" },
-        { "t": "", "f": "Gail", "m": "", "l": "Johnson", "s": "" }
+        {
+          "t": "",
+          "f": "Bruce",
+          "m": "",
+          "l": "Johnson",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Gail",
+          "m": "",
+          "l": "Johnson",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941ys1pz0",
+  "pluscode": "HFFQ+XHX Williams Bay, Wisconsin"
 }

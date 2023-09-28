@@ -1,10 +1,8 @@
 {
   "pier": "107",
   "loc": {
-    "lon": -88.497050,
-    "lat": 42.574486,
-    "geohash": "dp944nqqm70",
-    "pluscode": "HGF3+Q5W Williams Bay, Wisconsin"
+    "longitude": -88.49705,
+    "latitude": 42.574486
   },
   "property": {
     "association": "Elgin Club",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Jerome R. & Denise L. Vainisi Family, LLC", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Jerome R. & Denise L. Vainisi Family, LLC",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944nqqm70",
+  "pluscode": "HGF3+Q5W Williams Bay, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "219",
   "loc": {
-    "lon": -88.529690,
-    "lat": 42.570921,
-    "geohash": "dp941my9se0",
-    "pluscode": "HFCC+947 Williams Bay, Wisconsin"
+    "longitude": -88.52969,
+    "latitude": 42.570921
   },
   "property": {
     "association": "Cedar Point Park",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Cedar Point Park Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Cedar Point Park Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Marianne", "m": "", "l": "Bonifacic", "s": "" },
-        { "t": "", "f": "Frank", "m": "", "l": "Bonifacic", "s": "" }
+        {
+          "t": "",
+          "f": "Marianne",
+          "m": "",
+          "l": "Bonifacic",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Frank",
+          "m": "",
+          "l": "Bonifacic",
+          "s": ""
+        }
       ]
     },
     {
@@ -41,7 +57,13 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Alice", "m": "J", "l": "Morava", "s": "" }
+        {
+          "t": "",
+          "f": "Alice",
+          "m": "J",
+          "l": "Morava",
+          "s": ""
+        }
       ]
     },
     {
@@ -49,8 +71,16 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Linda", "m": "J", "l": "Tonge", "s": "" }
+        {
+          "t": "",
+          "f": "Linda",
+          "m": "J",
+          "l": "Tonge",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941my9se0",
+  "pluscode": "HFCC+947 Williams Bay, Wisconsin"
 }

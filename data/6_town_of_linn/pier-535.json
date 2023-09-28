@@ -1,10 +1,8 @@
 {
   "pier": "535",
   "loc": {
-    "lon": -88.531794,
-    "lat": 42.550014,
-    "geohash": "dp9413vpg90",
-    "pluscode": "HF29+274 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.531794,
+    "latitude": 42.550014
   },
   "property": {
     "association": "The Chicago Club of Lake Geneva",
@@ -24,7 +22,13 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "The Chicago Club of Lake Geneva", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "The Chicago Club of Lake Geneva",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "Peggy", "m": "Mathy", "l": "Diamond", "s": "" }
+        {
+          "t": "",
+          "f": "Peggy",
+          "m": "Mathy",
+          "l": "Diamond",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,9 +50,23 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "Tom", "m": "", "l": "Tully", "s": "" },
-        { "t": "", "f": "Ellen", "m": "", "l": "Tully", "s": "" }
+        {
+          "t": "",
+          "f": "Tom",
+          "m": "",
+          "l": "Tully",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Ellen",
+          "m": "",
+          "l": "Tully",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9413vpg90",
+  "pluscode": "HF29+274 Fontana-On-Geneva Lake, Wisconsin"
 }

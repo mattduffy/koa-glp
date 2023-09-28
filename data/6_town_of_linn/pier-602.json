@@ -1,10 +1,8 @@
 {
   "pier": "602",
   "loc": {
-    "lon": -88.505667,
-    "lat": 42.559387,
-    "geohash": "dp94458nkk0",
-    "pluscode": "HF5V+QP4 Williams Bay, Wisconsin"
+    "longitude": -88.505667,
+    "latitude": 42.559387
   },
   "property": {
     "association": "Lake Geneva Highlands",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Jeff", "m": "", "l": "Rode", "s": "" },
-        { "t": "", "f": "Karen", "m": "", "l": "Rode", "s": "" }
+        {
+          "t": "",
+          "f": "Jeff",
+          "m": "",
+          "l": "Rode",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Karen",
+          "m": "",
+          "l": "Rode",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp94458nkk0",
+  "pluscode": "HF5V+QP4 Williams Bay, Wisconsin"
 }

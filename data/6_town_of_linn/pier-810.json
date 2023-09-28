@@ -1,10 +1,8 @@
 {
   "pier": "810",
   "loc": {
-    "lon": -88.437730,
-    "lat": 42.565444,
-    "geohash": "dp945sc9et0",
-    "pluscode": "HH86+5WC Lake Geneva, Wisconsin"
+    "longitude": -88.43773,
+    "latitude": 42.565444
   },
   "property": {
     "association": "Fairwyn",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Pollard", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Pollard",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945sc9et0",
+  "pluscode": "HH86+5WC Lake Geneva, Wisconsin"
 }

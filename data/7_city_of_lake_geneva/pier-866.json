@@ -1,10 +1,8 @@
 {
   "pier": "866",
   "loc": {
-    "lon": 0.00,
-    "lat": 0.00,
-    "geohash": "",
-    "pluscode": ""
+    "longitude": 0,
+    "latitude": 0
   },
   "property": {
     "association": "",
@@ -18,5 +16,7 @@
       "zip": "53147"
     }
   },
-  "owners": []
+  "owners": [],
+  "geohash": "",
+  "pluscode": ""
 }

@@ -1,10 +1,8 @@
 {
   "pier": "899A",
   "loc": {
-    "lon": -88.435518,
-    "lat": 42.589889,
-    "geohash": "dp947970p40",
-    "pluscode": "HHQ7+XQ5 Lake Geneva, Wisconsin"
+    "longitude": -88.435518,
+    "latitude": 42.589889
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Zingle Boat Rentals", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Zingle Boat Rentals",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp947970p40",
+  "pluscode": "HHQ7+XQ5 Lake Geneva, Wisconsin"
 }

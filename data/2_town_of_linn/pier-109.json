@@ -1,10 +1,8 @@
 {
   "pier": "109",
   "loc": {
-    "lon": -88.497537,
-    "lat": 42.574799,
-    "geohash": "dp944nw01v0",
-    "pluscode": "HGF2+WX8 Williams Bay, Wisconsin"
+    "longitude": -88.497537,
+    "latitude": 42.574799
   },
   "property": {
     "association": "Elgin Club",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Steve", "m": "", "l": "Chaouki", "s": "" },
-        { "t": "", "f": "Jymme", "m": "", "l": "Chaouki", "s": "" }
+        {
+          "t": "",
+          "f": "Steve",
+          "m": "",
+          "l": "Chaouki",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Jymme",
+          "m": "",
+          "l": "Chaouki",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944nw01v0",
+  "pluscode": "HGF2+WX8 Williams Bay, Wisconsin"
 }

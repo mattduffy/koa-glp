@@ -1,10 +1,8 @@
 {
   "pier": "759",
   "loc": {
-    "lon": -88.459309,
-    "lat": 42.557467,
-    "geohash": "dp94553ghw0",
-    "pluscode": "HG4R+X7P Lake Geneva, Wisconsin"
+    "longitude": -88.459309,
+    "latitude": 42.557467
   },
   "property": {
     "association": "Lake Geneva Beach Association",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Eric & Janet Knauer Trust", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Eric & Janet Knauer Trust",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp94553ghw0",
+  "pluscode": "HG4R+X7P Lake Geneva, Wisconsin"
 }

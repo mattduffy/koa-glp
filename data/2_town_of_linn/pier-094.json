@@ -1,10 +1,8 @@
 {
   "pier": "094",
   "loc": {
-    "lon": -88.491863,
-    "lat": 42.573214,
-    "geohash": "dp944q4nyn0",
-    "pluscode": "HGF5+77J Williams Bay, Wisconsin"
+    "longitude": -88.491863,
+    "latitude": 42.573214
   },
   "property": {
     "association": "S. B. Chapin",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Sustaining",
       "members": [
-        { "t": "", "f": "The Graber Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "The Graber Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944q4nyn0",
+  "pluscode": "HGF5+77J Williams Bay, Wisconsin"
 }

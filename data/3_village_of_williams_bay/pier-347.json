@@ -1,10 +1,8 @@
 {
   "pier": "347",
   "loc": {
-    "lon": -88.551930,
-    "lat": 42.566721,
-    "geohash": "dp940vn3nk0",
-    "pluscode": "HC8X+M6P Williams Bay, Wisconsin"
+    "longitude": -88.55193,
+    "latitude": 42.566721
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Peter A. Perkins Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Peter A. Perkins Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940vn3nk0",
+  "pluscode": "HC8X+M6P Williams Bay, Wisconsin"
 }

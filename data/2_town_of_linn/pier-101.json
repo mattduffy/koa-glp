@@ -1,10 +1,8 @@
 {
   "pier": "101",
   "loc": {
-    "lon": -88.494320,
-    "lat": 42.574074,
-    "geohash": "dp944q27uy0",
-    "pluscode": "HGF4+J7F Williams Bay, Wisconsin"
+    "longitude": -88.49432,
+    "latitude": 42.574074
   },
   "property": {
     "association": "S. B. Chapin",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Tom", "m": "", "l": "Santefort", "s": "" },
-        { "t": "", "f": "Susan", "m": "", "l": "Santefort", "s": "" }
+        {
+          "t": "",
+          "f": "Tom",
+          "m": "",
+          "l": "Santefort",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Susan",
+          "m": "",
+          "l": "Santefort",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944q27uy0",
+  "pluscode": "HGF4+J7F Williams Bay, Wisconsin"
 }

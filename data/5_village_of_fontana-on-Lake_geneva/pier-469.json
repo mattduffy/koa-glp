@@ -1,10 +1,8 @@
 {
   "pier": "469",
   "loc": {
-    "lon": -88.564568,
-    "lat": 42.546320,
-    "geohash": "dp9409m4rb0",
-    "pluscode": "GCWP+G5F Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.564568,
+    "latitude": 42.54632
   },
   "property": {
     "association": "Indian Hills",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "John", "m": "B", "l": "Lambert", "s": "" }
+        {
+          "t": "",
+          "f": "John",
+          "m": "B",
+          "l": "Lambert",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9409m4rb0",
+  "pluscode": "GCWP+G5F Fontana-On-Geneva Lake, Wisconsin"
 }

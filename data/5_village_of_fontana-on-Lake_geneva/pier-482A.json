@@ -1,10 +1,8 @@
 {
   "pier": "482A",
   "loc": {
-    "lon": -88.559544,
-    "lat": 42.546688,
-    "geohash": "dp940c2umj0",
-    "pluscode": "GCWR+M73 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.559544,
+    "latitude": 42.546688
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Susan L. Origer Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Susan L. Origer Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940c2umj0",
+  "pluscode": "GCWR+M73 Fontana-On-Geneva Lake, Wisconsin"
 }

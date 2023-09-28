@@ -1,10 +1,8 @@
 {
   "pier": "368",
   "loc": {
-    "lon": -88.563948,
-    "lat": 42.561558,
-    "geohash": "dp940sjen30",
-    "pluscode": "HC6P+JCF Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.563948,
+    "latitude": 42.561558
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Roy", "m": "", "l": "Kaiser", "s": "" }
+        {
+          "t": "",
+          "f": "Roy",
+          "m": "",
+          "l": "Kaiser",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940sjen30",
+  "pluscode": "HC6P+JCF Fontana-On-Geneva Lake, Wisconsin"
 }

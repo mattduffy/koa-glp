@@ -1,10 +1,8 @@
 {
   "pier": "043",
   "loc": {
-    "lon": -88.454634,
-    "lat": 42.579794,
-    "geohash": "dp945pmm380",
-    "pluscode": "HGHW+W49 Lake Geneva, Wisconsin"
+    "longitude": -88.454634,
+    "latitude": 42.579794
   },
   "property": {
     "association": "Shady Lane Pier Association",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Mark", "m": "", "l": "Hansen", "s": "" },
-        { "t": "", "f": "Linn", "m": "", "l": "Hansen", "s": "" }
+        {
+          "t": "",
+          "f": "Mark",
+          "m": "",
+          "l": "Hansen",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Linn",
+          "m": "",
+          "l": "Hansen",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945pmm380",
+  "pluscode": "HGHW+W49 Lake Geneva, Wisconsin"
 }

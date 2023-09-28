@@ -1,10 +1,8 @@
 {
   "pier": "194",
   "loc": {
-    "lon": -88.525789,
-    "lat": 42.566972,
-    "geohash": "dp941t16xd0",
-    "pluscode": "HF8F+QMP Williams Bay, Wisconsin"
+    "longitude": -88.525789,
+    "latitude": 42.566972
   },
   "property": {
     "association": "Cedar Point Park",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Cedar Point Park Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Cedar Point Park Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-          { "t": "", "f": "Melinda", "m": "", "l": "Dorner/Deuster", "s": "" }
+        {
+          "t": "",
+          "f": "Melinda",
+          "m": "",
+          "l": "Dorner/Deuster",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,9 +50,23 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-          { "t": "", "f": "Joe", "m": "", "l": "Ulrich", "s": "" },
-          { "t": "", "f": "Joyce", "m": "", "l": "Ulrich", "s": "" }
+        {
+          "t": "",
+          "f": "Joe",
+          "m": "",
+          "l": "Ulrich",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Joyce",
+          "m": "",
+          "l": "Ulrich",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941t16xd0",
+  "pluscode": "HF8F+QMP Williams Bay, Wisconsin"
 }

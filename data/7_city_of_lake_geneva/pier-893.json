@@ -1,10 +1,8 @@
 {
   "pier": "893",
   "loc": {
-    "lon": -88.433173,
-    "lat": 42.587329,
-    "geohash": "dp9478ucjt0",
-    "pluscode": "HHP8+WPP Lake Geneva, Wisconsin"
+    "longitude": -88.433173,
+    "latitude": 42.587329
   },
   "property": {
     "association": "Wrigley Drive Residences, LLC",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Wrigley Drive Residences", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Wrigley Drive Residences",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9478ucjt0",
+  "pluscode": "HHP8+WPP Lake Geneva, Wisconsin"
 }

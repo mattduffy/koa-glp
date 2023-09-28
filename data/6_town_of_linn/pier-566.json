@@ -1,10 +1,8 @@
 {
   "pier": "566",
   "loc": {
-    "lon": -88.515477,
-    "lat": 42.553758,
-    "geohash": "dp941f8vxg0",
-    "pluscode": "HF3M+GR2 Williams Bay, Wisconsin"
+    "longitude": -88.515477,
+    "latitude": 42.553758
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Robert", "m": "B", "l": "Flannery", "s": "Jr" }
+        {
+          "t": "",
+          "f": "Robert",
+          "m": "B",
+          "l": "Flannery",
+          "s": "Jr"
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941f8vxg0",
+  "pluscode": "HF3M+GR2 Williams Bay, Wisconsin"
 }

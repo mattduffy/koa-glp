@@ -1,10 +1,8 @@
 {
   "pier": "805",
   "loc": {
-    "lon": -88.439360,
-    "lat": 42.564985,
-    "geohash": "dp945s8rj80",
-    "pluscode": "HH76+X7R Lake Geneva, Wisconsin"
+    "longitude": -88.43936,
+    "latitude": 42.564985
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "The Geneva Inn", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "The Geneva Inn",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945s8rj80",
+  "pluscode": "HH76+X7R Lake Geneva, Wisconsin"
 }

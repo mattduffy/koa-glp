@@ -1,10 +1,8 @@
 {
   "pier": "538",
   "loc": {
-    "lon": -88.530307,
-    "lat": 42.549985,
-    "geohash": "dp9413ypwk0",
-    "pluscode": "GFX9+XVW Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.530307,
+    "latitude": 42.549985
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Dan", "m": "", "l": "Caballero", "s": "" }
+        {
+          "t": "",
+          "f": "Dan",
+          "m": "",
+          "l": "Caballero",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9413ypwk0",
+  "pluscode": "GFX9+XVW Fontana-On-Geneva Lake, Wisconsin"
 }

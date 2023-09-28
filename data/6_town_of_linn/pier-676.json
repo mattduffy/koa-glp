@@ -1,10 +1,8 @@
 {
   "pier": "676",
   "loc": {
-    "lon": -88.483925,
-    "lat": 42.563738,
-    "geohash": "dp944krzxp0",
-    "pluscode": "HG78+FCW Lake Geneva, Wisconsin"
+    "longitude": -88.483925,
+    "latitude": 42.563738
   },
   "property": {
     "association": "Birches",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Hostetler Family Trust", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Hostetler Family Trust",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944krzxp0",
+  "pluscode": "HG78+FCW Lake Geneva, Wisconsin"
 }

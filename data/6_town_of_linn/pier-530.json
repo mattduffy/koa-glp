@@ -1,10 +1,8 @@
 {
   "pier": "530",
   "loc": {
-    "lon": -88.533043,
-    "lat": 42.549715,
-    "geohash": "dp9413unn90",
-    "pluscode": "GFX8+VQP Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.533043,
+    "latitude": 42.549715
   },
   "property": {
     "association": "Oak Shores",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Eddie", "m": "", "l": "Greco", "s": "" },
-        { "t": "", "f": "Lisa", "m": "", "l": "Greco", "s": "" }
+        {
+          "t": "",
+          "f": "Eddie",
+          "m": "",
+          "l": "Greco",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Lisa",
+          "m": "",
+          "l": "Greco",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9413unn90",
+  "pluscode": "GFX8+VQP Fontana-On-Geneva Lake, Wisconsin"
 }

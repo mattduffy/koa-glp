@@ -1,10 +1,8 @@
 {
   "pier": "412",
   "loc": {
-    "lon": -88.572019,
-    "lat": 42.551013,
-    "geohash": "dp9406pvd70",
-    "pluscode": "HC2H+C55 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.572019,
+    "latitude": 42.551013
   },
   "property": {
     "association": "Fontana Shores Condo",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Fontana Shores Condo. Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Fontana Shores Condo. Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,9 +36,23 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "Bob", "m": "", "l": "Tangredi", "s": "" },
-        { "t": "", "f": "Erin", "m": "", "l": "Tangredi", "s": "" }
+        {
+          "t": "",
+          "f": "Bob",
+          "m": "",
+          "l": "Tangredi",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Erin",
+          "m": "",
+          "l": "Tangredi",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9406pvd70",
+  "pluscode": "HC2H+C55 Fontana-On-Geneva Lake, Wisconsin"
 }

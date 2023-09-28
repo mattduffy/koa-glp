@@ -1,10 +1,8 @@
 {
   "pier": "496",
   "loc": {
-    "lon": -88.553199,
-    "lat": 42.548251,
-    "geohash": "dp940ctt8b0",
-    "pluscode": "GCXW+8P3 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.553199,
+    "latitude": 42.548251
   },
   "property": {
     "association": "Harvard Club",
@@ -24,7 +22,13 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Harvard Geneva Lake Club", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Harvard Geneva Lake Club",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Willard", "m": "", "l": "Bell", "s": "" }
+        {
+          "t": "",
+          "f": "Willard",
+          "m": "",
+          "l": "Bell",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,8 +50,20 @@
       "member": true,
       "membershipType": "Sustaining",
       "members": [
-        { "t": "", "f": "Diane", "m": "", "l": "Brassel", "s": "" },
-        { "t": "", "f": "Jeff", "m": "", "l": "Brassel", "s": "" }
+        {
+          "t": "",
+          "f": "Diane",
+          "m": "",
+          "l": "Brassel",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Jeff",
+          "m": "",
+          "l": "Brassel",
+          "s": ""
+        }
       ]
     },
     {
@@ -49,8 +71,20 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Laurie", "m": "", "l": "Buss", "s": "" },
-        { "t": "", "f": "Bill", "m": "", "l": "Buss", "s": "" }
+        {
+          "t": "",
+          "f": "Laurie",
+          "m": "",
+          "l": "Buss",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Bill",
+          "m": "",
+          "l": "Buss",
+          "s": ""
+        }
       ]
     },
     {
@@ -58,7 +92,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Chris", "m": "", "l": "Church", "s": "" }
+        {
+          "t": "",
+          "f": "Chris",
+          "m": "",
+          "l": "Church",
+          "s": ""
+        }
       ]
     },
     {
@@ -66,8 +106,20 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "Brad", "m": "", "l": "Holden", "s": "" },
-        { "t": "", "f": "Becky", "m": "", "l": "Holden", "s": "" }
+        {
+          "t": "",
+          "f": "Brad",
+          "m": "",
+          "l": "Holden",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Becky",
+          "m": "",
+          "l": "Holden",
+          "s": ""
+        }
       ]
     },
     {
@@ -75,7 +127,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Jamie", "m": "", "l": "Holden", "s": "" }
+        {
+          "t": "",
+          "f": "Jamie",
+          "m": "",
+          "l": "Holden",
+          "s": ""
+        }
       ]
     },
     {
@@ -83,8 +141,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "R. Bradford", "m": "", "l": "Huss", "s": "" },
-        { "t": "", "f": "Charity", "m": "A", "l": "Huss", "s": "" }
+        {
+          "t": "",
+          "f": "R. Bradford",
+          "m": "",
+          "l": "Huss",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Charity",
+          "m": "A",
+          "l": "Huss",
+          "s": ""
+        }
       ]
     },
     {
@@ -92,8 +162,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Michael", "m": "", "l": "Nolan", "s": "" },
-        { "t": "", "f": "Kathleen", "m": "", "l": "Nolan", "s": "" }
+        {
+          "t": "",
+          "f": "Michael",
+          "m": "",
+          "l": "Nolan",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Kathleen",
+          "m": "",
+          "l": "Nolan",
+          "s": ""
+        }
       ]
     },
     {
@@ -101,8 +183,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "John", "m": "", "l": "O’Malley", "s": "" },
-        { "t": "", "f": "Jill", "m": "", "l": "O’Malley", "s": "" }
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "O’Malley",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Jill",
+          "m": "",
+          "l": "O’Malley",
+          "s": ""
+        }
       ]
     },
     {
@@ -110,8 +204,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Don", "m": "", "l": "Quigley", "s": "" },
-        { "t": "", "f": "Chris", "m": "", "l": "Quigley", "s": "" }
+        {
+          "t": "",
+          "f": "Don",
+          "m": "",
+          "l": "Quigley",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Chris",
+          "m": "",
+          "l": "Quigley",
+          "s": ""
+        }
       ]
     },
     {
@@ -119,8 +225,20 @@
       "member": true,
       "membershipType": "Sustaining",
       "members": [
-        { "t": "", "f": "Tom", "m": "", "l": "Scoville", "s": "" },
-        { "t": "", "f": "Linda", "m": "", "l": "Scoville", "s": "" }
+        {
+          "t": "",
+          "f": "Tom",
+          "m": "",
+          "l": "Scoville",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Linda",
+          "m": "",
+          "l": "Scoville",
+          "s": ""
+        }
       ]
     },
     {
@@ -128,8 +246,20 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Char", "m": "", "l": "Voris", "s": "" },
-        { "t": "", "f": "Frank", "m": "", "l": "Voris", "s": "" }
+        {
+          "t": "",
+          "f": "Char",
+          "m": "",
+          "l": "Voris",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Frank",
+          "m": "",
+          "l": "Voris",
+          "s": ""
+        }
       ]
     },
     {
@@ -137,9 +267,23 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Scott", "m": "", "l": "Voris", "s": "" },
-        { "t": "", "f": "Michelle", "m": "", "l": "Voris", "s": "" }
+        {
+          "t": "",
+          "f": "Scott",
+          "m": "",
+          "l": "Voris",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Michelle",
+          "m": "",
+          "l": "Voris",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940ctt8b0",
+  "pluscode": "GCXW+8P3 Fontana-On-Geneva Lake, Wisconsin"
 }

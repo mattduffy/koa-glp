@@ -1,10 +1,8 @@
 {
   "pier": "226",
   "loc": {
-    "lon": -88.529364,
-    "lat": 42.573363,
-    "geohash": "dp941qnzu60",
-    "pluscode": "HFFC+87R Williams Bay, Wisconsin"
+    "longitude": -88.529364,
+    "latitude": 42.573363
   },
   "property": {
     "association": "Cedar Point Park",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Cedar Point Park Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Cedar Point Park Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "James", "m": "", "l": "Ahern", "s": "" },
-        { "t": "", "f": "JoAnne", "m": "", "l": "Ahern", "s": "" }
+        {
+          "t": "",
+          "f": "James",
+          "m": "",
+          "l": "Ahern",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "JoAnne",
+          "m": "",
+          "l": "Ahern",
+          "s": ""
+        }
       ]
     },
     {
@@ -41,7 +57,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Dr. & Mrs. Raymond Copeland", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Dr. & Mrs. Raymond Copeland",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -49,9 +71,23 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Peter", "m": "", "l": "Russell", "s": "" },
-        { "t": "", "f": "Paula", "m": "", "l": "Russell", "s": "" }
+        {
+          "t": "",
+          "f": "Peter",
+          "m": "",
+          "l": "Russell",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Paula",
+          "m": "",
+          "l": "Russell",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941qnzu60",
+  "pluscode": "HFFC+87R Williams Bay, Wisconsin"
 }

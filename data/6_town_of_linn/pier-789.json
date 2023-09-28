@@ -1,10 +1,8 @@
 {
   "pier": "789",
   "loc": {
-    "lon": -88.443207,
-    "lat": 42.563891,
-    "geohash": "dp945kt8eu0",
-    "pluscode": "HH74+HP3 Lake Geneva, Wisconsin"
+    "longitude": -88.443207,
+    "latitude": 42.563891
   },
   "property": {
     "association": "Holly Bush",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Ed", "m": "", "l": "Dean", "s": "" },
-        { "t": "", "f": "Bonnie", "m": "", "l": "Dean", "s": "" }
+        {
+          "t": "",
+          "f": "Ed",
+          "m": "",
+          "l": "Dean",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Bonnie",
+          "m": "",
+          "l": "Dean",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945kt8eu0",
+  "pluscode": "HH74+HP3 Lake Geneva, Wisconsin"
 }

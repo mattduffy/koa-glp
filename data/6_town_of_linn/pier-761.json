@@ -1,10 +1,8 @@
 {
   "pier": "761",
   "loc": {
-    "lon": -88.458668,
-    "lat": 42.557434,
-    "geohash": "dp945567580",
-    "pluscode": "HG4R+XGG Lake Geneva, Wisconsin"
+    "longitude": -88.458668,
+    "latitude": 42.557434
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Dr. & Mrs.R. Zimmerman", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Dr. & Mrs.R. Zimmerman",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945567580",
+  "pluscode": "HG4R+XGG Lake Geneva, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "525",
   "loc": {
-    "lon": -88.535279,
-    "lat": 42.549560,
-    "geohash": "dp9413ft4k0",
-    "pluscode": "GFX7+RVH Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.535279,
+    "latitude": 42.54956
   },
   "property": {
     "association": "Maple Hills Association",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Maple Hills Association Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Maple Hills Association Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9413ft4k0",
+  "pluscode": "GFX7+RVH Fontana-On-Geneva Lake, Wisconsin"
 }

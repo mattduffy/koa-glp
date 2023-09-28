@@ -1,15 +1,13 @@
 {
   "pier": "875",
   "loc": {
-    "lon": -88.435749,
-    "lat": 42.581996,
-    "geohash": "dp945xg41e0",
-    "pluscode": "HHJ7+QPR Lake Geneva, Wisconsin"
+    "longitude": -88.435749,
+    "latitude": 42.581996
   },
   "property": {
     "association": "Syverstad",
     "established": "1955",
-    "associationUrl": "",    
+    "associationUrl": "",
     "tel": "",
     "address": {
       "street": "Marianne Terrace, Lake Geneva",
@@ -18,5 +16,7 @@
       "zip": "53147"
     }
   },
-  "owners": []
+  "owners": [],
+  "geohash": "dp945xg41e0",
+  "pluscode": "HHJ7+QPR Lake Geneva, Wisconsin"
 }

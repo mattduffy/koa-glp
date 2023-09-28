@@ -1,10 +1,8 @@
 {
   "pier": "312",
   "loc": {
-    "lon": -88.541506,
-    "lat": 42.568348,
-    "geohash": "dp941jq4970",
-    "pluscode": "HF95+89Q Williams Bay, Wisconsin"
+    "longitude": -88.541506,
+    "latitude": 42.568348
   },
   "property": {
     "association": "Congress Club",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Congress Club Swim Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Congress Club Swim Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941jq4970",
+  "pluscode": "HF95+89Q Williams Bay, Wisconsin"
 }

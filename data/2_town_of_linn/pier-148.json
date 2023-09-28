@@ -1,10 +1,8 @@
 {
   "pier": "148",
   "loc": {
-    "lon": -88.510261,
-    "lat": 42.575927,
-    "geohash": "dp941ysyc20",
-    "pluscode": "HFGQ+9VH Williams Bay, Wisconsin"
+    "longitude": -88.510261,
+    "latitude": 42.575927
   },
   "property": {
     "association": "Knollwood",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Susan", "m": "", "l": "Cox", "s": "" }
+        {
+          "t": "",
+          "f": "Susan",
+          "m": "",
+          "l": "Cox",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941ysyc20",
+  "pluscode": "HFGQ+9VH Williams Bay, Wisconsin"
 }

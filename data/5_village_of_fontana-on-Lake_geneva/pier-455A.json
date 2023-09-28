@@ -1,10 +1,8 @@
 {
   "pier": "455A",
   "loc": {
-    "lon": 0.00,
-    "lat": 0.00,
-    "geohash": "",
-    "pluscode": ""
+    "longitude": 0,
+    "latitude": 0
   },
   "property": {
     "association": "Glenwood Springs",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Thomas", "m": "", "l": "Gibbs", "s": "" },
-        { "t": "", "f": "Catherine", "m": "", "l": "Gibbs", "s": "" }
+        {
+          "t": "",
+          "f": "Thomas",
+          "m": "",
+          "l": "Gibbs",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Catherine",
+          "m": "",
+          "l": "Gibbs",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "",
+  "pluscode": ""
 }

@@ -1,10 +1,8 @@
 {
   "pier": "151",
   "loc": {
-    "lon": -88.511615,
-    "lat": 42.574911,
-    "geohash": "dp941yebcf0",
-    "pluscode": "HFFQ+X96 Williams Bay, Wisconsin"
+    "longitude": -88.511615,
+    "latitude": 42.574911
   },
   "property": {
     "association": "",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Rod", "m": "", "l": "Bolhous", "s": "" },
-        { "t": "", "f": "Kathy", "m": "", "l": "Bolhous", "s": "" }
+        {
+          "t": "",
+          "f": "Rod",
+          "m": "",
+          "l": "Bolhous",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Kathy",
+          "m": "",
+          "l": "Bolhous",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941yebcf0",
+  "pluscode": "HFFQ+X96 Williams Bay, Wisconsin"
 }

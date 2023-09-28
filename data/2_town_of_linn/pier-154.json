@@ -1,10 +1,8 @@
 {
   "pier": "154",
   "loc": {
-    "lon": -88.512343,
-    "lat": 42.574644,
-    "geohash": "dp941y7r2b0",
-    "pluscode": "HFFQ+V33 Williams Bay, Wisconsin"
+    "longitude": -88.512343,
+    "latitude": 42.574644
   },
   "property": {
     "association": "",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "Sara", "m": "", "l": "Zick", "s": "" },
-        { "t": "", "f": "George", "m": "", "l": "Zick", "s": "" }
+        {
+          "t": "",
+          "f": "Sara",
+          "m": "",
+          "l": "Zick",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "George",
+          "m": "",
+          "l": "Zick",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941y7r2b0",
+  "pluscode": "HFFQ+V33 Williams Bay, Wisconsin"
 }

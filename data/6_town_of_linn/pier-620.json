@@ -1,10 +1,8 @@
 {
   "pier": "620",
   "loc": {
-    "lon": -88.501110,
-    "lat": 42.559232,
-    "geohash": "dp9445emqx0",
-    "pluscode": "HF5X+MHR Williams Bay, Wisconsin"
+    "longitude": -88.50111,
+    "latitude": 42.559232
   },
   "property": {
     "association": "Edgewater Terrace",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Phil", "m": "", "l": "Connley", "s": "" }
+        {
+          "t": "",
+          "f": "Phil",
+          "m": "",
+          "l": "Connley",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9445emqx0",
+  "pluscode": "HF5X+MHR Williams Bay, Wisconsin"
 }

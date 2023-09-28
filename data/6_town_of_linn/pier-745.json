@@ -1,10 +1,8 @@
 {
   "pier": "745",
   "loc": {
-    "lon": -88.463273,
-    "lat": 42.557924,
-    "geohash": "dp944grjbk0",
-    "pluscode": "HG5P+5M9 Lake Geneva, Wisconsin"
+    "longitude": -88.463273,
+    "latitude": 42.557924
   },
   "property": {
     "association": "Trinke Estates",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Renato", "m": "", "l": "Turano", "s": "" },
-        { "t": "", "f": "Patricia", "m": "", "l": "Turano", "s": "" }
+        {
+          "t": "",
+          "f": "Renato",
+          "m": "",
+          "l": "Turano",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Patricia",
+          "m": "",
+          "l": "Turano",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944grjbk0",
+  "pluscode": "HG5P+5M9 Lake Geneva, Wisconsin"
 }

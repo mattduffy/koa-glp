@@ -1,10 +1,8 @@
 {
   "pier": "493",
   "loc": {
-    "lon": -88.555117,
-    "lat": 42.547908,
-    "geohash": "dp940cs5s10",
-    "pluscode": "GCXV+5X6 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.555117,
+    "latitude": 42.547908
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Kent", "m": "W", "l": "Shodeen", "s": "" }
+        {
+          "t": "",
+          "f": "Kent",
+          "m": "W",
+          "l": "Shodeen",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940cs5s10",
+  "pluscode": "GCXV+5X6 Fontana-On-Geneva Lake, Wisconsin"
 }

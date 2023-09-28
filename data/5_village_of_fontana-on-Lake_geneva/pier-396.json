@@ -1,10 +1,8 @@
 {
   "pier": "396",
   "loc": {
-    "lon": -88.570234,
-    "lat": 42.555449,
-    "geohash": "dp940dcp7y0",
-    "pluscode": "HC4H+3R5 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.570234,
+    "latitude": 42.555449
   },
   "property": {
     "association": "",
@@ -24,8 +22,20 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Greg", "m": "", "l": "Huck", "s": "" },
-        { "t": "", "f": "Julie", "m": "", "l": "Huck", "s": "" }
+        {
+          "t": "",
+          "f": "Greg",
+          "m": "",
+          "l": "Huck",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Julie",
+          "m": "",
+          "l": "Huck",
+          "s": ""
+        }
       ]
     },
     {
@@ -33,9 +43,23 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "William", "m": "C", "l": "Huck", "s": "" },
-        { "t": "", "f": "Barbara", "m": "A", "l": "Huck", "s": "" }
+        {
+          "t": "",
+          "f": "William",
+          "m": "C",
+          "l": "Huck",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Barbara",
+          "m": "A",
+          "l": "Huck",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940dcp7y0",
+  "pluscode": "HC4H+3R5 Fontana-On-Geneva Lake, Wisconsin"
 }

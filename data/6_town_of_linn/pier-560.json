@@ -1,10 +1,8 @@
 {
   "pier": "560",
   "loc": {
-    "lon": -88.518754,
-    "lat": 42.552177,
-    "geohash": "dp941dqs7s0",
-    "pluscode": "HF2J+VFH Williams Bay, Wisconsin"
+    "longitude": -88.518754,
+    "latitude": 42.552177
   },
   "property": {
     "association": "",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Dragan", "m": "", "l": "Dovric", "s": "" }
+        {
+          "t": "",
+          "f": "Dragan",
+          "m": "",
+          "l": "Dovric",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Bill", "m": "", "l": "Grunow", "s": "" }
+        {
+          "t": "",
+          "f": "Bill",
+          "m": "",
+          "l": "Grunow",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,7 +50,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Melita", "m": "", "l": "Grunow", "s": "" }
+        {
+          "t": "",
+          "f": "Melita",
+          "m": "",
+          "l": "Grunow",
+          "s": ""
+        }
       ]
     },
     {
@@ -48,7 +64,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Scot", "m": "", "l": "Grunow", "s": "" }
+        {
+          "t": "",
+          "f": "Scot",
+          "m": "",
+          "l": "Grunow",
+          "s": ""
+        }
       ]
     },
     {
@@ -56,7 +78,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "T", "m": "", "l": "Schurtz", "s": "" }
+        {
+          "t": "",
+          "f": "T",
+          "m": "",
+          "l": "Schurtz",
+          "s": ""
+        }
       ]
     },
     {
@@ -64,8 +92,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Michael", "m": "", "l": "Simon", "s": "" }
+        {
+          "t": "",
+          "f": "Michael",
+          "m": "",
+          "l": "Simon",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941dqs7s0",
+  "pluscode": "HF2J+VFH Williams Bay, Wisconsin"
 }

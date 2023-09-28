@@ -1,10 +1,8 @@
 {
   "pier": "472",
   "loc": {
-    "lon": -88.563132,
-    "lat": 42.546657,
-    "geohash": "dp9409qk1r0",
-    "pluscode": "GCWP+MP9 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.563132,
+    "latitude": 42.546657
   },
   "property": {
     "association": "Indian Hills",
@@ -24,11 +22,37 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Roger", "m": "", "l": "Stedronsky", "s": "" },
-        { "t": "", "f": "Noreen", "m": "", "l": "Stedronsky", "s": "" },
-        { "t": "", "f": "Jason", "m": "", "l": "Fowler", "s": "" },
-        { "t": "", "f": "Sondra", "m": "", "l": "Fowler", "s": "" }
+        {
+          "t": "",
+          "f": "Roger",
+          "m": "",
+          "l": "Stedronsky",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Noreen",
+          "m": "",
+          "l": "Stedronsky",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Jason",
+          "m": "",
+          "l": "Fowler",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Sondra",
+          "m": "",
+          "l": "Fowler",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9409qk1r0",
+  "pluscode": "GCWP+MP9 Fontana-On-Geneva Lake, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "286",
   "loc": {
-    "lon": -88.538707,
-    "lat": 42.574715,
-    "geohash": "dp941q2pdt0",
-    "pluscode": "HFF6+VGM Williams Bay, Wisconsin"
+    "longitude": -88.538707,
+    "latitude": 42.574715
   },
   "property": {
     "association": "Bay Colony North Condo",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Bay Colony North Condo Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Bay Colony North Condo Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Barry", "m": "", "l": "Diekelman", "s": "" }
+        {
+          "t": "",
+          "f": "Barry",
+          "m": "",
+          "l": "Diekelman",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,9 +50,23 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Todd", "m": "", "l": "Hitzeman", "s": "" },
-        { "t": "", "f": "Susan", "m": "", "l": "Hitzeman", "s": "" }
+        {
+          "t": "",
+          "f": "Todd",
+          "m": "",
+          "l": "Hitzeman",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Susan",
+          "m": "",
+          "l": "Hitzeman",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941q2pdt0",
+  "pluscode": "HFF6+VGM Williams Bay, Wisconsin"
 }

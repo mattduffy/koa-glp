@@ -1,10 +1,8 @@
 {
   "pier": "425",
   "loc": {
-    "lon": -88.571173,
-    "lat": 42.548954,
-    "geohash": "dp9409b3w50",
-    "pluscode": "GCXH+HGP Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.571173,
+    "latitude": 42.548954
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Fontana Municipal Pier #3", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Fontana Municipal Pier #3",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9409b3w50",
+  "pluscode": "GCXH+HGP Fontana-On-Geneva Lake, Wisconsin"
 }

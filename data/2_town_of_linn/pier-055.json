@@ -1,10 +1,8 @@
 {
   "pier": "055",
   "loc": {
-    "lon": -88.465993,
-    "lat": 42.575462,
-    "geohash": "dp944yth0c0",
-    "pluscode": "HGGM+5JJ Lake Geneva, Wisconsin"
+    "longitude": -88.465993,
+    "latitude": 42.575462
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Walter", "m": "G", "l": "Larkin", "s": "" }
+        {
+          "t": "",
+          "f": "Walter",
+          "m": "G",
+          "l": "Larkin",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944yth0c0",
+  "pluscode": "HGGM+5JJ Lake Geneva, Wisconsin"
 }

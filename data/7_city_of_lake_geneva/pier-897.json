@@ -1,10 +1,8 @@
 {
   "pier": "897",
   "loc": {
-    "lon": -88.433510,
-    "lat": 42.588028,
-    "geohash": "dp9478utjz0",
-    "pluscode": "HHQ8+6H9 Lake Geneva, Wisconsin"
+    "longitude": -88.43351,
+    "latitude": 42.588028
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Bella Vista", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Bella Vista",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9478utjz0",
+  "pluscode": "HHQ8+6H9 Lake Geneva, Wisconsin"
 }

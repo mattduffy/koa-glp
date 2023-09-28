@@ -1,10 +1,8 @@
 {
   "pier": "869",
   "loc": {
-    "lon": -88.437327,
-    "lat": 42.581004,
-    "geohash": "dp945x9ukf0",
-    "pluscode": "HHJ7+C33 Lake Geneva, Wisconsin"
+    "longitude": -88.437327,
+    "latitude": 42.581004
   },
   "property": {
     "association": "Syverstad",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Ezra", "m": "", "l": "Galston", "s": "" }
+        {
+          "t": "",
+          "f": "Ezra",
+          "m": "",
+          "l": "Galston",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945x9ukf0",
+  "pluscode": "HHJ7+C33 Lake Geneva, Wisconsin"
 }

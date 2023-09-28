@@ -1,10 +1,8 @@
 {
   "pier": "437AY",
   "loc": {
-    "lon": -88.570152,
-    "lat": 42.546636,
-    "geohash": "dp94093hjg0",
-    "pluscode": "GCWH+MW5 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.570152,
+    "latitude": 42.546636
   },
   "property": {
     "association": "Abbey Harbor Yacht Club",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Abbey Harbor Y.C. Docks", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Abbey Harbor Y.C. Docks",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,20 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Edward", "m": "", "l": "Breen", "s": "" },
-        { "t": "", "f": "Elizabeth", "m": "", "l": "Davis", "s": "" }
+        {
+          "t": "",
+          "f": "Edward",
+          "m": "",
+          "l": "Breen",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Elizabeth",
+          "m": "",
+          "l": "Davis",
+          "s": ""
+        }
       ]
     },
     {
@@ -41,8 +57,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Jodi", "m": "", "l": "Boudart", "s": "" },
-        { "t": "", "f": "Scott", "m": "", "l": "Kaufman", "s": "" }
+        {
+          "t": "",
+          "f": "Jodi",
+          "m": "",
+          "l": "Boudart",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Scott",
+          "m": "",
+          "l": "Kaufman",
+          "s": ""
+        }
       ]
     },
     {
@@ -50,8 +78,20 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "Daniel ", "m": "", "l": "Keck", "s": "" },
-        { "t": "", "f": "Victoria ", "m": "", "l": "Tilly", "s": "" }
+        {
+          "t": "",
+          "f": "Daniel ",
+          "m": "",
+          "l": "Keck",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Victoria ",
+          "m": "",
+          "l": "Tilly",
+          "s": ""
+        }
       ]
     },
     {
@@ -59,8 +99,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Todd", "m": "", "l": "Hitzeman", "s": "" },
-        { "t": "", "f": "Susan", "m": "", "l": "Hitzeman", "s": "" }
+        {
+          "t": "",
+          "f": "Todd",
+          "m": "",
+          "l": "Hitzeman",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Susan",
+          "m": "",
+          "l": "Hitzeman",
+          "s": ""
+        }
       ]
     },
     {
@@ -68,8 +120,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "William", "m": "", "l": "Urbanus", "s": "" }
+        {
+          "t": "",
+          "f": "William",
+          "m": "",
+          "l": "Urbanus",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp94093hjg0",
+  "pluscode": "GCWH+MW5 Fontana-On-Geneva Lake, Wisconsin"
 }

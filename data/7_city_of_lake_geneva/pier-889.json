@@ -1,10 +1,8 @@
 {
   "pier": "889",
   "loc": {
-    "lon": -88.433282,
-    "lat": 42.587092,
-    "geohash": "dp9478szg10",
-    "pluscode": "HHP8+HH5 Lake Geneva, Wisconsin"
+    "longitude": -88.433282,
+    "latitude": 42.587092
   },
   "property": {
     "association": "East Bank Condominium",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "East Bank Condominium Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "East Bank Condominium Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9478szg10",
+  "pluscode": "HHP8+HH5 Lake Geneva, Wisconsin"
 }

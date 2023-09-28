@@ -1,10 +1,8 @@
 {
   "pier": "349A",
   "loc": {
-    "lon": -88.555748,
-    "lat": 42.565953,
-    "geohash": "dp940ugsts0",
-    "pluscode": "HC8V+9PJ Williams Bay, Wisconsin"
+    "longitude": -88.555748,
+    "latitude": 42.565953
   },
   "property": {
     "association": "George Williams College of Aurora University",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "George Williams College Guest Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "George Williams College Guest Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940ugsts0",
+  "pluscode": "HC8V+9PJ Williams Bay, Wisconsin"
 }

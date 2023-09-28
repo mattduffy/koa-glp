@@ -1,10 +1,8 @@
 {
   "pier": "238",
   "loc": {
-    "lon": -88.530166,
-    "lat": 42.577059,
-    "geohash": "dp941qym3d0",
-    "pluscode": "HFG9+RWG Williams Bay, Wisconsin"
+    "longitude": -88.530166,
+    "latitude": 42.577059
   },
   "property": {
     "association": "Cedar Point Park",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Monson Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Monson Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941qym3d0",
+  "pluscode": "HFG9+RWG Williams Bay, Wisconsin"
 }

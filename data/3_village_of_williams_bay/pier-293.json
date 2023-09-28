@@ -1,10 +1,8 @@
 {
   "pier": "293",
   "loc": {
-    "lon": -88.539196,
-    "lat": 42.572535,
-    "geohash": "dp941npdzp0",
-    "pluscode": "HFF6+287 Williams Bay, Wisconsin"
+    "longitude": -88.539196,
+    "latitude": 42.572535
   },
   "property": {
     "association": "Oakwood Estates",
@@ -24,7 +22,13 @@
       "member": true,
       "membershipType": "",
       "members": [
-        { "t": "", "f": "Oakwood Estates Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Oakwood Estates Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": true,
       "membershipType": "",
       "members": [
-        { "t": "", "f": "Wendy", "m": "", "l": "Darre", "s": "" }
+        {
+          "t": "",
+          "f": "Wendy",
+          "m": "",
+          "l": "Darre",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,8 +50,20 @@
       "member": true,
       "membershipType": "",
       "members": [
-        { "t": "", "f": "Connie", "m": "", "l": "Gluth", "s": "" },
-        { "t": "", "f": "Rich", "m": "", "l": "Gluth", "s": "" }
+        {
+          "t": "",
+          "f": "Connie",
+          "m": "",
+          "l": "Gluth",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Rich",
+          "m": "",
+          "l": "Gluth",
+          "s": ""
+        }
       ]
     },
     {
@@ -49,9 +71,23 @@
       "member": true,
       "membershipType": "",
       "members": [
-        { "t": "", "f": "Bob", "m": "", "l": "Jelinek", "s": "" },
-        { "t": "", "f": "Susan", "m": "", "l": "Collins", "s": "" }
+        {
+          "t": "",
+          "f": "Bob",
+          "m": "",
+          "l": "Jelinek",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Susan",
+          "m": "",
+          "l": "Collins",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941npdzp0",
+  "pluscode": "HFF6+287 Williams Bay, Wisconsin"
 }

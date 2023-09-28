@@ -1,10 +1,8 @@
 {
   "pier": "280",
   "loc": {
-    "lon": -88.538953,
-    "lat": 42.575863,
-    "geohash": "dp941nxykg0",
-    "pluscode": "HFG6+8CV Williams Bay, Wisconsin"
+    "longitude": -88.538953,
+    "latitude": 42.575863
   },
   "property": {
     "association": "",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Chester", "m": "", "l": " Rozny", "s": "" },
-        { "t": "", "f": "Mary Ellen", "m": "", "l": " Rozny", "s": "" }
+        {
+          "t": "",
+          "f": "Chester",
+          "m": "",
+          "l": " Rozny",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Mary Ellen",
+          "m": "",
+          "l": " Rozny",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941nxykg0",
+  "pluscode": "HFG6+8CV Williams Bay, Wisconsin"
 }

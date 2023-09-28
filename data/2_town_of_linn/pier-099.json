@@ -1,10 +1,8 @@
 {
   "pier": "099",
   "loc": {
-    "lon": -88.493540,
-    "lat": 42.574159,
-    "geohash": "dp944q2urn0",
-    "pluscode": "HGF4+MH8 Williams Bay, Wisconsin"
+    "longitude": -88.49354,
+    "latitude": 42.574159
   },
   "property": {
     "association": "S. B. Chapin",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Annette", "m": "", "l": "Ebert", "s": "" },
-        { "t": "", "f": "Jim", "m": "", "l": "Ebert", "s": "" }
+        {
+          "t": "",
+          "f": "Annette",
+          "m": "",
+          "l": "Ebert",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Jim",
+          "m": "",
+          "l": "Ebert",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944q2urn0",
+  "pluscode": "HGF4+MH8 Williams Bay, Wisconsin"
 }

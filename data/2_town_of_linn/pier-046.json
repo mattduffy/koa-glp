@@ -1,10 +1,8 @@
 {
   "pier": "046",
   "loc": {
-    "lon": -88.457396,
-    "lat": 42.578513,
-    "geohash": "dp945p5mc60",
-    "pluscode": "HGHV+C25 Lake Geneva, Wisconsin"
+    "longitude": -88.457396,
+    "latitude": 42.578513
   },
   "property": {
     "association": "",
@@ -24,8 +22,20 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Dana", "m": "", "l": "Hagenah", "s": "" },
-        { "t": "", "f": "John", "m": "", "l": "Hagenah", "s": "" }
+        {
+          "t": "",
+          "f": "Dana",
+          "m": "",
+          "l": "Hagenah",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "Hagenah",
+          "s": ""
+        }
       ]
     },
     {
@@ -33,8 +43,20 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Susan", "m": "", "l": "Hagenah", "s": "" },
-        { "t": "", "f": "Phil", "m": "", "l": "Hagenah", "s": "" }
+        {
+          "t": "",
+          "f": "Susan",
+          "m": "",
+          "l": "Hagenah",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Phil",
+          "m": "",
+          "l": "Hagenah",
+          "s": ""
+        }
       ]
     },
     {
@@ -42,9 +64,23 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Tricia", "m": "", "l": "Hagenah", "s": "" },
-        { "t": "", "f": "Will", "m": "", "l": "Hagenah", "s": "" }
+        {
+          "t": "",
+          "f": "Tricia",
+          "m": "",
+          "l": "Hagenah",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Will",
+          "m": "",
+          "l": "Hagenah",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945p5mc60",
+  "pluscode": "HGHV+C25 Lake Geneva, Wisconsin"
 }

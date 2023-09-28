@@ -1,10 +1,8 @@
 {
   "pier": "699",
   "loc": {
-    "lon": -88.474433,
-    "lat": 42.563855,
-    "geohash": "dp944swbkm0",
-    "pluscode": "HG7G+G6W Lake Geneva, Wisconsin"
+    "longitude": -88.474433,
+    "latitude": 42.563855
   },
   "property": {
     "association": "700 Lake Shore Drive Association",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "Sandner Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Sandner Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944swbkm0",
+  "pluscode": "HG7G+G6W Lake Geneva, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "774A",
   "loc": {
-    "lon": -88.452529,
-    "lat": 42.560200,
-    "geohash": "dp9455yg4s0",
-    "pluscode": "HG6W+3XQ Lake Geneva, Wisconsin"
+    "longitude": -88.452529,
+    "latitude": 42.5602
   },
   "property": {
     "association": "Loramoor",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Mr. & Mrs. Donald Geller", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Mr. & Mrs. Donald Geller",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9455yg4s0",
+  "pluscode": "HG6W+3XQ Lake Geneva, Wisconsin"
 }

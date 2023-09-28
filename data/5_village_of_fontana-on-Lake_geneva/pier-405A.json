@@ -1,10 +1,8 @@
 {
   "pier": "405A",
   "loc": {
-    "lon": -88.571839,
-    "lat": 42.552828,
-    "geohash": "dp9406xbnw0",
-    "pluscode": "HC3H+47M Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.571839,
+    "latitude": 42.552828
   },
   "property": {
     "association": "Buena Vista",
@@ -24,8 +22,20 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "John", "m": "", "l": "Rolander", "s": "" },
-        { "t": "", "f": "Dana", "m": "", "l": "Rolander", "s": "" }
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "Rolander",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Dana",
+          "m": "",
+          "l": "Rolander",
+          "s": ""
+        }
       ]
     },
     {
@@ -33,8 +43,20 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "William", "m": "", "l": "Rolander", "s": "" },
-        { "t": "", "f": "Susan", "m": "", "l": "Rolander", "s": "" }
+        {
+          "t": "",
+          "f": "William",
+          "m": "",
+          "l": "Rolander",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Susan",
+          "m": "",
+          "l": "Rolander",
+          "s": ""
+        }
       ]
     },
     {
@@ -42,8 +64,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "William R. Rolander, Jr. Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "William R. Rolander, Jr. Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9406xbnw0",
+  "pluscode": "HC3H+47M Fontana-On-Geneva Lake, Wisconsin"
 }

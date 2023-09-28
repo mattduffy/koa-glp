@@ -1,10 +1,8 @@
 {
   "pier": "520",
   "loc": {
-    "lon": -88.537424,
-    "lat": 42.549295,
-    "geohash": "dp9413c5870",
-    "pluscode": "GFX7+P28 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.537424,
+    "latitude": 42.549295
   },
   "property": {
     "association": "Ten Acre Wood",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "William", "m": "L", "l": "Prester", "s": "" }
+        {
+          "t": "",
+          "f": "William",
+          "m": "L",
+          "l": "Prester",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9413c5870",
+  "pluscode": "GFX7+P28 Fontana-On-Geneva Lake, Wisconsin"
 }

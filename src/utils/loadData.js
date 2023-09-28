@@ -86,6 +86,7 @@ try {
     {
       '$.pier': {
         type: SchemaFieldTypes.TAG,
+        AS: 'pier',
       },
     },
     {
@@ -112,6 +113,40 @@ try {
         type: SchemaFieldTypes.TEXT,
         SORTABLE: true,
         AS: 'estateName',
+      },
+    },
+    {
+      ON: 'JSON',
+      PREFIX: prefix,
+    },
+  )
+} catch (e) {
+  if (e.message === 'Index already exists') {
+    log(`${pierOwnerEstatename} ${e.message}.  Skipping ahead.`)
+  } else {
+    error(e)
+    throw new Error(e.message, { cause: e })
+  }
+}
+
+// create an index for owner's firstname and lastname
+const pierOwnerNames = `${DB_PREFIX}:idx:piers:ownerNames`
+try {
+  log(`pierOwnerNames name: ${pierOwnerNames}`)
+  await redis.ft.create(
+    pierOwnerNames,
+    {
+      '$.owners[*].members[*].f': {
+        type: SchemaFieldTypes.TEXT,
+        SORTABLE: true,
+        AS: 'firstname',
+      },
+    },
+    {
+      '$.owners[*].members[*].l': {
+        type: SchemaFieldTypes.TEXT,
+        SORTABLE: true,
+        AS: 'lastname',
       },
     },
     {
@@ -159,15 +194,15 @@ try {
       if (pierJson.loc.lon === 0.0 && pierJson.loc.lat === 0.0) {
         missingLocCounter += 1
       }
-      pierJson.geohash = pierJson.loc.geohash
-      delete pierJson.loc.geohash
-      pierJson.pluscode = pierJson.loc.pluscode
-      delete pierJson.loc.pluscode
+      // pierJson.geohash = pierJson.loc.geohash
+      // delete pierJson.loc.geohash
+      // pierJson.pluscode = pierJson.loc.pluscode
+      // delete pierJson.loc.pluscode
       log(`${d}/${pier}`)
-      pierJson.loc.longitude = pierJson.loc.lon
-      pierJson.loc.latitude = pierJson.loc.lat
-      delete pierJson.loc.lon
-      delete pierJson.loc.lat
+      // pierJson.loc.longitude = pierJson.loc.lon
+      // pierJson.loc.latitude = pierJson.loc.lat
+      // delete pierJson.loc.lon
+      // delete pierJson.loc.lat
       log('loc: ', pierJson.loc)
       log('geohash: ', pierJson.geohash)
       log('pluscode: ', pierJson.pluscode)

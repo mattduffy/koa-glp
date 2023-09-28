@@ -1,10 +1,8 @@
 {
   "pier": "486",
   "loc": {
-    "lon": -88.557916,
-    "lat": 42.547313,
-    "geohash": "dp940cd04f0",
-    "pluscode": "GCWR+WRG Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.557916,
+    "latitude": 42.547313
   },
   "property": {
     "association": "",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "", "m": "", "l": "Karstens", "s": "" }
+        {
+          "t": "",
+          "f": "",
+          "m": "",
+          "l": "Karstens",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "MVK House Partners LLC", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "MVK House Partners LLC",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940cd04f0",
+  "pluscode": "GCWR+WRG Fontana-On-Geneva Lake, Wisconsin"
 }

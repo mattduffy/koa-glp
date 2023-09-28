@@ -1,10 +1,8 @@
 {
   "pier": "333",
   "loc": {
-    "lon": -88.549230,
-    "lat": 42.567056,
-    "geohash": "dp941j07j60",
-    "pluscode": "HF82+R8C Williams Bay, Wisconsin"
+    "longitude": -88.54923,
+    "latitude": 42.567056
   },
   "property": {
     "association": "Wesley Woods Retreat Center",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Wesley Woods Retreat Center", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Wesley Woods Retreat Center",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941j07j60",
+  "pluscode": "HF82+R8C Williams Bay, Wisconsin"
 }

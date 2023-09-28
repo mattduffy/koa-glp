@@ -1,10 +1,8 @@
 {
   "pier": "579",
   "loc": {
-    "lon": -88.512528,
-    "lat": 42.558445,
-    "geohash": "dp941ge0ut0",
-    "pluscode": "HF5P+9XH Williams Bay, Wisconsin"
+    "longitude": -88.512528,
+    "latitude": 42.558445
   },
   "property": {
     "association": "Estates of Black Point",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Mr. William O. Petersen Estate", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Mr. William O. Petersen Estate",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941ge0ut0",
+  "pluscode": "HF5P+9XH Williams Bay, Wisconsin"
 }

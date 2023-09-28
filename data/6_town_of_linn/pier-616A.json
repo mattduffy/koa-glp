@@ -1,10 +1,8 @@
 {
   "pier": "616A",
   "loc": {
-    "lon": -88.501464,
-    "lat": 42.559184,
-    "geohash": "dp9445ejnq0",
-    "pluscode": "HF5X+MCF Williams Bay, Wisconsin"
+    "longitude": -88.501464,
+    "latitude": 42.559184
   },
   "property": {
     "association": "Edgewater Terrace",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Carlos", "m": "", "l": "Krause", "s": "" }
+        {
+          "t": "",
+          "f": "Carlos",
+          "m": "",
+          "l": "Krause",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9445ejnq0",
+  "pluscode": "HF5X+MCF Williams Bay, Wisconsin"
 }

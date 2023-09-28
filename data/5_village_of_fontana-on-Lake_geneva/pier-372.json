@@ -1,10 +1,8 @@
 {
   "pier": "372",
   "loc": {
-    "lon": -88.565227,
-    "lat": 42.560839,
-    "geohash": "dp940euybe0",
-    "pluscode": "HC6M+8WJ Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.565227,
+    "latitude": 42.560839
   },
   "property": {
     "association": "",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Blythe", "m": "", "l": "Youngquist", "s": "" },
-        { "t": "", "f": "Bob", "m": "", "l": "Youngquist", "s": "" }
+        {
+          "t": "",
+          "f": "Blythe",
+          "m": "",
+          "l": "Youngquist",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Bob",
+          "m": "",
+          "l": "Youngquist",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940euybe0",
+  "pluscode": "HC6M+8WJ Fontana-On-Geneva Lake, Wisconsin"
 }

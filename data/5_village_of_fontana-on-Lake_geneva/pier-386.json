@@ -1,10 +1,8 @@
 {
   "pier": "386",
   "loc": {
-    "lon": -88.568665,
-    "lat": 42.557937,
-    "geohash": "dp940e6mbw0",
-    "pluscode": "HC5J+5GG Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.568665,
+    "latitude": 42.557937
   },
   "property": {
     "association": "Belvidere Park",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Belvidere Park Association Swim Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Belvidere Park Association Swim Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "John", "m": "", "l": "Pierce", "s": "" },
-        { "t": "", "f": "Debra", "m": "", "l": "Pierce", "s": "" }
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "Pierce",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Debra",
+          "m": "",
+          "l": "Pierce",
+          "s": ""
+        }
       ]
     },
     {
@@ -41,8 +57,16 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Laurance", "m": "", "l": "Pierce", "s": "" }
+        {
+          "t": "",
+          "f": "Laurance",
+          "m": "",
+          "l": "Pierce",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940e6mbw0",
+  "pluscode": "HC5J+5GG Fontana-On-Geneva Lake, Wisconsin"
 }

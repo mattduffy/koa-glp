@@ -1,10 +1,8 @@
 {
   "pier": "680",
   "loc": {
-    "lon": -88.482237,
-    "lat": 42.563982,
-    "geohash": "dp944s91nm0",
-    "pluscode": "HG79+H4R Lake Geneva, Wisconsin"
+    "longitude": -88.482237,
+    "latitude": 42.563982
   },
   "property": {
     "association": "Maple Lane",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Manny & Shelly Yonan & Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Manny & Shelly Yonan & Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944s91nm0",
+  "pluscode": "HG79+H4R Lake Geneva, Wisconsin"
 }

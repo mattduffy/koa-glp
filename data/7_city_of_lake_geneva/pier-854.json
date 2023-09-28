@@ -1,10 +1,8 @@
 {
   "pier": "854",
   "loc": {
-    "lon": -88.439858,
-    "lat": 42.576645,
-    "geohash": "dp945wb4cv0",
-    "pluscode": "HHG6+M32 Lake Geneva, Wisconsin"
+    "longitude": -88.439858,
+    "latitude": 42.576645
   },
   "property": {
     "association": "Somerset Condo Assn.",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Somerset Association Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Somerset Association Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Bill", "m": "", "l": "Elwood", "s": "" },
-        { "t": "", "f": "Mary Ann", "m": "", "l": "Elwood", "s": "" }
+        {
+          "t": "",
+          "f": "Bill",
+          "m": "",
+          "l": "Elwood",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Mary Ann",
+          "m": "",
+          "l": "Elwood",
+          "s": ""
+        }
       ]
     },
     {
@@ -41,8 +57,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Larry", "m": "", "l": "Happ", "s": "" },
-        { "t": "", "f": "Kelly", "m": "", "l": "Happ", "s": "" }
+        {
+          "t": "",
+          "f": "Larry",
+          "m": "",
+          "l": "Happ",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Kelly",
+          "m": "",
+          "l": "Happ",
+          "s": ""
+        }
       ]
     },
     {
@@ -50,8 +78,20 @@
       "member": true,
       "membershipType": "Sustaining",
       "members": [
-        { "t": "", "f": "Gil", "m": "", "l": "Kirkpatrick", "s": "" },
-        { "t": "", "f": "Lisa Lynne", "m": "", "l": "Kirkpatrick", "s": "" }
+        {
+          "t": "",
+          "f": "Gil",
+          "m": "",
+          "l": "Kirkpatrick",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Lisa Lynne",
+          "m": "",
+          "l": "Kirkpatrick",
+          "s": ""
+        }
       ]
     },
     {
@@ -59,9 +99,23 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "William", "m": "", "l": "Koertner", "s": "" },
-        { "t": "", "f": "Camille", "m": "", "l": "Koertner", "s": "" }
+        {
+          "t": "",
+          "f": "William",
+          "m": "",
+          "l": "Koertner",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Camille",
+          "m": "",
+          "l": "Koertner",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945wb4cv0",
+  "pluscode": "HHG6+M32 Lake Geneva, Wisconsin"
 }

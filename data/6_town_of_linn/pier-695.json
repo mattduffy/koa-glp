@@ -1,10 +1,8 @@
 {
   "pier": "695",
   "loc": {
-    "lon": -88.476372,
-    "lat": 42.565815,
-    "geohash": "dp944sv7z40",
-    "pluscode": "HG8F+8FC Lake Geneva, Wisconsin"
+    "longitude": -88.476372,
+    "latitude": 42.565815
   },
   "property": {
     "association": "700 Lake Shore Drive Association",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "The Kirch Foundation", "m": "", "l": "", "s": "" },
-        { "t": "", "f": "Terry", "m": "", "l": "Kirch", "s": "" }
+        {
+          "t": "",
+          "f": "The Kirch Foundation",
+          "m": "",
+          "l": "",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Terry",
+          "m": "",
+          "l": "Kirch",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944sv7z40",
+  "pluscode": "HG8F+8FC Lake Geneva, Wisconsin"
 }

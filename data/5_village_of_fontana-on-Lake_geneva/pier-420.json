@@ -1,10 +1,8 @@
 {
   "pier": "420",
   "loc": {
-    "lon": -88.571436,
-    "lat": 42.549487,
-    "geohash": "dp9409bhxz0",
-    "pluscode": "GCXH+QCW Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.571436,
+    "latitude": 42.549487
   },
   "property": {
     "association": "",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Fontana Municipal Pier #4", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Fontana Municipal Pier #4",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Geneva Lake Conservancy", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Geneva Lake Conservancy",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,8 +50,20 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Patrick", "m": "", "l": "Kenny", "s": "" },
-        { "t": "", "f": "Lisa", "m": "", "l": "Kenny", "s": "" }
+        {
+          "t": "",
+          "f": "Patrick",
+          "m": "",
+          "l": "Kenny",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Lisa",
+          "m": "",
+          "l": "Kenny",
+          "s": ""
+        }
       ]
     },
     {
@@ -49,7 +71,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Robert", "m": "", "l": "Rauland", "s": "" }
+        {
+          "t": "",
+          "f": "Robert",
+          "m": "",
+          "l": "Rauland",
+          "s": ""
+        }
       ]
     },
     {
@@ -57,8 +85,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Dan", "m": "", "l": "Wieber", "s": "" }
+        {
+          "t": "",
+          "f": "Dan",
+          "m": "",
+          "l": "Wieber",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9409bhxz0",
+  "pluscode": "GCXH+QCW Fontana-On-Geneva Lake, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "757",
   "loc": {
-    "lon": -88.459714,
-    "lat": 42.557511,
-    "geohash": "dp94553e7r0",
-    "pluscode": "HG5R+243 Lake Geneva, Wisconsin"
+    "longitude": -88.459714,
+    "latitude": 42.557511
   },
   "property": {
     "association": "Lake Geneva Beach Association",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Bob", "m": "", "l": "Streed", "s": "" },
-        { "t": "", "f": "Eileen", "m": "", "l": "Streed", "s": "" }
+        {
+          "t": "",
+          "f": "Bob",
+          "m": "",
+          "l": "Streed",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Eileen",
+          "m": "",
+          "l": "Streed",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp94553e7r0",
+  "pluscode": "HG5R+243 Lake Geneva, Wisconsin"
 }

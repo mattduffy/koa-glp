@@ -1,10 +1,8 @@
 {
   "pier": "643",
   "loc": {
-    "lon": -88.496070,
-    "lat": 42.559717,
-    "geohash": "dp9445z0k40",
-    "pluscode": "HG53+VHM Williams Bay, Wisconsin"
+    "longitude": -88.49607,
+    "latitude": 42.559717
   },
   "property": {
     "association": "Wooddale Beach Association",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Dan", "m": "", "l": "Nordsieck", "s": "" },
-        { "t": "", "f": "Karen", "m": "", "l": "Nordsieck", "s": "" }
+        {
+          "t": "",
+          "f": "Dan",
+          "m": "",
+          "l": "Nordsieck",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Karen",
+          "m": "",
+          "l": "Nordsieck",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9445z0k40",
+  "pluscode": "HG53+VHM Williams Bay, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "085",
   "loc": {
-    "lon": -88.486162,
-    "lat": 42.571343,
-    "geohash": "dp944myk4c0",
-    "pluscode": "HGC7+GGP Lake Geneva, Wisconsin"
+    "longitude": -88.486162,
+    "latitude": 42.571343
   },
   "property": {
     "association": "Alta Vista",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Paul", "m": "", "l": "Gurinas", "s": "" },
-        { "t": "", "f": "Jessica", "m": "", "l": "Gurinas", "s": "" }
+        {
+          "t": "",
+          "f": "Paul",
+          "m": "",
+          "l": "Gurinas",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Jessica",
+          "m": "",
+          "l": "Gurinas",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944myk4c0",
+  "pluscode": "HGC7+GGP Lake Geneva, Wisconsin"
 }

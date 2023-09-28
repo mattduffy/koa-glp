@@ -1,10 +1,8 @@
 {
   "pier": "531",
   "loc": {
-    "lon": -88.532495,
-    "lat": 42.550134,
-    "geohash": "dp9416h8e20",
-    "pluscode": "HF29+322 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.532495,
+    "latitude": 42.550134
   },
   "property": {
     "association": "Lake Geneva Club",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Lake Geneva Club Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Lake Geneva Club Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,20 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "Jon", "m": "", "l": "Abrahamovich", "s": "" },
-        { "t": "", "f": "Colleen", "m": "", "l": "Abrahamovich", "s": "" }
+        {
+          "t": "",
+          "f": "Jon",
+          "m": "",
+          "l": "Abrahamovich",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Colleen",
+          "m": "",
+          "l": "Abrahamovich",
+          "s": ""
+        }
       ]
     },
     {
@@ -41,8 +57,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Roger", "m": "", "l": "Bohn", "s": "" },
-        { "t": "", "f": "Lynda", "m": "", "l": "Bohn", "s": "" }
+        {
+          "t": "",
+          "f": "Roger",
+          "m": "",
+          "l": "Bohn",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Lynda",
+          "m": "",
+          "l": "Bohn",
+          "s": ""
+        }
       ]
     },
     {
@@ -50,7 +78,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Gardella Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Gardella Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -58,7 +92,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Marty", "m": "", "l": "Rexinger", "s": "" }
+        {
+          "t": "",
+          "f": "Marty",
+          "m": "",
+          "l": "Rexinger",
+          "s": ""
+        }
       ]
     },
     {
@@ -66,8 +106,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Jim & Denise Vitale Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Jim & Denise Vitale Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9416h8e20",
+  "pluscode": "HF29+322 Fontana-On-Geneva Lake, Wisconsin"
 }

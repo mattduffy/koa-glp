@@ -1,10 +1,8 @@
 {
   "pier": "141A",
   "loc": {
-    "lon": -88.508079,
-    "lat": 42.576155,
-    "geohash": "dp941yy2h60",
-    "pluscode": "HFGR+FQ7 Williams Bay, Wisconsin"
+    "longitude": -88.508079,
+    "latitude": 42.576155
   },
   "property": {
     "association": "Ara Glen",
@@ -25,5 +23,7 @@
       "membershipType": "Residential Non-member",
       "members": []
     }
-  ]
+  ],
+  "geohash": "dp941yy2h60",
+  "pluscode": "HFGR+FQ7 Williams Bay, Wisconsin"
 }

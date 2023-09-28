@@ -1,10 +1,8 @@
 {
   "pier": "415",
   "loc": {
-    "lon": -88.572151,
-    "lat": 42.550428,
-    "geohash": "dp9406pdpq0",
-    "pluscode": "HC2H+54H Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.572151,
+    "latitude": 42.550428
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Gordy’s Lakefront Marine, Inc. - Lighthouse", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Gordy’s Lakefront Marine, Inc. - Lighthouse",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9406pdpq0",
+  "pluscode": "HC2H+54H Fontana-On-Geneva Lake, Wisconsin"
 }

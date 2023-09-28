@@ -1,10 +1,8 @@
 {
   "pier": "311",
   "loc": {
-    "lon": -88.541380,
-    "lat": 42.568639,
-    "geohash": "dp941jqhk30",
-    "pluscode": "HF95+FC5 Williams Bay, Wisconsin"
+    "longitude": -88.54138,
+    "latitude": 42.568639
   },
   "property": {
     "association": "Congress Club",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Congress Club North Dock", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Congress Club North Dock",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,9 +36,23 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "Arlene", "m": "", "l": "Rose", "s": "" },
-        { "t": "", "f": "John", "m": "", "l": "Rose", "s": "" }
+        {
+          "t": "",
+          "f": "Arlene",
+          "m": "",
+          "l": "Rose",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "Rose",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941jqhk30",
+  "pluscode": "HF95+FC5 Williams Bay, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "774F",
   "loc": {
-    "lon": -88.450091,
-    "lat": 42.561285,
-    "geohash": "dp945k097q0",
-    "pluscode": "HG6X+GX7 Lake Geneva, Wisconsin"
+    "longitude": -88.450091,
+    "latitude": 42.561285
   },
   "property": {
     "association": "Loramoor",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Vince", "m": "", "l": "Kolber", "s": "" },
-        { "t": "", "f": "Patricia", "m": "", "l": "Kolber", "s": "" }
+        {
+          "t": "",
+          "f": "Vince",
+          "m": "",
+          "l": "Kolber",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Patricia",
+          "m": "",
+          "l": "Kolber",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945k097q0",
+  "pluscode": "HG6X+GX7 Lake Geneva, Wisconsin"
 }

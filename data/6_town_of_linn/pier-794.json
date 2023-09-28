@@ -1,10 +1,8 @@
 {
   "pier": "794",
   "loc": {
-    "lon": -88.440895,
-    "lat": 42.564718,
-    "geohash": "dp945kxm3y0",
-    "pluscode": "HH75+VHP Lake Geneva, Wisconsin"
+    "longitude": -88.440895,
+    "latitude": 42.564718
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Caroline", "m": "", "l": "Gable", "s": "" }
+        {
+          "t": "",
+          "f": "Caroline",
+          "m": "",
+          "l": "Gable",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945kxm3y0",
+  "pluscode": "HH75+VHP Lake Geneva, Wisconsin"
 }

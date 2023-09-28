@@ -1,10 +1,8 @@
 {
   "pier": "628",
   "loc": {
-    "lon": -88.498978,
-    "lat": 42.559054,
-    "geohash": "dp9445th2q0",
-    "pluscode": "HG52+JCC Williams Bay, Wisconsin"
+    "longitude": -88.498978,
+    "latitude": 42.559054
   },
   "property": {
     "association": "Valley Park Assn.",
@@ -24,7 +22,13 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "Valley Park Swim Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Valley Park Swim Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,9 +36,23 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "John", "m": "", "l": "Grud", "s": "" },
-        { "t": "", "f": "Ursula", "m": "", "l": "Grud", "s": "" }
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "Grud",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Ursula",
+          "m": "",
+          "l": "Grud",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9445th2q0",
+  "pluscode": "HG52+JCC Williams Bay, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "846",
   "loc": {
-    "lon": -88.439673,
-    "lat": 42.573290,
-    "geohash": "dp945w0pqk0",
-    "pluscode": "HHF6+848 Lake Geneva, Wisconsin"
+    "longitude": -88.439673,
+    "latitude": 42.57329
   },
   "property": {
     "association": "Ceylon Court Estates",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Patrick", "m": "", "l": "Lynch", "s": "" },
-        { "t": "", "f": "Rachel", "m": "", "l": "Lynch", "s": "" }
+        {
+          "t": "",
+          "f": "Patrick",
+          "m": "",
+          "l": "Lynch",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Rachel",
+          "m": "",
+          "l": "Lynch",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp945w0pqk0",
+  "pluscode": "HHF6+848 Lake Geneva, Wisconsin"
 }

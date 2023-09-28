@@ -1,10 +1,8 @@
 {
   "pier": "902",
   "loc": {
-    "lon": -88.437983,
-    "lat": 42.590400,
-    "geohash": "dp947937j90",
-    "pluscode": "HHR6+5R2 Lake Geneva, Wisconsin"
+    "longitude": -88.437983,
+    "latitude": 42.5904
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "LG Beach Swim Pier #2", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "LG Beach Swim Pier #2",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp947937j90",
+  "pluscode": "HHR6+5R2 Lake Geneva, Wisconsin"
 }

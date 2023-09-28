@@ -1,10 +1,8 @@
 {
   "pier": "053",
   "loc": {
-    "lon": -88.464916,
-    "lat": 42.575978,
-    "geohash": "dp944ytz410",
-    "pluscode": "HGGP+92W Lake Geneva, Wisconsin"
+    "longitude": -88.464916,
+    "latitude": 42.575978
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "William", "m": "", "l": "Wrigley", "s": "Jr." }
+        {
+          "t": "",
+          "f": "William",
+          "m": "",
+          "l": "Wrigley",
+          "s": "Jr."
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944ytz410",
+  "pluscode": "HGGP+92W Lake Geneva, Wisconsin"
 }

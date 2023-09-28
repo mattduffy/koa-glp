@@ -1,10 +1,8 @@
 {
   "pier": "439",
   "loc": {
-    "lon": -88.569949,
-    "lat": 42.546349,
-    "geohash": "dp9409366w0",
-    "pluscode": "GCWJ+G2M Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.569949,
+    "latitude": 42.546349
   },
   "property": {
     "association": "Country Club Estates",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Country Club Estates Boat Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Country Club Estates Boat Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9409366w0",
+  "pluscode": "GCWJ+G2M Fontana-On-Geneva Lake, Wisconsin"
 }

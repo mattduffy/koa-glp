@@ -1,10 +1,8 @@
 {
   "pier": "417",
   "loc": {
-    "lon": -88.571993,
-    "lat": 42.549990,
-    "geohash": "dp9403zzdv0",
-    "pluscode": "GCXH+X6R Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.571993,
+    "latitude": 42.54999
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Gordy’s Sales", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Gordy’s Sales",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9403zzdv0",
+  "pluscode": "GCXH+X6R Fontana-On-Geneva Lake, Wisconsin"
 }

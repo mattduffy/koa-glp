@@ -1,10 +1,8 @@
 {
   "pier": "385",
   "loc": {
-    "lon": -88.568434,
-    "lat": 42.558061,
-    "geohash": "dp940e6qtv0",
-    "pluscode": "HC5J+6JG Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.568434,
+    "latitude": 42.558061
   },
   "property": {
     "association": "Belvidere Park",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Belvidere Park Association Boat Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Belvidere Park Association Boat Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940e6qtv0",
+  "pluscode": "HC5J+6JG Fontana-On-Geneva Lake, Wisconsin"
 }

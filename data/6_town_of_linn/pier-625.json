@@ -1,10 +1,8 @@
 {
   "pier": "625",
   "loc": {
-    "lon": -88.499711,
-    "lat": 42.559097,
-    "geohash": "dp9445skxq0",
-    "pluscode": "HG52+J4M Williams Bay, Wisconsin"
+    "longitude": -88.499711,
+    "latitude": 42.559097
   },
   "property": {
     "association": "Valley Park Assn.",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Michael", "m": "", "l": "Quinlan", "s": "" },
-        { "t": "", "f": "Marilyn", "m": "", "l": "Quinlan", "s": "" }
+        {
+          "t": "",
+          "f": "Michael",
+          "m": "",
+          "l": "Quinlan",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Marilyn",
+          "m": "",
+          "l": "Quinlan",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9445skxq0",
+  "pluscode": "HG52+J4M Williams Bay, Wisconsin"
 }

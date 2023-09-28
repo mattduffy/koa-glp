@@ -1,10 +1,8 @@
 {
   "pier": "697",
   "loc": {
-    "lon": -88.475102,
-    "lat": 42.564442,
-    "geohash": "dp944sw7ue0",
-    "pluscode": "HG7F+QXC Lake Geneva, Wisconsin"
+    "longitude": -88.475102,
+    "latitude": 42.564442
   },
   "property": {
     "association": "700 Lake Shore Drive Association",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Greg", "m": "", "l": "Griffin", "s": "" },
-        { "t": "", "f": "Sue", "m": "", "l": "Griffin", "s": "" }
+        {
+          "t": "",
+          "f": "Greg",
+          "m": "",
+          "l": "Griffin",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Sue",
+          "m": "",
+          "l": "Griffin",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944sw7ue0",
+  "pluscode": "HG7F+QXC Lake Geneva, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "086B",
   "loc": {
-    "lon": -88.486977,
-    "lat": 42.571697,
-    "geohash": "dp944mvwpg0",
-    "pluscode": "HGC7+M6C Lake Geneva, Wisconsin"
+    "longitude": -88.486977,
+    "latitude": 42.571697
   },
   "property": {
     "association": "Alta Vista",
@@ -25,5 +23,7 @@
       "membershipType": "Residential Non-member",
       "members": []
     }
-  ]
+  ],
+  "geohash": "dp944mvwpg0",
+  "pluscode": "HGC7+M6C Lake Geneva, Wisconsin"
 }

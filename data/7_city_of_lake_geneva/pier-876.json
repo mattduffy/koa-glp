@@ -1,10 +1,8 @@
 {
   "pier": "876",
   "loc": {
-    "lon": -88.435427,
-    "lat": 42.582126,
-    "geohash": "dp945xg6c50",
-    "pluscode": "HHJ7+VR4 Lake Geneva, Wisconsin"
+    "longitude": -88.435427,
+    "latitude": 42.582126
   },
   "property": {
     "association": "Syverstad",
@@ -18,5 +16,7 @@
       "zip": "53147"
     }
   },
-  "owners": []
+  "owners": [],
+  "geohash": "dp945xg6c50",
+  "pluscode": "HHJ7+VR4 Lake Geneva, Wisconsin"
 }

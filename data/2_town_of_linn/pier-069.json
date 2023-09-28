@@ -1,10 +1,8 @@
 {
   "pier": "069",
   "loc": {
-    "lon": -88.476888,
-    "lat": 42.572353,
-    "geohash": "dp944wj1gj0",
-    "pluscode": "HGCF+W6X Lake Geneva, Wisconsin"
+    "longitude": -88.476888,
+    "latitude": 42.572353
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Ryan Family", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Ryan Family",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944wj1gj0",
+  "pluscode": "HGCF+W6X Lake Geneva, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "500",
   "loc": {
-    "lon": -88.549222,
-    "lat": 42.547751,
-    "geohash": "dp941186te0",
-    "pluscode": "GFX2+482 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.549222,
+    "latitude": 42.547751
   },
   "property": {
     "association": "",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Dean", "m": "L", "l": "Buntrock", "s": "" },
-        { "t": "", "f": "Rosemarie", "m": "", "l": "Buntrock", "s": "" }
+        {
+          "t": "",
+          "f": "Dean",
+          "m": "L",
+          "l": "Buntrock",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Rosemarie",
+          "m": "",
+          "l": "Buntrock",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941186te0",
+  "pluscode": "GFX2+482 Fontana-On-Geneva Lake, Wisconsin"
 }

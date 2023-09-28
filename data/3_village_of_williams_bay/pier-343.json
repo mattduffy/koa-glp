@@ -1,10 +1,8 @@
 {
   "pier": "343",
   "loc": {
-    "lon": -88.550977,
-    "lat": 42.566885,
-    "geohash": "dp940vp4hd0",
-    "pluscode": "HC8X+QJ2 Williams Bay, Wisconsin"
+    "longitude": -88.550977,
+    "latitude": 42.566885
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Phyllis", "m": "", "l": "Steindl", "s": "" }
+        {
+          "t": "",
+          "f": "Phyllis",
+          "m": "",
+          "l": "Steindl",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940vp4hd0",
+  "pluscode": "HC8X+QJ2 Williams Bay, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "679A",
   "loc": {
-    "lon": -88.482651,
-    "lat": 42.564143,
-    "geohash": "dp944s8fhg0",
-    "pluscode": "HG78+MW5 Lake Geneva, Wisconsin"
+    "longitude": -88.482651,
+    "latitude": 42.564143
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Linn Township Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Linn Township Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944s8fhg0",
+  "pluscode": "HG78+MW5 Lake Geneva, Wisconsin"
 }

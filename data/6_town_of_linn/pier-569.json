@@ -1,10 +1,8 @@
 {
   "pier": "569",
   "loc": {
-    "lon": -88.514198,
-    "lat": 42.555069,
-    "geohash": "dp941fcvjx0",
-    "pluscode": "HF4P+28F Williams Bay, Wisconsin"
+    "longitude": -88.514198,
+    "latitude": 42.555069
   },
   "property": {
     "association": "Lindens Association",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Lindens Association Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Lindens Association Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941fcvjx0",
+  "pluscode": "HF4P+28F Williams Bay, Wisconsin"
 }

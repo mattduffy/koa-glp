@@ -1,10 +1,8 @@
 {
   "pier": "167A",
   "loc": {
-    "lon": -88.519168,
-    "lat": 42.571756,
-    "geohash": "dp941tyq3y0",
-    "pluscode": "HFCJ+P84 Williams Bay, Wisconsin"
+    "longitude": -88.519168,
+    "latitude": 42.571756
   },
   "property": {
     "association": "",
@@ -21,11 +19,19 @@
   "owners": [
     {
       "estateName": "",
-        "member": false,
+      "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "William", "m": "B", "l": "Gage", "s": "Jr." }
+        {
+          "t": "",
+          "f": "William",
+          "m": "B",
+          "l": "Gage",
+          "s": "Jr."
+        }
       ]
     }
-]
+  ],
+  "geohash": "dp941tyq3y0",
+  "pluscode": "HFCJ+P84 Williams Bay, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "075",
   "loc": {
-    "lon": -88.481567,
-    "lat": 42.571923,
-    "geohash": "dp944tcxqj0",
-    "pluscode": "HGC9+Q97 Lake Geneva, Wisconsin"
+    "longitude": -88.481567,
+    "latitude": 42.571923
   },
   "property": {
     "association": "Bonnie Brae",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Rob", "m": "", "l": "Moore", "s": "" },
-        { "t": "", "f": "Patty", "m": "", "l": "Moore", "s": "" }
+        {
+          "t": "",
+          "f": "Rob",
+          "m": "",
+          "l": "Moore",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Patty",
+          "m": "",
+          "l": "Moore",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944tcxqj0",
+  "pluscode": "HGC9+Q97 Lake Geneva, Wisconsin"
 }

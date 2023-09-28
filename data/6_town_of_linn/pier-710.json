@@ -1,10 +1,8 @@
 {
   "pier": "710",
   "loc": {
-    "lon": -88.471709,
-    "lat": 42.562925,
-    "geohash": "dp944u2g5b0",
-    "pluscode": "HG7H+58F Lake Geneva, Wisconsin"
+    "longitude": -88.471709,
+    "latitude": 42.562925
   },
   "property": {
     "association": "Lake Geneva Country Club",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Lake Geneva Country Club", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Lake Geneva Country Club",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Sarah", "m": "E", "l": "Bogan", "s": "" }
+        {
+          "t": "",
+          "f": "Sarah",
+          "m": "E",
+          "l": "Bogan",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,8 +50,20 @@
       "member": true,
       "membershipType": "Sustaining",
       "members": [
-        { "t": "", "f": "John", "m": "", "l": "Foxley", "s": "" },
-        { "t": "", "f": "Mary Ann", "m": "", "l": "Foxley", "s": "" }
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "Foxley",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Mary Ann",
+          "m": "",
+          "l": "Foxley",
+          "s": ""
+        }
       ]
     },
     {
@@ -49,9 +71,23 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Bob", "m": "", "l": "Klockars", "s": "" },
-        { "t": "", "f": "Jane", "m": "", "l": "Klockars", "s": "" }
+        {
+          "t": "",
+          "f": "Bob",
+          "m": "",
+          "l": "Klockars",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Jane",
+          "m": "",
+          "l": "Klockars",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944u2g5b0",
+  "pluscode": "HG7H+58F Lake Geneva, Wisconsin"
 }

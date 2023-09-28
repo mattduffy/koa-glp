@@ -1,10 +1,8 @@
 {
   "pier": "550",
   "loc": {
-    "lon": -88.523518,
-    "lat": 42.551226,
-    "geohash": "dp941d5nue0",
-    "pluscode": "HF2G+FHX Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.523518,
+    "latitude": 42.551226
   },
   "property": {
     "association": "Academy Estates",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Academy Estates Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Academy Estates Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Barb", "m": "", "l": "Kelly", "s": "" }
+        {
+          "t": "",
+          "f": "Barb",
+          "m": "",
+          "l": "Kelly",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,8 +50,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Pat", "m": "", "l": "Potucek", "s": "" },
-        { "t": "", "f": "Ray", "m": "", "l": "Potucek", "s": "" }
+        {
+          "t": "",
+          "f": "Pat",
+          "m": "",
+          "l": "Potucek",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Ray",
+          "m": "",
+          "l": "Potucek",
+          "s": ""
+        }
       ]
     },
     {
@@ -49,8 +71,16 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Ed", "m": "", "l": "Zarach", "s": "" }
+        {
+          "t": "",
+          "f": "Ed",
+          "m": "",
+          "l": "Zarach",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941d5nue0",
+  "pluscode": "HF2G+FHX Fontana-On-Geneva Lake, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "399",
   "loc": {
-    "lon": -88.570861,
-    "lat": 42.554196,
-    "geohash": "dp940db8jk0",
-    "pluscode": "HC3H+PMQ Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.570861,
+    "latitude": 42.554196
   },
   "property": {
     "association": "Buena Vista",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Ken", "m": "", "l": "Shay", "s": "" },
-        { "t": "", "f": "Betty", "m": "", "l": "Shay", "s": "" }
+        {
+          "t": "",
+          "f": "Ken",
+          "m": "",
+          "l": "Shay",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Betty",
+          "m": "",
+          "l": "Shay",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940db8jk0",
+  "pluscode": "HC3H+PMQ Fontana-On-Geneva Lake, Wisconsin"
 }

@@ -1,10 +1,8 @@
 {
   "pier": "517B",
   "loc": {
-    "lon": -88.540282,
-    "lat": 42.548872,
-    "geohash": "dp9411ycju0",
-    "pluscode": "GFX5+GVW Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.540282,
+    "latitude": 42.548872
   },
   "property": {
     "association": "Clear Sky Lodge Assn.",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Cathleen", "m": "", "l": "Dettling", "s": "" },
-        { "t": "", "f": "Jay", "m": "", "l": "Dettling", "s": "" }
+        {
+          "t": "",
+          "f": "Cathleen",
+          "m": "",
+          "l": "Dettling",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Jay",
+          "m": "",
+          "l": "Dettling",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9411ycju0",
+  "pluscode": "GFX5+GVW Fontana-On-Geneva Lake, Wisconsin"
 }

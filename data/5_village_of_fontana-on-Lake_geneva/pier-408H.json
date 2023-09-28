@@ -1,10 +1,8 @@
 {
   "pier": "408H",
   "loc": {
-    "lon": 0.00,
-    "lat": 0.00,
-    "geohash": "",
-    "pluscode": ""
+    "longitude": 0,
+    "latitude": 0
   },
   "property": {
     "association": "Buena Vista",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Barbara", "m": "", "l": "Palmer", "s": "" },
-        { "t": "", "f": "Vincent", "m": "", "l": "Palmer", "s": "" }
+        {
+          "t": "",
+          "f": "Barbara",
+          "m": "",
+          "l": "Palmer",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Vincent",
+          "m": "",
+          "l": "Palmer",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "",
+  "pluscode": ""
 }

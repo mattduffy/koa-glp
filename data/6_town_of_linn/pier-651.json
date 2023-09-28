@@ -1,10 +1,8 @@
 {
   "pier": "651",
   "loc": {
-    "lon": 0.00,
-    "lat": 0.00,
-    "geohash": "",
-    "pluscode": ""
+    "longitude": 0,
+    "latitude": 0
   },
   "property": {
     "association": "Wooddale Lakeshore Property Owners Association",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Al", "m": "", "l": "Van Maren", "s": "" }
+        {
+          "t": "",
+          "f": "Al",
+          "m": "",
+          "l": "Van Maren",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "",
+  "pluscode": ""
 }

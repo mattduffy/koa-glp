@@ -1,10 +1,8 @@
 {
   "pier": "389",
   "loc": {
-    "lon": -88.569024,
-    "lat": 42.557655,
-    "geohash": "dp940e6h210",
-    "pluscode": "HC5J+399 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.569024,
+    "latitude": 42.557655
   },
   "property": {
     "association": "Hawks Woods",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Steve", "m": "", "l": "Beers", "s": "" }
+        {
+          "t": "",
+          "f": "Steve",
+          "m": "",
+          "l": "Beers",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940e6h210",
+  "pluscode": "HC5J+399 Fontana-On-Geneva Lake, Wisconsin"
 }

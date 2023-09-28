@@ -1,10 +1,8 @@
 {
   "pier": "390",
   "loc": {
-    "lon": -88.569150,
-    "lat": 42.557456,
-    "geohash": "dp940e3gjh0",
-    "pluscode": "HC4J+X8Q Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.56915,
+    "latitude": 42.557456
   },
   "property": {
     "association": "",
@@ -24,8 +22,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "David", "m": "", "l": "Curry", "s": "" },
-        { "t": "", "f": "Sara Harkness", "m": "", "l": "Curry", "s": "" }
+        {
+          "t": "",
+          "f": "David",
+          "m": "",
+          "l": "Curry",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Sara Harkness",
+          "m": "",
+          "l": "Curry",
+          "s": ""
+        }
       ]
     },
     {
@@ -33,9 +43,23 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Ken", "m": "", "l": "Harkness", "s": "" },
-        { "t": "", "f": "Toni", "m": "", "l": "Harkness", "s": "" }
+        {
+          "t": "",
+          "f": "Ken",
+          "m": "",
+          "l": "Harkness",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Toni",
+          "m": "",
+          "l": "Harkness",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940e3gjh0",
+  "pluscode": "HC4J+X8Q Fontana-On-Geneva Lake, Wisconsin"
 }

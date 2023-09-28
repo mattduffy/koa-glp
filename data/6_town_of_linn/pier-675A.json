@@ -1,10 +1,8 @@
 {
   "pier": "675A",
   "loc": {
-    "lon": -88.484315,
-    "lat": 42.563574,
-    "geohash": "dp944krwy10",
-    "pluscode": "HG78+C7F Lake Geneva, Wisconsin"
+    "longitude": -88.484315,
+    "latitude": 42.563574
   },
   "property": {
     "association": "Birches",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Ken", "m": "", "l": "Moore", "s": "" },
-        { "t": "", "f": "Liz", "m": "", "l": "Moore", "s": "" }
+        {
+          "t": "",
+          "f": "Ken",
+          "m": "",
+          "l": "Moore",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Liz",
+          "m": "",
+          "l": "Moore",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944krwy10",
+  "pluscode": "HG78+C7F Lake Geneva, Wisconsin"
 }

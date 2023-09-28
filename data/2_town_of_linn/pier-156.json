@@ -1,10 +1,8 @@
 {
   "pier": "156",
   "loc": {
-    "lon": -88.512839,
-    "lat": 42.574545,
-    "geohash": "dp941y6ytq0",
-    "pluscode": "HFFP+RX6 Williams Bay, Wisconsin"
+    "longitude": -88.512839,
+    "latitude": 42.574545
   },
   "property": {
     "association": "",
@@ -24,11 +22,37 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Nancy", "m": "", "l": "Baird", "s": "" },
-        { "t": "", "f": "Lanny", "m": "", "l": "Baird", "s": "" },
-        { "t": "", "f": "Nolan ", "m": "", "l": "Baird", "s": "III" },
-        { "t": "", "f": "Karen ", "m": "", "l": "Baird", "s": "" }
+        {
+          "t": "",
+          "f": "Nancy",
+          "m": "",
+          "l": "Baird",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Lanny",
+          "m": "",
+          "l": "Baird",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Nolan ",
+          "m": "",
+          "l": "Baird",
+          "s": "III"
+        },
+        {
+          "t": "",
+          "f": "Karen ",
+          "m": "",
+          "l": "Baird",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941y6ytq0",
+  "pluscode": "HFFP+RX6 Williams Bay, Wisconsin"
 }

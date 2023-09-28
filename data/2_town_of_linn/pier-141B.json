@@ -1,10 +1,8 @@
 {
   "pier": "141B",
   "loc": {
-    "lon": -88.508409,
-    "lat": 42.575966,
-    "geohash": "dp941ywnux0",
-    "pluscode": "HFGR+9JP Williams Bay, Wisconsin"
+    "longitude": -88.508409,
+    "latitude": 42.575966
   },
   "property": {
     "association": "Ara Glen",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Ara Glen Association Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Ara Glen Association Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,7 +36,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Gene", "m": "", "l": "Needles", "s": "" }
+        {
+          "t": "",
+          "f": "Gene",
+          "m": "",
+          "l": "Needles",
+          "s": ""
+        }
       ]
     },
     {
@@ -40,10 +50,30 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Charlene", "m": "", "l": "Needles", "s": "" },
-        { "t": "", "f": "Chad", "m": "", "l": "Black", "s": "" },
-        { "t": "", "f": "Jennifer", "m": "", "l": "Ahlstrand", "s": "" }
+        {
+          "t": "",
+          "f": "Charlene",
+          "m": "",
+          "l": "Needles",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Chad",
+          "m": "",
+          "l": "Black",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Jennifer",
+          "m": "",
+          "l": "Ahlstrand",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941ywnux0",
+  "pluscode": "HFGR+9JP Williams Bay, Wisconsin"
 }

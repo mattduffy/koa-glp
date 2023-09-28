@@ -1,10 +1,8 @@
 {
   "pier": "288",
   "loc": {
-    "lon": -88.538783,
-    "lat": 42.574209,
-    "geohash": "dp941q2h8z0",
-    "pluscode": "HFF6+MFP Williams Bay, Wisconsin"
+    "longitude": -88.538783,
+    "latitude": 42.574209
   },
   "property": {
     "association": "Bay Colony South Condo",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Bay Colony South Condo Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Bay Colony South Condo Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941q2h8z0",
+  "pluscode": "HFF6+MFP Williams Bay, Wisconsin"
 }

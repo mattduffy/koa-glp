@@ -1,10 +1,8 @@
 {
   "pier": "195",
   "loc": {
-    "lon": -88.525562,
-    "lat": 42.567211,
-    "geohash": "dp941t1euz0",
-    "pluscode": "HF8F+VQP Williams Bay, Wisconsin"
+    "longitude": -88.525562,
+    "latitude": 42.567211
   },
   "property": {
     "association": "Cedar Point Park",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Paul", "m": "", "l": "Darley", "s": "" },
-        { "t": "", "f": "Peter", "m": "", "l": "Darley", "s": "" }
+        {
+          "t": "",
+          "f": "Paul",
+          "m": "",
+          "l": "Darley",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Peter",
+          "m": "",
+          "l": "Darley",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941t1euz0",
+  "pluscode": "HF8F+VQP Williams Bay, Wisconsin"
 }

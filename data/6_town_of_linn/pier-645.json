@@ -1,10 +1,8 @@
 {
   "pier": "645",
   "loc": {
-    "lon": -88.495569,
-    "lat": 42.559770,
-    "geohash": "dp9445z2xu0",
-    "pluscode": "HG53+WQ3 Williams Bay, Wisconsin"
+    "longitude": -88.495569,
+    "latitude": 42.55977
   },
   "property": {
     "association": "Wooddale Lakeshore Property Owners Association",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Keith", "m": "", "l": "Jaffe", "s": "" }
+        {
+          "t": "",
+          "f": "Keith",
+          "m": "",
+          "l": "Jaffe",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9445z2xu0",
+  "pluscode": "HG53+WQ3 Williams Bay, Wisconsin"
 }

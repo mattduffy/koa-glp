@@ -1,10 +1,8 @@
 {
   "pier": "363",
   "loc": {
-    "lon": -88.562151,
-    "lat": 42.562659,
-    "geohash": "dp940sr12q0",
-    "pluscode": "HC7Q+349 Williams Bay, Wisconsin"
+    "longitude": -88.562151,
+    "latitude": 42.562659
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Dr. & Mrs.Keith Gibson", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Dr. & Mrs.Keith Gibson",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940sr12q0",
+  "pluscode": "HC7Q+349 Williams Bay, Wisconsin"
 }

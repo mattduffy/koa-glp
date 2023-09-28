@@ -1,10 +1,8 @@
 {
   "pier": "440",
   "loc": {
-    "lon": 0.00,
-    "lat": 0.00,
-    "geohash": "",
-    "pluscode": ""
+    "longitude": 0,
+    "latitude": 0
   },
   "property": {
     "association": "Country Club Estates",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Country Club Estates Swim Pier", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Country Club Estates Swim Pier",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Rob", "m": "", "l": "Clow", "s": "" },
-        { "t": "", "f": "Kelly", "m": "", "l": "Clow", "s": "" }
+        {
+          "t": "",
+          "f": "Rob",
+          "m": "",
+          "l": "Clow",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Kelly",
+          "m": "",
+          "l": "Clow",
+          "s": ""
+        }
       ]
     },
     {
@@ -41,8 +57,20 @@
       "member": true,
       "membershipType": "Sustaining",
       "members": [
-        { "t": "", "f": "Jon", "m": "", "l": "Eklund", "s": "" },
-        { "t": "", "f": "Susan", "m": "", "l": "Eklund", "s": "" }
+        {
+          "t": "",
+          "f": "Jon",
+          "m": "",
+          "l": "Eklund",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Susan",
+          "m": "",
+          "l": "Eklund",
+          "s": ""
+        }
       ]
     },
     {
@@ -50,7 +78,13 @@
       "member": true,
       "membershipType": "Donor",
       "members": [
-        { "t": "", "f": "Tricia", "m": "", "l": "Forbeck", "s": "" }
+        {
+          "t": "",
+          "f": "Tricia",
+          "m": "",
+          "l": "Forbeck",
+          "s": ""
+        }
       ]
     },
     {
@@ -58,8 +92,20 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Peter", "m": "", "l": "Hannon", "s": "" },
-        { "t": "", "f": "Coby", "m": "", "l": "Hannon", "s": "" }
+        {
+          "t": "",
+          "f": "Peter",
+          "m": "",
+          "l": "Hannon",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Coby",
+          "m": "",
+          "l": "Hannon",
+          "s": ""
+        }
       ]
     },
     {
@@ -67,8 +113,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Steve", "m": "", "l": "Kaufman", "s": "" },
-        { "t": "", "f": "Maureen", "m": "", "l": "Kaufman", "s": "" }
+        {
+          "t": "",
+          "f": "Steve",
+          "m": "",
+          "l": "Kaufman",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Maureen",
+          "m": "",
+          "l": "Kaufman",
+          "s": ""
+        }
       ]
     },
     {
@@ -76,7 +134,13 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Kirk", "m": "", "l": "Kreutzig", "s": "" }
+        {
+          "t": "",
+          "f": "Kirk",
+          "m": "",
+          "l": "Kreutzig",
+          "s": ""
+        }
       ]
     },
     {
@@ -84,8 +148,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Walt", "m": "", "l": "Liptak", "s": "" },
-        { "t": "", "f": "Bonnie", "m": "", "l": "Liptak", "s": "" }
+        {
+          "t": "",
+          "f": "Walt",
+          "m": "",
+          "l": "Liptak",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Bonnie",
+          "m": "",
+          "l": "Liptak",
+          "s": ""
+        }
       ]
     },
     {
@@ -93,8 +169,20 @@
       "member": true,
       "membershipType": "Regular",
       "members": [
-        { "t": "", "f": "Hugh", "m": "", "l": "Masterson", "s": "" },
-        { "t": "", "f": "Susan", "m": "", "l": "Masterson", "s": "" }
+        {
+          "t": "",
+          "f": "Hugh",
+          "m": "",
+          "l": "Masterson",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Susan",
+          "m": "",
+          "l": "Masterson",
+          "s": ""
+        }
       ]
     },
     {
@@ -102,8 +190,20 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Tom", "m": "", "l": "O’Connell", "s": "" },
-        { "t": "", "f": "Kathy", "m": "", "l": "Kroll", "s": "" }
+        {
+          "t": "",
+          "f": "Tom",
+          "m": "",
+          "l": "O’Connell",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Kathy",
+          "m": "",
+          "l": "Kroll",
+          "s": ""
+        }
       ]
     },
     {
@@ -111,7 +211,13 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Arvid", "m": "", "l": "Petersen", "s": "" }
+        {
+          "t": "",
+          "f": "Arvid",
+          "m": "",
+          "l": "Petersen",
+          "s": ""
+        }
       ]
     },
     {
@@ -119,8 +225,20 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Dan", "m": "", "l": "Schuld", "s": "" },
-        { "t": "", "f": "Peggy", "m": "", "l": "Schuld", "s": "" }
+        {
+          "t": "",
+          "f": "Dan",
+          "m": "",
+          "l": "Schuld",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Peggy",
+          "m": "",
+          "l": "Schuld",
+          "s": ""
+        }
       ]
     },
     {
@@ -128,8 +246,20 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Tim", "m": "", "l": "Thompson", "s": "" },
-        { "t": "", "f": "Meg", "m": "", "l": "Thompson", "s": "" }
+        {
+          "t": "",
+          "f": "Tim",
+          "m": "",
+          "l": "Thompson",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Meg",
+          "m": "",
+          "l": "Thompson",
+          "s": ""
+        }
       ]
     },
     {
@@ -137,7 +267,13 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Bob", "m": "", "l": "Webster", "s": "Jr." }
+        {
+          "t": "",
+          "f": "Bob",
+          "m": "",
+          "l": "Webster",
+          "s": "Jr."
+        }
       ]
     },
     {
@@ -145,8 +281,16 @@
       "member": true,
       "membershipType": "Sustaining",
       "members": [
-        { "t": "", "f": "Cindy", "m": "", "l": "Wilson", "s": "" }
+        {
+          "t": "",
+          "f": "Cindy",
+          "m": "",
+          "l": "Wilson",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "",
+  "pluscode": ""
 }

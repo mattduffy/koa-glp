@@ -1,10 +1,8 @@
 {
   "pier": "079",
   "loc": {
-    "lon": -88.483483,
-    "lat": 42.571088,
-    "geohash": "dp944tb6960",
-    "pluscode": "HGC8+CJJ Lake Geneva, Wisconsin"
+    "longitude": -88.483483,
+    "latitude": 42.571088
   },
   "property": {
     "association": "Bonnie Brae",
@@ -24,9 +22,23 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Melissa", "m": "", "l": "McClayton", "s": "" },
-        { "t": "", "f": "William", "m": "", "l": "McClayton", "s": "" }
+        {
+          "t": "",
+          "f": "Melissa",
+          "m": "",
+          "l": "McClayton",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "William",
+          "m": "",
+          "l": "McClayton",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp944tb6960",
+  "pluscode": "HGC8+CJJ Lake Geneva, Wisconsin"
 }

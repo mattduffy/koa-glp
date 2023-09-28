@@ -1,10 +1,8 @@
 {
   "pier": "518B",
   "loc": {
-    "lon": 0.00,
-    "lat": 0.00,
-    "geohash": "",
-    "pluscode": ""
+    "longitude": 0,
+    "latitude": 0
   },
   "property": {
     "association": "Clear Sky Lodge Assn.",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Margaret Lombardo Trust", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Margaret Lombardo Trust",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "",
+  "pluscode": ""
 }

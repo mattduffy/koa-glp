@@ -1,10 +1,8 @@
 {
   "pier": "895",
   "loc": {
-    "lon": -88.433287,
-    "lat": 42.587745,
-    "geohash": "dp9478uge50",
-    "pluscode": "HHQ8+4JV Lake Geneva, Wisconsin"
+    "longitude": -88.433287,
+    "latitude": 42.587745
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Old Boathouse Condominium", "m": "", "l": "", "s": "" }
+        {
+          "t": "",
+          "f": "Old Boathouse Condominium",
+          "m": "",
+          "l": "",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9478uge50",
+  "pluscode": "HHQ8+4JV Lake Geneva, Wisconsin"
 }

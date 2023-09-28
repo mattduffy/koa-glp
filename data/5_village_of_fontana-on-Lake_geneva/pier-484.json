@@ -1,10 +1,8 @@
 {
   "pier": "484",
   "loc": {
-    "lon": -88.558563,
-    "lat": 42.546908,
-    "geohash": "dp940c3tey0",
-    "pluscode": "GCWR+QH7 Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.558563,
+    "latitude": 42.546908
   },
   "property": {
     "association": "",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Skip", "m": "", "l": "Bliss", "s": "" },
-        { "t": "", "f": "Linda", "m": "", "l": "Bliss", "s": "" }
+        {
+          "t": "",
+          "f": "Skip",
+          "m": "",
+          "l": "Bliss",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Linda",
+          "m": "",
+          "l": "Bliss",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp940c3tey0",
+  "pluscode": "GCWR+QH7 Fontana-On-Geneva Lake, Wisconsin"
 }

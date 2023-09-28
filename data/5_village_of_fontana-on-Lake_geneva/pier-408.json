@@ -1,10 +1,8 @@
 {
   "pier": "408",
   "loc": {
-    "lon": -88.572177,
-    "lat": 42.551742,
-    "geohash": "dp9406r9ye0",
-    "pluscode": "HC2H+M4W Fontana-On-Geneva Lake, Wisconsin"
+    "longitude": -88.572177,
+    "latitude": 42.551742
   },
   "property": {
     "association": "Buena Vista",
@@ -24,7 +22,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Ginny", "m": "", "l": "Cavanaugh", "s": "" }
+        {
+          "t": "",
+          "f": "Ginny",
+          "m": "",
+          "l": "Cavanaugh",
+          "s": ""
+        }
       ]
     },
     {
@@ -32,8 +36,20 @@
       "member": true,
       "membershipType": "",
       "members": [
-        { "t": "", "f": "Tom", "m": "", "l": "Elwood", "s": "" },
-        { "t": "", "f": "Kathy", "m": "", "l": "Elwood", "s": "" }
+        {
+          "t": "",
+          "f": "Tom",
+          "m": "",
+          "l": "Elwood",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Kathy",
+          "m": "",
+          "l": "Elwood",
+          "s": ""
+        }
       ]
     },
     {
@@ -41,7 +57,13 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Jane", "m": "", "l": "Hoffmann", "s": "" }
+        {
+          "t": "",
+          "f": "Jane",
+          "m": "",
+          "l": "Hoffmann",
+          "s": ""
+        }
       ]
     },
     {
@@ -49,8 +71,20 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Jeff", "m": "", "l": "Parkhill", "s": "" },
-        { "t": "", "f": "Karen", "m": "", "l": "Parkhill", "s": "" }
+        {
+          "t": "",
+          "f": "Jeff",
+          "m": "",
+          "l": "Parkhill",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Karen",
+          "m": "",
+          "l": "Parkhill",
+          "s": ""
+        }
       ]
     },
     {
@@ -58,9 +92,23 @@
       "member": true,
       "membershipType": "Contributing",
       "members": [
-        { "t": "", "f": "Rob", "m": "", "l": "Rowe", "s": "" },
-        { "t": "", "f": "Suzette", "m": "", "l": "Rowe", "s": "" }
+        {
+          "t": "",
+          "f": "Rob",
+          "m": "",
+          "l": "Rowe",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Suzette",
+          "m": "",
+          "l": "Rowe",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9406r9ye0",
+  "pluscode": "HC2H+M4W Fontana-On-Geneva Lake, Wisconsin"
 }

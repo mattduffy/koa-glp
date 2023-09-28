@@ -1,10 +1,8 @@
 {
   "pier": "659",
   "loc": {
-    "lon": -88.492549,
-    "lat": 42.560659,
-    "geohash": "dp9447cty10",
-    "pluscode": "HG64+7X8 Williams Bay, Wisconsin"
+    "longitude": -88.492549,
+    "latitude": 42.560659
   },
   "property": {
     "association": "",
@@ -24,8 +22,16 @@
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [
-        { "t": "", "f": "Clay", "m": "P", "l": "Naccarato", "s": "" }
+        {
+          "t": "",
+          "f": "Clay",
+          "m": "P",
+          "l": "Naccarato",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp9447cty10",
+  "pluscode": "HG64+7X8 Williams Bay, Wisconsin"
 }

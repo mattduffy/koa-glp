@@ -1,10 +1,8 @@
 {
   "pier": "568A",
   "loc": {
-    "lon": -88.514404,
-    "lat": 42.554585,
-    "geohash": "dp941fcf2v0",
-    "pluscode": "HF3P+R6Q Williams Bay, Wisconsin"
+    "longitude": -88.514404,
+    "latitude": 42.554585
   },
   "property": {
     "association": "",
@@ -24,9 +22,23 @@
       "member": true,
       "membershipType": "Benefactor",
       "members": [
-        { "t": "", "f": "Doug", "m": "", "l": "Perks", "s": "" },
-        { "t": "", "f": "Mary", "m": "", "l": "Perks", "s": "" }
+        {
+          "t": "",
+          "f": "Doug",
+          "m": "",
+          "l": "Perks",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Mary",
+          "m": "",
+          "l": "Perks",
+          "s": ""
+        }
       ]
     }
-  ]
+  ],
+  "geohash": "dp941fcf2v0",
+  "pluscode": "HF3P+R6Q Williams Bay, Wisconsin"
 }
