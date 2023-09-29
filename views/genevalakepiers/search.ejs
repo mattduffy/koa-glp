@@ -1,0 +1,12 @@
+  <%# search box and results %>
+  <div id="searchBox">
+    <form id="search" name="search" method="GET" action="<%= origin %>/search">
+      <label for="searchBox">Search for a pier number or estate name.</label>
+      <input id="searchBox" name="searchBox" type="text" valu="" size="30">
+      <input id="csrf-token" name="csrf-token" type="hidden" value="<%= csrfToken %>">
+      <input id="submit" name="submit" type="submit">
+    </form>
+  </div>
+  <div id=searchResults">
+
+  </div>
