@@ -18,9 +18,9 @@
     <% if (!pier?.pier) { %>
       <h2><%= pierNumber %> is not a valid pier number on Geneva Lake</h2>
     <% } else { %>
-      <h2>Pier <%= pier.pier %>, located in the <nobr><a href="/towns/<%= setTown %>"><%= town %></a></nobr></h2>
+      <h2>Pier <%= pier.pier %><br>Located in the <nobr><a href="/towns/<%= setTown %>"><%= town %></a></nobr></h2>
       <div class="previousPier">
-        <% if (previousPier.length !== 0) { %>
+        <% if (previousPier?.length !== 0) { %>
         <a href="/pier/<%= previousPier %>">< Pier <%= previousPier %></a>
         <% } else { %>
         Pier <%= pier.pier %> 
@@ -75,23 +75,31 @@
         <% } %>
       </ul>
       <h3 id="owners">Owners:</h3>
-      <% if (pier?.owners.length < 1) { %>
+      <% if (pier?.owners?.members?.length < 1 || pier?.owners.length < 1) { %>
         Pier owner information is missing.  
       <% } else { %>
         <ul class="owners">
         <% pier.owners.forEach((owner) => {
-          let o = '' %>
+          let name = '' %>
           <li>
           <ul class="owners">
           <% if (owner?.members.length > 0) {
             owner.members.forEach((m) => {
-              o += `<div>${m.t} ${m.f} ${m.m} ${m.l} ${m.s}</div>`
+              n = `${m.t} ${m.f} ${m.m} ${m.l} ${m.s}`
+              if ((n.replace(/ /g, '')).length === 0) {
+                name = n.replace(/ /g, '')
+              } else {
+                name += `<div>${n}</div>`
+              }
             })
+            if (owner.member === true) {
+              name += `<div>GLA memberhip level: ${owner.membershipType}</div>`
+            }
           }
-          if (owner.member === true) {
-            o += `<div>GLA memberhip level: ${owner.membershipType}</div>`
-          } %>
-          <li><%- o %></li>
+          if (name.length < 1) {
+            name = 'Owner information not available.'
+          } %> 
+          <li><%- name %></li>
           </ul></li>
         <% }) %>
         </ul>
