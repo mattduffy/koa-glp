@@ -27,7 +27,8 @@
           "f": "Country Club Estates Swim Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Rob",
           "m": "",
           "l": "Clow",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kelly",
           "m": "",
           "l": "Clow",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,14 +65,16 @@
           "f": "Jon",
           "m": "",
           "l": "Eklund",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Susan",
           "m": "",
           "l": "Eklund",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -83,7 +88,8 @@
           "f": "Tricia",
           "m": "",
           "l": "Forbeck",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -97,14 +103,16 @@
           "f": "Peter",
           "m": "",
           "l": "Hannon",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Coby",
           "m": "",
           "l": "Hannon",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -118,14 +126,16 @@
           "f": "Steve",
           "m": "",
           "l": "Kaufman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Maureen",
           "m": "",
           "l": "Kaufman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -139,7 +149,8 @@
           "f": "Kirk",
           "m": "",
           "l": "Kreutzig",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -153,14 +164,16 @@
           "f": "Walt",
           "m": "",
           "l": "Liptak",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Bonnie",
           "m": "",
           "l": "Liptak",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -174,14 +187,16 @@
           "f": "Hugh",
           "m": "",
           "l": "Masterson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Susan",
           "m": "",
           "l": "Masterson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -195,14 +210,16 @@
           "f": "Tom",
           "m": "",
           "l": "O’Connell",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kathy",
           "m": "",
           "l": "Kroll",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -216,7 +233,8 @@
           "f": "Arvid",
           "m": "",
           "l": "Petersen",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -230,14 +248,16 @@
           "f": "Dan",
           "m": "",
           "l": "Schuld",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Peggy",
           "m": "",
           "l": "Schuld",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -251,14 +271,16 @@
           "f": "Tim",
           "m": "",
           "l": "Thompson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Meg",
           "m": "",
           "l": "Thompson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -272,7 +294,8 @@
           "f": "Bob",
           "m": "",
           "l": "Webster",
-          "s": "Jr."
+          "s": "Jr.",
+          "hidden": 0
         }
       ]
     },
@@ -286,7 +309,8 @@
           "f": "Cindy",
           "m": "",
           "l": "Wilson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

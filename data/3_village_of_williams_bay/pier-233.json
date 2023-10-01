@@ -27,14 +27,16 @@
           "f": "Thomas",
           "m": "F",
           "l": "Sandblom",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Charles",
           "m": "F",
           "l": "Connolly",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

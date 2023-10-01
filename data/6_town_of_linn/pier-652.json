@@ -27,14 +27,16 @@
           "f": "Chuck",
           "m": "",
           "l": "Sprovieri",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Lisa",
           "m": "",
           "l": "Sprovieri",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Jim",
           "m": "",
           "l": " Willett",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kathi",
           "m": "",
           "l": " Willett",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

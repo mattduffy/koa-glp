@@ -27,14 +27,16 @@
           "f": "Wayne",
           "m": "",
           "l": "Kocourek",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Nan",
           "m": "",
           "l": "Kocourek",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

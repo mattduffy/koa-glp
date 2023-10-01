@@ -27,7 +27,8 @@
           "f": "Vista de Lago",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Mark",
           "m": "",
           "l": "Davids",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Wendy",
           "m": "",
           "l": "Davids",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,14 +65,16 @@
           "f": "Daniel",
           "m": "",
           "l": "Lawlor",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Laurie",
           "m": "",
           "l": "Lawlor",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -83,7 +88,8 @@
           "f": "Beth & John Long Family",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -97,14 +103,16 @@
           "f": "Ryan",
           "m": "",
           "l": "Southwick",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Naomi",
           "m": "",
           "l": "Southwick",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

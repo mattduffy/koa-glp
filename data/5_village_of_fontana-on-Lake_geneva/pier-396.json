@@ -27,14 +27,16 @@
           "f": "Greg",
           "m": "",
           "l": "Huck",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Julie",
           "m": "",
           "l": "Huck",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,14 +50,16 @@
           "f": "William",
           "m": "C",
           "l": "Huck",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Barbara",
           "m": "A",
           "l": "Huck",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

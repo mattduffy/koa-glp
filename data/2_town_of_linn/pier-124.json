@@ -27,14 +27,16 @@
           "f": "Dale",
           "m": "",
           "l": "Caputo",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Bonnie",
           "m": "",
           "l": "Caputo",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,14 +50,16 @@
           "f": "Andrea",
           "m": "",
           "l": "Gibbs",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Jerry",
           "m": "",
           "l": "Gibbs",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

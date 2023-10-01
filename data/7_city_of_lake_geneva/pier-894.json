@@ -27,14 +27,16 @@
           "f": "Richard",
           "m": "",
           "l": "Adams",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Rita",
           "m": "",
           "l": "Adams",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,7 +50,8 @@
           "f": "Margaret",
           "m": "",
           "l": "Clark",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

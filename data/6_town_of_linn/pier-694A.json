@@ -27,14 +27,16 @@
           "f": "Rich",
           "m": "",
           "l": "Daukus",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Pat",
           "m": "",
           "l": "Daukus",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,14 +50,16 @@
           "f": "Prudy",
           "m": "",
           "l": "Harker",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Charles",
           "m": "",
           "l": "Harker",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

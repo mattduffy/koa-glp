@@ -27,14 +27,16 @@
           "f": "Dan",
           "m": "",
           "l": "Nordsieck",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Karen",
           "m": "",
           "l": "Nordsieck",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

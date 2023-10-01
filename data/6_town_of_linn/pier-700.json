@@ -27,7 +27,8 @@
           "f": "700 Lake Shore Drive Association",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Kevin",
           "m": "",
           "l": "Goggin",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "DeeDee",
           "m": "",
           "l": "Goggin",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,14 +65,16 @@
           "f": "Larry",
           "m": "",
           "l": "Moelmann",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Colleen",
           "m": "",
           "l": "Moelmann",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

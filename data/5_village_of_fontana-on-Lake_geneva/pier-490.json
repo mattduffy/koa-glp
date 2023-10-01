@@ -27,14 +27,16 @@
           "f": "Phil",
           "m": "",
           "l": "Carollo",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Nila",
           "m": "",
           "l": "Carollo",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

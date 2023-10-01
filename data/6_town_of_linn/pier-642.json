@@ -27,14 +27,16 @@
           "f": "Thomas",
           "m": "",
           "l": "Gardiner",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Margaret",
           "m": "",
           "l": "Lass-Gardiner",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

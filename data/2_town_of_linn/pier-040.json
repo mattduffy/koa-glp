@@ -27,14 +27,16 @@
           "f": "Dean",
           "m": "",
           "l": "Athans",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Eilena",
           "m": "",
           "l": "Athans",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

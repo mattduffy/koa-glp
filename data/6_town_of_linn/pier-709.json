@@ -27,14 +27,16 @@
           "f": "Mr. & Mrs. Thomas Cashman",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Brigid",
           "m": "",
           "l": "Cashman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,14 +50,16 @@
           "f": "Robert",
           "m": "",
           "l": "Conlon",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Cynthia",
           "m": "",
           "l": "Conlon",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -69,14 +73,16 @@
           "f": "David",
           "m": "",
           "l": "Dermenjian",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Michelle",
           "m": "",
           "l": "Dermenjian",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -90,14 +96,16 @@
           "f": "Vicki",
           "m": "",
           "l": "Galbraith",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Jack",
           "m": "",
           "l": "Galbraith",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -111,7 +119,8 @@
           "f": "Marilyn",
           "m": "",
           "l": "Hedberg",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -125,7 +134,8 @@
           "f": "Tobey",
           "m": "E",
           "l": "Lannert",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -139,14 +149,16 @@
           "f": "Roselyn",
           "m": "",
           "l": "Lanzito",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Joseph",
           "m": "",
           "l": "Lanzito",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -160,7 +172,8 @@
           "f": "John",
           "m": "K",
           "l": "Notz",
-          "s": "Jr."
+          "s": "Jr.",
+          "hidden": 0
         }
       ]
     },
@@ -174,14 +187,16 @@
           "f": "Greg",
           "m": "",
           "l": "Pace",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Patsy",
           "m": "",
           "l": "Pace",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -195,14 +210,16 @@
           "f": "Bill",
           "m": "",
           "l": "Poggensee",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Stella",
           "m": "",
           "l": "Poggensee",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -216,14 +233,16 @@
           "f": "David",
           "m": "",
           "l": "Williams",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Nancy",
           "m": "",
           "l": "Williams",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

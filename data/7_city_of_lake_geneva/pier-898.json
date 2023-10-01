@@ -27,7 +27,8 @@
           "f": "The Baker House",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Lake Geneva Boat Launch",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

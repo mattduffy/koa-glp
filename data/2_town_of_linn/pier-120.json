@@ -27,14 +27,16 @@
           "f": "Martin",
           "m": "",
           "l": "Butler",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Gerry",
           "m": "",
           "l": "Butler",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Otto",
           "m": "",
           "l": "Madlener",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "William",
           "m": "",
           "l": "Madlener",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

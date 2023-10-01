@@ -27,7 +27,8 @@
           "f": "Riviera Dock",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Lake Geneva Cruise Line",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

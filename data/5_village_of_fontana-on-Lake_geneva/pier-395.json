@@ -27,14 +27,16 @@
           "f": "Chip",
           "m": "",
           "l": "Mulaney",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Ellen",
           "m": "",
           "l": "Mulaney",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

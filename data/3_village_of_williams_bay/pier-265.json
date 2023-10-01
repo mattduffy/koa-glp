@@ -27,7 +27,8 @@
           "f": "Williams Bay West Dock",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Elizabeth",
           "m": "",
           "l": "Cox",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -55,7 +57,8 @@
           "f": "Dr. & Mrs. Clifford Poplar",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -69,7 +72,8 @@
           "f": "Robert",
           "m": "",
           "l": "Quinn",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

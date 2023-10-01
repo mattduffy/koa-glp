@@ -27,7 +27,8 @@
           "f": "William",
           "m": "",
           "l": "Pope",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Theodore",
           "m": "R",
           "l": "Tetzlaff",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

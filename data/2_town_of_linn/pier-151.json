@@ -27,14 +27,16 @@
           "f": "Rod",
           "m": "",
           "l": "Bolhous",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kathy",
           "m": "",
           "l": "Bolhous",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Catherine",
           "m": "",
           "l": "O'Malley",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Michael",
           "m": "",
           "l": "O'Malley",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

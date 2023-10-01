@@ -27,14 +27,16 @@
           "f": "Dan",
           "m": "",
           "l": "Pecora",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kristin",
           "m": "",
           "l": "Pecora",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

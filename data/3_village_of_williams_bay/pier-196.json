@@ -27,14 +27,16 @@
           "f": "Adam",
           "m": "",
           "l": "Reiche",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Anita",
           "m": "",
           "l": "Reiche",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

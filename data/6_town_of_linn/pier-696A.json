@@ -27,14 +27,16 @@
           "f": "Bob",
           "m": "",
           "l": "Schmidt",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Meg",
           "m": "",
           "l": "Schmidt",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,14 +50,16 @@
           "f": "John",
           "m": "R",
           "l": "Schmidt",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Janet",
           "m": "",
           "l": "Gilboy",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Dan",
           "m": "",
           "l": "Gallagher",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Sarah",
           "m": "",
           "l": "Gallagher",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,14 +50,16 @@
           "f": "Murray",
           "m": "",
           "l": "Peretz",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Anne Marie",
           "m": "",
           "l": "Peretz",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -69,7 +73,8 @@
           "f": "The Lombardo Family",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

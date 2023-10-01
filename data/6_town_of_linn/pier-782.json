@@ -27,14 +27,16 @@
           "f": "Dean",
           "m": "",
           "l": "Gatziolis",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Susan",
           "m": "",
           "l": "Gatziolis",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

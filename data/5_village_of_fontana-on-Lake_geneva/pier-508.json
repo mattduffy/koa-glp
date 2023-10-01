@@ -27,14 +27,16 @@
           "f": "Tom",
           "m": "",
           "l": "Kolder",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Cherie",
           "m": "",
           "l": "Kolder",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

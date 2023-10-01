@@ -27,14 +27,16 @@
           "f": "Lance",
           "m": "",
           "l": "Champagne",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Susan",
           "m": "",
           "l": "Champagne",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

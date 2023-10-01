@@ -27,14 +27,16 @@
           "f": "Daniel",
           "m": "",
           "l": "von Rabenau",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Janetta",
           "m": "",
           "l": "von Rabenau",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

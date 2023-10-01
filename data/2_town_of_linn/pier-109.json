@@ -27,14 +27,16 @@
           "f": "Steve",
           "m": "",
           "l": "Chaouki",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Jymme",
           "m": "",
           "l": "Chaouki",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

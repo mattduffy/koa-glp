@@ -27,14 +27,16 @@
           "f": "Daniel",
           "m": "",
           "l": "Affetto",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Anisa",
           "m": "",
           "l": "Affetto",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

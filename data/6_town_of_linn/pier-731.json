@@ -27,7 +27,8 @@
           "f": "Christopher",
           "m": "H",
           "l": "Bouma",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Ralph",
           "m": "",
           "l": "Bouma",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Chris",
           "m": "",
           "l": "Bouma",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,7 +65,8 @@
           "f": "Janet",
           "m": "",
           "l": "Hodge",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

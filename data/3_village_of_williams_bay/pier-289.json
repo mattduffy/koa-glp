@@ -27,7 +27,8 @@
           "f": "Summer Haven Association Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Bob",
           "m": "",
           "l": "Peck",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Christina",
           "m": "",
           "l": "Peck",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,14 +65,16 @@
           "f": "Thomas",
           "m": "",
           "l": "Shaughnessy",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Deborah",
           "m": "",
           "l": "Shaughnessy",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

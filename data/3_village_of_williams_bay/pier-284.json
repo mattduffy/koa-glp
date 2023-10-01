@@ -27,14 +27,16 @@
           "f": "Audrey",
           "m": "",
           "l": "Roctman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Leigh ",
           "m": "",
           "l": "Gignilliat",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

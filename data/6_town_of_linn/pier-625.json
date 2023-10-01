@@ -27,14 +27,16 @@
           "f": "Michael",
           "m": "",
           "l": "Quinlan",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Marilyn",
           "m": "",
           "l": "Quinlan",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

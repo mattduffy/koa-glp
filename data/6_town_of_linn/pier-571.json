@@ -27,14 +27,16 @@
           "f": "Don",
           "m": "",
           "l": "Sheldon",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Denise",
           "m": "",
           "l": "Sheldon",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

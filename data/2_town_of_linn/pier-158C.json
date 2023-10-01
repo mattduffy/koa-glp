@@ -27,7 +27,8 @@
           "f": "Oak Glen Association Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Jim",
           "m": "",
           "l": "Wycpalek",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Georgia",
           "m": "",
           "l": "Wycpalek",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

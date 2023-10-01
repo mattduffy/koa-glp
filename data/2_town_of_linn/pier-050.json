@@ -27,14 +27,16 @@
           "f": "Geoff",
           "m": "",
           "l": "Rusack",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Allison",
           "m": "",
           "l": "Wrigley Rusack",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

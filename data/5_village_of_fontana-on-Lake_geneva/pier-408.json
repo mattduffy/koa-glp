@@ -27,7 +27,8 @@
           "f": "Ginny",
           "m": "",
           "l": "Cavanaugh",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Tom",
           "m": "",
           "l": "Elwood",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kathy",
           "m": "",
           "l": "Elwood",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,7 +65,8 @@
           "f": "Jane",
           "m": "",
           "l": "Hoffmann",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -76,14 +80,16 @@
           "f": "Jeff",
           "m": "",
           "l": "Parkhill",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Karen",
           "m": "",
           "l": "Parkhill",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -97,14 +103,16 @@
           "f": "Rob",
           "m": "",
           "l": "Rowe",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Suzette",
           "m": "",
           "l": "Rowe",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

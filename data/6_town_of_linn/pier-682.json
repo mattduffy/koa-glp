@@ -27,14 +27,16 @@
           "f": "Larry",
           "m": "",
           "l": "Liebovich",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Barb",
           "m": "",
           "l": "Liebovich",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

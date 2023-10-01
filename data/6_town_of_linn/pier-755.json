@@ -27,7 +27,8 @@
           "f": "Geneva Beach Association Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Peter",
           "m": "",
           "l": "King",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Pat",
           "m": "",
           "l": "King",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,14 +65,16 @@
           "f": "Carl",
           "m": "",
           "l": "Rathmann",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Joyce Ann",
           "m": "",
           "l": "Rathmann",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

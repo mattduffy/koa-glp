@@ -27,14 +27,16 @@
           "f": "John",
           "m": "",
           "l": "Pagliari",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Rose",
           "m": "",
           "l": "Pagliari",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

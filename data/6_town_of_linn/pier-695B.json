@@ -27,14 +27,16 @@
           "f": "Arvid",
           "m": "",
           "l": "Dahlstrom",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Sue",
           "m": "",
           "l": "Dahlstrom",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Scott",
           "m": "",
           "l": "Dillion",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Amy",
           "m": "",
           "l": "Dillion",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Erick",
           "m": "",
           "l": "Haglund",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Betty",
           "m": "",
           "l": "Haglund",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

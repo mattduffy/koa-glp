@@ -27,14 +27,16 @@
           "f": "Andrew",
           "m": "",
           "l": "Szafran",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Maureen",
           "m": "",
           "l": "Szafran",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

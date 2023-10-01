@@ -27,14 +27,16 @@
           "f": "Bill",
           "m": "",
           "l": "Laughridge",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Cheri",
           "m": "",
           "l": "Laughridge",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,14 +50,16 @@
           "f": "Tim",
           "m": "",
           "l": "Walbert",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Keli",
           "m": "",
           "l": "Walbert",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

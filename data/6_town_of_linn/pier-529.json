@@ -27,7 +27,8 @@
           "f": "Oak Shores Swim Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Vince",
           "m": "",
           "l": "DiVincenzo",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

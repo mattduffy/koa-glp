@@ -27,7 +27,8 @@
           "f": "Subdiv. Pier Glenwood Springs",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Ann",
           "m": "",
           "l": "Hagerty",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Jack",
           "m": "",
           "l": "Hagerty",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,7 +65,8 @@
           "f": "Michael",
           "m": "",
           "l": "Kallergis",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -76,14 +80,16 @@
           "f": "Edward",
           "m": "",
           "l": "Maloney",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Cheryl",
           "m": "",
           "l": "Maloney",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -97,14 +103,16 @@
           "f": "James",
           "m": "",
           "l": "Maus",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Michelle",
           "m": "",
           "l": "Maus",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -118,7 +126,8 @@
           "f": "Peggy",
           "m": "",
           "l": "Pollitt",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

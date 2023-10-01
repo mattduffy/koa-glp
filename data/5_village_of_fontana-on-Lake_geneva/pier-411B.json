@@ -27,14 +27,16 @@
           "f": "Frank",
           "m": "H",
           "l": "Voris",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Michele",
           "m": "",
           "l": "Voris",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,14 +50,16 @@
           "f": "Frank",
           "m": "H",
           "l": "Wehrstein",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Jennifer",
           "m": "H",
           "l": "Wehrstein",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -69,7 +73,8 @@
           "f": "Geraldine",
           "m": "H",
           "l": "Audino",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,7 +27,8 @@
           "f": "Abbey Harbor Y.C. Docks",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Edward",
           "m": "",
           "l": "Breen",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Elizabeth",
           "m": "",
           "l": "Davis",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,14 +65,16 @@
           "f": "Jodi",
           "m": "",
           "l": "Boudart",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Scott",
           "m": "",
           "l": "Kaufman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -83,14 +88,16 @@
           "f": "Daniel ",
           "m": "",
           "l": "Keck",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Victoria ",
           "m": "",
           "l": "Tilly",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -104,14 +111,16 @@
           "f": "Todd",
           "m": "",
           "l": "Hitzeman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Susan",
           "m": "",
           "l": "Hitzeman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -125,7 +134,8 @@
           "f": "William",
           "m": "",
           "l": "Urbanus",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

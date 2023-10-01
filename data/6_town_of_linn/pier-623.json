@@ -27,14 +27,16 @@
           "f": "Paul",
           "m": "",
           "l": "Kelly",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Michele",
           "m": "",
           "l": "Kelly",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,7 +27,8 @@
           "f": "South Shore Club",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Frank",
           "m": "",
           "l": "Catalano",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Debra",
           "m": "",
           "l": "Catalano",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,14 +65,16 @@
           "f": "Debbie",
           "m": "",
           "l": "Kallergis",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Nick",
           "m": "",
           "l": "Kallergis",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -83,14 +88,16 @@
           "f": "Ken",
           "m": "",
           "l": "Koranda",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Susan",
           "m": "",
           "l": "Koranda",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -104,14 +111,16 @@
           "f": "John",
           "m": "",
           "l": "Matustik",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kathy",
           "m": "",
           "l": "Matustik",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -125,7 +134,8 @@
           "f": "Todd",
           "m": "",
           "l": "Mintz",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

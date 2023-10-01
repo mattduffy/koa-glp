@@ -27,7 +27,8 @@
           "f": "The Chicago Club of Lake Geneva",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Peggy",
           "m": "Mathy",
           "l": "Diamond",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -55,14 +57,16 @@
           "f": "Tom",
           "m": "",
           "l": "Tully",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Ellen",
           "m": "",
           "l": "Tully",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Michael",
           "m": "",
           "l": "Covey",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Jennifer",
           "m": "",
           "l": "Covey",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

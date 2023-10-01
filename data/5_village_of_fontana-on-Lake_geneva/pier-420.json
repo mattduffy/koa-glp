@@ -27,7 +27,8 @@
           "f": "Fontana Municipal Pier #4",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Geneva Lake Conservancy",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -55,14 +57,16 @@
           "f": "Patrick",
           "m": "",
           "l": "Kenny",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Lisa",
           "m": "",
           "l": "Kenny",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -76,7 +80,8 @@
           "f": "Robert",
           "m": "",
           "l": "Rauland",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -90,7 +95,8 @@
           "f": "Dan",
           "m": "",
           "l": "Wieber",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

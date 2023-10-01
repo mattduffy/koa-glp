@@ -27,14 +27,16 @@
           "f": "Gary",
           "m": "",
           "l": "Neilson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Trudy",
           "m": "",
           "l": "Havens",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

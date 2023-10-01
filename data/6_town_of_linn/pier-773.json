@@ -27,14 +27,16 @@
           "f": "Michael",
           "m": "",
           "l": "Ramsey",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Ruth",
           "m": "",
           "l": "Ramsey",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,7 +50,8 @@
           "f": "Thomas",
           "m": "",
           "l": "Ramsey",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

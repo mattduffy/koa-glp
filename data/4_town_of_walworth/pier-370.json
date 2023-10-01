@@ -27,14 +27,16 @@
           "f": "Rosemary",
           "m": "",
           "l": "White-Traut",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "David",
           "m": "",
           "l": "Traut",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

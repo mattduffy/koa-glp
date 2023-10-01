@@ -27,14 +27,16 @@
           "f": "Frank",
           "m": "",
           "l": "Stellato",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Mary Lou",
           "m": "",
           "l": "Stellato",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

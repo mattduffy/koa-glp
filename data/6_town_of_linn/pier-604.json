@@ -27,14 +27,16 @@
           "f": "Rose",
           "m": "",
           "l": "Lollino",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Gaetano",
           "m": "",
           "l": "Lollino",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

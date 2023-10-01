@@ -27,7 +27,8 @@
           "f": "Valley Park Boat Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Tom",
           "m": "",
           "l": "Dorn",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -55,14 +57,16 @@
           "f": "Mary",
           "m": "",
           "l": "Kirchhoefer",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Gregg",
           "m": "",
           "l": "Kirchhoefer",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -76,14 +80,16 @@
           "f": "Mark",
           "m": "",
           "l": "Lillie",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Celine",
           "m": "",
           "l": "Lillie",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -97,14 +103,16 @@
           "f": "Mike",
           "m": "",
           "l": "Moran",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kathy",
           "m": "",
           "l": "Moran",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -118,7 +126,8 @@
           "f": "Paul",
           "m": "M",
           "l": "Schulz",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

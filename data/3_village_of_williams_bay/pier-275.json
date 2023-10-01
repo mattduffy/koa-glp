@@ -27,14 +27,16 @@
           "f": "James",
           "m": "H",
           "l": "Maiers",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Nancy",
           "m": "",
           "l": "Maiers",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,7 +27,8 @@
           "f": "Fontana Shores Condo. Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Bob",
           "m": "",
           "l": "Tangredi",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Erin",
           "m": "",
           "l": "Tangredi",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

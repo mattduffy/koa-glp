@@ -27,14 +27,16 @@
           "f": "Clarence",
           "m": "",
           "l": "Schawk",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Marilyn",
           "m": "",
           "l": "Schawk",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

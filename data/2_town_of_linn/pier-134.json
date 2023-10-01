@@ -27,14 +27,16 @@
           "f": "Brian",
           "m": "",
           "l": "Griffith",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Sue",
           "m": "",
           "l": "Griffith",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,7 +50,8 @@
           "f": "Lois",
           "m": "",
           "l": "Griffith",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

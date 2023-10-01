@@ -27,14 +27,16 @@
           "f": "Edward",
           "m": "",
           "l": "O’Reilly",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Elizabeth",
           "m": "",
           "l": "O’Reilly",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

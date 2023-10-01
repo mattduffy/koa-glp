@@ -27,7 +27,8 @@
           "f": "Congress Club South Dock",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Jane",
           "m": "",
           "l": "Harker",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Hagen",
           "m": "",
           "l": "Harker",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,7 +65,8 @@
           "f": "Carol",
           "m": "",
           "l": "Swed",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -76,14 +80,16 @@
           "f": "Andrew",
           "m": "",
           "l": "Turza",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Virginia",
           "m": "",
           "l": "Turza",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,7 +27,8 @@
           "f": "Abbey Springs Condo Assoc.",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Jeff",
           "m": "",
           "l": "Germanotta",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -55,7 +57,8 @@
           "f": "Mr. & Mrs. John L. Simpson, Jr.",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

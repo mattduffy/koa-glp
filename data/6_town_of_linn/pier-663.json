@@ -27,14 +27,16 @@
           "f": "Ryan",
           "m": "",
           "l": "Hurley",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Tonya",
           "m": "",
           "l": "Hurley",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

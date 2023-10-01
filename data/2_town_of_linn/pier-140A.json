@@ -27,7 +27,8 @@
           "f": "Sylvan Trail Association Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Baxter",
           "m": "",
           "l": "Phillip",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

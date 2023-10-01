@@ -27,14 +27,16 @@
           "f": "Wendy",
           "m": "",
           "l": "Bellagamba",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Tim",
           "m": "",
           "l": "Bellagamba",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

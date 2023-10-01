@@ -27,7 +27,8 @@
           "f": "Wooddale Beach Assn. Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Fairbank",
           "m": "",
           "l": "Carpenter",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Lynne",
           "m": "",
           "l": "Carpenter",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,7 +65,8 @@
           "f": "Eleanor",
           "m": "",
           "l": "Curtiss",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -76,7 +80,8 @@
           "f": "Diane",
           "m": "",
           "l": "Fanelle",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -90,7 +95,8 @@
           "f": "Jeff",
           "m": "",
           "l": "Jancik",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -104,7 +110,8 @@
           "f": "Tricia",
           "m": "",
           "l": "McCoy",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -118,14 +125,16 @@
           "f": "Mark",
           "m": "",
           "l": "Scharres",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Nancy",
           "m": "",
           "l": "McCoy",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -139,14 +148,16 @@
           "f": "Bill",
           "m": "",
           "l": "Thompson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Diane",
           "m": "",
           "l": "Thompson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -160,7 +171,8 @@
           "f": "Sonette",
           "m": "",
           "l": "Tippens",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

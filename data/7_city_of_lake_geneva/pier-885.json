@@ -27,14 +27,16 @@
           "f": "Ed",
           "m": "",
           "l": "McCarthy",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Mary",
           "m": "",
           "l": "McCarthy",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

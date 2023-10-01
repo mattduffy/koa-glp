@@ -27,14 +27,16 @@
           "f": "Scott",
           "m": "",
           "l": "Corley",
-          "s": ""
+          "s": "",
+          "hidden": 1
         },
         {
           "t": "",
           "f": "Melissa",
           "m": "",
           "l": "Corley",
-          "s": ""
+          "s": "",
+          "hidden": 1
         }
       ]
     }

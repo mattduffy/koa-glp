@@ -27,14 +27,16 @@
           "f": "Sam",
           "m": "",
           "l": "Skinner",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Honey",
           "m": "",
           "l": "Skinner",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

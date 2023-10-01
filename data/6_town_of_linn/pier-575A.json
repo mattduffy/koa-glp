@@ -27,14 +27,16 @@
           "f": "Steve",
           "m": "",
           "l": "Glasgow",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Michele",
           "m": "",
           "l": "Glasgow",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

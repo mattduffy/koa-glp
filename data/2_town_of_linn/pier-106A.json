@@ -27,14 +27,16 @@
           "f": "Stephanie",
           "m": "",
           "l": "Bragg",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Scott",
           "m": "",
           "l": "Bragg",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,14 +50,16 @@
           "f": "Debbie",
           "m": "",
           "l": "Saran",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Mark",
           "m": "",
           "l": "Saran",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Dale",
           "m": "",
           "l": "Gustafson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Trina",
           "m": "",
           "l": "Gustafson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

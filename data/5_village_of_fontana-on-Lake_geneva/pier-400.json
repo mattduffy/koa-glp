@@ -27,14 +27,16 @@
           "f": "Mark",
           "m": "",
           "l": "Cavin",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Sarah",
           "m": "",
           "l": "Cavin",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,14 +50,16 @@
           "f": "Kris",
           "m": "",
           "l": "Larsen",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kirsten",
           "m": "",
           "l": "Larsen",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

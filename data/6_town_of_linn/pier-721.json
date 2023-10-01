@@ -27,14 +27,16 @@
           "f": "John",
           "m": "P",
           "l": "Goggin",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Sandra",
           "m": "P",
           "l": "Goggin",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

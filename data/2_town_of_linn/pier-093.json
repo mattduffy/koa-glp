@@ -27,14 +27,16 @@
           "f": "Ulla",
           "m": "E",
           "l": "Brunk",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Anna",
           "m": "",
           "l": "Brunk Peterson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

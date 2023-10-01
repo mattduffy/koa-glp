@@ -27,14 +27,16 @@
           "f": "Kent",
           "m": "",
           "l": "Taubensee",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Christine",
           "m": "",
           "l": "Taubensee",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

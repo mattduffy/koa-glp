@@ -27,14 +27,16 @@
           "f": "Paul",
           "m": "",
           "l": "Daugerdaus",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Eleanor",
           "m": "",
           "l": "Daugerdaus",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Mark",
           "m": "",
           "l": "Everding",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Carmen",
           "m": "",
           "l": "Everding",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

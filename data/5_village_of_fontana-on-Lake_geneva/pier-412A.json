@@ -27,14 +27,16 @@
           "f": "Barbara",
           "m": "",
           "l": "Sullivan",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Ginny",
           "m": "",
           "l": "Cavanagh",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

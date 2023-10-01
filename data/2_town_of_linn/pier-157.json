@@ -27,14 +27,16 @@
           "f": "Bill",
           "m": "",
           "l": "McCune",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kelly",
           "m": "",
           "l": "McCune",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

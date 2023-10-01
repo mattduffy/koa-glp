@@ -27,14 +27,16 @@
           "f": "John",
           "m": "",
           "l": "Ehlenbach",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Lor",
           "m": "",
           "l": "Ehlenbach",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Blythe",
           "m": "",
           "l": "Youngquist",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Bob",
           "m": "",
           "l": "Youngquist",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

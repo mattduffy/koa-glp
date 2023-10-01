@@ -27,14 +27,16 @@
           "f": "Kurt",
           "m": "",
           "l": "Ripkey",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Brenda",
           "m": "",
           "l": "Ripkey",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

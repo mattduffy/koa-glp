@@ -27,14 +27,16 @@
           "f": "Randy",
           "m": "",
           "l": "Conte",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Cheryl",
           "m": "",
           "l": "Conte",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,7 +27,8 @@
           "f": "Lake Geneva Manor Swim Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "James",
           "m": "",
           "l": "Birk",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Liane",
           "m": "",
           "l": "Birk",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,7 +65,8 @@
           "f": "Catherine",
           "m": "",
           "l": "Green",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -76,14 +80,16 @@
           "f": "David",
           "m": "",
           "l": "McConnell",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Sarah",
           "m": "",
           "l": "McConnell",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

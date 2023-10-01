@@ -27,14 +27,16 @@
           "f": "Francis",
           "m": "",
           "l": "Beidler",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Elizabeth",
           "m": "",
           "l": "Tisdahl",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

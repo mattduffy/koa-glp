@@ -27,14 +27,16 @@
           "f": "Chris",
           "m": "",
           "l": "Khayat",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Twyla",
           "m": "",
           "l": "Khayat",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Peter",
           "m": "",
           "l": "Provenzano",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Heather",
           "m": "",
           "l": "Provenzano",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

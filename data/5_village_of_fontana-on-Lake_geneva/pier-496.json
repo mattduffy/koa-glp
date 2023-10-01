@@ -27,7 +27,8 @@
           "f": "Harvard Geneva Lake Club",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Willard",
           "m": "",
           "l": "Bell",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -55,14 +57,16 @@
           "f": "Diane",
           "m": "",
           "l": "Brassel",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Jeff",
           "m": "",
           "l": "Brassel",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -76,14 +80,16 @@
           "f": "Laurie",
           "m": "",
           "l": "Buss",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Bill",
           "m": "",
           "l": "Buss",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -97,7 +103,8 @@
           "f": "Chris",
           "m": "",
           "l": "Church",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -111,14 +118,16 @@
           "f": "Brad",
           "m": "",
           "l": "Holden",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Becky",
           "m": "",
           "l": "Holden",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -132,7 +141,8 @@
           "f": "Jamie",
           "m": "",
           "l": "Holden",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -146,14 +156,16 @@
           "f": "R. Bradford",
           "m": "",
           "l": "Huss",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Charity",
           "m": "A",
           "l": "Huss",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -167,14 +179,16 @@
           "f": "Michael",
           "m": "",
           "l": "Nolan",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kathleen",
           "m": "",
           "l": "Nolan",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -188,14 +202,16 @@
           "f": "John",
           "m": "",
           "l": "O’Malley",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Jill",
           "m": "",
           "l": "O’Malley",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -209,14 +225,16 @@
           "f": "Don",
           "m": "",
           "l": "Quigley",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Chris",
           "m": "",
           "l": "Quigley",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -230,14 +248,16 @@
           "f": "Tom",
           "m": "",
           "l": "Scoville",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Linda",
           "m": "",
           "l": "Scoville",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -251,14 +271,16 @@
           "f": "Char",
           "m": "",
           "l": "Voris",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Frank",
           "m": "",
           "l": "Voris",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -272,14 +294,16 @@
           "f": "Scott",
           "m": "",
           "l": "Voris",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Michelle",
           "m": "",
           "l": "Voris",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

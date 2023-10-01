@@ -27,14 +27,16 @@
           "f": "Mark",
           "m": "",
           "l": "Aschliman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Patty",
           "m": "",
           "l": "Aschliman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

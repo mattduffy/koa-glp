@@ -27,14 +27,16 @@
           "f": "Louise",
           "m": "",
           "l": "Kuzmich",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Clint",
           "m": "",
           "l": "Kuzmich",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

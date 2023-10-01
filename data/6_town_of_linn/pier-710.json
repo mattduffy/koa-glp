@@ -27,7 +27,8 @@
           "f": "Lake Geneva Country Club",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Sarah",
           "m": "E",
           "l": "Bogan",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -55,14 +57,16 @@
           "f": "John",
           "m": "",
           "l": "Foxley",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Mary Ann",
           "m": "",
           "l": "Foxley",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -76,14 +80,16 @@
           "f": "Bob",
           "m": "",
           "l": "Klockars",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Jane",
           "m": "",
           "l": "Klockars",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Anthony",
           "m": "",
           "l": "Zielinski",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Mary",
           "m": "",
           "l": "Zielinski",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "John",
           "m": "",
           "l": "Gullicksen",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Susan",
           "m": "",
           "l": "Gullicksen",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

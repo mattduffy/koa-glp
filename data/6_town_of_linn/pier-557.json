@@ -27,14 +27,16 @@
           "f": "Gene",
           "m": "",
           "l": "Jodin",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Christine",
           "m": "",
           "l": "Jodin",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

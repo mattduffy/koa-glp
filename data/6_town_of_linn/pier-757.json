@@ -27,14 +27,16 @@
           "f": "Bob",
           "m": "",
           "l": "Streed",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Eileen",
           "m": "",
           "l": "Streed",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

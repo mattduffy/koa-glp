@@ -27,14 +27,16 @@
           "f": "Alice",
           "m": "",
           "l": "Dukelow",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Richard",
           "m": "",
           "l": "Dukelow",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

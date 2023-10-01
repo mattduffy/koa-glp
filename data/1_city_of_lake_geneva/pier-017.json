@@ -27,7 +27,8 @@
           "f": "Lake Geneva Manor Boat Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Hugh",
           "m": "",
           "l": "Connolly",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Carrie",
           "m": "",
           "l": "Connolly",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,14 +65,16 @@
           "f": "Tom",
           "m": "",
           "l": "Myers",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Mary",
           "m": "",
           "l": "Myers",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -83,14 +88,16 @@
           "f": "Tom",
           "m": "",
           "l": "Nickols",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Janet",
           "m": "",
           "l": "Nickols",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -104,14 +111,16 @@
           "f": "David",
           "m": "",
           "l": "Pezza",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Paula",
           "m": "",
           "l": "Pezza",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -125,14 +134,16 @@
           "f": "David",
           "m": "",
           "l": "Tanking",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Aimee",
           "m": "",
           "l": "Tanking",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -146,14 +157,16 @@
           "f": "Carol",
           "m": "",
           "l": "Zimmermann",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "George",
           "m": "",
           "l": "Zimmermann",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

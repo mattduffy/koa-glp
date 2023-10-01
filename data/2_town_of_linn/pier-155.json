@@ -27,14 +27,16 @@
           "f": "Terry",
           "m": "",
           "l": "Bolger",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Mary Jeanne",
           "m": "",
           "l": "Bolger",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,7 +27,8 @@
           "f": "East Shore Estates Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "John",
           "m": "",
           "l": "Johnston",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

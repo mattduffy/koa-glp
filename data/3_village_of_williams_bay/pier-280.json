@@ -27,14 +27,16 @@
           "f": "Chester",
           "m": "",
           "l": " Rozny",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Mary Ellen",
           "m": "",
           "l": " Rozny",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

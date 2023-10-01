@@ -27,14 +27,16 @@
           "f": "Jeffrey",
           "m": "",
           "l": "Gonyo",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Peggy",
           "m": "",
           "l": "Macalus",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

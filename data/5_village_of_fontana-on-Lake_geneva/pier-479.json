@@ -27,7 +27,8 @@
           "f": "Club Unique",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "David",
           "m": "A",
           "l": "Rasmussen",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

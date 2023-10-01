@@ -27,14 +27,16 @@
           "f": "Donald",
           "m": "",
           "l": "Waterbury",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kent",
           "m": "",
           "l": "Waterbury",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,7 +27,8 @@
           "f": "Cedar Point Park Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Melinda",
           "m": "",
           "l": "Dorner/Deuster",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -55,14 +57,16 @@
           "f": "Joe",
           "m": "",
           "l": "Ulrich",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Joyce",
           "m": "",
           "l": "Ulrich",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

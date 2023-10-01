@@ -27,14 +27,16 @@
           "f": "Gary",
           "m": "",
           "l": "Jouris",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Sally",
           "m": "",
           "l": "Jouris",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,14 +50,16 @@
           "f": "Jon",
           "m": "",
           "l": "Jouris",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kelly",
           "m": "",
           "l": "Jouris",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Tom",
           "m": "",
           "l": "Santefort",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Susan",
           "m": "",
           "l": "Santefort",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

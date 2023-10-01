@@ -27,14 +27,16 @@
           "f": "Dana",
           "m": "",
           "l": "Hagenah",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "John",
           "m": "",
           "l": "Hagenah",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,14 +50,16 @@
           "f": "Susan",
           "m": "",
           "l": "Hagenah",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Phil",
           "m": "",
           "l": "Hagenah",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -69,14 +73,16 @@
           "f": "Tricia",
           "m": "",
           "l": "Hagenah",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Will",
           "m": "",
           "l": "Hagenah",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

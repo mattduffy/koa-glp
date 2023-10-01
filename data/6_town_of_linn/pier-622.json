@@ -27,14 +27,16 @@
           "f": "Rich",
           "m": "",
           "l": "Copans",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Vanessa",
           "m": "",
           "l": "Copans",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

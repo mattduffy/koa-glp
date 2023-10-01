@@ -27,7 +27,8 @@
           "f": "Yacht Club East Main Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Hans",
           "m": "",
           "l": "Melges",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -55,14 +57,16 @@
           "f": "James",
           "m": "",
           "l": "Smith",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kathleen",
           "m": "",
           "l": "Smith",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Rick",
           "m": "",
           "l": "Neuman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Nancy",
           "m": "",
           "l": "Neuman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

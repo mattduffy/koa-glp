@@ -27,14 +27,16 @@
           "f": "David",
           "m": "",
           "l": "Weinberg",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Grace",
           "m": "Allen",
           "l": "Newton",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "The Kirch Foundation",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Terry",
           "m": "",
           "l": "Kirch",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

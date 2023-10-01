@@ -27,14 +27,16 @@
           "f": "Sarah Jane",
           "m": "",
           "l": "Moore",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Robert",
           "m": "C",
           "l": "Moore",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

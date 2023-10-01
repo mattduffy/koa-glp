@@ -27,14 +27,16 @@
           "f": "Peter",
           "m": "",
           "l": "Strothman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Kim",
           "m": "",
           "l": "Strothman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

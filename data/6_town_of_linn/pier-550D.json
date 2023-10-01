@@ -27,14 +27,16 @@
           "f": "Colette",
           "m": "",
           "l": "Szczesny",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Randy",
           "m": "",
           "l": "Szczesny",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

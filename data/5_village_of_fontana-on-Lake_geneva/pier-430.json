@@ -27,7 +27,8 @@
           "f": "Fontana Municipal Pier #1",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Brian",
           "m": "",
           "l": "McKeough",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Julie",
           "m": "",
           "l": "McKeough",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,14 +65,16 @@
           "f": "Karen",
           "m": "",
           "l": "Rechtoris",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Ken",
           "m": "",
           "l": "Rechtoris",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -83,7 +88,8 @@
           "f": "Todd",
           "m": "",
           "l": "Reschke",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

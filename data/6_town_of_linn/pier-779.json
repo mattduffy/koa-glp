@@ -27,14 +27,16 @@
           "f": "John",
           "m": "",
           "l": "Cooney",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Barbara",
           "m": "",
           "l": "Cooney",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,7 +50,8 @@
           "f": "Richard",
           "m": "",
           "l": "Marra",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Andrew",
           "m": "J",
           "l": "Kubicsko",
-          "s": "Jr."
+          "s": "Jr.",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Robin",
           "m": "",
           "l": "Randolph",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

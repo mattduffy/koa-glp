@@ -27,14 +27,16 @@
           "f": "Keith",
           "m": "E",
           "l": "Snidtker",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Ayla",
           "m": "",
           "l": "Snidtker De Bosschere",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

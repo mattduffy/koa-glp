@@ -27,14 +27,16 @@
           "f": "George",
           "m": "",
           "l": "Atkinson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Jeanne",
           "m": "",
           "l": "Atkinson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

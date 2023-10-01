@@ -27,14 +27,16 @@
           "f": "David",
           "m": "",
           "l": "Brown",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Georganne",
           "m": "",
           "l": "Brown",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

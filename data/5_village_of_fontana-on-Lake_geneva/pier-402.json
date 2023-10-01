@@ -27,7 +27,8 @@
           "f": "Buena Vista Club",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Robert",
           "m": "",
           "l": "Ahern",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Sharna",
           "m": "",
           "l": "Ahern",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,7 +65,8 @@
           "f": "Gwen",
           "m": "",
           "l": "Clausius",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -76,14 +80,16 @@
           "f": "Bob",
           "m": "",
           "l": "Doherty",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Maggie",
           "m": "",
           "l": "Doherty",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -97,14 +103,16 @@
           "f": "Rick",
           "m": "",
           "l": "Dousman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Michele",
           "m": "",
           "l": "Dousman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -118,14 +126,16 @@
           "f": "Karen",
           "m": "",
           "l": "Gizzi",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Alec",
           "m": "",
           "l": "Gizzi",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -139,14 +149,16 @@
           "f": "Michael",
           "m": "",
           "l": "Keeling",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Mary",
           "m": "",
           "l": "Keeling",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -160,7 +172,8 @@
           "f": "Libit Family",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -174,7 +187,8 @@
           "f": "Doris",
           "m": "",
           "l": "Mosser",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -188,7 +202,8 @@
           "f": "James",
           "m": "",
           "l": "Winquist",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

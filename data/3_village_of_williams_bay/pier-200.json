@@ -27,7 +27,8 @@
           "f": "Scott",
           "m": "",
           "l": "Kiley",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Mark",
           "m": "",
           "l": "Soderquist",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Wendy",
           "m": "",
           "l": "Soderquist",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

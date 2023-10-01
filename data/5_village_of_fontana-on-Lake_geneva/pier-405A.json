@@ -27,14 +27,16 @@
           "f": "John",
           "m": "",
           "l": "Rolander",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Dana",
           "m": "",
           "l": "Rolander",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -48,14 +50,16 @@
           "f": "William",
           "m": "",
           "l": "Rolander",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Susan",
           "m": "",
           "l": "Rolander",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -69,7 +73,8 @@
           "f": "William R. Rolander, Jr. Family",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,14 +27,16 @@
           "f": "Bob",
           "m": "",
           "l": "Chanson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Jean",
           "m": "",
           "l": "Chanson",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

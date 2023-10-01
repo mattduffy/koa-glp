@@ -27,14 +27,16 @@
           "f": "Ed",
           "m": "",
           "l": "Stocker",
-          "s": "Jr."
+          "s": "Jr.",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Margaret",
           "m": "",
           "l": "Stocker",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

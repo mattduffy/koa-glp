@@ -27,14 +27,16 @@
           "f": "Jack",
           "m": "",
           "l": "Nebel",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Maureen",
           "m": "",
           "l": "Nebel",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

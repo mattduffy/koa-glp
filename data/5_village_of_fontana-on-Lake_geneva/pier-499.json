@@ -27,14 +27,16 @@
           "f": "Dean",
           "m": "L",
           "l": "Buntrock",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Rosemarie",
           "m": "",
           "l": "Buntrock",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

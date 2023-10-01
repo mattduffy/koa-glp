@@ -27,7 +27,8 @@
           "f": "Oakwood Estates Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Wendy",
           "m": "",
           "l": "Darre",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -55,14 +57,16 @@
           "f": "Connie",
           "m": "",
           "l": "Gluth",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Rich",
           "m": "",
           "l": "Gluth",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -76,14 +80,16 @@
           "f": "Bob",
           "m": "",
           "l": "Jelinek",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Susan",
           "m": "",
           "l": "Collins",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

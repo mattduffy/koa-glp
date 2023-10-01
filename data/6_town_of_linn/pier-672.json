@@ -27,7 +27,8 @@
           "f": "Birches Association",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Ellen",
           "m": "",
           "l": "Bentsen",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -55,14 +57,16 @@
           "f": "Jill",
           "m": "",
           "l": "Kirk",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "John",
           "m": "",
           "l": "Darrow",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -76,14 +80,16 @@
           "f": "Bill",
           "m": "",
           "l": "Tookey",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Dotty",
           "m": "",
           "l": "Tookey",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

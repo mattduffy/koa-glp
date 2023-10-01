@@ -27,14 +27,16 @@
           "f": "Kristina",
           "m": "",
           "l": "Tarantino",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "James",
           "m": "",
           "l": "Tarantino",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

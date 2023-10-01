@@ -27,14 +27,16 @@
           "f": "Charles",
           "m": "",
           "l": "Wegner",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Tara",
           "m": "",
           "l": "Wegner",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

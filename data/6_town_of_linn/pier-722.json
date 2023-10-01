@@ -27,14 +27,16 @@
           "f": "Bill",
           "m": "",
           "l": "Kashul",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Karen",
           "m": "",
           "l": "Kashul",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

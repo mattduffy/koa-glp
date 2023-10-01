@@ -27,7 +27,8 @@
           "f": "Cedar Point Park Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Marianne",
           "m": "",
           "l": "Bonifacic",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Frank",
           "m": "",
           "l": "Bonifacic",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,7 +65,8 @@
           "f": "Alice",
           "m": "J",
           "l": "Morava",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -76,7 +80,8 @@
           "f": "Linda",
           "m": "J",
           "l": "Tonge",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

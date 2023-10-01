@@ -27,7 +27,8 @@
           "f": "Ara Glen Association Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Gene",
           "m": "",
           "l": "Needles",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -55,21 +57,24 @@
           "f": "Charlene",
           "m": "",
           "l": "Needles",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Chad",
           "m": "",
           "l": "Black",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Jennifer",
           "m": "",
           "l": "Ahlstrand",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

@@ -27,28 +27,32 @@
           "f": "Nancy",
           "m": "",
           "l": "Baird",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Lanny",
           "m": "",
           "l": "Baird",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Nolan ",
           "m": "",
           "l": "Baird",
-          "s": "III"
+          "s": "III",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Karen ",
           "m": "",
           "l": "Baird",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

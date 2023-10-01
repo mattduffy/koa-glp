@@ -27,7 +27,8 @@
           "f": "Lake Geneva Club Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,14 +42,16 @@
           "f": "Jon",
           "m": "",
           "l": "Abrahamovich",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Colleen",
           "m": "",
           "l": "Abrahamovich",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -62,14 +65,16 @@
           "f": "Roger",
           "m": "",
           "l": "Bohn",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Lynda",
           "m": "",
           "l": "Bohn",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -83,7 +88,8 @@
           "f": "Gardella Family",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -97,7 +103,8 @@
           "f": "Marty",
           "m": "",
           "l": "Rexinger",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -111,7 +118,8 @@
           "f": "Jim & Denise Vitale Family",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

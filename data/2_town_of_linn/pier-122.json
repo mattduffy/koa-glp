@@ -27,21 +27,24 @@
           "f": "Martha",
           "m": "",
           "l": "Redeker",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Barbara",
           "m": "",
           "l": "Snell",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "John",
           "m": "",
           "l": "Snell",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

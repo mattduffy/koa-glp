@@ -27,14 +27,16 @@
           "f": "Beth",
           "m": "",
           "l": "Bovis",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "David",
           "m": "",
           "l": "Feldstein",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

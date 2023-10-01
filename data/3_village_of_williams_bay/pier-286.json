@@ -27,7 +27,8 @@
           "f": "Bay Colony North Condo Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Barry",
           "m": "",
           "l": "Diekelman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -55,14 +57,16 @@
           "f": "Todd",
           "m": "",
           "l": "Hitzeman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Susan",
           "m": "",
           "l": "Hitzeman",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

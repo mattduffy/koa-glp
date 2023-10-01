@@ -27,14 +27,16 @@
           "f": "Aaron",
           "m": "",
           "l": "Rankin",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Yeming",
           "m": "",
           "l": "Rankin",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }

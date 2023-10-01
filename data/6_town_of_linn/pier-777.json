@@ -27,7 +27,8 @@
           "f": "WF Association Pier",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -41,7 +42,8 @@
           "f": "Mr. & Mrs. Richard H. Baker III",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -55,7 +57,8 @@
           "f": "Mr. & Mrs.William J. Ring",
           "m": "",
           "l": "",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -69,14 +72,16 @@
           "f": "Boyd",
           "m": "",
           "l": "Whiting",
-          "s": ""
+          "s": "",
+          "hidden": 0
         },
         {
           "t": "",
           "f": "Beth",
           "m": "",
           "l": "Whiting",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     },
@@ -90,7 +95,8 @@
           "f": "Susan",
           "m": "D",
           "l": "Whiting",
-          "s": ""
+          "s": "",
+          "hidden": 0
         }
       ]
     }
