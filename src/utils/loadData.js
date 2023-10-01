@@ -86,8 +86,9 @@ try {
     pierNumberIndex,
     {
       '$.pier': {
-        type: SchemaFieldTypes.TAG,
-        AS: 'pier',
+        type: SchemaFieldTypes.TEXT,
+        SORTABLE: true,
+        AS: 'pierNumber',
       },
     },
     {

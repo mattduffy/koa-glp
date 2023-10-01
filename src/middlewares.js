@@ -204,14 +204,23 @@ export function tokenAuthMiddleware(options = {}) {
         ctx.body = `HTTP 400 Bad Request\nWWW-Authenticate: Bearer realm="${ctx.app.domain}"`
       } else {
         try {
-          const db = ctx.state.mongodb.client.db()
-          const collection = db.collection(USERS)
-          const users = new Users(collection)
-          const tokenUser = await users.authenticateByAccessToken(ctx.state.accessToken)
-          if (tokenUser && tokenUser.message === 'success') {
-            ctx.state.sessionUser = tokenUser.user
-            ctx.state.isAuthenticated = true
-            await next()
+          if (ctx.state.accessToken !== ctx.searchAccesToken) {
+            log(`ctx.state.accessToken: ${ctx.state.accessToken}`)
+            const db = ctx.state.mongodb.client.db()
+            const collection = db.collection(USERS)
+            const users = new Users(collection, ctx)
+            const tokenUser = await users.authenticateByAccessToken(ctx.state.accessToken)
+            if (tokenUser && tokenUser.message === 'success') {
+              ctx.state.sessionUser = tokenUser.user
+              ctx.state.isAuthenticated = true
+              await next()
+            } else if (ctx.state.searchAccessToken) {
+              // TODO:
+              // 30 Sep 2023
+              // Update token authentication to recognize search access token
+              ctx.state.isAuthenticated = true
+              await next()
+            }
           } else {
             ctx.state.isAuthenticated = false
             ctx.state.sessionUser = {}

@@ -1,12 +1,78 @@
   <%# search box and results %>
   <div id="searchBox">
-    <form id="search" name="search" method="GET" action="<%= origin %>/search">
-      <label for="searchBox">Search for a pier number or estate name.</label>
+    <form id="search" name="search" method="POST" enctype="multipart/form-data" action="<%= origin %>/search">
+      <label for="searchBox">Search by pier number, estate name or family name.</label>
       <input id="searchBox" name="searchBox" type="text" valu="" size="30">
       <input id="csrf-token" name="csrf-token" type="hidden" value="<%= csrfToken %>">
-      <input id="submit" name="submit" type="submit">
+      <input id="submit" type="submit">
     </form>
   </div>
-  <div id=searchResults">
+  <div id="searchResults">
 
   </div>
+  <script nonce="<%= nonce %>">
+    let origin = '<%= origin %>'
+    let jwtAccess = '<%= searchJwtAccess %>'
+    const search = document.forms.search
+    const searchResults = document.querySelector('div#searchResults')
+    console.log(search)
+    async function submitSearch() {
+
+    }
+    search.addEventListener('submit', async (e) => {
+      e.stopPropagation()
+      e.preventDefault()
+      searchResults.innerHTML = ''
+      const formData = new FormData()
+      formData.append('csrfTokenHidden', search['csrf-token'].value)
+      formData.append('searchBox', search.searchBox.value)
+      const opts = {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${jwtAccess}`,
+        },
+        body: formData,
+      }
+      const request = new Request(`${origin}/search`, opts)
+      const response = await fetch(request, { credentials: 'same-origin' })
+      const json = await response.json()
+      console.log(json) 
+      if ((json.pierNumbers.total === 0 ) && (json.estateNames.total === 0) && (json.ownerNames.total === 0)) { 
+        const nonFound = document.createElement('span')  
+        nonFound.setAttribute('id', 'results')
+        nonFound.innerHTML = 'No piers found matching those terms.'
+        searchResults.appendChild(nonFound)
+      } else {
+        const resultsList = document.createElement('ul')
+        resultsList.setAttribute('id', 'resultsList')
+        resultsList.setAttribute('class', 'searchResults')
+        if (json.pierNumbers.total > 0) {
+          json.pierNumbers.documents.forEach((p) => {
+            const li = document.createElement('li')
+            const link = `<a href="<%= origin %>/pier/${p.value.pierNumber}">Pier ${p.value.pierNumber}</a>`
+            li.innerHTML = link
+            resultsList.appendChild(li)
+          })
+        }
+        if(json.estateNames.total > 0) {
+          json.estateNames.documents.forEach((e) => {
+            const li = document.createElement('li')
+            const link = `<a href="<%= origin %>/pier/${e.value['$.pier']}">Pier ${e.value['$.pier']} ${e.value.estateName} estate</a>`
+            li.innerHTML = link
+            resultsList.appendChild(li)
+          })
+        }
+        if(json.ownerNames.total > 0) {
+          json.ownerNames.documents.forEach((o) => {
+            console.log(o)
+            const li = document.createElement('li')
+            // const link = `<a href="<%= origin %>/pier/${o.value['$.pier']}">Pier ${o.value['$.pier']} ${o.value?.ownerName}</a>`
+            const link = `<a href="<%= origin %>/pier/${o.value['$.pier']}">Pier ${o.value['$.pier']} ${o.value.lastname} family</a>`
+            li.innerHTML = link
+            resultsList.appendChild(li)
+          })
+        }searchResults.appendChild(resultsList)
+      }
+    })
+  </script>

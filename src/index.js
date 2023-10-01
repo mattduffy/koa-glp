@@ -219,6 +219,8 @@ async function viewGlobals(ctx, next) {
   ctx.state.siteName = ctx.app.site
   ctx.state.appName = ctx.app.site.toProperCase()
   ctx.state.stylesheets = []
+  ctx.state.searchJwtAccess = appEnv.SEARCHJWTACCESS
+  ctx.state.searchAccessToken = appEnv.SEARCHACCESSTOKEN
   await next()
 }
 
@@ -226,10 +228,11 @@ async function logRequest(ctx, next) {
   const logg = log.extend('logRequest')
   const err = error.extend('logRequest')
   try {
-    logg(`Request href:       ${ctx.request.href}`)
-    logg(`Request remote ips: ${ctx.request.ips}`)
-    logg(`Request remote ip:  ${ctx.request.ip}`)
-    logg('Request headers:    %O', ctx.request.headers)
+    logg(`Request href:        ${ctx.request.href}`)
+    logg(`Request remote ips:  ${ctx.request.ips}`)
+    logg(`Request remote ip:   ${ctx.request.ip}`)
+    logg('Request headers:     %O', ctx.request.headers)
+    logg('Request querystring: %O', ctx.request.query)
     await next()
   } catch (e) {
     err(e)
