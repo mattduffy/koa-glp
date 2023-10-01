@@ -11,8 +11,8 @@ import { Command } from 'commander'
 // import { redis } from '../daos/impl/redis/redis-om.js'
 import { _log, _error } from './logging.js'
 
-const log = _log.extend('utils:load-data')
-const error = _error.extend('utils:load-data')
+const log = _log.extend('utils:refactor-pier-files')
+const error = _error.extend('utils:refactor-pier-files')
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -24,7 +24,7 @@ const redisEnv = {}
 dotenv.config({ path: path.resolve(appRoot, 'config/redis.env'), processEnv: redisEnv })
 
 const program = new Command()
-program.name('loadData')
+program.name('refactorPierFiles')
   .requiredOption('--data-dir <dir>', 'Directory containing JSON data files to refactor.', 'test')
 
 program.parse(process.argv)
