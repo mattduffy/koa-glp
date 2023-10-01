@@ -101,6 +101,34 @@ try {
     throw new Error(e.message, { cause: e })
   }
 }
+// create an index for association name
+const pierOwnerAssociationIndex = `${DB_PREFIX}:idx:piers:association`
+try {
+  // log(await redis.ft.dropIndex(pierOwnerEstatenameIndex))
+  log(`pierOwnerAssociationIndex name: ${pierOwnerAssociationIndex}`)
+  await redis.ft.create(
+    pierOwnerAssociationIndex,
+    {
+      '$.property.association': {
+        type: SchemaFieldTypes.TEXT,
+        SORTABLE: true,
+        AS: 'association',
+      },
+    },
+    {
+      ON: 'JSON',
+      PREFIX: prefix,
+    },
+  )
+} catch (e) {
+  if (e.message === 'Index already exists') {
+    log(`${pierOwnerAssociationIndex} ${e.message}.  Skipping ahead.`)
+  } else {
+    error(e)
+    throw new Error(e.message, { cause: e })
+  }
+}
+
 // create an index for estateName
 const pierOwnerEstatenameIndex = `${DB_PREFIX}:idx:piers:estateName`
 try {
@@ -156,7 +184,7 @@ try {
     {
       ON: 'JSON',
       PREFIX: prefix,
-      FILTER: "@hidden=='1'",
+      FILTER: "@hidden=='0'",
     },
   )
 } catch (e) {
