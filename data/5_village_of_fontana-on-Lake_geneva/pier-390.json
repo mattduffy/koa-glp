@@ -18,27 +18,6 @@
   },
   "owners": [
     {
-      "estateName": "",
-      "member": true,
-      "membershipType": "Regular",
-      "members": [
-        {
-          "t": "",
-          "f": "David",
-          "m": "",
-          "l": "Curry",
-          "s": ""
-        },
-        {
-          "t": "",
-          "f": "Sara Harkness",
-          "m": "",
-          "l": "Curry",
-          "s": ""
-        }
-      ]
-    },
-    {
       "estateName": "House on a Hill",
       "member": true,
       "membershipType": "Contributing",
@@ -55,6 +34,27 @@
           "f": "Toni",
           "m": "",
           "l": "Harkness",
+          "s": ""
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Regular",
+      "members": [
+        {
+          "t": "",
+          "f": "David",
+          "m": "",
+          "l": "Curry",
+          "s": ""
+        },
+        {
+          "t": "",
+          "f": "Sara Harkness",
+          "m": "",
+          "l": "Curry",
           "s": ""
         }
       ]
