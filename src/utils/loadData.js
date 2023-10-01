@@ -6,7 +6,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import path from 'node:path'
 import {
-  // opendir,
   readdir,
   readFile,
 } from 'node:fs/promises'
@@ -17,8 +16,6 @@ import { SchemaFieldTypes } from '@redis/search'
 import {
   redis,
   clientOm,
-  // Client,
-  // EntityId,
   Schema,
   Repository,
 } from '../daos/impl/redis/redis-om.js'
@@ -80,7 +77,7 @@ const pierRepository = new Repository(pierSchema, clientOm)
 // create the indexes for pier data
 const pierNumberIndex = `${DB_PREFIX}:idx:piers:number`
 try {
-  log(await redis.ft.dropIndex(pierNumberIndex))
+  // log(await redis.ft.dropIndex(pierNumberIndex))
   log(`pierNumberIndex name: ${pierNumberIndex}`)
   await redis.ft.create(
     pierNumberIndex,
@@ -107,7 +104,7 @@ try {
 // create an index for estateName
 const pierOwnerEstatenameIndex = `${DB_PREFIX}:idx:piers:estateName`
 try {
-  log(await redis.ft.dropIndex(pierOwnerEstatenameIndex))
+  // log(await redis.ft.dropIndex(pierOwnerEstatenameIndex))
   log(`pierOwnerEstatenameIndex name: ${pierOwnerEstatenameIndex}`)
   await redis.ft.create(
     pierOwnerEstatenameIndex,
@@ -135,27 +132,31 @@ try {
 // create an index for owner's firstname and lastname
 const pierOwnerNamesIndex = `${DB_PREFIX}:idx:piers:ownerNames`
 try {
-  log(await redis.ft.dropIndex(pierOwnerNamesIndex))
+  // log(await redis.ft.dropIndex(pierOwnerNamesIndex))
   log(`pierOwnerNamesIndex name: ${pierOwnerNamesIndex}`)
   await redis.ft.create(
     pierOwnerNamesIndex,
     {
-      // '$.owners[*].members[*].f': {
       '$.owners.*.members.*.f': {
         type: SchemaFieldTypes.TEXT,
         SORTABLE: true,
         AS: 'firstname',
       },
-      // '$.owners[*].members[*].l': {
       '$.owners.*.members.*.l': {
         type: SchemaFieldTypes.TEXT,
         SORTABLE: true,
         AS: 'lastname',
       },
+      '$.owners.*.members.*.hidden': {
+        type: SchemaFieldTypes.NUMERIC,
+        SORTABLE: true,
+        AS: 'hidden',
+      },
     },
     {
       ON: 'JSON',
       PREFIX: prefix,
+      FILTER: "@hidden=='1'",
     },
   )
 } catch (e) {
@@ -194,19 +195,11 @@ try {
         if (owner.member === false) {
           log(`${i}: membership type: ${owner.membershipType}`)
         }
+        owner.members.forEach((m, j) => {
+          log(`owner ${i}, member ${j} ${m.hidden === 0 ? 'visible' : 'hidden'}`)
+        })
       })
-      if (pierJson.loc.lon === 0.0 && pierJson.loc.lat === 0.0) {
-        missingLocCounter += 1
-      }
-      // pierJson.geohash = pierJson.loc.geohash
-      // delete pierJson.loc.geohash
-      // pierJson.pluscode = pierJson.loc.pluscode
-      // delete pierJson.loc.pluscode
       log(`${d}/${pier}`)
-      // pierJson.loc.longitude = pierJson.loc.lon
-      // pierJson.loc.latitude = pierJson.loc.lat
-      // delete pierJson.loc.lon
-      // delete pierJson.loc.lat
       log('loc: ', pierJson.loc)
       log('geohash: ', pierJson.geohash)
       log('pluscode: ', pierJson.pluscode)
