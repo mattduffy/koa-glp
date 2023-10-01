@@ -15,10 +15,7 @@
     let jwtAccess = '<%= searchJwtAccess %>'
     const search = document.forms.search
     const searchResults = document.querySelector('div#searchResults')
-    console.log(search)
-    async function submitSearch() {
-
-    }
+    // console.log(search)
     search.addEventListener('submit', async (e) => {
       e.stopPropagation()
       e.preventDefault()
@@ -38,7 +35,7 @@
       const response = await fetch(request, { credentials: 'same-origin' })
       const json = await response.json()
       console.log(json) 
-      if ((json.pierNumbers.total === 0 ) && (json.estateNames.total === 0) && (json.ownerNames.total === 0)) { 
+      if ((json.pierNumbers.total === 0 ) && (json.estateNames.total === 0) && (json.ownerNames.total === 0) && (json.associations.total === 0)) { 
         const nonFound = document.createElement('span')  
         nonFound.setAttribute('id', 'results')
         nonFound.innerHTML = 'No piers found matching those terms.'
@@ -55,7 +52,7 @@
             resultsList.appendChild(li)
           })
         }
-        if(json.estateNames.total > 0) {
+        if (json.estateNames.total > 0) {
           json.estateNames.documents.forEach((e) => {
             const li = document.createElement('li')
             const link = `<a href="<%= origin %>/pier/${e.value['$.pier']}">Pier ${e.value['$.pier']} ${e.value.estateName} estate</a>`
@@ -63,16 +60,25 @@
             resultsList.appendChild(li)
           })
         }
-        if(json.ownerNames.total > 0) {
+        if (json.ownerNames.total > 0) {
           json.ownerNames.documents.forEach((o) => {
             console.log(o)
             const li = document.createElement('li')
-            // const link = `<a href="<%= origin %>/pier/${o.value['$.pier']}">Pier ${o.value['$.pier']} ${o.value?.ownerName}</a>`
             const link = `<a href="<%= origin %>/pier/${o.value['$.pier']}">Pier ${o.value['$.pier']} ${o.value.lastname} family</a>`
             li.innerHTML = link
             resultsList.appendChild(li)
           })
-        }searchResults.appendChild(resultsList)
+        }
+        if (json.associations.total > 0) {
+          json.associations.documents.forEach((o) => {
+            console.log(o)
+            const li = document.createElement('li')
+            const link = `<a href="<%= origin %>/pier/${o.value['$.pier']}">Pier ${o.value['$.pier']} ${o.value.association} </a>`
+            li.innerHTML = link
+            resultsList.appendChild(li)
+          })
+        }
+        searchResults.appendChild(resultsList)
       }
     })
   </script>

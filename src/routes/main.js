@@ -116,6 +116,20 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
   try {
     pier = await redis.json.get(key)
     log(pier)
+    log(`has hidden members? ${pier.pier}`)
+    pier.owners.forEach((o, j) => {
+      const filtered = []
+      o.members.forEach((m) => {
+        log(m)
+        // if (m?.hidden === true) {
+        if (m?.hidden === 1) {
+          log(`member: ${m.f} ${m.l} is hidden ${m?.hidden}`)
+        } else {
+          filtered.push(m)
+        }
+      })
+      pier.owners[j].members = filtered
+    })
   } catch (e) {
     error(e)
     throw new Error(`Failed to get pier ${pierNumber}`, { cause: e })
@@ -221,7 +235,6 @@ router.get('pierEdit-GET', '/pier/edit/:pier', hasFlash, async (ctx) => {
   }
 })
 
-// router.get('search', '/search', hasFlash, async (ctx) => {
 router.post('search', '/search', hasFlash, async (ctx) => {
   const log = mainLog.extend('search')
   const error = mainError.extend('search')
@@ -282,6 +295,9 @@ router.post('search', '/search', hasFlash, async (ctx) => {
     })
     if (numbers.length > 0) {
       log(`numbers: ${numbers}`)
+      let idxPierNumber
+      let queryPierNumber
+      let optsPierNumber
       try {
         // Conduct seach by pier numbers.
         let pierNumberTokens = ''
@@ -292,21 +308,28 @@ router.post('search', '/search', hasFlash, async (ctx) => {
           if (i === numbers.length - 1) pierNumberTokens += ')'
         })
         log(`Pier number tokens: ${pierNumberTokens}`)
-        const idxPierNumber = 'glp:idx:piers:number'
-        const queryPierNumber = `@pierNumber:${pierNumberTokens}`
-        const optsPierNumber = {}
+        idxPierNumber = 'glp:idx:piers:number'
+        queryPierNumber = `@pierNumber:${pierNumberTokens}`
+        optsPierNumber = {}
         optsPierNumber.SORTBY = { BY: 'pierNumber', DIRECTION: 'ASC' }
         optsPierNumber.RETURN = 'pierNumber'
-        log(`Pier number ft.search ${idxPierNumber} ${queryPierNumber}`)
+        log(`Pier number FT.SEARCH ${idxPierNumber} ${queryPierNumber}`)
         results.pierNumbers = await redis.ft.search(idxPierNumber, queryPierNumber, optsPierNumber)
         log(results.pierNumbers)
       } catch (e) {
+        error('Redis search query feiled:')
+        error(`using index: ${idxPierNumber}`)
+        error(`query: FT.SEARCH ${idxPierNumber} "${queryPierNumber}"`, optsPierNumber)
         error(e)
-        throw new Error('Search by pier numbers failed.', { cause: e })
+        // No need to disrupt the rest of the searching if this query failed.
+        // throw new Error('Search by pier numbers failed.', { cause: e })
       }
     }
     if (strings.length > 0) {
       log(`strings: ${strings}`)
+      let idxPierEstateName
+      let queryPierEstateName
+      let optsPierEstateName
       try {
         // Conduct search by estate name.
         let pierEstatenameTokens = ''
@@ -322,18 +345,25 @@ router.post('search', '/search', hasFlash, async (ctx) => {
           })
         }
         log(`Pier estate name tokens: ${pierEstatenameTokens}`)
-        const idxPierEstateName = 'glp:idx:piers:estateName'
-        const queryPierEstateName = `@estateName:${pierEstatenameTokens}`
-        const optsPierEstateName = {}
+        idxPierEstateName = 'glp:idx:piers:estateName'
+        queryPierEstateName = `@estateName:${pierEstatenameTokens}`
+        optsPierEstateName = {}
         // optsPierEstateName.SORTBY = { BY: '$.pier', DIRECTION: 'ASC' }
         optsPierEstateName.RETURN = ['$.pier', 'estateName']
-        log(`Pier estate name ft.search ${idxPierEstateName} "${queryPierEstateName}"`)
+        log(`Pier estate name FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}"`)
         results.estateNames = await redis.ft.search(idxPierEstateName, queryPierEstateName, optsPierEstateName)
         log(results.estateNames)
       } catch (e) {
+        error('Redis search query feiled:')
+        error(`using index: ${idxPierEstateName}`)
+        error(`query: FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}"`, optsPierEstateName)
         error(e)
-        throw new Error('Search by estate name failed.', { cause: e })
+        // No need to disrupt the rest of the searching if this query failed.
+        // throw new Error('Search by estate name failed.', { cause: e })
       }
+      let idxPierOwnerName
+      let queryPierOwnerName
+      let optsPierOwnerName
       try {
         // Conduct search by owner names.
         let pierOwnernameTokens = ''
@@ -348,19 +378,56 @@ router.post('search', '/search', hasFlash, async (ctx) => {
             log(pierOwnernameTokens)
           })
         }
-        log(`Pier estate name tokens: ${pierOwnernameTokens}`)
-        const idxPierOwnerName = 'glp:idx:piers:ownerNames'
-        // const queryPierOwnerName = `@firstname:${pierOwnernameTokens} @lastname:${pierOwnernameTokens}`
-        const queryPierOwnerName = `@firstname|lastname:${pierOwnernameTokens}`
-        const optsPierOwnerName = {}
-        // optsPierEstateName.SORTBY = { BY: '$.pier', DIRECTION: 'ASC' }
+        log(`Pier owner name tokens: ${pierOwnernameTokens}`)
+        idxPierOwnerName = 'glp:idx:piers:ownerNames'
+        queryPierOwnerName = `@fistname|lastname:${pierOwnernameTokens}`
+        optsPierOwnerName = {}
+        // optsPierOwnerName.SORTBY = { BY: '$.pier', DIRECTION: 'ASC' }
         optsPierOwnerName.RETURN = ['$.pier', 'firstname', 'lastname']
         log(`Pier estate name ft.search ${idxPierOwnerName} "${queryPierOwnerName}"`)
         results.ownerNames = await redis.ft.search(idxPierOwnerName, queryPierOwnerName, optsPierOwnerName)
-        log(results.estateNames)
+        log(results.ownerNames)
       } catch (e) {
+        error('Redis search query feiled:')
+        error(`using index: ${idxPierOwnerName}`)
+        error(`query: FT.SEARCH ${idxPierOwnerName} "${queryPierOwnerName}"`, optsPierOwnerName)
         error(e)
-        throw new Error('Search by owner names failed.', { cause: e })
+        // No need to disrupt the rest of the searching if this query failed.
+        // throw new Error('Search by estate name failed.', { cause: e })
+      }
+      let queryPierAssociation
+      let idxPierAssociation
+      let optsPierAssociation
+      try {
+        // Conduct search by association names.
+        let pierAssociationTokens = ''
+        if (strings.length === 1) {
+          pierAssociationTokens = `(${strings[0]})`
+        } else {
+          strings.forEach((t, i) => {
+            if (i === 0) pierAssociationTokens += '('
+            pierAssociationTokens += `${t}`
+            if (i < strings.length - 1) pierAssociationTokens += '|'
+            if (i === strings.length - 1) pierAssociationTokens += ')'
+            log(pierAssociationTokens)
+          })
+        }
+        log(`Pier estate name tokens: ${pierAssociationTokens}`)
+        idxPierAssociation = 'glp:idx:piers:association'
+        queryPierAssociation = `@association:${pierAssociationTokens}`
+        optsPierAssociation = {}
+        // optsPierAssociation.SORTBY = { BY: '$.pier', DIRECTION: 'ASC' }
+        optsPierAssociation.RETURN = ['$.pier', 'association']
+        log(`Pier estate name FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`)
+        results.associations = await redis.ft.search(idxPierAssociation, queryPierAssociation, optsPierAssociation)
+        log(results.associations)
+      } catch (e) {
+        error('Redis search query feiled:')
+        error(`using index: ${idxPierAssociation}`)
+        error(`query: FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`, optsPierAssociation)
+        error(e)
+        // No need to disrupt the rest of the searching if this query failed.
+        // throw new Error('Search by owner names failed.', { cause: e })
       }
     } else {
       results.estateNames = { total: 0 }
