@@ -143,6 +143,11 @@ try {
   await redis.ft.create(
     pierOwnerEstatenameIndex,
     {
+      '$.pier': {
+        type: SchemaFieldTypes.TEXT,
+        SORTABLE: true,
+        AS: 'pier',
+      },
       '$.owners[*].estateName': {
         type: SchemaFieldTypes.TEXT,
         SORTABLE: true,
