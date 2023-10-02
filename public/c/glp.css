@@ -237,10 +237,17 @@ footer > section {
 
 /* Desktop sizes */
 @media screen and (min-width: 1181px) {
+  header > ul.header-links {
+    list-style: none;
+    display: none;
+    grid-column-start: 2;
+    position: relative;
+    left: -3%;!important
+    margin-top: -5px;
+  }  
   header > ul > li {
     line-height: 2.25em;
     display: inline-block;
     margin-right: 20px;
   }
-
 }
