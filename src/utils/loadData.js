@@ -109,6 +109,11 @@ try {
   await redis.ft.create(
     pierOwnerAssociationIndex,
     {
+      '$.pier': {
+        type: SchemaFieldTypes.TEXT,
+        SORTABLE: true,
+        AS: 'pier',
+      },
       '$.property.association': {
         type: SchemaFieldTypes.TEXT,
         SORTABLE: true,
@@ -118,6 +123,7 @@ try {
     {
       ON: 'JSON',
       PREFIX: prefix,
+      FILTER: "@association!=''",
     },
   )
 } catch (e) {
@@ -165,17 +171,22 @@ try {
   await redis.ft.create(
     pierOwnerNamesIndex,
     {
-      '$.owners.*.members.*.f': {
+      '$.pier': {
+        type: SchemaFieldTypes.TEXT,
+        SORTABLE: true,
+        AS: 'pier',
+      },
+      '$.owners[*].members[*].f': {
         type: SchemaFieldTypes.TEXT,
         SORTABLE: true,
         AS: 'firstname',
       },
-      '$.owners.*.members.*.l': {
+      '$.owners[*].members[*].l': {
         type: SchemaFieldTypes.TEXT,
         SORTABLE: true,
         AS: 'lastname',
       },
-      '$.owners.*.members.*.hidden': {
+      '$.owners[*].members[*].hidden': {
         type: SchemaFieldTypes.NUMERIC,
         SORTABLE: true,
         AS: 'hidden',

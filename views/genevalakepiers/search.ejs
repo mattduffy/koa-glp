@@ -64,7 +64,7 @@
           json.ownerNames.documents.forEach((o) => {
             console.log(o)
             const li = document.createElement('li')
-            const link = `<a href="<%= origin %>/pier/${o.value['$.pier']}">Pier ${o.value['$.pier']} ${o.value.lastname} family</a>`
+            const link = `<a href="<%= origin %>/pier/${o.value['pier']}">Pier ${o.value['pier']} ${o.value.lastname} family</a>`
             li.innerHTML = link
             resultsList.appendChild(li)
           })
@@ -73,7 +73,7 @@
           json.associations.documents.forEach((o) => {
             console.log(o)
             const li = document.createElement('li')
-            const link = `<a href="<%= origin %>/pier/${o.value['$.pier']}">Pier ${o.value['$.pier']} ${o.value.association} </a>`
+            const link = `<a href="<%= origin %>/pier/${o.value['$.pier']}">Pier ${o.value['pier']} ${o.value.association} </a>`
             li.innerHTML = link
             resultsList.appendChild(li)
           })

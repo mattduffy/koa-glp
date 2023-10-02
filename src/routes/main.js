@@ -77,6 +77,36 @@ router.get('piersByTown', '/towns/:town', hasFlash, async (ctx) => {
   await ctx.render('town', locals)
 })
 
+router.get('pierAssociations', '/associations', hasFlash, async (ctx) => {
+  const log = mainLog.extend('GET-piersAssociations')
+  const error = mainError.extend('GET-piersAssociations')
+
+})
+
+router.get('piersByAssociation', '/assoc/:assoc', hasFlash, async (ctx) => {
+  const log = mainLog.extend('GET-piersByAssoc')
+  const error = mainError.extend('GET-piersByAssoc')
+  const assoc = getSetName(sanitize(ctx.params.assoc))
+  log(assoc)
+  let piersInTown
+  const key = `glp:piers_by_town:${assoc}`
+  log(`key: ${key}`)
+  try {
+    piersInTown = await redis.zRange(key, 0, -1)
+  } catch (e) {
+    error(e)
+    ctx.throw(500, 'Error', { assoc })
+  }
+  const locals = {}
+  locals.piers = piersInTown
+  locals.flash = ctx.flash.view ?? {}
+  locals.title = `${ctx.app.site}: ${assoc}`
+  locals.sessionUser = ctx.state.sessionUser
+  locals.isAuthenticated = ctx.state.isAuthenticated
+  locals.town = assoc.split('_').map((e) => e.toProperCase()).join(' ')
+  await ctx.render('town', locals)
+})
+
 router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-pierByNumber')
   const error = mainError.extend('GET-pierByNumber')
@@ -380,11 +410,12 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         }
         log(`Pier owner name tokens: ${pierOwnernameTokens}`)
         idxPierOwnerName = 'glp:idx:piers:ownerNames'
-        queryPierOwnerName = `@fistname|lastname:${pierOwnernameTokens}`
+        // queryPierOwnerName = `@fistname|lastname:${pierOwnernameTokens}`
+        queryPierOwnerName = `@lastname|firstname:${pierOwnernameTokens}`
         optsPierOwnerName = {}
-        // optsPierOwnerName.SORTBY = { BY: '$.pier', DIRECTION: 'ASC' }
-        optsPierOwnerName.RETURN = ['$.pier', 'firstname', 'lastname']
-        log(`Pier estate name ft.search ${idxPierOwnerName} "${queryPierOwnerName}"`)
+        optsPierOwnerName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+        optsPierOwnerName.RETURN = ['pier', 'firstname', 'lastname']
+        log(`Pier owner name FT.SEARCH ${idxPierOwnerName} "${queryPierOwnerName}"`)
         results.ownerNames = await redis.ft.search(idxPierOwnerName, queryPierOwnerName, optsPierOwnerName)
         log(results.ownerNames)
       } catch (e) {
@@ -412,13 +443,13 @@ router.post('search', '/search', hasFlash, async (ctx) => {
             log(pierAssociationTokens)
           })
         }
-        log(`Pier estate name tokens: ${pierAssociationTokens}`)
+        log(`Pier association name tokens: ${pierAssociationTokens}`)
         idxPierAssociation = 'glp:idx:piers:association'
         queryPierAssociation = `@association:${pierAssociationTokens}`
         optsPierAssociation = {}
-        // optsPierAssociation.SORTBY = { BY: '$.pier', DIRECTION: 'ASC' }
-        optsPierAssociation.RETURN = ['$.pier', 'association']
-        log(`Pier estate name FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`)
+        optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+        optsPierAssociation.RETURN = ['pier', 'association']
+        log(`Pier association name FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`)
         results.associations = await redis.ft.search(idxPierAssociation, queryPierAssociation, optsPierAssociation)
         log(results.associations)
       } catch (e) {
