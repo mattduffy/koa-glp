@@ -81,6 +81,42 @@ router.get('pierAssociations', '/associations', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-piersAssociations')
   const error = mainError.extend('GET-piersAssociations')
 
+  let associations
+  try {
+    // ft.AGGREGATE glp:idx:piers:association "*" LOAD 3 $.pier AS pier GROUPBY 1 @association SORTBY 2 @association ASC LIMIT 0 550
+    const optsAggregateAssoc = {
+      LOAD: ['@pier', '@association'],
+      STEPS: [
+        {
+          type: 'AggregateSteps.GROUPBY',
+          properties: '@association',
+          REDUCE: {
+            type: 'AggregateGroupByReducers.COUNT_DISTINCT',
+            properties: '@association',
+          },
+        },
+        {
+          type: 'AggregateSteps.SORTBY',
+          BY: '@association',
+          MAX: 1,
+        },
+      ],
+    }
+    associations = await redis.ft.aggregate('glp:idx:piers:association', '*', optsAggregateAssoc)
+    log(associations)
+  } catch (e) {
+    error('Failed to get list of associations.')
+    error(e.message)
+    throw new Error('Redis query failed.', { cause: e })
+  }
+  const locals = {}
+  locals.associations = associations.results
+  locals.photo = false
+  locals.flash = ctx.flash.view ?? {}
+  locals.title = `${ctx.app.site}: Associations`
+  locals.sessionUser = ctx.state.sessionUser
+  locals.isAuthenticated = ctx.state.isAuthenticated
+  await ctx.render('associations', locals)
 })
 
 router.get('piersByAssociation', '/assoc/:assoc', hasFlash, async (ctx) => {
@@ -378,8 +414,9 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         idxPierEstateName = 'glp:idx:piers:estateName'
         queryPierEstateName = `@estateName:${pierEstatenameTokens}`
         optsPierEstateName = {}
-        // optsPierEstateName.SORTBY = { BY: '$.pier', DIRECTION: 'ASC' }
-        optsPierEstateName.RETURN = ['$.pier', 'estateName']
+        optsPierEstateName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+        optsPierEstateName.RETURN = ['pier', 'estateName']
+        optsPierEstateName.LIMIT = { from: 0, size: 20 }
         log(`Pier estate name FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}"`)
         results.estateNames = await redis.ft.search(idxPierEstateName, queryPierEstateName, optsPierEstateName)
         log(results.estateNames)
