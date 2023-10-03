@@ -9,6 +9,7 @@ import Router from '@koa/router'
 import { ulid } from 'ulid'
 import formidable from 'formidable'
 import { Albums } from '@mattduffy/albums/Albums' // eslint-disable-line import/no-unresolved
+import { AggregateGroupByReducers, AggregateSteps } from 'redis'
 import { _log, _error, getSetName } from '../utils/logging.js'
 import { redis } from '../daos/impl/redis/redis-om.js'
 import { redis as ioredis } from '../daos/impl/redis/redis-client.js'
@@ -88,22 +89,30 @@ router.get('pierAssociations', '/associations', hasFlash, async (ctx) => {
       LOAD: ['@pier', '@association'],
       STEPS: [
         {
-          type: 'AggregateSteps.GROUPBY',
+          type: AggregateSteps.GROUPBY,
+          // property: 'association',
           properties: '@association',
-          REDUCE: {
-            type: 'AggregateGroupByReducers.COUNT_DISTINCT',
-            properties: '@association',
-          },
+          REDUCE: [{
+            type: AggregateGroupByReducers.COUNT_DISTINCT,
+            property: 'association',
+            AS: 'num_associations',
+          }],
         },
         {
-          type: 'AggregateSteps.SORTBY',
+          type: AggregateSteps.SORTBY,
           BY: '@association',
           MAX: 1,
+        },
+        {
+          type: AggregateSteps.LIMIT,
+          from: 0,
+          size: 100,
         },
       ],
     }
     associations = await redis.ft.aggregate('glp:idx:piers:association', '*', optsAggregateAssoc)
-    log(associations)
+    log(associations.total)
+    log(associations.results)
   } catch (e) {
     error('Failed to get list of associations.')
     error(e.message)
@@ -499,6 +508,9 @@ router.post('search', '/search', hasFlash, async (ctx) => {
       }
     } else {
       results.estateNames = { total: 0 }
+      results.associations = { total: 0 }
+      results.ownerNames = { total: 0 }
+      results.pieNumbers = { total: 0 }
     }
     log(results)
     ctx.type = 'application/json; charset=utf-8'

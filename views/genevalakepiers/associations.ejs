@@ -19,13 +19,13 @@
     <h3><%= associations.length %> Associations</h3>
 
     <p><% associations.forEach((p, i) => {
-     let a = `<a href="/pier/${p}">${p}</a>, `
-     if (i === (association.length - 1)) {
-       a = a.substr(0, a.lastIndexOf(', '))
-     }
-     %>
-     <%- a %>
-   <% }) %></p>
+      let a = `<a href="/association/">${p.association}</a>, `
+      if (i === (associations.length - 1)) {
+        a = a.substr(0, a.lastIndexOf(', '))
+      } %>
+      <%- a %>
+    <% }) %></p>
+
   </section>
   <section class="map">
     <%# map embed %>
