@@ -248,5 +248,6 @@
     }
   ],
   "geohash": "dp944srgtg0",
-  "pluscode": "HG7G+6R6 Lake Geneva, Wisconsin"
+  "pluscode": "HG7G+6R6 Lake Geneva, Wisconsin",
+  "public": false
 }

@@ -5,7 +5,7 @@
     "latitude": 42.566968
   },
   "property": {
-    "association": "Dartmouth Woods Assn. (Formerly Rockford Camp)",
+    "association": "Dartmouth Woods Association ",
     "established": "1984",
     "associationUrl": "",
     "tel": "",
@@ -34,5 +34,6 @@
     }
   ],
   "geohash": "dp940vp6d10",
-  "pluscode": ""
+  "pluscode": "",
+  "public": false
 }

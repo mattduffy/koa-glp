@@ -5,7 +5,7 @@
     "latitude": 42.576645
   },
   "property": {
-    "association": "Somerset Condo Assn.",
+    "association": "Somerset Condo Association",
     "established": "",
     "associationUrl": "",
     "tel": "",
@@ -126,5 +126,6 @@
     }
   ],
   "geohash": "dp945wb4cv0",
-  "pluscode": "HHG6+M32 Lake Geneva, Wisconsin"
+  "pluscode": "HHG6+M32 Lake Geneva, Wisconsin",
+  "public": false
 }

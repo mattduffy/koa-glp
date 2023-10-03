@@ -5,7 +5,7 @@
     "latitude": 42.578288
   },
   "property": {
-    "association": "Vista de Lago 861 Homeowners Assn.",
+    "association": "Vista de Lago 861 Homeowners Association",
     "established": "",
     "associationUrl": "",
     "tel": "",
@@ -118,5 +118,6 @@
     }
   ],
   "geohash": "dp945x0s980",
-  "pluscode": "HHH6+888 Lake Geneva, Wisconsin"
+  "pluscode": "HHH6+888 Lake Geneva, Wisconsin",
+  "public": false
 }

@@ -5,7 +5,7 @@
     "latitude": 0
   },
   "property": {
-    "association": "Clear Sky Lodge Assn.",
+    "association": "Clear Sky Lodge Association",
     "established": "1989",
     "associationUrl": "http://www.clearskylodge.com/",
     "tel": "",
@@ -34,5 +34,6 @@
     }
   ],
   "geohash": "",
-  "pluscode": ""
+  "pluscode": "",
+  "public": false
 }

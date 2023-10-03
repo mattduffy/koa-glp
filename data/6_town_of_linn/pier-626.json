@@ -5,7 +5,7 @@
     "latitude": 42.559202
   },
   "property": {
-    "association": "Valley Park Assn.",
+    "association": "Valley Park Association",
     "established": "1970",
     "associationUrl": "",
     "tel": "",
@@ -133,5 +133,6 @@
     }
   ],
   "geohash": "dp9445sv2d0",
-  "pluscode": "HG52+M7P Williams Bay, Wisconsin"
+  "pluscode": "HG52+M7P Williams Bay, Wisconsin",
+  "public": false
 }

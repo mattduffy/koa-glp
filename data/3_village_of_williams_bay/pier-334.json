@@ -5,7 +5,7 @@
     "latitude": 42.56712
   },
   "property": {
-    "association": "Dartmouth Woods Assn. (Formerly Rockford Camp)",
+    "association": "Dartmouth Woods Association ",
     "established": "1984",
     "associationUrl": "",
     "tel": "",
@@ -34,5 +34,6 @@
     }
   ],
   "geohash": "dp941j053w0",
-  "pluscode": "HF82+R4R Williams Bay, Wisconsin"
+  "pluscode": "HF82+R4R Williams Bay, Wisconsin",
+  "public": false
 }

@@ -5,7 +5,7 @@
     "latitude": 42.54913
   },
   "property": {
-    "association": "Clear Sky Lodge Assn.",
+    "association": "Clear Sky Lodge Association",
     "established": "1989",
     "associationUrl": "http://www.clearskylodge.com/",
     "tel": "",
@@ -34,5 +34,6 @@
     }
   ],
   "geohash": "dp9411z6tk0",
-  "pluscode": "GFX6+M52 Fontana-On-Geneva Lake, Wisconsin"
+  "pluscode": "GFX6+M52 Fontana-On-Geneva Lake, Wisconsin",
+  "public": false
 }

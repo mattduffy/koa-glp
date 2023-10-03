@@ -57,5 +57,6 @@
     }
   ],
   "geohash": "",
-  "pluscode": ""
+  "pluscode": "",
+  "public": false
 }

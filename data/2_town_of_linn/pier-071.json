@@ -42,5 +42,6 @@
     }
   ],
   "geohash": "dp944tgrp10",
-  "pluscode": "HGCC+P9R Lake Geneva, Wisconsin"
+  "pluscode": "HGCC+P9R Lake Geneva, Wisconsin",
+  "public": false
 }

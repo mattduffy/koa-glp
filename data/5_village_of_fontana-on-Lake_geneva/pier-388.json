@@ -5,7 +5,7 @@
     "latitude": 42.557841
   },
   "property": {
-    "association": "Cranks' Roost",
+    "association": "",
     "established": "",
     "associationUrl": "",
     "tel": "",
@@ -18,7 +18,7 @@
   },
   "owners": [
     {
-      "estateName": "",
+      "estateName": "Cranks' Roost",
       "member": true,
       "membershipType": "Contributing",
       "members": [
@@ -42,5 +42,6 @@
     }
   ],
   "geohash": "dp940e6j2k0",
-  "pluscode": "HC5J+49Q Fontana-On-Geneva Lake, Wisconsin"
+  "pluscode": "HC5J+49Q Fontana-On-Geneva Lake, Wisconsin",
+  "public": false
 }

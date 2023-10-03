@@ -5,7 +5,7 @@
     "latitude": 42.563798
   },
   "property": {
-    "association": "Lake Geneva Fresh Air Association (Holiday Home)",
+    "association": "Lake Geneva Fresh Air Association ",
     "established": "1887",
     "associationUrl": "",
     "tel": "+1(262) 245-5161",
@@ -34,5 +34,6 @@
     }
   ],
   "geohash": "dp940sxb5d0",
-  "pluscode": "HC7Q+GJ6 Williams Bay, Wisconsin"
+  "pluscode": "HC7Q+GJ6 Williams Bay, Wisconsin",
+  "public": false
 }
