@@ -22,11 +22,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "bootstrap": "DEBUG_DEPTH=2 DEBUG=* node src/utils/bootstrap.js",
     "newUser": "DEBUG_DEPTH=2 DEBUG=* node src/utils/newUser.js",
-    "addHiddenField": "DEBUG_DEPTH=2 DEBUG=* node src/utils/addHiddenField.js",
-    "refactorPierFiles": "DEBUG_DEPTH=2 DEBUG=* node src/utils/refactorPierFiles.js",
     "loadData": "DEBUG_DEPTH=2 DEBUG=* node src/utils/loadData.js",
-    "deleteData": "DEBUG_DEPTH=2 DEBUG=* node src/utils/deleteData.js",
     "createGeoJson": "DEBUG_DEPTH=4 DEBUG=* node src/utils/createGeoJsonFiles.js",
+    "deleteData": "DEBUG_DEPTH=2 DEBUG=* node src/utils/deleteData.js",
+    "refactorPierFiles": "DEBUG_DEPTH=2 DEBUG=* node src/utils/refactorPierFiles.js",
+    "addHiddenField": "DEBUG_DEPTH=2 DEBUG=* node src/utils/addHiddenField.js",
+    "addPublicField": "DEBUG_DEPTH=2 DEBUG=* node src/utils/addPublicField.js",
+    "normalizeAssocs": "DEBUG_DEPTH=2 DEBUG=* node src/utils/normalizeAssocs.js",
     "dev": "DEBUG_DEPTH=2 DEBUG=* node src/index.js"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/addHiddenField.js The script to perform a one-time refactoring of $.owners[*].members fields.
+ * @file src/utils/addPublicField.js The script to perform a one-time addition of a 'public' field to the pier file.
  */
 import path from 'node:path'
 import { readdir, readFile, writeFile } from 'node:fs/promises'
@@ -11,8 +11,8 @@ import { Command } from 'commander'
 // import { redis } from '../daos/impl/redis/redis-om.js'
 import { _log, _error } from './logging.js'
 
-const log = _log.extend('utils:add-hidden-field')
-const error = _error.extend('utils:add-hidden-field')
+const log = _log.extend('utils:add-public-field')
+const error = _error.extend('utils:add-public-field')
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -25,7 +25,7 @@ dotenv.config({ path: path.resolve(appRoot, 'config/redis.env'), processEnv: red
 
 const program = new Command()
 program.name('addHiddenField')
-  .requiredOption('--data-dir <dir>', 'Directory containing JSON data files to update with $.owners[*].members[*].hidden field.', 'test')
+  .requiredOption('--data-dir <dir>', 'Directory containing JSON data files to update.', 'test')
   .option('--dry-run', 'Run the script as a dry-run, so no changes are saved.')
 
 program.parse(process.argv)
@@ -57,14 +57,12 @@ try {
       pierJson = JSON.parse(pierJson)
 
       // Make changes to the pier file here
-      pierJson.owners.forEach((o, i) => {
-        log(`Pier ${pierJson.pier} owner ${i} members...`)
-        o.members.forEach((m, j) => {
-          if (m?.hidden === undefined || m?.hidden === '') {
-            pierJson.owners[i].members[j].hidden = 0
-          }
-        })
-      })
+      // Add pier.public: <boolean>
+
+      if (pierJson.public === undefined) {
+        pierJson.public = false
+      }
+
       // Make changes to the pier file here
       log(`${d}/${pier}`)
 

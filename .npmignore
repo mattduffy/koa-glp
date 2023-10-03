@@ -14,6 +14,7 @@ public/i/*
 public/j/*
 tests*
 !tests/Readme.md
+test/data*
 tmp
 uploads/*
 !uploads/Readme.md

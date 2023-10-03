@@ -7,7 +7,6 @@
 import path from 'node:path'
 import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
-// import { opendir, readdir, readFile } from 'node:fs/promises'
 import { Command } from 'commander'
 import { redis } from '../daos/impl/redis/redis-client.js'
 import { _log, _error } from './logging.js'
@@ -28,7 +27,6 @@ const DB_PREFIX = redisEnv.REDIS_KEY_PREFIX
 
 const program = new Command()
 program.name('loadData')
-  // .requiredOption('--database <num>', 'Redis database to delete keys from.')
   .requiredOption('--key-prefix <prefix>', 'The app-specific key prefix for Redis to use.')
   .requiredOption('--key-name <name>', 'The key name for Redis to append to the app-specific key prefix.')
   .requiredOption('--key-type <type>', 'The redis data type of the keys to delete.')
@@ -68,14 +66,10 @@ async function del() {
         const pipeline = redis.pipeline()
         keys.forEach(async (key) => {
           log(`current cursor key: ${key}`)
-          // result = await redis.call('UNLINK', key)
-          // result = await redis.call('DEL', key)
-          // log(`delete result for ${key}: ${result}`)
           // Super sketchy hack to get around ioredis client config with transparent key prefix set.
           // May be super fragile...
           const k = key.split(':').slice(-1)[0]
           pipeline.del(`${options.keyName}:${k}`)
-          // pipeline.del(key)
           deletedKeys += 1
         })
         result = await pipeline.exec()
