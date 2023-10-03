@@ -44,7 +44,7 @@
         const resultsList = document.createElement('ul')
         resultsList.setAttribute('id', 'resultsList')
         resultsList.setAttribute('class', 'searchResults')
-        if (json.pierNumbers.total > 0) {
+        if (json?.pierNumbers?.total > 0) {
           json.pierNumbers.documents.forEach((p) => {
             const li = document.createElement('li')
             const link = `<a href="<%= origin %>/pier/${p.value.pierNumber}">Pier ${p.value.pierNumber}</a>`
@@ -52,7 +52,7 @@
             resultsList.appendChild(li)
           })
         }
-        if (json.estateNames.total > 0) {
+        if (json?.estateNames?.total > 0) {
           json.estateNames.documents.forEach((e) => {
             const li = document.createElement('li')
             const link = `<a href="<%= origin %>/pier/${e.value['pier']}">Pier ${e.value['pier']} ${e.value.estateName} estate</a>`
@@ -60,7 +60,7 @@
             resultsList.appendChild(li)
           })
         }
-        if (json.ownerNames.total > 0) {
+        if (json?.ownerNames?.total > 0) {
           json.ownerNames.documents.forEach((o) => {
             // console.log(o)
             const li = document.createElement('li')
@@ -69,7 +69,7 @@
             resultsList.appendChild(li)
           })
         }
-        if (json.associations.total > 0) {
+        if (json?.associations?.total > 0) {
           json.associations.documents.forEach((o) => {
             // console.log(o)
             const li = document.createElement('li')
