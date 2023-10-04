@@ -112,7 +112,7 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
   // create an index for association name
   const pierOwnerAssociationIndex = `${DB_PREFIX}:idx:piers:association`
   try {
-    // log(await redis.ft.dropIndex(pierOwnerEstatenameIndex))
+    // log(await redis.ft.dropIndex(pierOwnerAssociationIndex))
     log(`pierOwnerAssociationIndex name: ${pierOwnerAssociationIndex}`)
     await redis.ft.create(
       pierOwnerAssociationIndex,
@@ -233,7 +233,8 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
           AS: 'pier',
         },
         '$.public': {
-          type: SchemaFieldTypes.TAG,
+          // type: SchemaFieldTypes.TAG,
+          type: SchemaFieldTypes.NUMERIC,
           SORTABLE: true,
           AS: 'public',
         },
@@ -241,12 +242,48 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
       {
         ON: 'JSON',
         PREFIX: prefix,
-        FILTER: "@public=='true'",
+        FILTER: "@public=='1'",
+        // FILTER: "@public:{'true'}",
       },
     )
   } catch (e) {
     if (e.message === 'Index already exists') {
       log(`${pierPublicIndex} ${e.message}.  Skipping ahead.`)
+    } else {
+      error(e)
+      throw new Error(e.message, { cause: e })
+    }
+  }
+  // create an index for big swim piers
+  const pierSwimIndex = `${DB_PREFIX}:idx:piers:swim`
+  try {
+    // log(await redis.ft.dropIndex(pierSwimIndex))
+    log(`pierSwimIndex name: ${pierSwimIndex}`)
+    await redis.ft.create(
+      pierSwimIndex,
+      {
+        '$.pier': {
+          type: SchemaFieldTypes.TEXT,
+          SORTABLE: true,
+          AS: 'pier',
+        },
+        '$.bigSwimPier': {
+          // type: SchemaFieldTypes.TAG,
+          type: SchemaFieldTypes.NUMERIC,
+          SORTABLE: true,
+          AS: 'swim',
+        },
+      },
+      {
+        ON: 'JSON',
+        PREFIX: prefix,
+        FILTER: "@swim=='1'",
+        // FILTER: "@swim:{'true'}",
+      },
+    )
+  } catch (e) {
+    if (e.message === 'Index already exists') {
+      log(`${pierSwimIndex} ${e.message}.  Skipping ahead.`)
     } else {
       error(e)
       throw new Error(e.message, { cause: e })

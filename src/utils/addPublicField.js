@@ -37,6 +37,19 @@ const dataDir = path.resolve(appRoot, options.dataDir)
 log(`dataDir ${dataDir}`)
 let subDirs
 const failedToSaveFiles = []
+const publicPiers = [
+  '250', '255', '260', '265', '349A',
+  '350', '407', '414', '420', '430',
+  '679A', '898', '900', '901', '902',
+  '903', '904',
+]
+const swimPiers = [
+  '16', '30A', '103A', '104', '140A', '149', '191', '219', '232', '236',
+  '239', '250', '255', '286', '312', '333', '349A', '350', '360', '361',
+  '386', '407', '412', '435', '441', '466', '497', '519A', '525', '529',
+  '536', '542', '544', '545', '550A', '580', '616', '628', '672', '777',
+  '804', '836', '837', '874', '893', '897', '901', '902',
+]
 try {
   subDirs = (await readdir(dataDir)).sort().filter((x) => /^\d/.test(x))
   log(subDirs)
@@ -58,9 +71,20 @@ try {
 
       // Make changes to the pier file here
       // Add pier.public: <boolean>
-
-      if (pierJson.public === undefined) {
-        pierJson.public = false
+      // if (pierJson.public === undefined) {
+      if (publicPiers.includes(pierJson.pier)) {
+        // pierJson.public = true
+        pierJson.public = 1
+      } else {
+        // pierJson.public = false
+        pierJson.public = 0
+      }
+      if (swimPiers.includes(pierJson.pier)) {
+        // pierJson.bigSwimPier = true
+        pierJson.bigSwimPier = 1
+      } else {
+        // pierJson.bigSwimPier = false
+        pierJson.bigSwimPier = 0
       }
 
       // Make changes to the pier file here
