@@ -15,28 +15,12 @@
 <% } %>
 <article>
   <section class="main">
-    <h2>Associations</h2>
-    <h3><%= total %> Associations</h3>
+    <h2><%= associationName %></h2>
+    <h3><%= total %> Piers</h3>
 
-    <div class="previousPier">
-      <% if (skipBack > 1) { %>
-      <a href="/associations?s=<%= skipBack %>">&lt; Prev</a>
-      <% } else if (skipBack === 1) { %>
-      <a href="/associations">&lt; Prev</a>
-      <% } else { %>
-      < Prev 
-      <% } %>
-    </div>
-    <div class="nextPier">
-      <% if ((offset + num) < total) { %>
-      <a href="/associations?s=<%= skipForward %>">Next &gt;</a>
-      <% } else { %>
-      Next > 
-      <% } %>
-    </div>
-    <p><% associations.forEach((p, i) => {
-      let a = `<a href="/assoc/${encodeURI(p.association)}">${p.association}</a>, `
-      if (i === (associations.length - 1)) {
+    <p><% association.forEach((p, i) => {
+      let a = `<a href="/pier/${p.value.pier}">${p.value.pier}</a>, `
+      if (i === (association.length - 1)) {
         a = a.substr(0, a.lastIndexOf(', '))
       } %>
       <%- a %>

@@ -158,28 +158,107 @@ router.get('pierPublic', '/public', hasFlash, async (ctx) => {
   await ctx.render('public', locals)
 })
 
+router.get('pierAssociations', '/associations', hasFlash, async (ctx) => {
+  const log = mainLog.extend('GET-piersAssociations')
+  const error = mainError.extend('GET-piersAssociations')
+  log(ctx.request.query.s)
+  // const num = (ctx.request.query?.c) ? sanitize(Math.abs(parseInt(ctx.request.query?.c, 10))) : 15
+  // page 1 s: 1, offset: 0 num: 15, skipBack: 0 skipForward: 2, remaining: 89 - 0 = 89
+  // page 2 s: 2, offset: 15 num: 15, skipBack: 1 skipForward: 3, remaining: 89 - 15 = 74
+  // page 3 s: 3, offset: 30 num: 15, skipBack: 2 skipForward: 4, remaining: 89 - 30 = 59
+  // page 4 s: 4, offset: 45 num: 15, skipBack: 3 skipForward: 5, remaining: 89 - 45 = 44
+  // page 5 s: 5, offset: 60 num: 15, skipBack: 4 skipForward: 6, remaining: 89 - 60 = 29
+  // page 6 s: 6, offset: 75 num: 15, skipBack: 5 skipForward: 7, remaining: 89 - 75 = 14
+  // page 7 ...
+  // koa-glp-LOG:main:GET-piersAssociations ft.AGGREGATE glp:idx:piers:association "*" LOAD 3 $.pier AS pier GROUPBY 1 @association SORTBY 2 @association ASC LIMIT 60 15
+  const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
+  const num = 15
+  const offset = (s === 1) ? 0 : (s - 1) * num
+  const skipBack = (s <= 1) ? 0 : s - 1
+  const skipForward = s + 1
+  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: 89 - ${offset} = ${89 - offset}`)
+  let associations
+  try {
+    log(`ft.AGGREGATE glp:idx:piers:association "*" LOAD 3 $.pier AS pier GROUPBY 1 @association SORTBY 2 @association ASC LIMIT ${offset} ${num}`)
+    const optsAggregateAssoc = {
+      LOAD: ['@pier', '@association'],
+      STEPS: [
+        {
+          type: AggregateSteps.GROUPBY,
+          properties: '@association',
+          REDUCE: [{
+            type: AggregateGroupByReducers.COUNT_DISTINCT,
+            property: 'association',
+            AS: 'num_associations',
+          }],
+        },
+        {
+          type: AggregateSteps.SORTBY,
+          BY: '@association',
+          MAX: 1,
+        },
+        {
+          type: AggregateSteps.LIMIT,
+          from: offset,
+          size: num,
+        },
+      ],
+    }
+    associations = await redis.ft.aggregate('glp:idx:piers:association', '*', optsAggregateAssoc)
+    log(associations.total)
+    log(associations.results)
+  } catch (e) {
+    error('Failed to get list of associations.')
+    error(e.message)
+    throw new Error('Redis query failed.', { cause: e })
+  }
+  const locals = {}
+  locals.offset = offset
+  locals.skipForward = skipForward
+  locals.skipBack = skipBack
+  locals.num = num
+  locals.total = associations.total
+  locals.associations = associations.results
+  locals.flash = ctx.flash.view ?? {}
+  locals.title = `${ctx.app.site}: Associations`
+  locals.sessionUser = ctx.state.sessionUser
+  locals.isAuthenticated = ctx.state.isAuthenticated
+  await ctx.render('associations', locals)
+})
+
 router.get('piersByAssociation', '/assoc/:assoc', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-piersByAssoc')
   const error = mainError.extend('GET-piersByAssoc')
-  const assoc = getSetName(sanitize(ctx.params.assoc))
+  const assoc = sanitize(ctx.params.assoc)
+  const decodedAssoc = decodeURI(assoc)
   log(assoc)
-  let piersInTown
-  const key = `glp:piers_by_town:${assoc}`
-  log(`key: ${key}`)
+  log(decodedAssoc)
+  let piersInAssoc
+  const idxPierAssociation = 'glp:idx:piers:association'
+  const queryPierAssociation = `@association:(${decodedAssoc})`
+  const optsPierAssociation = {}
+  optsPierAssociation.RETURN = ['pier', 'association']
+  optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+  log(`Association piers FT.SEARCH ${idxPierAssociation} ${optsPierAssociation}`)
+  log(`ft.search ${idxPierAssociation} "@association:(${decodedAssoc})" RETURN 2 pier association SORTBY pier asc`)
   try {
-    piersInTown = await redis.zRange(key, 0, -1)
+    piersInAssoc = await redis.ft.search(idxPierAssociation, queryPierAssociation, optsPierAssociation)
+    log(piersInAssoc)
   } catch (e) {
-    error(e)
-    ctx.throw(500, 'Error', { assoc })
+    error('Failed to get list of associations.')
+    error(e.message)
+    throw new Error('Redis query failed.', { cause: e })
   }
   const locals = {}
-  locals.piers = piersInTown
+  locals.associationName = decodedAssoc
+  locals.total = piersInAssoc.total
+  locals.association = piersInAssoc.documents
   locals.flash = ctx.flash.view ?? {}
-  locals.title = `${ctx.app.site}: ${assoc}`
+  locals.title = `${ctx.app.site}: ${decodedAssoc}`
   locals.sessionUser = ctx.state.sessionUser
   locals.isAuthenticated = ctx.state.isAuthenticated
   locals.town = assoc.split('_').map((e) => e.toProperCase()).join(' ')
-  await ctx.render('town', locals)
+  await ctx.render('assoc', locals)
 })
 
 router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
