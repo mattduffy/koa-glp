@@ -78,29 +78,19 @@ router.get('piersByTown', '/towns/:town', hasFlash, async (ctx) => {
   await ctx.render('town', locals)
 })
 
-router.get('pierAssociations', '/associations', hasFlash, async (ctx) => {
-  const log = mainLog.extend('GET-piersAssociations')
-  const error = mainError.extend('GET-piersAssociations')
+router.get('pierBigSwimPiers', '/swim', hasFlash, async (ctx) => {
+  const log = mainLog.extend('GET-piersSwim')
+  const error = mainError.extend('GET-piersSwim')
 
-  let associations
+  let swimPiers
   try {
-    // ft.AGGREGATE glp:idx:piers:association "*" LOAD 3 $.pier AS pier GROUPBY 1 @association SORTBY 2 @association ASC LIMIT 0 550
-    const optsAggregateAssoc = {
-      LOAD: ['@pier', '@association'],
+    // ft.aggregate glp:idx:piers:swim "*" LOAD 3 $.pier AS pier SORTBY 2 @pier ASC LIMIT 0 100
+    const optsAggregateSwim = {
+      LOAD: ['@pier'],
       STEPS: [
         {
-          type: AggregateSteps.GROUPBY,
-          // property: 'association',
-          properties: '@association',
-          REDUCE: [{
-            type: AggregateGroupByReducers.COUNT_DISTINCT,
-            property: 'association',
-            AS: 'num_associations',
-          }],
-        },
-        {
           type: AggregateSteps.SORTBY,
-          BY: '@association',
+          BY: '@pier',
           MAX: 1,
         },
         {
@@ -110,22 +100,62 @@ router.get('pierAssociations', '/associations', hasFlash, async (ctx) => {
         },
       ],
     }
-    associations = await redis.ft.aggregate('glp:idx:piers:association', '*', optsAggregateAssoc)
-    log(associations.total)
-    log(associations.results)
+    swimPiers = await redis.ft.aggregate('glp:idx:piers:swim', '*', optsAggregateSwim)
+    log(swimPiers.total)
+    log(swimPiers.results)
   } catch (e) {
-    error('Failed to get list of associations.')
+    error('Failed to get list of swim piers.')
     error(e.message)
     throw new Error('Redis query failed.', { cause: e })
   }
   const locals = {}
-  locals.associations = associations.results
+  locals.swim = swimPiers.results
   locals.photo = false
   locals.flash = ctx.flash.view ?? {}
-  locals.title = `${ctx.app.site}: Associations`
+  locals.title = `${ctx.app.site}: Swim Piers`
   locals.sessionUser = ctx.state.sessionUser
   locals.isAuthenticated = ctx.state.isAuthenticated
-  await ctx.render('associations', locals)
+  await ctx.render('big-swim-piers', locals)
+})
+
+router.get('pierPublic', '/public', hasFlash, async (ctx) => {
+  const log = mainLog.extend('GET-piersPublic')
+  const error = mainError.extend('GET-piersPublic')
+
+  let publicPiers
+  try {
+    // ft.aggregate glp:idx:piers:public "*" LOAD 3 $.pier AS pier SORTBY 2 @pier ASC LIMIT 0 100
+    const optsAggregatePublic = {
+      LOAD: ['@pier'],
+      STEPS: [
+        {
+          type: AggregateSteps.SORTBY,
+          BY: '@pier',
+          MAX: 1,
+        },
+        {
+          type: AggregateSteps.LIMIT,
+          from: 0,
+          size: 100,
+        },
+      ],
+    }
+    publicPiers = await redis.ft.aggregate('glp:idx:piers:public', '*', optsAggregatePublic)
+    log(publicPiers.total)
+    log(publicPiers.results)
+  } catch (e) {
+    error('Failed to get list of public piers.')
+    error(e.message)
+    throw new Error('Redis query failed.', { cause: e })
+  }
+  const locals = {}
+  locals.public = publicPiers.results
+  locals.photo = false
+  locals.flash = ctx.flash.view ?? {}
+  locals.title = `${ctx.app.site}: Public Piers`
+  locals.sessionUser = ctx.state.sessionUser
+  locals.isAuthenticated = ctx.state.isAuthenticated
+  await ctx.render('public', locals)
 })
 
 router.get('piersByAssociation', '/assoc/:assoc', hasFlash, async (ctx) => {
