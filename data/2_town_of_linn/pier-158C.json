@@ -58,5 +58,6 @@
   ],
   "geohash": "",
   "pluscode": "",
-  "public": false
+  "public": 0,
+  "bigSwimPier": 0
 }

@@ -1,0 +1,40 @@
+{
+  "pier": "149",
+  "loc": {
+    "longitude": -88.510261,
+    "latitude": 42.575927
+  },
+  "property": {
+    "association": "Knollwood",
+    "established": "1926",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "N2311 Knollwood Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": false,
+      "membershipType": "Residential Non-member",
+      "members": [
+        {
+          "t": "",
+          "f": "Knollwood Association Swim Pier",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "geohash": "dp941ysyc20",
+  "pluscode": "HFGQ+7Q7 Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 1
+}

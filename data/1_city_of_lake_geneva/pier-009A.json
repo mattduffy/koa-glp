@@ -43,5 +43,6 @@
   ],
   "geohash": "dp94735fk30",
   "pluscode": "HHQ3+HQ3 Lake Geneva, Wisconsin",
-  "public": false
+  "public": 0,
+  "bigSwimPier": 0
 }

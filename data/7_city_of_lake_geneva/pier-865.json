@@ -58,5 +58,6 @@
   ],
   "geohash": "dp945x99k30",
   "pluscode": "HHJ6+5WV Lake Geneva, Wisconsin",
-  "public": false
+  "public": 0,
+  "bigSwimPier": 0
 }

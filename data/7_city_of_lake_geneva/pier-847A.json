@@ -50,5 +50,6 @@
   ],
   "geohash": "dp945qrbct0",
   "pluscode": "HHF5+CWF Lake Geneva, Wisconsin",
-  "public": false
+  "public": 0,
+  "bigSwimPier": 0
 }

@@ -35,5 +35,6 @@
   ],
   "geohash": "dp944kjpnh0",
   "pluscode": "HG66+WW2 Lake Geneva, Wisconsin",
-  "public": false
+  "public": 0,
+  "bigSwimPier": 0
 }

@@ -96,5 +96,6 @@
   ],
   "geohash": "dp941npdzp0",
   "pluscode": "HFF6+287 Williams Bay, Wisconsin",
-  "public": false
+  "public": 0,
+  "bigSwimPier": 0
 }

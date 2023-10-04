@@ -43,5 +43,6 @@
   ],
   "geohash": "dp945ktf150",
   "pluscode": "HH74+MR2 Lake Geneva, Wisconsin",
-  "public": false
+  "public": 0,
+  "bigSwimPier": 0
 }

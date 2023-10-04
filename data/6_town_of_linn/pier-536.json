@@ -1,0 +1,40 @@
+{
+  "pier": "536",
+  "loc": {
+    "longitude": -88.530307,
+    "latitude": 42.549985
+  },
+  "property": {
+    "association": "The Chicago Club of Lake Geneva",
+    "established": "1875",
+    "associationUrl": "",
+    "tel": "",
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "member": true,
+      "membershipType": "Benefactor",
+      "members": [
+        {
+          "t": "",
+          "f": "The Chicago Club of Lake Geneva Swim Pier",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "geohash": "dp9413ypwk0",
+  "pluscode": "HF29+2FW Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 1
+}
