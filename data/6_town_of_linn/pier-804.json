@@ -14,7 +14,10 @@
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    }
+    },
+    "business": "The Geneva Inn",
+    "isMarina": 0,
+    "hasFood": 1
   },
   "owners": [
     {

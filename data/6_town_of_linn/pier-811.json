@@ -5,7 +5,7 @@
     "latitude": 42.565697
   },
   "property": {
-    "association": "The Boat House Bar & Grill",
+    "association": "",
     "established": "2017",
     "associationUrl": "https://www.theboathouselakegeneva.com/",
     "tel": "+1(262) 742-3898",
@@ -14,7 +14,10 @@
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    }
+    },
+    "business": "The Boat House Bar & Grill",
+    "isMarina": 0,
+    "hasFood": 1
   },
   "owners": [
     {

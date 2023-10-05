@@ -5,7 +5,7 @@
     "latitude": 42.563798
   },
   "property": {
-    "association": "Lake Geneva Fresh Air Association ",
+    "association": "",
     "established": "1887",
     "associationUrl": "",
     "tel": "+1(262) 245-5161",
@@ -14,7 +14,10 @@
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    }
+    },
+    "business": "Lake Geneva Fresh Air Association ",
+    "isMarina": 0,
+    "hasFood": 0
   },
   "owners": [
     {

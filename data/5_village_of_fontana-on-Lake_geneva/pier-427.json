@@ -7,14 +7,17 @@
   "property": {
     "association": "",
     "established": "",
-    "associationUrl": "",
-    "tel": "",
+    "associationUrl": "http://fontanapaddleco.com",
+    "tel": "+1(262) 275-5708",
     "address": {
       "street": "454 Lake St",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    }
+    },
+    "business": "Lake Geneva Marine & Fontana Paddle Co.",
+    "isMarina": 0,
+    "hasFood": 0
   },
   "owners": [
     {

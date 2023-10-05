@@ -5,7 +5,7 @@
     "latitude": 42.589268
   },
   "property": {
-    "association": "Lake Geneva Cruise Line",
+    "association": "",
     "established": "",
     "associationUrl": "https://www.cruiselakegeneva.com/",
     "tel": "+1(262) 248-6206",
@@ -14,7 +14,10 @@
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    }
+    },
+    "business": "Lake Geneva Cruise Line",
+    "isMarina": 0,
+    "hasFood": 0
   },
   "owners": [
     {

@@ -5,7 +5,7 @@
     "latitude": 42.588387
   },
   "property": {
-    "association": "Marina Bay Boat Rentals",
+    "association": "",
     "established": "",
     "associationUrl": "https://lakegenevaboats.com/",
     "tel": "+1(262) 248-4477",
@@ -14,7 +14,10 @@
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    }
+    },
+    "business": "Marina Bay Boat Rentals",
+    "isMarina": 1,
+    "hasFood": 0
   },
   "owners": [
     {

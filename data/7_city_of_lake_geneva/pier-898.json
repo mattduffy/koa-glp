@@ -7,18 +7,21 @@
   "property": {
     "association": "",
     "established": "",
-    "associationUrl": "",
+    "associationUrl": "https://bakerhouse1885.com",
     "tel": "",
     "address": {
       "street": "335-327 Wrigley Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    }
+    },
+    "business": "The Baker House",
+    "isMarina": 0,
+    "hasFood": 1
   },
   "owners": [
     {
-      "estateName": "The Baker House",
+      "estateName": "",
       "member": false,
       "membershipType": "Residential Non-member",
       "members": [

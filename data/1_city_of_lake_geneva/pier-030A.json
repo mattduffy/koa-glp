@@ -5,7 +5,7 @@
     "latitude": 42.584808
   },
   "property": {
-    "association": "Covenant Harbor Bible Camp",
+    "association": "",
     "established": "",
     "associationUrl": "",
     "tel": "",
@@ -14,7 +14,10 @@
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    }
+    },
+    "business": "Covenant Harbor Bible Camp",
+    "isMarina": 0,
+    "hasFood": 0
   },
   "owners": [
     {

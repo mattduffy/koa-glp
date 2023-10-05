@@ -5,7 +5,7 @@
     "latitude": 42.564325
   },
   "property": {
-    "association": "Norman B. Barr Camp",
+    "association": "",
     "established": "",
     "associationUrl": "",
     "tel": "+1(262) 245-5544",
@@ -14,7 +14,10 @@
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    }
+    },
+    "business": "Norman B. Barr Camp",
+    "isMarina": 0,
+    "hasFood": 0
   },
   "owners": [
     {

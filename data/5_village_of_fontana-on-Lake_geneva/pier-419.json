@@ -7,14 +7,17 @@
   "property": {
     "association": "",
     "established": "",
-    "associationUrl": "",
+    "associationUrl": "https://www.jerrysmajestic.com/lake-geneva-boat-rentals/",
     "tel": "+1(262) 275-5222",
     "address": {
       "street": "352 Lake St",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    }
+    },
+    "business": "Jerry's Majestic Marine Rentals",
+    "isMarina": 1,
+    "hasFood": 0
   },
   "owners": [
     {

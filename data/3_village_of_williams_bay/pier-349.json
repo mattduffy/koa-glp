@@ -5,7 +5,7 @@
     "latitude": 0
   },
   "property": {
-    "association": "Yerkes Observatory",
+    "association": "",
     "established": "1895",
     "associationUrl": "",
     "tel": "",
@@ -14,7 +14,10 @@
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    }
+    },
+    "business": "Yerkes Observatory",
+    "isMarina": 0,
+    "hasFood": 0
   },
   "owners": [
     {

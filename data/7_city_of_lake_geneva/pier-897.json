@@ -7,14 +7,17 @@
   "property": {
     "association": "",
     "established": "",
-    "associationUrl": "",
+    "associationUrl": "https://www.bellavistasuites.com/",
     "tel": "+1(262) 248-2100",
     "address": {
       "street": "335 Wrigley Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    }
+    },
+    "business": "Bella Vista",
+    "isMarina": 0,
+    "hasFood": 0
   },
   "owners": [
     {

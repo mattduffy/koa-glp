@@ -5,7 +5,7 @@
     "latitude": 42.565584
   },
   "property": {
-    "association": "George Williams College of Aurora University",
+    "association": "",
     "established": "1886",
     "associationUrl": "",
     "tel": "+1(262) 245-5531",
@@ -14,7 +14,10 @@
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    }
+    },
+    "business": "George Williams College of Aurora University",
+    "isMarina": 0,
+    "hasFood": 0
   },
   "owners": [
     {

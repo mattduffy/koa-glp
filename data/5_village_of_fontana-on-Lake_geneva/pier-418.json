@@ -7,14 +7,17 @@
   "property": {
     "association": "",
     "established": "",
-    "associationUrl": "",
+    "associationUrl": "https://www.gordysboats.com",
     "tel": "+1(262) 275-1580",
     "address": {
       "street": "346 Lake St",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    }
+    },
+    "business": "Gordy's Lakefront Marine",
+    "isMarina": 1,
+    "hasFood": 0
   },
   "owners": [
     {

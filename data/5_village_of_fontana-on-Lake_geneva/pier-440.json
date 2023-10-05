@@ -5,7 +5,7 @@
     "latitude": 0
   },
   "property": {
-    "association": "Country Club Estates",
+    "association": "",
     "established": "1926",
     "associationUrl": "",
     "tel": "",
@@ -14,7 +14,10 @@
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    }
+    },
+    "business": "Country Club Estates",
+    "isMarina": 0,
+    "hasFood": 0
   },
   "owners": [
     {

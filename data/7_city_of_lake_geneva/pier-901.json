@@ -14,7 +14,10 @@
       "city": "Lake Geneva",
       "state": "WI",
       "zip": ""
-    }
+    },
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0
   },
   "owners": [
     {

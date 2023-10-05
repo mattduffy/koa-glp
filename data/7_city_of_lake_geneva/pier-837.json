@@ -5,7 +5,7 @@
     "latitude": 42.572103
   },
   "property": {
-    "association": "Lake Geneva Youth Camp",
+    "association": "",
     "established": "1873",
     "associationUrl": "https://www.lgyc.org/",
     "tel": "(262) 248-5500",
@@ -14,7 +14,10 @@
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    }
+    },
+    "business": "Lake Geneva Youth Camp",
+    "isMarina": 0,
+    "hasFood": 0
   },
   "owners": [
     {
