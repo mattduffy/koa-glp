@@ -331,6 +331,11 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
           SORTABLE: true,
           AS: 'pier',
         },
+        '$.property.business': {
+          type: SchemaFieldTypes.TEXT,
+          SORTABLE: true,
+          AS: 'business',
+        },
         '$.property.isMarina': {
           type: SchemaFieldTypes.NUMERIC,
           SORTABLE: true,
