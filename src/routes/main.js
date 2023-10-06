@@ -224,10 +224,19 @@ router.get('pierMarinas', '/marinas', hasFlash, async (ctx) => {
   const num = 100
   let marinas
   try {
-    log(`ft.AGGREGATE glp:idx:piers:marina "*" LOAD 6 $.pier AS pier $.property.business AS business SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
+    log(`ft.AGGREGATE glp:idx:piers:marina "*" LOAD 6 $.pier AS pier $.property.business AS business REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
     const optsAggregateMarina = {
       LOAD: ['@pier', '@business', '@marina'],
       STEPS: [
+        {
+          type: AggregateSteps.GROUPBY,
+          properties: '@business',
+          REDUCE: [{
+            type: AggregateGroupByReducers.TOLIST,
+            property: 'pier',
+            AS: 'pier',
+          }],
+        },
         {
           type: AggregateSteps.SORTBY,
           BY: '@business',
