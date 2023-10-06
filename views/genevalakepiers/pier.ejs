@@ -119,7 +119,6 @@
       ex.forEach((a) => {
         if (!/genevalakepiers/.test(a.href)) {
           a.setAttribute('target', '_blank')
-          console.info(a)
         }
       })
     </script>
@@ -130,7 +129,7 @@
     <%# map embed %>
     <script nonce="<%= nonce %>">
       const map = document.querySelector('div#map')
-      console.log(map)
+      // console.log(map)
     </script>
   </section>
 </article>

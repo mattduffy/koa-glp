@@ -158,6 +158,160 @@ router.get('pierPublic', '/public', hasFlash, async (ctx) => {
   await ctx.render('public', locals)
 })
 
+router.get('pierBusinesses', '/businesses', hasFlash, async (ctx) => {
+  const log = mainLog.extend('GET-piersBusinesses')
+  const error = mainError.extend('GET-piersBusinesses')
+  log(ctx.request.query.s)
+  const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
+  const num = 12
+  const offset = (s === 1) ? 0 : (s - 1) * num
+  const skipBack = (s <= 1) ? 0 : s - 1
+  const skipForward = s + 1
+  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: 89 - ${offset} = ${89 - offset}`)
+  let businesses
+  try {
+    log(`ft.AGGREGATE glp:idx:piers:business "*" LOAD 3 $.pier AS pier GROUPBY 1 @business REDUCE FIRST_VALUE 1 @business AS fist_of_my_name SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
+    const optsAggregateBusiness = {
+      LOAD: ['@pier', '@business'],
+      STEPS: [
+        {
+          type: AggregateSteps.GROUPBY,
+          properties: '@business',
+          REDUCE: [{
+            type: AggregateGroupByReducers.FIRST_VALUE,
+            property: 'business',
+            AS: 'first_of_my_name',
+          }],
+        },
+        {
+          type: AggregateSteps.SORTBY,
+          BY: '@business',
+          MAX: 1,
+        },
+        {
+          type: AggregateSteps.LIMIT,
+          from: offset,
+          size: num,
+        },
+      ],
+    }
+    businesses = await redis.ft.aggregate('glp:idx:piers:business', '*', optsAggregateBusiness)
+    log(businesses.total)
+    log(businesses.results)
+  } catch (e) {
+    error('Failed to get list of businesses.')
+    error(e.message)
+    throw new Error('Redis query failed.', { cause: e })
+  }
+  const locals = {}
+  locals.skipForward = skipForward
+  locals.skipBack = skipBack
+  locals.offset = offset
+  locals.num = num
+  locals.total = businesses.total
+  locals.businesses = businesses.results
+  locals.flash = ctx.flash.view ?? {}
+  locals.title = `${ctx.app.site}: Businesses`
+  locals.sessionUser = ctx.state.sessionUser
+  locals.isAuthenticated = ctx.state.isAuthenticated
+  await ctx.render('businesses', locals)
+})
+
+router.get('pierMarinas', '/marinas', hasFlash, async (ctx) => {
+  const log = mainLog.extend('GET-piersMarinas')
+  const error = mainError.extend('GET-piersMarinas')
+  const offset = 0
+  const num = 100
+  let marinas
+  try {
+    log(`ft.AGGREGATE glp:idx:piers:marina "*" LOAD 6 $.pier AS pier $.property.business AS business SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
+    const optsAggregateMarina = {
+      LOAD: ['@pier', '@business', '@marina'],
+      STEPS: [
+        {
+          type: AggregateSteps.SORTBY,
+          BY: '@business',
+          MAX: 1,
+        },
+        {
+          type: AggregateSteps.LIMIT,
+          from: offset,
+          size: num,
+        },
+      ],
+    }
+    marinas = await redis.ft.aggregate('glp:idx:piers:marina', '*', optsAggregateMarina)
+    log(marinas.total)
+    log(marinas.results)
+  } catch (e) {
+    error('Failed to get list of businesses.')
+    error(e.message)
+    throw new Error('Redis query failed.', { cause: e })
+  }
+  const locals = {}
+  locals.offset = offset
+  locals.num = num
+  locals.total = marinas.total
+  locals.marinas = marinas.results
+  locals.flash = ctx.flash.view ?? {}
+  locals.title = `${ctx.app.site}: Marinas`
+  locals.sessionUser = ctx.state.sessionUser
+  locals.isAuthenticated = ctx.state.isAuthenticated
+  await ctx.render('marinas', locals)
+})
+
+router.get('pierFood', '/food', hasFlash, async (ctx) => {
+  const log = mainLog.extend('GET-piersFood')
+  const error = mainError.extend('GET-piersFood')
+  const offset = 0
+  const num = 100
+  let foods
+  try {
+    log(`ft.AGGREGATE glp:idx:piers:food "*" LOAD 6 $.pier AS pier $.property.business AS business GROUPBY 1 @business REDUCE COUNT_DISTINCT 1 business AS num_foods  SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
+    const optsAggregateFood = {
+      LOAD: ['@pier', '@business', '@food'],
+      STEPS: [
+        {
+          type: AggregateSteps.GROUPBY,
+          properties: '@business',
+          REDUCE: [{
+            type: AggregateGroupByReducers.COUNT_DISTINCT,
+            property: 'business',
+            AS: 'num_foods',
+          }],
+        },
+        {
+          type: AggregateSteps.SORTBY,
+          BY: '@business',
+          MAX: 1,
+        },
+        {
+          type: AggregateSteps.LIMIT,
+          from: offset,
+          size: num,
+        },
+      ],
+    }
+    foods = await redis.ft.aggregate('glp:idx:piers:food', '*', optsAggregateFood)
+    log(foods.total)
+    log(foods.results)
+  } catch (e) {
+    error('Failed to get list of restaurants.')
+    error(e.message)
+    throw new Error('Redis query failed.', { cause: e })
+  }
+  const locals = {}
+  locals.offset = offset
+  locals.num = num
+  locals.total = foods.total
+  locals.foods = foods.results
+  locals.flash = ctx.flash.view ?? {}
+  locals.title = `${ctx.app.site}: Marinas`
+  locals.sessionUser = ctx.state.sessionUser
+  locals.isAuthenticated = ctx.state.isAuthenticated
+  await ctx.render('food', locals)
+})
+
 router.get('pierAssociations', '/associations', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-piersAssociations')
   const error = mainError.extend('GET-piersAssociations')
@@ -264,7 +418,7 @@ router.get('piersByAssociation', '/assoc/:assoc', hasFlash, async (ctx) => {
 router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-pierByNumber')
   const error = mainError.extend('GET-pierByNumber')
-  const pierNumber = sanitize(ctx.params.pier)
+  let pierNumber = sanitize(ctx.params.pier)
   const locals = {}
   let key = `glp:piers:${pierNumber}`
   let pier
@@ -299,6 +453,14 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
   }
   try {
     pier = await redis.json.get(key)
+    let leading0s = 0
+    if (pier.pier[0] === '0') leading0s += 1
+    if (pier.pier[1] === '0') leading0s += 1
+    if (leading0s > 0) {
+      // pier.strippedPier = pier.pier.slice(leading0s)
+      pier.strippedPier = pier.pier.slice(leading0s)
+    }
+    log(`stipping leading 0's from pier number: ${pier.stippedPier}`)
     log(pier)
     log(`has hidden members? ${pier.pier}`)
     pier.owners.forEach((o, j) => {
@@ -566,7 +728,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         log(`Pier owner name tokens: ${pierOwnernameTokens}`)
         idxPierOwnerName = 'glp:idx:piers:ownerNames'
         // queryPierOwnerName = `@fistname|lastname:${pierOwnernameTokens}`
-        queryPierOwnerName = `@lastname|firstname:${pierOwnernameTokens}`
+        queryPierOwnerName = `@lastname|firstname:${pierOwnernameTokens} (-Assoc*)`
         optsPierOwnerName = {}
         optsPierOwnerName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
         optsPierOwnerName.RETURN = ['pier', 'firstname', 'lastname']
@@ -579,7 +741,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         error(`query: FT.SEARCH ${idxPierOwnerName} "${queryPierOwnerName}"`, optsPierOwnerName)
         error(e)
         // No need to disrupt the rest of the searching if this query failed.
-        // throw new Error('Search by estate name failed.', { cause: e })
+        // throw new Error('Search by owner names failed.', { cause: e })
       }
       let queryPierAssociation
       let idxPierAssociation
@@ -613,13 +775,48 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         error(`query: FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`, optsPierAssociation)
         error(e)
         // No need to disrupt the rest of the searching if this query failed.
-        // throw new Error('Search by owner names failed.', { cause: e })
+        // throw new Error('Search by association name failed.', { cause: e })
+      }
+      let queryPierBusiness
+      let idxPierBusiness
+      let optsPierBusiness
+      try {
+        // Conduct search by business names.
+        let pierBusinessTokens = ''
+        if (strings.length === 1) {
+          pierBusinessTokens = `(${strings[0]})`
+        } else {
+          strings.forEach((t, i) => {
+            if (i === 0) pierBusinessTokens += '('
+            pierBusinessTokens += `${t}`
+            if (i < strings.length - 1) pierBusinessTokens += '|'
+            if (i === strings.length - 1) pierBusinessTokens += ')'
+            log(pierBusinessTokens)
+          })
+        }
+        log(`Pier business name tokens: ${pierBusinessTokens}`)
+        idxPierBusiness = 'glp:idx:piers:business'
+        queryPierBusiness = `@business:${pierBusinessTokens}`
+        optsPierBusiness = {}
+        optsPierBusiness.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+        optsPierBusiness.RETURN = ['pier', 'business']
+        log(`Pier business name FT.SEARCH ${idxPierBusiness} "${queryPierBusiness}"`)
+        results.businesses = await redis.ft.search(idxPierBusiness, queryPierBusiness, optsPierBusiness)
+        log(results.businesses)
+      } catch (e) {
+        error('Redis search query feiled:')
+        error(`using index: ${idxPierBusiness}`)
+        error(`query: FT.SEARCH ${idxPierBusiness} "${queryPierBusiness}"`, optsPierBusiness)
+        error(e)
+        // No need to disrupt the rest of the searching if this query failed.
+        // throw new Error('Search by business name failed.', { cause: e })
       }
     } else {
-      results.estateNames = { total: 0 }
-      results.associations = { total: 0 }
-      results.ownerNames = { total: 0 }
       results.pieNumbers = { total: 0 }
+      results.estateNames = { total: 0 }
+      results.ownerNames = { total: 0 }
+      results.associations = { total: 0 }
+      results.buisnesses = { total: 0 }
     }
     log(results)
     ctx.type = 'application/json; charset=utf-8'

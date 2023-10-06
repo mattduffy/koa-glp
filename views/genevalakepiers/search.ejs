@@ -55,7 +55,7 @@
         if (json?.estateNames?.total > 0) {
           json.estateNames.documents.forEach((e) => {
             const li = document.createElement('li')
-            const link = `<a href="<%= origin %>/pier/${e.value['pier']}">Pier ${e.value['pier']} ${e.value.estateName} estate</a>`
+            const link = `<a href="<%= origin %>/pier/${e.value['pier']}">Pier ${e.value['pier']} ${e.value.estateName} (estate)</a>`
             li.innerHTML = link
             resultsList.appendChild(li)
           })
@@ -64,16 +64,27 @@
           json.ownerNames.documents.forEach((o) => {
             // console.log(o)
             const li = document.createElement('li')
-            const link = `<a href="<%= origin %>/pier/${o.value['pier']}">Pier ${o.value['pier']} ${o.value.lastname} family</a>`
+            // const link = `<a href="<%= origin %>/pier/${o.value['pier']}">Pier ${o.value['pier']} ${o.value.lastname} family</a>`
+            const name = `${o.value.firstname} ${o.value.lastname}`
+            const link = `<a href="<%= origin %>/pier/${o.value['pier']}">Pier ${o.value['pier']} ${name}</a>`
             li.innerHTML = link
             resultsList.appendChild(li)
           })
         }
         if (json?.associations?.total > 0) {
-          json.associations.documents.forEach((o) => {
-            // console.log(o)
+          json.associations.documents.forEach((a) => {
+            // console.log(a)
             const li = document.createElement('li')
-            const link = `<a href="<%= origin %>/pier/${o.value['pier']}">Pier ${o.value['pier']} ${o.value.association} </a>`
+            const link = `<a href="<%= origin %>/pier/${a.value['pier']}">Pier ${a.value['pier']} ${a.value.association} </a>`
+            li.innerHTML = link
+            resultsList.appendChild(li)
+          })
+        }
+        if (json?.businesses?.total > 0) {
+          json.businesses.documents.forEach((b) => {
+            // console.log(b)
+            const li = document.createElement('li')
+            const link = `<a href="<%= origin %>/pier/${b.value['pier']}">Pier ${b.value['pier']} ${b.value.business} (business)</a>`
             li.innerHTML = link
             resultsList.appendChild(li)
           })
