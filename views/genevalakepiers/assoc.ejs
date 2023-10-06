@@ -16,7 +16,7 @@
 <article>
   <section class="main">
     <h2><%= associationName %></h2>
-    <h3><%= total %> Piers</h3>
+    <h3><%= total %> Pier<%= (association.length > 1) ? 's' : '' %></h3>
 
     <p><% association.forEach((p, i) => {
       let a = `<a href="/pier/${p.value.pier}">${p.value.pier}</a>, `
