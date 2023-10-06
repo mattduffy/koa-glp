@@ -38,7 +38,7 @@
     <% */ %>
     <ul id="resultsList" class="searchResults">
       <% foods.forEach((p, i) => {
-        let a = `<li><a href="/pier/${p.pier}">${p.business}</a></li>`  %>
+        let a = `<li><a href="/pier/${p.pier[0]}">${p.business}</a></li>`  %>
       <%- a %>
     <% }) %></ul>
 

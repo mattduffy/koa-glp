@@ -170,7 +170,7 @@ router.get('pierBusinesses', '/businesses', hasFlash, async (ctx) => {
   log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: 89 - ${offset} = ${89 - offset}`)
   let businesses
   try {
-    log(`ft.AGGREGATE glp:idx:piers:business "*" LOAD 3 $.pier AS pier GROUPBY 1 @business REDUCE FIRST_VALUE 1 @business AS fist_of_my_name SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
+    log(`ft.AGGREGATE glp:idx:piers:business "*" LOAD 3 $.pier AS pier GROUPBY 1 @business REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
     const optsAggregateBusiness = {
       LOAD: ['@pier', '@business'],
       STEPS: [
@@ -178,9 +178,9 @@ router.get('pierBusinesses', '/businesses', hasFlash, async (ctx) => {
           type: AggregateSteps.GROUPBY,
           properties: '@business',
           REDUCE: [{
-            type: AggregateGroupByReducers.FIRST_VALUE,
-            property: 'business',
-            AS: 'first_of_my_name',
+            type: AggregateGroupByReducers.TOLIST,
+            property: 'pier',
+            AS: 'pier',
           }],
         },
         {
@@ -267,7 +267,7 @@ router.get('pierFood', '/food', hasFlash, async (ctx) => {
   const num = 100
   let foods
   try {
-    log(`ft.AGGREGATE glp:idx:piers:food "*" LOAD 6 $.pier AS pier $.property.business AS business GROUPBY 1 @business REDUCE COUNT_DISTINCT 1 business AS num_foods  SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
+    log(`ft.AGGREGATE glp:idx:piers:food "*" LOAD 6 $.pier AS pier $.property.business AS business GROUPBY 1 @business REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
     const optsAggregateFood = {
       LOAD: ['@pier', '@business', '@food'],
       STEPS: [
@@ -275,9 +275,9 @@ router.get('pierFood', '/food', hasFlash, async (ctx) => {
           type: AggregateSteps.GROUPBY,
           properties: '@business',
           REDUCE: [{
-            type: AggregateGroupByReducers.COUNT_DISTINCT,
-            property: 'business',
-            AS: 'num_foods',
+            type: AggregateGroupByReducers.TOLIST,
+            property: 'pier',
+            AS: 'pier',
           }],
         },
         {
