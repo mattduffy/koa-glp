@@ -18,17 +18,17 @@
     <% if (!pier?.pier) { %>
       <h2><%= pierNumber %> is not a valid pier number on Geneva Lake</h2>
     <% } else { %>
-      <h2>Pier <%= pier.pier %><br>Located in the <nobr><a href="/towns/<%= setTown %>"><%= town %></a></nobr></h2>
+      <h2>Pier <%= pier.pier %><br>Located in the <nobr><a href="<%= origin %>/towns/<%= setTown %>"><%= town %></a></nobr></h2>
       <div class="previousPier">
         <% if (previousPier?.length !== 0) { %>
-        <a href="/pier/<%= previousPier %>">< Pier <%= previousPier %></a>
+        <a href="<%= origin %>/pier/<%= previousPier %>">< Pier <%= previousPier %></a>
         <% } else { %>
         Pier <%= pier.pier %> 
         <% } %>
       </div>
       <div class="nextPier">
         <% if (nextPier.length !== 0) { %>
-        <a href="/pier/<%= nextPier %>">Pier <%= nextPier %> ></a>
+        <a href="<%= origin %>/pier/<%= nextPier %>">Pier <%= nextPier %> ></a>
         <% } else { %>
         Pier <%= pier.pier %> 
         <% } %>
@@ -57,6 +57,15 @@
             assoc = pier.property.association
           } %>
           <li>Association: <%- assoc %></li>
+        <% } %>
+        <% if (pier.property?.business !== undefined && pier.property?.business?.length !== 0) {
+          let business 
+          if (pier.property?.associationUrl !== undefined && pier.property?.associationUrl.length !== 0) {
+            business = `<a href="${pier.property.associationUrl}">${pier.property.business}</a>`
+          } else {
+            business = pier.property.business
+          } %>
+          <li>Business: <%- business %></li>
         <% } %>
         <% if (pier?.property?.tel !== undefined && pier?.property?.tel.length !== 0) { %>
           <li>Telephone: <a href="tel:<%= pier.property.tel %>"><%= pier.property.tel %></a></li>
@@ -105,6 +114,15 @@
         </ul>
       <% } %>
     <% } %>
+    <script nonce="<%= nonce %>">
+      const ex = document.querySelectorAll('a[href]')
+      ex.forEach((a) => {
+        if (!/genevalakepiers/.test(a.href)) {
+          a.setAttribute('target', '_blank')
+          console.info(a)
+        }
+      })
+    </script>
   </section>
   <section class="map">
     <%# map embed %>

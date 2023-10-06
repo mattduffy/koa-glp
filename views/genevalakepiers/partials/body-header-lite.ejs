@@ -2,14 +2,14 @@
   <span class="hamburger"></span>
   <h1><a href="/"><%= appName %></a></h1>
   <ul class="header-links">
-    <li><a href="/towns/city-of-lake-geneva">City of Lake Geneva</a></li>
-    <li><a href="/towns/town-of-linn">Town of Linn</a></li>
-    <li><a href="/towns/village-of-williams-bay">Village of Williams Bay</a></li>
-    <li><a href="/towns/village-of-fontana-on-geneva-lake">Village of Fontana-on-Geneva-Lake</a></li>
-    <li><a href="/towns/town-of-walworth">Town of Walworth</a></li>
-    <li><a href="/public">Public Piers</a></li>
-    <li><a href="/swim">Swim Piers</a></li>
-    <li><a href="/associations">Associations</a></li>
+    <li><a href="<%= origin %>/towns/city-of-lake-geneva">City of Lake Geneva</a></li>
+    <li><a href="<%= origin %>/towns/town-of-linn">Town of Linn</a></li>
+    <li><a href="<%= origin %>/towns/village-of-williams-bay">Village of Williams Bay</a></li>
+    <li><a href="<%= origin %>/towns/village-of-fontana-on-geneva-lake">Village of Fontana-on-Geneva-Lake</a></li>
+    <li><a href="<%= origin %>/towns/town-of-walworth">Town of Walworth</a></li>
+    <li><a href="<%= origin %>/public">Public Piers</a></li>
+    <li><a href="<%= origin %>/swim">Swim Piers</a></li>
+    <li><a href="<%= origin %>/associations">Associations</a></li>
   </ul>
   <script nonce="<%= nonce %>">
     const hammy = document.querySelector('span.hamburger')
@@ -26,7 +26,9 @@
   </script>
 </header>
 <% if (isAuthenticated) { %>
-<%# <p><a href="/logout">Logout</a></p> %>
-<% } else { %>
-<%# <p><a href="/login">Login</a></p> %>
+  <%/* %>
+  <p><a href="<%= origin %>/logout">Logout</a></p>
+  <% } else { %>
+  <p><a href="<%= origin %>/login">Login</a></p>
+  <% */ %>
 <% } %>
