@@ -9,6 +9,7 @@ import Debug from 'debug'
 
 Debug.log = console.log.bind(console)
 const _log = Debug('koa-glp-LOG')
+const _info = Debug('koa-glp-INFO')
 const _error = Debug('koa-glp-ERROR')
 
 /* eslint-disable no-extend-native */
@@ -67,6 +68,7 @@ function capitalize(word) {
 
 export {
   _log,
+  _info,
   _error,
   TOWNS,
   getSetName,

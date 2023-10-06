@@ -233,7 +233,6 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
           AS: 'pier',
         },
         '$.public': {
-          // type: SchemaFieldTypes.TAG,
           type: SchemaFieldTypes.NUMERIC,
           SORTABLE: true,
           AS: 'public',
@@ -243,7 +242,6 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
         ON: 'JSON',
         PREFIX: prefix,
         FILTER: "@public=='1'",
-        // FILTER: "@public:{'true'}",
       },
     )
   } catch (e) {
@@ -268,7 +266,6 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
           AS: 'pier',
         },
         '$.bigSwimPier': {
-          // type: SchemaFieldTypes.TAG,
           type: SchemaFieldTypes.NUMERIC,
           SORTABLE: true,
           AS: 'swim',
@@ -278,7 +275,110 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
         ON: 'JSON',
         PREFIX: prefix,
         FILTER: "@swim=='1'",
-        // FILTER: "@swim:{'true'}",
+      },
+    )
+  } catch (e) {
+    if (e.message === 'Index already exists') {
+      log(`${pierSwimIndex} ${e.message}.  Skipping ahead.`)
+    } else {
+      error(e)
+      throw new Error(e.message, { cause: e })
+    }
+  }
+  // create an index for business piers
+  const pierBusinessIndex = `${DB_PREFIX}:idx:piers:business`
+  try {
+    // log(await redis.ft.dropIndex(pierBusinessIndex))
+    log(`pierBusinessIndex name: ${pierBusinessIndex}`)
+    await redis.ft.create(
+      pierBusinessIndex,
+      {
+        '$.pier': {
+          type: SchemaFieldTypes.TEXT,
+          SORTABLE: true,
+          AS: 'pier',
+        },
+        '$.property.business': {
+          type: SchemaFieldTypes.TEXT,
+          SORTABLE: true,
+          AS: 'business',
+        },
+      },
+      {
+        ON: 'JSON',
+        PREFIX: prefix,
+        FILTER: "@business!=''",
+      },
+    )
+  } catch (e) {
+    if (e.message === 'Index already exists') {
+      log(`${pierSwimIndex} ${e.message}.  Skipping ahead.`)
+    } else {
+      error(e)
+      throw new Error(e.message, { cause: e })
+    }
+  }
+  // create an index for marina piers
+  const pierMarinaIndex = `${DB_PREFIX}:idx:piers:marina`
+  try {
+    // log(await redis.ft.dropIndex(pierMarinaIndex))
+    log(`pierMarinaIndex name: ${pierMarinaIndex}`)
+    await redis.ft.create(
+      pierMarinaIndex,
+      {
+        '$.pier': {
+          type: SchemaFieldTypes.TEXT,
+          SORTABLE: true,
+          AS: 'pier',
+        },
+        '$.property.isMarina': {
+          type: SchemaFieldTypes.NUMERIC,
+          SORTABLE: true,
+          AS: 'marina',
+        },
+      },
+      {
+        ON: 'JSON',
+        PREFIX: prefix,
+        FILTER: "@marina=='1'",
+      },
+    )
+  } catch (e) {
+    if (e.message === 'Index already exists') {
+      log(`${pierSwimIndex} ${e.message}.  Skipping ahead.`)
+    } else {
+      error(e)
+      throw new Error(e.message, { cause: e })
+    }
+  }
+  // create an index for food piers
+  const pierFoodIndex = `${DB_PREFIX}:idx:piers:food`
+  try {
+    // log(await redis.ft.dropIndex(pierFoodIndex))
+    log(`pierMarinaIndex name: ${pierFoodIndex}`)
+    await redis.ft.create(
+      pierFoodIndex,
+      {
+        '$.pier': {
+          type: SchemaFieldTypes.TEXT,
+          SORTABLE: true,
+          AS: 'pier',
+        },
+        '$.property.business': {
+          type: SchemaFieldTypes.TEXT,
+          SORTABLE: true,
+          AS: 'business',
+        },
+        '$.property.hasFood': {
+          type: SchemaFieldTypes.NUMERIC,
+          SORTABLE: true,
+          AS: 'food',
+        },
+      },
+      {
+        ON: 'JSON',
+        PREFIX: prefix,
+        FILTER: "@food=='1'",
       },
     )
   } catch (e) {
