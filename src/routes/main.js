@@ -161,6 +161,9 @@ router.get('pierPublic', '/public', hasFlash, async (ctx) => {
 router.get('pierBusinesses', '/businesses', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-piersBusinesses')
   const error = mainError.extend('GET-piersBusinesses')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
   log(ctx.request.query.s)
   const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
   const num = 12
@@ -203,18 +206,24 @@ router.get('pierBusinesses', '/businesses', hasFlash, async (ctx) => {
     error(e.message)
     throw new Error('Redis query failed.', { cause: e })
   }
-  const locals = {}
-  locals.skipForward = skipForward
-  locals.skipBack = skipBack
-  locals.offset = offset
-  locals.num = num
-  locals.total = businesses.total
-  locals.businesses = businesses.results
-  locals.flash = ctx.flash.view ?? {}
-  locals.title = `${ctx.app.site}: Businesses`
-  locals.sessionUser = ctx.state.sessionUser
-  locals.isAuthenticated = ctx.state.isAuthenticated
-  await ctx.render('businesses', locals)
+  if (ctx.state.isAsyncRequest === true) {
+    ctx.status = 200
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.body = businesses.results
+  } else {
+    const locals = {}
+    locals.skipForward = skipForward
+    locals.skipBack = skipBack
+    locals.offset = offset
+    locals.num = num
+    locals.total = businesses.total
+    locals.businesses = businesses.results
+    locals.flash = ctx.flash.view ?? {}
+    locals.title = `${ctx.app.site}: Businesses`
+    locals.sessionUser = ctx.state.sessionUser
+    locals.isAuthenticated = ctx.state.isAuthenticated
+    await ctx.render('businesses', locals)
+  }
 })
 
 router.get('pierMarinas', '/marinas', hasFlash, async (ctx) => {
@@ -324,22 +333,25 @@ router.get('pierFood', '/food', hasFlash, async (ctx) => {
 router.get('pierAssociations', '/associations', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-piersAssociations')
   const error = mainError.extend('GET-piersAssociations')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
   log(ctx.request.query.s)
   // const num = (ctx.request.query?.c) ? sanitize(Math.abs(parseInt(ctx.request.query?.c, 10))) : 15
-  // page 1 s: 1, offset: 0 num: 15, skipBack: 0 skipForward: 2, remaining: 89 - 0 = 89
-  // page 2 s: 2, offset: 15 num: 15, skipBack: 1 skipForward: 3, remaining: 89 - 15 = 74
-  // page 3 s: 3, offset: 30 num: 15, skipBack: 2 skipForward: 4, remaining: 89 - 30 = 59
-  // page 4 s: 4, offset: 45 num: 15, skipBack: 3 skipForward: 5, remaining: 89 - 45 = 44
-  // page 5 s: 5, offset: 60 num: 15, skipBack: 4 skipForward: 6, remaining: 89 - 60 = 29
-  // page 6 s: 6, offset: 75 num: 15, skipBack: 5 skipForward: 7, remaining: 89 - 75 = 14
-  // page 7 ...
-  // koa-glp-LOG:main:GET-piersAssociations ft.AGGREGATE glp:idx:piers:association "*" LOAD 3 $.pier AS pier GROUPBY 1 @association SORTBY 2 @association ASC LIMIT 60 15
+  const x = 70
   const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
-  const num = 15
-  const offset = (s === 1) ? 0 : (s - 1) * num
+  const num = 10
+  // const offset = (s === 1) ? 0 : (s - 1) * num
+  const offset = (s <= 1) ? 0 : (s - 1) * num
   const skipBack = (s <= 1) ? 0 : s - 1
   const skipForward = s + 1
-  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: 89 - ${offset} = ${89 - offset}`)
+  // log(`page 1 s: ${s}, offset: ${offset} num: ${num}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
+  // log(`page 2 s: ${s}, offset: ${offset} num: ${num}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
+  // log(`page 3 s: ${s}, offset: ${offset} num: ${num}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
+  // log(`page 4 s: ${s}, offset: ${offset} num: ${num}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
+  // log(`page 5 s: ${s}, offset: ${offset} num: ${num}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
+  // log(`page 6 s: ${s}, offset: ${offset} num: ${num}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
+  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
   let associations
   try {
     log(`ft.AGGREGATE glp:idx:piers:association "*" LOAD 3 $.pier AS pier GROUPBY 1 @association SORTBY 2 @association ASC LIMIT ${offset} ${num}`)
@@ -375,18 +387,25 @@ router.get('pierAssociations', '/associations', hasFlash, async (ctx) => {
     error(e.message)
     throw new Error('Redis query failed.', { cause: e })
   }
-  const locals = {}
-  locals.offset = offset
-  locals.skipForward = skipForward
-  locals.skipBack = skipBack
-  locals.num = num
-  locals.total = associations.total
-  locals.associations = associations.results
-  locals.flash = ctx.flash.view ?? {}
-  locals.title = `${ctx.app.site}: Associations`
-  locals.sessionUser = ctx.state.sessionUser
-  locals.isAuthenticated = ctx.state.isAuthenticated
-  await ctx.render('associations', locals)
+  if (ctx.state.isAsyncRequest === true) {
+    ctx.status = 200
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.body = associations.results
+  } else {
+    const locals = {}
+    locals.s = s
+    locals.offset = offset
+    locals.skipForward = skipForward
+    locals.skipBack = skipBack
+    locals.num = num
+    locals.total = associations.total
+    locals.associations = associations.results
+    locals.flash = ctx.flash.view ?? {}
+    locals.title = `${ctx.app.site}: Associations`
+    locals.sessionUser = ctx.state.sessionUser
+    locals.isAuthenticated = ctx.state.isAuthenticated
+    await ctx.render('associations', locals)
+  }
 })
 
 router.get('piersByAssociation', '/assoc/:assoc', hasFlash, async (ctx) => {
@@ -427,7 +446,7 @@ router.get('piersByAssociation', '/assoc/:assoc', hasFlash, async (ctx) => {
 router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-pierByNumber')
   const error = mainError.extend('GET-pierByNumber')
-  let pierNumber = sanitize(ctx.params.pier)
+  const pierNumber = sanitize(ctx.params.pier)
   const locals = {}
   let key = `glp:piers:${pierNumber}`
   let pier

@@ -39,7 +39,110 @@
       let a = `<li><a href="/pier/${p.pier[0]}">${p.business}</a></li>` %>
       <%- a %>
     <% }) %></ul>
-
+    <script nonce="<%= nonce %>">
+      let origin = '<%= origin %>'
+      let jwtAccess = '<%= searchJwtAccess %>'
+      let num = <%= num %>
+      let params = new URLSearchParams(document.location.search)
+      let s = params.get('s') || 1
+      console.log(`query param s: ${s}`)
+      let ulResultsList = document.querySelector('ul#resultsList')
+      const previousDiv = document.querySelector('div.previousPier')
+      let previousLink = (previousDiv.children)[0]
+      
+      function updatePrevLink(len) {
+        if (s <= 1) {
+          previousDiv.replaceChildren(document.createTextNode('< Prev'))
+        } else {
+          const newHref = nextLink.href.replace(/(\d)/, s - 1)
+          previousLink.href = newHref
+        }
+        // console.info(`Previous link: ${document.querySelector('a[rel=prev]')?.href}`)
+      }
+      function updateNextLink(len) {
+        if (len < num) {
+          nextLink = undefined
+          nextDiv.replaceChildren(document.createTextNode('Next >'))
+        } else {
+          // const matchS = getS(nextLink.href)
+          const matchS = s
+          const newHref = nextLink.href.replace(/(\d)/, matchS + 1)
+          nextLink.href = newHref
+        }
+        // console.info(`2 Next link: ${nextLink}`)
+      }
+      // Add Event Listeners to < Prev and Next > links
+      if (previousLink?.tagName === 'A') {
+        // console.log(`previousLink ${previousLink}`)
+        previousLink.addEventListener('click', setAndUpdatePrevNextLinks)
+      }
+      const nextDiv = document.querySelector('div.nextPier')
+      let nextLink = (nextDiv.children)[0]
+      if (nextLink?.tagName === 'A') {
+        // console.log(`nextLink ${nextLink}`)
+        nextLink.addEventListener('click', setAndUpdatePrevNextLinks)
+      }
+      async function setAndUpdatePrevNextLinks(e) {
+          e.preventDefault()
+          e.stopPropagation()
+          if (previousLink === undefined) {
+            console.log(`recreating previousLink: ${previousLink}`)
+            previousLink = document.createElement('a')
+            previousLink.setAttribute('rel', 'prev')
+            previousLink.href = `${origin}/associations?s=1`
+            previousLink.innerText = '< Prev'
+            previousDiv.replaceChildren()
+            previousDiv.appendChild(previousLink)
+            previousLink.addEventListener('click', setAndUpdatePrevNextLinks)
+          }
+          if (nextLink === undefined) {
+            console.log(`recreating nextLink: ${nextLink}`)
+            nextLink = document.createElement('a')
+            nextLink.setAttribute('rel', 'next')
+            nextLink.href = `${origin}/associations?s=${s}`
+            nextLink.innerText = 'Next >'
+            nextDiv.replaceChildren()
+            nextDiv.appendChild(nextLink)
+            nextLink.addEventListener('click', setAndUpdatePrevNextLinks)
+          }
+          const rel = e.target.getAttribute('rel') 
+          s = (rel === 'prev') ? parseInt(s) - 1 : parseInt(s) + 1
+          // console.info(`rel: ${rel}, s: ${s}`)
+          const links = await getAssocs(s)
+          console.log(links)
+          if (links.length > 0) {
+            updatePrevLink()
+            console.info(`rel: ${rel}, s: ${s}`)
+            // console.info(`current s: ${s}`)
+            updateNextLink(links.length)
+            ulResultsList.replaceChildren()
+            links.forEach((a) => {
+              const li = document.createElement('li')
+              li.innerHTML = `<a href="${origin}/pier/${a.pier}">${a.business}</a>`
+              ulResultsList.appendChild(li)
+            })
+          }
+          return false
+        }
+      const opts = {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${jwtAccess}`,
+        },
+      }
+      async function getAssocs(skip) {
+        const request = new Request(`${origin}/businesses?s=${skip}`, opts)
+        let json
+        try {
+          const response = await fetch(request, { credentials: 'same-origin' })
+          json = await response.json()
+        } catch (e) {
+          console.error(e)
+        }
+        return json
+      }
+    </script>
   </section>
   <section class="map">
     <%# map embed %>
