@@ -19,6 +19,20 @@
       <h2><%= pierNumber %> is not a valid pier number on Geneva Lake</h2>
     <% } else { %>
       <h2>Pier <%= pier.pier %>, located in the <nobr><a href="/towns/<%= setTown %>"><%= town %></a></nobr></h2>
+      <div class="previousPier">
+        <% if (previousPier?.length !== 0) { %>
+        <a href="<%= origin %>/pier/<%= previousPier %>">< Pier <%= previousPier %></a>
+        <% } else { %>
+        Pier <%= pier.pier %> 
+        <% } %>
+      </div>
+      <div class="nextPier">
+        <% if (nextPier.length !== 0) { %>
+        <a href="<%= origin %>/pier/<%= nextPier %>">Pier <%= nextPier %> ></a>
+        <% } else { %>
+        Pier <%= pier.pier %> 
+        <% } %>
+      </div>
       <form id="pierEdit" name="pierEdit" action="/pier/edit" method="POST" enctype="multipart/form-data">
         <fieldset id="pierPhoto" name="pierPhoto" form="pierEdit" class="edit_fieldset" title="Pier Photo Form">
           <legend>Pier Photo</legend>

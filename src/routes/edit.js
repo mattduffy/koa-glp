@@ -52,7 +52,7 @@ router.get('editPier-GET', '/edit/pier/:pier', hasFlash, async (ctx) => {
   } else {
     const pierNumber = sanitize(ctx.params.pier)
     const locals = {}
-    const key = `glp:piers:${pierNumber}`
+    let key = `glp:piers:${pierNumber}`
     let pier
     let town
     info(pierNumber)
@@ -91,10 +91,36 @@ router.get('editPier-GET', '/edit/pier/:pier', hasFlash, async (ctx) => {
       error(e)
       throw new Error(`Failed to get pier ${pierNumber}`, { cause: e })
     }
+    let nextPier
+    let previousPier
+    key = 'glp:all_piers_in_order'
+    try {
+      // const args = [key, '[643', '+', 'bylex', 'limit', '1', '1']
+      nextPier = await redis.zRange(key, `[${pierNumber}`, '+', { BY: 'LEX', LIMIT: { offset: 1, count: 1 } })
+      if (Number.isNaN(parseInt(nextPier, 10))) {
+        nextPier = '001'
+      }
+      log(`next pier >> ${nextPier}`)
+    } catch (e) {
+      error(e)
+      throw new Error(`Failed creating next pier link for pier ${pierNumber}`, { cause: e })
+    }
+    try {
+      previousPier = await redis.zRange(key, `[${pierNumber}`, '-', { BY: 'LEX', REV: true, LIMIT: { offset: '1', count: '1' } })
+      if (Number.isNaN(parseInt(previousPier, 10))) {
+        previousPier = await redis.zRange(key, '0', '-1', { REV: true, BY: 'SCORE', LIMIT: { offset: '0', count: '1' } })
+      }
+      log(`prev pier >> ${previousPier}`)
+    } catch (e) {
+      error(e)
+      throw new Error(`Failed creating previous pier link for pier ${pierNumber}`, { cause: e })
+    }
     locals.town = town
     locals.photo = false
     locals.setTown = setTown
     locals.pierNumber = pierNumber
+    locals.nextPier = nextPier
+    locals.previousPier = previousPier
     locals.flash = ctx.flash.view ?? {}
     locals.title = `${ctx.app.site}: Pier ${pierNumber}`
     locals.sessionUser = ctx.state.sessionUser
