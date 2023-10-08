@@ -81,9 +81,36 @@ const pierSchema = new Schema(prefix, {
 })
 const pierRepository = new Repository(pierSchema, clientOm)
 
-// create the indexes for pier data
-const pierNumberIndex = `${DB_PREFIX}:idx:piers:number`
 if (!DRYRUN) { // BEGIN DRYRUN CHECK
+  // create the index for pier schema version
+  const pierSchemaIndex = `${DB_PREFIX}:idx:piers:version`
+  try {
+    // log(await redis.ft.dropIndex(pierSchemaIndex))
+    log(`pierSchemaIndex name: ${pierSchemaIndex}`)
+    await redis.ft.create(
+      pierSchemaIndex,
+      {
+        '$.version': {
+          type: SchemaFieldTypes.NUMERIC,
+          SORTABLE: true,
+          AS: 'schemaVersion',
+        },
+      },
+      {
+        ON: 'JSON',
+        PREFIX: prefix,
+      },
+    )
+  } catch (e) {
+    if (e.message === 'Index already exists') {
+      log(`${pierSchemaIndex} ${e.message}.  Skipping ahead.`)
+    } else {
+      error(e)
+      throw new Error(e.message, { cause: e })
+    }
+  }
+  // create the indexes for pier data
+  const pierNumberIndex = `${DB_PREFIX}:idx:piers:number`
   try {
     // log(await redis.ft.dropIndex(pierNumberIndex))
     log(`pierNumberIndex name: ${pierNumberIndex}`)
@@ -312,7 +339,7 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
     )
   } catch (e) {
     if (e.message === 'Index already exists') {
-      log(`${pierSwimIndex} ${e.message}.  Skipping ahead.`)
+      log(`${pierBusinessIndex} ${e.message}.  Skipping ahead.`)
     } else {
       error(e)
       throw new Error(e.message, { cause: e })
@@ -350,7 +377,7 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
     )
   } catch (e) {
     if (e.message === 'Index already exists') {
-      log(`${pierSwimIndex} ${e.message}.  Skipping ahead.`)
+      log(`${pierMarinaIndex} ${e.message}.  Skipping ahead.`)
     } else {
       error(e)
       throw new Error(e.message, { cause: e })
@@ -388,7 +415,7 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
     )
   } catch (e) {
     if (e.message === 'Index already exists') {
-      log(`${pierSwimIndex} ${e.message}.  Skipping ahead.`)
+      log(`${pierFoodIndex} ${e.message}.  Skipping ahead.`)
     } else {
       error(e)
       throw new Error(e.message, { cause: e })
@@ -431,8 +458,18 @@ try {
       })
 
       if (pierJson.loc.longitude === 0 && pierJson.loc.latitude === 0) {
+        info('Null Island Pier Encountered!')
         info(`${pierJson.pier} is missing location data.`)
         missingLocCounter += 1
+        let nullIslandPiersSortedSet = 'DRYRUN'
+        let keyNullIslandPiers = 'DRYRUN'
+        if (!DRYRUN || SAVEFILES) { // DRYRUN CHECK
+          // Create a master sorted set of all piers missing lon/lat coordinates, in order.
+          keyNullIslandPiers = `${options.keyPrefix}:null_island`
+          log(`${keyNullIslandPiers} ${pierJson.pier}`)
+          nullIslandPiersSortedSet = await redis.zAdd(keyNullIslandPiers, [{ score: 0, value: pierJson.pier }])
+        }
+        log(`Add pier ${pierJson.pier} to set ${keyNullIslandPiers}`, nullIslandPiersSortedSet)
       }
       log('loc: ', pierJson.loc)
       log('geohash: ', pierJson.geohash)
