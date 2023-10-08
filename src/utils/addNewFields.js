@@ -35,7 +35,7 @@ const DRYRUN = (options?.dryRun) ? options.dryRun : false
 log(options)
 
 const dataDir = path.resolve(appRoot, options.dataDir)
-log(`dataDir ${dataDir}`)
+info(`dataDir ${dataDir}`)
 let subDirs
 const failedToSaveFiles = []
 const marinaPiers = ['290', '415', '419', '899']
@@ -71,6 +71,14 @@ try {
       pierJson = JSON.parse(pierJson)
 
       // Make changes to the pier file here
+      // Add schema version field if it doesn't alredy exist
+      if (pierJson.version === undefined) {
+        const VERSION = 1
+        pierJson.version = VERSION
+        info(`Added schema version number field (${VERSION} to pier ${pierJson.pier}`)
+        changed = true
+      }
+
       // Add pier.property.business: TEXT
       // Add pier.property.isMarina: NUMERIC<0|1>
       // Add pier.property.hasFood:  NUMERIC<0|1>
