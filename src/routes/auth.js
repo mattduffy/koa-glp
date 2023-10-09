@@ -69,7 +69,6 @@ router.post('postLogin', '/login', async (ctx) => {
       ctx.request.body = fields
       ctx.request.files = files
       log(fields)
-      log(files)
       resolve()
     })
   })
@@ -77,16 +76,16 @@ router.post('postLogin', '/login', async (ctx) => {
   const sessionId = ctx.cookies.get('session')
   const csrfTokenCookie = ctx.cookies.get('csrfToken')
   const csrfTokenSession = ctx.session.csrfToken
-  const csrfTokenHidden = ctx.request.body['csrf-token']
+  const csrfTokenHidden = ctx.request.body['csrf-token'][0]
   const { username, password } = ctx.request.body
-  log(csrfTokenCookie, csrfTokenSession, ctx.request.body)
-  // log(`session status: ${ctx.session.status}`)
+  log(csrfTokenCookie, csrfTokenSession, csrfTokenHidden)
+  log(`session status: ${ctx.session.status}`)
   if (csrfTokenCookie === csrfTokenSession && csrfTokenSession === csrfTokenHidden) {
     const db = ctx.state.mongodb.client.db()
     // await next()
     const collection = db.collection('users')
     const users = new Users(collection, ctx)
-    const authUser = await users.authenticateAndGetUser(username, password)
+    const authUser = await users.authenticateAndGetUser(username[0], password[0])
     if (!authUser.user) {
       error(authUser.error)
       ctx.state.isAuthenticated = false
