@@ -83,9 +83,12 @@ router.get('editPier-GET', '/edit/pier/:pier', hasFlash, async (ctx) => {
       error(e)
       throw new Error(`Could not match pier ${pierNumber} to any town set in redis.`, { cause: e })
     }
+    let lon
+    let lat
     try {
       pier = await redis.json.get(key)
-      locals.pier = pier
+      locals.pier = pier;
+      [lon, lat] = pier.loc.split(',')
       log(pier)
     } catch (e) {
       error(e)
@@ -115,7 +118,14 @@ router.get('editPier-GET', '/edit/pier/:pier', hasFlash, async (ctx) => {
       error(e)
       throw new Error(`Failed creating previous pier link for pier ${pierNumber}`, { cause: e })
     }
+    const csrfToken = ulid()
+    ctx.session.csrfToken = csrfToken
+    ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })
+    locals.csrfToken = csrfToken
     locals.town = town
+    locals.pier = pier
+    locals.lon = lon
+    locals.lat = lat
     locals.photo = false
     locals.setTown = setTown
     locals.pierNumber = pierNumber

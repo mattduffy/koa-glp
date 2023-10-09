@@ -6,6 +6,14 @@ html, body {
   font-size: 1.0em;
 }
 
+:valid {
+
+}
+
+:invalid {
+  color: red;
+}
+
 h1 { font-size: 1.5em; }
 h2 {
   font-size: 1.4em;

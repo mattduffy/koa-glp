@@ -21,30 +21,73 @@
       <h2>Pier <%= pier.pier %>, located in the <nobr><a href="/towns/<%= setTown %>"><%= town %></a></nobr></h2>
       <div class="previousPier">
         <% if (previousPier?.length !== 0) { %>
-        <a href="<%= origin %>/pier/<%= previousPier %>">< Pier <%= previousPier %></a>
+        <a href="<%= origin %>/edit/pier/<%= previousPier %>">< Pier <%= previousPier %></a>
         <% } else { %>
         Pier <%= pier.pier %> 
         <% } %>
       </div>
       <div class="nextPier">
         <% if (nextPier.length !== 0) { %>
-        <a href="<%= origin %>/pier/<%= nextPier %>">Pier <%= nextPier %> ></a>
+        <a href="<%= origin %>/edit/pier/<%= nextPier %>">Pier <%= nextPier %> ></a>
         <% } else { %>
         Pier <%= pier.pier %> 
         <% } %>
       </div>
       <form id="pierEdit" name="pierEdit" action="/pier/edit" method="POST" enctype="multipart/form-data">
+        Schema version: <%= pier.version %>
+        <input id="csrf-token" type="hidden" value="<%= csrfToken %>">
         <fieldset id="pierPhoto" name="pierPhoto" form="pierEdit" class="edit_fieldset" title="Pier Photo Form">
           <legend>Pier Photo</legend>
-            
+                        
         </fieldset>
         <fieldset id="pierLocation" id="pierLocation" form="pierEdit" class="edit_fieldset" title="Pier Location Form">
           <legend>Pier Location</legend>
-
+          <label for="lon">Longtitude</label>
+          <input id="lon" name="lon" type="text" size="30" value="<%= lon %>" required><br>
+          <label for="lat">Latitude</label>
+          <input id="lat" name="lat" type="text" size="30" value="<%= lat %>" required><br>
+          <label for="geo">Geohash</label>
+          <input id="geo" name="geo" type="text" size="30" value="<%= pier.geohash %>"><br>
+          <label for="plus">Pluscode</label>
+          <input id="plus" name="plus" type="text" size="30" value="<%= pier.pluscode %>"><br>
         </fieldset>
         <fieldset id="pierAddress" id="pierAddress" form="pierEdit" class="edit_fieldset" title="Pier Address Form">
           <legend>Pier Address</legend>
+          <input type="radio" id="addressType1" name="addressType" value="ass" required><label for="addressType1">Association</label>
+          <input type="radio" id="addressType2" name="addressType" value="bus"><label for="addressType2">Business</label>
+          <input type="radio" id="addressType3" name="addressType" value="res"><label for="addressType3">Residential</label>
+          <label for="assoc">Association Name</label>
+          <input id="assoc" name="assoc" type="text" size="29" value="<%= pier.property.association %>"><br>
 
+          <label for="business">Business Name</label>
+          <input id="business" name="business" type="text" size="30" value="<%= pier.property.business %>"></br>
+
+          <label for="isMarina">Is a marina?</label>
+          <input id="isMarina" name="isMarina" type="checkbox" value=1 ><br>
+
+          <label for="hasFood">Has food?</label>
+          <input id="hasFood" name="hasFood" type="checkbox" value=1 ><br>
+
+          <label for="estab">Established In</label>
+          <input id="estab" name="estab" type="text" size="30" value="<%= pier.property.established %>"><br>
+
+          <label for="url">Website</label>
+          <input id="url" name="url" type="url" size="30" placeholder="https://genevalakepiers.com" maxlength="100" value="<%= pier.property.associationUrl %>"><br>
+
+          <label for="tel">Telephone</label>
+          <input id="tel" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="15" value="<%= pier.property.tel %>"><br>
+
+          <label for="street">Street</label>
+          <input id="street" name="street" type="text" size="30" maxlength="100" value="<%= pier.property.address.street %>"><br>
+
+          <label for="city">City</label>
+          <input id="city" name="city" type="text" size="30" maxlength="50" value="<%= pier.property.address.city %>"><br>
+
+          <label for="state">State</label>
+          <input id="state" name="state" type="text" size="3" maxlength="2" value="<%= pier.property.address.state %>"><br>
+
+          <label for="zip">Zip Code</label>
+          <input id="zip" name="zip" type="text" size="10" maxlength="9" value="<%= pier.property.address.zip %>"><br>
         </fieldset>
         <fieldset id="pierOwners" id="pierOwners" form="pierEdit" class="edit_fieldset" title="Pier Address Form">
           <legend>Pier Owners</legend>
@@ -115,7 +158,88 @@
         </ul>
       <% } %>
     <% } %>
-  </section>
+  </section> 
+  <script nonce="<%= nonce %>">
+    const form = document.forms['pierEdit']
+    const radio = form['addressType']
+    const assocInput = form['assoc']
+    const busInput = form['business']
+    const isMar = form['isMarina']
+    const hasFood = form['hasFood']
+    if (assocInput.value !== '') {
+      form['addressType1'].disabled =  false
+      form['addressType1'].checked = true
+      form['isMarina'].checked = false
+      form['isMarina'].disabled = true
+      busInput.disabled = true
+      form['isMarina'].checked = false
+      form['isMarina'].disabled = true
+      form['hasFood'].checked = false
+      form['hasFood'].disabled = true
+    } else if (busInput.value !== '') {
+      form['addressType2'].disabled =  false
+      form['addressType2'].checked = true
+    } else {
+      form['addressType1'].disabled = true 
+      form['addressType1'].checked = false 
+      form['addressType2'].disabled = true 
+      form['addressType2'].checked = false
+      form['addressType3'].checked = true
+      busInput.disabled = true
+    }
+    radio.forEach((r) => {
+      r.addEventListener('change', radioSelection)
+    })
+    let assocTemp = []
+    let busTemp = []
+    function radioSelection(e) {
+      e.preventDefault()
+      e.stopPropagation()
+      const val = e.target.value
+      // console.log(val)
+      console.info('Assoc: ', assocInput.value, assocTemp)
+      console.info('Bus: ', busInput.value, busTemp)
+      if (val === 'ass') {
+        if (busInput !== '' && busInput !== undefined) {
+          busTemp.push(busInput.value)
+          busInput.value = ''
+        }
+        busInput.disabled = true
+        assocInput.disabled = false
+        assocInput.value = (assocTemp.length > 0) ? assocTemp.pop() : ''
+        isMar.checked = false
+        isMar.disabled = true
+        hasFood.checked = false
+        hasFood.disabled = true
+      }
+      if (val === 'bus') {
+        if (assocInput.value !== '' && assocInput !== undefined) {
+          assocTemp.push(assocInput.value)
+          assocInput.value = ''
+        }
+        assocInput.disabled = true
+        busInput.value = (busTemp.length > 0) ? busTemp.pop() : ''
+        busInput.disabled = false
+        isMar.disabled = false
+        hasFood.disabled = false
+      } 
+      if (val === 'res') {
+        if (assocInput.value !== '' && assocInput !== undefined) {
+          assocTemp.push(assocInput.value)
+          assocInput.value = ''
+        }
+        assocInput.disabled = true
+        if (busInput !== '' && busInput !== undefined) {
+          busTemp.push(busInput.value)
+          busInput.value = ''
+        }
+        busInput.disabled = true
+        isMar.checked = false
+        isMar.disabled = true
+        hasFood.checked = false
+        hasFood.disabled = true
+      }}
+  </script>
   <section class="map">
     <%# map embed %>
     <%- await include('./map-embed.ejs') -%>

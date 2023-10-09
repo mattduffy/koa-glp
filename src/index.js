@@ -30,6 +30,7 @@ import { apiV1 } from './routes/api_v1.js'
 import { activityV1 } from './routes/activity_stream.js'
 import { auth as Auth } from './routes/auth.js'
 import { main as Main } from './routes/main.js'
+import { edit as Edit } from './routes/edit.js'
 import { wellKnown } from './routes/wellKnown.js'
 import { users as Users } from './routes/users.js'
 import { app as theApp } from './routes/app.js'
@@ -259,6 +260,7 @@ app.use(serve(app.dirs.public.dir))
 app.use(theApp.routes())
 app.use(Auth.routes())
 app.use(Main.routes())
+app.use(Edit.routes())
 app.use(Users.routes())
 app.use(Account.routes())
 app.use(wellKnown.routes())
