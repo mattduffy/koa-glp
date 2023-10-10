@@ -197,6 +197,18 @@ ul.owners > li {
   left: -30px;
 }
 
+:nth-child(odd of div.editOwner) {
+  padding-top: 5px;
+  margin-bottom: 5px;
+}
+
+:nth-child(even of div.editOwner) {
+  padding-top: 5px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 5px;
+}
+
 :nth-child(even of ul.owners > li) {
   background-color: #f9f9f9;
   border-bottom: 1px solid lightgrey;

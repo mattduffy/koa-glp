@@ -93,6 +93,7 @@
           <legend>Pier Owners</legend>
           <% if (pier.owners.length > 0) { %>
             <% pier.owners.forEach((o, i) => { %>
+              <div class="editOwner" data-i=<%= i %>>
               <label for="estate">Estate Name</label>
               <input id="estate" name="estate" type="text" size="30" maxlength="100" value="<%= o.estateName %>"><br>
               <label for="gla">GLA Membership</label>
@@ -115,12 +116,14 @@
                       <input id="<%= `member_${i}_${j}_middle` %>" name="<%= `member_${i}_${j}_middle` %>" type="text" size="3" maxlength="10" value="<%= m.m %>" placeholder="M"> 
                       <input id="<%= `member_${i}_${j}_last` %>" name="<%= `member_${i}_${j}_last` %>" type="text" size="11" maxlength="30" value="<%= m.l %>" placeholder="Last"> 
                       <input id="<%= `member_${i}_${j}_suf` %>" name="<%= `member_${i}_${j}_suf` %>" type="text" size="3" maxlength="10" value="<%= m.s %>" placeholder="suffix"> 
-                      <input id="<%= `member_${i}_${j}_hidden` %>" name="<%= `member_${i}_${j}_hidden` %>" type="checkbox" <%= (m.hidden === 1) ? 'checked' : '' %>>hide
+                      <input id="<%= `member_${i}_${j}_hidden` %>" name="<%= `member_${i}_${j}_hidden` %>" type="checkbox" <%= (m.hidden === 1) ? 'checked' : '' %>>
+                      <label for="<%= `member_${i}_${j}_hidden` %>">hide</label>
                     </div>
                 <% }) %>
                     <span class="addPerson">+ person</span>
                   </div><br>
               <% } %>
+              </div>
             <% }) %>
         <% } else { %>
           No owners entered.  <span class="addOwner">+</span> an owner.
@@ -279,8 +282,75 @@
         p.addEventListener('click', (e) => {
           e.preventDefault()
           e.stopPropagation()
-          dataSet = e.target.previousSibling.previousSibling
+          const dataSet = e.target.previousSibling.previousSibling.dataset
+          const m = dataSet.m
+          const j = parseInt(dataSet.j) + 1
           console.log(dataSet)
+          const newPersonDiv = document.createElement('div')
+          newPersonDiv.setAttribute('data-m', m)
+          newPersonDiv.setAttribute('data-j', j)
+          const title = document.createElement('input')
+          title.setAttribute('type', 'text')
+          title.setAttribute('id', `member_${m}_${j}_title`)
+          title.setAttribute('name', `member_${m}_${j}_title`)
+          title.setAttribute('size', '3')
+          title.setAttribute('maxlength', '10')
+          title.setAttribute('value', '')
+          title.setAttribute('placeholder', 'Title')
+          newPersonDiv.appendChild(title)
+          const first = document.createElement('input')
+          first.setAttribute('type', 'text')
+          first.setAttribute('id', `member_${m}_${j}_first`)
+          first.setAttribute('name', `member_${m}_${j}_first`)
+          first.setAttribute('size', '11')
+          first.setAttribute('maxlength', '60')
+          first.setAttribute('value', '')
+          first.setAttribute('placeholder', 'First')
+          newPersonDiv.appendChild(first)
+          const middle = document.createElement('input')
+          middle.setAttribute('type', 'text')
+          middle.setAttribute('id', `member_${m}_${j}_middle`)
+          middle.setAttribute('name', `member_${m}_${j}_middle`)
+          middle.setAttribute('size', '3')
+          middle.setAttribute('maxlength', '10')
+          middle.setAttribute('value', '')
+          middle.setAttribute('placeholder', 'M')
+          newPersonDiv.appendChild(middle)
+          const last = document.createElement('input')
+          last.setAttribute('type', 'text')
+          last.setAttribute('id', `member_${m}_${j}_last`)
+          last.setAttribute('name', `member_${m}_${j}_last`)
+          last.setAttribute('size', '11')
+          last.setAttribute('maxlength', '30')
+          last.setAttribute('value', '')
+          last.setAttribute('placeholder', 'Last')
+          newPersonDiv.appendChild(last)
+          const suffix = document.createElement('input')
+          suffix.setAttribute('type', 'text')
+          suffix.setAttribute('id', `member_${m}_${j}_suffix`)
+          suffix.setAttribute('name', `member_${m}_${j}_suffix`)
+          suffix.setAttribute('size', '3')
+          suffix.setAttribute('maxlength', '10')
+          suffix.setAttribute('value', '')
+          suffix.setAttribute('placeholder', 'suffix')
+          newPersonDiv.appendChild(suffix)
+          const hidden = document.createElement('input')
+          hidden.setAttribute('type', 'checkbox')
+          hidden.setAttribute('id', `member_${m}_${j}_hidden`)
+          hidden.setAttribute('name', `member_${m}_${j}_hidden`)
+          const shouldBeChecked = document.querySelector(`input[type=checkbox]#member_${m}_${dataSet?.j}_hidden`)?.checked
+          if (shouldBeChecked === true) {
+            hidden.setAttribute('checked', '')
+          }
+          newPersonDiv.appendChild(hidden)
+          const hlabel = document.createElement('label')
+          hlabel.innerText = 'hide'
+          hlabel.setAttribute('for', `member_${m}_${j}_hidden`)
+          newPersonDiv.appendChild(hlabel)
+          const insertInto = e.target.parentElement
+          console.log(insertInto)
+          insertInto.insertBefore(newPersonDiv, e.target)
+
         })
       })
   </script>
