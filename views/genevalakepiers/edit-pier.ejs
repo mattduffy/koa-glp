@@ -91,7 +91,40 @@
         </fieldset>
         <fieldset id="pierOwners" id="pierOwners" form="pierEdit" class="edit_fieldset" title="Pier Address Form">
           <legend>Pier Owners</legend>
-
+          <% if (pier.owners.length > 0) { %>
+            <% pier.owners.forEach((o, i) => { %>
+              <label for="estate">Estate Name</label>
+              <input id="estate" name="estate" type="text" size="30" maxlength="100" value="<%= o.estateName %>"><br>
+              <label for="gla">GLA Membership</label>
+              <select id="gla" name="gla" type="text">
+                <%
+                  const memberTypes = ['Residential Non-member', 'Regular', 'Sustaining', 'Contributing', 'Donor', 'Benefactor']
+                  memberTypes.forEach((t) => {
+                    const re = new RegExp(`${t}`)
+                    const selected = (re.test(o.membershipType)) ? 'selected' : '' %>
+                  <option value="<%= t %>" <%= selected %>><%= t %></option>
+                  <% }) %>
+              </select>
+                <br>
+              <% if (o.members.length > 0) { %>
+                  <div>
+                <% o.members.forEach((m, j) => { %>
+                    <div data-m=<%= i %> data-j=<%= j %>>
+                      <input id="<%= `member_${i}_${j}_title` %>" name="<%= `member_${i}_${j}_title` %>" type="text" size="3" maxlength="10" value="<%= m.t %>" placeholder="Title"> 
+                      <input id="<%= `member_${i}_${j}_first` %>" name="<%= `member_${i}_${j}_first` %>" type="text" size="11" maxlength="60" value="<%= m.f %>" placeholder="First"> 
+                      <input id="<%= `member_${i}_${j}_middle` %>" name="<%= `member_${i}_${j}_middle` %>" type="text" size="3" maxlength="10" value="<%= m.m %>" placeholder="M"> 
+                      <input id="<%= `member_${i}_${j}_last` %>" name="<%= `member_${i}_${j}_last` %>" type="text" size="11" maxlength="30" value="<%= m.l %>" placeholder="Last"> 
+                      <input id="<%= `member_${i}_${j}_suf` %>" name="<%= `member_${i}_${j}_suf` %>" type="text" size="3" maxlength="10" value="<%= m.s %>" placeholder="suffix"> 
+                      <input id="<%= `member_${i}_${j}_hidden` %>" name="<%= `member_${i}_${j}_hidden` %>" type="checkbox" <%= (m.hidden === 1) ? 'checked' : '' %>>hide
+                    </div>
+                <% }) %>
+                    <span class="addPerson">+ person</span>
+                  </div><br>
+              <% } %>
+            <% }) %>
+        <% } else { %>
+          No owners entered.  <span class="addOwner">+</span> an owner.
+        <% } %>
         </fieldset>
       </form>
       <% if (photo) { %>
@@ -180,12 +213,13 @@
       form['addressType2'].disabled =  false
       form['addressType2'].checked = true
     } else {
-      form['addressType1'].disabled = true 
-      form['addressType1'].checked = false 
-      form['addressType2'].disabled = true 
-      form['addressType2'].checked = false
       form['addressType3'].checked = true
+      assocInput.disabled = true
       busInput.disabled = true
+      form['isMarina'].checked = false
+      form['isMarina'].disabled = true
+      form['hasFood'].checked = false
+      form['hasFood'].disabled = true
     }
     radio.forEach((r) => {
       r.addEventListener('change', radioSelection)
@@ -239,6 +273,16 @@
         hasFood.checked = false
         hasFood.disabled = true
       }}
+
+      const addPersonSpans = document.querySelectorAll('span.addPerson')
+      addPersonSpans.forEach((p) => {
+        p.addEventListener('click', (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          dataSet = e.target.previousSibling.previousSibling
+          console.log(dataSet)
+        })
+      })
   </script>
   <section class="map">
     <%# map embed %>

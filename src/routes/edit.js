@@ -139,4 +139,59 @@ router.get('editPier-GET', '/edit/pier/:pier', hasFlash, async (ctx) => {
   }
 })
 
+router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
+  const log = editLog.extend('POST-editPier')
+  const info = editInfo.extend('POST-editPier')
+  const error = editError.extend('POST-editPier')
+  if (!ctx.state?.isAuthenticated) {
+    error('User is not authenticated.  Redirect to /')
+    ctx.status = 401
+    ctx.redirect('/')
+  } else {
+    const pierNumber = sanitize(ctx.params.pier)
+    const locals = {}
+    let key = `glp:piers:${pierNumber}`
+    let pier
+    let town
+    let setTown
+    info(pierNumber)
+    if (pierNumber.length > 6 || !/^\d/.test(pierNumber)) {
+      error('Pier number looks invalid')
+      error(pierNumber.length, !/^\d/.test(pierNumber))
+      locals.pier = `${pierNumber} is not a valid pier number.`
+    }
+    const form = formidable({
+      encoding: 'utf-8',
+      uploadDir: ctx.app.uploadsDir,
+      keepExtensions: true,
+      multipart: true,
+    })
+    // form.type = 'urlencoded'
+    await new Promise((resolve, reject) => {
+      form.parse(ctx.req, (err, fields) => {
+        if (err) {
+          error('There was a problem parsing the multipart form data.')
+          error(err)
+          reject(err)
+          return
+        }
+        log('Multipart form data was successfully parsed.')
+        ctx.request.body = fields
+        info(fields)
+        resolve()
+      })
+    })
+    const csrfTokenCookie = ctx.cookies.get('csrfToken')
+    const csrfTokenSession = ctx.session.csrfToken
+    const { csrfTokenHidden } = ctx.request.body
+    if (csrfTokenCookie === csrfTokenSession && csrfTokenSession === csrfTokenHidden) {
+      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+      ctx.status = 401
+      ctx.body = { error: 'csrf token mismatch' }
+    } else {
+      info(pierNumber)
+      info(ctx.request.body)
+    }
+  }
+})
 export { router as edit }
