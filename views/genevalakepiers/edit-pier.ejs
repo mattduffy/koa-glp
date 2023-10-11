@@ -282,10 +282,12 @@
         p.addEventListener('click', (e) => {
           e.preventDefault()
           e.stopPropagation()
-          const dataSet = e.target.previousSibling.previousSibling.dataset
+          // const dataSet = e.target.previousSibling.previousSibling.dataset
+          console.info(e.target.previousElementSibling)
+          const dataSet = e.target.previousElementSibling.dataset
+          console.info(dataSet)
           const m = dataSet.m
           const j = parseInt(dataSet.j) + 1
-          console.log(dataSet)
           const newPersonDiv = document.createElement('div')
           newPersonDiv.setAttribute('data-m', m)
           newPersonDiv.setAttribute('data-j', j)
@@ -360,7 +362,7 @@
     <%# map embed %>
     <script nonce="<%= nonce %>">
       const map = document.querySelector('div#map')
-      console.log(map)
+      // console.log(map)
     </script>
   </section>
 </article>
