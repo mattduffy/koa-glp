@@ -33,8 +33,8 @@
         Pier <%= pier.pier %> 
         <% } %>
       </div>
-      <form id="pierEdit" name="pierEdit" action="/pier/edit" method="POST" enctype="multipart/form-data">
-        Schema version: <%= pier.version %>
+      <form id="pierEdit" name="pierEdit" action="<%= origin %>/edit/pier/<%= pierNumber %>" method="POST" enctype="multipart/form-data">
+        Pier data schema version: <%= pier.version %>
         <input id="csrf-token" type="hidden" value="<%= csrfToken %>">
         <fieldset id="pierPhoto" name="pierPhoto" form="pierEdit" class="edit_fieldset" title="Pier Photo Form">
           <legend>Pier Photo</legend>
@@ -46,18 +46,18 @@
           <input id="lon" name="lon" type="text" size="30" value="<%= lon %>" required><br>
           <label for="lat">Latitude</label>
           <input id="lat" name="lat" type="text" size="30" value="<%= lat %>" required><br>
-          <label for="geo">Geohash</label>
-          <input id="geo" name="geo" type="text" size="30" value="<%= pier.geohash %>"><br>
-          <label for="plus">Pluscode</label>
-          <input id="plus" name="plus" type="text" size="30" value="<%= pier.pluscode %>"><br>
+          <label for="geohash">Geohash</label>
+          <input id="geohash" name="geohash" type="text" size="30" value="<%= pier.geohash %>"><br>
+          <label for="pluscode">Pluscode</label>
+          <input id="pluscode" name="pluscode" type="text" size="30" value="<%= pier.pluscode %>"><br>
         </fieldset>
         <fieldset id="pierAddress" id="pierAddress" form="pierEdit" class="edit_fieldset" title="Pier Address Form">
           <legend>Pier Address</legend>
           <input type="radio" id="addressType1" name="addressType" value="ass" required><label for="addressType1">Association</label>
           <input type="radio" id="addressType2" name="addressType" value="bus"><label for="addressType2">Business</label>
           <input type="radio" id="addressType3" name="addressType" value="res"><label for="addressType3">Residential</label>
-          <label for="assoc">Association Name</label>
-          <input id="assoc" name="assoc" type="text" size="29" value="<%= pier.property.association %>"><br>
+          <label for="association">Association Name</label>
+          <input id="association" name="association" type="text" size="29" value="<%= pier.property.association %>"><br>
 
           <label for="business">Business Name</label>
           <input id="business" name="business" type="text" size="30" value="<%= pier.property.business %>"></br>
@@ -68,11 +68,11 @@
           <label for="hasFood">Has food?</label>
           <input id="hasFood" name="hasFood" type="checkbox" value=1 ><br>
 
-          <label for="estab">Established In</label>
-          <input id="estab" name="estab" type="text" size="30" value="<%= pier.property.established %>"><br>
+          <label for="established">Established In</label>
+          <input id="established" name="established" type="text" size="30" value="<%= pier.property.established %>"><br>
 
-          <label for="url">Website</label>
-          <input id="url" name="url" type="url" size="30" placeholder="https://genevalakepiers.com" maxlength="100" value="<%= pier.property.associationUrl %>"><br>
+          <label for="associationUrl">Website</label>
+          <input id="associationUrl" name="associationUrl" type="url" size="30" placeholder="https://genevalakepiers.com" maxlength="100" value="<%= pier.property.associationUrl %>"><br>
 
           <label for="tel">Telephone</label>
           <input id="tel" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="15" value="<%= pier.property.tel %>"><br>
@@ -93,11 +93,11 @@
           <legend>Pier Owners</legend>
           <% if (pier.owners.length > 0) { %>
             <% pier.owners.forEach((o, i) => { %>
-              <div class="editOwner" data-i=<%= i %>>
-              <label for="estate">Estate Name</label>
-              <input id="estate" name="estate" type="text" size="30" maxlength="100" value="<%= o.estateName %>"><br>
-              <label for="gla">GLA Membership</label>
-              <select id="gla" name="gla" type="text">
+              <div class="editOwner" data-o=<%= i %>>
+              <label for="o_<%= i %>_estateName">Estate Name</label>
+              <input id="o_<%= i %>_estateName"" name="o_<%= i %>_estateName"" type="text" size="30" maxlength="100" value="<%= o.estateName %>"><br>
+              <label for="o_<%= i %>_membershipType">GLA Membership</label>
+              <select id="o_<%= i %>_membershipType"" name="o_<%= i %>_membershipType"" type="text">
                 <%
                   const memberTypes = ['Residential Non-member', 'Regular', 'Sustaining', 'Contributing', 'Donor', 'Benefactor']
                   memberTypes.forEach((t) => {
@@ -110,14 +110,14 @@
               <% if (o.members.length > 0) { %>
                   <div>
                 <% o.members.forEach((m, j) => { %>
-                    <div data-m=<%= i %> data-j=<%= j %>>
-                      <input id="<%= `member_${i}_${j}_title` %>" name="<%= `member_${i}_${j}_title` %>" type="text" size="3" maxlength="10" value="<%= m.t %>" placeholder="Title"> 
-                      <input id="<%= `member_${i}_${j}_first` %>" name="<%= `member_${i}_${j}_first` %>" type="text" size="11" maxlength="60" value="<%= m.f %>" placeholder="First"> 
-                      <input id="<%= `member_${i}_${j}_middle` %>" name="<%= `member_${i}_${j}_middle` %>" type="text" size="3" maxlength="10" value="<%= m.m %>" placeholder="M"> 
-                      <input id="<%= `member_${i}_${j}_last` %>" name="<%= `member_${i}_${j}_last` %>" type="text" size="11" maxlength="30" value="<%= m.l %>" placeholder="Last"> 
-                      <input id="<%= `member_${i}_${j}_suf` %>" name="<%= `member_${i}_${j}_suf` %>" type="text" size="3" maxlength="10" value="<%= m.s %>" placeholder="suffix"> 
-                      <input id="<%= `member_${i}_${j}_hidden` %>" name="<%= `member_${i}_${j}_hidden` %>" type="checkbox" <%= (m.hidden === 1) ? 'checked' : '' %>>
-                      <label for="<%= `member_${i}_${j}_hidden` %>">hide</label>
+                    <div data-o=<%= i %> data-m=<%= j %>>
+                      <input id="o_<%= i %>_m_<%= j %>_member_t" name="o_<%= i %>_m_<%= j %>_member_t" type="text" size="3" maxlength="10" value="<%= m.t %>" placeholder="Title"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_f" name="o_<%= i %>_m_<%= j %>_member_f" type="text" size="11" maxlength="60" value="<%= m.f %>" placeholder="First"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_m" name="o_<%= i %>_m_<%= j %>_member_m" type="text" size="3" maxlength="10" value="<%= m.m %>" placeholder="M"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_l" name="o_<%= i %>_m_<%= j %>_member_l" type="text" size="11" maxlength="30" value="<%= m.l %>" placeholder="Last"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_s" name="o_<%= i %>_m_<%= j %>_member_s"" type="text" size="3" maxlength="10" value="<%= m.s %>" placeholder="suffix"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_hidden" name="o_<%= i %>_m_<%= j %>_member_hidden"" type="checkbox" <%= (m.hidden === 1) ? 'checked' : '' %>>
+                      <label for="o_<%= i %>_m_<%= j %>_member_hidden">hide</label>
                     </div>
                 <% }) %>
                     <span class="addPerson">+ person</span>
@@ -126,8 +126,11 @@
               </div>
             <% }) %>
         <% } else { %>
-          No owners entered.  <span class="addOwner">+</span> an owner.
+          No owners entered.  <span class="addOwner">+ owner</span>.
         <% } %>
+        </fieldset>
+        <fieldset id="finish">
+          <input type="submit">
         </fieldset>
       </form>
       <% if (photo) { %>
@@ -198,7 +201,7 @@
   <script nonce="<%= nonce %>">
     const form = document.forms['pierEdit']
     const radio = form['addressType']
-    const assocInput = form['assoc']
+    const assocInput = form['association']
     const busInput = form['business']
     const isMar = form['isMarina']
     const hasFood = form['hasFood']
@@ -282,19 +285,17 @@
         p.addEventListener('click', (e) => {
           e.preventDefault()
           e.stopPropagation()
-          // const dataSet = e.target.previousSibling.previousSibling.dataset
-          console.info(e.target.previousElementSibling)
           const dataSet = e.target.previousElementSibling.dataset
           console.info(dataSet)
-          const m = dataSet.m
-          const j = parseInt(dataSet.j) + 1
+          const o = dataSet.o
+          const m = parseInt(dataSet.m) + 1
           const newPersonDiv = document.createElement('div')
+          newPersonDiv.setAttribute('data-o', o)
           newPersonDiv.setAttribute('data-m', m)
-          newPersonDiv.setAttribute('data-j', j)
           const title = document.createElement('input')
           title.setAttribute('type', 'text')
-          title.setAttribute('id', `member_${m}_${j}_title`)
-          title.setAttribute('name', `member_${m}_${j}_title`)
+          title.setAttribute('id', `o_${o}_m_${m}_member_t`)
+          title.setAttribute('name', `o_${o}_m_${m}_member_t`)
           title.setAttribute('size', '3')
           title.setAttribute('maxlength', '10')
           title.setAttribute('value', '')
@@ -302,8 +303,8 @@
           newPersonDiv.appendChild(title)
           const first = document.createElement('input')
           first.setAttribute('type', 'text')
-          first.setAttribute('id', `member_${m}_${j}_first`)
-          first.setAttribute('name', `member_${m}_${j}_first`)
+          first.setAttribute('id', `o_${o}_m_${m}_member_f`)
+          first.setAttribute('name', `o_${o}_m_${m}_member_f`)
           first.setAttribute('size', '11')
           first.setAttribute('maxlength', '60')
           first.setAttribute('value', '')
@@ -311,8 +312,8 @@
           newPersonDiv.appendChild(first)
           const middle = document.createElement('input')
           middle.setAttribute('type', 'text')
-          middle.setAttribute('id', `member_${m}_${j}_middle`)
-          middle.setAttribute('name', `member_${m}_${j}_middle`)
+          middle.setAttribute('id', `o_${o}_m_${m}_member_m`)
+          middle.setAttribute('name', `o_${o}_m_${m}__member_m`)
           middle.setAttribute('size', '3')
           middle.setAttribute('maxlength', '10')
           middle.setAttribute('value', '')
@@ -320,8 +321,8 @@
           newPersonDiv.appendChild(middle)
           const last = document.createElement('input')
           last.setAttribute('type', 'text')
-          last.setAttribute('id', `member_${m}_${j}_last`)
-          last.setAttribute('name', `member_${m}_${j}_last`)
+          last.setAttribute('id', `o_${o}_m_${m}_member_l`)
+          last.setAttribute('name', `o_${o}_m_${m}_member_l`)
           last.setAttribute('size', '11')
           last.setAttribute('maxlength', '30')
           last.setAttribute('value', '')
@@ -329,8 +330,8 @@
           newPersonDiv.appendChild(last)
           const suffix = document.createElement('input')
           suffix.setAttribute('type', 'text')
-          suffix.setAttribute('id', `member_${m}_${j}_suffix`)
-          suffix.setAttribute('name', `member_${m}_${j}_suffix`)
+          suffix.setAttribute('id', `o_${o}_m_${m}_member_s`)
+          suffix.setAttribute('name', `o_${o}_m_${m}_member_s`)
           suffix.setAttribute('size', '3')
           suffix.setAttribute('maxlength', '10')
           suffix.setAttribute('value', '')
@@ -338,16 +339,16 @@
           newPersonDiv.appendChild(suffix)
           const hidden = document.createElement('input')
           hidden.setAttribute('type', 'checkbox')
-          hidden.setAttribute('id', `member_${m}_${j}_hidden`)
-          hidden.setAttribute('name', `member_${m}_${j}_hidden`)
-          const shouldBeChecked = document.querySelector(`input[type=checkbox]#member_${m}_${dataSet?.j}_hidden`)?.checked
+          hidden.setAttribute('id', `o_${o}_m_${m}_member_hidden`)
+          hidden.setAttribute('name', `o_${o}_m_${m}_member_hidden`)
+          const shouldBeChecked = document.querySelector(`input[type=checkbox]#o_${o}_m_${dataSet?.m}_member_hidden`)?.checked
           if (shouldBeChecked === true) {
             hidden.setAttribute('checked', '')
           }
           newPersonDiv.appendChild(hidden)
           const hlabel = document.createElement('label')
           hlabel.innerText = 'hide'
-          hlabel.setAttribute('for', `member_${m}_${j}_hidden`)
+          hlabel.setAttribute('for', `o_${o}_m_${m}_member_hidden`)
           newPersonDiv.appendChild(hlabel)
           const insertInto = e.target.parentElement
           console.log(insertInto)

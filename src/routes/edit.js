@@ -2,7 +2,7 @@
  * @summary Koa router for editing the main top-level pages.
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/edit.js The router for editing the top level app URLs.
+ * @file src/routes/edit-pier.js The router for editing the top level app URLs.
  */
 
 import Router from '@koa/router'
@@ -152,8 +152,8 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
     const locals = {}
     let key = `glp:piers:${pierNumber}`
     let pier
-    let town
-    let setTown
+    // let town
+    // let setTown
     info(pierNumber)
     if (pierNumber.length > 6 || !/^\d/.test(pierNumber)) {
       error('Pier number looks invalid')
@@ -186,11 +186,15 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
     const { csrfTokenHidden } = ctx.request.body
     if (csrfTokenCookie === csrfTokenSession && csrfTokenSession === csrfTokenHidden) {
       error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+      ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
     } else {
       info(pierNumber)
       info(ctx.request.body)
+      ctx.type = 'application/json; charset=utf-8'
+      ctx.status = 200
+      ctx.body = { pier: pierNumber, fields: ctx.request.body }
     }
   }
 })
