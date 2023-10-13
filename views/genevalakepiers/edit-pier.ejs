@@ -65,16 +65,16 @@
           <input id="business" name="business" type="text" size="30" maxlength="100" value="<%= pier.property.business %>"></br>
 
           <label for="isMarina">Is a marina?</label>
-          <input id="isMarina" name="isMarina" type="checkbox" ><br>
+          <input id="isMarina" name="isMarina" type="checkbox" <%= (pier.property.isMarina=== 1) ? 'checked' : '' %>><br>
 
           <label for="hasFood">Has food?</label>
-          <input id="hasFood" name="hasFood" type="checkbox" ><br>
+          <input id="hasFood" name="hasFood" type="checkbox" <%= (pier.property.hasFood=== 1) ? 'checked' : '' %>><br>
 
           <label for="public">Is a public pier?</label>
-          <input id="public" name="public" type="checkbox" ><br>
+          <input id="public" name="public" type="checkbox" <%= (pier.public=== 1) ? 'checked' : '' %>><br>
 
           <label for="bigSwimPier">Is a big swim pier?</label>
-          <input id="bigSwimPier" name="bigSwimPier" type="checkbox" ><br>
+          <input id="bigSwimPier" name="bigSwimPier" type="checkbox" <%= (pier.bigSwimPier === 1) ? 'checked' : '' %>><br>
 
           <label for="established">Established In</label>
           <input id="established" name="established" type="text" size="30" maxlength=4 value="<%= pier.property.established %>"><br>
