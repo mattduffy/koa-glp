@@ -35,6 +35,8 @@
       </div>
       <form id="pierEdit" name="pierEdit" action="<%= origin %>/edit/pier/<%= pierNumber %>" method="POST" enctype="multipart/form-data">
         Pier data schema version: <%= pier.version %>
+        <input id="number" name="number" type="hidden" value="<%= pierNumber %>">
+        <input id="version" name="version" type="hidden" value="<%= pier.version %>">
         <input id="csrf-token" type="hidden" value="<%= csrfToken %>">
         <fieldset id="pierPhoto" name="pierPhoto" form="pierEdit" class="edit_fieldset" title="Pier Photo Form">
           <legend>Pier Photo</legend>
@@ -57,28 +59,34 @@
           <input type="radio" id="addressType2" name="addressType" value="bus"><label for="addressType2">Business</label>
           <input type="radio" id="addressType3" name="addressType" value="res"><label for="addressType3">Residential</label>
           <label for="association">Association Name</label>
-          <input id="association" name="association" type="text" size="29" value="<%= pier.property.association %>"><br>
+          <input id="association" name="association" type="text" size="29" maxlendgth="100" value="<%= pier.property.association %>"><br>
 
           <label for="business">Business Name</label>
-          <input id="business" name="business" type="text" size="30" value="<%= pier.property.business %>"></br>
+          <input id="business" name="business" type="text" size="30" maxlength="100" value="<%= pier.property.business %>"></br>
 
           <label for="isMarina">Is a marina?</label>
-          <input id="isMarina" name="isMarina" type="checkbox" value=1 ><br>
+          <input id="isMarina" name="isMarina" type="checkbox" ><br>
 
           <label for="hasFood">Has food?</label>
-          <input id="hasFood" name="hasFood" type="checkbox" value=1 ><br>
+          <input id="hasFood" name="hasFood" type="checkbox" ><br>
+
+          <label for="public">Is a public pier?</label>
+          <input id="public" name="public" type="checkbox" ><br>
+
+          <label for="bigSwimPier">Is a big swim pier?</label>
+          <input id="bigSwimPier" name="bigSwimPier" type="checkbox" ><br>
 
           <label for="established">Established In</label>
-          <input id="established" name="established" type="text" size="30" value="<%= pier.property.established %>"><br>
+          <input id="established" name="established" type="text" size="30" maxlength=4 value="<%= pier.property.established %>"><br>
 
           <label for="associationUrl">Website</label>
           <input id="associationUrl" name="associationUrl" type="url" size="30" placeholder="https://genevalakepiers.com" maxlength="100" value="<%= pier.property.associationUrl %>"><br>
 
           <label for="tel">Telephone</label>
-          <input id="tel" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="15" value="<%= pier.property.tel %>"><br>
+          <input id="tel" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= pier.property.tel %>"><br>
 
           <label for="street">Street</label>
-          <input id="street" name="street" type="text" size="30" maxlength="100" value="<%= pier.property.address.street %>"><br>
+          <input id="street" name="street" type="text" size="30" maxlength="70" value="<%= pier.property.address.street %>"><br>
 
           <label for="city">City</label>
           <input id="city" name="city" type="text" size="30" maxlength="50" value="<%= pier.property.address.city %>"><br>
@@ -353,9 +361,66 @@
           const insertInto = e.target.parentElement
           console.log(insertInto)
           insertInto.insertBefore(newPersonDiv, e.target)
-
         })
       })
+      const submit = document.querySelector('input[type=submit]')
+      submit.addEventListener('click', prepareData)
+      function prepareData(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        const pier = {}
+        pier.pier = form['number'].value
+        pier.version = form['version'].value
+        pier.loc = `${form['lon'].value.toString()},${form['lat'].value.toString()}`
+        pier.geohash = form['geohash'].value
+        pier.pluscode = form['pluscode'].value
+        pier.public = (form['public'].checked) ? 1 : 0
+        pier.bigSwimPier = (form['bigSwimPier'].checked) ? 1 : 0
+        const property = {}
+        property.association = form['association'].value
+        property.established = parseInt(form['established'].value, 10)
+        property.associationUrl = form['associationUrl'].value
+        property.tel = form['tel'].value.replace(/(?<area>\d{3})-(?<prefix>\d{3})-(?<exch>\d{4})/, '+1 ($<area>) $<prefix>-$<exch>')
+        property.business = form['business'].value
+        property.isMarina = (form['isMarina'].checked) ? 1 : 0
+        property.hasFood = (form['hasFood'].checked) ? 1 : 0
+        const address = {}
+        address.street = form['street'].value
+        address.city = (form['city'].value !== '') ? form['city'].value : 'Lake Geneva'
+        address.state = (form['state'].value !== '') ? form['state'].value : 'WI'
+        address.zip = (form['zip'].value !== '') ? form['zip'].value : '53147'
+        pier.property = property
+        const owners = []
+        const ownerNodes = document.querySelectorAll('div.editOwner')
+        ownerNodes.forEach((o, i) => {
+          console.log(`ownerNodes: ${i}`)
+          owners[i] = {}
+          owners[i].estateName = form[`o_${i}_estateName`].value
+          owners[i].membershipType = form[`o_${i}_membershipType`].options[form[`o_${i}_membershipType`].selectedIndex].value
+          owners[i].member = !(/non-member/i.test(owners[i].membershipType))
+          // const mCollection = m.children[6].children
+          const mCollection = o.querySelector(':scope > div').children
+          const members = []
+          for (personRow of mCollection) {
+            if (/div/i.test(personRow.tagName)) {
+              const o = i
+              const m = personRow.dataset.m
+              console.log(`person: ${m}`)
+              members[m] = {
+                t: form[`o_${o}_m_${m}_member_t`].value,
+                f: form[`o_${o}_m_${m}_member_f`].value,
+                m: form[`o_${o}_m_${m}_member_m`].value,
+                l: form[`o_${o}_m_${m}_member_l`].value,
+                s: form[`o_${o}_m_${m}_member_s`].value,
+                hidden: (form[`o_${o}_m_${m}_member_hidden`].checked) ? 1 : 0
+              }
+            }
+          }
+          owners[i].members = members
+        })
+        pier.owners = owners
+        console.log(pier)
+      }
   </script>
   <section class="map">
     <%# map embed %>
