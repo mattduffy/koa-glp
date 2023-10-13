@@ -57,7 +57,7 @@ const redis = redisStore(redisConnOpts)
 
 const config = {
   key: 'session',
-  maxAge: 86400000,
+  maxAge: (86400000 * 3),
   autoCommit: true,
   overwrite: true,
   httpOnly: true,
