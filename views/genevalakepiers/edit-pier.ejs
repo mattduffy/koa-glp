@@ -212,12 +212,19 @@
     const assocInput = form['association']
     const busInput = form['business']
     const isMar = form['isMarina']
+    let isMarCheckedTemp
     const hasFood = form['hasFood']
+    let hasFoodCheckedTemp
+    const public = form['public']
+    let publicCheckedTemp
+    const bigSwimPier = form['bigSwimPier']
+    let bigSwimPierCheckedTemp
     if (assocInput.value !== '') {
       form['addressType1'].disabled =  false
       form['addressType1'].checked = true
-      form['isMarina'].checked = false
-      form['isMarina'].disabled = true
+      form['bigSwimPier'].disabled = false
+      form['public'].disabled = true
+      form['public'].checked = false
       busInput.disabled = true
       form['isMarina'].checked = false
       form['isMarina'].disabled = true
@@ -226,10 +233,17 @@
     } else if (busInput.value !== '') {
       form['addressType2'].disabled =  false
       form['addressType2'].checked = true
+      form['isMarina'].disabled = false 
+      form['hasFood'].disabled = false 
+      form['bigSwimPier'].disabled = true 
     } else {
       form['addressType3'].checked = true
       assocInput.disabled = true
       busInput.disabled = true
+      form['bigSwimPier'].disabled = true 
+      form['bigSwimPier'].checked = false
+      form['public'].disabled = true 
+      form['public'].checked = false
       form['isMarina'].checked = false
       form['isMarina'].disabled = true
       form['hasFood'].checked = false
@@ -240,6 +254,7 @@
     })
     let assocTemp = []
     let busTemp = []
+    
     function radioSelection(e) {
       e.preventDefault()
       e.stopPropagation()
@@ -255,8 +270,12 @@
         busInput.disabled = true
         assocInput.disabled = false
         assocInput.value = (assocTemp.length > 0) ? assocTemp.pop() : ''
+        bigSwimPier.checked = bigSwimPierCheckedTemp
+        bigSwimPier.disabled = false
+        isMarCheckedTemp = isMar.checked
         isMar.checked = false
         isMar.disabled = true
+        hasFoodCheckedTemp = hasFood.checked
         hasFood.checked = false
         hasFood.disabled = true
       }
@@ -268,8 +287,14 @@
         assocInput.disabled = true
         busInput.value = (busTemp.length > 0) ? busTemp.pop() : ''
         busInput.disabled = false
+        isMar.checked = isMarCheckedTemp
         isMar.disabled = false
+        hasFood.checked = hasFoodCheckedTemp
         hasFood.disabled = false
+        public.checked = publicCheckedTemp
+        public.disabled = false
+        bigSwimPier.checked = bigSwimPierCheckedTemp
+        bigSwimPier.disabled = true
       } 
       if (val === 'res') {
         if (assocInput.value !== '' && assocInput !== undefined) {
@@ -282,10 +307,17 @@
           busInput.value = ''
         }
         busInput.disabled = true
+        isMarCheckedTemp = isMar.checked
         isMar.checked = false
         isMar.disabled = true
+        hasFoodCheckedTemp = hasFood.checked
         hasFood.checked = false
         hasFood.disabled = true
+        publicCheckedTemp = public.checked
+        public.checked = false
+        public.disabled = true
+        bigSwimPierCheckedTemp = bigSwimPier.checked
+        bigSwimPier.disabled = true
       }}
 
       const addPersonSpans = document.querySelectorAll('span.addPerson')
