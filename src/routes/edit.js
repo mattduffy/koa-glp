@@ -169,7 +169,7 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
     })
     // form.type = 'urlencoded'
     await new Promise((resolve, reject) => {
-      form.parse(ctx.req, (err, fields) => {
+      form.parse(ctx.req, (err, fields, files) => {
         if (err) {
           error('There was a problem parsing the multipart form data.')
           error(err)
@@ -177,8 +177,10 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
           return
         }
         log('Multipart form data was successfully parsed.')
-        ctx.request.body = fields
+        ctx.state.fields = fields
+        ctx.state.files = files
         info(fields)
+        info(files)
         resolve()
       })
     })
@@ -191,12 +193,49 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
     } else {
+      const update = (new Date()).toJSON()
+      const updatedPier = ctx.state.fields.pier
+      pier.updatedOn = []
+      pier.updatedOn.push(update)
       info(pierNumber)
       info(ctx.request.body)
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 200
-      ctx.body = { pier: pierNumber, fields: ctx.request.body }
+      ctx.body = { pier: updatedPier, files: ctx.state.files }
     }
   }
 })
+
+router.get('nullIsland', '/nullisland', hasFlash, async (ctx) => {
+  const log = _log.extend('nullisland')
+  // const info = _info.extend('nullisland')
+  // const error = _error.extend(nullisland')
+  log('inside edigt router: /nullisland')
+  ctx.status = 200
+  const locals = {}
+  const items = []
+  if (ctx.state.isAuthenticated) {
+    log(`sessionUser.isAuthenticated: ${ctx.state.isAuthenticated}`)
+    // get the list of null_island piers
+    const key = 'glp:null_island'
+    const nullIsland = await redis.zRange(key, '-', '+', { BY: 'LEX' })
+    log(nullIsland)
+    if (nullIsland.length > 0) {
+      items.push({ title: 'Piers assigned to Null Island.', list: nullIsland })
+    }
+  }
+  const csrfToken = ulid()
+  ctx.session.csrfToken = csrfToken
+  ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })
+  locals.csrfToken = csrfToken
+  locals.body = ctx.body
+  locals.flash = ctx.flash?.index ?? {}
+  locals.title = `${ctx.app.site}: Home`
+  locals.sessionUser = ctx.state.sessionUser
+  locals.isAuthenticated = ctx.state.isAuthenticated
+  locals.items = items
+  locals.nullisland = items[0].list
+  await ctx.render('nullisland', locals)
+})
+
 export { router as edit }

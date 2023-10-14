@@ -39,19 +39,30 @@ router.get('index', '/', hasFlash, async (ctx) => {
   // const error = mainError.extend('index')
   log('inside main router: /')
   ctx.status = 200
+  const locals = {}
+  const items = []
+  if (ctx.state.isAuthenticated) {
+    // get the list of null_island piers
+    const key = 'glp:null_island'
+    // nextPier = await redis.zRange(key, `[${pierNumber}`, '+', { BY: 'LEX', LIMIT: { offset: 1, count: 1 } })
+    const nullIsland = await redis.zRange(key, '-', '+', { BY: 'LEX' })
+    log(nullIsland)
+    if (nullIsland.length > 0) {
+      items.push({ title: 'Piers assigned to Null Island.', list: nullIsland })
+    }
+  }
   log(`sessionUser.isAuthenticated: ${ctx.state.isAuthenticated}`)
   const csrfToken = ulid()
   ctx.session.csrfToken = csrfToken
   ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })
-  await ctx.render('index', {
-    csrfToken,
-    body: ctx.body,
-    flash: ctx.flash?.index ?? {},
-    title: `${ctx.app.site}: Home`,
-    sessionUser: ctx.state.sessionUser,
-    isAuthenticated: ctx.state.isAuthenticated,
-    items: ['thing one to do.', 'thing two to do'],
-  })
+  locals.csrfToken = csrfToken
+  locals.body = ctx.body
+  locals.flash = ctx.flash?.index ?? {}
+  locals.title = `${ctx.app.site}: Home`
+  locals.sessionUser = ctx.state.sessionUser
+  locals.isAuthenticated = ctx.state.isAuthenticated
+  locals.items = items
+  await ctx.render('index', locals)
 })
 
 router.get('piersByTown', '/towns/:town', hasFlash, async (ctx) => {
@@ -512,7 +523,6 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
   let previousPier
   key = 'glp:all_piers_in_order'
   try {
-    // const args = [key, '[643', '+', 'bylex', 'limit', '1', '1']
     nextPier = await redis.zRange(key, `[${pierNumber}`, '+', { BY: 'LEX', LIMIT: { offset: 1, count: 1 } })
     if (Number.isNaN(parseInt(nextPier, 10))) {
       nextPier = '001'

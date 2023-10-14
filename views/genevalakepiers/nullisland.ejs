@@ -1,0 +1,40 @@
+<% if (flash?.info) { %>
+  <div id="info" class="info">
+    <span><%= flash.info %></span>
+  </div>
+<% } %>
+<% if (flash?.message) { %>
+  <div id="messages" class="messages">
+    <span><%= flash.message %></span>
+  </div>
+<% } %>
+<% if (flash?.error) { %>
+  <div id="errors" class="errors">
+    <span><%= flash.error %></span>
+  </div>
+<% } %>
+<article>
+  <section class="main">
+    <h2>Null Island Piers</h2>
+    <h3><%= nullisland.length %> Pier<%= (nullisland.length > 1) ? 's' : '' %></h3>
+
+    <p><% nullisland.forEach((n, i) => {
+      let a = `<a href="/edit/pier/${n}">${n}</a>, `
+      if (i === (nullisland.length - 1)) {
+        a = a.substr(0, a.lastIndexOf(', '))
+      } %>
+      <%- a %>
+    <% }) %></p>
+
+  </section>
+  <section class="map">
+    <%# map embed %>
+    <%- await include('./map-embed.ejs') -%>
+    <%# map embed %>
+    <script nonce="<%= nonce %>">
+      const map = document.querySelector('div#map')
+      // console.log(map)
+    </script>
+  </section>
+</article>
+
