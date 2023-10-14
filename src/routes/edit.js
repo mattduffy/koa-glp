@@ -121,6 +121,7 @@ router.get('editPier-GET', '/edit/pier/:pier', hasFlash, async (ctx) => {
     const csrfToken = ulid()
     ctx.session.csrfToken = csrfToken
     ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })
+    locals.jwtAccess = ctx.state.searchJwtAccess
     locals.csrfToken = csrfToken
     locals.town = town
     locals.pier = pier

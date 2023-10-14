@@ -40,7 +40,12 @@
         <input id="csrf-token" type="hidden" value="<%= csrfToken %>">
         <fieldset id="pierPhoto" name="pierPhoto" form="pierEdit" class="edit_fieldset" title="Pier Photo Form">
           <legend>Pier Photo</legend>
-                        
+          <% if (photo) { %>
+
+          <% } else { %>
+          <span>No photo added for this pier yet.</span><br>
+          <input id="photo_0" name="photo_0" type="file" accept=".png,.jpg,.jpeg">
+          <% } %>
         </fieldset>
         <fieldset id="pierLocation" id="pierLocation" form="pierEdit" class="edit_fieldset" title="Pier Location Form">
           <legend>Pier Location</legend>
@@ -326,7 +331,7 @@
           e.preventDefault()
           e.stopPropagation()
           const dataSet = e.target.previousElementSibling.dataset
-          console.info(dataSet)
+          // console.info(dataSet)
           const o = dataSet.o
           const m = parseInt(dataSet.m) + 1
           const newPersonDiv = document.createElement('div')
@@ -391,15 +396,39 @@
           hlabel.setAttribute('for', `o_${o}_m_${m}_member_hidden`)
           newPersonDiv.appendChild(hlabel)
           const insertInto = e.target.parentElement
-          console.log(insertInto)
+          // console.log(insertInto)
           insertInto.insertBefore(newPersonDiv, e.target)
         })
       })
-      const submit = document.querySelector('input[type=submit]')
-      submit.addEventListener('click', prepareData)
-      function prepareData(e) {
+
+      const fileInput = form['photo_0']
+      fileInput.addEventListener('change', handlePhoto, false)
+      function handlePhoto(e) {
         e.preventDefault()
         e.stopPropagation()
+        // prepareNewImage(this.files)
+        prepareNewImage()
+      }
+      const imageDropTarget = form['pierPhoto']
+      imageDropTarget.addEventListener('dragenter', dragnoop, false)
+      imageDropTarget.addEventListener('dragover', dragnoop, false)
+      imageDropTarget.addEventListener('drop', dragdrop, false)
+      function dragnoop(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        // console.log(e)
+      }
+      function dragdrop(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        const files = e.dataTransfer.files
+        console.log(files)
+        // prepareNewImage(files) 
+        prepareNewImage() 
+      }
+      
+      function preparePierData(e) {
+        console.log('step 1: prepare form data')
         const pier = {}
         pier.pier = form['number'].value
         pier.version = form['version'].value
@@ -425,7 +454,7 @@
         const owners = []
         const ownerNodes = document.querySelectorAll('div.editOwner')
         ownerNodes.forEach((o, i) => {
-          console.log(`ownerNodes: ${i}`)
+          // console.log(`ownerNodes: ${i}`)
           owners[i] = {}
           owners[i].estateName = form[`o_${i}_estateName`].value
           owners[i].membershipType = form[`o_${i}_membershipType`].options[form[`o_${i}_membershipType`].selectedIndex].value
@@ -437,14 +466,16 @@
             if (/div/i.test(personRow.tagName)) {
               const o = i
               const m = personRow.dataset.m
-              console.log(`person: ${m}`)
-              members[m] = {
-                t: form[`o_${o}_m_${m}_member_t`].value,
-                f: form[`o_${o}_m_${m}_member_f`].value,
-                m: form[`o_${o}_m_${m}_member_m`].value,
-                l: form[`o_${o}_m_${m}_member_l`].value,
-                s: form[`o_${o}_m_${m}_member_s`].value,
-                hidden: (form[`o_${o}_m_${m}_member_hidden`].checked) ? 1 : 0
+              if ((form[`o_${o}_m_${m}_member_f`].value !== '') && (form[`o_${o}_m_${m}_member_l`].value !== '')) {
+                // console.log(`person: ${o} ${m}`)
+                members[m] = {
+                  t: form[`o_${o}_m_${m}_member_t`].value,
+                  f: form[`o_${o}_m_${m}_member_f`].value,
+                  m: form[`o_${o}_m_${m}_member_m`].value,
+                  l: form[`o_${o}_m_${m}_member_l`].value,
+                  s: form[`o_${o}_m_${m}_member_s`].value,
+                  hidden: (form[`o_${o}_m_${m}_member_hidden`].checked) ? 1 : 0
+                }
               }
             }
           }
@@ -452,6 +483,47 @@
         })
         pier.owners = owners
         console.log(pier)
+        return pier
+      }
+
+      function prepareNewImage() {
+        console.log('step 2: prepare new image')
+        const span = form['pierPhoto'].querySelector(':scope > span')
+        const fileList = form['photo_0'].files
+        span.innerHTML = `Image selected for pier <%= pierNumber %><br>${fileList[0].name} <br>type: ${fileList[0].type} <br>${Math.floor(fileList[0].size/1024)} KBs.`
+        console.log(span)
+      }
+
+      async function send(data) {
+        console.log('step 3: send data')
+        let jwtAccess = '<%= searchJwtAccess %>'
+        const opts = {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${jwtAccess}`,
+          },
+          body: data,
+        }
+        console.dir(opts)
+        const request = new Request(`${origin}/edit/pier/<% pierNumber %>`, opts)
+        console.dir(request)
+        // const response = await fetch(request, { credentials: 'same-origin' })
+      }
+
+      const submit = document.querySelector('input[type=submit]')
+      submit.addEventListener('click', submitPierEdits)
+      async function submitPierEdits(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        const pier = preparePierData(e)
+        let file = form['photo_0'].files
+        console.log(`files ready to be uploaded: ${file.length}`)
+        // prepareNewImage(e)
+        const formData = new FormData()
+        formData.append('csrfTokenHidden', form['csrf-token'].value)
+        formData.append('pier', pier)
+        await send(formData)
       }
   </script>
   <section class="map">
