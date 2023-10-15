@@ -206,6 +206,80 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
   }
 })
 
+router.post('geohash', '/edit/geohash', async (ctx) => {
+  const log = _log.extend('geohash')
+  const info = _info.extend('geohash')
+  const error = _error.extend('geohash')
+  if (!ctx.state.isAuthenticated) {
+    error('User is not authenticated.  Redirect to /')
+    ctx.status = 401
+    ctx.redirect('/')
+  } else {
+    const form = formidable({
+      encoding: 'utf-8',
+      uploadDir: ctx.app.uploadsDir,
+      keepExtensions: true,
+      multipart: true,
+    })
+    // form.type = 'urlencoded'
+    await new Promise((resolve, reject) => {
+      form.parse(ctx.req, (err, fields) => {
+        if (err) {
+          error('There was a problem parsing the multipart form data.')
+          error(err)
+          reject(err)
+          return
+        }
+        log('Multipart form data was successfully parsed.')
+        ctx.state.fields = fields
+        info(fields)
+        resolve()
+      })
+    })
+    const csrfTokenCookie = ctx.cookies.get('csrfToken')
+    const csrfTokenSession = ctx.session.csrfToken
+    const [csrfTokenHidden] = ctx.state.fields.csrfTokenHidden
+    info(`${csrfTokenCookie},\n${csrfTokenSession},\n${csrfTokenHidden}`)
+    if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
+    if (csrfTokenSession === csrfTokenHidden) info('session === hidden')
+    if (csrfTokenCookie === csrfTokenHidden) info('cookie === hidden')
+    if (!(csrfTokenCookie === csrfTokenSession && csrfTokenSession === csrfTokenHidden)) {
+      error(`CSRF-Token mismatch: header:${csrfTokenCookie} hidden:${csrfTokenHidden} - session:${csrfTokenSession}`)
+      ctx.type = 'application/json; charset=utf-8'
+      ctx.status = 401
+      ctx.body = { error: 'csrf token mismatch' }
+    } else {
+      info(`pier: ${ctx.state.fields.pier[0]}`)
+      info(`csrf: ${ctx.state.fields.csrfTokenHidden[0]}`)
+      info(`lon: ${ctx.state.fields.lon[0].toString()}`)
+      info(`lat: ${ctx.state.fields.lat[0].toString()}`)
+      const lon = ctx.state.fields.lon[0].toString()
+      const lat = ctx.state.fields.lat[0].toString()
+      const pier = ctx.state.fields.pier[0].toString()
+      const coords = { longitude: lon, latitude: lat, member: pier }
+      let geoAdd
+      let geoHash
+      try {
+        // geoAdd = await redis.geoAdd('glp:piers:geohashes', coords, { NX: true })
+        // geoAdd = await redis.geoAdd('glp:piers:geohashes', coords, { CH: true })
+        geoAdd = await redis.geoAdd('glp:piers:geohashes', coords)
+        geoHash = await redis.geoHash('glp:piers:geohashes', pier)
+      } catch (e) {
+        error(e)
+        geoAdd = e.message
+        geoHash = 0
+      }
+      info(`geoAdd result: ${geoAdd}`)
+      ctx.type = 'application/json; charset=utf-8'
+      ctx.status = 200
+      ctx.body = {
+        pier,
+        geoHash: geoHash[0],
+      }
+    }
+  }
+})
+
 router.get('nullIsland', '/nullisland', hasFlash, async (ctx) => {
   const log = _log.extend('nullisland')
   // const info = _info.extend('nullisland')

@@ -525,6 +525,39 @@
         formData.append('pier', pier)
         await send(formData)
       }
+      // Event hander for lon/lat fields to get geohash
+      async function getGeoHash(e) {
+        const lon = parseFloat(form['lon'].value, 10)
+        const lat = parseFloat(form['lat'].value, 10)
+        console.log(lon, lat)
+        if (lon === 0 || lat === 0) {
+          return false
+        }
+        const data = new FormData()
+        data.append('csrfTokenHidden', form['csrf-token'].value)
+        data.append('pier', form['number'].value)
+        data.append('lon', lon.toString())
+        data.append('lat', lat.toString())
+        let jwtAccess = '<%= searchJwtAccess %>'
+        const opts = {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${jwtAccess}`,
+          },
+          body: data,
+        }
+        console.dir(opts)
+        const request = new Request(`${origin}/edit/geohash`, opts)
+        console.dir(request)
+        const response = await (await fetch(request, { credentials: 'same-origin' })).json()
+        console.log(response)
+        if (response?.geoHash !== 0) {
+          form['geohash'].value = response.geoHash
+        }
+      }
+      form['lon'].addEventListener('change', getGeoHash, false)
+      form['lat'].addEventListener('change', getGeoHash, false)
   </script>
   <section class="map">
     <%# map embed %>

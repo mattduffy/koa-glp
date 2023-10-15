@@ -14,13 +14,22 @@
   </div>
 <% } %>
 <% if (isAuthenticated) { %>
+<article class="admin-stuff">
+  <% /* %>
   <p><a href="/account/view">Your account page</a></p>
+  <% */ %>
   <% if (sessionUser) { %>
-    <h2>Hi, <%= sessionUser.displayName %></h2>
+    <div>Hi, <%= sessionUser.displayName %></div>
     <% if (items.length > 0) { %>
-      <p>You have <a href="/#"><%= items.length %></a> items waiting for you.</p> 
+      <div>There <%= (items.length > 1) ? 'are' : 'is' %> <%= items.length %> item<%= (items.length > 1) ? 's' : '' %> that need<%= (items.length === 1) ? 's' : '' %> attention.</div> 
+      <ul class="admin-items">
+        <% items.forEach((item) => { %>
+          <li><a href="<%= origin %>/nullisland"><%= item.list.length %> <%= item.title %></a></li>
+        <% }) %>
+      </ul>
     <% } %>
   <% } %>
+</article>
 <% } %>
 <article>
   <section class="main">
