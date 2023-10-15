@@ -170,7 +170,8 @@ async function csp(ctx, next) {
     + `child-src 'self' blob: ${ctx.request.origin}; `
     + `worker-src 'self' blob: ${ctx.request.origin}; `
     + `manifest-src 'self' blob: ${ctx.request.origin}; `
-    + `connect-src 'self' blob: ${ctx.request.origin} ${ctx.request.origin.replace('https', 'wss')}; `
+    // + `connect-src 'self' blob: ${ctx.request.origin} ${ctx.request.origin.replace('https', 'wss')}; `
+    + `connect-src 'self' blob: ${ctx.request.origin} https://plus.codes; `
   ctx.set('Content-Security-Policy', policy)
   logg(`Content-Security-Policy: ${policy}`)
   try {
