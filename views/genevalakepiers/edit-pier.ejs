@@ -62,7 +62,7 @@
           <legend>Pier Address</legend>
           <input type="radio" id="addressType1" name="addressType" value="ass" required><label for="addressType1">Association</label>
           <input type="radio" id="addressType2" name="addressType" value="bus"><label for="addressType2">Business</label>
-          <input type="radio" id="addressType3" name="addressType" value="res"><label for="addressType3">Residential</label>
+          <input type="radio" id="addressType3" name="addressType" value="res"><label for="addressType3">Residential</label><br>
           <label for="association">Association Name</label>
           <input id="association" name="association" type="text" size="29" maxlendgth="100" value="<%= pier.property.association %>"><br>
 
@@ -530,7 +530,8 @@
         const lon = parseFloat(form['lon'].value, 10)
         const lat = parseFloat(form['lat'].value, 10)
         console.log(lon, lat)
-        if (lon === 0 || lat === 0) {
+        if ((lon === 0 || isNaN(lon)) || (lat === 0 || isNaN(lat))) {
+        // if (lon === 0 || lat === 0) {
           return false
         }
         const data = new FormData()
@@ -558,6 +559,22 @@
       }
       form['lon'].addEventListener('change', getGeoHash, false)
       form['lat'].addEventListener('change', getGeoHash, false)
+      // Event handler for lon/lat fields to get google pluscode
+      async function getPluscode(e) {
+        const lon = parseFloat(form['lon'].value, 10)
+        const lat = parseFloat(form['lat'].value, 10)
+        if ((lon === 0 || isNaN(lon)) || (lat === 0 || isNaN(lat))) {
+          return false
+        }
+        const request = new Request(`https://plus.codes/api?address=${lat},${lon}`)
+        const response = await (await fetch(request)).json()
+        console.log(response)
+        if (response?.plus_code?.global_code !== '') {
+          form['pluscode'].value = response.plus_code.global_code
+        }
+      }
+      form['lon'].addEventListener('change', getPluscode, false)
+      form['lat'].addEventListener('change', getPluscode, false)
   </script>
   <section class="map">
     <%# map embed %>
