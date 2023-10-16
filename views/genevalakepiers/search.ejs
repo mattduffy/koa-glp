@@ -45,51 +45,71 @@
         resultsList.setAttribute('id', 'resultsList')
         resultsList.setAttribute('class', 'searchResults')
         if (json?.pierNumbers?.total > 0) {
+          const pierNumberResultsList = document.createElement('ul')
+          pierNumberResultsList.setAttribute('id', 'pierNumberResults')
+          pierNumberResultsList.setAttribute('aria-label', 'Pier Numbers:')
+          pierNumberResultsList.classList.add('searchResults', 'pierNumberResults')
           json.pierNumbers.documents.forEach((p) => {
             const li = document.createElement('li')
             const link = `<a href="<%= origin %>/pier/${p.value.pierNumber}">Pier ${p.value.pierNumber}</a>`
             li.innerHTML = link
-            resultsList.appendChild(li)
+            pierNumberResultsList.appendChild(li)
           })
+          searchResults.appendChild(pierNumberResultsList)
         }
         if (json?.estateNames?.total > 0) {
+          const estateNameResultsList = document.createElement('ul')
+          estateNameResultsList.setAttribute('id', 'estateNameResults')
+          estateNameResultsList.setAttribute('aria-label', 'Estate Names:')
+          estateNameResultsList.classList.add('searchResults', 'estateNameResults')
           json.estateNames.documents.forEach((e) => {
             const li = document.createElement('li')
-            const link = `<a href="<%= origin %>/pier/${e.value['pier']}">Pier ${e.value['pier']} ${e.value.estateName} (estate)</a>`
+            const link = `<a href="<%= origin %>/pier/${e.value['pier']}">Pier ${e.value['pier']} ${e.value.estateName}</a>`
             li.innerHTML = link
-            resultsList.appendChild(li)
+            estateNameResultsList.appendChild(li)
           })
+          searchResults.appendChild(estateNameResultsList)
         }
         if (json?.ownerNames?.total > 0) {
+          const ownerNamesResultsList = document.createElement('ul')
+          ownerNamesResultsList.setAttribute('id', 'ownerNamesResults')
+          ownerNamesResultsList.setAttribute('aria-label', 'Family Names:')
+          ownerNamesResultsList.classList.add('searchResults', 'ownerNamesResults')
           json.ownerNames.documents.forEach((o) => {
-            // console.log(o)
             const li = document.createElement('li')
-            // const link = `<a href="<%= origin %>/pier/${o.value['pier']}">Pier ${o.value['pier']} ${o.value.lastname} family</a>`
             const name = `${o.value.firstname} ${o.value.lastname}`
             const link = `<a href="<%= origin %>/pier/${o.value['pier']}">Pier ${o.value['pier']} ${name}</a>`
             li.innerHTML = link
-            resultsList.appendChild(li)
+            ownerNamesResultsList.appendChild(li)
           })
+          searchResults.appendChild(ownerNamesResultsList)
         }
         if (json?.associations?.total > 0) {
+          const associationsResultsList = document.createElement('ul')
+          associationsResultsList.setAttribute('id', 'associationsResults')
+          associationsResultsList.setAttribute('aria-label', 'Associations:')
+          associationsResultsList.classList.add('searchResults', 'associationsResults')
           json.associations.documents.forEach((a) => {
-            // console.log(a)
             const li = document.createElement('li')
             const link = `<a href="<%= origin %>/pier/${a.value['pier']}">Pier ${a.value['pier']} ${a.value.association} </a>`
             li.innerHTML = link
-            resultsList.appendChild(li)
+            associationsResultsList.appendChild(li)
           })
+          searchResults.appendChild(associationsResultsList)
         }
         if (json?.businesses?.total > 0) {
+          const businessResultsList = document.createElement('ul')
+          businessResultsList.setAttribute('id', 'businessResults')
+          businessResultsList.setAttribute('aria-label', 'Businesses:')
+          businessResultsList.classList.add('searchResults', 'businessResults')
           json.businesses.documents.forEach((b) => {
-            // console.log(b)
             const li = document.createElement('li')
-            const link = `<a href="<%= origin %>/pier/${b.value['pier']}">Pier ${b.value['pier']} ${b.value.business} (business)</a>`
+            const link = `<a href="<%= origin %>/pier/${b.value['pier']}">Pier ${b.value['pier']} ${b.value.business}</a>`
             li.innerHTML = link
-            resultsList.appendChild(li)
+            businessResultsList.appendChild(li)
           })
+        searchResults.appendChild(businessResultsList)
         }
-        searchResults.appendChild(resultsList)
       }
     })
   </script>
