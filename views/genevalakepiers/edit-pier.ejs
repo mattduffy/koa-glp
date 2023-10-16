@@ -33,11 +33,18 @@
         Pier <%= pier.pier %> 
         <% } %>
       </div>
+      <p></p>
       <form id="pierEdit" name="pierEdit" action="<%= origin %>/edit/pier/<%= pierNumber %>" method="POST" enctype="multipart/form-data">
-        Pier data schema version: <%= pier.version %>
-        <input id="number" name="number" type="hidden" value="<%= pierNumber %>">
-        <input id="version" name="version" type="hidden" value="<%= pier.version %>">
-        <input id="csrf-token" type="hidden" value="<%= csrfToken %>">
+        <fieldset id="info" name="info" form="pierEdit" class="edit_fieldset" title="Info">
+          <% if (pier?.updatedOn) { %>
+            Last updated on: <%= pier.updatedOn[0] %>
+          <% } %>
+          Pier data schema version: <%= pier.version %>
+          <input id="number" name="number" type="hidden" value="<%= pierNumber %>">
+          <input id="version" name="version" type="hidden" value="<%= pier.version %>">
+          <input id="setTown" name="setTown" type="hidden" value="<%= setTown %>">
+          <input id="csrf-token" type="hidden" value="<%= csrfToken %>">
+        </fieldset>
         <fieldset id="pierPhoto" name="pierPhoto" form="pierEdit" class="edit_fieldset" title="Pier Photo Form">
           <legend>Pier Photo</legend>
           <% if (photo) { %>
@@ -406,8 +413,7 @@
       function handlePhoto(e) {
         e.preventDefault()
         e.stopPropagation()
-        // prepareNewImage(this.files)
-        prepareNewImage()
+        prepareNewImage(e)
       }
       const imageDropTarget = form['pierPhoto']
       imageDropTarget.addEventListener('dragenter', dragnoop, false)
@@ -423,8 +429,7 @@
         e.stopPropagation()
         const files = e.dataTransfer.files
         console.log(files)
-        // prepareNewImage(files) 
-        prepareNewImage() 
+        prepareNewImage(e) 
       }
       
       function preparePierData(e) {
@@ -487,11 +492,16 @@
       }
 
       function prepareNewImage() {
-        console.log('step 2: prepare new image')
-        const span = form['pierPhoto'].querySelector(':scope > span')
         const fileList = form['photo_0'].files
-        span.innerHTML = `Image selected for pier <%= pierNumber %><br>${fileList[0].name} <br>type: ${fileList[0].type} <br>${Math.floor(fileList[0].size/1024)} KBs.`
-        console.log(span)
+        if (arguments.length > 0) {
+          const span = form['pierPhoto'].querySelector(':scope > span')
+          span.innerHTML = `Image selected for pier <%= pierNumber %><br>${fileList[0].name} <br>type: ${fileList[0].type} <br>${Math.floor(fileList[0].size/1024)} KBs.`
+          console.log(span)
+        } else {
+          console.log('step 2: prepare new image')
+          console.info(fileList[0])
+          return fileList[0]
+        }
       }
 
       async function send(data) {
@@ -506,9 +516,12 @@
           body: data,
         }
         console.dir(opts)
-        const request = new Request(`${origin}/edit/pier/<% pierNumber %>`, opts)
+        const url = new URL(`${origin}/edit/pier/<%= pierNumber %>`)
+        console.log(url.toString())
+        const request = new Request(url, opts)
         console.dir(request)
-        // const response = await fetch(request, { credentials: 'same-origin' })
+        const response = await (await fetch(request, { credentials: 'same-origin' })).json()
+        console.dir(response)
       }
 
       const submit = document.querySelector('input[type=submit]')
@@ -516,13 +529,18 @@
       async function submitPierEdits(e) {
         e.preventDefault()
         e.stopPropagation()
-        const pier = preparePierData(e)
-        let file = form['photo_0'].files
-        console.log(`files ready to be uploaded: ${file.length}`)
-        // prepareNewImage(e)
         const formData = new FormData()
+        const pier = preparePierData(e)
+        // let file = form['photo_0'].files
+        const file = prepareNewImage()
+        if (file !== undefined) {
+          console.log(`files ready to be uploaded: ${file}`)
+          formData.append('photo_0', file)
+        }
         formData.append('csrfTokenHidden', form['csrf-token'].value)
         formData.append('pier', pier)
+        formData.append('version', form['version'].value)
+        formData.append('setTown', form['setTown'].value)
         await send(formData)
       }
       // Event hander for lon/lat fields to get geohash
