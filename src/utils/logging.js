@@ -28,6 +28,37 @@ const TOWNS = [
 ]
 
 /*
+ * Convert a setTown identifier to a data directory name.
+ */
+function getTownDirName(t, p) {
+  const log = _log.extend('getTownDirName')
+  const error = _error.extend('getTownDirName')
+  const town = t.toLowerCase()
+  let dir
+  switch (town) {
+    case town.match(/city_of_lake_geneva/)?.inupt:
+      dir = `${(parseFloat(p) <= 39) ? '1' : '7'}_${town}`
+      break
+    case town.match(/linn/)?.input:
+      dir = `${(parseFloat(p) <= 167) ? '2' : '6'}_${town}`
+      break
+    case town.match(/williams/)?.input:
+      dir = `3_${town}`
+      break
+    case town.match(/walworth/)?.input:
+      dir = `4_${town}`
+      break
+    case town.match(/fontana/)?.input:
+      dir = `5_${town}`
+      break
+    default:
+      error('no match found.')
+  }
+  log(dir)
+  return dir
+}
+
+/*
  * Convert URL parameter :town to redis set name.
  */
 function getSetName(t = '') {
@@ -73,4 +104,5 @@ export {
   TOWNS,
   getSetName,
   capitalize,
+  getTownDirName,
 }
