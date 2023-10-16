@@ -33,10 +33,11 @@ const TOWNS = [
 function getTownDirName(t, p) {
   const log = _log.extend('getTownDirName')
   const error = _error.extend('getTownDirName')
+  log(`town: ${t}, pier: ${p}`)
   const town = t.toLowerCase()
   let dir
   switch (town) {
-    case town.match(/city_of_lake_geneva/)?.inupt:
+    case town.match(/city_of_lake_geneva/)?.input:
       dir = `${(parseFloat(p) <= 39) ? '1' : '7'}_${town}`
       break
     case town.match(/linn/)?.input:

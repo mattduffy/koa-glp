@@ -37,7 +37,7 @@
       <form id="pierEdit" name="pierEdit" action="<%= origin %>/edit/pier/<%= pierNumber %>" method="POST" enctype="multipart/form-data">
         <fieldset id="info" name="info" form="pierEdit" class="edit_fieldset" title="Info">
           <% if (pier?.updatedOn) { %>
-            Last updated on: <%= pier.updatedOn[0] %>
+            Last updated on: <%= pier.updatedOn[0] %><br>
           <% } %>
           Pier data schema version: <%= pier.version %>
           <input id="number" name="number" type="hidden" value="<%= pierNumber %>">
@@ -455,6 +455,7 @@
         address.city = (form['city'].value !== '') ? form['city'].value : 'Lake Geneva'
         address.state = (form['state'].value !== '') ? form['state'].value : 'WI'
         address.zip = (form['zip'].value !== '') ? form['zip'].value : '53147'
+        property.address = address
         pier.property = property
         const owners = []
         const ownerNodes = document.querySelectorAll('div.editOwner')
@@ -531,14 +532,13 @@
         e.stopPropagation()
         const formData = new FormData()
         const pier = preparePierData(e)
-        // let file = form['photo_0'].files
         const file = prepareNewImage()
         if (file !== undefined) {
           console.log(`files ready to be uploaded: ${file}`)
           formData.append('photo_0', file)
         }
         formData.append('csrfTokenHidden', form['csrf-token'].value)
-        formData.append('pier', pier)
+        formData.append('pier', JSON.stringify(pier))
         formData.append('version', form['version'].value)
         formData.append('setTown', form['setTown'].value)
         await send(formData)
