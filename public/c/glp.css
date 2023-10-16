@@ -50,6 +50,10 @@ a#skipnav {
   top: -1000px;
 }
 
+article > p {
+  
+}
+
 div.grid-layout {
   min-height: 100vh;
   display: grid;
