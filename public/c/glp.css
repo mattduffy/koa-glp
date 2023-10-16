@@ -185,6 +185,20 @@ div.nextPier {
   text-align: right;
 }
 
+div#searchResults > ul.searchResults:before {
+    content:attr(aria-label);
+    font-size: 100%;
+    font-weight: 400;
+    margin-left: -15px;
+}
+
+ul.owners > li > ul.owners:before {
+    content:attr(aria-label);
+    font-weight: 500;
+    margin-left: -30px;
+    font-style: italic;
+}
+
 ul.location {
   list-style: none;
   margin: 5px 0px;
