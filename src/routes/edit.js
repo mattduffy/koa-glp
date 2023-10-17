@@ -364,7 +364,7 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
       }
       const pierImage = ctx.state.files.photo_0[0]
       const fileExt = pierImage.newFilename.substr(pierImage.newFilename.lastIndexOf('.') + 1)
-      const imgSrc = `piers/${pierNumber}/image_${pierUpdated.images.length}.${fileExt}`
+      const imgSrc = `i/piers/${pierNumber}/image_${pierUpdated.images.length}.${fileExt}`
       // const savePath = `${ctx.app.dirs.public.images}/${imgSrc}`
       const savePath = `${ctx.app.dirs.public.images}/piers/${pierNumber}`
       let fileUploadStatus = 'failed'

@@ -91,7 +91,7 @@
         <% pier.owners.forEach((owner) => {
           let name = '' %>
           <li>
-            <ul class="owners" <%- (owner?.estateName !== '') ? `aria-label="${owner.estateName}"` : '' %>>
+            <ul class="owners" <%- (owner?.estateName !== '') ? `aria-label="${owner.estateName} Estate"` : '' %>>
           <% if (owner?.members.length > 0) {
             owner.members.forEach((m) => {
               n = `${m.t} ${m.f} ${m.m} ${m.l} ${m.s}`
