@@ -19,6 +19,11 @@ a:active, a:hover, a:visited, a:link .edit:after {
   text-decoration: none;
 }
 
+a:active, a:hover, a:visited, a:link .view:after {
+  content: " \1F519";
+  text-decoration: none;
+}
+
 span.addPerson {
   color: -webkit-link;
   cursor: pointer;

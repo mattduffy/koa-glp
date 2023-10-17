@@ -711,6 +711,84 @@ router.post('search', '/search', hasFlash, async (ctx) => {
     }
     if (strings.length > 0) {
       log(`strings: ${strings}`)
+      if (/public|municip/i.test(strings)) {
+        let idxPierPublic
+        let queryPierPublic
+        let optsPierPublic
+        try {
+          // Conduct search for public piers.
+          let pierPublicTokens = ''
+          if (strings.length === 1) {
+            pierPublicTokens = `(${strings[0]})`
+          } else {
+            strings.forEach((t, i) => {
+              if (i === 0) pierPublicTokens += '('
+              pierPublicTokens += `${t}`
+              if (i < strings.length - 1) pierPublicTokens += '|'
+              if (i === strings.length - 1) pierPublicTokens += ')'
+              log(pierPublicTokens)
+            })
+          }
+          log(`Pier public tokens: ${pierPublicTokens}`)
+          idxPierPublic = 'glp:idx:piers:public'
+          queryPierPublic = '@public:[1 1]'
+          optsPierPublic = {}
+          optsPierPublic.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+          optsPierPublic.RETURN = ['pier', 'firstname']
+          optsPierPublic.LIMIT = { from: 0, size: 20 }
+          log(`Pier public FT.SEARCH ${idxPierPublic} "${queryPierPublic}"`)
+          results.public = await redis.ft.search(idxPierPublic, queryPierPublic, optsPierPublic)
+          log(results.public)
+        } catch (e) {
+          error('Redis search query feiled:')
+          error(`using index: ${idxPierPublic}`)
+          error(`query: FT.SEARCH ${idxPierPublic} "${queryPierPublic}"`, optsPierPublic)
+          error(e)
+          // No need to disrupt the rest of the searching if this query failed.
+          // throw new Error('Search by estate name failed.', { cause: e })
+        }
+      } else {
+        results.public = { total: 0, documents: [] }
+      }
+      if (/food|eat|restaurant|grill|bar/i.test(strings)) {
+        let idxPierFood
+        let queryPierFood
+        let optsPierFood
+        try {
+          // Conduct search for food piers.
+          let pierFoodTokens = ''
+          if (strings.length === 1) {
+            pierFoodTokens = `(${strings[0]})`
+          } else {
+            strings.forEach((t, i) => {
+              if (i === 0) pierFoodTokens += '('
+              pierFoodTokens += `${t}`
+              if (i < strings.length - 1) pierFoodTokens += '|'
+              if (i === strings.length - 1) pierFoodTokens += ')'
+              log(pierFoodTokens)
+            })
+          }
+          log(`Pier food tokens: ${pierFoodTokens}`)
+          idxPierFood = 'glp:idx:piers:food'
+          queryPierFood = '@food:[1 1]'
+          optsPierFood = {}
+          optsPierFood.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+          optsPierFood.RETURN = ['pier', 'business']
+          optsPierFood.LIMIT = { from: 0, size: 20 }
+          log(`Pier food FT.SEARCH ${idxPierFood} "${queryPierFood}"`)
+          results.food = await redis.ft.search(idxPierFood, queryPierFood, optsPierFood)
+          log(results.food)
+        } catch (e) {
+          error('Redis search query feiled:')
+          error(`using index: ${idxPierFood}`)
+          error(`query: FT.SEARCH ${idxPierFood} "${queryPierFood}"`, optsPierFood)
+          error(e)
+          // No need to disrupt the rest of the searching if this query failed.
+          // throw new Error('Search by estate name failed.', { cause: e })
+        }
+      } else {
+        results.food = { total: 0, documents: [] }
+      }
       let idxPierEstateName
       let queryPierEstateName
       let optsPierEstateName
@@ -766,10 +844,10 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         log(`Pier owner name tokens: ${pierOwnernameTokens}`)
         idxPierOwnerName = 'glp:idx:piers:ownerNames'
         // queryPierOwnerName = `@fistname|lastname:${pierOwnernameTokens}`
-        queryPierOwnerName = `@lastname|firstname:${pierOwnernameTokens} (-Assoc*)`
+        queryPierOwnerName = `@lastname|firstname:${pierOwnernameTokens} (-@business:${pierOwnernameTokens}) (-@association:${pierOwnernameTokens}) (-Assoc*)`
         optsPierOwnerName = {}
         optsPierOwnerName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
-        optsPierOwnerName.RETURN = ['pier', 'firstname', 'lastname']
+        optsPierOwnerName.RETURN = ['pier', 'firstname', 'lastname', 'business']
         log(`Pier owner name FT.SEARCH ${idxPierOwnerName} "${queryPierOwnerName}"`)
         results.ownerNames = await redis.ft.search(idxPierOwnerName, queryPierOwnerName, optsPierOwnerName)
         log(results.ownerNames)

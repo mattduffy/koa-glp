@@ -35,7 +35,12 @@
       const response = await fetch(request, { credentials: 'same-origin' })
       const json = await response.json()
       console.log(json) 
-      if ((json.pierNumbers.total === 0 ) && (json.estateNames.total === 0) && (json.ownerNames.total === 0) && (json.associations.total === 0)) { 
+      if ((json.public.total === 0 )
+        && (json.food.total === 0)
+        && (json.pierNumbers.total === 0 )
+        && (json.estateNames.total === 0)
+        && (json.ownerNames.total === 0)
+        && (json.associations.total === 0)) { 
         const nonFound = document.createElement('span')  
         nonFound.setAttribute('id', 'results')
         nonFound.innerHTML = 'No piers found matching those terms.'
@@ -44,6 +49,32 @@
         const resultsList = document.createElement('ul')
         resultsList.setAttribute('id', 'resultsList')
         resultsList.setAttribute('class', 'searchResults')
+        if (json?.public?.total > 0) {
+          const pierPublicResultsList = document.createElement('ul')
+          pierPublicResultsList.setAttribute('id', 'pierPublicResults')
+          pierPublicResultsList.setAttribute('aria-label', 'Public Piers:')
+          pierPublicResultsList.classList.add('searchResults', 'pierPublicResults')
+          json.public.documents.forEach((p) => {
+            const li = document.createElement('li')
+            const link = `<a href="<%= origin %>/pier/${p.value.pier}">Pier ${p.value.pier} ${p.value.firstname}</a>`
+            li.innerHTML = link
+            pierPublicResultsList.appendChild(li)
+          })
+          searchResults.appendChild(pierPublicResultsList)
+        }
+        if (json?.food?.total > 0) {
+          const pierFoodResultsList = document.createElement('ul')
+          pierFoodResultsList.setAttribute('id', 'pierFoodResults')
+          pierFoodResultsList.setAttribute('aria-label', 'Piers with food:')
+          pierFoodResultsList.classList.add('searchResults', 'pierFoodResults')
+          json.food.documents.forEach((p) => {
+            const li = document.createElement('li')
+            const link = `<a href="<%= origin %>/pier/${p.value.pier}">Pier ${p.value.pier} ${p.value.business}</a>`
+            li.innerHTML = link
+            pierFoodResultsList.appendChild(li)
+          })
+          searchResults.appendChild(pierFoodResultsList)
+        }
         if (json?.pierNumbers?.total > 0) {
           const pierNumberResultsList = document.createElement('ul')
           pierNumberResultsList.setAttribute('id', 'pierNumberResults')
