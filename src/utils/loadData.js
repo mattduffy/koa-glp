@@ -231,10 +231,21 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
           SORTABLE: true,
           AS: 'hidden',
         },
+        '$.property.business': {
+          type: SchemaFieldTypes.TEXT,
+          SORTABLE: true,
+          AS: 'business',
+        },
+        '$.property.association': {
+          type: SchemaFieldTypes.TEXT,
+          SORTABLE: true,
+          AS: 'association',
+        },
       },
       {
         ON: 'JSON',
         PREFIX: prefix,
+        // FILTER: "@hidden=='0' && @business!=''",
         FILTER: "@hidden=='0'",
       },
     )
@@ -263,6 +274,11 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
           type: SchemaFieldTypes.NUMERIC,
           SORTABLE: true,
           AS: 'public',
+        },
+        '$.owners[*].members[*].f': {
+          type: SchemaFieldTypes.TEXT,
+          SORTABLE: true,
+          AS: 'firstname',
         },
       },
       {
