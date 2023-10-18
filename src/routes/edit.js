@@ -343,18 +343,25 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
       const pierUpdatedNotNullIsland = (parseFloat(lonU) !== 0 && parseFloat(latU) !== 0)
       if (pierCurrentNullIsland && pierUpdatedNotNullIsland) {
         // remove pier from glp:null_island zset
-        const zrem = await redis.zRem('glp:null_island', pierNumber)
-        info(`removed pier ${pierNumber} from null island seti: ${zrem}`)
-        // Use setTown to generate geoJSON data
-        const setKey = `glp:piers_by_town:${setTown}`
-        info(`using ${setKey} to re-generate geoJSON data for ${setTown}`)
-        const geoj = await generateGeoJSON(setKey)
-        info(`geoJSON for ${setTown}:`, geoj)
-        const rSaved = await redis.json.set(`glp:geojson:${setTown}`, '$', geoj)
-        // Use setTown to save geoJSON data to redis set
-        info(`geojson saved to glp:geojson:${setTown}: ${rSaved}`)
-        await saveGeoJsonFile(geoj, setTown)
-        okNullIsland = true
+        try {
+          const zrem = await redis.zRem('glp:null_island', pierNumber)
+          info(`removed pier ${pierNumber} from null island seti: ${zrem}`)
+          // Use setTown to generate geoJSON data
+          const setKey = `glp:piers_by_town:${setTown}`
+          info(`using ${setKey} to re-generate geoJSON data for ${setTown}`)
+          const geoj = await generateGeoJSON(setKey)
+          info(`geoJSON for ${setTown}:`, geoj)
+          const rSaved = await redis.json.set(`glp:geojson:${setTown}`, '$', geoj)
+          // Use setTown to save geoJSON data to redis set
+          info(`geojson saved to glp:geojson:${setTown}: ${rSaved}`)
+          await saveGeoJsonFile(geoj, setTown)
+          okNullIsland = true
+        } catch (e) {
+          error(e)
+          okNullIsland = false
+        }
+      } else {
+        okNullIsland = 'maybe'
       }
       //
       // Save uploaded image file
@@ -400,7 +407,11 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
         error(e)
         okPierUpdate = false
       }
-      if (!okPierUpdate || !okPierImage || !okNullIsland) {
+      info(`Is update for pier ${pierNumber} OK TO GO?`)
+      info(`pier update: ${okPierUpdate}`)
+      info(`pier image: ${okPierImage}`)
+      info(`Null Island: ${okNullIsland}`)
+      if (!okPierUpdate || !okPierImage || (okNullIsland !== 'maybe' || !okNullIsland)) {
         ctx.type = 'application/json; charset=utf-8'
         ctx.status = 500
         ctx.body = { error: 'failed to update pier' }
