@@ -708,6 +708,9 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         // No need to disrupt the rest of the searching if this query failed.
         // throw new Error('Search by pier numbers failed.', { cause: e })
       }
+      // Need to use a better solution here
+      results.public = { total: 0, documents: [] }
+      results.food = { total: 0, documents: [] }
     }
     if (strings.length > 0) {
       log(`strings: ${strings}`)
