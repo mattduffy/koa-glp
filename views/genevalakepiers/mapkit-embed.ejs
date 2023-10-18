@@ -1,0 +1,65 @@
+    <%# The mapkit.js embed %>
+    <div id="map">
+        <script nonce=<%= nonce %>
+          src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.core.js"
+          crossorigin async
+          data-callback="initMapKit"
+          data-libraries="full-map"
+          data-initial-token=""
+        ></script>
+        <script nonce=<%= nonce %> type="module">
+        (async () => {
+            const origin = '<%= origin %>'
+            const jwtAccess = '<%= searchJwtAccess %>'     
+            const tokenOpts = {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    Authorization: `Bearer ${jwtAccess}`,
+                },
+            }
+            const request = new Request(`${origin}/mapkit/getToken`, tokenOpts)
+            const response = await fetch(request)
+            const { tokenID } = await response.json()
+            console.log('tokenID: ', tokenID)
+        
+            if (!window.mapkit || window.mapkit.loadedLibraries.length === 0) {
+                // mapkit.core.js or the libraries are not loaded yet.
+                // Set up the callback and wait for it to be called.
+                await new Promise(resolve => { window.initMapKit = resolve });
+        
+                // Clean up
+                delete window.initMapKit;
+            }
+            mapkit.init({
+                authorizationCallback: function(done) {
+                    done(tokenID);
+                },
+            });
+        
+            // init / center the map over Geneva Bay 
+            const lat = 42.587751
+            const lon = -88.440669
+            const genevaBay = new mapkit.CoordinateRegion(
+                new mapkit.Coordinate(lat, lon),
+                new mapkit.CoordinateSpan(0.1, 0.1)
+            );
+           const opts = {
+                mapType: mapkit.Map.MapTypes.Satellite,
+                visibleMapRect: mapkit.MapRect(0, 0, 1, 1),
+                isZoomEnabled: true,
+                showsCompass: mapkit.FeatureVisibility.Visible,
+                showsScale: mapkit.FeatureVisibility.Visible,
+                showsZoomControl: true,
+                cameraDistance: 900,
+                showsPointsOfInterest: true,
+                isRotationEnabled: true,
+                isScrollEnabled: true,
+                showsMapTypeControl: false,
+            } 
+            const map = new mapkit.Map("map", opts);
+            map.region = genevaBay;
+        })();
+        
+        </script>
+    </div>
