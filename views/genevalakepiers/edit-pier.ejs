@@ -34,18 +34,18 @@
         <% } %>
       </div>
       <p></p>
-      <form id="pierEdit" name="pierEdit" action="<%= origin %>/edit/pier/<%= pierNumber %>" method="POST" enctype="multipart/form-data">
-        <fieldset id="info" name="info" form="pierEdit" class="edit_fieldset" title="Info">
-          <% if (pier?.updatedOn) { %>
+      <form id="pierEditId" name="pierEdit" action="<%= origin %>/edit/pier/<%= pierNumber %>" method="POST" enctype="multipart/form-data">
+        <fieldset id="infoId" name="info" form="pierEditId" class="edit_fieldset" title="Info">
+          <% if (pier?.updatedOn?.length > 0) { %>
             Last updated on: <%= pier.updatedOn[0] %><br>
           <% } %>
           Pier data schema version: <%= pier.version %>
-          <input id="number" name="number" type="hidden" value="<%= pierNumber %>">
-          <input id="version" name="version" type="hidden" value="<%= pier.version %>">
-          <input id="setTown" name="setTown" type="hidden" value="<%= setTown %>">
-          <input id="csrf-token" type="hidden" value="<%= csrfToken %>">
+          <input id="numberId" name="number" type="hidden" value="<%= pierNumber %>">
+          <input id="versionId" name="version" type="hidden" value="<%= pier.version %>">
+          <input id="setTownId" name="setTown" type="hidden" value="<%= setTown %>">
+          <input id="csrf-tokenId" type="hidden" value="<%= csrfToken %>">
         </fieldset>
-        <fieldset id="pierPhoto" name="pierPhoto" form="pierEdit" class="edit_fieldset" title="Pier Photo Form">
+        <fieldset id="pierPhotoId" name="pierPhoto" form="pierEditId" class="edit_fieldset" title="Pier Photo Form">
           <legend>Pier Photo</legend>
           <% if (pier?.images?.length > 0) { %>
           <picture>
@@ -55,72 +55,72 @@
           </picture><br>
           <% } %>
           <span>Add an image for this pier.</span><br>
-          <input id="photo_0" name="photo_0" type="file" accept=".png,.jpg,.jpeg">
+          <input id="photo_0Id" name="photo_0" type="file" accept=".png,.jpg,.jpeg">
         </fieldset>
-        <fieldset id="pierLocation" id="pierLocation" form="pierEdit" class="edit_fieldset" title="Pier Location Form">
+        <fieldset id="pierLocationId" name="pierLocation" form="pierEditId" class="edit_fieldset" title="Pier Location Form">
           <legend>Pier Location</legend>
           <label for="lon">Longtitude</label>
-          <input id="lon" name="lon" type="text" size="30" value="<%= lon %>" required><br>
+          <input id="lonId" name="lon" type="text" size="30" value="<%= lon %>" required><br>
           <label for="lat">Latitude</label>
-          <input id="lat" name="lat" type="text" size="30" value="<%= lat %>" required><br>
+          <input id="latId" name="lat" type="text" size="30" value="<%= lat %>" required><br>
           <label for="geohash">Geohash</label>
-          <input id="geohash" name="geohash" type="text" size="30" value="<%= pier.geohash %>"><br>
+          <input id="geohashId" name="geohash" type="text" size="30" value="<%= pier.geohash %>"><br>
           <label for="pluscode">Pluscode</label>
-          <input id="pluscode" name="pluscode" type="text" size="30" value="<%= pier.pluscode %>"><br>
+          <input id="pluscodeId" name="pluscode" type="text" size="30" value="<%= pier.pluscode %>"><br>
         </fieldset>
-        <fieldset id="pierAddress" id="pierAddress" form="pierEdit" class="edit_fieldset" title="Pier Address Form">
+        <fieldset id="pierAddressId" name="pierAddress" form="pierEditId" class="edit_fieldset" title="Pier Address Form">
           <legend>Pier Address</legend>
-          <input type="radio" id="addressType1" name="addressType" value="ass" required><label for="addressType1">Association</label>
-          <input type="radio" id="addressType2" name="addressType" value="bus"><label for="addressType2">Business</label>
-          <input type="radio" id="addressType3" name="addressType" value="res"><label for="addressType3">Residential</label><br>
+          <input type="radio" id="addressType1Id" name="addressType" value="ass" required><label for="addressType1Id">Association</label>
+          <input type="radio" id="addressType2Id" name="addressType" value="bus"><label for="addressType2Id">Business</label>
+          <input type="radio" id="addressType3Id" name="addressType" value="res"><label for="addressType3Id">Residential</label><br>
           <label for="association">Association Name</label>
-          <input id="association" name="association" type="text" size="29" maxlendgth="100" value="<%= pier.property.association %>"><br>
+          <input id="associationId" name="association" type="text" size="29" maxlendgth="100" value="<%= pier.property.association %>"><br>
 
           <label for="business">Business Name</label>
-          <input id="business" name="business" type="text" size="30" maxlength="100" value="<%= pier.property.business %>"></br>
+          <input id="businessId" name="business" type="text" size="30" maxlength="100" value="<%= pier.property.business %>"></br>
 
           <label for="isMarina">Is a marina?</label>
-          <input id="isMarina" name="isMarina" type="checkbox" <%= (pier.property.isMarina=== 1) ? 'checked' : '' %>><br>
+          <input id="isMarinaId" name="isMarina" type="checkbox" <%= (pier.property.isMarina=== 1) ? 'checked' : '' %>><br>
 
           <label for="hasFood">Has food?</label>
-          <input id="hasFood" name="hasFood" type="checkbox" <%= (pier.property.hasFood=== 1) ? 'checked' : '' %>><br>
+          <input id="hasFoodId" name="hasFood" type="checkbox" <%= (pier.property.hasFood=== 1) ? 'checked' : '' %>><br>
 
           <label for="public">Is a public pier?</label>
-          <input id="public" name="public" type="checkbox" <%= (pier.public=== 1) ? 'checked' : '' %>><br>
+          <input id="publicId" name="public" type="checkbox" <%= (pier.public=== 1) ? 'checked' : '' %>><br>
 
           <label for="bigSwimPier">Is a big swim pier?</label>
-          <input id="bigSwimPier" name="bigSwimPier" type="checkbox" <%= (pier.bigSwimPier === 1) ? 'checked' : '' %>><br>
+          <input id="bigSwimPierId" name="bigSwimPier" type="checkbox" <%= (pier.bigSwimPier === 1) ? 'checked' : '' %>><br>
 
           <label for="established">Established In</label>
-          <input id="established" name="established" type="text" size="30" maxlength=4 value="<%= pier.property.established %>"><br>
+          <input id="establishedId" name="established" type="text" size="30" maxlength=4 value="<%= pier.property.established %>"><br>
 
           <label for="associationUrl">Website</label>
-          <input id="associationUrl" name="associationUrl" type="url" size="30" placeholder="https://genevalakepiers.com" maxlength="100" value="<%= pier.property.associationUrl %>"><br>
+          <input id="associationUrlId" name="associationUrl" type="url" size="30" placeholder="https://genevalakepiers.com" maxlength="100" value="<%= pier.property.associationUrl %>"><br>
 
           <label for="tel">Telephone</label>
-          <input id="tel" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= pier.property.tel %>"><br>
+          <input id="telId" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= pier.property.tel %>"><br>
 
           <label for="street">Street</label>
-          <input id="street" name="street" type="text" size="30" maxlength="70" value="<%= pier.property.address.street %>"><br>
+          <input id="streetId" name="street" type="text" size="30" maxlength="70" value="<%= pier.property.address.street %>"><br>
 
           <label for="city">City</label>
-          <input id="city" name="city" type="text" size="30" maxlength="50" value="<%= pier.property.address.city %>"><br>
+          <input id="cityId" name="city" type="text" size="30" maxlength="50" value="<%= pier.property.address.city %>"><br>
 
           <label for="state">State</label>
-          <input id="state" name="state" type="text" size="3" maxlength="2" value="<%= pier.property.address.state %>"><br>
+          <input id="stateId" name="state" type="text" size="3" maxlength="2" value="<%= pier.property.address.state %>"><br>
 
           <label for="zip">Zip Code</label>
-          <input id="zip" name="zip" type="text" size="10" maxlength="9" value="<%= pier.property.address.zip %>"><br>
+          <input id="zipId" name="zip" type="text" size="10" maxlength="9" value="<%= pier.property.address.zip %>"><br>
         </fieldset>
-        <fieldset id="pierOwners" id="pierOwners" form="pierEdit" class="edit_fieldset" title="Pier Address Form">
+        <fieldset id="pierOwnersId" name="pierOwners" form="pierEditId" class="edit_fieldset" title="Pier Address Form">
           <legend>Pier Owners</legend>
           <% if (pier.owners.length > 0) { %>
             <% pier.owners.forEach((o, i) => { %>
               <div class="editOwner" data-o=<%= i %>>
               <label for="o_<%= i %>_estateName">Estate Name</label>
-              <input id="o_<%= i %>_estateName"" name="o_<%= i %>_estateName"" type="text" size="30" maxlength="100" value="<%= o.estateName %>"><br>
+              <input id="o_<%= i %>_estateNameId"" name="o_<%= i %>_estateName"" type="text" size="30" maxlength="100" value="<%= o.estateName %>"><br>
               <label for="o_<%= i %>_membershipType">GLA Membership</label>
-              <select id="o_<%= i %>_membershipType"" name="o_<%= i %>_membershipType"" type="text">
+              <select id="o_<%= i %>_membershipTypeId"" name="o_<%= i %>_membershipType"" type="text">
                 <%
                   const memberTypes = ['Residential Non-member', 'Regular', 'Sustaining', 'Contributing', 'Donor', 'Benefactor']
                   memberTypes.forEach((t) => {
@@ -134,12 +134,12 @@
                   <div>
                 <% o.members.forEach((m, j) => { %>
                     <div data-o=<%= i %> data-m=<%= j %>>
-                      <input id="o_<%= i %>_m_<%= j %>_member_t" name="o_<%= i %>_m_<%= j %>_member_t" type="text" size="3" maxlength="10" value="<%= m.t %>" placeholder="Title"> 
-                      <input id="o_<%= i %>_m_<%= j %>_member_f" name="o_<%= i %>_m_<%= j %>_member_f" type="text" size="11" maxlength="60" value="<%= m.f %>" placeholder="First"> 
-                      <input id="o_<%= i %>_m_<%= j %>_member_m" name="o_<%= i %>_m_<%= j %>_member_m" type="text" size="3" maxlength="10" value="<%= m.m %>" placeholder="M"> 
-                      <input id="o_<%= i %>_m_<%= j %>_member_l" name="o_<%= i %>_m_<%= j %>_member_l" type="text" size="11" maxlength="30" value="<%= m.l %>" placeholder="Last"> 
-                      <input id="o_<%= i %>_m_<%= j %>_member_s" name="o_<%= i %>_m_<%= j %>_member_s"" type="text" size="3" maxlength="10" value="<%= m.s %>" placeholder="suffix"> 
-                      <input id="o_<%= i %>_m_<%= j %>_member_hidden" name="o_<%= i %>_m_<%= j %>_member_hidden"" type="checkbox" <%= (m.hidden === 1) ? 'checked' : '' %>>
+                      <input id="o_<%= i %>_m_<%= j %>_member_tId" name="o_<%= i %>_m_<%= j %>_member_t" type="text" size="3" maxlength="10" value="<%= m.t %>" placeholder="Title"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_fId" name="o_<%= i %>_m_<%= j %>_member_f" type="text" size="11" maxlength="60" value="<%= m.f %>" placeholder="First"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_mId" name="o_<%= i %>_m_<%= j %>_member_m" type="text" size="3" maxlength="10" value="<%= m.m %>" placeholder="M"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_lId" name="o_<%= i %>_m_<%= j %>_member_l" type="text" size="11" maxlength="30" value="<%= m.l %>" placeholder="Last"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_sId" name="o_<%= i %>_m_<%= j %>_member_s"" type="text" size="3" maxlength="10" value="<%= m.s %>" placeholder="suffix"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_hiddenId" name="o_<%= i %>_m_<%= j %>_member_hidden"" type="checkbox" <%= (m.hidden === 1) ? 'checked' : '' %>>
                       <label for="o_<%= i %>_m_<%= j %>_member_hidden">hide</label>
                     </div>
                 <% }) %>
@@ -152,7 +152,7 @@
           No owners entered.  <span class="addOwner">+ owner</span>.
         <% } %>
         </fieldset>
-        <fieldset id="finish">
+        <fieldset id="finishId" name="finish" form="pierEditId">
           <input type="submit">
         </fieldset>
       </form>
@@ -222,47 +222,47 @@
     <% } %>
   </section> 
   <script nonce="<%= nonce %>">
-    const form = document.forms['pierEdit']
+    const form = document.forms['pierEditId']
     const radio = form['addressType']
-    const assocInput = form['association']
-    const busInput = form['business']
-    const isMar = form['isMarina']
+    const assocInput = form['associationId']
+    const busInput = form['businessId']
+    const isMar = form['isMarinaId']
     let isMarCheckedTemp
-    const hasFood = form['hasFood']
+    const hasFood = form['hasFoodId']
     let hasFoodCheckedTemp
-    const public = form['public']
+    const public = form['publicId']
     let publicCheckedTemp
-    const bigSwimPier = form['bigSwimPier']
+    const bigSwimPier = form['bigSwimPierId']
     let bigSwimPierCheckedTemp
     if (assocInput.value !== '') {
-      form['addressType1'].disabled =  false
-      form['addressType1'].checked = true
-      form['bigSwimPier'].disabled = false
-      form['public'].disabled = true
-      form['public'].checked = false
+      form['addressType1Id'].disabled =  false
+      form['addressType1Id'].checked = true
+      form['bigSwimPierId'].disabled = false
+      form['publicId'].disabled = true
+      form['publicId'].checked = false
       busInput.disabled = true
-      form['isMarina'].checked = false
-      form['isMarina'].disabled = true
-      form['hasFood'].checked = false
-      form['hasFood'].disabled = true
+      form['isMarinaId'].checked = false
+      form['isMarinaId'].disabled = true
+      form['hasFoodId'].checked = false
+      form['hasFoodId'].disabled = true
     } else if (busInput.value !== '') {
-      form['addressType2'].disabled =  false
-      form['addressType2'].checked = true
-      form['isMarina'].disabled = false 
-      form['hasFood'].disabled = false 
-      form['bigSwimPier'].disabled = true 
+      form['addressType2Id'].disabled =  false
+      form['addressType2Id'].checked = true
+      form['isMarinaId'].disabled = false 
+      form['hasFoodId'].disabled = false 
+      form['bigSwimPierId'].disabled = true 
     } else {
-      form['addressType3'].checked = true
+      form['addressType3Id'].checked = true
       assocInput.disabled = true
       busInput.disabled = true
-      form['bigSwimPier'].disabled = true 
-      form['bigSwimPier'].checked = false
-      form['public'].disabled = true 
-      form['public'].checked = false
-      form['isMarina'].checked = false
-      form['isMarina'].disabled = true
-      form['hasFood'].checked = false
-      form['hasFood'].disabled = true
+      form['bigSwimPierId'].disabled = true 
+      form['bigSwimPierId'].checked = false
+      form['publicId'].disabled = true 
+      form['publicId'].checked = false
+      form['isMarinaId'].checked = false
+      form['isMarinaId'].disabled = true
+      form['hasFoodId'].checked = false
+      form['hasFoodId'].disabled = true
     }
     radio.forEach((r) => {
       r.addEventListener('change', radioSelection)
@@ -349,7 +349,7 @@
           newPersonDiv.setAttribute('data-m', m)
           const title = document.createElement('input')
           title.setAttribute('type', 'text')
-          title.setAttribute('id', `o_${o}_m_${m}_member_t`)
+          title.setAttribute('id', `o_${o}_m_${m}_member_tId`)
           title.setAttribute('name', `o_${o}_m_${m}_member_t`)
           title.setAttribute('size', '3')
           title.setAttribute('maxlength', '10')
@@ -358,7 +358,7 @@
           newPersonDiv.appendChild(title)
           const first = document.createElement('input')
           first.setAttribute('type', 'text')
-          first.setAttribute('id', `o_${o}_m_${m}_member_f`)
+          first.setAttribute('id', `o_${o}_m_${m}_member_fId`)
           first.setAttribute('name', `o_${o}_m_${m}_member_f`)
           first.setAttribute('size', '11')
           first.setAttribute('maxlength', '60')
@@ -367,7 +367,7 @@
           newPersonDiv.appendChild(first)
           const middle = document.createElement('input')
           middle.setAttribute('type', 'text')
-          middle.setAttribute('id', `o_${o}_m_${m}_member_m`)
+          middle.setAttribute('id', `o_${o}_m_${m}_member_mId`)
           middle.setAttribute('name', `o_${o}_m_${m}__member_m`)
           middle.setAttribute('size', '3')
           middle.setAttribute('maxlength', '10')
@@ -376,7 +376,7 @@
           newPersonDiv.appendChild(middle)
           const last = document.createElement('input')
           last.setAttribute('type', 'text')
-          last.setAttribute('id', `o_${o}_m_${m}_member_l`)
+          last.setAttribute('id', `o_${o}_m_${m}_member_lId`)
           last.setAttribute('name', `o_${o}_m_${m}_member_l`)
           last.setAttribute('size', '11')
           last.setAttribute('maxlength', '30')
@@ -385,7 +385,7 @@
           newPersonDiv.appendChild(last)
           const suffix = document.createElement('input')
           suffix.setAttribute('type', 'text')
-          suffix.setAttribute('id', `o_${o}_m_${m}_member_s`)
+          suffix.setAttribute('id', `o_${o}_m_${m}_member_sId`)
           suffix.setAttribute('name', `o_${o}_m_${m}_member_s`)
           suffix.setAttribute('size', '3')
           suffix.setAttribute('maxlength', '10')
@@ -394,7 +394,7 @@
           newPersonDiv.appendChild(suffix)
           const hidden = document.createElement('input')
           hidden.setAttribute('type', 'checkbox')
-          hidden.setAttribute('id', `o_${o}_m_${m}_member_hidden`)
+          hidden.setAttribute('id', `o_${o}_m_${m}_member_hiddenId`)
           hidden.setAttribute('name', `o_${o}_m_${m}_member_hidden`)
           const shouldBeChecked = document.querySelector(`input[type=checkbox]#o_${o}_m_${dataSet?.m}_member_hidden`)?.checked
           if (shouldBeChecked === true) {
@@ -403,7 +403,7 @@
           newPersonDiv.appendChild(hidden)
           const hlabel = document.createElement('label')
           hlabel.innerText = 'hide'
-          hlabel.setAttribute('for', `o_${o}_m_${m}_member_hidden`)
+          hlabel.setAttribute('for', `o_${o}_m_${m}_member_hiddenId`)
           newPersonDiv.appendChild(hlabel)
           const insertInto = e.target.parentElement
           // console.log(insertInto)
@@ -418,7 +418,7 @@
         e.stopPropagation()
         prepareNewImage(e)
       }
-      const imageDropTarget = form['pierPhoto']
+      const imageDropTarget = form['pierPhotoId']
       imageDropTarget.addEventListener('dragenter', dragnoop, false)
       imageDropTarget.addEventListener('dragover', dragnoop, false)
       imageDropTarget.addEventListener('drop', dragdrop, false)
@@ -438,26 +438,26 @@
       function preparePierData(e) {
         console.log('step 1: prepare form data')
         const pier = {}
-        pier.pier = form['number'].value
-        pier.version = form['version'].value
-        pier.loc = `${form['lon'].value.toString()},${form['lat'].value.toString()}`
-        pier.geohash = form['geohash'].value
-        pier.pluscode = form['pluscode'].value
-        pier.public = (form['public'].checked) ? 1 : 0
-        pier.bigSwimPier = (form['bigSwimPier'].checked) ? 1 : 0
+        pier.pier = form['numberId'].value
+        pier.version = form['versionId'].value
+        pier.loc = `${form['lonId'].value.toString()},${form['latId'].value.toString()}`
+        pier.geohash = form['geohashId'].value
+        pier.pluscode = form['pluscodeId'].value
+        pier.public = (form['publicId'].checked) ? 1 : 0
+        pier.bigSwimPier = (form['bigSwimPierId'].checked) ? 1 : 0
         const property = {}
-        property.association = form['association'].value
-        property.established = parseInt(form['established'].value, 10)
-        property.associationUrl = form['associationUrl'].value
-        property.tel = form['tel'].value.replace(/(?<area>\d{3})-(?<prefix>\d{3})-(?<exch>\d{4})/, '+1 ($<area>) $<prefix>-$<exch>')
-        property.business = form['business'].value
-        property.isMarina = (form['isMarina'].checked) ? 1 : 0
-        property.hasFood = (form['hasFood'].checked) ? 1 : 0
+        property.association = form['associationId'].value
+        property.established = parseInt(form['establishedId'].value, 10)
+        property.associationUrl = form['associationUrlId'].value
+        property.tel = form['telId'].value.replace(/(?<area>\d{3})-(?<prefix>\d{3})-(?<exch>\d{4})/, '+1 ($<area>) $<prefix>-$<exch>')
+        property.business = form['businessId'].value
+        property.isMarina = (form['isMarinaId'].checked) ? 1 : 0
+        property.hasFood = (form['hasFoodId'].checked) ? 1 : 0
         const address = {}
-        address.street = form['street'].value
-        address.city = (form['city'].value !== '') ? form['city'].value : 'Lake Geneva'
-        address.state = (form['state'].value !== '') ? form['state'].value : 'WI'
-        address.zip = (form['zip'].value !== '') ? form['zip'].value : '53147'
+        address.street = form['streetId'].value
+        address.city = (form['cityId'].value !== '') ? form['cityId'].value : 'Lake Geneva'
+        address.state = (form['stateId'].value !== '') ? form['stateId'].value : 'WI'
+        address.zip = (form['zipId'].value !== '') ? form['zipId'].value : '53147'
         property.address = address
         pier.property = property
         const owners = []
@@ -466,7 +466,7 @@
           // console.log(`ownerNodes: ${i}`)
           owners[i] = {}
           owners[i].estateName = form[`o_${i}_estateName`].value
-          owners[i].membershipType = form[`o_${i}_membershipType`].options[form[`o_${i}_membershipType`].selectedIndex].value
+          owners[i].membershipType = form[`o_${i}_membershipTypeId`].options[form[`o_${i}_membershipTypeId`].selectedIndex].value
           owners[i].member = !(/non-member/i.test(owners[i].membershipType))
           // const mCollection = m.children[6].children
           const mCollection = o.querySelector(':scope > div').children
@@ -475,15 +475,15 @@
             if (/div/i.test(personRow.tagName)) {
               const o = i
               const m = personRow.dataset.m
-              if ((form[`o_${o}_m_${m}_member_f`].value !== '') && (form[`o_${o}_m_${m}_member_l`].value !== '')) {
+              if ((form[`o_${o}_m_${m}_member_fId`].value !== '') && (form[`o_${o}_m_${m}_member_lId`].value !== '')) {
                 // console.log(`person: ${o} ${m}`)
                 members[m] = {
-                  t: form[`o_${o}_m_${m}_member_t`].value,
-                  f: form[`o_${o}_m_${m}_member_f`].value,
-                  m: form[`o_${o}_m_${m}_member_m`].value,
-                  l: form[`o_${o}_m_${m}_member_l`].value,
-                  s: form[`o_${o}_m_${m}_member_s`].value,
-                  hidden: (form[`o_${o}_m_${m}_member_hidden`].checked) ? 1 : 0
+                  t: form[`o_${o}_m_${m}_member_tId`].value,
+                  f: form[`o_${o}_m_${m}_member_fId`].value,
+                  m: form[`o_${o}_m_${m}_member_mId`].value,
+                  l: form[`o_${o}_m_${m}_member_lId`].value,
+                  s: form[`o_${o}_m_${m}_member_sId`].value,
+                  hidden: (form[`o_${o}_m_${m}_member_hiddenId`].checked) ? 1 : 0
                 }
               }
             }
@@ -496,9 +496,9 @@
       }
 
       function prepareNewImage() {
-        const fileList = form['photo_0'].files
+        const fileList = form['photo_0Id'].files
         if (arguments.length > 0) {
-          const span = form['pierPhoto'].querySelector(':scope > span')
+          const span = form['pierPhotoId'].querySelector(':scope > span')
           span.innerHTML = `Image selected for pier <%= pierNumber %><br>${fileList[0].name} <br>type: ${fileList[0].type} <br>${Math.floor(fileList[0].size/1024)} KBs.`
           console.log(span)
         } else {
@@ -540,24 +540,24 @@
           console.log(`files ready to be uploaded: ${file}`)
           formData.append('photo_0', file)
         }
-        formData.append('csrfTokenHidden', form['csrf-token'].value)
+        formData.append('csrfTokenHidden', form['csrf-tokenId'].value)
         formData.append('pier', JSON.stringify(pier))
-        formData.append('version', form['version'].value)
-        formData.append('setTown', form['setTown'].value)
+        formData.append('version', form['versionId'].value)
+        formData.append('setTown', form['setTownId'].value)
         await send(formData)
       }
       // Event hander for lon/lat fields to get geohash
       async function getGeoHash(e) {
-        const lon = parseFloat(form['lon'].value, 10)
-        const lat = parseFloat(form['lat'].value, 10)
+        const lon = parseFloat(form['lonId'].value, 10)
+        const lat = parseFloat(form['latId'].value, 10)
         console.log(lon, lat)
         if ((lon === 0 || isNaN(lon)) || (lat === 0 || isNaN(lat))) {
         // if (lon === 0 || lat === 0) {
           return false
         }
         const data = new FormData()
-        data.append('csrfTokenHidden', form['csrf-token'].value)
-        data.append('pier', form['number'].value)
+        data.append('csrfTokenHidden', form['csrf-tokenId'].value)
+        data.append('pier', form['numberId'].value)
         data.append('lon', lon.toString())
         data.append('lat', lat.toString())
         let jwtAccess = '<%= searchJwtAccess %>'
@@ -578,12 +578,12 @@
           form['geohash'].value = response.geoHash
         }
       }
-      form['lon'].addEventListener('change', getGeoHash, false)
-      form['lat'].addEventListener('change', getGeoHash, false)
+      form['lonId'].addEventListener('change', getGeoHash, false)
+      form['latId'].addEventListener('change', getGeoHash, false)
       // Event handler for lon/lat fields to get google pluscode
       async function getPluscode(e) {
-        const lon = parseFloat(form['lon'].value, 10)
-        const lat = parseFloat(form['lat'].value, 10)
+        const lon = parseFloat(form['lonId'].value, 10)
+        const lat = parseFloat(form['latId'].value, 10)
         if ((lon === 0 || isNaN(lon)) || (lat === 0 || isNaN(lat))) {
           return false
         }
@@ -591,11 +591,11 @@
         const response = await (await fetch(request)).json()
         console.log(response)
         if (response?.plus_code?.global_code !== '') {
-          form['pluscode'].value = response.plus_code.global_code
+          form['pluscodeId'].value = response.plus_code.global_code
         }
       }
-      form['lon'].addEventListener('change', getPluscode, false)
-      form['lat'].addEventListener('change', getPluscode, false)
+      form['lonId'].addEventListener('change', getPluscode, false)
+      form['latId'].addEventListener('change', getPluscode, false)
   </script>
   <section class="map">
     <%# map embed %>
