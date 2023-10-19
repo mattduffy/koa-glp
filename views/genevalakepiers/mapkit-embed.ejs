@@ -8,9 +8,10 @@
           data-initial-token=""
         ></script>
         <script nonce=<%= nonce %> type="module">
-        (async () => {
-            const origin = '<%= origin %>'
-            const jwtAccess = '<%= searchJwtAccess %>'     
+        const origin = '<%= origin %>'
+        const jwtAccess = '<%= searchJwtAccess %>'     
+        let map
+        async function setupMapKitJs() {
             const tokenOpts = {
                 method: 'GET',
                 headers: {
@@ -22,21 +23,21 @@
             const response = await fetch(request)
             const { tokenID } = await response.json()
             console.log('tokenID: ', tokenID)
-        
             if (!window.mapkit || window.mapkit.loadedLibraries.length === 0) {
                 // mapkit.core.js or the libraries are not loaded yet.
                 // Set up the callback and wait for it to be called.
-                await new Promise(resolve => { window.initMapKit = resolve });
-        
+                await new Promise(resolve => { window.initMapKit = resolve })
                 // Clean up
-                delete window.initMapKit;
+                delete window.initMapKit
             }
             mapkit.init({
                 authorizationCallback: function(done) {
-                    done(tokenID);
+                    done(tokenID)
                 },
-            });
-        
+            })
+        }
+        async function main() {
+            await setupMapKitJs()
             // init / center the map over Geneva Bay 
             const lat = 42.587751
             const lon = -88.440669
@@ -57,9 +58,30 @@
                 isScrollEnabled: true,
                 showsMapTypeControl: false,
             } 
-            const map = new mapkit.Map("map", opts);
-            map.region = genevaBay;
-        })();
-        
+             window.map = new mapkit.Map("map", opts);
+             window.map.region = genevaBay;
+        }
+        await main() 
+        // const allPiers = await fetch(`${origin}/mapkit/allPiers`)
+        // const piers = await allPiers.json()
+        // if (piers.total > 0) {
+        //     const annotations = []
+        //     piers.documents.forEach((pier) => {
+        //         let [lon, lat] = pier.value['$.loc'].split(',')
+        //         lon = parseFloat(lon, 10)
+        //         lat = parseFloat(lat, 10)
+        //         // console.log(lat, lon)
+        //         if (lat !== 0 && lon !== 0) {
+        //             const pierMarker = new mapkit.Coordinate(lat, lon)
+        //             const pierAnnotation = new mapkit.MarkerAnnotation(pierMarker)
+        //             pierAnnotation.title = `Pier ${pier.value.pierNumber}`
+        //             annotations.push(pierAnnotation)
+        //         }
+        //     })
+        //     if (annotations.length > 0) {
+        //         // console.dir(annotations, { depth: null })
+        //         map.showItems(annotations)
+        //     }
+        // }
         </script>
     </div>

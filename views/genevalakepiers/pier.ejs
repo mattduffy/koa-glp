@@ -127,9 +127,43 @@
     <%# map embed %>
     <%- await include('./mapkit-embed.ejs') -%>
     <%# map embed %>
-    <script nonce="<%= nonce %>">
-      const map = document.querySelector('div#map')
-      // console.log(map)
+    <script nonce="<%= nonce %>" type="module">
+      let page = 'pier'
+      let pierNumber = '<%= pier.pier %>'
+      let coords = '<%= pier.loc %>'
+      let [lon, lat] = coords.split(',')
+      lon = parseFloat(lon, 10)
+      lat = parseFloat(lat, 10)
+      async function getMapkit() {
+        return await new Promise(resolve => {
+          const interval = setInterval(() => {
+            if (window.mapkit !== undefined && window.mapkit.loadedLibraries.includes('full-map')) {
+              resolve(true);
+              console.log(`${page}: window.mapkit: ${window.mapkit}`)
+              clearInterval(interval)
+            }
+          }, 100)
+        })
+      }
+      const isMapkitReady = await getMapkit()
+      if (isMapkitReady) {
+        console.log(window.mapkit.loadedLibraries) 
+        async function showThisPier() {
+          const annotations = []
+          if (lat !== 0 && lon !== 0) {
+            console.log(`(lat, lon): ${lat}, ${lon}`)
+            const pierMarker = new window.mapkit.Coordinate(lat, lon)
+            const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+            pierAnnotation.title = `Pier ${pierNumber}`
+            annotations.push(pierAnnotation)
+          }
+          if (annotations.length > 0) {
+            // console.dir(annotations, { depth: null })
+            window.map.showItems(annotations)
+          }
+        }
+        await showThisPier()
+      }
     </script>
   </section>
 </article>
