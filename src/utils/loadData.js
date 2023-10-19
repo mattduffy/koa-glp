@@ -245,8 +245,8 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
       {
         ON: 'JSON',
         PREFIX: prefix,
-        // FILTER: "@hidden=='0' && @business!=''",
-        FILTER: "@hidden=='0'",
+        FILTER: "@hidden==0 && @business==''",
+        // FILTER: "@hidden=='0'",
       },
     )
   } catch (e) {
