@@ -89,7 +89,7 @@ router.get('mapkitSwim', '/mapkit/swim', async (ctx) => {
     ctx.type = 'application/json; charset=utf-8'
     ctx.status = 200
     try {
-      log('ft.search glp:idx:piers:swim "*" return 8 pier $.loc as coords $.property.business $.property.association $.property.associationUrl $.owners[*].members[*].f sortby pier asc limit 0 50')
+      log('FT.SEARCH glp:idx:piers:swim "*" RETURN 13 pier $.loc AS coords $.property.association AS assoc $.property.associationUrl AS url $.owners[*].members[*].f AS name SORTBY pier ASC')
       const idxPierSwim = 'glp:idx:piers:swim'
       const queryPierSwim = '*'
       const optsPierSwim = {}
@@ -103,6 +103,48 @@ router.get('mapkitSwim', '/mapkit/swim', async (ctx) => {
       error('Failed to get association first pier coordinate data.')
       ctx.status = 500
       result = { error: 'Failed to get association first pier coordinate data.' }
+    }
+    ctx.body = result
+  }
+})
+
+router.get('mapkitMarinas', '/mapkit/marinas', async (ctx) => {
+  const log = Log.extend('mapkitMarinas')
+  const info = Info.extend('mapkitMarinas')
+  const error = Error.extend('mapkitMarinas')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+  const csrfTokenCookie = ctx.cookies.get('csrfToken')
+  const csrfTokenSession = ctx.session.csrfToken
+  info(`${csrfTokenCookie},\n${csrfTokenSession}`)
+  if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
+  if (!(csrfTokenCookie === csrfTokenSession)) {
+    error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 401
+    ctx.body = { error: 'csrf token mismatch' }
+  } else {
+    let result
+    const from = 0
+    const size = 100
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 200
+    try {
+      // log('FT.AGGREGATE glp:idx:piers:marina "*" LOAD 3 $.loc AS coords GROUPBY 1 @business REDUCE TOLIST 1 @coords SORTBY 2 @pier ASC LIMIT 0 15')
+      log('FT.SEARCH glp:idx:piers:marina "*" RETURN 10 pier $.loc AS coords $.property.business AS business $.property.associationUrl AS url SORTBY pier ASC')
+      const idxPierMarina = 'glp:idx:piers:marina'
+      const queryPierMarina = '*'
+      const optsPierMarina = {}
+      optsPierMarina.RETURN = ['pier', '$.loc', 'AS', 'coords', '$.property.business', 'AS', 'business', '$.property.associationUrl', 'AS', 'url']
+      optsPierMarina.LIMIT = { from, size }
+      optsPierMarina.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+      result = await redis.ft.search(idxPierMarina, queryPierMarina, optsPierMarina)
+      log(result.results)
+    } catch (e) {
+      error('Failed to get marina pier coordinate data.')
+      ctx.status = 500
+      result = { error: 'Failed to get marina pier coordinate data.' }
     }
     ctx.body = result
   }
@@ -131,7 +173,7 @@ router.get('mapkitAssociations', '/mapkit/associations', async (ctx) => {
     ctx.type = 'application/json; charset=utf-8'
     ctx.status = 200
     try {
-      log('ft.aggregate glp:idx:piers:association "*" LOAD 3 $.loc AS coords groupby 1 @association REDUCE TOLIST 1 @coords sortby 2 @association asc limit 0 15')
+      log('FT.AGGREGATE glp:idx:piers:association "*" LOAD 3 $.loc AS coords GROUPBY 1 @association REDUCE TOLIST 1 @coords SORTBY 2 @association ASC LIMIT 0 15')
       const optsAggregateAssociation = {
         LOAD: ['$.loc'],
         STEPS: [
