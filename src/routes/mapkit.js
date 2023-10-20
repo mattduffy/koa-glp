@@ -66,6 +66,48 @@ router.get('allPiers', '/mapkit/allPiers', async (ctx) => {
   }
 })
 
+router.get('mapkitSwim', '/mapkit/swim', async (ctx) => {
+  const log = Log.extend('mapkitSwim')
+  const info = Info.extend('mapkitSwim')
+  const error = Error.extend('mapkitSwim')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+  const csrfTokenCookie = ctx.cookies.get('csrfToken')
+  const csrfTokenSession = ctx.session.csrfToken
+  info(`${csrfTokenCookie},\n${csrfTokenSession}`)
+  if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
+  if (!(csrfTokenCookie === csrfTokenSession)) {
+    error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 401
+    ctx.body = { error: 'csrf token mismatch' }
+  } else {
+    let result
+    const from = 0
+    const size = 100
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 200
+    try {
+      log('ft.search glp:idx:piers:swim "*" return 8 pier $.loc as coords $.property.business $.property.association $.property.associationUrl $.owners[*].members[*].f sortby pier asc limit 0 50')
+      const idxPierSwim = 'glp:idx:piers:swim'
+      const queryPierSwim = '*'
+      const optsPierSwim = {}
+      optsPierSwim.RETURN = ['pier', '$.loc', 'AS', 'coords', '$.property.association', 'AS', 'assoc', '$.owners[*].members[*].f', 'AS', 'name']
+      optsPierSwim.LIMIT = { from, size }
+      optsPierSwim.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+      const piersInSwim = await redis.ft.search(idxPierSwim, queryPierSwim, optsPierSwim)
+      log(piersInSwim)
+      result = piersInSwim
+    } catch (e) {
+      error('Failed to get association first pier coordinate data.')
+      ctx.status = 500
+      result = { error: 'Failed to get association first pier coordinate data.' }
+    }
+    ctx.body = result
+  }
+})
+
 router.get('mapkitAssociations', '/mapkit/associations', async (ctx) => {
   const log = Log.extend('mapkitAssociations')
   const info = Info.extend('mapkitAssociations')
