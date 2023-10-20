@@ -41,8 +41,100 @@
     <%# map embed %>
     <%- await include('./mapkit-embed.ejs') -%>
     <%# map embed %>
-    <script nonce="<%= nonce %>" type="module">
+    <script nonce=<%= nonce %>
+      src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.core.js"
+      crossorigin async
+      data-callback="initMapKit"
+      data-libraries="full-map"
+      data-initial-token="">
+    </script>
+    <script nonce=<%= nonce %> type="module">
       let page = 'index'
+      const origin = '<%= origin %>'
+      const jwtAccess = '<%= searchJwtAccess %>'     
+      let map
+      async function setupMapKitJs() {
+        const tokenOpts = {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${jwtAccess}`,
+          },
+        }
+        const request = new Request(`${origin}/mapkit/getToken`, tokenOpts)
+        const response = await fetch(request)
+        const { tokenID } = await response.json()
+        console.log('tokenID: ', tokenID)
+        if (!window.mapkit || window.mapkit.loadedLibraries.length === 0) {
+          // mapkit.core.js or the libraries are not loaded yet.
+          // Set up the callback and wait for it to be called.
+          await new Promise(resolve => { window.initMapKit = resolve })
+          // Clean up
+          delete window.initMapKit
+        }
+        mapkit.init({
+          authorizationCallback: function(done) {
+            done(tokenID)
+          },
+        })
+      }
+      async function main() {
+        await setupMapKitJs()
+        // init / center the map over Geneva Bay 
+        const lat = 42.587751
+        const lon = -88.440669
+        const genevaBay = new mapkit.CoordinateRegion(
+          new mapkit.Coordinate(lat, lon),
+          new mapkit.CoordinateSpan(0.1, 0.1)
+        );
+        const opts = {
+          mapType: mapkit.Map.MapTypes.Satellite,
+          visibleMapRect: mapkit.MapRect(0, 0, 1, 1),
+          isZoomEnabled: true,
+          showsCompass: mapkit.FeatureVisibility.Visible,
+          showsScale: mapkit.FeatureVisibility.Visible,
+          showsZoomControl: true,
+          cameraDistance: 900,
+          showsPointsOfInterest: true,
+          isRotationEnabled: true,
+          isScrollEnabled: true,
+          showsMapTypeControl: false,
+        } 
+         window.map = new mapkit.Map("map", opts);
+         window.map.region = genevaBay;
+      }
+      await main()
+
+      async function showAllPiers() {
+        try {
+          const allPiers = await fetch(`${origin}/mapkit/allPiers`)
+          const piers = await allPiers.json()
+          if (piers.total > 0) {
+            const annotations = []
+            piers.documents.forEach((pier) => {
+              let [lon, lat] = pier.value['$.loc'].split(',')
+              lon = parseFloat(lon, 10)
+              lat = parseFloat(lat, 10)
+              // console.log(lat, lon)
+              if (lat !== 0 && lon !== 0) {
+                const pierMarker = new window.mapkit.Coordinate(lat, lon)
+                const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+                pierAnnotation.title = `Pier ${pier.value.pierNumber}`
+                annotations.push(pierAnnotation)
+              }
+            })
+            if (annotations.length > 0) {
+              // console.dir(annotations, { depth: null })
+              window.map.showItems(annotations)
+            }
+          }
+        } catch (e) {
+          console.error(e)
+        }
+      }
+      await showAllPiers()
+
+      <% /* %>
       async function getMapkit() {
         return await new Promise(resolve => {
           const interval = setInterval(() => {
@@ -82,6 +174,7 @@
         }
         await showAllPiers()
       }
+      <% */ %>
     </script>
   </section>
 </article>

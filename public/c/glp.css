@@ -6,6 +6,29 @@ html, body {
   font-size: 1.0em;
 }
 
+.left-accessory-view {
+  background-color: #4B93E0;
+  color: #FFFFFF;
+  font-size: 12px;
+}
+
+.left-accessory-view > :first-child {
+  font-size: 20px;
+}
+
+.right-accessory-view {
+  margin: 0 3px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #888888;
+  outline: 0;
+}
+    
+a.right-accessory-view {
+  font-weight: 500;
+  color: white!important;
+}
+
 :valid {
 
 }

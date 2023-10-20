@@ -7,11 +7,13 @@
 
 import Router from '@koa/router'
 // import { ulid } from 'ulid'
+import { AggregateGroupByReducers, AggregateSteps } from 'redis'
 import { redis } from '../daos/impl/redis/redis-om.js'
 import {
   _log,
   _info,
   _error,
+  getSetName,
 } from '../utils/logging.js'
 
 const Log = _log.extend('mapkit')
@@ -61,6 +63,108 @@ router.get('allPiers', '/mapkit/allPiers', async (ctx) => {
     ctx.type = 'application/json; charset=utf-8'
     ctx.status = 200
     ctx.body = allPiers
+  }
+})
+
+router.get('mapkitAssociations', '/mapkit/associations', async (ctx) => {
+  const log = Log.extend('mapkitAssociations')
+  const info = Info.extend('mapkitAssociations')
+  const error = Error.extend('mapkitAssociations')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+  const csrfTokenCookie = ctx.cookies.get('csrfToken')
+  const csrfTokenSession = ctx.session.csrfToken
+  info(`${csrfTokenCookie},\n${csrfTokenSession}`)
+  if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
+  if (!(csrfTokenCookie === csrfTokenSession)) {
+    error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 401
+    ctx.body = { error: 'csrf token mismatch' }
+  } else {
+    let result
+    const num = 100
+    const offset = 0
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 200
+    try {
+      log('ft.aggregate glp:idx:piers:association "*" LOAD 3 $.loc AS coords groupby 1 @association REDUCE TOLIST 1 @coords sortby 2 @association asc limit 0 15')
+      const optsAggregateAssociation = {
+        LOAD: ['$.loc'],
+        STEPS: [
+          {
+            type: AggregateSteps.GROUPBY,
+            properties: '@association',
+            REDUCE: [{
+              type: AggregateGroupByReducers.TOLIST,
+              property: '$.loc',
+              AS: 'coords',
+            }],
+          },
+          {
+            type: AggregateSteps.SORTBY,
+            BY: '@association',
+            MAX: 1,
+          },
+          {
+            type: AggregateSteps.LIMIT,
+            from: offset,
+            size: num,
+          },
+        ],
+      }
+      result = await redis.ft.aggregate('glp:idx:piers:association', '*', optsAggregateAssociation)
+      log(result.total)
+      result.results.forEach((a) => {
+        if (a.coords && a.coords.length > 1) {
+          /* eslint-disable-next-line */
+          a.coords = a.coords.slice(0, 1)
+        }
+      })
+      log(result.results)
+    } catch (e) {
+      error('Failed to get association first pier coordinate data.')
+      ctx.status = 500
+      result = { error: 'Failed to get association first pier coordinate data.' }
+    }
+    ctx.body = result
+  }
+})
+
+router.get('mapkitTownGeoJSON', '/mapkit/geojson/:town', async (ctx) => {
+  const log = Log.extend('TownGeoJSON')
+  const info = Info.extend('TownGeoJSON')
+  const error = Error.extend('TownGeoJSON')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+  const town = getSetName(sanitize(ctx.params.town))
+  info(town)
+  const csrfTokenCookie = ctx.cookies.get('csrfToken')
+  const csrfTokenSession = ctx.session.csrfToken
+  info(`${csrfTokenCookie},\n${csrfTokenSession}`)
+  if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
+  if (!(csrfTokenCookie === csrfTokenSession)) {
+    error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 401
+    ctx.body = { error: 'csrf token mismatch' }
+  } else {
+    let geojson
+    let result
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 200
+    try {
+      geojson = await redis.json.get(`glp:geojson:${town}`, '$')
+      info(geojson)
+      result = geojson
+    } catch (e) {
+      error(`Failed to get ${town}'s geojson data.`)
+      ctx.status = 500
+      result = { error: `Failed to get ${town}'s geojson data.` }
+    }
+    ctx.body = result
   }
 })
 

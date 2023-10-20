@@ -80,6 +80,7 @@ router.get('piersByTown', '/towns/:town', hasFlash, async (ctx) => {
     ctx.throw(500, 'Error', { town })
   }
   const locals = {}
+  locals.setName = town
   locals.piers = piersInTown
   locals.flash = ctx.flash.view ?? {}
   locals.title = `${ctx.app.site}: ${town}`
@@ -430,10 +431,10 @@ router.get('piersByAssociation', '/assoc/:assoc', hasFlash, async (ctx) => {
   const idxPierAssociation = 'glp:idx:piers:association'
   const queryPierAssociation = `@association:(${decodedAssoc})`
   const optsPierAssociation = {}
-  optsPierAssociation.RETURN = ['pier', 'association']
+  optsPierAssociation.RETURN = ['pier', '$.loc', 'association']
   optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
   log(`Association piers FT.SEARCH ${idxPierAssociation} ${optsPierAssociation}`)
-  log(`ft.search ${idxPierAssociation} "@association:(${decodedAssoc})" RETURN 2 pier association SORTBY pier asc`)
+  log(`ft.search ${idxPierAssociation} "@association:(${decodedAssoc})" RETURN 3 pier $.loc association SORTBY pier asc`)
   try {
     piersInAssoc = await redis.ft.search(idxPierAssociation, queryPierAssociation, optsPierAssociation)
     log(piersInAssoc)
