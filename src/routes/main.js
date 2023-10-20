@@ -427,11 +427,14 @@ router.get('piersByAssociation', '/assoc/:assoc', hasFlash, async (ctx) => {
   const decodedAssoc = decodeURI(assoc)
   log(assoc)
   log(decodedAssoc)
+  const from = 0
+  const size = 60
   let piersInAssoc
   const idxPierAssociation = 'glp:idx:piers:association'
   const queryPierAssociation = `@association:(${decodedAssoc})`
   const optsPierAssociation = {}
   optsPierAssociation.RETURN = ['pier', '$.loc', 'association']
+  optsPierAssociation.LIMIT = { from, size }
   optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
   log(`Association piers FT.SEARCH ${idxPierAssociation} ${optsPierAssociation}`)
   log(`ft.search ${idxPierAssociation} "@association:(${decodedAssoc})" RETURN 3 pier $.loc association SORTBY pier asc`)
