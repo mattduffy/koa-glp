@@ -53,13 +53,13 @@
       <h3 id="address">Street Address:</h3>
       <ul class="location">
         <% if (pier.property?.association !== undefined && pier.property?.association?.length !== 0) {
-          let assoc
+          let assoc = `<a href="${origin}/assoc/${encodeURI(pier.property.association)}">${pier.property.association}</a>`
+          let assocExternal
           if (pier.property?.associationUrl !== undefined && pier.property?.associationUrl.length !== 0) {
-            assoc = `<a href="${pier.property.associationUrl}">${pier.property.association}</a>`
-          } else {
-            assoc = pier.property.association
+            // assocExternal = `<a class="external" href="${pier.property.associationUrl}"> </a>`
+            assocExternal = `<a href="${pier.property.associationUrl}"><span class="external"></span></a>`
           } %>
-          <li>Association: <%- assoc %></li>
+          <li>Association: <%- assoc %> <%- assocExternal %></li>
         <% } %>
         <% if (pier.property?.business !== undefined && pier.property?.business?.length !== 0) {
           let business 
