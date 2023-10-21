@@ -108,7 +108,7 @@ router.get('mapkitSwim', '/mapkit/swim', async (ctx) => {
   }
 })
 
-router.get('mapkitMarinas', '/mapkit/food', async (ctx) => {
+router.get('mapkitFood', '/mapkit/food', async (ctx) => {
   const log = Log.extend('mapkitFood')
   const info = Info.extend('mapkitFood')
   const error = Error.extend('mapkitFood')
@@ -149,7 +149,48 @@ router.get('mapkitMarinas', '/mapkit/food', async (ctx) => {
   }
 })
 
-router.get('mapkitMarinas', '/mapkit/businesses', async (ctx) => {
+router.get('mapkitPublicPiers', '/mapkit/public', async (ctx) => {
+  const log = Log.extend('mapkitPublic')
+  const info = Info.extend('mapkitPublic')
+  const error = Error.extend('mapkitPublic')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+  const csrfTokenCookie = ctx.cookies.get('csrfToken')
+  const csrfTokenSession = ctx.session.csrfToken
+  info(`${csrfTokenCookie},\n${csrfTokenSession}`)
+  if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
+  if (!(csrfTokenCookie === csrfTokenSession)) {
+    error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 401
+    ctx.body = { error: 'csrf token mismatch' }
+  } else {
+    let result
+    const from = 0
+    const size = 100
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 200
+    try {
+      log('FT.SEARCH glp:idx:piers:public "*" RETURN 13 pier $.loc AS coords $.property.association AS association $.property.business AS business $.owners[*].members[*].f AS name  SORTBY pier ASC')
+      const idxPierPublic = 'glp:idx:piers:public'
+      const queryPierPublic = '*'
+      const optsPierPublic = {}
+      optsPierPublic.RETURN = ['pier', '$.loc', 'AS', 'coords', '$.property.association', 'AS', 'association', '$.property.business', 'AS', 'business', '$.owners[*].members[*].f', 'AS', 'name']
+      optsPierPublic.LIMIT = { from, size }
+      optsPierPublic.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+      result = await redis.ft.search(idxPierPublic, queryPierPublic, optsPierPublic)
+      log(result.results)
+    } catch (e) {
+      error('Failed to get public pier coordinate data.')
+      ctx.status = 500
+      result = { error: 'Failed to get public pier coordinate data.' }
+    }
+    ctx.body = result
+  }
+})
+
+router.get('mapkitBusinesses', '/mapkit/businesses', async (ctx) => {
   const log = Log.extend('mapkitBusinesses')
   const info = Info.extend('mapkitBusinesses')
   const error = Error.extend('mapkitBusinesses')

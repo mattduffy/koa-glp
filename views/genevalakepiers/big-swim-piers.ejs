@@ -133,7 +133,7 @@
               }
               const coordinate = new mapkit.Coordinate(lat, lon);
               const annotation = new mapkit.MarkerAnnotation(coordinate, {
-                title: s.value.assoc,
+                title:`Pier ${s.value.pier}`,
                 subtitle: s.value.name,
                 animates: true,
                 selected: false,
