@@ -108,6 +108,48 @@ router.get('mapkitSwim', '/mapkit/swim', async (ctx) => {
   }
 })
 
+router.get('mapkitMarinas', '/mapkit/food', async (ctx) => {
+  const log = Log.extend('mapkitFood')
+  const info = Info.extend('mapkitFood')
+  const error = Error.extend('mapkitFood')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+  const csrfTokenCookie = ctx.cookies.get('csrfToken')
+  const csrfTokenSession = ctx.session.csrfToken
+  info(`${csrfTokenCookie},\n${csrfTokenSession}`)
+  if (csrfTokenCookie === csrfTokenSession) info('cookie ===session')
+  if (!(csrfTokenCookie === csrfTokenSession)) {
+    error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 401
+    ctx.body = { error: 'csrf token mismatch' }
+  } else {
+    let result
+    const from = 0
+    const size = 100
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 200
+    try {
+      // log('FT.SEARCH glp:idx:piers:marina "*" RETURN 10 pier $.loc AS coords $.property.business AS business $.property.associationUrl AS url SORTBY pier ASC')
+      log('FT.SEARCH glp:idx:piers:food "*" RETURN 10 pier $.loc AS coords $.property.business AS business $.property.associationUrl AS url SORTBY pier ASC')
+      const idxPierFood = 'glp:idx:piers:food'
+      const queryPierFood = '*'
+      const optsPierFood = {}
+      optsPierFood.RETURN = ['pier', '$.loc', 'AS', 'coords', '$.property.business', 'AS', 'business', '$.property.associationUrl', 'AS', 'url']
+      optsPierFood.LIMIT = { from, size }
+      optsPierFood.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+      result = await redis.ft.search(idxPierFood, queryPierFood, optsPierFood)
+      log(result.results)
+    } catch (e) {
+      error('Failed to get food pier coordinate data.')
+      ctx.status = 500
+      result = { error: 'Failed to get food pier coordinate data.' }
+    }
+    ctx.body = result
+  }
+})
+
 router.get('mapkitMarinas', '/mapkit/marinas', async (ctx) => {
   const log = Log.extend('mapkitMarinas')
   const info = Info.extend('mapkitMarinas')

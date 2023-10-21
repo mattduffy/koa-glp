@@ -46,9 +46,125 @@
     <%# map embed %>
     <%- await include('./map-embed.ejs') -%>
     <%# map embed %>
-    <script nonce="<%= nonce %>">
-      const map = document.querySelector('div#map')
-      // console.log(map)
+    <script nonce="<%= nonce %>"
+      src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.core.js"
+      crossorigin async
+      data-callback="initMapKit"
+      data-libraries="full-map"
+      data-initial-token="">
+    </script>
+    <script nonce="<%= nonce %>" type="module">
+      let page = 'food'
+
+      const origin = '<%= origin %>'
+      const jwtAccess = '<%= searchJwtAccess %>'     
+      let map
+      async function setupMapKitJs() {
+        const tokenOpts = {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${jwtAccess}`,
+          },
+        }
+        const request = new Request(`${origin}/mapkit/getToken`, tokenOpts)
+        const response = await fetch(request)
+        const { tokenID } = await response.json()
+        console.log('tokenID: ', tokenID)
+        if (!window.mapkit || window.mapkit.loadedLibraries.length === 0) {
+          // mapkit.core.js or the libraries are not loaded yet.
+          // Set up the callback and wait for it to be called.
+          await new Promise(resolve => { window.initMapKit = resolve })
+          // Clean up
+          delete window.initMapKit
+        }
+        mapkit.init({
+          authorizationCallback: function(done) {
+            done(tokenID)
+          },
+        })
+      }
+
+      async function main() {
+        await setupMapKitJs()
+        // init / center the map over Geneva Bay 
+        const lat = 42.587751
+        const lon = -88.440669
+        const genevaBay = new mapkit.CoordinateRegion(
+          new mapkit.Coordinate(lat, lon),
+          new mapkit.CoordinateSpan(0.1, 0.1)
+        );
+        const opts = {
+          mapType: mapkit.Map.MapTypes.Satellite,
+          visibleMapRect: mapkit.MapRect(0, 0, 1, 1),
+          isZoomEnabled: true,
+          showsCompass: mapkit.FeatureVisibility.Visible,
+          showsScale: mapkit.FeatureVisibility.Visible,
+          showsZoomControl: true,
+          cameraDistance: 900,
+          showsPointsOfInterest: true,
+          isRotationEnabled: true,
+          isScrollEnabled: true,
+          showsPointsOfInterest: true,
+          showsMapTypeControl: false,
+        } 
+         window.map = new mapkit.Map("map", opts);
+         window.map.region = genevaBay;
+      }
+      await main()
+
+      const annotations = []
+
+      async function showFoodPiers() {
+        try {
+          const response = await (await fetch(`${origin}/mapkit/food`)).json()
+          console.log(response)
+          response.documents.forEach((m) => {
+            let [lon, lat] = m.value.coords.split(',')
+            lon = parseFloat(lon, 10)
+            lat = parseFloat(lat, 10)
+            if (lat !== 0 && lon !== 0) {
+              const annotationCallout = {
+                calloutLeftAccessoryForAnnotation: () => {
+                   const accessoryViewLeft = document.createElement("div")
+                <% /* %>
+                //   accessoryViewLeft.className = "left-accessory-view"
+                //   const accessoryViewLeftIcon = document.createElement("span")
+                //   accessoryViewLeftIcon.textContent = "\u{26C5}" // Sun & Clouds
+                //   accessoryViewLeft.appendChild(accessoryViewLeftIcon)
+                //   const accessoryViewLeftText = document.createElement("div")
+                //   accessoryViewLeftText.textContent = "73 \u{00b0}F"
+                //   accessoryViewLeft.appendChild(accessoryViewLeftText)
+                <% */ %>
+                   return accessoryViewLeft
+                },
+                calloutRightAccessoryForAnnotation: () => {
+                  const accessoryViewRight = document.createElement("a")
+                  accessoryViewRight.className = "right-accessory-view"
+                  accessoryViewRight.href = `${origin}/pier/${m.value.pier}`
+                  accessoryViewRight.target = "_self"
+                  accessoryViewRight.textContent = "\u{24D8}" // (i) icon
+                  return accessoryViewRight
+                }
+              }
+              const coordinate = new mapkit.Coordinate(lat, lon);
+              const annotation = new mapkit.MarkerAnnotation(coordinate, {
+                title: `Pier ${m.value.pier}`,
+                subtitle: m.value.business,
+                animates: true,
+                selected: false,
+                color: "#4B93E0",
+                callout: annotationCallout
+              })
+              annotations.push(annotation)
+            }
+          })
+          window.map.showItems(annotations.reverse())
+        } catch (e) {
+          console.error(e)
+        }
+      }
+      await showFoodPiers()
     </script>
   </section>
 </article>
