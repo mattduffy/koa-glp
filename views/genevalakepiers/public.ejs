@@ -76,7 +76,7 @@
         const lon = -88.440669
         const genevaBay = new mapkit.CoordinateRegion(
           new mapkit.Coordinate(lat, lon),
-          new mapkit.CoordinateSpan(0.1, 0.1)
+          new mapkit.CoordinateSpan(.016, 0)
         );
         const opts = {
           mapType: mapkit.Map.MapTypes.Satellite,
@@ -86,7 +86,7 @@
           showsCompass: mapkit.FeatureVisibility.Visible,
           showsScale: mapkit.FeatureVisibility.Visible,
           showsZoomControl: true,
-          cameraDistance: 900,
+          cameraDistance: 3500,
           showsPointsOfInterest: true,
           isRotationEnabled: true,
           isScrollEnabled: true,
@@ -137,14 +137,15 @@
                 title: `Pier ${p.value.pier}`,
                 subtitle: `${p.value.name}`,
                 animates: true,
-                selected: false,
+                selected: true,
                 color: "#4B93E0",
                 callout: annotationCallout
               })
               annotations.push(annotation)
             }
           })
-          window.map.showItems(annotations.reverse())
+          // window.map.showItems(annotations.reverse())
+          window.map.showItems(annotations)
         } catch (e) {
           console.error(e)
         }

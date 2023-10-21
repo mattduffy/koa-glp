@@ -132,49 +132,11 @@
           console.error(e)
         }
       }
-      await showAllPiers()
+      // await showAllPiers()
 
-      <% /* %>
-      async function getMapkit() {
-        return await new Promise(resolve => {
-          const interval = setInterval(() => {
-            if (window.mapkit !== undefined && window.mapkit.loadedLibraries.includes('full-map')) {
-              resolve(true);
-              console.log(`${page}: window.mapkit: ${window.mapkit}`)
-              clearInterval(interval)
-            }
-          }, 100)
-        })
+      async function annotateSearchResults(piers) {
+        console.log(`Got a list of piers from search results ${piers}`)
       }
-      const isMapkitReady = await getMapkit()
-      if (isMapkitReady) {
-        console.log(window.mapkit.loadedLibraries) 
-        async function showAllPiers() {
-          const allPiers = await fetch(`${origin}/mapkit/allPiers`)
-          const piers = await allPiers.json()
-          if (piers.total > 0) {
-              const annotations = []
-              piers.documents.forEach((pier) => {
-                  let [lon, lat] = pier.value['$.loc'].split(',')
-                  lon = parseFloat(lon, 10)
-                  lat = parseFloat(lat, 10)
-                  // console.log(lat, lon)
-                  if (lat !== 0 && lon !== 0) {
-                      const pierMarker = new window.mapkit.Coordinate(lat, lon)
-                      const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
-                      pierAnnotation.title = `Pier ${pier.value.pierNumber}`
-                      annotations.push(pierAnnotation)
-                  }
-              })
-              if (annotations.length > 0) {
-                  // console.dir(annotations, { depth: null })
-                  window.map.showItems(annotations)
-              }
-          }
-        }
-        await showAllPiers()
-      }
-      <% */ %>
     </script>
   </section>
 </article>

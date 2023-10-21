@@ -10,7 +10,7 @@
   <div id="searchResults">
 
   </div>
-  <script nonce="<%= nonce %>">
+  <script nonce="<%= nonce %>" type="module">
     let origin = '<%= origin %>'
     let jwtAccess = '<%= searchJwtAccess %>'
     const search = document.forms.search
@@ -140,6 +140,10 @@
             businessResultsList.appendChild(li)
           })
         searchResults.appendChild(businessResultsList)
+        }
+        if (window.map) {
+          console.log(window.map)
+          // await annotateSearchResults(searchResults)
         }
       }
     })

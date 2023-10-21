@@ -36,6 +36,7 @@
     
     <ul id="resultsList" class="searchResults">
     <% businesses.forEach((p, i) => {
+      console.log(p.pier[0])
       let a = `<li><a href="/pier/${p.pier[0]}">${p.business}</a></li>` %>
       <%- a %>
     <% }) %></ul>
@@ -118,7 +119,7 @@
             ulResultsList.replaceChildren()
             links.forEach((a) => {
               const li = document.createElement('li')
-              li.innerHTML = `<a href="${origin}/pier/${a.pier}">${a.business}</a>`
+              li.innerHTML = `<a href="${origin}/pier/${a.pier[0]}">${a.business}</a>`
               ulResultsList.appendChild(li)
             })
           }
@@ -203,7 +204,7 @@
           showsCompass: mapkit.FeatureVisibility.Visible,
           showsScale: mapkit.FeatureVisibility.Visible,
           showsZoomControl: true,
-          cameraDistance: 900,
+          cameraDistance: 3500,
           showsPointsOfInterest: true,
           isRotationEnabled: true,
           isScrollEnabled: true,
@@ -254,7 +255,7 @@
                 title: `Pier ${b.value.pier}`,
                 subtitle: b.value.business,
                 animates: true,
-                selected: false,
+                selected: true,
                 color: "#4B93E0",
                 callout: annotationCallout
               })

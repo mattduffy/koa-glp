@@ -204,7 +204,7 @@
           showsCompass: mapkit.FeatureVisibility.Visible,
           showsScale: mapkit.FeatureVisibility.Visible,
           showsZoomControl: true,
-          cameraDistance: 900,
+          cameraDistance: 3500,
           showsPointsOfInterest: true,
           isRotationEnabled: true,
           isScrollEnabled: true,
@@ -246,7 +246,7 @@
                   accessoryViewRight.className = "right-accessory-view"
                   accessoryViewRight.href = `${origin}/assoc/${encodeURI(a.association)}`
                   accessoryViewRight.target = "_self"
-                  accessoryViewRight.textContent = "\u{24D8}" // (i) icon
+                  accessoryViewRight.textContent = "\u{24D8}"
                   return accessoryViewRight
                 }
               }
@@ -254,12 +254,11 @@
               const annotation = new mapkit.MarkerAnnotation(coordinate, {
                 title: a.association,
                 animates: true,
-                selected: false,
+                selected: true,
                 color: "#4B93E0",
                 callout: annotationCallout
               })
               annotations.push(annotation)
-              // window.map.addAnnotation(annotation)
             }
           })
           window.map.showItems(annotations.reverse())
