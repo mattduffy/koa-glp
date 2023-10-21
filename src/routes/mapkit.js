@@ -131,7 +131,6 @@ router.get('mapkitMarinas', '/mapkit/food', async (ctx) => {
     ctx.type = 'application/json; charset=utf-8'
     ctx.status = 200
     try {
-      // log('FT.SEARCH glp:idx:piers:marina "*" RETURN 10 pier $.loc AS coords $.property.business AS business $.property.associationUrl AS url SORTBY pier ASC')
       log('FT.SEARCH glp:idx:piers:food "*" RETURN 10 pier $.loc AS coords $.property.business AS business $.property.associationUrl AS url SORTBY pier ASC')
       const idxPierFood = 'glp:idx:piers:food'
       const queryPierFood = '*'
@@ -145,6 +144,47 @@ router.get('mapkitMarinas', '/mapkit/food', async (ctx) => {
       error('Failed to get food pier coordinate data.')
       ctx.status = 500
       result = { error: 'Failed to get food pier coordinate data.' }
+    }
+    ctx.body = result
+  }
+})
+
+router.get('mapkitMarinas', '/mapkit/businesses', async (ctx) => {
+  const log = Log.extend('mapkitBusinesses')
+  const info = Info.extend('mapkitBusinesses')
+  const error = Error.extend('mapkitBusinesses')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+  const csrfTokenCookie = ctx.cookies.get('csrfToken')
+  const csrfTokenSession = ctx.session.csrfToken
+  info(`${csrfTokenCookie},\n${csrfTokenSession}`)
+  if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
+  if (!(csrfTokenCookie === csrfTokenSession)) {
+    error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 401
+    ctx.body = { error: 'csrf token mismatch' }
+  } else {
+    let result
+    const from = 0
+    const size = 100
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 200
+    try {
+      log('FT.SEARCH glp:idx:piers:business"*" RETURN 10 pier $.loc AS coords $.property.business AS business $.property.associationUrl AS url SORTBY pier ASC')
+      const idxPierBusiness = 'glp:idx:piers:business'
+      const queryPierBusiness = '*'
+      const optsPierBusiness = {}
+      optsPierBusiness.RETURN = ['pier', '$.loc', 'AS', 'coords', '$.property.business', 'AS', 'business', '$.property.associationUrl', 'AS', 'url']
+      optsPierBusiness.LIMIT = { from, size }
+      optsPierBusiness.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+      result = await redis.ft.search(idxPierBusiness, queryPierBusiness, optsPierBusiness)
+      log(result.results)
+    } catch (e) {
+      error('Failed to get business pier coordinate data.')
+      ctx.status = 500
+      result = { error: 'Failed to get business pier coordinate data.' }
     }
     ctx.body = result
   }
@@ -173,7 +213,6 @@ router.get('mapkitMarinas', '/mapkit/marinas', async (ctx) => {
     ctx.type = 'application/json; charset=utf-8'
     ctx.status = 200
     try {
-      // log('FT.AGGREGATE glp:idx:piers:marina "*" LOAD 3 $.loc AS coords GROUPBY 1 @business REDUCE TOLIST 1 @coords SORTBY 2 @pier ASC LIMIT 0 15')
       log('FT.SEARCH glp:idx:piers:marina "*" RETURN 10 pier $.loc AS coords $.property.business AS business $.property.associationUrl AS url SORTBY pier ASC')
       const idxPierMarina = 'glp:idx:piers:marina'
       const queryPierMarina = '*'
