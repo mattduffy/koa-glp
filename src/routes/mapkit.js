@@ -339,6 +339,58 @@ router.get('mapkitAssociations', '/mapkit/associations', async (ctx) => {
   }
 })
 
+router.get('mapkitLocate', '/mapkit/locate/:lon/:lat/:radius/:units', async (ctx) => {
+  const log = Log.extend('locate')
+  const info = Info.extend('locate')
+  const error = Error.extend('locate')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+  const lon = (/^-?\d{1,3}\.\d{1,16}$/.exec(sanitize(ctx.params.lon)))?.input
+  const lat = (/^-?\d{1,3}\.\d{1,16}$/.exec(sanitize(ctx.params.lat)))?.input
+  const radius = parseInt(sanitize(ctx.params.radius.slice(0, 3)), 10)
+  const units = ['m', 'km', 'mi', 'ft'].find((u) => u === sanitize(ctx.params.units))
+  info(`locate piers within ${radius} ${units} of coords: ${lon}, ${lat}`)
+
+  const csrfTokenCookie = ctx.cookies.get('csrfToken')
+  const csrfTokenSession = ctx.session.csrfToken
+  info(`${csrfTokenCookie},\n${csrfTokenSession}`)
+  if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
+  if (!(csrfTokenCookie === csrfTokenSession)) {
+    error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 401
+    ctx.body = { error: 'csrf token mismatch' }
+  } else {
+    let result
+    const from = 0
+    const size = 100
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 200
+    try {
+      log(`FT.SEARCH glp:idx:piers:coords "@coords:[${lon} ${lat} ${radius} ${units}]" RETURN 22 pier $.loc AS coords $.owners[*].estateName AS estateName $.owners[*].members[*].f AS firstname $.owners[*].members[*].l AS lastname $.property.business AS business $.property.association AS association $.property.associationUrl AS url SORTBY pier ASC`)
+      const idxPierCoords = 'glp:idx:piers:coords'
+      const queryPierCoords = `@coords:[${lon} ${lat} ${radius} ${units}]`
+      const optsPierCoords = {}
+      optsPierCoords.RETURN = ['pier', '$.loc', 'AS', 'coords', '$.owners[*].estateName', 'AS', 'estateName', '$.owners[*].members[*].f', 'AS', 'firstname', '$.owners[*].members[*].l', 'AS', 'lastname', '$.property.business', 'AS', 'business', '$.property.association', 'AS', 'association', '$.property.associationUrl', 'AS', 'url']
+      optsPierCoords.LIMIT = { from, size }
+      optsPierCoords.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+      result = await redis.ft.search(idxPierCoords, queryPierCoords, optsPierCoords)
+      log(result.total)
+      if (result.total > 0) {
+        result.documents.forEach((d) => {
+          info(d)
+        })
+      }
+    } catch (e) {
+      error(`Failed to locate piers within ${radius} ${units} of coords: ${lon}, ${lat}.`)
+      ctx.status = 500
+      result = { error: `Failed to locate piers within ${radius} ${units} of coords: ${lon}, ${lat}.` }
+    }
+    ctx.body = result
+  }
+})
+
 router.get('mapkitTownGeoJSON', '/mapkit/geojson/:town', async (ctx) => {
   const log = Log.extend('TownGeoJSON')
   const info = Info.extend('TownGeoJSON')

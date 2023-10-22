@@ -941,7 +941,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
       results.estateNames = { total: 0 }
       results.ownerNames = { total: 0 }
       results.associations = { total: 0 }
-      results.buisnesses = { total: 0 }
+      results.businesses = { total: 0 }
     }
     log(results)
     ctx.type = 'application/json; charset=utf-8'

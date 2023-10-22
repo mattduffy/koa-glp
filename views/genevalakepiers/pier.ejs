@@ -48,7 +48,7 @@
         <li>lat: <%= pier.loc.split(',')[1] %></li>
         <li>lon: <%= pier.loc.split(',')[0] %></li>
         <li>geohash: <%= pier.geohash %></li>
-        <li>pluscode: <a href="https://www.google.com/maps/place/<%= encodeURIComponent(pier.pluscode) %>"><%= pier.pluscode %></a></li>
+        <li>pluscode: <a class="external" href="https://www.google.com/maps/place/<%= encodeURIComponent(pier.pluscode) %>"><%= pier.pluscode %></a></li>
       </ul>
       <h3 id="address">Street Address:</h3>
       <ul class="location">
@@ -56,7 +56,6 @@
           let assoc = `<a href="${origin}/assoc/${encodeURI(pier.property.association)}">${pier.property.association}</a>`
           let assocExternal
           if (pier.property?.associationUrl !== undefined && pier.property?.associationUrl.length !== 0) {
-            // assocExternal = `<a class="external" href="${pier.property.associationUrl}"> </a>`
             assocExternal = `<a class="external" href="${pier.property.associationUrl}"></a>`
           } %>
           <li>Association: <%- assoc %> <%- assocExternal %></li>
