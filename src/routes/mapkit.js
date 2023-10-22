@@ -213,13 +213,14 @@ router.get('mapkitBusinesses', '/mapkit/businesses', async (ctx) => {
     ctx.type = 'application/json; charset=utf-8'
     ctx.status = 200
     try {
-      log('FT.SEARCH glp:idx:piers:business"*" RETURN 10 pier $.loc AS coords $.property.business AS business $.property.associationUrl AS url SORTBY pier ASC')
+      log('FT.SEARCH glp:idx:piers:business"*" RETURN 10 pier $.loc AS coords $.property.business AS business $.property.associationUrl AS url SORTBY business ASC')
       const idxPierBusiness = 'glp:idx:piers:business'
       const queryPierBusiness = '*'
       const optsPierBusiness = {}
       optsPierBusiness.RETURN = ['pier', '$.loc', 'AS', 'coords', '$.property.business', 'AS', 'business', '$.property.associationUrl', 'AS', 'url']
       optsPierBusiness.LIMIT = { from, size }
-      optsPierBusiness.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+      // optsPierBusiness.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+      optsPierBusiness.SORTBY = { BY: 'business', DIRECTION: 'ASC' }
       result = await redis.ft.search(idxPierBusiness, queryPierBusiness, optsPierBusiness)
       log(result.results)
     } catch (e) {

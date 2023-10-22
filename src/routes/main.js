@@ -700,7 +700,8 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         queryPierNumber = `@pierNumber:${pierNumberTokens}`
         optsPierNumber = {}
         optsPierNumber.SORTBY = { BY: 'pierNumber', DIRECTION: 'ASC' }
-        optsPierNumber.RETURN = 'pierNumber'
+        // optsPierNumber.RETURN = 'pierNumber'
+        optsPierNumber.RETURN = ['pierNumber', '$.loc', 'AS', 'coords']
         log(`Pier number FT.SEARCH ${idxPierNumber} ${queryPierNumber}`)
         results.pierNumbers = await redis.ft.search(idxPierNumber, queryPierNumber, optsPierNumber)
         log(results.pierNumbers)
@@ -715,6 +716,8 @@ router.post('search', '/search', hasFlash, async (ctx) => {
       // Need to use a better solution here
       results.public = { total: 0, documents: [] }
       results.food = { total: 0, documents: [] }
+    } else {
+      results.pierNumbers = { total: 0 }
     }
     if (strings.length > 0) {
       log(`strings: ${strings}`)
@@ -741,7 +744,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
           queryPierPublic = '@public:[1 1]'
           optsPierPublic = {}
           optsPierPublic.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
-          optsPierPublic.RETURN = ['pier', 'firstname']
+          optsPierPublic.RETURN = ['pier', 'firstname', '$.loc', 'AS', 'coords']
           optsPierPublic.LIMIT = { from: 0, size: 20 }
           log(`Pier public FT.SEARCH ${idxPierPublic} "${queryPierPublic}"`)
           results.public = await redis.ft.search(idxPierPublic, queryPierPublic, optsPierPublic)
@@ -780,7 +783,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
           queryPierFood = '@food:[1 1]'
           optsPierFood = {}
           optsPierFood.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
-          optsPierFood.RETURN = ['pier', 'business']
+          optsPierFood.RETURN = ['pier', 'business', '$.loc', 'AS', 'coords']
           optsPierFood.LIMIT = { from: 0, size: 20 }
           log(`Pier food FT.SEARCH ${idxPierFood} "${queryPierFood}"`)
           results.food = await redis.ft.search(idxPierFood, queryPierFood, optsPierFood)
@@ -818,7 +821,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         queryPierEstateName = `@estateName:${pierEstatenameTokens}`
         optsPierEstateName = {}
         optsPierEstateName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
-        optsPierEstateName.RETURN = ['pier', 'estateName']
+        optsPierEstateName.RETURN = ['pier', 'estateName', '$.loc', 'AS', 'coords']
         optsPierEstateName.LIMIT = { from: 0, size: 20 }
         log(`Pier estate name FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}"`)
         results.estateNames = await redis.ft.search(idxPierEstateName, queryPierEstateName, optsPierEstateName)
@@ -854,7 +857,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         queryPierOwnerName = `@lastname|firstname:${pierOwnernameTokens} (-@business:${pierOwnernameTokens}) (-@association:${pierOwnernameTokens}) (-Assoc*)`
         optsPierOwnerName = {}
         optsPierOwnerName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
-        optsPierOwnerName.RETURN = ['pier', 'firstname', 'lastname', 'business']
+        optsPierOwnerName.RETURN = ['pier', 'firstname', 'lastname', 'business', '$.loc', 'AS', 'coords']
         log(`Pier owner name FT.SEARCH ${idxPierOwnerName} "${queryPierOwnerName}"`)
         results.ownerNames = await redis.ft.search(idxPierOwnerName, queryPierOwnerName, optsPierOwnerName)
         log(results.ownerNames)
@@ -888,7 +891,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         queryPierAssociation = `@association:${pierAssociationTokens}`
         optsPierAssociation = {}
         optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
-        optsPierAssociation.RETURN = ['pier', 'association']
+        optsPierAssociation.RETURN = ['pier', 'association', '$.loc', 'AS', 'coords']
         log(`Pier association name FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`)
         results.associations = await redis.ft.search(idxPierAssociation, queryPierAssociation, optsPierAssociation)
         log(results.associations)
@@ -922,7 +925,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         queryPierBusiness = `@business:${pierBusinessTokens}`
         optsPierBusiness = {}
         optsPierBusiness.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
-        optsPierBusiness.RETURN = ['pier', 'business']
+        optsPierBusiness.RETURN = ['pier', 'business', '$.loc', 'AS', 'coords']
         log(`Pier business name FT.SEARCH ${idxPierBusiness} "${queryPierBusiness}"`)
         results.businesses = await redis.ft.search(idxPierBusiness, queryPierBusiness, optsPierBusiness)
         log(results.businesses)
@@ -935,7 +938,6 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         // throw new Error('Search by business name failed.', { cause: e })
       }
     } else {
-      results.pieNumbers = { total: 0 }
       results.estateNames = { total: 0 }
       results.ownerNames = { total: 0 }
       results.associations = { total: 0 }
