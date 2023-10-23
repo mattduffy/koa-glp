@@ -284,7 +284,7 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
       {
         ON: 'JSON',
         PREFIX: prefix,
-        FILTER: "@public=='1'",
+        FILTER: '@public==1',
       },
     )
   } catch (e) {
@@ -317,7 +317,7 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
       {
         ON: 'JSON',
         PREFIX: prefix,
-        FILTER: "@swim=='1'",
+        FILTER: '@swim==1',
       },
     )
   } catch (e) {
@@ -388,7 +388,7 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
       {
         ON: 'JSON',
         PREFIX: prefix,
-        FILTER: "@marina=='1'",
+        FILTER: '@marina==1',
       },
     )
   } catch (e) {
@@ -403,7 +403,7 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
   const pierFoodIndex = `${DB_PREFIX}:idx:piers:food`
   try {
     // log(await redis.ft.dropIndex(pierFoodIndex))
-    log(`pierMarinaIndex name: ${pierFoodIndex}`)
+    log(`pierFoodIndex name: ${pierFoodIndex}`)
     await redis.ft.create(
       pierFoodIndex,
       {
@@ -426,12 +426,44 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
       {
         ON: 'JSON',
         PREFIX: prefix,
-        FILTER: "@food=='1'",
+        FILTER: '@food==1',
       },
     )
   } catch (e) {
     if (e.message === 'Index already exists') {
       log(`${pierFoodIndex} ${e.message}.  Skipping ahead.`)
+    } else {
+      error(e)
+      throw new Error(e.message, { cause: e })
+    }
+  }
+  // create an index for pier geo coords
+  const pierGeoIndex = `${DB_PREFIX}:idx:piers:coords`
+  try {
+    // log(await redis.ft.dropIndex(pierGeoIndex))
+    log(`pierGeoIndex name: ${pierGeoIndex}`)
+    await redis.ft.create(
+      pierGeoIndex,
+      {
+        '$.pier': {
+          type: SchemaFieldTypes.TEXT,
+          SORTABLE: true,
+          AS: 'pier',
+        },
+        '$.loc': {
+          type: SchemaFieldTypes.GEO,
+          SORTABLE: true,
+          AS: 'coords',
+        },
+      },
+      {
+        ON: 'JSON',
+        PREFIX: prefix,
+      },
+    )
+  } catch (e) {
+    if (e.message === 'Index already exists') {
+      log(`${pierGeoIndex} ${e.message}.  Skipping ahead.`)
     } else {
       error(e)
       throw new Error(e.message, { cause: e })
