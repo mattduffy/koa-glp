@@ -18,21 +18,27 @@
     <h2><%= town %></h2>
     <h3><%= piers.length %> Piers</h3>
 
-    <div class="previousPier">
-      <a href="<%= origin %>/towns/<%= previousTown.replaceAll(' ', '-') %>">< <%= previousTown %></a>
-    </div>
-    <div class="nextPier">
-      <a href="<%= origin %>/towns/<%= nextTown.replaceAll(' ', '-') %>"><%= nextTown %> ></a>
-    </div>
+    <p>
+      <div class="previousPier">
+        <a href="<%= origin %>/towns/<%= previousTown.replaceAll(' ', '-') %>">< <%= previousTown %></a>
+      </div>
+      <div class="nextPier">
+        <a href="<%= origin %>/towns/<%= nextTown.replaceAll(' ', '-') %>"><%= nextTown %> ></a>
+      </div>
+    </p>
+    <% /* %>
+    <p>
+      <% piers.forEach((p, i) => {
+        let a = `<a href="/pier/${p}">${p}</a>, `
+        if (i === (piers.length - 1)) {
+          a = a.substr(0, a.lastIndexOf(', '))
+        }
+        %>
+        <%- a %>
+      <% }) %>
+    </p>
+    <% */ %>
 
-    <p><% piers.forEach((p, i) => {
-     let a = `<a href="/pier/${p}">${p}</a>, `
-     if (i === (piers.length - 1)) {
-       a = a.substr(0, a.lastIndexOf(', '))
-     }
-     %>
-     <%- a %>
-   <% }) %></p>
   </section>
   <section class="map">
     <%# map embed %>
@@ -49,6 +55,8 @@
       let page = 'towns'
 
       const origin = '<%= origin %>'
+      const setName = '<%= setName %>'
+      console.log(setName)
       const jwtAccess = '<%= searchJwtAccess %>'     
       let map
       async function setupMapKitJs() {
@@ -108,13 +116,20 @@
       const annotations = []
 
       async function showTownPiers() {
-        const piers = <%- JSON.stringify() %>
-        console.log(piers)
-        piers.forEach((p) => {
-          let [lon, lat] = p.value['$.loc'].split(',')
+        const response = await (await fetch(`${origin}/mapkit/town/${setName}`)).json()
+        console.log(response)
+        response.documents.forEach((p) => {
+          let [lon, lat] = p.value['loc'].split(',')
           lon = parseFloat(lon, 10)
           lat = parseFloat(lat, 10)
           if (lat !== 0 && lon !== 0) {
+            let subtitle = ' '
+            if (p.value.business !== '' && p.value.association === '') subtitle = p.value.business
+            if (p.value.association !== '' && p.value.business === '') subtitle = p.value.association
+            if (p.value.firstname !== '' && p.value.lastname !== '') subtitle = `${p.value.firstname} ${p.value.lastname}`
+            if (p.value.firstname !== '' && p.value.lastname === '') subtitle = p.value.firstname
+            if (p.value.firstname === '' && p.value.lastname !== '') subtitle = p.value.lastname
+            if (p.value.estateName !== '') subtitle = p.value.estateName
             const annotationCallout = {
               calloutLeftAccessoryForAnnotation: () => {
                  const accessoryViewLeft = document.createElement("div")
@@ -141,7 +156,7 @@
             const coordinate = new mapkit.Coordinate(lat, lon);
             const annotation = new mapkit.MarkerAnnotation(coordinate, {
               title: `Pier ${p.value.pier}`,
-              subtitle: p.value.association,
+              subtitle: subtitle,
               animates: false,
               selected: true,
               color: "#4B93E0",
@@ -153,7 +168,7 @@
         })
         window.map.showItems(annotations.reverse())
       }
-      // await showTownPiers()
+      await showTownPiers()
     </script>
   </section>
 </article>

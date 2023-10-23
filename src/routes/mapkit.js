@@ -391,6 +391,57 @@ router.get('mapkitLocate', '/mapkit/locate/:lon/:lat/:radius/:units', async (ctx
   }
 })
 
+router.get('mapkitTownPiers', '/mapkit/town/:town', async (ctx) => {
+  const log = Log.extend('TownPiers')
+  const info = Info.extend('TownPiers')
+  const error = Error.extend('TownPiers')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+  const town = getSetName(sanitize(ctx.params.town))
+  info(town)
+  const csrfTokenCookie = ctx.cookies.get('csrfToken')
+  const csrfTokenSession = ctx.session.csrfToken
+  info(`${csrfTokenCookie},\n${csrfTokenSession}`)
+  if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
+  if (!(csrfTokenCookie === csrfTokenSession)) {
+    error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 401
+    ctx.body = { error: 'csrf token mismatch' }
+  } else {
+    let result = {}
+    result.total = 0
+    result.documents = []
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 200
+    let piersInTown
+    const key = `glp:piers_by_town:${town}`
+    log(`key: ${key}`)
+    try {
+      piersInTown = await redis.zRange(key, 0, -1)
+      info(piersInTown)
+      if (piersInTown.length > 0) {
+        // piersInTown.forEach(async (p) => {
+        /* eslint-disable-next-line */
+        for await(const p of piersInTown) {
+          const pier = await redis.json.get(`glp:piers:${p}`, '$')
+          // info(pier)
+          result.documents.push({ id: pier.pier, value: pier })
+          result.total += 1
+        }
+      }
+    } catch (e) {
+      error(`Failed to get set ${town}'s piers.`)
+      ctx.status = 500
+      result = { error: `Failed to get set ${town}'s piers.` }
+    }
+    result.town = town
+    // result.piers = piersInTown
+    ctx.body = result
+  }
+})
+
 router.get('mapkitTownGeoJSON', '/mapkit/geojson/:town', async (ctx) => {
   const log = Log.extend('TownGeoJSON')
   const info = Info.extend('TownGeoJSON')
