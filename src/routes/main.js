@@ -10,7 +10,7 @@ import { ulid } from 'ulid'
 import formidable from 'formidable'
 import { Albums } from '@mattduffy/albums/Albums' // eslint-disable-line import/no-unresolved
 import { AggregateGroupByReducers, AggregateSteps } from 'redis'
-import { _log, _error, getSetName } from '../utils/logging.js'
+import { _log, _error, getSetName, TOWNS } from '../utils/logging.js'
 import { redis } from '../daos/impl/redis/redis-om.js'
 import { redis as ioredis } from '../daos/impl/redis/redis-client.js'
 
@@ -70,6 +70,17 @@ router.get('piersByTown', '/towns/:town', hasFlash, async (ctx) => {
   const error = mainError.extend('GET-piersByTown')
   const town = getSetName(sanitize(ctx.params.town))
   log(town)
+  let prevTown
+  let nextTown
+  TOWNS.forEach((t, i) => {
+    if (t.replaceAll('-', '_') === town.replaceAll('-', '_')) {
+      const prev = (i === 0) ? TOWNS.length - 1 : i - 1
+      const next = (i < TOWNS.length - 1) ? i + 1 : 0
+      // log(prev, i, next, town, t.replaceAll('-', '_'))
+      prevTown = TOWNS[prev].replaceAll('_', ' ')
+      nextTown = TOWNS[next].replaceAll('_', ' ')
+    }
+  })
   let piersInTown
   const key = `glp:piers_by_town:${town}`
   log(`key: ${key}`)
@@ -81,6 +92,8 @@ router.get('piersByTown', '/towns/:town', hasFlash, async (ctx) => {
   }
   const locals = {}
   locals.setName = town
+  locals.nextTown = nextTown.toProperCase()
+  locals.previousTown = prevTown.toProperCase()
   locals.piers = piersInTown
   locals.flash = ctx.flash.view ?? {}
   locals.title = `${ctx.app.site}: ${town}`

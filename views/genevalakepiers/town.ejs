@@ -18,6 +18,13 @@
     <h2><%= town %></h2>
     <h3><%= piers.length %> Piers</h3>
 
+    <div class="previousPier">
+      <a href="<%= origin %>/towns/<%= previousTown.replaceAll(' ', '-') %>">< <%= previousTown %></a>
+    </div>
+    <div class="nextPier">
+      <a href="<%= origin %>/towns/<%= nextTown.replaceAll(' ', '-') %>"><%= nextTown %> ></a>
+    </div>
+
     <p><% piers.forEach((p, i) => {
      let a = `<a href="/pier/${p}">${p}</a>, `
      if (i === (piers.length - 1)) {
