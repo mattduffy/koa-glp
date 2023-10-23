@@ -197,6 +197,26 @@ legend {
   font-weight: 500;
 }
 
+form[id=search] input {
+  display: block;
+}
+
+label[for=searchBoxId] {
+  font-size: 1.125em;
+  font-weight: 500;
+}
+
+input[type=search] {
+  font-size: 1.0em;
+  width: 100%;
+}
+
+form[id=search] input[type=submit] {
+  margin-right: 0px;
+  margin-left: auto;
+  font-size: 1.125em;
+}
+
 input, select {
   margin-bottom: 10px;
 }

@@ -1,7 +1,12 @@
   <%# search box and results %>
   <div id="searchBoxDiv">
     <form id="search" name="search" method="POST" enctype="multipart/form-data" action="<%= origin %>/search">
-      <label for="searchBoxId">Search by pier number, estate name or family name.</label>
+      <label for="searchBoxId">
+        Locate piers on the lake by searching for...<br>
+        pier numbers, estate or family names.<br>
+        Find an association on the lake by name.<br>
+        Find a restaurant, marina or a public pier...<br>
+      </label>
       <input id="searchBoxId" name="searchBox" type="search" value="" size="30">
       <input id="csrf-tokenId" name="csrf-token" type="hidden" value="<%= csrfToken %>">
       <input id="submit" type="submit">
