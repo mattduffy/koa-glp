@@ -268,6 +268,54 @@
         }
       }
       await showBusinessPiers()
+
+      window.map.addEventListener("single-tap", async (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        const {latitude, longitude} = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
+        // const coordinate = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
+        const defaultRadius = 50
+        const defaultUnits = 'ft'
+        console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: ${longitude}, ${latitude}`)
+        const results = await (await fetch(`${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`)).json()
+        console.log(results)
+        if (results?.total > 0) {
+          results.documents.forEach((p) => {
+            console.log(`${p.value.pier}, ${p.value.coords}, ${p.value.estateName}, ${p.value.business}, ${p.value.association}`)
+              let subtitle = ' '
+              if (p.value.business !== '' && p.value.association === '') subtitle = p.value.business
+              if (p.value.association !== '' && p.value.business === '') subtitle = p.value.association
+              if (p.value.firstname !== '' && p.value.lastname !== '') subtitle = `${p.value.firstname} ${p.value.lastname}`
+              if (p.value.firstname !== '' && p.value.lastname === '') subtitle = p.value.firstname
+              if (p.value.firstname === '' && p.value.lastname !== '') subtitle = p.value.lastname
+              if (p.value.estateName !== '') subtitle = p.value.estateName
+              console.info(`subtitle: ${subtitle}`)
+              const annotationCallout = {
+                calloutLeftAccessoryForAnnotation: () => {
+                  const accessoryViewLeft = document.createElement("div")
+                  return accessoryViewLeft
+                },
+                calloutRightAccessoryForAnnotation: () => {
+                  const accessoryViewRight = document.createElement("a")
+                  accessoryViewRight.className = "right-accessory-view"
+                  accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
+                  accessoryViewRight.target = "_self"
+                  accessoryViewRight.textContent = "\u{24D8}"
+                  return accessoryViewRight
+                }
+              }
+              const pierMarker = new window.mapkit.Coordinate(latitude, longitude)
+              const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+              pierAnnotation.title = `Pier ${p.value.pier}`
+              pierAnnotation.subtitle = subtitle 
+              pierAnnotation.animates = true
+              pierAnnotation.selected = true
+              pierAnnotation.color = "#4B93E0"
+              pierAnnotation.callout = annotationCallout
+              window.map.addAnnotation(pierAnnotation)
+          })
+        }
+      })
     </script>
   </section>
 </article>

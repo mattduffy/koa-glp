@@ -100,8 +100,9 @@
           isScrollEnabled: true,
           showsMapTypeControl: false,
         } 
-         window.map = new mapkit.Map("map", opts);
-         window.map.region = genevaBay;
+        mapkit.Map.LoadPriorities = mapkit.Map.LoadPriorities.PointsOfInterest
+        window.map = new mapkit.Map("map", opts);
+        window.map.region = genevaBay;
       }
       await main()
 
