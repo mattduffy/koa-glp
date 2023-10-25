@@ -37,14 +37,6 @@ a.external::after {
   text-decoration: underline;
 }
 
-/*
-a:active, a:hover, a:visited, a:link .external::after {
-  margin: 0 3px 0 10px;
-  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==);
-  text-decoration: none;
-}
-*/
-
 a:active, a:hover, a:visited, a:link .edit::after {
   content: " \270E";
   text-decoration: underline;
@@ -144,9 +136,7 @@ header > h1 {
   display: block;
   text-align: -webkit-auto;
 }
-header > h1 > a:active,
-header > h1 > a:visited, 
-header > h1 > a:link {
+header > h1 > a:active, a:visited, a:link {
   color: black;
   text-align: center;
   max-width: 100%;
@@ -201,9 +191,13 @@ form[id=search] input {
   display: block;
 }
 
-label[for=searchBoxId] {
+label[for=searchBoxId]#portrait {
   font-size: 1.125em;
   font-weight: 500;
+}
+
+label[for=searchBoxId]#landscape {
+  display: none;
 }
 
 input[type=search] {
@@ -324,24 +318,95 @@ footer {
 }
 
 footer > section {
-
 }
 
+
 @media screen and (max-width: 935px) and (orientation: landscape) {
+  div.grid-layout {
+    display: grid;
+    grid-template-rows: 1fr 25px;
+    grid-template-columns: minmax(10%, 50%) auto;
+  }
+  
+  div.grid-header {
+    display: inherit;
+    min-height: 100vh;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  
+  .header-grid {
+    display: inherit;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    column-gap: 0px;
+  }
+
+  header > ul.header-links {
+    list-style: none;
+    display: none;
+    grid-row-start: 2;
+    grid-column-start: 1;
+    position: relative;
+    left: -10%;
+    margin-top: 0px;
+    overflow: scroll;
+  }
+
+  div.grid-content {
+    display: inherit;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+  .grid-content article section {
+    display: inline-block;
+  }
+
+  section.map {
+    padding-left: 0px;
+  } 
+
+ div#map {
+    width: auto;
+    height: 75%;
+    background-color: darkblue;
+  }
+
+  div.grid-footer {
+    display: inherit;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
   header {
     width: 5.6em;
     height: 100%;
+  }
+
+  header > span.hamburger::after {
+
   }
 
   header > h1 {
     display: none;
   }
 
-  div#map {
-    width: auto;
-    height: 75%;
-    background-color: darkblue;
+  label[for=searchBoxId]#portrait {
+    display: none;
   }
+
+  label[for=searchBoxId]#landscape {
+    display: inline;
+  }
+
+  
 }
 
 /* iPhone 6/7/8 Plus size */
