@@ -123,10 +123,22 @@ header {
   color: #4c4c4c;
 }
 
+header span.hamburger {
+  display: block;
+}
+
 .hamburger::before {
   content: "\002630";
   font-size: 2.5em;
   margin: 0px 0px 0px 15px;
+}
+
+header > span.hamburger::after {
+
+}
+
+header > h1 {
+  /* display: none!important; */
 }
 
 header > div > picture > img {
@@ -482,14 +494,22 @@ footer > section {
     column-gap: 20px;
   }
 
+  header span.hamburger {
+    display: block!important;
+  }
+
   .hamburger::before {
     content: "\002630";
     font-size: 2.5em;
     margin: 0px 0px 0px 15px;
   }
 
+  header {
+    width: auto;
+  }
+
   header > h1 {
-    display: block;
+    display: block!important;
     text-align: -webkit-auto;
   }
 
