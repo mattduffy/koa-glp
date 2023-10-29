@@ -80,7 +80,10 @@ a#skipnav {
 }
 
 article > p {
-  
+}
+
+nav.small-landscape-nav {
+  display: none;
 }
 
 div.grid-layout {
@@ -377,6 +380,40 @@ footer > section {
     column-gap: 0px;
   }
 
+  nav.small-landscape-nav {
+    display: inline-block;
+  }
+
+  nav > ul.nav-links-inline {
+    list-style: none;
+    position: relative;
+    left: -15px;
+  }
+  
+  nav > ul > li {
+    font-size: 0.5em;
+    padding: 4px;
+    margin: 1px 3px 0px 0px;
+    background-color: #F0F0F0;
+    line-height: 1.0em;
+    display: inline;
+  }
+  
+  nav > ul > li > a {
+    text-decoration: none;
+    color: #4c4c4c;
+  }
+  
+  nav > ul > li > a:hover {
+    color: #08f;
+    text-decoration: underline;
+  }
+  
+  nav > ul > li > a:active {
+    color: #08f;
+    text-decoration: underline;
+  }
+
   header {
     width: 5.6em;
     height: 100%;
@@ -446,11 +483,19 @@ footer > section {
 
 /* iPhone 6/7/8 Plus size */
 @media screen and (max-width: 414px) {
+  nav.small-landscape-nav {
+    display: none;
+  }
+
 
 }
 
 /* iPad sizes */
 @media screen and (min-width: 768px) and (max-width: 1180px) {
+  nav.small-landscape-nav {
+    display: none;
+  }
+
 
 }
 
@@ -493,6 +538,14 @@ footer > section {
     grid-template-columns: auto 1fr;
     column-gap: 20px;
   }
+  
+  nav.small-landscape-nav {
+    display: none;
+  }
+
+  header {
+    width: auto;
+  }
 
   header span.hamburger {
     display: block!important;
@@ -502,10 +555,6 @@ footer > section {
     content: "\002630";
     font-size: 2.5em;
     margin: 0px 0px 0px 15px;
-  }
-
-  header {
-    width: auto;
   }
 
   header > h1 {
@@ -556,5 +605,4 @@ footer > section {
   div#map {
     min-height: 90vh;
   }
-
 }

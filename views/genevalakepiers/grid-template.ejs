@@ -7,13 +7,25 @@
   </head>
   <body>
     <a id="skipnav" href="#main-content">Skip to main content</a>
+    <nav class="small-landscape-nav">
+      <ul class="nav-links-inline">
+        <li><a href="<%= origin %>">Home</a></li>
+        <li><a href="<%= origin %>/towns">Towns</a></li>
+        <li><a href="<%= origin %>/food">Restaurants</a></li>
+        <li><a href="<%= origin %>/marinas">Marinas</a></li>
+        <li><a href="<%= origin %>/businesses">Businesses</a></li>
+        <li><a href="<%= origin %>/public">Public Piers</a></li>
+        <li><a href="<%= origin %>/associations">Associations</a></li>
+        <li><a href="<%= origin %>/swim">Swim Piers</a></li>
+      </ul>
+    </nav>
     <div class="grid-layout">
       <div class="grid-header">
         <%# header %>
         <%- await include('./partials/body-header-lite.ejs') -%>
         <%# header end %>
       </div>
-
+      
       <div class="grid-content" id="main-content">
         <%# main %>
         <%- body %>

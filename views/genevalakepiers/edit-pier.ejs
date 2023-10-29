@@ -59,13 +59,13 @@
         </fieldset>
         <fieldset id="pierLocationId" name="pierLocation" form="pierEditId" class="edit_fieldset" title="Pier Location Form">
           <legend>Pier Location</legend>
-          <label for="lon">Longtitude</label>
+          <label for="lonId">Longtitude</label>
           <input id="lonId" name="lon" type="text" size="30" value="<%= lon %>" required><br>
-          <label for="lat">Latitude</label>
+          <label for="latId">Latitude</label>
           <input id="latId" name="lat" type="text" size="30" value="<%= lat %>" required><br>
-          <label for="geohash">Geohash</label>
+          <label for="geohashId">Geohash</label>
           <input id="geohashId" name="geohash" type="text" size="30" value="<%= pier.geohash %>"><br>
-          <label for="pluscode">Pluscode</label>
+          <label for="pluscodeId">Pluscode</label>
           <input id="pluscodeId" name="pluscode" type="text" size="30" value="<%= pier.pluscode %>"><br>
         </fieldset>
         <fieldset id="pierAddressId" name="pierAddress" form="pierEditId" class="edit_fieldset" title="Pier Address Form">
@@ -73,43 +73,43 @@
           <input type="radio" id="addressType1Id" name="addressType" value="ass" required><label for="addressType1Id">Association</label>
           <input type="radio" id="addressType2Id" name="addressType" value="bus"><label for="addressType2Id">Business</label>
           <input type="radio" id="addressType3Id" name="addressType" value="res"><label for="addressType3Id">Residential</label><br>
-          <label for="association">Association Name</label>
+          <label for="associationId">Association Name</label>
           <input id="associationId" name="association" type="text" size="29" maxlendgth="100" value="<%= pier.property.association %>"><br>
 
-          <label for="business">Business Name</label>
+          <label for="businessId">Business Name</label>
           <input id="businessId" name="business" type="text" size="30" maxlength="100" value="<%= pier.property.business %>"></br>
 
-          <label for="isMarina">Is a marina?</label>
+          <label for="isMarinaId">Is a marina?</label>
           <input id="isMarinaId" name="isMarina" type="checkbox" <%= (pier.property.isMarina=== 1) ? 'checked' : '' %>><br>
 
-          <label for="hasFood">Has food?</label>
+          <label for="hasFoodId">Has food?</label>
           <input id="hasFoodId" name="hasFood" type="checkbox" <%= (pier.property.hasFood=== 1) ? 'checked' : '' %>><br>
 
-          <label for="public">Is a public pier?</label>
+          <label for="publicId">Is a public pier?</label>
           <input id="publicId" name="public" type="checkbox" <%= (pier.public=== 1) ? 'checked' : '' %>><br>
 
-          <label for="bigSwimPier">Is a big swim pier?</label>
+          <label for="bigSwimPierId">Is a big swim pier?</label>
           <input id="bigSwimPierId" name="bigSwimPier" type="checkbox" <%= (pier.bigSwimPier === 1) ? 'checked' : '' %>><br>
 
-          <label for="established">Established In</label>
+          <label for="establishedId">Established In</label>
           <input id="establishedId" name="established" type="text" size="30" maxlength=4 value="<%= pier.property.established %>"><br>
 
-          <label for="associationUrl">Website</label>
+          <label for="associationUrlId">Website</label>
           <input id="associationUrlId" name="associationUrl" type="url" size="30" placeholder="https://genevalakepiers.com" maxlength="100" value="<%= pier.property.associationUrl %>"><br>
 
-          <label for="tel">Telephone</label>
+          <label for="telId">Telephone</label>
           <input id="telId" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= pier.property.tel %>"><br>
 
-          <label for="street">Street</label>
+          <label for="streetId">Street</label>
           <input id="streetId" name="street" type="text" size="30" maxlength="70" value="<%= pier.property.address.street %>"><br>
 
-          <label for="city">City</label>
+          <label for="cityId">City</label>
           <input id="cityId" name="city" type="text" size="30" maxlength="50" value="<%= pier.property.address.city %>"><br>
 
-          <label for="state">State</label>
+          <label for="stateId">State</label>
           <input id="stateId" name="state" type="text" size="3" maxlength="2" value="<%= pier.property.address.state %>"><br>
 
-          <label for="zip">Zip Code</label>
+          <label for="zipId">Zip Code</label>
           <input id="zipId" name="zip" type="text" size="10" maxlength="9" value="<%= pier.property.address.zip %>"><br>
         </fieldset>
         <fieldset id="pierOwnersId" name="pierOwners" form="pierEditId" class="edit_fieldset" title="Pier Address Form">
@@ -117,9 +117,9 @@
           <% if (pier.owners.length > 0) { %>
             <% pier.owners.forEach((o, i) => { %>
               <div class="editOwner" data-o=<%= i %>>
-              <label for="o_<%= i %>_estateName">Estate Name</label>
+              <label for="o_<%= i %>_estateNameId">Estate Name</label>
               <input id="o_<%= i %>_estateNameId"" name="o_<%= i %>_estateName"" type="text" size="30" maxlength="100" value="<%= o.estateName %>"><br>
-              <label for="o_<%= i %>_membershipType">GLA Membership</label>
+              <label for="o_<%= i %>_membershipTypeId">GLA Membership</label>
               <select id="o_<%= i %>_membershipTypeId"" name="o_<%= i %>_membershipType"" type="text">
                 <%
                   const memberTypes = ['Residential Non-member', 'Regular', 'Sustaining', 'Contributing', 'Donor', 'Benefactor']
@@ -140,7 +140,7 @@
                       <input id="o_<%= i %>_m_<%= j %>_member_lId" name="o_<%= i %>_m_<%= j %>_member_l" type="text" size="11" maxlength="30" value="<%= m.l %>" placeholder="Last"> 
                       <input id="o_<%= i %>_m_<%= j %>_member_sId" name="o_<%= i %>_m_<%= j %>_member_s"" type="text" size="3" maxlength="10" value="<%= m.s %>" placeholder="suffix"> 
                       <input id="o_<%= i %>_m_<%= j %>_member_hiddenId" name="o_<%= i %>_m_<%= j %>_member_hidden"" type="checkbox" <%= (m.hidden === 1) ? 'checked' : '' %>>
-                      <label for="o_<%= i %>_m_<%= j %>_member_hidden">hide</label>
+                      <label for="o_<%= i %>_m_<%= j %>_member_hiddenId">hide</label>
                     </div>
                 <% }) %>
                     <span class="addPerson">+ person</span>

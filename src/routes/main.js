@@ -308,6 +308,29 @@ router.get('pierMarinas', '/marinas', hasFlash, async (ctx) => {
   await ctx.render('marinas', locals)
 })
 
+router.get('Towns', '/towns', hasFlash, async (ctx) => {
+  const log = mainLog.extend('GET-Towns')
+  const error = mainError.extend('GET-Towns')
+  const towns = {}
+  towns.total = 5
+  towns.results = [
+    { t: 'city-of-lake-geneva', n: 'City of Lake Geneva' },
+    { t: 'town-of-linn', n: 'Town of Linn' },
+    { t: 'village-of-williams-bay', n: 'Village of Williams Bay' },
+    { t: 'village-of-fontana-on-geneva-lake', n: 'Village of Fontana-on-Geneva Lake' },
+    { t: 'town-of-walworth', n: 'Town of Walworth' }
+  ]
+  log(towns)
+  const locals = {}
+  locals.total = towns.total
+  locals.towns = towns.results
+  locals.flash = ctx.flash.view ?? {}
+  locals.title = `${ctx.app.site}: Towns on Geneva Lake`
+  locals.sessionUser = ctx.state.sessionUser
+  locals.isAuthenticated = ctx.state.isAuthenticated
+  await ctx.render('towns', locals)
+})
+
 router.get('pierFood', '/food', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-piersFood')
   const error = mainError.extend('GET-piersFood')

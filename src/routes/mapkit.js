@@ -232,6 +232,40 @@ router.get('mapkitBusinesses', '/mapkit/businesses', async (ctx) => {
   }
 })
 
+router.get('mapkitTowns', '/mapkit/towns', async (ctx) => {
+  const log = Log.extend('mapkitTowns')
+  const info = Info.extend('mapkitTowns')
+  const error = Error.extend('mapkitTowns')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+  const csrfTokenCookie = ctx.cookies.get('csrfToken')
+  const csrfTokenSession = ctx.session.csrfToken
+  info(`${csrfTokenCookie},\n${csrfTokenSession}`)
+  if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
+  if (!(csrfTokenCookie === csrfTokenSession)) {
+    error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 401
+    ctx.body = { error: 'csrf token mismatch' }
+  } else {
+    let result
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 200
+    try {
+      const key = 'glp:geojson:combined_geneva_lake'
+      log(`JSON.GET ${key}`)
+      result = await redis.json.get(key, '$')
+      log(result)
+    } catch (e) {
+      error('Failed to get town geoJSON coordinate data.')
+      ctx.status = 500
+      result = { error: 'Failed to get town geoJSON coordinate data.' }
+    }
+    ctx.body = result
+  }
+})
+
 router.get('mapkitMarinas', '/mapkit/marinas', async (ctx) => {
   const log = Log.extend('mapkitMarinas')
   const info = Info.extend('mapkitMarinas')
