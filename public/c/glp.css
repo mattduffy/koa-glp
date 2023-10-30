@@ -382,16 +382,19 @@ footer > section {
 
   nav.small-landscape-nav {
     display: inline-block;
+    width: 100vw;
   }
 
   nav > ul.nav-links-inline {
     list-style: none;
     position: relative;
     left: -15px;
+    width: auto;
+    text-align: center;
   }
   
   nav > ul > li {
-    font-size: 0.5em;
+    font-size: 0.6em;
     padding: 4px;
     margin: 1px 3px 0px 0px;
     background-color: #F0F0F0;
