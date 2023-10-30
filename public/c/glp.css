@@ -467,7 +467,8 @@ footer > section {
   } 
 
  div#map {
-    max-height: 100%;
+    height: 85vh;
+    max-height: 100vh;
     min-width: 50vw;
     background-color: darkblue;
   }
@@ -525,7 +526,7 @@ footer > section {
   }
 
   div.grid-footer {
-    /* display: inherit; */
+    display: inherit;
     grid-row-start: 3;
     grid-row-end: 4;
     grid-column-start: 1;

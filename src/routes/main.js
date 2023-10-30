@@ -310,7 +310,7 @@ router.get('pierMarinas', '/marinas', hasFlash, async (ctx) => {
 
 router.get('Towns', '/towns', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-Towns')
-  const error = mainError.extend('GET-Towns')
+  // const error = mainError.extend('GET-Towns')
   const towns = {}
   towns.total = 5
   towns.results = [
@@ -318,7 +318,7 @@ router.get('Towns', '/towns', hasFlash, async (ctx) => {
     { t: 'town-of-linn', n: 'Town of Linn' },
     { t: 'village-of-williams-bay', n: 'Village of Williams Bay' },
     { t: 'village-of-fontana-on-geneva-lake', n: 'Village of Fontana-on-Geneva Lake' },
-    { t: 'town-of-walworth', n: 'Town of Walworth' }
+    { t: 'town-of-walworth', n: 'Town of Walworth' },
   ]
   log(towns)
   const locals = {}
