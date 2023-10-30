@@ -36,8 +36,9 @@
     </div>
     <% */ %>
     <ul id="resultsList" class="searchResults">
-      <% towns.forEach((t, i) => {
-        let a = `<li><a href="/towns/${t.t}">${t.n}</a></li>`  %>
+      <% const townColors = ['#fa9fb5', '#ae017e', '#f768a1', '#dd3497', '#fde0dd']
+      towns.forEach((t, i) => {
+        let a = `<li><a href="/towns/${t.t}" data-t="${t.t.replaceAll('-', '_')}" data-c="${townColors[i]}">${t.n}</a></li>`  %>
       <%- a %>
     <% }) %></ul>
 
@@ -122,6 +123,24 @@
           const response = await (await fetch(`${origin}/mapkit/towns`)).json()
           console.log(response)
           window.mapkit.importGeoJSON(response, {
+            itemForFeature: (overlay, geoJSON) => {
+              const links = document.querySelectorAll('a[data-t]')
+              // console.log(geoJSON)
+              // console.log(links)
+              for (const l of links) {
+                // console.log(`${geoJSON.properties.name} :${l.dataset.t}`)
+                if (geoJSON.properties.name === `:${l.dataset.t}`) {
+                  overlay.data = { t: l.dataset.t, c: l.dataset.c }
+                  overlay.style = new window.mapkit.Style({
+                    fillOpacity: 0.7,
+                    lineWidth: 0.5,
+                    fillColor: l.dataset.c
+                  })
+                  break
+                }
+              }
+              return overlay
+            },
             geoJSONDidComplete: overlays => {
               window.map.showItems(overlays);
             },
@@ -131,6 +150,32 @@
         }
       }
       // await showTowns()
+
+      window.map.addEventListener('select', (e) => {
+        if (e.overlay && e.overlay.data) {
+          const links = document.querySelectorAll('a[data-t]')
+          if (links.length > 0) {
+            for (const l of links ) {
+              if (e.overlay.data.t === l.dataset.t) {
+                console.log(e.overlay.data.t, l.dataset.t)
+                e.overlay.style.lineWidth = 2.5
+                const href = document.querySelector(`a[data-t=${l.dataset.t}]`)
+                href.style.backgroundColor = l.dataset.c
+                href.style.fontWeight = '600'
+                href.style.color = '#ffffff'
+                break
+              }
+            }
+          }
+        }
+      })
+
+      window.map.addEventListener('deselect', (e) => {
+        if (e.overlay && e.overlay.data) {
+          // console.log(e.overlay.data)
+          e.overlay.style.lineWidth = 0.5
+        }
+      })
 
       window.map.addEventListener("single-tap", async (e) => {
         e.preventDefault()
