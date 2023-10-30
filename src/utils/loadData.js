@@ -532,7 +532,7 @@ try {
       ttlCounter += 1
 
       let sortedSet = 'DRYRUN'
-      let key = 'DRYRUN'
+      let key = `DRYRUN ${options.keyPrefix}:piers_by_town:${town}`
       if (!DRYRUN || SAVEFILES) { // DRYRUN CHECK
         // Create a redis sorted set for each town, containing only its piers.
         key = `${options.keyPrefix}:piers_by_town:${town}`
@@ -542,7 +542,7 @@ try {
       log(`Add pier ${pierJson.pier} to set ${key}`, sortedSet)
 
       let allPiersSortedSet = 'DRYRUN'
-      let keyAllPiers = 'DRYRUN'
+      let keyAllPiers = `DRYRUN ${options.keyPrefix}:all_piers_in_order`
       if (!DRYRUN || SAVEFILES) { // DRYRUN CHECK
         // Create a master sorted set of all piers, in order.
         keyAllPiers = `${options.keyPrefix}:all_piers_in_order`

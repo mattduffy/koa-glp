@@ -54,6 +54,7 @@ try {
   log(subDirs)
   let ttlGrand = 0
   let ttlChanged = 0
+  let ttlNullIsland = 0
   const ttlCounts = {}
   /* eslint-disable-next-line */
   for await (const d of subDirs) {
@@ -78,6 +79,18 @@ try {
         info(`Added schema version number field (${VERSION} to pier ${pierJson.pier}`)
         changed = true
       }
+
+      // Normalize loc property to single value string
+      // if (pierJson.loc?.longitude) {
+      //   if (pierJson.loc.longitude === 0 && pierJson.loc.latitude === 0) {
+      //     ttlNullIsland += 1
+      //     info(`Pier ${pierJson.pier} has Null Island coordinates (ttl null islands: ${ttlNullIsland}).`)
+      //   }
+      //   const tempLoc = `${pierJson.loc.longitude.toString()},${pierJson.loc.latitude.toString()}`
+      //   pierJson.loc = tempLoc
+      //   info(`Normalized pier.loc property to: ${pierJson.loc}`)
+      //   changed = true
+      // }
 
       // Add pier.property.business: TEXT
       // Add pier.property.isMarina: NUMERIC<0|1>
@@ -140,6 +153,7 @@ try {
   log(`Grand Total number of pier files processed: ${ttlGrand}`)
   log('Total pier files: ', ttlCounts)
   log(`Total pier files changed: ${ttlChanged}`)
+  log(`Total Null Island pier files changed: ${ttlNullIsland}`)
   if (failedToSaveFiles.length > 0) {
     error('Failed to save these files afer updates:')
     failedToSaveFiles.forEach((f) => {

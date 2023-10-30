@@ -28,7 +28,7 @@ dotenv.config({ path: path.resolve(appRoot, 'config/redis.env'), processEnv: red
 const DB_PREFIX = redisEnv.REDIS_KEY_PREFIX
 
 const program = new Command()
-program.name('loadData')
+program.name('createGeoJsonFiles')
   .option('--town <town>', 'Create a GeoJSON shapefile for this town only.')
   .option('--combined', 'Create one GeoJSON shapefile with all towns included.')
 
@@ -43,7 +43,7 @@ const TOWNS = [
   'town_of_linn',
   'village_of_williams_bay',
   // 'town_of_fontana',
-  'village_of_fontana-on-Lake_geneva',
+  'village_of_fontana-on-geneva_lake',
   'town_of_walworth',
 ]
 let setTown
@@ -76,7 +76,7 @@ async function generateGeoJSON(s) {
         type: 'Feature',
         properties: {
           id: name,
-          name,
+          name: name.replaceAll('-', '_'),
           numberOfPiers: 0,
         },
         geometry: {
