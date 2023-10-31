@@ -690,8 +690,11 @@
         }
       }
       await showThisPier()
-
+      let selectCoordsMarker = null
       window.map.addEventListener("single-tap", async (e) => {
+        if (selectCoordsMarker) {
+          window.map.removeAnnotation(selectCoordsMarker)
+        }
         e.preventDefault()
         e.stopPropagation()
         const {latitude, longitude} = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
@@ -736,6 +739,33 @@
               pierAnnotation.callout = annotationCallout
               window.map.addAnnotation(pierAnnotation)
           })
+        } else {
+          console.log(`pointOnPageToCoordinate... lon: ${longitude}, lat: ${latitude}`)
+          const annotationCallout = {
+            calloutLeftAccessoryForAnnotation: () => {
+              const accessoryViewLeft = document.createElement("div")
+              return accessoryViewLeft
+            },
+            calloutRightAccessoryForAnnotation: () => {
+              const accessoryViewRight = document.createElement("a")
+              // accessoryViewRight.className = "right-accessory-view"
+              // accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
+              // accessoryViewRight.target = "_self"
+              // accessoryViewRight.textContent = `lon/lat: ${longitude},${latitude}`
+              return accessoryViewRight
+            }
+          }
+          const selectCoords = new window.mapkit.Coordinate(latitude, longitude)
+          selectCoordsMarker = new window.mapkit.MarkerAnnotation(selectCoords)
+          selectCoordsMarker.title = `lon/lat: ${Number.parseFloat(longitude).toFixed(6)},${Number.parseFloat(latitude).toFixed(6)}`
+          selectCoordsMarker.animates = true
+          selectCoordsMarker.selected = true
+          selectCoordsMarker.color = "#4B93E0"
+          selectCoordsMarker.callout = annotationCallout
+          window.map.addAnnotation(selectCoordsMarker)
+          document.forms.pierEditId.lonId.value = Number.parseFloat(longitude).toFixed(6)
+          document.forms.pierEditId.latId.value = Number.parseFloat(latitude).toFixed(6)
+          document.forms.pierEditId.latId.dispatchEvent(new InputEvent('change'))
         }
       })
     </script>

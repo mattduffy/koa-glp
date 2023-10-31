@@ -169,8 +169,16 @@ async function saveGeoJsonFile(data, town) {
 // Save pier data to a file.
 async function savePierFile(dir, data) {
   const log = editLog.extend('savePierFile')
-  const pier = `pier-${data.pier}.json`
-  const filePath = path.resolve(appRoot, 'data/v1', dir, pier)
+  const pier = data
+  if (!data.loc?.longitude || data.loc?.longitude === undefined) {
+    console.log(`Pier location as a string: ${data.loc}`)
+    const [longitude, latitude] = data.loc.split(',')
+    const tempLoc = { longitude: parseFloat(longitude), latitude: parseFloat(latitude) }
+    console.log(`Pier location normalized: ${data.loc}`)
+    pier.loc = tempLoc
+  }
+  const pierFile = `pier-${data.pier}.json`
+  const filePath = path.resolve(appRoot, 'data/v1', dir, pierFile)
   log(`pier file save path: ${filePath}`)
   const pierData = new Uint8Array(Buffer.from(JSON.stringify(data, null, 2)))
   const file = await writeFile(filePath, pierData)
