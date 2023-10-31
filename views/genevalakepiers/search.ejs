@@ -24,6 +24,7 @@
     const annotations = []
     // console.log(search)
     search.addEventListener('submit', async (e) => {
+      document.activeElement.blur()
       e.stopPropagation()
       e.preventDefault()
       searchResults.innerHTML = ''
