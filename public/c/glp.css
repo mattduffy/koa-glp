@@ -7,6 +7,13 @@ html, body {
   font-size: 1.0em;
 }
 
+a.right-accessory-view {
+  color: #FFFFFF!important;
+  font-weight: 500!important;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
 .left-accessory-view {
   background-color: #4B93E0;
   color: #FFFFFF;
@@ -17,6 +24,7 @@ html, body {
   font-size: 20px;
 }
 
+/*
 .right-accessory-view {
   margin: 0 3px;
   font-size: 16px;
@@ -24,6 +32,7 @@ html, body {
   color: #888888;
   outline: 0;
 }
+*/
 
 :valid {
 }
@@ -388,15 +397,15 @@ footer > section {
   nav > ul.nav-links-inline {
     list-style: none;
     position: relative;
-    left: -15px;
+    padding-left: 0px;
     width: auto;
     text-align: center;
   }
   
   nav > ul > li {
-    font-size: 0.6em;
+    font-size: 0.55em;
     padding: 4px;
-    margin: 1px 3px 0px 0px;
+    margin: 1px 2px 0px 0px;
     background-color: #F0F0F0;
     line-height: 1.0em;
     display: inline;
@@ -459,6 +468,14 @@ footer > section {
     display: inline-block;
     width: 30vw;
     padding-left: 5px;
+  }
+
+  div#searchResults ul {
+    padding-left: 20px;
+  }
+
+  ul#resultsList {
+    padding-left: 20px;
   }
 
   section.map {
