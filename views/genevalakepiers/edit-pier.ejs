@@ -577,6 +577,8 @@
           console.log(response)
           if (response?.geoHash !== 0) {
             form['geohash'].value = response.geoHash
+            form['csrf-tokenId'].value = response.newCsrfToken
+            console.log(`New csrf token: ${response.newCsrfToken}`)
           }
         }
         form['lonId'].addEventListener('change', getGeoHash, false)

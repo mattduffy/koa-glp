@@ -319,8 +319,8 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
         log('Multipart form data was successfully parsed.')
         ctx.state.fields = fields
         ctx.state.files = files
-        info(fields)
-        info(files)
+        info(`form fields: ${fields}`)
+        info(`form files: ${files}`)
         resolve()
       })
     })
@@ -353,7 +353,7 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
         // remove pier from glp:null_island zset
         try {
           const zrem = await redis.zRem('glp:null_island', pierNumber)
-          info(`removed pier ${pierNumber} from null island seti: ${zrem}`)
+          info(`removed pier ${pierNumber} from null island set: ${zrem}`)
           // Use setTown to generate geoJSON data
           const setKey = `glp:piers_by_town:${setTown}`
           info(`using ${setKey} to re-generate geoJSON data for ${setTown}`)
@@ -374,25 +374,31 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
       //
       // Save uploaded image file
       //
-      if (pierUpdated.images === undefined) {
-        pierUpdated.images = []
-      }
-      const pierImage = ctx.state.files.photo_0[0]
-      const fileExt = pierImage.newFilename.substr(pierImage.newFilename.lastIndexOf('.') + 1)
-      const imgSrc = `i/piers/${pierNumber}/image_${pierUpdated.images.length}.${fileExt}`
-      // const savePath = `${ctx.app.dirs.public.images}/${imgSrc}`
-      const savePath = `${ctx.app.dirs.public.images}/piers/${pierNumber}`
       let fileUploadStatus = 'failed'
-      try {
-        const mkdirResult = await mkdir(savePath, { recursive: true })
-        info(`mkdirResult: ${mkdirResult}`)
-        await rename(pierImage.filepath, `${savePath}/image_${pierUpdated.images.length}.${fileExt}`)
-        fileUploadStatus = 'success'
-        pierUpdated.images.unshift(imgSrc)
-        okPierImage = true
-      } catch (e) {
-        error(e)
-        okPierImage = false
+      if (ctx.state.files?.photo_0 && ctx.state.files?.photo_0?.length > 0) {
+        log(ctx.state.files.photo_0)
+        if (pierUpdated.images === undefined) {
+          pierUpdated.images = []
+        }
+        const pierImage = ctx.state.files.photo_0[0]
+        const fileExt = pierImage.newFilename.substr(pierImage.newFilename.lastIndexOf('.') + 1)
+        const imgSrc = `i/piers/${pierNumber}/image_${pierUpdated.images.length}.${fileExt}`
+        // const savePath = `${ctx.app.dirs.public.images}/${imgSrc}`
+        const savePath = `${ctx.app.dirs.public.images}/piers/${pierNumber}`
+        try {
+          const mkdirResult = await mkdir(savePath, { recursive: true })
+          info(`mkdirResult: ${mkdirResult}`)
+          await rename(pierImage.filepath, `${savePath}/image_${pierUpdated.images.length}.${fileExt}`)
+          fileUploadStatus = 'success'
+          info(`${fileUploadStatus} - saved new pier ${pierUpdated.pier} photo: ${savePath}/image_${pierUpdated.images.length}.${fileExt}`)
+          pierUpdated.images.unshift(imgSrc)
+          okPierImage = true
+        } catch (e) {
+          error(e)
+          okPierImage = false
+        }
+      } else {
+        okPierImage = 'ok, no image uploaded'
       }
       //
       // Save pierUpdated to redis as pier
@@ -421,21 +427,26 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
       info(`Null Island: ${okNullIsland}`)
       if (!okPierUpdate || !okPierImage || (okNullIsland !== 'maybe' || !okNullIsland)) {
         ctx.type = 'application/json; charset=utf-8'
-        ctx.status = 500
-        ctx.body = { error: 'failed to update pier' }
+        ctx.status = 200
+        ctx.body = {
+          status: 'update failed',
+          msg: 'failed to update pier',
+          okPierUpdate,
+          okPierImage,
+        }
       } else {
         ctx.type = 'application/json; charset=utf-8'
         ctx.status = 200
-        ctx.body = { pier: pierUpdated, setTown, fileStatus: fileUploadStatus }
+        ctx.body = { pier: pierUpdated, setTown, imageUploadStatus: okPierImage }
       }
     }
   }
 })
 
 router.post('geohash', '/edit/geohash', async (ctx) => {
-  const log = _log.extend('geohash')
-  const info = _info.extend('geohash')
-  const error = _error.extend('geohash')
+  const log = editLog.extend('geohash')
+  const info = editInfo.extend('geohash')
+  const error = editError.extend('geohash')
   if (!ctx.state.isAuthenticated) {
     error('User is not authenticated.  Redirect to /')
     ctx.status = 401
@@ -501,6 +512,7 @@ router.post('geohash', '/edit/geohash', async (ctx) => {
       ctx.body = {
         pier,
         geoHash: geoHash[0],
+        newCsrfToken: ctx.session.csrfToken,
       }
     }
   }
