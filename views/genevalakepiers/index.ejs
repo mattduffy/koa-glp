@@ -45,7 +45,7 @@
       src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.core.js"
       crossorigin async
       data-callback="initMapKit"
-      data-libraries="full-map"
+      data-libraries="full-map,services"
       data-initial-token="">
     </script>
     <script nonce=<%= nonce %> type="module">
@@ -88,7 +88,9 @@
           new mapkit.CoordinateSpan(0, 0.01)
         );
         const opts = {
-          mapType: mapkit.Map.MapTypes.Satellite,
+          mapType: mapkit.Map.MapTypes.Hybrid,
+          loadPriority: mapkit.Map.LoadPriorities.PointsOfInterest,
+          selectableMapFeatures: [mapkit.MapFeatureType.PhysicalFeature, mapkit.MapFeatureType.PointOfInterest],
           visibleMapRect: mapkit.MapRect(0, 0, 1, 1),
           isZoomEnabled: true,
           showsCompass: mapkit.FeatureVisibility.Visible,

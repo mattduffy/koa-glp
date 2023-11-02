@@ -79,8 +79,10 @@
           new mapkit.CoordinateSpan(.016, 0)
         );
         const opts = {
-          mapType: mapkit.Map.MapTypes.Satellite,
-          colorScheme: mapkit.Map.ColorSchemes.Light,
+          mapType: mapkit.Map.MapTypes.Hybrid,
+          loadPriority: mapkit.Map.LoadPriorities.PointsOfInterest,
+          selectableMapFeatures: [mapkit.MapFeatureType.PhysicalFeature, mapkit.MapFeatureType.PointOfInterest],
+          visibleMapRect: mapkit.MapRect(0, 0, 1, 1),
           visibleMapRect: mapkit.MapRect(0, 0, 1, 1),
           isZoomEnabled: true,
           showsCompass: mapkit.FeatureVisibility.Visible,
