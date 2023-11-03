@@ -31,6 +31,76 @@
       const formData = new FormData()
       formData.append('csrfTokenHidden', search['csrf-token'].value)
       formData.append('searchBox', search.searchBox.value)
+
+      // mapkit search service
+      // center of lake 42.598788, -88.423885
+      const mapkitSearch = new window.mapkit.Search({
+        coordinate: new window.mapkit.Coordinate(42.598788, -88.423885),
+        region: window.map.region,
+      })
+      console.info(formData.get('searchBox'))
+      const mapkitSearchResults = mapkitSearch.search(formData.get('searchBox'),
+        {
+          searchDidError: (error) => {
+            console.error(error)
+          },
+          searchDidComplete: (data) => {
+            // console.log(data)
+            let mapkitResultsList
+            if (data.places.length > 0) {
+              const localityFilter = ['Lake Geneva', 'Williams Bay', 'Fontana', 'Fontana-on-Geneva Lake', 'Walworth', 'Linn']
+              data.locallyFiltered = data.places.filter((place) => localityFilter.includes(place.locality) )
+              console.log(data.locallyFiltered)
+              if (data.locallyFiltered.length > 0) {
+                mapkitResultsList = document.createElement('ul')
+                mapkitResultsList.setAttribute('id', 'mapkitResults')
+                mapkitResultsList.setAttribute('aria-label', `${data.locallyFiltered.length} Local Search Results:`)
+                mapkitResultsList.classList.add('searchResults', 'mapkitResults')
+                data.locallyFiltered.forEach((place) => {
+                  // console.log(place.locality, place.pointOfInterestCategory, place.name)
+                  const li = document.createElement('li')
+                  const nameSpan = document.createElement('span')
+                  nameSpan.style.fontWeight = 600
+                  nameSpan.style.fontStyle = 'italic'
+                  nameSpan.dataset.lat = place.coordinate.latitude
+                  nameSpan.dataset.lon = place.coordinate.longitude
+                  nameSpan.dataset.name = place.name
+                  nameSpan.appendChild(document.createTextNode(place.name))
+                  li.appendChild(nameSpan)
+                  const linkSpan = document.createElement('span')
+                  const link = document.createElement('a')
+                  link.setAttribute('href', place.urls[0])
+                  link.setAttribute('target', '_blank')
+                  link.classList.add('external')
+                  link.appendChild(linkSpan)
+                  li.appendChild(link)
+                  li.appendChild(document.createElement('br'))
+                  li.appendChild(document.createTextNode(`${place.fullThoroughfare}, ${place.locality}`))
+                  mapkitResultsList.appendChild(li)
+                  annotateSearchResultItem(nameSpan)
+                })
+                searchResults.appendChild(mapkitResultsList)
+              }
+            }
+          }
+        }
+      )
+      console.info(`mapkit search results: ${mapkitSearchResults}`)
+      function annotateSearchResultItem(span) {
+        span.addEventListener('click', (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          // console.log(e)
+          // console.log(span.dataset)
+          const spot = new window.mapkit.Coordinate(Number.parseFloat(span.dataset.lat), Number.parseFloat(span.dataset.lon))
+          const marker = new window.mapkit.MarkerAnnotation(spot)
+          marker.title = `${span.dataset.name}`
+          marker.animates = true
+          marker.selected = true
+          window.map.addAnnotation(marker)
+        })
+      }
+
       const opts = {
         method: 'POST',
         headers: {
@@ -363,7 +433,7 @@
         if (window.map) {
           // console.log(window.map)
           if (annotations.length > 0) {
-            console.log(annotations)
+            // console.log(annotations)
             window.map.showItems(annotations.reverse())
           }
           // await annotateSearchResults(searchResults)

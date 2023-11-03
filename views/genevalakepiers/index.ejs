@@ -85,7 +85,8 @@
         const lon = -88.440669
         const genevaBay = new mapkit.CoordinateRegion(
           new mapkit.Coordinate(lat, lon),
-          new mapkit.CoordinateSpan(0, 0.01)
+          // new mapkit.CoordinateSpan(0, 0.01)
+          new mapkit.CoordinateSpan(0.006, 0.001)
         );
         const opts = {
           mapType: mapkit.Map.MapTypes.Hybrid,
