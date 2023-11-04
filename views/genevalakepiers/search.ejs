@@ -62,18 +62,22 @@
                   const nameSpan = document.createElement('span')
                   nameSpan.style.fontWeight = 600
                   nameSpan.style.fontStyle = 'italic'
+                  nameSpan.style.cursor = 'pointer'
+                  nameSpan.style.textDecoration = 'underline'
                   nameSpan.dataset.lat = place.coordinate.latitude
                   nameSpan.dataset.lon = place.coordinate.longitude
                   nameSpan.dataset.name = place.name
                   nameSpan.appendChild(document.createTextNode(place.name))
                   li.appendChild(nameSpan)
-                  const linkSpan = document.createElement('span')
-                  const link = document.createElement('a')
-                  link.setAttribute('href', place.urls[0])
-                  link.setAttribute('target', '_blank')
-                  link.classList.add('external')
-                  link.appendChild(linkSpan)
-                  li.appendChild(link)
+                  if (place.urls.length > 0) {
+                    const linkSpan = document.createElement('span')
+                    const link = document.createElement('a')
+                    link.setAttribute('href', place.urls[0])
+                    link.setAttribute('target', '_blank')
+                    link.classList.add('external')
+                    link.appendChild(linkSpan)
+                    li.appendChild(link)
+                  }
                   li.appendChild(document.createElement('br'))
                   li.appendChild(document.createTextNode(`${place.fullThoroughfare}, ${place.locality}`))
                   mapkitResultsList.appendChild(li)
@@ -97,7 +101,8 @@
           marker.title = `${span.dataset.name}`
           marker.animates = true
           marker.selected = true
-          window.map.addAnnotation(marker)
+          // window.map.addAnnotation(marker)
+          window.map.showItems([marker])
         })
       }
 

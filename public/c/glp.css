@@ -260,6 +260,12 @@ div.nextPier {
   text-align: right;
 }
 
+div#searchResults {
+  overflow-y: auto;
+  max-height: 50vh;
+  margin-bottom: 25px;
+}
+
 div#searchResults > ul.searchResults:before {
   content:attr(aria-label);
   font-size: 100%;
@@ -470,6 +476,11 @@ footer > section {
     padding-left: 5px;
   }
 
+  div#searchResults {
+    overflow: auto;
+    height: 65vh;
+  }
+
   div#searchResults ul {
     padding-left: 20px;
   }
@@ -614,7 +625,14 @@ footer > section {
     display: inline-block;
     width: 33vw;
     padding-left: 10px;
+    min-height: 90vh;
   } 
+
+  div#searchResults {
+    overflow-y: auto;
+    min-height: 75vh;
+    margin-bottom: 25px;
+  }
 
   section.map {
     display: inline-block;
