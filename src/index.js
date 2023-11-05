@@ -134,8 +134,9 @@ async function openGraph(ctx, next) {
   // const err = error.extend('OpenGraph-Embed')
   const ogArray = []
   ogArray.push('<meta property="og:type" content="website">')
-  ogArray.push(`<meta property="og:url" content="${ctx.request.href}${ctx.request.search}">`)
+  ogArray.push('<meta property="og:site_name" content="Geneva Lake Piers">')
   ogArray.push('<meta property="og:title" content="The Piers of Geneva Lake">')
+  ogArray.push(`<meta property="og:url" content="${ctx.request.href}${ctx.request.search}">`)
   ogArray.push(`<meta property="og:image" content="${ctx.request.origin}/i/ogEmbed-450x295.jpg">`)
   ogArray.push('<meta property="og:image:type" content="image/jpeg">')
   ogArray.push('<meta property="og:image:width" content="450">')
@@ -223,6 +224,12 @@ async function viewGlobals(ctx, next) {
   ctx.state.stylesheets = []
   ctx.state.searchJwtAccess = appEnv.SEARCHJWTACCESS
   ctx.state.searchAccessToken = appEnv.SEARCHACCESSTOKEN
+  ctx.state.structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Geneva Lake Piers',
+    url: ctx.request.origin,
+  }
   await next()
 }
 

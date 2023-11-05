@@ -57,6 +57,7 @@ router.get('index', '/', hasFlash, async (ctx) => {
     }
   }
   log(`sessionUser.isAuthenticated: ${ctx.state.isAuthenticated}`)
+  locals.structuredData = JSON.stringify(ctx.state.structuredData, null, '\t')
   const csrfToken = ulid()
   ctx.session.csrfToken = csrfToken
   ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })
@@ -182,7 +183,7 @@ router.get('pierPublic', '/public', hasFlash, async (ctx) => {
   locals.public = publicPiers.results
   locals.photo = false
   locals.flash = ctx.flash.view ?? {}
-  locals.title = `${ctx.app.site}: Public Piers`
+  locals.title = `${ctx.app.site}: Public Piers on Geneva Lake`
   locals.sessionUser = ctx.state.sessionUser
   locals.isAuthenticated = ctx.state.isAuthenticated
   await ctx.render('public', locals)
@@ -249,7 +250,7 @@ router.get('pierBusinesses', '/businesses', hasFlash, async (ctx) => {
     locals.total = businesses.total
     locals.businesses = businesses.results
     locals.flash = ctx.flash.view ?? {}
-    locals.title = `${ctx.app.site}: Businesses`
+    locals.title = `${ctx.app.site}: Businesses on Geneva Lake`
     locals.sessionUser = ctx.state.sessionUser
     locals.isAuthenticated = ctx.state.isAuthenticated
     await ctx.render('businesses', locals)
@@ -302,7 +303,7 @@ router.get('pierMarinas', '/marinas', hasFlash, async (ctx) => {
   locals.total = marinas.total
   locals.marinas = marinas.results
   locals.flash = ctx.flash.view ?? {}
-  locals.title = `${ctx.app.site}: Marinas`
+  locals.title = `${ctx.app.site}: Marinas on Geneva Lake`
   locals.sessionUser = ctx.state.sessionUser
   locals.isAuthenticated = ctx.state.isAuthenticated
   await ctx.render('marinas', locals)
@@ -377,7 +378,7 @@ router.get('pierFood', '/food', hasFlash, async (ctx) => {
   locals.total = foods.total
   locals.foods = foods.results
   locals.flash = ctx.flash.view ?? {}
-  locals.title = `${ctx.app.site}: Marinas`
+  locals.title = `${ctx.app.site}: Restaurants with piers on Geneva Lake`
   locals.sessionUser = ctx.state.sessionUser
   locals.isAuthenticated = ctx.state.isAuthenticated
   await ctx.render('food', locals)
@@ -454,7 +455,7 @@ router.get('pierAssociations', '/associations', hasFlash, async (ctx) => {
     locals.total = associations.total
     locals.associations = associations.results
     locals.flash = ctx.flash.view ?? {}
-    locals.title = `${ctx.app.site}: Associations`
+    locals.title = `${ctx.app.site}: Associations with piers on Geneva Lake`
     locals.sessionUser = ctx.state.sessionUser
     locals.isAuthenticated = ctx.state.isAuthenticated
     await ctx.render('associations', locals)
