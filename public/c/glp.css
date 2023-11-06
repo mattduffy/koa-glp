@@ -627,14 +627,15 @@ footer > section {
     display: inline-block;
     width: 33vw;
     padding-left: 10px;
-    max-height: 90vh;
+    max-height: 88vh;
     overflow-y: scroll;
   } 
 
   div#searchResults {
     overflow-y: auto;
     min-height: 75vh;
-    margin-bottom: 25px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
   }
 
   section.map {
