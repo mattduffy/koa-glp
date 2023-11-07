@@ -224,6 +224,8 @@ label[for=searchBoxId]#large {
 
 label[for=searchBoxId]#small {
   display: inline-block;
+  font-size: 1.15em;
+  font-weight: 500;
 }
 
 input[type=search] {
@@ -479,6 +481,18 @@ footer > section {
     max-height: 85vh;
   }
 
+  label[for=searchBoxId]#large {
+    display: none;
+    font-size: 1.125em;
+    font-weight: 500;
+  }
+  
+  label[for=searchBoxId]#small {
+    display: inline-block;
+    font-size: 1.15em;
+    font-weight: 500;
+  }
+
   div#searchResults {
     overflow: auto;
     height: 65vh;
@@ -516,13 +530,21 @@ footer > section {
   }
 }
 
-/* iPhone 6/7/8 Plus size */
-@media screen and (max-width: 414px) {
+/* iPhone 6/7/8/SE size */
+@media screen and (max-width: 389px) {
   nav.small-landscape-nav {
     display: none;
   }
 
+  label[for=searchBoxId]#small {
+    display: inline-block;
+    font-size: 1.09em;
+    font-weight: 500;
+  }
 
+  label[for=searchBoxId]#large {
+    display: none!important;
+  }
 }
 
 /* iPad sizes */

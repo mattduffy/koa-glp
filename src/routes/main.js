@@ -172,7 +172,20 @@ router.get('pierBigSwimPiers', '/swim', hasFlash, async (ctx) => {
 router.get('pierPublic', '/public', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-piersPublic')
   const error = mainError.extend('GET-piersPublic')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+  log(ctx.request.query.s)
+  // const num = (ctx.request.query?.c) ? sanitize(Math.abs(parseInt(ctx.request.query?.c, 10))) : 15
+  const x = 17
+  const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
+  const num = 12
+  // const offset = (s === 1) ? 0 : (s - 1) * num
+  const offset = (s <= 1) ? 0 : (s - 1) * num
+  const skipBack = (s <= 1) ? 0 : s - 1
+  const skipForward = s + 1
 
+  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
   let publicPiers
   try {
     // ft.aggregate glp:idx:piers:public "*" LOAD 3 $.pier AS pier SORTBY 2 @pier ASC LIMIT 0 100
@@ -186,8 +199,8 @@ router.get('pierPublic', '/public', hasFlash, async (ctx) => {
         },
         {
           type: AggregateSteps.LIMIT,
-          from: 0,
-          size: 100,
+          from: offset,
+          size: num,
         },
       ],
     }
@@ -199,14 +212,26 @@ router.get('pierPublic', '/public', hasFlash, async (ctx) => {
     error(e.message)
     throw new Error('Redis query failed.', { cause: e })
   }
-  const locals = {}
-  locals.public = publicPiers.results
-  locals.photo = false
-  locals.flash = ctx.flash.view ?? {}
-  locals.title = `${ctx.app.site}: Public Piers on Geneva Lake`
-  locals.sessionUser = ctx.state.sessionUser
-  locals.isAuthenticated = ctx.state.isAuthenticated
-  await ctx.render('public', locals)
+  if (ctx.state.isAsyncRequest === true) {
+    ctx.status = 200
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.body = publicPiers.results
+  } else {
+    const locals = {}
+    locals.s = s
+    locals.num = num
+    locals.offset = offset
+    locals.skipBack = skipBack
+    locals.skipForward = skipForward
+    locals.total = publicPiers.total
+    locals.public = publicPiers.results
+    locals.photo = false
+    locals.flash = ctx.flash.view ?? {}
+    locals.title = `${ctx.app.site}: Public Piers on Geneva Lake`
+    locals.sessionUser = ctx.state.sessionUser
+    locals.isAuthenticated = ctx.state.isAuthenticated
+    await ctx.render('public', locals)
+  }
 })
 
 router.get('pierBusinesses', '/businesses', hasFlash, async (ctx) => {
