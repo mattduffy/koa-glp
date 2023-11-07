@@ -216,13 +216,14 @@ form[id=search] input {
   display: block;
 }
 
-label[for=searchBoxId]#portrait {
+label[for=searchBoxId]#large {
+  display: none;
   font-size: 1.125em;
   font-weight: 500;
 }
 
-label[for=searchBoxId]#landscape {
-  display: none;
+label[for=searchBoxId]#small {
+  display: inline-block;
 }
 
 input[type=search] {
@@ -506,12 +507,12 @@ footer > section {
     background-color: darkblue;
   }
 
-  label[for=searchBoxId]#portrait {
+  label[for=searchBoxId]#large {
     display: none;
   }
 
-  label[for=searchBoxId]#landscape {
-    display: inline;
+  label[for=searchBoxId]#small {
+    display: inline-block;
   }
 }
 
@@ -631,9 +632,16 @@ footer > section {
     overflow-y: scroll;
   } 
 
+  label[for=searchBoxId]#large {
+    display: block!important;
+  }
+
+  label[for=searchBoxId]#small {
+    display: none;
+  }
   div#searchResults {
     overflow-y: auto;
-    min-height: 75vh;
+    max-height: 65vh!important;
     padding-bottom: 0px;
     margin-bottom: 0px;
   }
