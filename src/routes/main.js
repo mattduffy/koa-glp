@@ -112,12 +112,21 @@ router.get('piersByTown', '/towns/:town', hasFlash, async (ctx) => {
 router.get('pierBigSwimPiers', '/swim', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-piersSwim')
   const error = mainError.extend('GET-piersSwim')
-
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+  log(ctx.request.query.s)
+  const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
+  const num = 12
+  const offset = (s === 1) ? 0 : (s - 1) * num
+  const skipBack = (s <= 1) ? 0 : s - 1
+  const skipForward = s + 1
+  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: 43 - ${offset} = ${43 - offset}`)
   let swimPiers
   try {
-    // ft.aggregate glp:idx:piers:swim "*" LOAD 3 $.pier AS pier SORTBY 2 @pier ASC LIMIT 0 100
+    log(`ft.aggregate glp:idx:piers:swim "*" LOAD 3 $.pier AS pier SORTBY 2 @pier ASC LIMIT ${offset} ${num}`)
     const optsAggregateSwim = {
-      LOAD: ['@pier'],
+      LOAD: ['@pier', '$.owners[*].members[*].f', 'AS', 'name'],
       STEPS: [
         {
           type: AggregateSteps.SORTBY,
@@ -126,8 +135,8 @@ router.get('pierBigSwimPiers', '/swim', hasFlash, async (ctx) => {
         },
         {
           type: AggregateSteps.LIMIT,
-          from: 0,
-          size: 100,
+          from: offset,
+          size: num,
         },
       ],
     }
@@ -139,14 +148,25 @@ router.get('pierBigSwimPiers', '/swim', hasFlash, async (ctx) => {
     error(e.message)
     throw new Error('Redis query failed.', { cause: e })
   }
-  const locals = {}
-  locals.swim = swimPiers.results
-  locals.photo = false
-  locals.flash = ctx.flash.view ?? {}
-  locals.title = `${ctx.app.site}: Swim Piers`
-  locals.sessionUser = ctx.state.sessionUser
-  locals.isAuthenticated = ctx.state.isAuthenticated
-  await ctx.render('big-swim-piers', locals)
+  if (ctx.state.isAsyncRequest === true) {
+    ctx.status = 200
+    ctx.type = 'application/json; charset=utf8'
+    ctx.body = swimPiers.results
+  } else {
+    const locals = {}
+    locals.skipForward = skipForward
+    locals.skipBack = skipBack
+    locals.offset = offset
+    locals.num = num
+    locals.total = swimPiers.total
+    locals.swim = swimPiers.results
+    locals.photo = false
+    locals.flash = ctx.flash.view ?? {}
+    locals.title = `${ctx.app.site}: Swim Piers`
+    locals.sessionUser = ctx.state.sessionUser
+    locals.isAuthenticated = ctx.state.isAuthenticated
+    await ctx.render('big-swim-piers', locals)
+  }
 })
 
 router.get('pierPublic', '/public', hasFlash, async (ctx) => {
@@ -157,7 +177,7 @@ router.get('pierPublic', '/public', hasFlash, async (ctx) => {
   try {
     // ft.aggregate glp:idx:piers:public "*" LOAD 3 $.pier AS pier SORTBY 2 @pier ASC LIMIT 0 100
     const optsAggregatePublic = {
-      LOAD: ['@pier'],
+      LOAD: ['@pier', '$.owners[*].members[*].f', 'AS', 'name'],
       STEPS: [
         {
           type: AggregateSteps.SORTBY,
@@ -394,7 +414,7 @@ router.get('pierAssociations', '/associations', hasFlash, async (ctx) => {
   // const num = (ctx.request.query?.c) ? sanitize(Math.abs(parseInt(ctx.request.query?.c, 10))) : 15
   const x = 70
   const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
-  const num = 10
+  const num = 12
   // const offset = (s === 1) ? 0 : (s - 1) * num
   const offset = (s <= 1) ? 0 : (s - 1) * num
   const skipBack = (s <= 1) ? 0 : s - 1

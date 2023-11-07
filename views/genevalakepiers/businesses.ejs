@@ -19,7 +19,7 @@
 
     <div class="previousPier">
       <% if (skipBack > 1) { %>
-      <a href="/associations?s=<%= skipBack %>">&lt; Prev</a>
+      <a href="/businesses?s=<%= skipBack %>">&lt; Prev</a>
       <% } else if (skipBack === 1) { %>
       <a href="/businesses">&lt; Prev</a>
       <% } else { %>
@@ -90,7 +90,7 @@
             console.log(`recreating previousLink: ${previousLink}`)
             previousLink = document.createElement('a')
             previousLink.setAttribute('rel', 'prev')
-            previousLink.href = `${origin}/associations?s=1`
+            previousLink.href = `${origin}/businesses?s=1`
             previousLink.innerText = '< Prev'
             previousDiv.replaceChildren()
             previousDiv.appendChild(previousLink)
@@ -100,7 +100,7 @@
             console.log(`recreating nextLink: ${nextLink}`)
             nextLink = document.createElement('a')
             nextLink.setAttribute('rel', 'next')
-            nextLink.href = `${origin}/associations?s=${s}`
+            nextLink.href = `${origin}/businesses?s=${s}`
             nextLink.innerText = 'Next >'
             nextDiv.replaceChildren()
             nextDiv.appendChild(nextLink)
@@ -109,7 +109,7 @@
           const rel = e.target.getAttribute('rel') 
           s = (rel === 'prev') ? parseInt(s) - 1 : parseInt(s) + 1
           // console.info(`rel: ${rel}, s: ${s}`)
-          const links = await getAssocs(s)
+          const links = await getBusinesses(s)
           console.log(links)
           if (links.length > 0) {
             updatePrevLink()
@@ -132,7 +132,7 @@
           Authorization: `Bearer ${jwtAccess}`,
         },
       }
-      async function getAssocs(skip) {
+      async function getBusinesses(skip) {
         const request = new Request(`${origin}/businesses?s=${skip}`, opts)
         let json
         try {
