@@ -60,9 +60,9 @@
         <fieldset id="pierLocationId" name="pierLocation" form="pierEditId" class="edit_fieldset" title="Pier Location Form">
           <legend>Pier Location</legend>
           <label for="lonId">Longtitude</label>
-          <input id="lonId" name="lon" type="text" size="30" value="<%= lon %>" required><br>
+          <input id="lonId" name="lon" type="number" value="<%= lon %>" min="-180.000000" max="180.000000" step="0.000001" required><br>
           <label for="latId">Latitude</label>
-          <input id="latId" name="lat" type="text" size="30" value="<%= lat %>" required><br>
+          <input id="latId" name="lat" type="number" value="<%= lat %>" min="-180.000000" max="180.000000" step="0.000001" required><br>
           <label for="geohashId">Geohash</label>
           <input id="geohashId" name="geohash" type="text" size="30" value="<%= pier.geohash %>"><br>
           <label for="pluscodeId">Pluscode</label>
@@ -153,7 +153,12 @@
           <% } %>
         </fieldset>
         <fieldset id="finishId" name="finish" form="pierEditId">
-          <input type="submit">
+          <div style="display: inline-block; width: 45%; margin: auto; position: relative; text-align: left; padding-left: 10px;">
+            <input type="reset" value="Reset" />
+          </div>
+          <div style="display: inline-block; width: 50%; position: relative; right: 0px; text-align: right;">
+            <input type="submit" value="Submit" /> 
+          </div>
         </fieldset>
       </form>
       <!-- 
