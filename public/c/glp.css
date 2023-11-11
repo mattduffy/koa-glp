@@ -7,6 +7,10 @@ html, body {
   font-size: 1.0em;
 }
 
+.hidden {
+  display: none;
+}
+
 a.right-accessory-view {
   color: #FFFFFF!important;
   font-weight: 500!important;
@@ -34,11 +38,15 @@ a.right-accessory-view {
 }
 */
 
-:valid {
+:valid::after {
+  /* content: "✓"; */
+  /* padding-left: 5px; */
 }
 
-:invalid {
+:invalid::after {
   color: red;
+  content: "✖";
+  padding-left: 5px;
 }
 
 a.external::after {

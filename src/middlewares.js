@@ -26,7 +26,7 @@ export async function townSetNames(ctx, next) {
     const townSets = await redis.scanIterator({
       TYPE: 'zset',
       MATCH: 'glp:piers_by_town:*',
-      COUNT: 1000,
+      COUNT: 3000,
     })
     const towns = []
     /* eslint-disable-next-line */

@@ -35,7 +35,11 @@
       </div>
       <p></p>
       <form id="pierEditId" name="pierEdit" action="<%= origin %>/edit/pier/<%= pierNumber %>" method="POST" enctype="multipart/form-data">
-        <fieldset id="infoId" name="info" form="pierEditId" class="edit_fieldset" title="Info">
+        <fieldset id="messagesId" name="messages" class="hidden" title="Update Results">
+          <legend>Update Results</legend>
+        </fieldset>
+        <fieldset id="infoId" name="info" form="pierEditId" class="edit_fieldset" title="Meta Data">
+          <legend>Meta Data</legend>
           <% if (pier?.updatedOn?.length > 0) { %>
             Last updated on: <%= pier.updatedOn[0] %><br>
           <% } %>
@@ -532,6 +536,23 @@
           console.dir(request)
           const response = await (await fetch(request, { credentials: 'same-origin' })).json()
           console.dir(response)
+          const messagesId = document.forms[0].elements['messagesId']
+          const messageSpan = document.createElement('span')
+          if (/failed/.test(response.status.toLowerCase())) {
+            messageSpan.appendChild(document.createTextNode(response.msg))
+            messageSpan.appendChild(document.createElement('br'))
+            messageSpan.appendChild(document.createTextNode(response.okPierUpdate))
+            messageSpan.appendChild(document.createTextNode(response.okPierImage))
+          } else {
+            messageSpan.appendChild(document.createTextNode('Pier data successfully updated.'))
+            messageSpan.appendChild(document.createElement('br'))
+            messageSpan.appendChild(document.createTextNode(response.imageUploadStatus))
+            messageSpan.appendChild(document.createTextNode(response.pier))
+          }
+          messagesId.appendChild(messageSpan)
+          messagesId.classList.remove('hidden')
+          messagesId.scrollIntoView(true)
+          document.querySelector('section.main h2').scrollIntoView(true)
         }
 
         const submit = document.querySelector('input[type=submit]')
