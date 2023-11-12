@@ -156,6 +156,25 @@ async function generateGeoJSON(s) {
   return geojson
 }
 
+// Generate geoJSON polygons
+async function generateCombinedGeoJSON(s, t) {
+  const TOWNS = t
+  const combinedGeoJson = {
+    type: 'FeatureCollection',
+    features: [
+    ],
+  }
+  /* eslint-disable-next-line */
+  for await (const t of TOWNS) {
+    const setName = `glp:piers_by_town:${t}`
+    const townGeoj = await generateGeoJSON(setName)
+    combinedGeoJson.features.push(townGeoj.features[0])
+    // const rSaved = await redis.json.set(`glp:geojson:${t}`, '$', combinedGeoj)
+  }
+  // console.log(combinedGeoJson, { depth: null })
+  return combinedGeoJson
+}
+
 // Save geoJSON data to a file.
 async function saveGeoJsonFile(data, town) {
   const log = editLog.extend('saveGeoJsonFile')
@@ -325,6 +344,8 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
       })
     })
     let okNullIsland = false
+    let okCombinedGeoJson = false
+    let okTownGeoJson = false
     let okPierImage = false
     let okPierUpdate = false
     const csrfTokenCookie = ctx.cookies.get('csrfToken')
@@ -349,6 +370,28 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
       const pierCurrentNullIsland = await isPierNullIsland(pierNumber)
       const [lonU, latU] = pierUpdated.loc.split(',')
       const pierUpdatedNotNullIsland = (parseFloat(lonU) !== 0 && parseFloat(latU) !== 0)
+      //
+      // Save pierUpdated to redis as pier.
+      // Do this before regenerating geoJSON files.
+      //
+      if (pierUpdated.updatedOn === undefined) {
+        pierUpdated.updatedOn = []
+      }
+      pierUpdated.updatedOn.unshift((new Date()).toJSON())
+      const pierSaved = await redis.json.set(`glp:piers:${pierNumber}`, '$', pierUpdated)
+      info(pierNumber, pierSaved)
+      // Save updated pier to file in <appRoot>/data/v1/<town> directory
+      const dir = getTownDirName(setTown, pierNumber)
+      info(`saving updated pier data in dir: ${dir}`)
+      let savedFile
+      try {
+        savedFile = await savePierFile(dir, pierUpdated)
+        info(savedFile)
+        okPierUpdate = true
+      } catch (e) {
+        error(e)
+        okPierUpdate = false
+      }
       if (pierCurrentNullIsland && pierUpdatedNotNullIsland) {
         // remove pier from glp:null_island zset
         try {
@@ -363,10 +406,27 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
           // Use setTown to save geoJSON data to redis set
           info(`geojson saved to glp:geojson:${setTown}: ${rSaved}`)
           await saveGeoJsonFile(geoj, setTown)
+          okTownGeoJson = true
           okNullIsland = true
         } catch (e) {
           error(e)
           okNullIsland = false
+          okTownGeoJson = 'maybe'
+        }
+        // Regenerate the combined geoJSON data and save to file.
+        try {
+          const setKey = 'glp:geojson:combined_geneva_lake'
+          info(`using ${setKey} to re-generate combinded geoJSON data`)
+          const combinedGeoj = await generateCombinedGeoJSON(setKey, ctx.state.TOWNS)
+          info('combined geoJSON:', combinedGeoj)
+          const rSaved = await redis.json.set(setKey, '$', combinedGeoj)
+          // Use setKey to save combined geoJSON data to redis set
+          info(`combined geojson saved to ${setKey}: ${rSaved}`)
+          await saveGeoJsonFile(combinedGeoj, 'combined_geneva_lake')
+          okCombinedGeoJson = true
+        } catch (e) {
+          error(e)
+          okCombinedGeoJson = false
         }
       } else {
         okNullIsland = 'maybe'
@@ -400,44 +460,32 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
       } else {
         okPierImage = 'ok, no image uploaded'
       }
-      //
-      // Save pierUpdated to redis as pier
-      //
-      if (pierUpdated.updatedOn === undefined) {
-        pierUpdated.updatedOn = []
-      }
-      pierUpdated.updatedOn.unshift((new Date()).toJSON())
-      const pierSaved = await redis.json.set(`glp:piers:${pierNumber}`, '$', pierUpdated)
-      info(pierNumber, pierSaved)
-      // Save updated pier to file in <appRoot>/data/v1/<town> directory
-      const dir = getTownDirName(setTown, pierNumber)
-      info(`saving updated pier data in dir: ${dir}`)
-      let savedFile
-      try {
-        savedFile = await savePierFile(dir, pierUpdated)
-        info(savedFile)
-        okPierUpdate = true
-      } catch (e) {
-        error(e)
-        okPierUpdate = false
-      }
       info(`Is update for pier ${pierNumber} OK TO GO?`)
       info(`pier update: ${okPierUpdate}`)
       info(`pier image: ${okPierImage}`)
       info(`Null Island: ${okNullIsland}`)
-      if (!okPierUpdate || !okPierImage || (okNullIsland !== 'maybe' || !okNullIsland)) {
+      if (!okPierUpdate || !okPierImage || !okNullIsland) {
         ctx.type = 'application/json; charset=utf-8'
         ctx.status = 200
         ctx.body = {
           status: 'update failed',
-          msg: 'failed to update pier',
+          msg: 'Failed to update pier.',
+          okTownGeoJson,
+          okCombinedGeoJson,
           okPierUpdate,
           okPierImage,
         }
       } else {
         ctx.type = 'application/json; charset=utf-8'
         ctx.status = 200
-        ctx.body = { pier: pierUpdated, setTown, imageUploadStatus: okPierImage }
+        ctx.body = {
+          status: 'ok',
+          setTown,
+          okTownGeoJson,
+          okCombinedGeoJson,
+          pier: pierUpdated,
+          imageUploadStatus: okPierImage,
+        }
       }
     }
   }
