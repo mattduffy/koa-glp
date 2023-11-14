@@ -57,7 +57,7 @@ router.get('index', '/', hasFlash, async (ctx) => {
     }
   }
   log(`sessionUser.isAuthenticated: ${ctx.state.isAuthenticated}`)
-  locals.structuredData = JSON.stringify(ctx.state.structuredData, null, '\t')
+  // locals.structuredData = JSON.stringify(ctx.state.structuredData, null, '\t')
   const csrfToken = ulid()
   ctx.session.csrfToken = csrfToken
   ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })
@@ -554,6 +554,7 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
   let pier
   let town
   log(pierNumber)
+  log(ctx.state.structuredData)
   if (pierNumber.length > 6 || !/^\d/.test(pierNumber)) {
     error('Pier number looks invalid')
     error(pierNumber.length, !/^\d/.test(pierNumber))

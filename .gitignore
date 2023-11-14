@@ -28,6 +28,7 @@ archive/*
 uploads/*
 !uploads/Readme.md
 public/a/*
+public/sitemap.xml
 private/a/*
 migrations/*
 

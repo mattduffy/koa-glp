@@ -225,12 +225,12 @@ async function viewGlobals(ctx, next) {
   ctx.state.stylesheets = []
   ctx.state.searchJwtAccess = appEnv.SEARCHJWTACCESS
   ctx.state.searchAccessToken = appEnv.SEARCHACCESSTOKEN
-  ctx.state.structuredData = {
+  ctx.state.structuredData = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Geneva Lake Piers',
     url: ctx.request.origin,
-  }
+  }, null, 2)
   await next()
 }
 
