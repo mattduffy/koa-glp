@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+      <loc><%= origin %></loc>
+    </url>
+    <url>
+      <loc><%= origin %>/towns/city-of-lake-geneva</loc>
+    </url>
+    <url>
+      <loc><%= origin %>/towns/Town-Of-Linn</loc>
+    </url>
+    <url>
+      <loc><%= origin %>/towns/Village-Of-Williams-Bay</loc>
+    </url>
+    <url>
+      <loc><%= origin %>/towns/Village-Of-Fontana-On-Lake-Geneva</loc>
+    </url>
+    <url>
+      <loc><%= origin %>/towns/Town-Of-Walworth</loc>
+    </url>
+    <url>
+      <loc><%= origin %>/towns</loc>
+    </url>
+    <url>
+      <loc><%= origin %>/food</loc>
+    </url>
+    <url>
+      <loc><%= origin %>/marinas</loc>
+    </url>
+    <url>
+      <loc><%= origin %>/businesses</loc>
+    </url>
+    <url>
+      <loc><%= origin %>/public</loc>
+    </url>
+    <url>
+      <loc><%= origin %>/associations</loc>
+    </url>
+    <% if (assocs?.results?.length > 0) {
+      assocs.results.forEach((a) => { %>
+    <url>
+      <loc><%= origin %>/assoc/<%= encodeURI(a.association) %></loc>
+    </url>
+    <% })
+    } %>
+    <url>
+      <loc><%= origin %>/swim</loc>
+    </url>
+    <% if (piers?.length > 0) {
+      piers.forEach((p) => { %>
+    <url>
+      <loc><%= origin %>/pier/<%= encodeURI(p) %></loc>
+    </url>
+    <% })
+    } %>
+  </urlset>
