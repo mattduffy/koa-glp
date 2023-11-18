@@ -71,7 +71,6 @@
         const request = new Request(`${origin}/mapkit/getToken`, tokenOpts)
         const response = await fetch(request)
         const { tokenID } = await response.json()
-        console.log('tokenID: ', tokenID)
         if (!window.mapkit || window.mapkit.loadedLibraries.length === 0) {
           // mapkit.core.js or the libraries are not loaded yet.
           // Set up the callback and wait for it to be called.
