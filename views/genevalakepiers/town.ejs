@@ -19,11 +19,11 @@
     <h3><%= piers.length %> Piers</h3>
 
     <p>
-      <div class="previousPier">
-        <a href="<%= origin %>/towns/<%= previousTown.replaceAll(' ', '-') %>">< <%= previousTown %></a>
-      </div>
       <div class="nextPier">
-        <a href="<%= origin %>/towns/<%= nextTown.replaceAll(' ', '-') %>"><%= nextTown %> ></a>
+        <a href="<%= origin %>/towns/<%= nextTown.replaceAll(' ', '-') %>">&lt; <%= nextTown %></a>
+      </div>
+      <div class="previousPier">
+        <a href="<%= origin %>/towns/<%= previousTown.replaceAll(' ', '-') %>"><%= previousTown %> &gt;</a>
       </div>
     </p>
     <% /* %>

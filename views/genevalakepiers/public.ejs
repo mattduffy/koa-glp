@@ -17,18 +17,18 @@
   <section class="main">
     <h2><%= total %> Public Piers</h2>
 
-    <div class="previousPier">
+    <div class="previousPublic">
       <% if (skipBack > 1) { %>
-      <a rel="prev" href="<%= origin %>/swim?s=<%= skipBack %>">&lt; Prev</a>
+      <a rel="prev" href="<%= origin %>/public?s=<%= skipBack %>">&lt; Prev</a>
       <% } else if (skipBack === 1) { %>
-      <a href="<%= origin %>/swim">&lt; Prev</a>
+      <a href="<%= origin %>/public">&lt; Prev</a>
       <% } else { %>
       < Prev 
       <% } %>
     </div>
-    <div class="nextPier">
+    <div class="nextPublic">
       <% if ((offset + num) < total) { %>
-      <a rel="next" href="<%= origin %>/swim?s=<%= skipForward %>">Next &gt;</a>
+      <a rel="next" href="<%= origin %>/public?s=<%= skipForward %>">Next &gt;</a>
       <% } else { %>
       Next > 
       <% } %>

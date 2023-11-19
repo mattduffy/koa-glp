@@ -255,7 +255,7 @@ section.main {
   padding: 2px 5px;
 }
 
-div.previousPier {
+/*div.previousPier {
   display: inline-block;
   width: 45%;
   margin: auto;
@@ -264,6 +264,38 @@ div.previousPier {
 }
 
 div.nextPier {
+  display: inline-block;
+  width: 50%;
+  position: relative;
+  right: 0px;
+  text-align: right;
+}*/
+
+div.nextPier {
+  display: inline-block;
+  width: 45%;
+  margin: auto;
+  position: relative;
+  text-align: left;
+}
+
+div.previousPier {
+  display: inline-block;
+  width: 50%;
+  position: relative;
+  right: 0px;
+  text-align: right;
+}
+
+div.previousBusiness, div.previousPublic, div.previousSwim, div.previousAssocs {
+  display: inline-block;
+  width: 45%;
+  margin: auto;
+  position: relative;
+  text-align: left;
+}
+
+div.nextBusiness, div.nextPublic, div.nextSwim, div.nextAssocs {
   display: inline-block;
   width: 50%;
   position: relative;

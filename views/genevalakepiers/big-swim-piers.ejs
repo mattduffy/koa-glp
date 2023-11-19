@@ -17,16 +17,7 @@
   <section class="main">
     <h2><%= total %> Swim Piers</h2>
 
-    <% /* %>
-    <p><% swim.forEach((p, i) => {
-      let a = `<a href="/pier/${p.pier}">${p.pier}</a>, `
-      if (i === (swim.length - 1)) {
-        a = a.substr(0, a.lastIndexOf(', '))
-      } %>
-      <%- a %>
-    <% }) %></p>
-    <% */ %>
-    <div class="previousPier">
+    <div class="previousSwim">
       <% if (skipBack > 1) { %>
       <a href="<%= origin %>/swim?s=<%= skipBack %>">&lt; Prev</a>
       <% } else if (skipBack === 1) { %>
@@ -35,7 +26,7 @@
       < Prev 
       <% } %>
     </div>
-    <div class="nextPier">
+    <div class="nextSwim">
       <% if ((offset + num) < total) { %>
       <a href="<%= origin %>/swim?s=<%= skipForward %>">Next &gt;</a>
       <% } else { %>
@@ -57,7 +48,8 @@
       let s = params.get('s') || 1
       console.log(`query param s: ${s}`)
       let ulResultsList = document.querySelector('ul#resultsList')
-      const previousDiv = document.querySelector('div.previousPier')
+      // const previousDiv = document.querySelector('div.previousPier')
+      const previousDiv = document.querySelector('div.previousSwim')
       let previousLink = (previousDiv.children)[0]
       
       function updatePrevLink(len) {
@@ -86,7 +78,8 @@
         // console.log(`previousLink ${previousLink}`)
         previousLink.addEventListener('click', setAndUpdatePrevNextLinks)
       }
-      const nextDiv = document.querySelector('div.nextPier')
+      // const nextDiv = document.querySelector('div.nextPier')
+      const nextDiv = document.querySelector('div.nextSwim')
       let nextLink = (nextDiv.children)[0]
       if (nextLink?.tagName === 'A') {
         // console.log(`nextLink ${nextLink}`)

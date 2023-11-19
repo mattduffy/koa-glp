@@ -17,7 +17,7 @@
   <section class="main">
     <h2><%= total %> Associations</h2>
 
-    <div class="previousPier">
+    <div class="previousAssocs">
       <% if (skipBack > 1) { %>
         <a rel="prev" href="<%= origin %>/associations?s=<%= skipBack %>">&lt; Prev</a>
       <% } else if (skipBack === 1) { %>
@@ -27,7 +27,7 @@
       <% } %>
     </div>
     <!-- s:<%= s %>  -->
-    <div class="nextPier">
+    <div class="nextAssocs">
       <% if ((offset + num) < total) { %>
       <a rel="next" href="<%= origin %>/associations?s=<%= skipForward %>">Next &gt;</a>
       <% } else { %>
@@ -48,7 +48,8 @@
       let s = params.get('s') || 1
       console.log(`query param s: ${s}`)
       let ulResultsList = document.querySelector('ul#resultsList')
-      const previousDiv = document.querySelector('div.previousPier')
+      // const previousDiv = document.querySelector('div.previousPier')
+      const previousDiv = document.querySelector('div.previousAssocs')
       let previousLink = (previousDiv.children)[0]
       
       function updatePrevLink(len) {
@@ -77,7 +78,8 @@
         // console.log(`previousLink ${previousLink}`)
         previousLink.addEventListener('click', setAndUpdatePrevNextLinks)
       }
-      const nextDiv = document.querySelector('div.nextPier')
+      // const nextDiv = document.querySelector('div.nextPier')
+      const nextDiv = document.querySelector('div.nextAssocs')
       let nextLink = (nextDiv.children)[0]
       if (nextLink?.tagName === 'A') {
         // console.log(`nextLink ${nextLink}`)
