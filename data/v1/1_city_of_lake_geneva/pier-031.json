@@ -1,44 +1,38 @@
 {
   "pier": "031",
+  "version": "1",
   "loc": {
-    "longitude": 0,
-    "latitude": 0
+    "longitude": -88.450394,
+    "latitude": 42.583404
   },
+  "geohash": "dp947206k30",
+  "pluscode": "86JHHGMX+9R",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Geneva Bay Estates",
-    "established": "1956",
+    "established": 1956,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
-      "members": [
-        {
-          "t": "",
-          "f": "",
-          "m": "",
-          "s": "",
-          "l": "",
-          "hidden": 0
-        }
-      ]
+      "member": false,
+      "members": []
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-12T05:11:02.536Z"
+  ]
 }
