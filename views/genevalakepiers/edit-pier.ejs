@@ -485,7 +485,9 @@
               if (/div/i.test(personRow.tagName)) {
                 const o = i
                 const m = personRow.dataset.m
-                if ((form[`o_${o}_m_${m}_member_fId`].value !== '') && (form[`o_${o}_m_${m}_member_lId`].value !== '')) {
+                // if ((form[`o_${o}_m_${m}_member_fId`].value !== '') && (form[`o_${o}_m_${m}_member_lId`].value !== '')) {
+                console.info(form[`o_${o}_m_${m}_member_fId`].value + form[`o_${o}_m_${m}_member_lId`].value)
+                if ((form[`o_${o}_m_${m}_member_fId`].value + form[`o_${o}_m_${m}_member_lId`].value) !== '') {
                   // console.log(`person: ${o} ${m}`)
                   members[m] = {
                     t: form[`o_${o}_m_${m}_member_tId`].value,
