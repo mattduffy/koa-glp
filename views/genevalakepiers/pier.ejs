@@ -18,11 +18,7 @@
     <% if (!pier?.pier) { %>
       <h2><%= pierNumber %> is not a valid pier number on Geneva Lake</h2>
     <% } else { %>
-      <h2>
-        Pier <%= pier.pier %> <% if (isAuthenticated) { %><a href="<%= origin %>/edit/pier/<%= pierNumber %>"><span class="edit"></span></a><% } %><br>
-        Located in the <nobr><a href="<%= origin %>/towns/<%= setTown %>"><%= town %></a></nobr>
-      </h2>
-
+      <br>
       <div class="nextPier">
         <% if (nextPier.length !== 0) { %>
         <a href="<%= origin %>/pier/<%= nextPier %>">&lt; Pier <%= nextPier %></a>
@@ -37,6 +33,13 @@
         Pier <%= pier.pier %> 
         <% } %>
       </div>
+
+      <h2>
+        Pier <%= pier.pier %> <% if (isAuthenticated) { %><a href="<%= origin %>/edit/pier/<%= pierNumber %>"><span class="edit"></span></a><% } %><br>
+        Located in the <nobr><a href="<%= origin %>/towns/<%= setTown %>"><%= town %></a></nobr>
+      </h2>
+
+
       <% if (photo) { %>
       <picture>
         <source media="(max-width:820px)" srcset="">
