@@ -1,29 +1,34 @@
 {
   "pier": "096",
+  "version": "1",
   "loc": {
-    "longitude": 0,
-    "latitude": 0
+    "longitude": -88.492452,
+    "latitude": 42.573587
   },
+  "geohash": "dp944q3c070",
+  "pluscode": "86JHHGF5+C2",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "S. B. Chapin",
-    "established": "1921",
+    "established": 1921,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-21T01:38:54.027Z"
+  ]
 }

@@ -1,44 +1,38 @@
 {
   "pier": "357A",
+  "version": "1",
   "loc": {
-    "longitude": 0,
-    "latitude": 0
+    "longitude": -88.559211,
+    "latitude": 42.564597
   },
+  "geohash": "dp940u9hub0",
+  "pluscode": "86JHHC7R+R8",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Oak Bank",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
-      "members": [
-        {
-          "t": "",
-          "f": "",
-          "m": "",
-          "s": "",
-          "l": "",
-          "hidden": 0
-        }
-      ]
+      "member": false,
+      "members": []
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-22T00:43:03.660Z"
+  ]
 }

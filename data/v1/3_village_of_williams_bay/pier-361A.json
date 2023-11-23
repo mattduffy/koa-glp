@@ -1,29 +1,34 @@
 {
   "pier": "361A",
+  "version": "1",
   "loc": {
-    "longitude": -88.560979,
-    "latitude": 42.563798
+    "longitude": -88.560951,
+    "latitude": 42.563583
   },
+  "geohash": "dp940sryu70",
+  "pluscode": "86JHHC7Q+CJ",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "1887",
+    "established": 1887,
     "associationUrl": "",
     "tel": "+1(262) 245-5161",
+    "business": "Lake Geneva Fresh Air Association ",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "100 Holiday Home Camp Rd",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "Lake Geneva Fresh Air Association ",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp940sxb5d0",
-  "pluscode": "HC7Q+GJ6 Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-22T02:59:15.016Z"
+  ]
 }

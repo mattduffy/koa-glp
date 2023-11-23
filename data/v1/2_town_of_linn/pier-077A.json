@@ -1,44 +1,38 @@
 {
   "pier": "077A",
+  "version": "1",
   "loc": {
-    "longitude": 0,
-    "latitude": 0
+    "longitude": -88.482453,
+    "latitude": 42.571223
   },
+  "geohash": "dp944tc5370",
+  "pluscode": "86JHHGC9+F2",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Bonnie Brae",
-    "established": "1916",
+    "established": 1916,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
-      "members": [
-        {
-          "t": "",
-          "f": "",
-          "m": "",
-          "s": "",
-          "l": "",
-          "hidden": 0
-        }
-      ]
+      "member": false,
+      "members": []
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-22T02:22:58.279Z"
+  ]
 }

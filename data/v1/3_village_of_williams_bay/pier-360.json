@@ -1,29 +1,34 @@
 {
   "pier": "360",
+  "version": "1",
   "loc": {
-    "longitude": -88.560088,
-    "latitude": 42.564325
+    "longitude": -88.559878,
+    "latitude": 42.564142
   },
+  "geohash": "dp940u8dj70",
+  "pluscode": "86JHHC7R+M2",
+  "public": 0,
+  "bigSwimPier": 1,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "+1(262) 245-5544",
+    "business": "Norman B. Barr Camp",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "483 Outing St",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "Norman B. Barr Camp",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp940u8e0m0",
-  "pluscode": "HC7Q+PXF Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 1,
-  "version": 1
+  "updatedOn": [
+    "2023-11-22T00:55:50.085Z"
+  ]
 }

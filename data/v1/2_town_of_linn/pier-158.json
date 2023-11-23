@@ -1,44 +1,38 @@
 {
   "pier": "158",
+  "version": "1",
   "loc": {
-    "longitude": -88.513626,
-    "latitude": 42.574175
+    "longitude": -88.512933,
+    "latitude": 42.574415
   },
+  "geohash": "dp941y6vgn0",
+  "pluscode": "86JHHFFP+QR",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N2280 Aspen Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
-      "members": [
-        {
-          "t": "",
-          "f": "",
-          "m": "",
-          "l": "",
-          "s": "",
-          "hidden": 0
-        }
-      ]
+      "member": false,
+      "members": []
     }
   ],
-  "geohash": "dp941y6ke10",
-  "pluscode": "HFFP+MG9 Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-21T03:49:28.451Z"
+  ]
 }

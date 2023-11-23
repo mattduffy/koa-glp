@@ -1,29 +1,34 @@
 {
   "pier": "363B",
+  "version": "1",
   "loc": {
-    "longitude": -88.563139,
-    "latitude": 42.562381
+    "longitude": -88.562828,
+    "latitude": 42.562226
   },
+  "geohash": "dp940snwbt0",
+  "pluscode": "86JHHC6P+VV",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N1980 N Lakeshore Dr",
       "city": "Walworth",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp940snrc60",
-  "pluscode": "HC6P+XP5 Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-22T01:02:24.233Z"
+  ]
 }

@@ -1,44 +1,38 @@
 {
   "pier": "349",
+  "version": "1",
   "loc": {
-    "longitude": 0,
-    "latitude": 0
+    "longitude": -88.554756,
+    "latitude": 42.566416
   },
+  "geohash": "dp940uurkd0",
+  "pluscode": "86JHHC8W+H3",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "1895",
+    "established": 1895,
     "associationUrl": "",
     "tel": "",
+    "business": "Yerkes Observatory",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "373 W Geneva St",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "Yerkes Observatory",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Sustaining",
-      "members": [
-        {
-          "t": "",
-          "f": "Yerkes Future Foundation",
-          "m": "",
-          "l": "",
-          "s": "",
-          "hidden": 0
-        }
-      ]
+      "member": true,
+      "members": []
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-01T04:21:51.096Z"
+  ]
 }

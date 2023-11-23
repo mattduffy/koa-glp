@@ -1,29 +1,34 @@
 {
   "pier": "358",
+  "version": "1",
   "loc": {
-    "longitude": -88.559235,
-    "latitude": 42.564755
+    "longitude": -88.559373,
+    "latitude": 42.564582
   },
+  "geohash": "dp940u9h9j0",
+  "pluscode": "86JHHC7R+R7",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Oak Bank",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "471 Outing St",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp940u9jsm0",
-  "pluscode": "HC7R+W82 Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-22T00:56:28.378Z"
+  ]
 }
