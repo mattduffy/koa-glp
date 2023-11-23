@@ -21,7 +21,6 @@ import { redis as ioredis } from '../daos/impl/redis/redis-client.js'
 
 const mainLog = _log.extend('main')
 const mainError = _error.extend('main')
-/* eslint-disable-next-line no-unused-vars */
 function sanitize(param) {
   // fill in with some effective input scubbing logic
   return param
@@ -548,7 +547,7 @@ router.get('piersByAssociation', '/assoc/:assoc', hasFlash, async (ctx) => {
 router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-pierByNumber')
   const error = mainError.extend('GET-pierByNumber')
-  const pierNumber = sanitize(ctx.params.pier)
+  const pierNumber = sanitize(ctx.params.pier.toUpperCase())
   const locals = {}
   let key = `glp:piers:${pierNumber}`
   let pier

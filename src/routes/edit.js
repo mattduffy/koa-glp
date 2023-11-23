@@ -226,7 +226,7 @@ router.get('editPier-GET', '/edit/pier/:pier', hasFlash, async (ctx) => {
     ctx.status = 401
     ctx.redirect('/')
   } else {
-    const pierNumber = sanitize(ctx.params.pier)
+    const pierNumber = sanitize(ctx.params.pier.toUpperCase())
     const locals = {}
     let key = `glp:piers:${pierNumber}`
     let pier
