@@ -1,29 +1,34 @@
 {
   "pier": "408E",
+  "version": "1",
   "loc": {
-    "longitude": 0,
-    "latitude": 0
+    "longitude": -88.572167,
+    "latitude": 42.551738
   },
+  "geohash": "dp9406r9yg0",
+  "pluscode": "86JHHC2H+M4",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Buena Vista",
-    "established": "1912",
+    "established": 1912,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "146 Brooks St",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "Ms",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-25T04:34:10.779Z"
+  ]
 }

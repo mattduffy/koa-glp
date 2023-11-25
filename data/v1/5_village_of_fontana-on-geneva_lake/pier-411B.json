@@ -1,29 +1,34 @@
 {
   "pier": "411B",
+  "version": "1",
   "loc": {
-    "longitude": -88.572165,
-    "latitude": 42.55132
+    "longitude": -88.572143,
+    "latitude": 42.551324
   },
+  "geohash": "dp9406pxrm0",
+  "pluscode": "86JHHC2H+G4",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Buena Vista",
-    "established": "1912",
+    "established": 1912,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "150 Lake St",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -45,8 +50,8 @@
     },
     {
       "estateName": "Pi Cottage",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -68,8 +73,8 @@
     },
     {
       "estateName": "",
+      "membershipType": "Residential Non-member",
       "member": false,
-      "membershipType": "Residential Non-Member",
       "members": [
         {
           "t": "",
@@ -82,9 +87,7 @@
       ]
     }
   ],
-  "geohash": "dp9406pxqv0",
-  "pluscode": "HC2H+G4G Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-25T04:42:32.296Z"
+  ]
 }

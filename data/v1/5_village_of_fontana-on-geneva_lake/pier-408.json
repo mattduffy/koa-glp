@@ -1,29 +1,34 @@
 {
   "pier": "408",
+  "version": "1",
   "loc": {
-    "longitude": -88.572177,
-    "latitude": 42.551742
+    "longitude": -88.572014,
+    "latitude": 42.551985
   },
+  "geohash": "dp9406rg620",
+  "pluscode": "86JHHC2H+Q5",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Buena Vista",
-    "established": "1912",
+    "established": 1912,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,8 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
-      "membershipType": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -60,8 +65,8 @@
     },
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -75,8 +80,8 @@
     },
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -98,8 +103,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -120,9 +125,7 @@
       ]
     }
   ],
-  "geohash": "dp9406r9ye0",
-  "pluscode": "HC2H+M4W Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-25T04:30:42.162Z"
+  ]
 }

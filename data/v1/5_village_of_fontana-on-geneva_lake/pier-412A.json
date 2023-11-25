@@ -1,29 +1,34 @@
 {
   "pier": "412A",
+  "version": "1",
   "loc": {
-    "longitude": -88.572313,
-    "latitude": 42.550848
+    "longitude": -88.572296,
+    "latitude": 42.550846
   },
+  "geohash": "dp9406pseu0",
+  "pluscode": "86JHHC2H+83",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "127 Brooks St",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp9406pses0",
-  "pluscode": "HC2H+83M Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-25T03:19:01.558Z"
+  ]
 }

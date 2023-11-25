@@ -1,29 +1,34 @@
 {
   "pier": "402D",
+  "version": "1",
   "loc": {
-    "longitude": -88.571463,
-    "latitude": 42.553556
+    "longitude": -88.571326,
+    "latitude": 42.553477
   },
+  "geohash": "dp940d87fx0",
+  "pluscode": "86JHHC3H+9F",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Buena Vista",
-    "established": "1912",
+    "established": 1912,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "278 Sylvan Ln",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp940d8hrm0",
-  "pluscode": "HC3H+CCF Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-23T04:07:15.328Z"
+  ]
 }

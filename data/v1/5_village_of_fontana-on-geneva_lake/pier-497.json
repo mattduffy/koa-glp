@@ -1,44 +1,40 @@
 {
   "pier": "497",
+  "version": "1",
   "loc": {
     "longitude": -88.552536,
     "latitude": 42.548223
   },
+  "geohash": "dp940cwj270",
+  "pluscode": "GCXW+7XP Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 1,
   "property": {
     "association": "Abbey Springs",
-    "established": "1971",
-    "associationUrl": "",
-    "tel": "",
+    "established": 1971,
+    "associationUrl": "https://abbeysprings.org",
+    "tel": "+1 (262) 275-6113",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
-      "street": "",
+      "street": "1 Country Club Dr",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
-      "members": [
-        {
-          "t": "",
-          "f": "Abbey Springs Condo Assoc.",
-          "m": "",
-          "l": "",
-          "s": "",
-          "hidden": 0
-        }
-      ]
+      "member": false,
+      "members": []
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -52,23 +48,12 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
-      "members": [
-        {
-          "t": "",
-          "f": "Mr. & Mrs. John L. Simpson, Jr.",
-          "m": "",
-          "l": "",
-          "s": "",
-          "hidden": 0
-        }
-      ]
+      "member": true,
+      "members": []
     }
   ],
-  "geohash": "dp940cwj270",
-  "pluscode": "GCXW+7XP Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 1,
-  "version": 1
+  "updatedOn": [
+    "2023-11-02T21:13:06.393Z"
+  ]
 }
