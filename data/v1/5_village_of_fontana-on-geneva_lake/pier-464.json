@@ -1,29 +1,34 @@
 {
   "pier": "464",
+  "version": "1",
   "loc": {
-    "longitude": 0,
-    "latitude": 0
+    "longitude": -88.565603,
+    "latitude": 42.545762
   },
+  "geohash": "dp9409hrpb0",
+  "pluscode": "86JHGCWM+8Q",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Glenwood Springs",
-    "established": "1892",
-    "associationUrl": "",
+    "established": 1892,
+    "associationUrl": "http://glenwoodspringsclub.com/",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "643 Maple Dr",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-26T04:43:02.457Z"
+  ]
 }

@@ -1,33 +1,38 @@
 {
   "pier": "441A",
+  "version": "1",
   "loc": {
-    "longitude": 0,
-    "latitude": 0
+    "longitude": -88.569698,
+    "latitude": 42.54588
   },
+  "geohash": "dp94091x8q0",
+  "pluscode": "86JHGCWJ+94",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Glenwood Springs",
-    "established": "1892",
-    "associationUrl": "",
+    "established": 1892,
+    "associationUrl": "http://glenwoodspringsclub.com/",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "854 Featherstone Dr",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "",
+          "f": "O’Connell",
           "m": "",
           "l": "",
           "s": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-26T05:33:28.019Z"
+  ]
 }

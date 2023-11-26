@@ -1,29 +1,34 @@
 {
   "pier": "445",
+  "version": "1",
   "loc": {
-    "longitude": 0,
-    "latitude": 0
+    "longitude": -88.568903,
+    "latitude": 42.545636
   },
+  "geohash": "dp94094n6c0",
+  "pluscode": "86JHGCWJ+7C",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Glenwood Springs",
-    "established": "1892",
-    "associationUrl": "",
+    "established": 1892,
+    "associationUrl": "http://glenwoodspringsclub.com/",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "412 Harvard Ave",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Sustaining",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-26T04:09:56.008Z"
+  ]
 }

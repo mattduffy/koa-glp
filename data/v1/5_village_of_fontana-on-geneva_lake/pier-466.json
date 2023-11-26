@@ -1,29 +1,34 @@
 {
   "pier": "466",
+  "version": "1",
   "loc": {
     "longitude": -88.565071,
     "latitude": 42.546101
   },
+  "geohash": "dp9409kch20",
+  "pluscode": "GCWM+CXV Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 1,
   "property": {
     "association": "Glenwood Springs",
-    "established": "1892",
-    "associationUrl": "",
+    "established": 1892,
+    "associationUrl": "http://glenwoodspringsclub.com/",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp9409kch20",
-  "pluscode": "GCWM+CXV Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 1,
-  "version": 1
+  "updatedOn": [
+    "2023-11-26T04:48:10.880Z"
+  ]
 }

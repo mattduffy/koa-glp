@@ -1,29 +1,34 @@
 {
   "pier": "440",
+  "version": "1",
   "loc": {
-    "longitude": 0,
-    "latitude": 0
+    "longitude": -88.569867,
+    "latitude": 42.546153
   },
+  "geohash": "dp940933k90",
+  "pluscode": "86JHGCWJ+F3",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
-    "association": "",
-    "established": "1926",
-    "associationUrl": "",
-    "tel": "",
+    "association": "Country Club Estates",
+    "established": 1926,
+    "associationUrl": "https://www.ccehoaonline.com/",
+    "tel": "+1 (262) 949-5504",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "Country Club Estates",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,8 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -60,8 +65,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Sustaining",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -83,8 +88,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Donor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -98,8 +103,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -121,8 +126,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -144,8 +149,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -159,8 +164,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -182,8 +187,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -205,8 +210,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -228,8 +233,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -243,8 +248,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -266,8 +271,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -289,8 +294,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -304,8 +309,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Sustaining",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -318,9 +323,7 @@
       ]
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-26T03:00:16.732Z"
+  ]
 }
