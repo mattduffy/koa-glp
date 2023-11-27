@@ -226,7 +226,8 @@
         e.stopPropagation()
         const {latitude, longitude} = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
         // const coordinate = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
-        const defaultRadius = 50
+        // const defaultRadius = 50
+        const defaultRadius = 25
         const defaultUnits = 'ft'
         console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: ${longitude}, ${latitude}`)
         const results = await (await fetch(`${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`)).json()
@@ -234,13 +235,17 @@
         if (results?.total > 0) {
           results.documents.forEach((p) => {
             console.log(`${p.value.pier}, ${p.value.coords}, ${p.value.estateName}, ${p.value.business}, ${p.value.association}`)
-              let subtitle = ' '
+              let subtitle
               if (p.value.business !== '' && p.value.association === '') subtitle = p.value.business
               if (p.value.association !== '' && p.value.business === '') subtitle = p.value.association
-              if (p.value.firstname !== '' && p.value.lastname !== '') subtitle = `${p.value.firstname} ${p.value.lastname}`
-              if (p.value.firstname !== '' && p.value.lastname === '') subtitle = p.value.firstname
-              if (p.value.firstname === '' && p.value.lastname !== '') subtitle = p.value.lastname
               if (p.value.estateName !== '') subtitle = p.value.estateName
+              // if (p.value.firstname !== '' && p.value.lastname !== '') subtitle = `${p.value.firstname} ${p.value.lastname}`
+              if (p.value.firstname !== undefined && p.value.lastname !== undefined) subtitle = `${p.value.firstname} ${p.value.lastname}`
+              // if (p.value.firstname !== '' && p.value.lastname === '') subtitle = p.value.firstname
+              if (p.value.firstname !== undefined && p.value.lastname === undefined) subtitle = p.value.firstname
+              // if (p.value.firstname === '' && p.value.lastname !== '') subtitle = p.value.lastname
+              if (p.value.firstname === undefined && p.value.lastname !== undefined) subtitle = p.value.lastname
+              if (subtitle.length < 1 || subtitle.length === undefined) subtitle = 'Owner info not available.'
               console.info(`subtitle: ${subtitle}`)
               const annotationCallout = {
                 calloutLeftAccessoryForAnnotation: () => {
