@@ -136,7 +136,7 @@
                   <option value="<%= t %>" <%= selected %>><%= t %></option>
                   <% }) %>
               </select>
-                <br>
+              <br>
               <% if (o.members.length > 0) { %>
                   <div>
                 <% o.members.forEach((m, j) => { %>
@@ -150,9 +150,20 @@
                       <label for="o_<%= i %>_m_<%= j %>_member_hiddenId">hide</label>
                     </div>
                 <% }) %>
+              <% } else { %>
+                  <div>
+                    <div data-o=0 data-m=0>
+                      <input id="o_0_m_0_member_tId" name="o_0_m_0_member_t" type="text" size="3" maxlength="10" value="" placeholder="Title"> 
+                      <input id="o_0_m_0_member_fId" name="o_0_m_0_member_f" type="text" size="11" maxlength="60" value="" placeholder="First"> 
+                      <input id="o_0_m_0_member_mId" name="o_0_m_0_member_m" type="text" size="3" maxlength="10" value="" placeholder="M"> 
+                      <input id="o_0_m_0_member_lId" name="o_0_m_0_member_l" type="text" size="11" maxlength="30" value="" placeholder="Last"> 
+                      <input id="o_0_m_0_member_sId" name="o_0_m_0_member_s"" type="text" size="3" maxlength="10" value="" placeholder="suffix"> 
+                      <input id="o_0_m_0_member_hiddenId" name="o_0_m_0_member_hidden"" type="checkbox" >
+                      <label for="o_0_m_0_member_hiddenId">hide</label>
+                    </div>
+              <% } %>
                     <span class="addPerson">+ person</span>
                   </div><br>
-              <% } %>
               </div>
             <% }) %>
           <% } else { %>
