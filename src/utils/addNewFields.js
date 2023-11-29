@@ -54,7 +54,7 @@ try {
   log(subDirs)
   let ttlGrand = 0
   let ttlChanged = 0
-  let ttlNullIsland = 0
+  const ttlNullIsland = 0
   const ttlCounts = {}
   /* eslint-disable-next-line */
   for await (const d of subDirs) {
