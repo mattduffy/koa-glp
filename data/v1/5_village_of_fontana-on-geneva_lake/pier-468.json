@@ -1,29 +1,34 @@
 {
   "pier": "468",
+  "version": "1",
   "loc": {
-    "longitude": 0,
-    "latitude": 0
+    "longitude": -88.564558,
+    "latitude": 42.546326
   },
+  "geohash": "dp9409m6210",
+  "pluscode": "86JHGCWP+G5",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Indian Hills",
-    "established": "1927",
+    "established": 1927,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "514 Sauk Trl",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-26T23:57:43.792Z"
+  ]
 }
