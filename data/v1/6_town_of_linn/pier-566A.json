@@ -1,44 +1,38 @@
 {
   "pier": "566A",
+  "version": "1",
   "loc": {
-    "longitude": 0,
-    "latitude": 0
+    "longitude": -88.515657,
+    "latitude": 42.553722
   },
+  "geohash": "dp941f8v7s0",
+  "pluscode": "86JHHF3M+FP",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
-      "members": [
-        {
-          "t": "",
-          "f": "",
-          "m": "",
-          "s": "",
-          "l": "",
-          "hidden": 0
-        }
-      ]
+      "member": false,
+      "members": []
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-29T04:22:56.890Z"
+  ]
 }

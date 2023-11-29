@@ -1,29 +1,34 @@
 {
   "pier": "566",
+  "version": "1",
   "loc": {
-    "longitude": -88.515477,
-    "latitude": 42.553758
+    "longitude": -88.515523,
+    "latitude": 42.553855
   },
+  "geohash": "dp941f8ynv0",
+  "pluscode": "86JHHF3M+GQ",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W4362 Basswood Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp941f8vxg0",
-  "pluscode": "HF3M+GR2 Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-29T04:17:35.196Z"
+  ]
 }

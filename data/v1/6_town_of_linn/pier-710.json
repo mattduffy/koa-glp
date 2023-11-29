@@ -1,44 +1,40 @@
 {
   "pier": "710",
+  "version": "1",
   "loc": {
     "longitude": -88.471709,
     "latitude": 42.562925
   },
+  "geohash": "dp944u2g5b0",
+  "pluscode": "HG7H+58F Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Lake Geneva Country Club",
-    "established": "1895",
-    "associationUrl": "",
+    "established": 1895,
+    "associationUrl": "https://www.lgcc.cc",
     "tel": "+1(262) 248-2752",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W3398 S Lake Shore Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
-      "members": [
-        {
-          "t": "",
-          "f": "Lake Geneva Country Club",
-          "m": "",
-          "l": "",
-          "s": "",
-          "hidden": 0
-        }
-      ]
+      "member": false,
+      "members": []
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -52,8 +48,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Sustaining",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -75,8 +71,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -97,9 +93,7 @@
       ]
     }
   ],
-  "geohash": "dp944u2g5b0",
-  "pluscode": "HG7H+58F Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-02T21:07:12.263Z"
+  ]
 }
