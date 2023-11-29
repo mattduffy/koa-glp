@@ -38,7 +38,7 @@ const DB_PREFIX = redisEnv.REDIS_KEY_PREFIX
 
 const program = new Command()
 program.name('loadData')
-  .requiredOption('--data-dir <dir>', 'Directory containing JSON data files to load.', 'data/')
+  .requiredOption('--data-dir <dir>', 'Directory containing JSON data files to load.', 'data/v1')
   .option('--key-prefix <prefix>', 'The app-specific key prefix for Redis to use to namespace loaded data.')
   .requiredOption('--key-name <name>', 'The key name for Redis to append to the app-specific key prefix.')
   .option('--dry-run', 'Run the load process, but DO NOT insert or SAVE any data.')
