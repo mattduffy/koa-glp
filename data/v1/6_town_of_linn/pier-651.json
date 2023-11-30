@@ -1,44 +1,55 @@
 {
   "pier": "651",
+  "version": "1",
   "loc": {
     "longitude": 0,
     "latitude": 0
   },
+  "geohash": "",
+  "pluscode": "",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Wooddale Lakeshore Property Owners Association",
-    "established": "1942",
+    "established": 1942,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Al",
+          "f": "Brian",
           "m": "",
-          "l": "Van Maren",
+          "l": "Boornazian",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Debbie",
+          "m": "",
+          "l": "Boornazian",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-30T03:41:33.119Z"
+  ]
 }

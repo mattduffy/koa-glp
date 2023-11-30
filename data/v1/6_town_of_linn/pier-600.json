@@ -1,29 +1,34 @@
 {
   "pier": "600",
+  "version": "1",
   "loc": {
-    "longitude": -88.506012,
-    "latitude": 42.559367
+    "longitude": -88.506075,
+    "latitude": 42.559661
   },
+  "geohash": "dp941gxzfz0",
+  "pluscode": "86JHHF5V+VH",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W4190 Southland Rd",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp941gxyk20",
-  "pluscode": "HF5V+PHX Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-30T03:04:19.111Z"
+  ]
 }

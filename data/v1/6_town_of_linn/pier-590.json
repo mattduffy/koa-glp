@@ -1,29 +1,34 @@
 {
   "pier": "590",
+  "version": "1",
   "loc": {
-    "longitude": -88.506585,
-    "latitude": 42.560187
+    "longitude": -88.509085,
+    "latitude": 42.560093
   },
+  "geohash": "dp941gvdsb0",
+  "pluscode": "86JHHF6R+29",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Estates of Black Point",
-    "established": "1888",
+    "established": 1888,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N1817 N Black Point Rd",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,8 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -59,9 +64,7 @@
       ]
     }
   ],
-  "geohash": "dp941gz7p10",
-  "pluscode": "HF6V+39F Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-11-30T02:56:44.746Z"
+  ]
 }
