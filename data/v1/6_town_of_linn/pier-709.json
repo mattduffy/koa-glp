@@ -1,52 +1,40 @@
 {
   "pier": "709",
+  "version": "1",
   "loc": {
     "longitude": -88.472994,
     "latitude": 42.563027
   },
+  "geohash": "dp944srgtg0",
+  "pluscode": "HG7G+6R6 Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Linnwood",
-    "established": "1969",
+    "established": 1969,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
-      "membershipType": "Benefactor",
-      "members": [
-        {
-          "t": "",
-          "f": "Mr. & Mrs. Thomas Cashman",
-          "m": "",
-          "l": "",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Brigid",
-          "m": "",
-          "l": "Cashman",
-          "s": "",
-          "hidden": 0
-        }
-      ]
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": []
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Donor",
+      "member": true,
       "members": [
         {
           "t": "Drs.",
@@ -68,8 +56,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -91,8 +79,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "Drs.",
@@ -114,23 +102,14 @@
     },
     {
       "estateName": "",
-      "member": true,
-      "membershipType": "Benefactor",
-      "members": [
-        {
-          "t": "",
-          "f": "Marilyn",
-          "m": "",
-          "l": "Hedberg",
-          "s": "",
-          "hidden": 0
-        }
-      ]
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": []
     },
     {
       "estateName": "",
-      "member": true,
-      "membershipType": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -144,8 +123,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -167,8 +146,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -182,8 +161,8 @@
     },
     {
       "estateName": "Rock Ridge",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -205,31 +184,14 @@
     },
     {
       "estateName": "",
-      "member": true,
-      "membershipType": "Regular",
-      "members": [
-        {
-          "t": "",
-          "f": "Bill",
-          "m": "",
-          "l": "Poggensee",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Stella",
-          "m": "",
-          "l": "Poggensee",
-          "s": "",
-          "hidden": 0
-        }
-      ]
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": []
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -250,9 +212,7 @@
       ]
     }
   ],
-  "geohash": "dp944srgtg0",
-  "pluscode": "HG7G+6R6 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-01T04:41:06.945Z"
+  ]
 }
