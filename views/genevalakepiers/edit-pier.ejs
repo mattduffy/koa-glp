@@ -163,7 +163,8 @@
                     </div>
               <% } %>
                     <span class="addPerson">+ person</span>
-                  </div><br>
+                    <span class="delEstate">- estate</span>
+                  </div>
               </div>
             <% }) %>
           <% } else { %>
@@ -359,6 +360,19 @@
           bigSwimPier.disabled = true
         }}
 
+        const delEstateSpans = document.querySelectorAll('span.delEstate')
+        delEstateSpans.forEach((estate) => {
+          estate.addEventListener('click', (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            const ownerDiv = e.target.parentElement.parentElement
+            if (ownerDiv.classList.contains('editOwner') && ownerDiv.dataset.hasOwnProperty('o')) {
+              console.info(ownerDiv)
+              ownerDiv.remove()
+            }
+          })
+        })
+
         const addPersonSpans = document.querySelectorAll('span.addPerson')
         addPersonSpans.forEach((p) => {
           p.addEventListener('click', (e) => {
@@ -486,22 +500,22 @@
           pier.property = property
           const owners = []
           const ownerNodes = document.querySelectorAll('div.editOwner')
-          ownerNodes.forEach((o, i) => {
+          // ownerNodes.forEach((o, i) => {
+          ownerNodes.forEach((o) => {
+            const i = o.dataset.o
             // console.log(`ownerNodes: ${i}`)
-            owners[i] = {}
-            owners[i].estateName = form[`o_${i}_estateName`].value
-            owners[i].membershipType = form[`o_${i}_membershipTypeId`].options[form[`o_${i}_membershipTypeId`].selectedIndex].value
-            owners[i].member = !(/non-member/i.test(owners[i].membershipType))
-            // const mCollection = m.children[6].children
+            const owner = {}
+            owner.estateName = form[`o_${i}_estateName`].value
+            owner.membershipType = form[`o_${i}_membershipTypeId`].options[form[`o_${i}_membershipTypeId`].selectedIndex].value
+            owner.member = !(/non-member/i.test(owner.membershipType))
             const mCollection = o.querySelector(':scope > div').children
             const members = []
             for (personRow of mCollection) {
               if (/div/i.test(personRow.tagName)) {
                 const o = i
                 const m = personRow.dataset.m
-                // if ((form[`o_${o}_m_${m}_member_fId`].value !== '') && (form[`o_${o}_m_${m}_member_lId`].value !== '')) {
-                console.info(form[`o_${o}_m_${m}_member_fId`].value + form[`o_${o}_m_${m}_member_lId`].value)
-                if ((form[`o_${o}_m_${m}_member_fId`].value + form[`o_${o}_m_${m}_member_lId`].value) !== '') {
+                // console.info(form[`o_${o}_m_${m}_member_fId`]?.value, form[`o_${o}_m_${m}_member_lId`]?.value)
+                if (typeof (form[`o_${o}_m_${m}_member_fId`]?.value + form[`o_${o}_m_${m}_member_lId`]?.value) === 'string') {
                   // console.log(`person: ${o} ${m}`)
                   members[m] = {
                     t: form[`o_${o}_m_${m}_member_tId`].value,
@@ -514,7 +528,9 @@
                 }
               }
             }
-            owners[i].members = members
+            owner.members = members
+            // console.info(owner)
+            owners.push(owner)
           })
           pier.owners = owners
           console.log(pier)
