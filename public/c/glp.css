@@ -65,6 +65,17 @@ a:active, a:hover, a:visited, a:link .view::after {
   text-decoration: underline;
 }
 
+span.addEstate {
+  display: inline-block;
+  width: 45%;
+  margin: auto;
+  position: relative;
+  text-align: left;
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 span.addPerson {
   display: inline-block;
   width: 45%;
