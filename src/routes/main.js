@@ -26,6 +26,29 @@ function sanitize(param) {
   return param
 }
 
+function leftZeroPad(x) {
+  let pierNumber = x
+  const matches = x.match(/^(?<numbers>\d{1,3}(?<decimal>\.\d)?)(?<letters>[A-Za-z]{0,3})/)
+  if (!matches) {
+    return null
+  }
+  console.log('matche.input:', matches.input)
+  console.log('matches.groups.numbers: ', matches.groups.numbers)
+  console.log('matches.groups.decimal: ', matches.groups.decimal)
+  console.log('matches.groups.letters: ', matches.groups.letters)
+  const numbersLength = parseInt(matches.groups.numbers, 10).toString().length
+  if (numbersLength < 3) {
+    pierNumber = parseInt(matches.groups.numbers, 10).toString().padStart(3, '0')
+    if (matches.groups.decimal !== undefined) {
+      pierNumber += matches.groups.decimal
+    }
+    if (matches.groups.letters !== '') {
+      pierNumber += matches.groups.letters.toUpperCase()
+    }
+  }
+  return pierNumber
+}
+
 const router = new Router()
 async function hasFlash(ctx, next) {
   const log = mainLog.extend('hasFlash')
@@ -548,105 +571,113 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
   const log = mainLog.extend('GET-pierByNumber')
   const error = mainError.extend('GET-pierByNumber')
   const pierNumber = sanitize(ctx.params.pier.toUpperCase())
-  const locals = {}
-  let key = `glp:piers:${pierNumber}`
-  let pier
-  let town
-  log(pierNumber)
-  log(ctx.state.structuredData)
-  if (pierNumber.length > 6 || !/^\d/.test(pierNumber)) {
-    error('Pier number looks invalid')
-    error(pierNumber.length, !/^\d/.test(pierNumber))
-    locals.pier = `${pierNumber} is not a valid pier number.`
-  }
-  let setTown
-  try {
-    /* eslint-disable-next-line */
-    for (const set of ctx.state.TOWNS) {
-      let found = false
-      const setkey = `glp:piers_by_town:${set}`
-      log(setkey, pierNumber)
+  const zeroPaddedPierNumber = leftZeroPad(pierNumber)
+  log(`pierNumber: ${pierNumber}, zeroPaddedPierNumber: ${zeroPaddedPierNumber}`)
+  if (pierNumber !== zeroPaddedPierNumber) {
+    ctx.status = 301
+    ctx.redirect(`/pier/${zeroPaddedPierNumber}`)
+    ctx.body = `Redirecting to ${ctx.origin}/pier/${zeroPaddedPierNumber}`
+  } else {
+    const locals = {}
+    let key = `glp:piers:${pierNumber}`
+    let pier
+    let town
+    log(pierNumber)
+    log(ctx.state.structuredData)
+    if (pierNumber.length > 6 || !/^\d/.test(pierNumber)) {
+      error('Pier number looks invalid')
+      error(pierNumber.length, !/^\d/.test(pierNumber))
+      locals.pier = `${pierNumber} is not a valid pier number.`
+    }
+    let setTown
+    try {
       /* eslint-disable-next-line */
-      for await (const { value } of redis.zScanIterator(setkey, { MATCH: pierNumber, COUNT: 900 })) {
-        if (value !== null) {
-          town = set.split('_').map((e) => e.toProperCase()).join(' ')
-          setTown = set
-          log(`Found ${value} in ${set}`)
-          found = true
+      for (const set of ctx.state.TOWNS) {
+        let found = false
+        const setkey = `glp:piers_by_town:${set}`
+        log(setkey, pierNumber)
+        /* eslint-disable-next-line */
+        for await (const { value } of redis.zScanIterator(setkey, { MATCH: pierNumber, COUNT: 900 })) {
+          if (value !== null) {
+            town = set.split('_').map((e) => e.toProperCase()).join(' ')
+            setTown = set
+            log(`Found ${value} in ${set}`)
+            found = true
+          }
         }
+        if (found) break
       }
-      if (found) break
+    } catch (e) {
+      error(e)
+      throw new Error(`Could not match pier ${pierNumber} to any town set in redis.`, { cause: e })
     }
-  } catch (e) {
-    error(e)
-    throw new Error(`Could not match pier ${pierNumber} to any town set in redis.`, { cause: e })
-  }
-  try {
-    pier = await redis.json.get(key)
-    let leading0s = 0
-    if (pier.pier[0] === '0') leading0s += 1
-    if (pier.pier[1] === '0') leading0s += 1
-    if (leading0s > 0) {
-      // pier.strippedPier = pier.pier.slice(leading0s)
-      pier.strippedPier = pier.pier.slice(leading0s)
-    }
-    log(`stipping leading 0's from pier number: ${pier.stippedPier}`)
-    log(pier)
-    log(`has hidden members? ${pier.pier}`)
-    pier.owners.forEach((o, j) => {
-      const filtered = []
-      o.members.forEach((m) => {
-        log(m)
-        // if (m?.hidden === true) {
-        if (m?.hidden === 1) {
-          log(`member: ${m.f} ${m.l} is hidden ${m?.hidden}`)
-        } else {
-          filtered.push(m)
-        }
+    try {
+      pier = await redis.json.get(key)
+      let leading0s = 0
+      if (pier.pier[0] === '0') leading0s += 1
+      if (pier.pier[1] === '0') leading0s += 1
+      if (leading0s > 0) {
+        // pier.strippedPier = pier.pier.slice(leading0s)
+        pier.strippedPier = pier.pier.slice(leading0s)
+      }
+      log(`stipping leading 0's from pier number: ${pier.stippedPier}`)
+      log(pier)
+      log(`has hidden members? ${pier.pier}`)
+      pier.owners.forEach((o, j) => {
+        const filtered = []
+        o.members.forEach((m) => {
+          log(m)
+          // if (m?.hidden === true) {
+          if (m?.hidden === 1) {
+            log(`member: ${m.f} ${m.l} is hidden ${m?.hidden}`)
+          } else {
+            filtered.push(m)
+          }
+        })
+        pier.owners[j].members = filtered
       })
-      pier.owners[j].members = filtered
-    })
-  } catch (e) {
-    error(e)
-    throw new Error(`Failed to get pier ${pierNumber}`, { cause: e })
-  }
-  let nextPier
-  let previousPier
-  key = 'glp:all_piers_in_order'
-  try {
-    nextPier = await redis.zRange(key, `[${pierNumber}`, '+', { BY: 'LEX', LIMIT: { offset: 1, count: 1 } })
-    if (Number.isNaN(parseInt(nextPier, 10))) {
-      nextPier = '001'
+    } catch (e) {
+      error(e)
+      throw new Error(`Failed to get pier ${pierNumber}`, { cause: e })
     }
-    log(`next pier >> ${nextPier}`)
-  } catch (e) {
-    error(e)
-    throw new Error(`Failed creating next pier link for pier ${pierNumber}`, { cause: e })
-  }
-  try {
-    previousPier = await redis.zRange(key, `[${pierNumber}`, '-', { BY: 'LEX', REV: true, LIMIT: { offset: '1', count: '1' } })
-    if (Number.isNaN(parseInt(previousPier, 10))) {
-      previousPier = await redis.zRange(key, '0', '-1', { REV: true, BY: 'SCORE', LIMIT: { offset: '0', count: '1' } })
+    let nextPier
+    let previousPier
+    key = 'glp:all_piers_in_order'
+    try {
+      nextPier = await redis.zRange(key, `[${pierNumber}`, '+', { BY: 'LEX', LIMIT: { offset: 1, count: 1 } })
+      if (Number.isNaN(parseInt(nextPier, 10))) {
+        nextPier = '001'
+      }
+      log(`next pier >> ${nextPier}`)
+    } catch (e) {
+      error(e)
+      throw new Error(`Failed creating next pier link for pier ${pierNumber}`, { cause: e })
     }
-    log(`prev pier >> ${previousPier}`)
-  } catch (e) {
-    error(e)
-    throw new Error(`Failed creating previous pier link for pier ${pierNumber}`, { cause: e })
-  }
+    try {
+      previousPier = await redis.zRange(key, `[${pierNumber}`, '-', { BY: 'LEX', REV: true, LIMIT: { offset: '1', count: '1' } })
+      if (Number.isNaN(parseInt(previousPier, 10))) {
+        previousPier = await redis.zRange(key, '0', '-1', { REV: true, BY: 'SCORE', LIMIT: { offset: '0', count: '1' } })
+      }
+      log(`prev pier >> ${previousPier}`)
+    } catch (e) {
+      error(e)
+      throw new Error(`Failed creating previous pier link for pier ${pierNumber}`, { cause: e })
+    }
 
-  log(ctx.state.TOWNS)
-  locals.pier = pier
-  locals.town = town
-  locals.photo = false
-  locals.nextPier = nextPier
-  locals.previousPier = previousPier
-  locals.setTown = setTown
-  locals.pierNumber = pierNumber
-  locals.flash = ctx.flash.view ?? {}
-  locals.title = `${ctx.app.site}: Pier ${pierNumber}`
-  locals.sessionUser = ctx.state.sessionUser
-  locals.isAuthenticated = ctx.state.isAuthenticated
-  await ctx.render('pier', locals)
+    log(ctx.state.TOWNS)
+    locals.pier = pier
+    locals.town = town
+    locals.photo = false
+    locals.nextPier = nextPier
+    locals.previousPier = previousPier
+    locals.setTown = setTown
+    locals.pierNumber = pierNumber
+    locals.flash = ctx.flash.view ?? {}
+    locals.title = `${ctx.app.site}: Pier ${pierNumber}`
+    locals.sessionUser = ctx.state.sessionUser
+    locals.isAuthenticated = ctx.state.isAuthenticated
+    await ctx.render('pier', locals)
+  }
 })
 
 router.get('pierEdit-GET', '/pier/edit/:pier', hasFlash, async (ctx) => {
