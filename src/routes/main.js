@@ -32,10 +32,6 @@ function leftZeroPad(x) {
   if (!matches) {
     return null
   }
-  console.log('matche.input:', matches.input)
-  console.log('matches.groups.numbers: ', matches.groups.numbers)
-  console.log('matches.groups.decimal: ', matches.groups.decimal)
-  console.log('matches.groups.letters: ', matches.groups.letters)
   const numbersLength = parseInt(matches.groups.numbers, 10).toString().length
   if (numbersLength < 3) {
     pierNumber = parseInt(matches.groups.numbers, 10).toString().padStart(3, '0')
@@ -46,6 +42,7 @@ function leftZeroPad(x) {
       pierNumber += matches.groups.letters.toUpperCase()
     }
   }
+  mainLog(`Pier number input: ${x}, normalized pier number output: ${pierNumber}`)
   return pierNumber
 }
 
