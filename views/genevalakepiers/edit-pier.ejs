@@ -119,7 +119,7 @@
           <label for="zipId">Zip Code</label>
           <input id="zipId" name="zip" type="text" size="10" maxlength="9" value="<%= pier.property.address.zip %>"><br>
         </fieldset>
-        <fieldset id="pierOwnersId" name="pierOwners" form="pierEditId" class="edit_fieldset" title="Pier Address Form">
+        <fieldset id="pierOwnersId" name="pierOwners" form="pierEditId" class="edit_fieldset" title="Pier Owners">
           <legend>Pier Owners</legend>
           <% if (pier.owners.length > 0) { %>
             <% pier.owners.forEach((o, i) => { %>
@@ -162,12 +162,12 @@
                       <label for="o_0_m_0_member_hiddenId">hide</label>
                     </div>
               <% } %>
-                    <span class="addPerson">+ person</span>
-                    <span class="delEstate">- estate</span>
+                    <span class="addPerson" title="Add another person.">+ person</span>
+                    <span class="delEstate" title="Remove this estate and owners.">- estate</span>
                   </div>
               </div>
             <% }) %>
-              <span class="addEstate">+ estate</span>
+              <span class="addEstate" title="Add another estate and owner.">+ estate</span>
           <% } else { %>
           No owners entered.  <span class="addOwner">+ owner</span>.
           <% } %>
