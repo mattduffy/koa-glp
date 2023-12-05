@@ -238,6 +238,25 @@ async function logRequest(ctx, next) {
   const logg = log.extend('logRequest')
   const err = error.extend('logRequest')
   try {
+    /* eslint-disable-next-line */
+    const ignore = ['favicon', 'c/.+\.css']
+    /* eslint-disable-next-line */
+    function find(x) {
+      const re = new RegExp(x)
+      return re.test(ctx.path)
+    }
+    if (ignore.find(find) === undefined) {
+      const db = ctx.state.mongodb.client.db(ctx.state.mongodb.dbName)
+      const mainLog = db.collection('mainLog')
+      const logEntry = {}
+      logEntry.remoteIp = ctx.request.ips
+      logEntry.date = new Date()
+      logEntry.method = ctx.method
+      logEntry.url = ctx.request.href
+      logEntry.referer = ctx.request.headers?.referer
+      logEntry.userAgent = ctx.request.headers['user-agent']
+      await mainLog.insertOne(logEntry)
+    }
     logg(`Request href:        ${ctx.request.href}`)
     logg(`Request remote ips:  ${ctx.request.ips}`)
     logg(`Request remote ip:   ${ctx.request.ip}`)
@@ -250,12 +269,12 @@ async function logRequest(ctx, next) {
   }
 }
 
+app.use(isMongo)
 app.use(logRequest)
 app.use(viewGlobals)
 app.use(openGraph)
 app.use(errors)
 app.use(httpMethodOverride())
-app.use(isMongo)
 app.use(getSessionUser)
 app.use(townSetNames)
 app.use(flashMessage({}, app))
