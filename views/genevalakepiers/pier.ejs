@@ -49,8 +49,8 @@
       <% } %>
       <h3 id="location">Location:</h3>
       <ul class="location">
-        <li>lat: <%= pier.loc.split(',')[1] %></li>
-        <li>lon: <%= pier.loc.split(',')[0] %></li>
+        <li>latitude: <%= pier.loc.split(',')[1] %></li>
+        <li>longitude: <%= pier.loc.split(',')[0] %></li>
         <li>geohash: <%= pier.geohash %></li>
         <li>pluscode: <a class="external" href="https://www.google.com/maps/place/<%= encodeURIComponent(pier.pluscode) %>"><%= pier.pluscode %></a></li>
       </ul>
