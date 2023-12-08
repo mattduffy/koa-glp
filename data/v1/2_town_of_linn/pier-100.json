@@ -1,29 +1,34 @@
 {
   "pier": "100",
+  "version": "1",
   "loc": {
     "longitude": -88.493902,
     "latitude": 42.573953
   },
+  "geohash": "dp944q2eq80",
+  "pluscode": "HGF4+HCQ Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
-    "association": "S. B. Chapin",
-    "established": "1921",
+    "association": "Geneva Oaks",
+    "established": 1970,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N2339 Geneva Oak Trl",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp944q2eq80",
-  "pluscode": "HGF4+HCQ Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-08T05:03:30.441Z"
+  ]
 }

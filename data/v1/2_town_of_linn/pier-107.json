@@ -1,44 +1,55 @@
 {
   "pier": "107",
+  "version": "1",
   "loc": {
     "longitude": -88.49705,
     "latitude": 42.574486
   },
+  "geohash": "dp944nqqm70",
+  "pluscode": "HGF3+Q5W Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Elgin Club",
-    "established": "1874",
+    "established": 1874,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W4001 Elgin Club Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
-          "f": "Jerome R. & Denise L. Vainisi Family, LLC",
-          "m": "",
-          "l": "",
+          "f": "Jerome",
+          "m": "R",
+          "l": "Vainisi",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Denise",
+          "m": "L",
+          "l": "Vainisi",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp944nqqm70",
-  "pluscode": "HGF3+Q5W Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-08T05:07:50.460Z"
+  ]
 }

@@ -1,29 +1,34 @@
 {
   "pier": "110",
+  "version": "1",
   "loc": {
-    "longitude": -88.497647,
-    "latitude": 42.574823
+    "longitude": -88.497654,
+    "latitude": 42.57459
   },
+  "geohash": "dp944nmyzn0",
+  "pluscode": "86JHHGF2+RW",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Elgin Club",
-    "established": "1874",
+    "established": 1874,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W4013 Elgin Club Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp944ntbr60",
-  "pluscode": "HGF2+WWH Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-08T05:15:46.995Z"
+  ]
 }

@@ -1,29 +1,34 @@
 {
   "pier": "016",
+  "version": "1",
   "loc": {
     "longitude": -88.445935,
     "latitude": 42.587735
   },
+  "geohash": "dp9472ges30",
+  "pluscode": "HHQ3+3JW Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Lake Geneva Manor",
-    "established": "1924",
+    "established": 1924,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "1-1699 Lake Shore Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,31 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
-      "members": [
-        {
-          "t": "",
-          "f": "James",
-          "m": "",
-          "l": "Birk",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Liane",
-          "m": "",
-          "l": "Birk",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
       "member": true,
-      "membershipType": "Contributing",
       "members": [
         {
           "t": "",
@@ -75,8 +57,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Sustaining",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -97,9 +79,7 @@
       ]
     }
   ],
-  "geohash": "dp9472ges30",
-  "pluscode": "HHQ3+3JW Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-03T01:20:01.628Z"
+  ]
 }
