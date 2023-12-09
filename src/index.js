@@ -62,6 +62,8 @@ const key3 = appEnv.KEY3
 const port = appEnv.PORT ?? 3333
 
 export const app = new Koa.default()
+app.securityContact = appEnv.SECURITY_CONTACT
+app.securityGpg = appEnv.SECURITY_GPG
 app.keys = new Keygrip([key1, key2, key3])
 app.env = appEnv.APP_ENV ?? 'development'
 app.site = appEnv.SITE_NAME ?? 'Web site'
