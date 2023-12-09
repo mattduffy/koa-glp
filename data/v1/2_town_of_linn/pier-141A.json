@@ -1,44 +1,47 @@
 {
   "pier": "141A",
+  "version": "1",
   "loc": {
-    "longitude": -88.508079,
-    "latitude": 42.576155
+    "longitude": -88.507941,
+    "latitude": 42.575885
   },
+  "geohash": "dp941ywqx20",
+  "pluscode": "86JHHFGR+9R",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Ara Glen",
-    "established": "1977",
+    "established": 1977,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
           "f": "",
           "m": "",
-          "s": "",
           "l": "",
+          "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp941yy2h60",
-  "pluscode": "HFGR+FQ7 Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-09T05:31:16.969Z"
+  ]
 }

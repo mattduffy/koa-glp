@@ -1,44 +1,47 @@
 {
   "pier": "139",
+  "version": "1",
   "loc": {
     "longitude": -88.505877,
     "latitude": 42.575245
   },
+  "geohash": "dp941yxfz90",
+  "pluscode": "HFGV+3JX Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N2312 Windwood Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
-      "estateName": "",
-      "member": false,
+      "estateName": "Windwood",
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
           "f": "",
           "m": "",
-          "l": "",
+          "l": "Griffith",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp941yxfz90",
-  "pluscode": "HFGV+3JX Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-09T05:22:02.616Z"
+  ]
 }

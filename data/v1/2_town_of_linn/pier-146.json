@@ -1,29 +1,34 @@
 {
   "pier": "146",
+  "version": "1",
   "loc": {
-    "longitude": -88.510004,
+    "longitude": -88.509922,
     "latitude": 42.576043
   },
+  "geohash": "dp941ytp3m0",
+  "pluscode": "86JHHFGR+C2",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Knollwood",
-    "established": "1926",
+    "established": 1926,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W4265 Oriole Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp941yszrm0",
-  "pluscode": "HFGQ+CX9 Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-09T05:37:55.024Z"
+  ]
 }
