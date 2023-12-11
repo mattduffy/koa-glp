@@ -62,14 +62,14 @@ const key3 = appEnv.KEY3
 const port = appEnv.PORT ?? 3333
 
 export const app = new Koa.default()
-app.securityContact = appEnv.SECURITY_CONTACT
-app.securityGpg = appEnv.SECURITY_GPG
 app.keys = new Keygrip([key1, key2, key3])
 app.env = appEnv.APP_ENV ?? 'development'
 app.site = appEnv.SITE_NAME ?? 'Web site'
 app.domain = appEnv.DOMAIN_NAME ?? 'website.com'
 app.host = `${appEnv.HOST}:${port}` ?? `127.0.0.1:${port}`
 app.origin = app.host
+app.securityContact = appEnv.SECURITY_CONTACT ?? `security@${app.domain}`
+app.securityGpg = appEnv.SECURITY_GPG ?? 'GPG public key missing.'
 app.appEnv = appEnv
 
 app.proxy = true

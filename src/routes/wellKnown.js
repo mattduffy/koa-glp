@@ -5,9 +5,9 @@
  * @file src/routes/wellKnown.js The router for public well-known URI actions.
  */
 
-import path from 'node:path'
-import { Buffer } from 'node:buffer'
-import { writeFile } from 'node:fs/promises'
+// import path from 'node:path'
+// import { Buffer } from 'node:buffer'
+// import { writeFile } from 'node:fs/promises'
 import Router from '@koa/router'
 import NodeInfo from '@mattduffy/webfinger/nodeinfo.js' // eslint-disable-line import/no-unresolved
 import Hostmeta from '@mattduffy/webfinger/host-meta.js' // eslint-disable-line import/no-unresolved
@@ -27,13 +27,13 @@ router.get('security', '/.well-known/security.txt', async (ctx) => {
   info('somebody asked for the security.txt file.')
   const securityTxt = []
   securityTxt.push(`Contact: mailto:${ctx.app.securityContact}`)
-  securityTxt.push('Expires: 2025-12-31T20:59:00.000Z')
+  securityTxt.push('Expires: 2025-12-31T23:59:00.000Z')
   securityTxt.push(`Encryption: ${ctx.app.securityGpg}`)
   securityTxt.push('Preferred-Languages: en')
   securityTxt.push(`Canonical: ${ctx.origin}/.well-known/security.txt`)
   log(securityTxt)
   ctx.status = 200
-  ctx.type = 'text/plain'
+  ctx.type = 'text/plain; charset=utf-8'
   ctx.body = securityTxt.join('\n')
 })
 
