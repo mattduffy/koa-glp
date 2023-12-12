@@ -29,10 +29,19 @@
       "estateName": "",
       "membershipType": "Residential Non-member",
       "member": false,
-      "members": []
+      "members": [
+        {
+          "t": "",
+          "f": "",
+          "m": "",
+          "l": "O’Malley",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2023-11-21T03:49:28.451Z"
+    "2023-12-11T00:34:28.585Z"
   ]
 }

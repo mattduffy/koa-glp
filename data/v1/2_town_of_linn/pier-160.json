@@ -1,29 +1,34 @@
 {
   "pier": "160",
+  "version": "1",
   "loc": {
-    "longitude": -88.513764,
-    "latitude": 42.574103
+    "longitude": -88.513784,
+    "latitude": 42.574093
   },
+  "geohash": "dp941y6hp60",
+  "pluscode": "86JHHFFP+JF",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W4409 N Lake Shore Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "Crystal Falls",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp941y6hpu0",
-  "pluscode": "HFFP+JFX Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-11T00:37:45.205Z"
+  ]
 }
