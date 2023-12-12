@@ -1,29 +1,34 @@
 {
   "pier": "226",
+  "version": "1",
   "loc": {
     "longitude": -88.529364,
     "latitude": 42.573363
   },
+  "geohash": "dp941qnzu60",
+  "pluscode": "HFFC+87R Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Cedar Point Park",
-    "established": "1922",
+    "established": 1922,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,22 +42,22 @@
     },
     {
       "estateName": "",
+      "membershipType": "Donor",
       "member": true,
-      "membershipType": "Regular",
       "members": [
         {
           "t": "",
-          "f": "James",
+          "f": "Norm",
           "m": "",
-          "l": "Ahern",
+          "l": "Hagman",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "JoAnne",
+          "f": "Patricia",
           "m": "",
-          "l": "Ahern",
+          "l": "Hagman",
           "s": "",
           "hidden": 0
         }
@@ -60,46 +65,29 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
-          "f": "Dr. & Mrs. Raymond Copeland",
+          "f": "David",
           "m": "",
-          "l": "",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "member": true,
-      "membershipType": "Regular",
-      "members": [
-        {
-          "t": "",
-          "f": "Peter",
-          "m": "",
-          "l": "Russell",
+          "l": "Shaughnessy",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Paula",
+          "f": "Anita",
           "m": "",
-          "l": "Russell",
+          "l": "Shaughnessy",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp941qnzu60",
-  "pluscode": "HFFC+87R Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-12T02:36:45.615Z"
+  ]
 }

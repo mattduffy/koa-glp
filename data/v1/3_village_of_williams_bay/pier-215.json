@@ -1,29 +1,34 @@
 {
   "pier": "215",
+  "version": "1",
   "loc": {
     "longitude": -88.529482,
     "latitude": 42.569821
   },
+  "geohash": "dp941mwg1t0",
+  "pluscode": "HF9C+W6C Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Cedar Point Park",
-    "established": "1922",
+    "established": 1922,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "190 Cir Pkwy",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
-      "membershipType": "Residential Non-member",
+      "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp941mwg1t0",
-  "pluscode": "HF9C+W6C Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-12T02:28:42.131Z"
+  ]
 }

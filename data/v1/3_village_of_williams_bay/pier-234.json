@@ -1,52 +1,55 @@
 {
   "pier": "234",
+  "version": "1",
   "loc": {
-    "longitude": -88.529719,
+    "longitude": -88.52974,
     "latitude": 42.576342
   },
+  "geohash": "dp941qy95t0",
+  "pluscode": "86JHHFGC+G4",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Cedar Point Park",
-    "established": "1922",
+    "established": 1922,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "8 Bayview Rd",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
-      "membershipType": "Residential Non-member",
+      "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
-          "f": "Ed",
+          "f": "Robert",
           "m": "",
-          "l": "Stocker",
-          "s": "Jr.",
+          "l": "Filek",
+          "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Margaret",
+          "f": "Jane",
           "m": "",
-          "l": "Stocker",
+          "l": "Filek",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp941qy9hj0",
-  "pluscode": "HFGC+G4J Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-12T02:55:39.717Z"
+  ]
 }

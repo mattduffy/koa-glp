@@ -1,44 +1,47 @@
 {
   "pier": "231",
+  "version": "1",
   "loc": {
-    "longitude": -88.529913,
-    "latitude": 42.575334
+    "longitude": -88.529504,
+    "latitude": 42.575284
   },
+  "geohash": "dp941qwg100",
+  "pluscode": "86JHHFGC+45",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Cedar Point Park",
-    "established": "1922",
+    "established": 1922,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "31-1 Cedar Point Dr",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
           "f": "",
           "m": "",
-          "s": "",
           "l": "",
+          "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp941qw7r90",
-  "pluscode": "HFGC+42P Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-12T02:48:36.143Z"
+  ]
 }

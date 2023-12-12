@@ -1,29 +1,34 @@
 {
   "pier": "191",
+  "version": "1",
   "loc": {
-    "longitude": -88.52584,
-    "latitude": 42.567445
+    "longitude": -88.525577,
+    "latitude": 42.56721
   },
+  "geohash": "dp941t1eux0",
+  "pluscode": "86JHHF8F+VQ",
+  "public": 0,
+  "bigSwimPier": 1,
   "property": {
     "association": "Cedar Point Park",
-    "established": "1922",
+    "established": 1922,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "185 Lincoln Pkwy",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,8 +42,69 @@
     },
     {
       "estateName": "",
+      "membershipType": "Regular",
       "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Audrey",
+          "m": "",
+          "l": "Klein",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
       "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Sean",
+          "m": "",
+          "l": "Marshall",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Sarah",
+          "m": "",
+          "l": "Marshall",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Regular",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Bob",
+          "m": "",
+          "l": "Mills",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Laura",
+          "m": "",
+          "l": "Mills",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -51,9 +117,7 @@
       ]
     }
   ],
-  "geohash": "dp941t1mq60",
-  "pluscode": "HF8F+XMF Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 1,
-  "version": 1
+  "updatedOn": [
+    "2023-12-12T02:11:39.326Z"
+  ]
 }

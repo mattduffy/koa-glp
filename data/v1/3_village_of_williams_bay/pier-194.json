@@ -1,29 +1,34 @@
 {
   "pier": "194",
+  "version": "1",
   "loc": {
-    "longitude": -88.525789,
-    "latitude": 42.566972
+    "longitude": -88.525942,
+    "latitude": 42.566879
   },
+  "geohash": "dp941t16h10",
+  "pluscode": "86JHHF8F+QJ",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Cedar Point Park",
-    "established": "1922",
+    "established": 1922,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "203 Lincoln Pkwy",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,8 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -52,8 +57,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -74,9 +79,7 @@
       ]
     }
   ],
-  "geohash": "dp941t16xd0",
-  "pluscode": "HF8F+QMP Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-12T02:14:51.936Z"
+  ]
 }

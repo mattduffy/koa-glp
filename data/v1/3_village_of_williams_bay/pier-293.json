@@ -1,29 +1,34 @@
 {
   "pier": "293",
+  "version": "1",
   "loc": {
     "longitude": -88.539196,
     "latitude": 42.572535
   },
+  "geohash": "dp941npdzp0",
+  "pluscode": "HFF6+287 Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Oakwood Estates",
-    "established": "1921",
+    "established": 1921,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "102 Healy Dr",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
-      "membershipType": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,8 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
-      "membershipType": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -52,8 +57,8 @@
     },
     {
       "estateName": "",
-      "member": true,
-      "membershipType": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -75,31 +80,29 @@
     },
     {
       "estateName": "",
+      "membershipType": "Regular",
       "member": true,
-      "membershipType": "",
       "members": [
         {
           "t": "",
-          "f": "Bob",
+          "f": "Jon",
           "m": "",
-          "l": "Jelinek",
+          "l": "Clare",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Susan",
+          "f": "Patty Meagher",
           "m": "",
-          "l": "Collins",
+          "l": "Clare",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp941npdzp0",
-  "pluscode": "HFF6+287 Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-12T04:30:47.531Z"
+  ]
 }
