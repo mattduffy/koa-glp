@@ -1,29 +1,34 @@
 {
   "pier": "363",
+  "version": "1",
   "loc": {
-    "longitude": -88.562151,
-    "latitude": 42.562659
+    "longitude": -88.562264,
+    "latitude": 42.562582
   },
+  "geohash": "dp940sqcj80",
+  "pluscode": "86JHHC7Q+23",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N1984 N Lakeshore Dr",
       "city": "Walworth",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "Angel's Flight",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp940sr12q0",
-  "pluscode": "HC7Q+349 Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-13T05:27:51.983Z"
+  ]
 }

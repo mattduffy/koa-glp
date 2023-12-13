@@ -1,29 +1,34 @@
 {
   "pier": "396",
+  "version": "1",
   "loc": {
-    "longitude": -88.570234,
-    "latitude": 42.555449
+    "longitude": -88.570367,
+    "latitude": 42.555122
   },
+  "geohash": "dp940dcj8c0",
+  "pluscode": "86JHHC4H+2V",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "363 N Lakeshore Dr",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "Windward Point",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -45,8 +50,8 @@
     },
     {
       "estateName": "Windward Point",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -67,9 +72,7 @@
       ]
     }
   ],
-  "geohash": "dp940dcp7y0",
-  "pluscode": "HC4H+3R5 Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-13T05:43:01.972Z"
+  ]
 }

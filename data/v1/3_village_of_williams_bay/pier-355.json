@@ -27,14 +27,22 @@
   "owners": [
     {
       "estateName": "",
-      "membershipType": "Residential Non-member",
-      "member": false,
+      "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
-          "f": "Darrin",
+          "f": "Jess",
           "m": "",
-          "l": "Petersen",
+          "l": "Cole",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Ted",
+          "m": "",
+          "l": "McCartan",
           "s": "",
           "hidden": 0
         }
@@ -42,6 +50,6 @@
     }
   ],
   "updatedOn": [
-    "2023-11-22T00:36:00.594Z"
+    "2023-12-13T05:22:40.988Z"
   ]
 }

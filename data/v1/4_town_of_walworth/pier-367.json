@@ -1,44 +1,47 @@
 {
   "pier": "367",
+  "version": "1",
   "loc": {
-    "longitude": -88.563801,
-    "latitude": 42.561853
+    "longitude": -88.563668,
+    "latitude": 42.561741
   },
+  "geohash": "dp940sjuhg0",
+  "pluscode": "86JHHC6P+MG",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Walworth",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
           "f": "",
           "m": "",
-          "s": "",
           "l": "",
+          "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp940sjucb0",
-  "pluscode": "HC6P+PFW Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-13T05:30:39.102Z"
+  ]
 }

@@ -1,29 +1,34 @@
 {
   "pier": "394A",
+  "version": "1",
   "loc": {
-    "longitude": -88.570229,
-    "latitude": 42.556007
+    "longitude": -88.570072,
+    "latitude": 42.555634
   },
+  "geohash": "dp940e10x90",
+  "pluscode": "86JHHC4H+7X",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "403 N Lakeshore Dr",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "Camp Lake Geneva",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp940e14sn0",
-  "pluscode": "HC4H+CW2 Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-13T05:42:08.908Z"
+  ]
 }

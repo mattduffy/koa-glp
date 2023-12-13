@@ -1,33 +1,38 @@
 {
   "pier": "348",
+  "version": "1",
   "loc": {
     "longitude": -88.552389,
     "latitude": 42.566741
   },
+  "geohash": "dp940vn15z0",
+  "pluscode": "HC8X+M2X Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "301 Constance Blvd",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Team E-IA LLC",
+          "f": "Women’s Leadership Institute",
           "m": "",
           "l": "",
           "s": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp940vn15z0",
-  "pluscode": "HC8X+M2X Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-13T05:17:54.513Z"
+  ]
 }
