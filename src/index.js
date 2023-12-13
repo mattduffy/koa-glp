@@ -224,6 +224,7 @@ async function viewGlobals(ctx, next) {
   ctx.state.origin = ctx.request.origin
   ctx.state.siteName = ctx.app.site
   ctx.state.appName = ctx.app.site.toProperCase()
+  ctx.state.pageDescription = 'The best way to find out about the piers on Geneva Lake.'
   ctx.state.stylesheets = []
   ctx.state.searchJwtAccess = appEnv.SEARCHJWTACCESS
   ctx.state.searchAccessToken = appEnv.SEARCHACCESSTOKEN

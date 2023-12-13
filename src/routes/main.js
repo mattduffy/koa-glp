@@ -616,6 +616,8 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
       if (leading0s > 0) {
         // pier.strippedPier = pier.pier.slice(leading0s)
         pier.strippedPier = pier.pier.slice(leading0s)
+      } else {
+        pier.strippedPier = pier.pierNumber
       }
       log(`stipping leading 0's from pier number: ${pier.stippedPier}`)
       log(pier)
@@ -662,6 +664,9 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
     }
 
     log(ctx.state.TOWNS)
+    const [lon, lat] = pier.loc.split(',')
+    const address = `${pier.property.address?.street}, ${pier.property.address?.city}, WI`
+    locals.pageDescription = `Geneva Lake, pier ${pierNumber}, longitude: ${lon}, latitude: ${lat}, ${address}.`
     locals.pier = pier
     locals.town = town
     locals.photo = false
