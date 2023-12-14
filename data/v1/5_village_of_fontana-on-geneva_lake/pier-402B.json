@@ -1,44 +1,47 @@
 {
   "pier": "402B",
+  "version": "1",
   "loc": {
     "longitude": -88.571169,
     "latitude": 42.553727
   },
+  "geohash": "dp940d8mqj0",
+  "pluscode": "HC3H+FGW Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Buena Vista",
-    "established": "1912",
+    "established": 1912,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "290 Fair Oaks Ave",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
           "f": "Deborah",
           "m": "",
-          "l": "",
+          "l": "Mecklenburg",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp940d8mqj0",
-  "pluscode": "HC3H+FGW Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-14T02:34:13.882Z"
+  ]
 }

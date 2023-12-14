@@ -47,29 +47,6 @@
       "members": [
         {
           "t": "",
-          "f": "Tom",
-          "m": "",
-          "l": "Elwood",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Kathy",
-          "m": "",
-          "l": "Elwood",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Residential Non-member",
-      "member": false,
-      "members": [
-        {
-          "t": "",
           "f": "Jane",
           "m": "",
           "l": "Hoffmann",
@@ -126,6 +103,6 @@
     }
   ],
   "updatedOn": [
-    "2023-11-25T04:30:42.162Z"
+    "2023-12-14T03:49:44.455Z"
   ]
 }

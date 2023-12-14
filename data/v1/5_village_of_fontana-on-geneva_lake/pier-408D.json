@@ -2,11 +2,11 @@
   "pier": "408D",
   "version": "1",
   "loc": {
-    "longitude": -88.572167,
-    "latitude": 42.551738
+    "longitude": -88.57239,
+    "latitude": 42.551804
   },
-  "geohash": "dp9406r9yg0",
-  "pluscode": "86JHHC2H+M4",
+  "geohash": "dp9406rd1x0",
+  "pluscode": "86JHHC2H+P2",
   "public": 0,
   "bigSwimPier": 0,
   "property": {
@@ -50,6 +50,6 @@
     }
   ],
   "updatedOn": [
-    "2023-11-25T04:33:42.842Z"
+    "2023-12-14T04:29:12.985Z"
   ]
 }

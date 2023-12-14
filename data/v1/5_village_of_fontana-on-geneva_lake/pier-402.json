@@ -1,29 +1,34 @@
 {
   "pier": "402",
+  "version": "1",
   "loc": {
     "longitude": -88.570851,
     "latitude": 42.553806
   },
+  "geohash": "dp940d8tvs0",
+  "pluscode": "HC3H+GMC Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Buena Vista",
-    "established": "1912",
+    "established": 1912,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -37,8 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -60,8 +65,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -75,8 +80,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -98,31 +103,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
-      "members": [
-        {
-          "t": "",
-          "f": "Rick",
-          "m": "",
-          "l": "Dousman",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Michele",
-          "m": "",
-          "l": "Dousman",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
       "member": true,
-      "membershipType": "Contributing",
       "members": [
         {
           "t": "",
@@ -144,8 +126,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -167,8 +149,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -182,8 +164,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -197,8 +179,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -209,11 +191,32 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Regular",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Randy",
+          "m": "",
+          "l": "Demke",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Linda",
+          "m": "",
+          "l": "Demke",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
-  "geohash": "dp940d8tvs0",
-  "pluscode": "HC3H+GMC Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-14T02:27:37.112Z"
+  ]
 }
