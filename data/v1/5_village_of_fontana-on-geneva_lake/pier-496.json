@@ -1,29 +1,34 @@
 {
   "pier": "496",
+  "version": "1",
   "loc": {
     "longitude": -88.553199,
     "latitude": 42.548251
   },
+  "geohash": "dp940ctt8b0",
+  "pluscode": "GCXW+8P3 Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Harvard Club",
-    "established": "1875",
+    "established": 1875,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -37,8 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -52,8 +57,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Sustaining",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -75,8 +80,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -98,8 +103,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -113,8 +118,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Donor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -136,8 +141,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -151,8 +156,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -174,8 +179,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -197,31 +202,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
-      "members": [
-        {
-          "t": "",
-          "f": "John",
-          "m": "",
-          "l": "O’Malley",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Jill",
-          "m": "",
-          "l": "O’Malley",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
       "member": true,
-      "membershipType": "Regular",
       "members": [
         {
           "t": "",
@@ -243,8 +225,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Sustaining",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -266,8 +248,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -289,8 +271,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -309,11 +291,55 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Dean",
+          "m": "",
+          "l": "Bekas",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Mary",
+          "m": "",
+          "l": "Bekas",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Juliann",
+          "m": "",
+          "l": "Larimer",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Thomas",
+          "m": "",
+          "l": "Larimer",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
-  "geohash": "dp940ctt8b0",
-  "pluscode": "GCXW+8P3 Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-15T04:10:43.362Z"
+  ]
 }

@@ -27,26 +27,20 @@
   "owners": [
     {
       "estateName": "",
-      "membershipType": "Residential Non-member",
-      "member": false,
-      "members": []
-    },
-    {
-      "estateName": "",
-      "membershipType": "Donor",
+      "membershipType": "Benefactor",
       "member": true,
       "members": [
         {
-          "t": "Drs.",
-          "f": "Robert",
+          "t": "Dr",
+          "f": "Cynthia",
           "m": "",
           "l": "Conlon",
           "s": "",
           "hidden": 0
         },
         {
-          "t": "",
-          "f": "Cynthia",
+          "t": "Dr",
+          "f": "Robert",
           "m": "",
           "l": "Conlon",
           "s": "",
@@ -99,12 +93,6 @@
           "hidden": 0
         }
       ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Residential Non-member",
-      "member": false,
-      "members": []
     },
     {
       "estateName": "",
@@ -184,12 +172,6 @@
     },
     {
       "estateName": "",
-      "membershipType": "Residential Non-member",
-      "member": false,
-      "members": []
-    },
-    {
-      "estateName": "",
       "membershipType": "Contributing",
       "member": true,
       "members": [
@@ -210,9 +192,32 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Regular",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Cathy",
+          "m": "",
+          "l": "Funderburg",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Rob",
+          "m": "",
+          "l": "Funderburg",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2023-12-01T04:41:06.945Z"
+    "2023-12-01T23:36:41.125Z"
   ]
 }

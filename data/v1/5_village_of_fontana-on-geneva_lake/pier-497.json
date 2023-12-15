@@ -2,11 +2,11 @@
   "pier": "497",
   "version": "1",
   "loc": {
-    "longitude": -88.552536,
-    "latitude": 42.548223
+    "longitude": -88.551811,
+    "latitude": 42.548458
   },
-  "geohash": "dp940cwj270",
-  "pluscode": "GCXW+7XP Fontana-On-Geneva Lake, Wisconsin",
+  "geohash": "dp940cww9p0",
+  "pluscode": "86JHGCXX+97",
   "public": 0,
   "bigSwimPier": 1,
   "property": {
@@ -29,7 +29,16 @@
       "estateName": "",
       "membershipType": "Residential Non-member",
       "member": false,
-      "members": []
+      "members": [
+        {
+          "t": "",
+          "f": "",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     },
     {
       "estateName": "",
@@ -54,6 +63,6 @@
     }
   ],
   "updatedOn": [
-    "2023-11-02T21:13:06.393Z"
+    "2023-12-15T04:12:25.747Z"
   ]
 }

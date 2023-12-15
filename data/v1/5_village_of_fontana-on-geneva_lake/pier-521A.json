@@ -1,29 +1,34 @@
 {
   "pier": "521A",
+  "version": "1",
   "loc": {
-    "longitude": -88.536404,
-    "latitude": 42.549317
+    "longitude": -88.536727,
+    "latitude": 42.549297
   },
+  "geohash": "dp9413ce8s0",
+  "pluscode": "86JHGFX7+P8",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Ten Acre Wood",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "1228 S Lakeshore Dr",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Donor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp9413cg8r0",
-  "pluscode": "GFX7+P86 Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-15T04:40:32.950Z"
+  ]
 }
