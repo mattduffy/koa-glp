@@ -1,44 +1,47 @@
 {
   "pier": "605",
+  "version": "1",
   "loc": {
     "longitude": -88.505175,
     "latitude": 42.559444
   },
+  "geohash": "dp94458qxz0",
+  "pluscode": "HF5V+QWG Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Lake Geneva Highlands",
-    "established": "1922",
+    "established": 1922,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W4160 Lakeview Rd",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Juricic",
+          "f": "Valerie",
           "m": "",
-          "l": "",
+          "l": "Juricic",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp94458qxz0",
-  "pluscode": "HF5V+QWG Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-16T04:12:55.220Z"
+  ]
 }

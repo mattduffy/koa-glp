@@ -1,44 +1,47 @@
 {
   "pier": "574",
+  "version": "1",
   "loc": {
     "longitude": -88.513285,
     "latitude": 42.556181
   },
+  "geohash": "dp941g4edy0",
+  "pluscode": "HF4P+FMG Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W4257 Southland Rd",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Culbertson",
-          "m": "",
-          "l": "",
+          "f": "Edward",
+          "m": "A",
+          "l": "Culbertson",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp941g4edy0",
-  "pluscode": "HF4P+FMG Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-16T03:54:29.919Z"
+  ]
 }

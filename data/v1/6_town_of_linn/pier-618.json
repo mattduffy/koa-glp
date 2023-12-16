@@ -1,17 +1,17 @@
 {
-  "pier": "553",
+  "pier": "618",
   "version": "1",
   "loc": {
-    "longitude": -88.521446,
-    "latitude": 42.550717
+    "longitude": -88.501464,
+    "latitude": 42.559074
   },
-  "geohash": "dp941dheuu0",
-  "pluscode": "86JHHF2H+7C",
+  "geohash": "dp9445ehw60",
+  "pluscode": "86JHHF5X+JC",
   "public": 0,
   "bigSwimPier": 0,
   "property": {
-    "association": "",
-    "established": null,
+    "association": "Edgewater Terrace",
+    "established": 1925,
     "associationUrl": "",
     "tel": "",
     "business": "",
@@ -32,9 +32,17 @@
       "members": [
         {
           "t": "",
-          "f": "Todd",
+          "f": "Carlo",
           "m": "",
-          "l": "Stern",
+          "l": "Krause",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Ingrid",
+          "m": "",
+          "l": "Krause",
           "s": "",
           "hidden": 0
         }
@@ -42,6 +50,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-16T03:10:11.429Z"
+    "2023-12-16T04:30:20.576Z"
   ]
 }

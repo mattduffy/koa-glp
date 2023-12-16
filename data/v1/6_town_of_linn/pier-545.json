@@ -1,29 +1,34 @@
 {
   "pier": "545",
+  "version": "1",
   "loc": {
-    "longitude": -88.527696,
-    "latitude": 42.550315
+    "longitude": -88.525809,
+    "latitude": 42.55078
   },
+  "geohash": "dp941d1kr00",
+  "pluscode": "86JHHF2F+8M",
+  "public": 0,
+  "bigSwimPier": 1,
   "property": {
     "association": "South Shore Club",
-    "established": "2001",
+    "established": 2001,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,8 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -60,8 +65,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -83,8 +88,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -106,8 +111,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -129,8 +134,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -143,9 +148,7 @@
       ]
     }
   ],
-  "geohash": "dp941d01e10",
-  "pluscode": "HF2C+4WF Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 1,
-  "version": 1
+  "updatedOn": [
+    "2023-12-16T02:59:24.623Z"
+  ]
 }

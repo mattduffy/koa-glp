@@ -1,29 +1,34 @@
 {
   "pier": "616A",
+  "version": "1",
   "loc": {
-    "longitude": -88.501464,
-    "latitude": 42.559184
+    "longitude": -88.501656,
+    "latitude": 42.559094
   },
+  "geohash": "dp9445eh9y0",
+  "pluscode": "86JHHF5X+J8",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Edgewater Terrace",
-    "established": "1925",
+    "established": 1925,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W4086 Walnut Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp9445ejnq0",
-  "pluscode": "HF5X+MCF Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-16T04:29:44.098Z"
+  ]
 }

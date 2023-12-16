@@ -1,33 +1,38 @@
 {
   "pier": "577",
+  "version": "1",
   "loc": {
     "longitude": -88.51297,
     "latitude": 42.557027
   },
+  "geohash": "dp941g6bdk0",
+  "pluscode": "HF4P+RR6 Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W4280 Southland Rd",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "",
+          "f": "McCarthy Black Point Trust",
           "m": "",
           "l": "",
           "s": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp941g6bdk0",
-  "pluscode": "HF4P+RR6 Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-16T03:58:22.403Z"
+  ]
 }
