@@ -6,7 +6,7 @@
 
 import path from 'node:path'
 import {
-  readdir,
+  // readdir,
   readFile,
 } from 'node:fs/promises'
 import * as dotenv from 'dotenv'
