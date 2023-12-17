@@ -1,44 +1,47 @@
 {
   "pier": "658A",
+  "version": "1",
   "loc": {
     "longitude": -88.492811,
     "latitude": 42.560324
   },
+  "geohash": "dp9447ceb50",
+  "pluscode": "HG64+4VG Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N1836 Fair Oaks Rd",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
-          "t": "Dr.",
-          "f": "Rick",
+          "t": "",
+          "f": "Chandra Khurana Trust",
           "m": "",
-          "l": "Karana",
+          "l": "",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp9447ceb50",
-  "pluscode": "HG64+4VG Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-17T05:10:54.478Z"
+  ]
 }
