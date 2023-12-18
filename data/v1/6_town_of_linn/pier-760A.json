@@ -1,44 +1,55 @@
 {
   "pier": "760A",
+  "version": "1",
   "loc": {
     "longitude": -88.459047,
     "latitude": 42.557384
   },
+  "geohash": "dp945564dz0",
+  "pluscode": "HG4R+X94 Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
-      "street": "",
+      "street": "N1716 Durand Lane",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "",
+          "f": "Androv",
           "m": "",
+          "l": "Carlson",
           "s": "",
-          "l": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Sheree",
+          "m": "",
+          "l": "Carlson",
+          "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp945564dz0",
-  "pluscode": "HG4R+X94 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-18T04:58:39.132Z"
+  ]
 }

@@ -1,29 +1,34 @@
 {
   "pier": "691",
+  "version": "1",
   "loc": {
     "longitude": -88.478603,
     "latitude": 42.565975
   },
+  "geohash": "dp944sgug00",
+  "pluscode": "HG8C+9HJ Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Maple Lane",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W3612 Maple Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -32,13 +37,19 @@
           "l": "",
           "s": "",
           "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Nancy E Myers Trust",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp944sgug00",
-  "pluscode": "HG8C+9HJ Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-18T03:53:25.406Z"
+  ]
 }

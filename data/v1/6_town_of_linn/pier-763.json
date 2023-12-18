@@ -1,29 +1,34 @@
 {
   "pier": "763",
+  "version": "1",
   "loc": {
     "longitude": -88.457628,
     "latitude": 42.557632
   },
+  "geohash": "dp94557h5v0",
+  "pluscode": "HG5R+3W5 Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W3166 S Lakeshore Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "Timeless",
-      "member": true,
-      "membershipType": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -42,17 +47,9 @@
           "hidden": 0
         }
       ]
-    },
-    {
-      "estateName": "",
-      "member": false,
-      "membershipType": "Residential Non-member",
-      "members": []
     }
   ],
-  "geohash": "dp94557h5v0",
-  "pluscode": "HG5R+3W5 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-18T05:23:52.038Z"
+  ]
 }
