@@ -1,29 +1,34 @@
 {
   "pier": "792",
+  "version": "1",
   "loc": {
     "longitude": -88.442232,
     "latitude": 42.564316
   },
+  "geohash": "dp945kw74e0",
+  "pluscode": "HH75+P4C Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Sustaining",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -40,13 +45,19 @@
           "l": "Magnuson",
           "s": "",
           "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Mark",
+          "m": "",
+          "l": "Magnuson",
+          "s": "",
+          "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp945kw74e0",
-  "pluscode": "HH75+P4C Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-19T02:40:05.006Z"
+  ]
 }

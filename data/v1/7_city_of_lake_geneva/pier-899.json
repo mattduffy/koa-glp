@@ -1,29 +1,34 @@
 {
   "pier": "899",
+  "version": "1",
   "loc": {
-    "longitude": -88.434121,
-    "latitude": 42.588387
+    "longitude": -88.433913,
+    "latitude": 42.588467
   },
+  "geohash": "dp9478uru30",
+  "pluscode": "86JHHHQ8+9C",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "https://lakegenevaboats.com/",
     "tel": "+1(262) 248-4477",
+    "business": "Marina Bay Boat Rentals",
+    "isMarina": 1,
+    "hasFood": 0,
     "address": {
       "street": "300 Wrigley Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "Marina Bay Boat Rentals",
-    "isMarina": 1,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp9478uprd0",
-  "pluscode": "HHQ8+989 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-19T04:03:34.792Z"
+  ]
 }

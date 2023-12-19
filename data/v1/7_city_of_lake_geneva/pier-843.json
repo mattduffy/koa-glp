@@ -1,44 +1,55 @@
 {
   "pier": "843",
+  "version": "1",
   "loc": {
     "longitude": -88.438902,
     "latitude": 42.572847
   },
+  "geohash": "dp945w0ub10",
+  "pluscode": "HHF6+4CQ Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Ceylon Court Estates",
-    "established": "1948",
+    "established": 1948,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "",
+          "f": "Richard",
           "m": "",
+          "l": "Hyland",
           "s": "",
-          "l": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Maryellen",
+          "m": "",
+          "l": "Hyland",
+          "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp945w0ub10",
-  "pluscode": "HHF6+4CQ Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-19T03:04:52.677Z"
+  ]
 }

@@ -1,29 +1,34 @@
 {
   "pier": "881",
+  "version": "1",
   "loc": {
     "longitude": -88.434716,
     "latitude": 42.583317
   },
+  "geohash": "dp94785ccc0",
+  "pluscode": "HHM8+84F Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "800 S Lake Shore Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -32,13 +37,19 @@
           "l": "Payne",
           "s": "Jr.",
           "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Gina",
+          "m": "",
+          "l": "Fisher",
+          "s": "",
+          "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp94785ccc0",
-  "pluscode": "HHM8+84F Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-19T03:45:45.123Z"
+  ]
 }

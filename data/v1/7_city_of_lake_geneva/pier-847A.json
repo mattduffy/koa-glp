@@ -1,29 +1,34 @@
 {
   "pier": "847A",
+  "version": "1",
   "loc": {
     "longitude": -88.440213,
     "latitude": 42.573552
   },
+  "geohash": "dp945qrbct0",
+  "pluscode": "HHF5+CWF Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Ceylon Court Estates",
-    "established": "1948",
+    "established": 1948,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "946 Maytag Rd",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,8 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -49,11 +54,32 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Regular",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Jeffrey ",
+          "m": "",
+          "l": "Wayne",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Diane",
+          "m": "",
+          "l": "Wayne",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
-  "geohash": "dp945qrbct0",
-  "pluscode": "HHF5+CWF Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-19T03:08:01.235Z"
+  ]
 }

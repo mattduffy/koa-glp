@@ -1,52 +1,55 @@
 {
   "pier": "785",
+  "version": "1",
   "loc": {
     "longitude": -88.443944,
     "latitude": 42.56359
   },
+  "geohash": "dp945kmnfs0",
+  "pluscode": "HH74+CCM Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W2912 Walcowis Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Doug",
+          "f": "Reid",
           "m": "",
-          "l": "Powell",
+          "l": "Snellenbarger",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Kristie",
+          "f": "Rebecca",
           "m": "",
-          "l": "Powell",
+          "l": "Snellenbarger",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp945kmnfs0",
-  "pluscode": "HH74+CCM Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-19T02:30:49.776Z"
+  ]
 }

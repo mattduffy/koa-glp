@@ -1,29 +1,34 @@
 {
   "pier": "863",
+  "version": "1",
   "loc": {
-    "longitude": -88.438168,
-    "latitude": 42.579775
+    "longitude": -88.438052,
+    "latitude": 42.579495
   },
+  "geohash": "dp945x37s10",
+  "pluscode": "86JHHHH6+QQ",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "1002 S Knoll Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp945x3m1m0",
-  "pluscode": "HHH6+WP4 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-19T03:21:36.176Z"
+  ]
 }

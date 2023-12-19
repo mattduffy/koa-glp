@@ -1,29 +1,34 @@
 {
   "pier": "779",
+  "version": "1",
   "loc": {
     "longitude": -88.447118,
     "latitude": 42.56261
   },
+  "geohash": "dp945k6c0v0",
+  "pluscode": "HH73+25R Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W2990 S Lakeshore Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -44,9 +49,9 @@
       ]
     },
     {
-      "estateName": "Burdock Manor",
-      "member": false,
+      "estateName": "",
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -59,9 +64,7 @@
       ]
     }
   ],
-  "geohash": "dp945k6c0v0",
-  "pluscode": "HH73+25R Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-19T02:25:46.265Z"
+  ]
 }

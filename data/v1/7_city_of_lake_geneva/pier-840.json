@@ -1,29 +1,34 @@
 {
   "pier": "840",
+  "version": "1",
   "loc": {
-    "longitude": -88.438073,
-    "latitude": 42.572519
+    "longitude": -88.438168,
+    "latitude": 42.572515
   },
+  "geohash": "dp945w16c70",
+  "pluscode": "86JHHHF6+2P",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Ceylon Court Estates",
-    "established": "1948",
+    "established": 1948,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "870 Maytag Rd",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp945w16gs0",
-  "pluscode": "HHF6+2Q3 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-19T03:02:57.223Z"
+  ]
 }

@@ -1,29 +1,34 @@
 {
   "pier": "838",
+  "version": "1",
   "loc": {
-    "longitude": 0,
-    "latitude": 0
+    "longitude": -88.437854,
+    "latitude": 42.5723
   },
+  "geohash": "dp945w198s0",
+  "pluscode": "86JHHHC6+WV",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Ceylon Court Estates",
-    "established": "1948",
+    "established": 1948,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "1991 S Lake Shore Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-19T02:58:35.661Z"
+  ]
 }

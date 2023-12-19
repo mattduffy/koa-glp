@@ -1,29 +1,34 @@
 {
   "pier": "889",
+  "version": "1",
   "loc": {
-    "longitude": -88.433282,
-    "latitude": 42.587092
+    "longitude": -88.433513,
+    "latitude": 42.586387
   },
+  "geohash": "dp9478setv0",
+  "pluscode": "86JHHHP8+HH",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "East Bank Condominium",
-    "established": "1987",
+    "established": 1987,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "Seaver Ln A",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp9478szg10",
-  "pluscode": "HHP8+HH5 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-19T03:57:37.720Z"
+  ]
 }

@@ -1,52 +1,34 @@
 {
   "pier": "865",
+  "version": "1",
   "loc": {
     "longitude": -88.437696,
     "latitude": 42.580482
   },
+  "geohash": "dp945x99k30",
+  "pluscode": "HHJ6+5WV Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "978 N Knoll Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
-      "estateName": "Bayer Trust",
-      "member": false,
-      "membershipType": "Residential Non-member",
-      "members": [
-        {
-          "t": "",
-          "f": "Ernie",
-          "m": "",
-          "l": "Bayer",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Liz",
-          "m": "",
-          "l": "Bayer",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -57,11 +39,32 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "Bottros",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Laura",
+          "m": "",
+          "l": "Bottros",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
-  "geohash": "dp945x99k30",
-  "pluscode": "HHJ6+5WV Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-19T03:23:17.444Z"
+  ]
 }

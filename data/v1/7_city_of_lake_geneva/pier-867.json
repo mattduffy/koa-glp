@@ -1,29 +1,34 @@
 {
   "pier": "867",
+  "version": "1",
   "loc": {
-    "longitude": -88.437483,
-    "latitude": 42.580667
+    "longitude": -88.437604,
+    "latitude": 42.580697
   },
+  "geohash": "dp945x9dw30",
+  "pluscode": "86JHHHJ6+7X",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Syverstad",
-    "established": "1955",
+    "established": 1955,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "962 Marianne Terrace",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp945x9f370",
-  "pluscode": "HHJ7+726 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-19T03:27:53.261Z"
+  ]
 }

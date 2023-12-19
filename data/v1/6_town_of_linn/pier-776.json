@@ -1,34 +1,47 @@
 {
   "pier": "776",
+  "version": "1",
   "loc": {
-    "longitude": -88.44899,
-    "latitude": 42.561766
+    "longitude": -88.449079,
+    "latitude": 42.561818
   },
+  "geohash": "dp945k1ke10",
+  "pluscode": "86JHHH62+P9",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W3008 S Lakeshore Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
           "f": "John",
-          "m": "A",
+          "m": "",
+          "l": "Miller",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Sandy",
+          "m": "",
           "l": "Miller",
           "s": "",
           "hidden": 0
@@ -36,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp945k1km00",
-  "pluscode": "HH62+PC2 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2023-12-19T02:16:54.843Z"
+  ]
 }
