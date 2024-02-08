@@ -49,12 +49,33 @@ const showDebug = process.env.NODE_ENV !== 'production'
 dotenv.config({ path: path.resolve(appRoot, 'config/app.env'), processEnv: appEnv, debug: showDebug })
 // dotenv.config({ path: path.resolve(appRoot, 'config/test.env'), debug: showDebug })
 
-console.info('****************************************************')
-console.info('*                                                  *')
-console.info(`* Starting up: ${appEnv.SITE_NAME}                   *`)
-console.info(`*       local: http://${appEnv.HOST}:${appEnv.PORT}           *`)
-console.info(`*      public: https://${appEnv.DOMAIN_NAME}         *`)
-console.info('****************************************************')
+const horizontalborder = '*'
+let _startingup = `Starting up: ${appEnv.SITE_NAME}`
+let _local = `local: http://${appEnv.HOST}:${appEnv.PORT}`
+let _public = `public: https://${appEnv.DOMAIN_NAME}`
+const longestlabel = [_startingup, _local, _public].reduce((a, c) => {
+  if (a > (c.indexOf(':') + 1)) {
+    return a
+  }
+  return (c.indexOf(':') + 1)
+}, '')
+
+_startingup = _startingup.padStart((longestlabel - _startingup.indexOf(':')) + _startingup.length, ' ')
+_local = _local.padStart((longestlabel - _local.indexOf(':')) + _local.length, ' ')
+_public = _public.padStart((longestlabel - _public.indexOf(':')) + _public.length, ' ')
+const longestline = [_startingup, _local, _public].reduce((a, c) => {
+  if (a > c.length) {
+    return a
+  }
+  return c.length
+}, '')
+console.info(`*${horizontalborder.padEnd(longestline + 5, '*')}*`)
+console.info(`*  ${' '.padEnd(longestline + 2, ' ')} *`)
+console.info(`* ${_startingup}${' '.padEnd((longestline - _startingup.length) + 3, ' ')} *`)
+console.info(`* ${_local}${' '.padEnd((longestline - _local.length) + 3, ' ')} *`)
+console.info(`* ${_public}${' '.padEnd((longestline - _public.length) + 3, ' ')} *`)
+console.info(`*  ${' '.padEnd(longestline + 2, ' ')} *`)
+console.info(`*${horizontalborder.padEnd(longestline + 5, '*')}*`)
 
 const key1 = appEnv.KEY1
 const key2 = appEnv.KEY2
