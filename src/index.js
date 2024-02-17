@@ -160,8 +160,8 @@ async function openGraph(ctx, next) {
   ogArray.push('<meta property="og:type" content="website">')
   ogArray.push('<meta property="og:site_name" content="Geneva Lake Piers">')
   ogArray.push('<meta property="og:title" content="The Piers of Geneva Lake">')
-  ogArray.push(`<meta property="og:url" content="${ctx.request.href}${ctx.request.search}">`)
-  ogArray.push(`<meta property="og:image" content="${ctx.request.origin}/i/ogEmbed-450x295.jpg">`)
+  ogArray.push(`<meta property="og:url" content="${ctx.request.protocol}${ctx.app.domain}">`)
+  ogArray.push(`<meta property="og:image" content="${ctx.request.protocol}${ctx.app.domain}/i/ogEmbed-450x295.jpg">`)
   ogArray.push('<meta property="og:image:type" content="image/jpeg">')
   ogArray.push('<meta property="og:image:width" content="450">')
   ogArray.push('<meta property="og:image:height" content="295">')
@@ -183,20 +183,20 @@ async function csp(ctx, next) {
     + 'frame-ancestors \'none\'; '
     + 'object-src \'none\'; '
     + 'form-action \'self\'; '
-    + `style-src 'self' ${ctx.request.origin} 'unsafe-inline' 'nonce-${nonce}'; `
-    + `style-src-attr 'self' ${ctx.request.origin} 'unsafe-inline'; `
-    + `style-src-elem 'self' ${ctx.request.origin} 'unsafe-inline'; `
-    + `script-src 'self' ${ctx.request.origin} 'nonce-${nonce}'; `
-    + `script-src-attr 'self' ${ctx.request.origin} 'nonce-${nonce}'; `
-    + `script-src-elem 'self' ${ctx.request.origin} 'nonce-${nonce}'; `
-    + `img-src 'self' data: blob: ${ctx.request.origin} *.apple-mapkit.com; `
-    + `font-src 'self' ${ctx.request.origin}; `
-    + `media-src 'self' data: ${ctx.request.origin}; `
+    + `style-src 'self' ${ctx.request.protocol}://${ctx.app.domain} 'unsafe-inline' 'nonce-${nonce}'; `
+    + `style-src-attr 'self' ${ctx.request.protocol}://${ctx.app.domain} 'unsafe-inline'; `
+    + `style-src-elem 'self' ${ctx.request.protocol}://${ctx.app.domain} 'unsafe-inline'; `
+    + `script-src 'self' ${ctx.request.protocol}://${ctx.app.domain} 'nonce-${nonce}'; `
+    + `script-src-attr 'self' ${ctx.request.protocol}://${ctx.app.domain} 'nonce-${nonce}'; `
+    + `script-src-elem 'self' ${ctx.request.protocol}://${ctx.app.domain} 'nonce-${nonce}'; `
+    + `img-src 'self' data: blob: ${ctx.request.protocol}://${ctx.app.domain} *.apple-mapkit.com; `
+    + `font-src 'self' ${ctx.request.protocol}://${ctx.app.domain}; `
+    + `media-src 'self' data: ${ctx.request.protocol}://${ctx.app.domain}; `
     + 'frame-src \'self\'; '
-    + `child-src 'self' blob: ${ctx.request.origin}; `
-    + `worker-src 'self' blob: ${ctx.request.origin}; `
-    + `manifest-src 'self' blob: ${ctx.request.origin}; `
-    + `connect-src 'self' blob: ${ctx.request.origin} https://plus.codes *.apple-mapkit.com *.geo.apple.com https://mw-ci1-mapkitjs.geo.apple.com; `
+    + `child-src 'self' blob: ${ctx.request.protocol}://${ctx.app.domain}; `
+    + `worker-src 'self' blob: ${ctx.request.protocol}://${ctx.app.domain}; `
+    + `manifest-src 'self' blob: ${ctx.request.protocol}://${ctx.app.domain}; `
+    + `connect-src 'self' blob: ${ctx.request.protocol}://${ctx.app.domain} https://plus.codes *.apple-mapkit.com *.geo.apple.com https://mw-ci1-mapkitjs.geo.apple.com; `
   ctx.set('Content-Security-Policy', policy)
   logg(`Content-Security-Policy: ${policy}`)
   try {
@@ -212,7 +212,7 @@ async function cors(ctx, next) {
   const err = error.extend('CORS')
   logg('Cors middleware checking headers.')
   ctx.set('Vary', 'Origin')
-  ctx.set('Access-Control-Allow-Origin', ctx.request.origin)
+  ctx.set('Access-Control-Allow-Origin', `${ctx.request.protocol}://${ctx.app.domain}`)
   ctx.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   ctx.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS')
   try {
@@ -242,7 +242,7 @@ async function isMongo(ctx, next) {
 
 async function viewGlobals(ctx, next) {
   ctx.state.nonce = crypto.randomBytes(16).toString('base64')
-  ctx.state.origin = ctx.request.origin
+  ctx.state.origin = `${ctx.request.protocol}://${ctx.app.domain}`
   ctx.state.siteName = ctx.app.site
   ctx.state.appName = ctx.app.site.toProperCase()
   ctx.state.pageDescription = 'The best way to find out about the piers on Geneva Lake.'
@@ -253,7 +253,7 @@ async function viewGlobals(ctx, next) {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Geneva Lake Piers',
-    url: ctx.request.origin,
+    url: `${ctx.request.protocol}://${ctx.app.domain}`,
   }, null, 2)
   await next()
 }
