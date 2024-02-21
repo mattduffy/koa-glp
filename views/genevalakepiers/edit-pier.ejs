@@ -512,10 +512,17 @@
           e.preventDefault()
           e.stopPropagation()
           const files = e.dataTransfer.files
+          const fileInput = form['photo_0Id']
+          fileInput.files = files
           console.log(files)
           prepareNewImage(e) 
         }
-        
+        // const fileElement = document.forms[0]['photo_0Id'] 
+        // fileElement.addEventListener('change', (e) => {
+        //   e.preventDefault()
+        //   e.stopPropagation()
+        //   prepareNewImage(e)
+        // })
         function preparePierData(e) {
           console.log('step 1: prepare form data')
           const pier = {}
