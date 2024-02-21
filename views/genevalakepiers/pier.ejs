@@ -156,19 +156,23 @@
         }
         const request = new Request(`${origin}/mapkit/getToken`, tokenOpts)
         const response = await fetch(request)
-        const { tokenID } = await response.json()
-        if (!window.mapkit || window.mapkit.loadedLibraries.length === 0) {
-          // mapkit.core.js or the libraries are not loaded yet.
-          // Set up the callback and wait for it to be called.
-          await new Promise(resolve => { window.initMapKit = resolve })
-          // Clean up
-          delete window.initMapKit
+        if (response.status !== 200) {
+          console.log(response)
+        } else {
+          const { tokenID } = await response.json()
+          if (!window.mapkit || window.mapkit.loadedLibraries.length === 0) {
+            // mapkit.core.js or the libraries are not loaded yet.
+            // Set up the callback and wait for it to be called.
+            await new Promise(resolve => { window.initMapKit = resolve })
+            // Clean up
+            delete window.initMapKit
+          }
+          mapkit.init({
+            authorizationCallback: function(done) {
+              done(tokenID)
+            },
+          })
         }
-        mapkit.init({
-          authorizationCallback: function(done) {
-            done(tokenID)
-          },
-        })
       }
 
       async function main() {

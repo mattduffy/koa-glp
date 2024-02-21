@@ -529,7 +529,10 @@ router.get('mapkitGetToken', '/mapkit/getToken', async (ctx) => {
   if (!(csrfTokenCookie === csrfTokenSession)) {
     error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
     ctx.type = 'application/json; charset=utf-8'
-    ctx.status = 401
+    // ctx.status = 401
+    ctx.status = 301
+    ctx.response.message = 'Session token is missing, redirect back to home page.'
+    ctx.response.redirect('/')
     ctx.body = { error: 'csrf token mismatch' }
   } else {
     try {
