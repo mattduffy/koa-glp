@@ -410,7 +410,7 @@ section.map {
 div#map {
   width: 100%;
   height: 600px;
-  background-image: url('../i/gridtile.png');
+  background-image: url('../i/gridtile-dark.png');
 }
 
 footer {
