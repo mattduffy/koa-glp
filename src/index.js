@@ -14,6 +14,7 @@ import render from '@koa/ejs'
 import * as dotenv from 'dotenv'
 import { migrations } from '@mattduffy/koa-migrations'
 import { _log, _error } from './utils/logging.js'
+import { geoIPCity, geoIPCountry } from './utils/geoip.js'
 import * as mongoClient from './daos/impl/mongodb/mongo-client.js'
 import { session, config } from './session-handler.js'
 import {
@@ -274,6 +275,22 @@ async function logRequest(ctx, next) {
       const mainLog = db.collection('mainLog')
       const logEntry = {}
       logEntry.remoteIp = ctx.request.ips
+      if (ctx.request.ip) {
+        try {
+          const city = geoIPCity.city(ctx.request.ip)
+          const geo = {}
+          geo.country = city?.country?.names?.en
+          logg('Logging GeoIP details')
+          geo.city = city?.city?.names?.en
+          geo.subdivision = city?.subdivision?.[0].names?.en
+          geo.zip = city?.postal?.code
+          geo.coords = [city?.location?.latitude, city?.location?.longitude]
+          logEntry.geo = geo
+          logg('Request ip geo:     %0', geo)
+        } catch (e) {
+          logg(e.message)
+        }
+      }
       logEntry.date = new Date()
       logEntry.method = ctx.method
       logEntry.url = ctx.request.href

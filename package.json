@@ -30,7 +30,8 @@
     "addNewFields": "DEBUG_DEPTH=2 DEBUG=* node src/utils/addNewFields.js",
     "normalizeAssocs": "DEBUG_DEPTH=2 DEBUG=* node src/utils/normalizeAssocs.js",
     "dev": "DEBUG_DEPTH=2 DEBUG=* node src/index.js",
-    "cluster": "DEBUG_DEPTH=2 DEBUG=* node src/cluster.js"
+    "cluster": "DEBUG_DEPTH=2 DEBUG=* node src/cluster.js",
+    "cluster-glp": "DEBUG_DEPTH=2 DEBUG=* node src/cluster.js"
   },
   "devDependencies": {
     "eslint": "8.38.0",
@@ -45,6 +46,7 @@
     "@mattduffy/koa-migrations": "/home/matt/node_package_development/koa-migrations",
     "@mattduffy/users": "/home/matt/node_package_development/users",
     "@mattduffy/webfinger": "/home/matt/node_package_development/webfinger",
+    "@maxmind/geoip2-node": "5.0.0",
     "commander": "11.0.0",
     "debug": "4.3.4",
     "dotenv": "16.3.1",
