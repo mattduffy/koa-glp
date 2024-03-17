@@ -18,6 +18,25 @@ const showDebug = process.env.NODE_ENV !== 'production'
 dotenv.config({ path: path.resolve(appRoot, 'config/geoip.env'), processEnv: geoEnv, debug: showDebug })
 // console.log('GeoIP database locations: %o', geoEnv)
 
-export const geoIPCity = await Reader.open(geoEnv.GEOIP_CITY_MMDB)
-export const geoIPCountry = await Reader.open(geoEnv.GEOIP_COUNTRY_MMDB)
-export const geoIPASN = await Reader.open(geoEnv.GEOIP_ASN_MMDB)
+let city
+try {
+  city = await Reader.open(geoEnv.GEOIP_CITY_MMDB)
+} catch (e) {
+  city = false
+}
+let country
+try {
+  country = await Reader.open(geoEnv.GEOIP_COUNTRY_MMDB)
+} catch (e) {
+  country = false
+}
+let asn
+try {
+  asn = await Reader.open(geoEnv.GEOIP_ASN_MMDB)
+} catch (e) {
+  asn = false
+}
+
+export const geoIPCity = city
+export const geoIPCountry = country
+export const geoIPASN = asn

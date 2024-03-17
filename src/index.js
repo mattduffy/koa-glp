@@ -14,7 +14,7 @@ import render from '@koa/ejs'
 import * as dotenv from 'dotenv'
 import { migrations } from '@mattduffy/koa-migrations'
 import { _log, _error } from './utils/logging.js'
-import { geoIPCity, geoIPCountry } from './utils/geoip.js'
+import { geoIPCity } from './utils/geoip.js'
 import * as mongoClient from './daos/impl/mongodb/mongo-client.js'
 import { session, config } from './session-handler.js'
 import {
@@ -275,7 +275,7 @@ async function logRequest(ctx, next) {
       const mainLog = db.collection('mainLog')
       const logEntry = {}
       logEntry.remoteIp = ctx.request.ips
-      if (ctx.request.ip) {
+      if (geoIPCity && ctx.request.ip) {
         try {
           const city = geoIPCity.city(ctx.request.ip)
           const geo = {}
