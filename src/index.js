@@ -279,14 +279,14 @@ async function logRequest(ctx, next) {
         try {
           const city = geoIPCity.city(ctx.request.ip)
           const geo = {}
+          geo.ip = ctx.request.ip
           geo.country = city?.country?.names?.en
-          logg('Logging GeoIP details')
           geo.city = city?.city?.names?.en
-          geo.subdivision = city?.subdivision?.[0].names?.en
+          geo.subdivision = city?.subdivisions?.[0]?.names?.en
           geo.zip = city?.postal?.code
           geo.coords = [city?.location?.latitude, city?.location?.longitude]
           logEntry.geo = geo
-          logg('Request ip geo:     %0', geo)
+          logg('Request ip geo:     %o', geo)
         } catch (e) {
           logg(e.message)
         }
