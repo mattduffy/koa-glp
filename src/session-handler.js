@@ -56,17 +56,17 @@ const redisConnOpts = {
 const redis = redisStore(redisConnOpts)
 
 const config = {
-  key: 'session',
-  maxAge: (86400000 * 3),
+  store: redis,
+  key: redisEnv.SESSION_KEY,
+  maxAge: redisEnv.SESSION_MAX_AGE,
+  httpOnly: redisEnv.SESSION_HTTPONLY,
+  signed: redisEnv.SESSION_SIGNED,
+  rolling: redisEnv.SESSION_ROLLING,
+  renew: redisEnv.SESSION_RENEW,
+  secure: redisEnv.SESSION_SECURE,
   autoCommit: true,
   overwrite: true,
-  httpOnly: true,
-  signed: true,
-  rolling: false,
-  renew: false,
-  secure: false,
-  sameSite: true,
-  store: redis,
+  sameSite: 'strict',
 }
 
 export { session, config, redis }
