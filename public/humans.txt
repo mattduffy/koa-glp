@@ -1,0 +1,14 @@
+/* TEAM */
+  Developer: Matthew Duffy
+  Contacts: none (still have decent vision)
+  From: Oakland, CA
+
+  Web designer: Homeless Joe (an actual cat who purrrrfers to live outside)
+  From: just hangs around the neighborhood
+
+/* THANKS */
+  All the little people
+
+/* SITE */
+  IDE: VIM version 8.1.1847
+
