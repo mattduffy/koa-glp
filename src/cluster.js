@@ -13,7 +13,7 @@ import process from 'node:process'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 console.info(`${__dirname}/index.js`)
 
-const numCores = availableParallelism()
+const numCores = process.env.CORES ?? availableParallelism()
 cluster.setupPrimary({
   exec: `${__dirname}/index.js`,
   args: [],
