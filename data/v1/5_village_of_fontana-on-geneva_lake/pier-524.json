@@ -1,29 +1,34 @@
 {
   "pier": "524",
+  "version": "1",
   "loc": {
     "longitude": -88.535571,
     "latitude": 42.549672
   },
+  "geohash": "dp9413fmg90",
+  "pluscode": "GFX7+VQ7 Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Lake Geneva Yacht Club",
-    "established": "1874",
+    "established": 1874,
     "associationUrl": "http://www.lgyc.com/",
     "tel": "+1(262) 275-2727",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "1250 S Lake Shore Dr",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -34,49 +39,9 @@
           "hidden": 0
         }
       ]
-    },
-    {
-      "estateName": "",
-      "member": true,
-      "membershipType": "Regular",
-      "members": [
-        {
-          "t": "",
-          "f": "Hans",
-          "m": "",
-          "l": "Melges",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "member": true,
-      "membershipType": "Sustaining",
-      "members": [
-        {
-          "t": "",
-          "f": "James",
-          "m": "",
-          "l": "Smith",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Kathleen",
-          "m": "",
-          "l": "Smith",
-          "s": "",
-          "hidden": 0
-        }
-      ]
     }
   ],
-  "geohash": "dp9413fmg90",
-  "pluscode": "GFX7+VQ7 Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-19T18:53:08.857Z"
+  ]
 }

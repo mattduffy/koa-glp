@@ -1,29 +1,34 @@
 {
   "pier": "430",
+  "version": "1",
   "loc": {
     "longitude": -88.570864,
     "latitude": 42.548338
   },
+  "geohash": "dp94098wj30",
+  "pluscode": "GCXH+8MJ Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "Lake St",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -34,72 +39,9 @@
           "hidden": 0
         }
       ]
-    },
-    {
-      "estateName": "",
-      "member": false,
-      "membershipType": "Residential Non-member",
-      "members": [
-        {
-          "t": "",
-          "f": "Brian",
-          "m": "",
-          "l": "McKeough",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Julie",
-          "m": "",
-          "l": "McKeough",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "member": false,
-      "membershipType": "Residential Non-member",
-      "members": [
-        {
-          "t": "",
-          "f": "Karen",
-          "m": "",
-          "l": "Rechtoris",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Ken",
-          "m": "",
-          "l": "Rechtoris",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "member": false,
-      "membershipType": "Residential Non-member",
-      "members": [
-        {
-          "t": "",
-          "f": "Todd",
-          "m": "",
-          "l": "Reschke",
-          "s": "",
-          "hidden": 0
-        }
-      ]
     }
   ],
-  "geohash": "dp94098wj30",
-  "pluscode": "GCXH+8MJ Fontana-On-Geneva Lake, Wisconsin",
-  "public": 1,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-17T16:10:02.572Z"
+  ]
 }

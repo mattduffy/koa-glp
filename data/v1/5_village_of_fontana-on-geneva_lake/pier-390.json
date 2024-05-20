@@ -1,29 +1,34 @@
 {
   "pier": "390",
+  "version": "1",
   "loc": {
     "longitude": -88.56915,
     "latitude": 42.557456
   },
+  "geohash": "dp940e3gjh0",
+  "pluscode": "HC4J+X8Q Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "443 N Lakeshore Dr",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "House on a Hill",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -45,8 +50,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -58,7 +63,7 @@
         },
         {
           "t": "",
-          "f": "Sara Harkness",
+          "f": "Sara",
           "m": "",
           "l": "Curry",
           "s": "",
@@ -67,9 +72,7 @@
       ]
     }
   ],
-  "geohash": "dp940e3gjh0",
-  "pluscode": "HC4J+X8Q Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-17T15:44:09.445Z"
+  ]
 }

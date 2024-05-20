@@ -26,15 +26,23 @@
   },
   "owners": [
     {
-      "estateName": "",
-      "membershipType": "Residential Non-member",
-      "member": false,
+      "estateName": "The Herbie’s LG Lake House",
+      "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
-          "f": "Louis",
+          "f": "Mike ",
           "m": "",
-          "l": "Schreiber",
+          "l": "Hrbacek",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Karen",
+          "m": "",
+          "l": "Hrbacek",
           "s": "",
           "hidden": 0
         }
@@ -42,6 +50,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-15T04:28:06.516Z"
+    "2024-05-18T14:35:16.470Z"
   ]
 }

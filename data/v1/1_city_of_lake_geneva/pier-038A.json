@@ -1,29 +1,34 @@
 {
   "pier": "038A",
+  "version": "1",
   "loc": {
     "longitude": -88.451616,
     "latitude": 42.580826
   },
+  "geohash": "dp945px7rc0",
+  "pluscode": "HGJX+89J Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Geneva Bay Estates",
-    "established": "1956",
+    "established": 1956,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "927 Bayview Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
-      "membershipType": "Residential Non-member",
+      "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp945px7rc0",
-  "pluscode": "HGJX+89J Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-12T23:56:36.481Z"
+  ]
 }

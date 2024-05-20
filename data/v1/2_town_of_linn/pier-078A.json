@@ -1,52 +1,55 @@
 {
   "pier": "078A",
+  "version": "1",
   "loc": {
     "longitude": -88.482896,
     "latitude": 42.571199
   },
+  "geohash": "dp944tbepn0",
+  "pluscode": "HGC8+FRH Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Bonnie Brae",
-    "established": "1916",
+    "established": 1916,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N2202 Bonnie Brae Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
+      "membershipType": "Contributing",
       "member": true,
-      "membershipType": "Regular",
       "members": [
         {
           "t": "",
-          "f": "Kenneth",
+          "f": "Mike",
           "m": "",
-          "l": "Trent",
+          "l": "Dowd",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Tara",
+          "f": "Diane",
           "m": "",
-          "l": "Trent",
+          "l": "Dowd",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp944tbepn0",
-  "pluscode": "HGC8+FRH Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-13T00:18:08.481Z"
+  ]
 }

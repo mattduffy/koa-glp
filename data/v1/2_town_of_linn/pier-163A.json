@@ -1,29 +1,34 @@
 {
   "pier": "163A",
+  "version": "1",
   "loc": {
     "longitude": -88.515971,
     "latitude": 42.572516
   },
+  "geohash": "dp941y0duk0",
+  "pluscode": "HFFM+2J2 Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W4449 N Lake Shore Dr",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "Serenity",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -32,13 +37,19 @@
           "l": "Bertrand",
           "s": "",
           "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Sondra",
+          "m": "",
+          "l": "Bertrand",
+          "s": "",
+          "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp941y0duk0",
-  "pluscode": "HFFM+2J2 Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-13T23:22:01.500Z"
+  ]
 }

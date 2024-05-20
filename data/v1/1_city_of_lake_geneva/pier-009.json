@@ -1,33 +1,46 @@
 {
   "pier": "009",
+  "version": "1",
   "loc": {
     "longitude": -88.445376,
     "latitude": 42.588992
   },
+  "geohash": "dp9473h4c70",
+  "pluscode": "HHQ3+HRX Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "9 Hillside Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
-      "membershipType": "Residential Non-member",
+      "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
-          "f": "",
+          "f": "Michael",
+          "m": "",
+          "l": "Simkus",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Susan",
           "m": "",
           "l": "Simkus",
           "s": "",
@@ -36,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp9473h4c70",
-  "pluscode": "HHQ3+HRX Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-12T23:29:59.111Z"
+  ]
 }

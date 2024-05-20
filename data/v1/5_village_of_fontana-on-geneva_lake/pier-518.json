@@ -1,29 +1,34 @@
 {
   "pier": "518",
+  "version": "1",
   "loc": {
     "longitude": -88.539977,
     "latitude": 42.549031
   },
+  "geohash": "dp9411z4j40",
+  "pluscode": "GFX6+J26 Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Clear Sky Lodge Association",
-    "established": "1989",
+    "established": 1989,
     "associationUrl": "http://www.clearskylodge.com/",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "1100c S Lakeshore Dr",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -45,8 +50,8 @@
     },
     {
       "estateName": "Clear Sky Lodge",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -65,26 +70,9 @@
           "hidden": 0
         }
       ]
-    },
-    {
-      "estateName": "",
-      "member": true,
-      "membershipType": "Donor",
-      "members": [
-        {
-          "t": "",
-          "f": "The Lombardo Family",
-          "m": "",
-          "l": "",
-          "s": "",
-          "hidden": 0
-        }
-      ]
     }
   ],
-  "geohash": "dp9411z4j40",
-  "pluscode": "GFX6+J26 Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-18T14:36:54.861Z"
+  ]
 }

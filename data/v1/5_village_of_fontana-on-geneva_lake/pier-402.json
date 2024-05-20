@@ -184,32 +184,17 @@
       "members": [
         {
           "t": "",
-          "f": "James",
+          "f": "Richard",
           "m": "",
-          "l": "Winquist",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Regular",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "Randy",
-          "m": "",
-          "l": "Demke",
+          "l": "Dousman",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Linda",
+          "f": "Michele",
           "m": "",
-          "l": "Demke",
+          "l": "Dousman",
           "s": "",
           "hidden": 0
         }
@@ -217,6 +202,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-14T02:27:37.112Z"
+    "2024-05-17T15:52:06.834Z"
   ]
 }

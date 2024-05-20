@@ -1,29 +1,34 @@
 {
   "pier": "289",
+  "version": "1",
   "loc": {
     "longitude": -88.538786,
     "latitude": 42.573646
   },
+  "geohash": "dp941q212y0",
+  "pluscode": "HFF6+FF4 Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Summer Haven",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "10 Liechty Dr",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,31 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
-      "membershipType": "",
-      "members": [
-        {
-          "t": "",
-          "f": "Bob",
-          "m": "",
-          "l": "Peck",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Christina",
-          "m": "",
-          "l": "Peck",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "member": true,
-      "membershipType": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -82,9 +64,7 @@
       ]
     }
   ],
-  "geohash": "dp941q212y0",
-  "pluscode": "HFF6+FF4 Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-15T23:36:07.746Z"
+  ]
 }

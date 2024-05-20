@@ -1,29 +1,34 @@
 {
   "pier": "493",
+  "version": "1",
   "loc": {
     "longitude": -88.555117,
     "latitude": 42.547908
   },
+  "geohash": "dp940cs5s10",
+  "pluscode": "GCXV+5X6 Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "724 S Lakeshore Dr",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -32,13 +37,19 @@
           "l": "Shodeen",
           "s": "",
           "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Craig",
+          "m": "",
+          "l": "Shodeen",
+          "s": "",
+          "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp940cs5s10",
-  "pluscode": "GCXV+5X6 Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-18T14:19:56.053Z"
+  ]
 }

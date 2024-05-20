@@ -26,13 +26,13 @@
   },
   "owners": [
     {
-      "estateName": "La Hacienda",
+      "estateName": "",
       "membershipType": "Benefactor",
       "member": true,
       "members": [
         {
           "t": "",
-          "f": "Paul",
+          "f": "Peter",
           "m": "",
           "l": "Darley",
           "s": "",
@@ -40,7 +40,15 @@
         },
         {
           "t": "",
-          "f": "Peter",
+          "f": "Karen",
+          "m": "",
+          "l": "Darley",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Paul",
           "m": "",
           "l": "Darley",
           "s": "",
@@ -50,6 +58,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-12T02:17:46.473Z"
+    "2024-05-13T23:41:10.663Z"
   ]
 }

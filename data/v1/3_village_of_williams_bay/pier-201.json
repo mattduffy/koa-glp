@@ -1,52 +1,47 @@
 {
   "pier": "201",
+  "version": "1",
   "loc": {
     "longitude": -88.529263,
     "latitude": 42.567054
   },
+  "geohash": "dp941mngn90",
+  "pluscode": "HF8C+R7H Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Cedar Point Park",
-    "established": "1922",
+    "established": 1922,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "250 Cir Pkwy",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Dan",
+          "f": "Jaso",
           "m": "",
-          "l": "Laszlo",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Kelly",
-          "m": "",
-          "l": "Laszlo",
+          "l": "Eckert",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp941mngn90",
-  "pluscode": "HF8C+R7H Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-14T00:10:37.059Z"
+  ]
 }

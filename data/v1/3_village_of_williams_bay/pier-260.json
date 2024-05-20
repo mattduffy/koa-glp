@@ -39,47 +39,9 @@
           "hidden": 0
         }
       ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Regular",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "John",
-          "m": "",
-          "l": "Gallagher",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Regular",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "Rich",
-          "m": "",
-          "l": "Blay",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Shannon",
-          "m": "",
-          "l": "Blay",
-          "s": "",
-          "hidden": 0
-        }
-      ]
     }
   ],
   "updatedOn": [
-    "2023-12-12T04:04:27.010Z"
+    "2024-05-15T23:25:25.300Z"
   ]
 }

@@ -32,9 +32,24 @@
       "members": [
         {
           "t": "",
-          "f": "Women’s Leadership Institute",
+          "f": "Women’s Leadership Institute at Williams Bay",
           "m": "",
           "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Ann",
+          "m": "",
+          "l": "Drake",
           "s": "",
           "hidden": 0
         }
@@ -42,6 +57,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-13T05:17:54.513Z"
+    "2024-05-15T23:54:30.854Z"
   ]
 }

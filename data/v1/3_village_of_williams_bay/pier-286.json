@@ -100,9 +100,32 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Tom",
+          "m": "",
+          "l": "Powers",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Julie",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2023-12-12T04:26:45.851Z"
+    "2024-05-15T23:35:20.624Z"
   ]
 }

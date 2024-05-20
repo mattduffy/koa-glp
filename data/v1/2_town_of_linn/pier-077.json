@@ -1,44 +1,47 @@
 {
   "pier": "077",
+  "version": "1",
   "loc": {
     "longitude": -88.482007,
     "latitude": 42.571505
   },
+  "geohash": "dp944tckgz0",
+  "pluscode": "HGC9+J55 Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Bonnie Brae",
-    "established": "1916",
+    "established": 1916,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N2218 Bonnie Brae Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
-      "estateName": "The Cliffs",
-      "member": false,
+      "estateName": "",
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Carol",
+          "f": "Pankau Family",
           "m": "",
-          "l": "Pankau",
+          "l": "",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp944tckgz0",
-  "pluscode": "HGC9+J55 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-13T00:15:21.374Z"
+  ]
 }

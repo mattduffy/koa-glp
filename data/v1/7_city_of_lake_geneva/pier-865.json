@@ -39,32 +39,9 @@
           "hidden": 0
         }
       ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Residential Non-member",
-      "member": false,
-      "members": [
-        {
-          "t": "",
-          "f": "John",
-          "m": "",
-          "l": "Bottros",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Laura",
-          "m": "",
-          "l": "Bottros",
-          "s": "",
-          "hidden": 0
-        }
-      ]
     }
   ],
   "updatedOn": [
-    "2023-12-19T03:23:17.444Z"
+    "2024-05-20T12:49:05.998Z"
   ]
 }

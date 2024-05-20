@@ -27,12 +27,20 @@
   "owners": [
     {
       "estateName": "",
-      "membershipType": "Residential Non-member",
-      "member": false,
+      "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
           "f": "Tom",
+          "m": "",
+          "l": "Pecora",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Denise",
           "m": "",
           "l": "Pecora",
           "s": "",
@@ -42,6 +50,6 @@
     }
   ],
   "updatedOn": [
-    "2023-11-01T01:56:27.795Z"
+    "2024-05-12T23:36:46.750Z"
   ]
 }

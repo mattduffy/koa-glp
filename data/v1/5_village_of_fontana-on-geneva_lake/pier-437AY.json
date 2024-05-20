@@ -1,29 +1,34 @@
 {
   "pier": "437AY",
+  "version": "1",
   "loc": {
     "longitude": -88.570152,
     "latitude": 42.546636
   },
+  "geohash": "dp94093hjg0",
+  "pluscode": "GCWH+MW5 Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Abbey Harbor Yacht Club",
-    "established": "https://abbeymarina.com/",
+    "established": null,
     "associationUrl": "",
     "tel": "+1(262) 394-5544",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "271 Fontana Blvd",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,8 +42,8 @@
     },
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -60,77 +65,8 @@
     },
     {
       "estateName": "",
-      "member": true,
-      "membershipType": "Regular",
-      "members": [
-        {
-          "t": "",
-          "f": "Jodi",
-          "m": "",
-          "l": "Boudart",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Scott",
-          "m": "",
-          "l": "Kaufman",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "Bay View",
-      "member": true,
-      "membershipType": "Donor",
-      "members": [
-        {
-          "t": "",
-          "f": "Daniel ",
-          "m": "",
-          "l": "Keck",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Victoria ",
-          "m": "",
-          "l": "Tilly",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "member": true,
-      "membershipType": "Regular",
-      "members": [
-        {
-          "t": "",
-          "f": "Todd",
-          "m": "",
-          "l": "Hitzeman",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Susan",
-          "m": "",
-          "l": "Hitzeman",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -143,9 +79,7 @@
       ]
     }
   ],
-  "geohash": "dp94093hjg0",
-  "pluscode": "GCWH+MW5 Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-17T16:10:54.284Z"
+  ]
 }

@@ -85,9 +85,32 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Carolann",
+          "m": "",
+          "l": "Allis",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Baird",
+          "m": "",
+          "l": "Allis",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2023-11-25T04:42:32.296Z"
+    "2024-05-17T16:04:53.448Z"
   ]
 }

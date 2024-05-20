@@ -32,14 +32,6 @@
       "members": [
         {
           "t": "",
-          "f": "Eulice",
-          "m": "",
-          "l": "Payne",
-          "s": "Jr.",
-          "hidden": 0
-        },
-        {
-          "t": "",
           "f": "Gina",
           "m": "",
           "l": "Fisher",
@@ -47,9 +39,24 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Eulice",
+          "m": "",
+          "l": "Payne",
+          "s": "Jr",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2023-12-19T03:45:45.123Z"
+    "2024-05-20T12:57:01.476Z"
   ]
 }

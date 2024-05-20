@@ -39,9 +39,24 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Curt",
+          "m": "K",
+          "l": "Behrens",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2023-11-26T05:34:55.880Z"
+    "2024-05-17T16:19:04.580Z"
   ]
 }

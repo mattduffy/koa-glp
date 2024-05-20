@@ -27,22 +27,14 @@
   "owners": [
     {
       "estateName": "",
-      "membershipType": "Benefactor",
-      "member": true,
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Jerome",
-          "m": "R",
-          "l": "Vainisi",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Denise",
-          "m": "L",
-          "l": "Vainisi",
+          "f": "Tom",
+          "m": "",
+          "l": "Rogers",
           "s": "",
           "hidden": 0
         }
@@ -50,6 +42,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-08T05:07:50.460Z"
+    "2024-05-13T15:12:36.847Z"
   ]
 }

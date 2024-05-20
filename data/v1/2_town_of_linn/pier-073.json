@@ -1,44 +1,47 @@
 {
   "pier": "073",
+  "version": "1",
   "loc": {
     "longitude": -88.479873,
     "latitude": 42.571979
   },
+  "geohash": "dp944tfzv80",
+  "pluscode": "HGCC+Q3R Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "The Folly",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N2270 Folly Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Nick",
+          "f": "Andrea",
           "m": "",
-          "l": "Calamos",
+          "l": "Burridge",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp944tfzv80",
-  "pluscode": "HGCC+Q3R Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-13T00:11:06.291Z"
+  ]
 }

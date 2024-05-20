@@ -1,29 +1,34 @@
 {
   "pier": "369",
+  "version": "1",
   "loc": {
     "longitude": -88.564289,
     "latitude": 42.561494
   },
+  "geohash": "dp940sj6wm0",
+  "pluscode": "HC6P+H7W Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N1904 N Lakeshore Dr",
       "city": "Walworth",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
-      "estateName": "",
-      "member": false,
+      "estateName": "Northwoods",
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp940sj6wm0",
-  "pluscode": "HC6P+H7W Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-17T14:04:44.510Z"
+  ]
 }

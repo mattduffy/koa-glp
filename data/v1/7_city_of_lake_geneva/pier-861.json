@@ -47,29 +47,6 @@
       "members": [
         {
           "t": "",
-          "f": "Mark",
-          "m": "",
-          "l": "Davids",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Wendy",
-          "m": "",
-          "l": "Davids",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Regular",
-      "member": true,
-      "members": [
-        {
-          "t": "",
           "f": "Daniel",
           "m": "",
           "l": "Lawlor",
@@ -126,6 +103,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-19T03:19:25.666Z"
+    "2024-05-20T12:47:48.996Z"
   ]
 }

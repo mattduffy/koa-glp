@@ -1,29 +1,34 @@
 {
   "pier": "854",
+  "version": "1",
   "loc": {
     "longitude": -88.439858,
     "latitude": 42.576645
   },
+  "geohash": "dp945wb4cv0",
+  "pluscode": "HHG6+M32 Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Somerset Condo Association",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "1120 Lake Shore Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,31 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
-      "members": [
-        {
-          "t": "",
-          "f": "Bill",
-          "m": "",
-          "l": "Elwood",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Mary Ann",
-          "m": "",
-          "l": "Elwood",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
       "member": true,
-      "membershipType": "Regular",
       "members": [
         {
           "t": "",
@@ -83,31 +65,8 @@
     },
     {
       "estateName": "",
-      "member": true,
-      "membershipType": "Sustaining",
-      "members": [
-        {
-          "t": "",
-          "f": "Gil",
-          "m": "",
-          "l": "Kirkpatrick",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Lisa Lynne",
-          "m": "",
-          "l": "Kirkpatrick",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -128,9 +87,7 @@
       ]
     }
   ],
-  "geohash": "dp945wb4cv0",
-  "pluscode": "HHG6+M32 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-20T12:44:45.221Z"
+  ]
 }

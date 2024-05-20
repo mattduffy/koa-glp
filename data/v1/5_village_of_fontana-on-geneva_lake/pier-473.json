@@ -1,33 +1,46 @@
 {
   "pier": "473",
+  "version": "1",
   "loc": {
     "longitude": -88.562906,
     "latitude": 42.54649
   },
+  "geohash": "dp9409q7q80",
+  "pluscode": "GCWP+HRX Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Indian Hills",
-    "established": "1927",
+    "established": 1927,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "538 Sauk Trl",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
-          "f": "Janess/Smith Families",
+          "f": "Janess Family",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Smith Family",
           "m": "",
           "l": "",
           "s": "",
@@ -36,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp9409q7q80",
-  "pluscode": "GCWP+HRX Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-18T14:10:08.243Z"
+  ]
 }

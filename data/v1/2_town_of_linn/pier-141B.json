@@ -47,29 +47,6 @@
       "members": [
         {
           "t": "",
-          "f": "Gene",
-          "m": "",
-          "l": "Needles",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Residential Non-member",
-      "member": false,
-      "members": [
-        {
-          "t": "",
-          "f": "Charlene",
-          "m": "",
-          "l": "Needles",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
           "f": "Chad",
           "m": "",
           "l": "Black",
@@ -85,9 +62,32 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Benefactor",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Gene",
+          "m": "",
+          "l": "Needles",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Charlene",
+          "m": "",
+          "l": "Needles",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2023-12-09T05:31:46.694Z"
+    "2024-05-13T15:27:49.895Z"
   ]
 }

@@ -1,29 +1,34 @@
 {
   "pier": "502",
+  "version": "1",
   "loc": {
     "longitude": -88.547795,
     "latitude": 42.547935
   },
+  "geohash": "dp941197wv0",
+  "pluscode": "GFX2+5VG Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Westgate",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "956 S Lakeshore Dr",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,8 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -60,8 +65,8 @@
     },
     {
       "estateName": "Flower Cottage",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -72,34 +77,9 @@
           "hidden": 0
         }
       ]
-    },
-    {
-      "estateName": "",
-      "member": false,
-      "membershipType": "Residential Non-member",
-      "members": [
-        {
-          "t": "",
-          "f": "Charley",
-          "m": "",
-          "l": "Zeches",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Bob",
-          "m": "",
-          "l": "Zeches",
-          "s": "",
-          "hidden": 0
-        }
-      ]
     }
   ],
-  "geohash": "dp941197wv0",
-  "pluscode": "GFX2+5VG Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-18T14:29:43.916Z"
+  ]
 }

@@ -1,44 +1,47 @@
 {
   "pier": "406F",
+  "version": "1",
   "loc": {
     "longitude": -88.572167,
     "latitude": 42.552559
   },
+  "geohash": "dp9406rwwg0",
+  "pluscode": "HC3H+24G Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Buena Vista",
-    "established": "1912",
+    "established": 1912,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "338 Spring St",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
-          "t": "",
-          "f": "Dr. A. Garrett Berley, Jr.",
+          "t": "Dr",
+          "f": "A. Garrett",
           "m": "",
-          "l": "",
-          "s": "",
+          "l": "Berley",
+          "s": "Jr",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp9406rwwg0",
-  "pluscode": "HC3H+24G Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-17T15:59:06.063Z"
+  ]
 }

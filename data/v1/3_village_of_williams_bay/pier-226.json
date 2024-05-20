@@ -62,32 +62,9 @@
           "hidden": 0
         }
       ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Regular",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "David",
-          "m": "",
-          "l": "Shaughnessy",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Anita",
-          "m": "",
-          "l": "Shaughnessy",
-          "s": "",
-          "hidden": 0
-        }
-      ]
     }
   ],
   "updatedOn": [
-    "2023-12-12T02:36:45.615Z"
+    "2024-05-15T23:18:26.722Z"
   ]
 }

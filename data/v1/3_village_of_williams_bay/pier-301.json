@@ -62,9 +62,24 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Bret",
+          "m": "",
+          "l": "Kimes",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2023-12-12T04:39:00.787Z"
+    "2024-05-15T23:41:08.742Z"
   ]
 }

@@ -1,29 +1,34 @@
 {
   "pier": "068",
+  "version": "1",
   "loc": {
     "longitude": -88.47651,
     "latitude": 42.572389
   },
+  "geohash": "dp944wj65u0",
+  "pluscode": "HGCF+W8V Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W3577 Snake Rd",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "The Narrows",
-      "member": true,
-      "membershipType": "Benefactor",
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp944wj65u0",
-  "pluscode": "HGCF+W8V Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-13T00:08:52.124Z"
+  ]
 }

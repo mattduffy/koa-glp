@@ -1,44 +1,47 @@
 {
   "pier": "331",
+  "version": "1",
   "loc": {
     "longitude": -88.546847,
     "latitude": 42.566747
   },
+  "geohash": "dp941j41kb0",
+  "pluscode": "HF83+M7R Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
-      "membershipType": "Residential Non-member",
+      "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
-          "f": "",
+          "f": "Gregg",
           "m": "",
+          "l": "Mason",
           "s": "",
-          "l": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp941j41kb0",
-  "pluscode": "HF83+M7R Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-15T23:49:12.034Z"
+  ]
 }

@@ -42,75 +42,22 @@
     },
     {
       "estateName": "",
-      "membershipType": "Regular",
+      "membershipType": "Contributing",
       "member": true,
       "members": [
+        {
+          "t": "",
+          "f": "Ron",
+          "m": "",
+          "l": "Deger",
+          "s": "",
+          "hidden": 0
+        },
         {
           "t": "",
           "f": "Audrey",
           "m": "",
-          "l": "Klein",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Contributing",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "Sean",
-          "m": "",
-          "l": "Marshall",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Sarah",
-          "m": "",
-          "l": "Marshall",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Regular",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "Bob",
-          "m": "",
-          "l": "Mills",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Laura",
-          "m": "",
-          "l": "Mills",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Contributing",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "Allison",
-          "m": "",
-          "l": "Alexander",
+          "l": "Deger",
           "s": "",
           "hidden": 0
         }
@@ -118,6 +65,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-12T02:11:39.326Z"
+    "2024-05-13T23:35:32.191Z"
   ]
 }

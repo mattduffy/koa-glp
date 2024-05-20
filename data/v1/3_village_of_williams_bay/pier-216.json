@@ -27,8 +27,8 @@
   "owners": [
     {
       "estateName": "",
-      "membershipType": "Residential Non-member",
-      "member": false,
+      "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -50,6 +50,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-12T02:29:19.437Z"
+    "2024-05-15T23:10:50.465Z"
   ]
 }

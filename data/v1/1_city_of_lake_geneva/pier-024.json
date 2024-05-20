@@ -1,44 +1,47 @@
 {
   "pier": "024",
+  "version": "1",
   "loc": {
     "longitude": -88.448021,
     "latitude": 42.586088
   },
+  "geohash": "dp9472d1gw0",
+  "pluscode": "HHP2+CQQ Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Lake Geneva Manor",
-    "established": "1924",
+    "established": 1924,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "1650 Lake Shore Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
           "f": "Abra",
-          "m": "Prentice",
-          "l": "",
+          "m": "",
+          "l": "Prentice Wilkin",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp9472d1gw0",
-  "pluscode": "HHP2+CQQ Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-12T23:52:00.445Z"
+  ]
 }

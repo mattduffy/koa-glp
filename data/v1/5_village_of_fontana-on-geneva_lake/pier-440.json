@@ -154,21 +154,6 @@
       "members": [
         {
           "t": "",
-          "f": "Kirk",
-          "m": "",
-          "l": "Kreutzig",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Regular",
-      "member": true,
-      "members": [
-        {
-          "t": "",
           "f": "Walt",
           "m": "",
           "l": "Liptak",
@@ -186,30 +171,7 @@
       ]
     },
     {
-      "estateName": "",
-      "membershipType": "Regular",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "Hugh",
-          "m": "",
-          "l": "Masterson",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Susan",
-          "m": "",
-          "l": "Masterson",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
+      "estateName": "White O’Morn",
       "membershipType": "Contributing",
       "member": true,
       "members": [
@@ -321,9 +283,62 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Laurie",
+          "m": "",
+          "l": "Ames",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Mark",
+          "m": "",
+          "l": "Augustson",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Suzanne",
+          "m": "",
+          "l": "Augustson",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Jay",
+          "m": "",
+          "l": "Hicks",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2023-11-26T03:00:16.732Z"
+    "2024-05-17T16:18:26.630Z"
   ]
 }

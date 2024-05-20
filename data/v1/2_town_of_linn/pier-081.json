@@ -27,12 +27,12 @@
   "owners": [
     {
       "estateName": "",
-      "membershipType": "Residential Non-member",
-      "member": false,
+      "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
-          "f": "Sherwin",
+          "f": "Dale",
           "m": "",
           "l": "Friedman",
           "s": "",
@@ -42,6 +42,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-08T04:28:48.910Z"
+    "2024-05-13T00:20:56.581Z"
   ]
 }

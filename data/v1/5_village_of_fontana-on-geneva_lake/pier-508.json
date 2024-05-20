@@ -1,29 +1,34 @@
 {
   "pier": "508",
+  "version": "1",
   "loc": {
     "longitude": -88.545014,
     "latitude": 42.547996
   },
+  "geohash": "dp9411ekp90",
+  "pluscode": "GFX3+5XX Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "1020 S Lakeshore Dr",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
-      "estateName": "",
-      "member": true,
+      "estateName": "Don't Blink",
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp9411ekp90",
-  "pluscode": "GFX3+5XX Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-18T14:31:54.894Z"
+  ]
 }

@@ -32,7 +32,7 @@
       "members": [
         {
           "t": "",
-          "f": "",
+          "f": "Abbey Springs Condo Assoc",
           "m": "",
           "l": "",
           "s": "",
@@ -54,15 +54,9 @@
           "hidden": 0
         }
       ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Contributing",
-      "member": true,
-      "members": []
     }
   ],
   "updatedOn": [
-    "2023-12-15T04:12:25.747Z"
+    "2024-05-18T14:27:02.748Z"
   ]
 }

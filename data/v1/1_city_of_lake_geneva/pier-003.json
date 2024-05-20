@@ -1,44 +1,55 @@
 {
   "pier": "003",
+  "version": "1",
   "loc": {
     "longitude": -88.443439,
     "latitude": 42.590371
   },
+  "geohash": "dp9473m6ys0",
+  "pluscode": "HHR4+4JV Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "1310 W Main St",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
-      "estateName": "ESBRO",
-      "member": true,
-      "membershipType": "Regular",
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Betty",
-          "m": "J.",
-          "l": "Burch-Spanjer",
+          "f": "Veronica",
+          "m": "",
+          "l": "Zepeda Loquercio",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Robert",
+          "m": "",
+          "l": "Loquercio",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp9473m6ys0",
-  "pluscode": "HHR4+4JV Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-12T23:25:38.354Z"
+  ]
 }

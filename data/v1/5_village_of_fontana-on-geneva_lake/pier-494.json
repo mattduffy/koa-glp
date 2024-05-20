@@ -1,29 +1,34 @@
 {
   "pier": "494",
+  "version": "1",
   "loc": {
     "longitude": -88.55455,
     "latitude": 42.547836
   },
+  "geohash": "dp940cse170",
+  "pluscode": "GCXW+45P Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Sylvan Glen",
-    "established": "1900",
+    "established": 1900,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -34,11 +39,24 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Benefactor",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Shodeen Family",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
-  "geohash": "dp940cse170",
-  "pluscode": "GCXW+45P Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-18T14:21:20.450Z"
+  ]
 }

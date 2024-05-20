@@ -39,9 +39,32 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Regular",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Paul",
+          "m": "",
+          "l": "Puttrich",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Jill",
+          "m": "",
+          "l": "Puttrich",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2023-12-19T03:57:37.720Z"
+    "2024-05-20T12:59:19.882Z"
   ]
 }

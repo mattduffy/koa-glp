@@ -1,52 +1,47 @@
 {
   "pier": "514",
+  "version": "1",
   "loc": {
     "longitude": -88.54251,
     "latitude": 42.548336
   },
+  "geohash": "dp9411tq1b0",
+  "pluscode": "GFX4+8XQ Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "1088 S Lakeshore Dr",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
-      "membershipType": "Benefactor",
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Julia",
+          "f": "",
           "m": "",
-          "l": "Wegner",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Ken",
-          "m": "",
-          "l": "Wegner",
+          "l": "",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp9411tq1b0",
-  "pluscode": "GFX4+8XQ Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-18T14:33:21.233Z"
+  ]
 }

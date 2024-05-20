@@ -47,21 +47,6 @@
       "members": [
         {
           "t": "",
-          "f": "Wendy",
-          "m": "",
-          "l": "Darre",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Residential Non-member",
-      "member": false,
-      "members": [
-        {
-          "t": "",
           "f": "Connie",
           "m": "",
           "l": "Gluth",
@@ -85,17 +70,17 @@
       "members": [
         {
           "t": "",
-          "f": "Jon",
+          "f": "Bob",
           "m": "",
-          "l": "Clare",
+          "l": "Jelinek",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Patty Meagher",
+          "f": "Susan",
           "m": "",
-          "l": "Clare",
+          "l": "Collins",
           "s": "",
           "hidden": 0
         }
@@ -103,6 +88,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-12T04:30:47.531Z"
+    "2024-05-15T23:38:03.033Z"
   ]
 }
