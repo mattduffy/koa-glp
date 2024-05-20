@@ -1,44 +1,47 @@
 {
   "pier": "698",
+  "version": "1",
   "loc": {
     "longitude": -88.474727,
     "latitude": 42.564198
   },
+  "geohash": "dp944swdmm0",
+  "pluscode": "HG7G+M4C Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "700 Lake Shore Drive Association",
-    "established": "1950",
+    "established": 1950,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N1994 700 Club Ln N",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "Deer Path",
-      "member": true,
       "membershipType": "Donor",
+      "member": true,
       "members": [
         {
           "t": "",
-          "f": "Mr. & Mrs. Roger O'Neill",
+          "f": "Roger",
           "m": "",
-          "l": "",
+          "l": "O'Neill",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp944swdmm0",
-  "pluscode": "HG7G+M4C Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-19T20:16:51.836Z"
+  ]
 }

@@ -47,32 +47,9 @@
           "hidden": 0
         }
       ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Benefactor",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "Tim",
-          "m": "",
-          "l": "Walbert",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Keli",
-          "m": "",
-          "l": "Walbert",
-          "s": "",
-          "hidden": 0
-        }
-      ]
     }
   ],
   "updatedOn": [
-    "2023-12-18T04:08:57.484Z"
+    "2024-05-19T20:15:35.295Z"
   ]
 }

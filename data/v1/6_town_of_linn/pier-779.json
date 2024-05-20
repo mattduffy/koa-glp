@@ -32,29 +32,6 @@
       "members": [
         {
           "t": "",
-          "f": "John",
-          "m": "",
-          "l": "Cooney",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Barbara",
-          "m": "",
-          "l": "Cooney",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Residential Non-member",
-      "member": false,
-      "members": [
-        {
-          "t": "",
           "f": "Richard",
           "m": "",
           "l": "Marra",
@@ -65,6 +42,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-19T02:25:46.265Z"
+    "2024-05-20T12:26:09.997Z"
   ]
 }

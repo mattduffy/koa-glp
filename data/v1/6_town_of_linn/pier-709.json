@@ -55,17 +55,17 @@
       "members": [
         {
           "t": "",
-          "f": "David",
+          "f": "Cathy",
           "m": "",
-          "l": "Dermenjian",
+          "l": "Funderburg",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Michelle",
+          "f": "Rob",
           "m": "",
-          "l": "Dermenjian",
+          "l": "Funderburg",
           "s": "",
           "hidden": 0
         }
@@ -133,21 +133,6 @@
       ]
     },
     {
-      "estateName": "",
-      "membershipType": "Benefactor",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "John",
-          "m": "K",
-          "l": "Notz",
-          "s": "Jr.",
-          "hidden": 0
-        }
-      ]
-    },
-    {
       "estateName": "Rock Ridge",
       "membershipType": "Contributing",
       "member": true,
@@ -195,22 +180,22 @@
     },
     {
       "estateName": "",
-      "membershipType": "Regular",
+      "membershipType": "Donor",
       "member": true,
       "members": [
         {
           "t": "",
-          "f": "Cathy",
+          "f": "Dick",
           "m": "",
-          "l": "Funderburg",
+          "l": "Pfeil",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Rob",
+          "f": "Jo",
           "m": "",
-          "l": "Funderburg",
+          "l": "Pfeil",
           "s": "",
           "hidden": 0
         }
@@ -218,6 +203,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-01T23:36:41.125Z"
+    "2024-05-19T20:40:07.039Z"
   ]
 }

@@ -47,47 +47,9 @@
       "members": [
         {
           "t": "",
-          "f": "Mr. & Mrs. Richard H. Baker III",
-          "m": "",
-          "l": "",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Donor",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "Mr. & Mrs.William J. Ring",
-          "m": "",
-          "l": "",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Benefactor",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "Boyd",
-          "m": "",
-          "l": "Whiting",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Beth",
-          "m": "",
-          "l": "Whiting",
+          "f": "Sarah",
+          "m": "D",
+          "l": "Baker",
           "s": "",
           "hidden": 0
         }
@@ -110,6 +72,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-19T02:18:51.901Z"
+    "2024-05-20T12:25:56.973Z"
   ]
 }

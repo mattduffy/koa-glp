@@ -1,44 +1,47 @@
 {
   "pier": "667",
+  "version": "1",
   "loc": {
     "longitude": -88.488976,
     "latitude": 42.561193
   },
+  "geohash": "dp944kh2cm0",
+  "pluscode": "HG66+FCC Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Lackey Lane",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W3818 Lackey Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Mark",
+          "f": "",
           "m": "",
-          "l": "Licht",
+          "l": "",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp944kh2cm0",
-  "pluscode": "HG66+FCC Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-19T20:05:05.024Z"
+  ]
 }

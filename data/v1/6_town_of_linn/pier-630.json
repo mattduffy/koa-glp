@@ -1,29 +1,34 @@
 {
   "pier": "630",
+  "version": "1",
   "loc": {
     "longitude": -88.497787,
     "latitude": 42.559427
   },
+  "geohash": "dp9445tysh0",
+  "pluscode": "HG52+QVG Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Valley Park Association",
-    "established": "1970",
+    "established": 1970,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N1820 E Valley Park Rd",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -32,13 +37,19 @@
           "l": "Parise",
           "s": "",
           "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Erika",
+          "m": "",
+          "l": "Parise",
+          "s": "",
+          "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp9445tysh0",
-  "pluscode": "HG52+QVG Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-19T19:52:33.643Z"
+  ]
 }

@@ -1,30 +1,43 @@
 {
   "pier": "614",
+  "version": "1",
   "loc": {
     "longitude": -88.502537,
     "latitude": 42.559293
   },
+  "geohash": "dp9445dmv70",
+  "pluscode": "HF5W+PX8 Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Lake Geneva Highlands",
-    "established": "1922",
+    "established": 1922,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W4108 Lakeview Rd",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
-      "estateName": "",
-      "member": false,
-      "membershipType": "Residential Non-member",
+      "estateName": "Celestial Vista",
+      "membershipType": "Contributing",
+      "member": true,
       "members": [
+        {
+          "t": "",
+          "f": "Lauren",
+          "m": "",
+          "l": "Long",
+          "s": "",
+          "hidden": 0
+        },
         {
           "t": "",
           "f": "Ryan",
@@ -36,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp9445dmv70",
-  "pluscode": "HF5W+PX8 Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-19T19:43:36.238Z"
+  ]
 }

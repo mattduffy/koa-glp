@@ -1,29 +1,34 @@
 {
   "pier": "773",
+  "version": "1",
   "loc": {
     "longitude": -88.4533,
     "latitude": 42.559845
   },
+  "geohash": "dp9455y30d0",
+  "pluscode": "HG5W+WMP Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N1880 Sidney Smith Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "Lake View",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -45,8 +50,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -55,13 +60,19 @@
           "l": "Ramsey",
           "s": "",
           "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Lara",
+          "m": "",
+          "l": "Ramsey",
+          "s": "",
+          "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp9455y30d0",
-  "pluscode": "HG5W+WMP Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-20T12:17:14.819Z"
+  ]
 }

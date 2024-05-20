@@ -1,29 +1,34 @@
 {
   "pier": "531",
+  "version": "1",
   "loc": {
     "longitude": -88.532495,
     "latitude": 42.550134
   },
+  "geohash": "dp9416h8e20",
+  "pluscode": "HF29+322 Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Lake Geneva Club",
-    "established": "1922",
+    "established": 1922,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "Lake Geneva Clb",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,8 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Donor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -60,8 +65,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -83,53 +88,29 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Regular",
+      "member": true,
       "members": [
         {
           "t": "",
-          "f": "Gardella Family",
+          "f": "Joe ",
           "m": "",
-          "l": "",
+          "l": "Gardella",
           "s": "",
           "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "member": true,
-      "membershipType": "Regular",
-      "members": [
+        },
         {
           "t": "",
-          "f": "Marty",
+          "f": "Leta",
           "m": "",
-          "l": "Rexinger",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "member": true,
-      "membershipType": "Contributing",
-      "members": [
-        {
-          "t": "",
-          "f": "Jim & Denise Vitale Family",
-          "m": "",
-          "l": "",
+          "l": "Gardella",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp9416h8e20",
-  "pluscode": "HF29+322 Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-19T18:57:55.705Z"
+  ]
 }

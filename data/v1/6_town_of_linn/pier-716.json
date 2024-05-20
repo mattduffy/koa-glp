@@ -39,32 +39,9 @@
           "hidden": 0
         }
       ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Regular",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "Susie",
-          "m": "",
-          "l": "Vanderveld",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Paul",
-          "m": "",
-          "l": "Vanderveld",
-          "s": "",
-          "hidden": 0
-        }
-      ]
     }
   ],
   "updatedOn": [
-    "2023-12-18T04:26:16.196Z"
+    "2024-05-19T20:41:41.482Z"
   ]
 }

@@ -1,48 +1,48 @@
 {
-  "pier": "538",
+  "pier": "744",
   "version": "1",
   "loc": {
-    "longitude": -88.530307,
-    "latitude": 42.549985
+    "longitude": -88.464073,
+    "latitude": 42.559039
   },
-  "geohash": "dp9413ypwk0",
-  "pluscode": "GFX9+XVW Fontana-On-Geneva Lake, Wisconsin",
+  "geohash": "dp944gwkme0",
+  "pluscode": "86JHHG5P+J9",
   "public": 0,
   "bigSwimPier": 0,
   "property": {
-    "association": "",
-    "established": null,
+    "association": "Trinke Estates",
+    "established": 1951,
     "associationUrl": "",
     "tel": "",
     "business": "",
     "isMarina": 0,
     "hasFood": 0,
     "address": {
-      "street": "W4678 S Lakeshore Dr",
-      "city": "Fontana",
+      "street": "W3329 Burr Oak Dr",
+      "city": "Lake Geneva",
       "state": "WI",
-      "zip": "53125"
+      "zip": "53147"
     }
   },
   "owners": [
     {
       "estateName": "",
-      "membershipType": "Benefactor",
-      "member": true,
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Dan",
+          "f": "Dennis",
           "m": "",
-          "l": "Caballero",
+          "l": "Kellar",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Nilla",
+          "f": "Erin",
           "m": "",
-          "l": "Caballero",
+          "l": "O’Brien",
           "s": "",
           "hidden": 0
         }
@@ -50,6 +50,6 @@
     }
   ],
   "updatedOn": [
-    "2024-05-19T18:59:44.080Z"
+    "2024-05-19T20:43:56.044Z"
   ]
 }

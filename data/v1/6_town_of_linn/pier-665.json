@@ -1,29 +1,34 @@
 {
   "pier": "665",
+  "version": "1",
   "loc": {
     "longitude": -88.489728,
     "latitude": 42.560875
   },
+  "geohash": "dp9447gxpf0",
+  "pluscode": "HG66+942 Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Lackey Lane",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W3838 Lackey Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp9447gxpf0",
-  "pluscode": "HG66+942 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-19T20:04:43.338Z"
+  ]
 }

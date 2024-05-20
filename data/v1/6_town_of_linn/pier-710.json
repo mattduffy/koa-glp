@@ -29,41 +29,12 @@
       "estateName": "",
       "membershipType": "Residential Non-member",
       "member": false,
-      "members": []
-    },
-    {
-      "estateName": "",
-      "membershipType": "Contributing",
-      "member": true,
       "members": [
         {
           "t": "",
-          "f": "Sarah",
-          "m": "E",
-          "l": "Bogan",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Sustaining",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "John",
+          "f": "Lake Geneva Country Club",
           "m": "",
-          "l": "Foxley",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Mary Ann",
-          "m": "",
-          "l": "Foxley",
+          "l": "",
           "s": "",
           "hidden": 0
         }
@@ -94,6 +65,6 @@
     }
   ],
   "updatedOn": [
-    "2023-11-02T21:07:12.263Z"
+    "2024-05-19T20:40:52.746Z"
   ]
 }

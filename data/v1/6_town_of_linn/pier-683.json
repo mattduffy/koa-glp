@@ -1,44 +1,55 @@
 {
   "pier": "683",
+  "version": "1",
   "loc": {
     "longitude": -88.481066,
     "latitude": 42.564763
   },
+  "geohash": "dp944sdj9w0",
+  "pluscode": "HG79+WH3 Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Maple Lane",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W3668 Maple Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Barbara",
-          "m": "D",
-          "l": "Schwanke",
+          "f": "Christine ",
+          "m": "",
+          "l": "Kelley",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Patrick",
+          "m": "",
+          "l": "Kelley",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp944sdj9w0",
-  "pluscode": "HG79+WH3 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-19T20:10:55.925Z"
+  ]
 }

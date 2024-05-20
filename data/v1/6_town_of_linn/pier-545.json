@@ -65,22 +65,22 @@
     },
     {
       "estateName": "",
-      "membershipType": "Regular",
+      "membershipType": "Benefactor",
       "member": true,
       "members": [
         {
           "t": "",
-          "f": "Debbie",
+          "f": "Elaine",
           "m": "",
-          "l": "Kallergis",
+          "l": "Hodgson",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Nick",
+          "f": "Lawrence",
           "m": "",
-          "l": "Kallergis",
+          "l": "Hodgson",
           "s": "",
           "hidden": 0
         }
@@ -139,9 +139,40 @@
       "members": [
         {
           "t": "",
-          "f": "Todd",
+          "f": "John",
           "m": "",
-          "l": "Mintz",
+          "l": "Palmer",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Laura",
+          "m": "",
+          "l": "Palmer",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Regular",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Debbie",
+          "m": "",
+          "l": "Bossy",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "David",
+          "m": "",
+          "l": "Bossy",
           "s": "",
           "hidden": 0
         }
@@ -149,6 +180,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-16T02:59:24.623Z"
+    "2024-05-19T19:16:31.207Z"
   ]
 }

@@ -1,29 +1,34 @@
 {
   "pier": "774",
+  "version": "1",
   "loc": {
     "longitude": -88.452988,
     "latitude": 42.560058
   },
+  "geohash": "dp9455y6rc0",
+  "pluscode": "HG6W+2RC Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Loramoor",
-    "established": "1981",
+    "established": 1981,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -37,8 +42,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Donor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -60,8 +65,8 @@
     },
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -75,8 +80,8 @@
     },
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Donor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -95,34 +100,9 @@
           "hidden": 0
         }
       ]
-    },
-    {
-      "estateName": "",
-      "member": true,
-      "membershipType": "Regular",
-      "members": [
-        {
-          "t": "",
-          "f": "John",
-          "m": "",
-          "l": "Engerman",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Madeleine",
-          "m": "",
-          "l": "Engerman",
-          "s": "",
-          "hidden": 0
-        }
-      ]
     }
   ],
-  "geohash": "dp9455y6rc0",
-  "pluscode": "HG6W+2RC Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-20T12:23:23.415Z"
+  ]
 }

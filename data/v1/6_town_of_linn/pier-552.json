@@ -1,52 +1,47 @@
 {
   "pier": "552",
+  "version": "1",
   "loc": {
     "longitude": -88.522153,
     "latitude": 42.550738
   },
+  "geohash": "dp941dhhh20",
+  "pluscode": "HF2H+74X Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W4506 Basswood Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
-      "membershipType": "Regular",
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Ronald",
+          "f": "",
           "m": "",
-          "l": "Levin",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Fifi",
-          "m": "",
-          "l": "Levin",
+          "l": "",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp941dhhh20",
-  "pluscode": "HF2H+74X Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-19T19:29:12.336Z"
+  ]
 }

@@ -1,33 +1,38 @@
 {
   "pier": "805",
+  "version": "1",
   "loc": {
     "longitude": -88.43936,
     "latitude": 42.564985
   },
+  "geohash": "dp945s8rj80",
+  "pluscode": "HH76+X7R Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "http://www.genevainn.com/",
     "tel": "+1(262) 248-5680",
+    "business": "The Geneva Inn",
+    "isMarina": 0,
+    "hasFood": 1,
     "address": {
       "street": "N2009 S Lake Shore Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "The Geneva Inn",
-    "isMarina": 0,
-    "hasFood": 1
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "",
+          "f": "The Geneva Inn",
           "m": "",
           "l": "",
           "s": "",
@@ -36,9 +41,7 @@
       ]
     }
   ],
-  "geohash": "dp945s8rj80",
-  "pluscode": "HH76+X7R Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-20T12:33:30.423Z"
+  ]
 }

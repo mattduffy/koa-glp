@@ -27,21 +27,6 @@
   "owners": [
     {
       "estateName": "",
-      "membershipType": "Sustaining",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "Jane",
-          "m": "",
-          "l": "Livingston",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
       "membershipType": "Residential Non-member",
       "member": false,
       "members": [
@@ -88,6 +73,6 @@
     }
   ],
   "updatedOn": [
-    "2023-12-16T04:55:52.208Z"
+    "2024-05-19T19:53:24.894Z"
   ]
 }

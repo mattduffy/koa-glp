@@ -1,36 +1,41 @@
 {
   "pier": "549",
+  "version": "1",
   "loc": {
     "longitude": -88.524351,
     "latitude": 42.551043
   },
+  "geohash": "dp941d4tc10",
+  "pluscode": "HF2G+C76 Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N1577 N Creekside Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "Chateau DuLac",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
           "f": "John",
-          "m": "",
+          "m": "D",
           "l": "Simms",
-          "s": "",
+          "s": "Jr",
           "hidden": 0
         },
         {
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp941d4tc10",
-  "pluscode": "HF2G+C76 Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-19T19:17:49.688Z"
+  ]
 }

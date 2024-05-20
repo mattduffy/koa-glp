@@ -1,52 +1,55 @@
 {
   "pier": "774F",
+  "version": "1",
   "loc": {
     "longitude": -88.450091,
     "latitude": 42.561285
   },
+  "geohash": "dp945k097q0",
+  "pluscode": "HG6X+GX7 Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Loramoor",
-    "established": "1981",
+    "established": 1981,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N1931 Loramoor Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
+      "membershipType": "Donor",
       "member": true,
-      "membershipType": "Benefactor",
       "members": [
         {
           "t": "",
-          "f": "Vince",
+          "f": "Rita",
           "m": "",
-          "l": "Kolber",
+          "l": "O'Brien",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Patricia",
+          "f": "Bob",
           "m": "",
-          "l": "Kolber",
+          "l": "O'Brien",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp945k097q0",
-  "pluscode": "HG6X+GX7 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-20T12:22:17.670Z"
+  ]
 }

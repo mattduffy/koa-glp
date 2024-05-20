@@ -1,44 +1,47 @@
 {
   "pier": "793",
+  "version": "1",
   "loc": {
     "longitude": -88.441659,
     "latitude": 42.564567
   },
+  "geohash": "dp945kwsxf0",
+  "pluscode": "HH75+R8G Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W2865 Swinghurst Ln",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "James",
+          "f": "Joe",
           "m": "",
-          "l": "Hanny",
+          "l": "Improta",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp945kwsxf0",
-  "pluscode": "HH75+R8G Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-20T12:29:58.399Z"
+  ]
 }

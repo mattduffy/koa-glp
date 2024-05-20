@@ -1,32 +1,37 @@
 {
   "pier": "718",
+  "version": "1",
   "loc": {
     "longitude": -88.465741,
     "latitude": 42.558787
   },
+  "geohash": "dp944gt4yv0",
+  "pluscode": "HG5M+GP6 Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Trinke Estates",
-    "established": "1951",
+    "established": 1951,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N1872 Wildwood Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Contributing",
+      "member": true,
       "members": [
         {
-          "t": "Dr.",
+          "t": "Dr",
           "f": "Robert",
           "m": "",
           "l": "Hedger",
@@ -44,9 +49,7 @@
       ]
     }
   ],
-  "geohash": "dp944gt4yv0",
-  "pluscode": "HG5M+GP6 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-19T20:42:04.281Z"
+  ]
 }

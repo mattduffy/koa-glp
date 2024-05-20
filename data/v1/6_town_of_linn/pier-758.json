@@ -1,44 +1,47 @@
 {
   "pier": "758",
+  "version": "1",
   "loc": {
     "longitude": -88.459569,
     "latitude": 42.557586
   },
+  "geohash": "dp94553eyt0",
+  "pluscode": "HG5R+25M Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Lake Geneva Beach Association",
-    "established": "1925",
+    "established": 1925,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W3240 Park Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "John",
+          "f": "Thomas",
           "m": "",
-          "l": "Berzanskis",
+          "l": "Ryan",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp94553eyt0",
-  "pluscode": "HG5R+25M Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2024-05-20T12:12:52.276Z"
+  ]
 }
