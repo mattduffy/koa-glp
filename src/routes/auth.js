@@ -74,20 +74,33 @@ router.post('postLogin', '/login', async (ctx) => {
   })
   // log(ctx.request.body)
   const sessionId = ctx.cookies.get('session')
+  const username = ctx.request.body.username[0]
+  const password = ctx.request.body.password[0]
   const csrfTokenCookie = ctx.cookies.get('csrfToken')
   const csrfTokenSession = ctx.session.csrfToken
   const csrfTokenHidden = ctx.request.body['csrf-token'][0]
-  const { username, password } = ctx.request.body
-  log(csrfTokenCookie, csrfTokenSession, csrfTokenHidden)
-  log(`session status: ${ctx.session.status}`)
-  if (csrfTokenCookie === csrfTokenSession && csrfTokenSession === csrfTokenHidden) {
+  if (csrfTokenCookie === csrfTokenSession) log(`cookie ${csrfTokenCookie} === session ${csrfTokenSession}`)
+  if (csrfTokenCookie === csrfTokenHidden) log(`cookie ${csrfTokenCookie} === hidden ${csrfTokenHidden}`)
+  if (csrfTokenSession === csrfTokenHidden) log(`session ${csrfTokenSession} === hidden ${csrfTokenHidden}`)
+  if (!(csrfTokenCookie === csrfTokenSession && csrfTokenSession === csrfTokenHidden)) {
+    error(`csrf token mismatch: header: ${csrfTokenCookie}`)
+    error(`                     hidden: ${csrfTokenHidden}`)
+    error(`                    session: ${csrfTokenSession}`)
+    ctx.status = 403
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.body = { status: 'Error, csrf tokens do not match' }
+  } else {
     const db = ctx.state.mongodb.client.db()
-    // await next()
     const collection = db.collection('users')
     const users = new Users(collection, ctx)
-    const authUser = await users.authenticateAndGetUser(username[0], password[0])
+    const authUser = await users.authenticateAndGetUser(username, password)
+    log('authentication result: %o', authUser)
     if (!authUser.user) {
-      error(authUser.error)
+      const doc = { attemptedAt: new Date(), username, password }
+      if (ctx.state?.logEntry) {
+        doc.from = { ip: ctx.state.logEntry.ip, geo: ctx.state.logEntry.geo }
+      }
+      await db.collection('loginAttempts').insertOne(doc)
       ctx.state.isAuthenticated = false
       ctx.flash = {
         login: {
@@ -120,10 +133,6 @@ router.post('postLogin', '/login', async (ctx) => {
       }
       ctx.redirect('/')
     }
-  } else {
-    error('csrf token mismatch')
-    ctx.type = 'application/json'
-    ctx.body = { status: 'Error, csrf tokens do not match' }
   }
 })
 
