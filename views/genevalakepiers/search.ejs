@@ -119,13 +119,15 @@
       const response = await fetch(request, { credentials: 'same-origin' })
       const json = await response.json()
       console.log(json) 
-      if ((json.public.total === 0 )
-        && (json.food.total === 0)
-        && (json.businesses.total === 0 )
-        && (json.pierNumbers.total === 0 )
+      // if (
+      if ((json.pierNumbers.total === 0 )
         && (json.estateNames.total === 0)
         && (json.ownerNames.total === 0)
-        && (json.associations.total === 0)) { 
+        && (json.addresses.total === 0)
+        && (json.public.total === 0 )
+        && (json.associations.total === 0)
+        && (json.food.total === 0)
+        && (json.businesses.total === 0 )) {
         const nonFound = document.createElement('span')  
         nonFound.setAttribute('id', 'results')
         nonFound.innerHTML = 'No piers found matching those terms.'
@@ -134,92 +136,6 @@
         const resultsList = document.createElement('ul')
         resultsList.setAttribute('id', 'resultsList')
         resultsList.setAttribute('class', 'searchResults')
-        if (json?.public?.total > 0) {
-          const pierPublicResultsList = document.createElement('ul')
-          pierPublicResultsList.setAttribute('id', 'pierPublicResults')
-          pierPublicResultsList.setAttribute('aria-label', 'Public Piers:')
-          pierPublicResultsList.classList.add('searchResults', 'pierPublicResults')
-          json.public.documents.forEach((p) => {
-            const li = document.createElement('li')
-            const link = `<a href="<%= origin %>/pier/${p.value.pier}">Pier ${p.value.pier} ${p.value.firstname}</a>`
-            li.innerHTML = link
-            pierPublicResultsList.appendChild(li)
-            // create mapkit annotation for pier
-            let [lon, lat] = p.value.coords.split(',')
-            lon = parseFloat(lon, 10)
-            lat = parseFloat(lat, 10)
-            // console.log(lat, lon)
-            if (lat !== 0 && lon !== 0) {
-              const annotationCallout = {
-                calloutLeftAccessoryForAnnotation: () => {
-                  const accessoryViewLeft = document.createElement("div")
-                  return accessoryViewLeft
-                },
-                calloutRightAccessoryForAnnotation: () => {
-                  const accessoryViewRight = document.createElement("a")
-                  accessoryViewRight.className = "right-accessory-view"
-                  accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
-                  accessoryViewRight.target = "_self"
-                  accessoryViewRight.textContent = "\u{24D8}"
-                  return accessoryViewRight
-                }
-              }
-              const pierMarker = new window.mapkit.Coordinate(lat, lon)
-              const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
-              pierAnnotation.title = `Pier ${p.value.pier}`
-              pierAnnotation.subtitle = p.value.firstname
-              pierAnnotation.animates = true
-              pierAnnotation.selected = true
-              pierAnnotation.color = "#4B93E0"
-              pierAnnotation.callout = annotationCallout
-              annotations.push(pierAnnotation)
-            }
-          })
-          searchResults.appendChild(pierPublicResultsList)
-        }
-        if (json?.food?.total > 0) {
-          const pierFoodResultsList = document.createElement('ul')
-          pierFoodResultsList.setAttribute('id', 'pierFoodResults')
-          pierFoodResultsList.setAttribute('aria-label', 'Piers with food:')
-          pierFoodResultsList.classList.add('searchResults', 'pierFoodResults')
-          json.food.documents.forEach((p) => {
-            const li = document.createElement('li')
-            const link = `<a href="<%= origin %>/pier/${p.value.pier}">Pier ${p.value.pier} ${p.value.business}</a>`
-            li.innerHTML = link
-            pierFoodResultsList.appendChild(li)
-            // create mapkit annotation for pier
-            let [lon, lat] = p.value.coords.split(',')
-            lon = parseFloat(lon, 10)
-            lat = parseFloat(lat, 10)
-            // console.log(lat, lon)
-            if (lat !== 0 && lon !== 0) {
-              const annotationCallout = {
-                calloutLeftAccessoryForAnnotation: () => {
-                  const accessoryViewLeft = document.createElement("div")
-                  return accessoryViewLeft
-                },
-                calloutRightAccessoryForAnnotation: () => {
-                  const accessoryViewRight = document.createElement("a")
-                  accessoryViewRight.className = "right-accessory-view"
-                  accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
-                  accessoryViewRight.target = "_self"
-                  accessoryViewRight.textContent = "\u{24D8}"
-                  return accessoryViewRight
-                }
-              }
-              const pierMarker = new window.mapkit.Coordinate(lat, lon)
-              const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
-              pierAnnotation.title = `Pier ${p.value.pier}`
-              pierAnnotation.subtitle = p.value.business
-              pierAnnotation.animates = true
-              pierAnnotation.selected = true
-              pierAnnotation.color = "#4B93E0"
-              pierAnnotation.callout = annotationCallout
-              annotations.push(pierAnnotation)
-            }
-          })
-          searchResults.appendChild(pierFoodResultsList)
-        }
         if (json?.pierNumbers?.total > 0) {
           const pierNumberResultsList = document.createElement('ul')
           pierNumberResultsList.setAttribute('id', 'pierNumberResults')
@@ -350,6 +266,92 @@
           })
           searchResults.appendChild(ownerNamesResultsList)
         }
+        if (json?.addresses?.total > 0) {
+          const addressesResultsList = document.createElement('ul')
+          addressesResultsList.setAttribute('id', 'addressesResults')
+          addressesResultsList.setAttribute('aria-label', 'Addresses:')
+          addressesResultsList.classList.add('searchResults', 'addressesResults')
+          json.addresses.documents.forEach((a) => {
+            const li = document.createElement('li')
+            const link = `<a href="<%= origin %>/pier/${a.value.pierNumber}">Pier ${a.value.pierNumber} - ${a.value.address}</a>`
+            li.innerHTML = link
+            addressesResultsList.appendChild(li)
+            // create mapkit annotation for pier
+            let [lon, lat] = a.value.coords.split(',')
+            lon = parseFloat(lon, 10)
+            lat = parseFloat(lat, 10)
+            // console.log(lat, lon)
+            if (lat !== 0 && lon !== 0) {
+              const annotationCallout = {
+                calloutLeftAccessoryForAnnotation: () => {
+                  const accessoryViewLeft = document.createElement("div")
+                  return accessoryViewLeft
+                },
+                calloutRightAccessoryForAnnotation: () => {
+                  const accessoryViewRight = document.createElement("a")
+                  accessoryViewRight.className = "right-accessory-view"
+                  accessoryViewRight.href = `${origin}/pier/${a.value.pierNumber}`
+                  accessoryViewRight.target = "_self"
+                  accessoryViewRight.textContent = "\u{24D8}"
+                  return accessoryViewRight
+                }
+              }
+              const pierMarker = new window.mapkit.Coordinate(lat, lon)
+              const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+              pierAnnotation.title = `Pier ${a.value.pierNumber}`
+              pierAnnotation.subtitle = a.value.address
+              pierAnnotation.animates = true
+              pierAnnotation.selected = true
+              pierAnnotation.color = "#4B93E0"
+              pierAnnotation.callout = annotationCallout
+              annotations.push(pierAnnotation)
+            }
+          })
+          searchResults.appendChild(addressesResultsList)
+        }
+        if (json?.public?.total > 0) {
+          const pierPublicResultsList = document.createElement('ul')
+          pierPublicResultsList.setAttribute('id', 'pierPublicResults')
+          pierPublicResultsList.setAttribute('aria-label', 'Public Piers:')
+          pierPublicResultsList.classList.add('searchResults', 'pierPublicResults')
+          json.public.documents.forEach((p) => {
+            const li = document.createElement('li')
+            const link = `<a href="<%= origin %>/pier/${p.value.pier}">Pier ${p.value.pier} ${p.value.firstname}</a>`
+            li.innerHTML = link
+            pierPublicResultsList.appendChild(li)
+            // create mapkit annotation for pier
+            let [lon, lat] = p.value.coords.split(',')
+            lon = parseFloat(lon, 10)
+            lat = parseFloat(lat, 10)
+            // console.log(lat, lon)
+            if (lat !== 0 && lon !== 0) {
+              const annotationCallout = {
+                calloutLeftAccessoryForAnnotation: () => {
+                  const accessoryViewLeft = document.createElement("div")
+                  return accessoryViewLeft
+                },
+                calloutRightAccessoryForAnnotation: () => {
+                  const accessoryViewRight = document.createElement("a")
+                  accessoryViewRight.className = "right-accessory-view"
+                  accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
+                  accessoryViewRight.target = "_self"
+                  accessoryViewRight.textContent = "\u{24D8}"
+                  return accessoryViewRight
+                }
+              }
+              const pierMarker = new window.mapkit.Coordinate(lat, lon)
+              const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+              pierAnnotation.title = `Pier ${p.value.pier}`
+              pierAnnotation.subtitle = p.value.firstname
+              pierAnnotation.animates = true
+              pierAnnotation.selected = true
+              pierAnnotation.color = "#4B93E0"
+              pierAnnotation.callout = annotationCallout
+              annotations.push(pierAnnotation)
+            }
+          })
+          searchResults.appendChild(pierPublicResultsList)
+        }
         if (json?.associations?.total > 0) {
           const associationsResultsList = document.createElement('ul')
           associationsResultsList.setAttribute('id', 'associationsResults')
@@ -393,6 +395,49 @@
           })
           searchResults.appendChild(associationsResultsList)
         }
+        if (json?.food?.total > 0) {
+          const pierFoodResultsList = document.createElement('ul')
+          pierFoodResultsList.setAttribute('id', 'pierFoodResults')
+          pierFoodResultsList.setAttribute('aria-label', 'Piers with food:')
+          pierFoodResultsList.classList.add('searchResults', 'pierFoodResults')
+          json.food.documents.forEach((p) => {
+            const li = document.createElement('li')
+            const link = `<a href="<%= origin %>/pier/${p.value.pier}">Pier ${p.value.pier} ${p.value.business}</a>`
+            li.innerHTML = link
+            pierFoodResultsList.appendChild(li)
+            // create mapkit annotation for pier
+            let [lon, lat] = p.value.coords.split(',')
+            lon = parseFloat(lon, 10)
+            lat = parseFloat(lat, 10)
+            // console.log(lat, lon)
+            if (lat !== 0 && lon !== 0) {
+              const annotationCallout = {
+                calloutLeftAccessoryForAnnotation: () => {
+                  const accessoryViewLeft = document.createElement("div")
+                  return accessoryViewLeft
+                },
+                calloutRightAccessoryForAnnotation: () => {
+                  const accessoryViewRight = document.createElement("a")
+                  accessoryViewRight.className = "right-accessory-view"
+                  accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
+                  accessoryViewRight.target = "_self"
+                  accessoryViewRight.textContent = "\u{24D8}"
+                  return accessoryViewRight
+                }
+              }
+              const pierMarker = new window.mapkit.Coordinate(lat, lon)
+              const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+              pierAnnotation.title = `Pier ${p.value.pier}`
+              pierAnnotation.subtitle = p.value.business
+              pierAnnotation.animates = true
+              pierAnnotation.selected = true
+              pierAnnotation.color = "#4B93E0"
+              pierAnnotation.callout = annotationCallout
+              annotations.push(pierAnnotation)
+            }
+          })
+          searchResults.appendChild(pierFoodResultsList)
+        }
         if (json?.businesses?.total > 0) {
           const businessResultsList = document.createElement('ul')
           businessResultsList.setAttribute('id', 'businessResults')
@@ -434,7 +479,7 @@
               annotations.push(pierAnnotation)
             }
           })
-        searchResults.appendChild(businessResultsList)
+          searchResults.appendChild(businessResultsList)
         }
         if (window.map) {
           // console.log(window.map)

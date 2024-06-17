@@ -170,6 +170,39 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
     }
   }
 
+  // create an index for address
+  const pierAddressIndex = `${DB_PREFIX}:idx:piers:address`
+  try {
+    // log(await redis.ft.dropIndex(pierAddressIndex))
+    log(`pierAddressIndex name: ${pierAddressIndex}`)
+    await redis.ft.create(
+      pierAddressIndex,
+      {
+        // '$.pier': {
+        //   type: SchemaFieldTypes.TEXT,
+        //   SORTABLE: true,
+        //   AS: 'pier',
+        // },
+        '$.property.address.street': {
+          type: SchemaFieldTypes.TEXT,
+          SORTABLE: true,
+          AS: 'address',
+        },
+      },
+      {
+        ON: 'JSON',
+        PREFIX: prefix,
+      },
+    )
+  } catch (e) {
+    if (e.message === 'Index already exists') {
+      log(`${pierAddressIndex} ${e.message}.  Skipping ahead.`)
+    } else {
+      error(e)
+      throw new Error(e.message, { cause: e })
+    }
+  }
+
   // create an index for estateName
   const pierOwnerEstatenameIndex = `${DB_PREFIX}:idx:piers:estateName`
   try {

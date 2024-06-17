@@ -776,9 +776,11 @@ router.post('search', '/search', hasFlash, async (ctx) => {
     ctx.status = 401
     ctx.body = { error: 'csrf token mismatch' }
   } else {
+    // let stopSearching = false
     const strings = []
     const numbers = []
     const results = {
+      addresses: { total: 0 },
       pierNumbers: { total: 0 },
       estateNames: { total: 0 },
       ownerNames: { total: 0 },
@@ -801,7 +803,32 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         }
       }
     })
-    if (numbers.length > 0) {
+    // Address check
+    let idxPierAddress
+    let queryPierAddress
+    let optsPierAddress
+    try {
+      idxPierAddress = 'glp:idx:piers:address'
+      queryPierAddress = `'${searchTerms[0]}'`
+      optsPierAddress = {}
+      // optsPierAddress.SORTBY = { BY: '$.pier', DIRECTION: 'ASC' }
+      optsPierAddress.RETURN = ['$.pier', 'AS', 'pierNumber', '$.loc', 'AS', 'coords', '$.property.address.street', 'AS', 'address']
+      log(`Pier address FT.SEARCH ${idxPierAddress} ${queryPierAddress}`)
+      results.addresses = await redis.ft.search(idxPierAddress, queryPierAddress, optsPierAddress)
+      log('address results: %O', results.addresses)
+      // if (results.addresses.total > 0) {
+      //   stopSearching = true
+      // }
+    } catch (e) {
+      error('Redis address search query failed:')
+      error(`using index: ${idxPierAddress}`)
+      error(`query: FT.SEARCH ${idxPierAddress} "${queryPierAddress}"`, optsPierAddress)
+      error(e)
+      // No need to disrupt the rest of the searching if this query failed.
+      // throw new Error('Search by pier numbers failed.', { cause: e })
+    }
+    // if (numbers.length > 0 && !stopSearching) {
+    if (numbers.length > 0 && strings.length === 0) {
       log(`numbers: ${numbers}`)
       let idxPierNumber
       let queryPierNumber
@@ -826,7 +853,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         results.pierNumbers = await redis.ft.search(idxPierNumber, queryPierNumber, optsPierNumber)
         log(results.pierNumbers)
       } catch (e) {
-        error('Redis search query feiled:')
+        error('Redis search query failed:')
         error(`using index: ${idxPierNumber}`)
         error(`query: FT.SEARCH ${idxPierNumber} "${queryPierNumber}"`, optsPierNumber)
         error(e)
@@ -870,7 +897,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
           results.public = await redis.ft.search(idxPierPublic, queryPierPublic, optsPierPublic)
           log(results.public)
         } catch (e) {
-          error('Redis search query feiled:')
+          error('Redis search query failed:')
           error(`using index: ${idxPierPublic}`)
           error(`query: FT.SEARCH ${idxPierPublic} "${queryPierPublic}"`, optsPierPublic)
           error(e)
@@ -909,7 +936,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
           results.food = await redis.ft.search(idxPierFood, queryPierFood, optsPierFood)
           log(results.food)
         } catch (e) {
-          error('Redis search query feiled:')
+          error('Redis search query failed:')
           error(`using index: ${idxPierFood}`)
           error(`query: FT.SEARCH ${idxPierFood} "${queryPierFood}"`, optsPierFood)
           error(e)
@@ -947,7 +974,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         results.estateNames = await redis.ft.search(idxPierEstateName, queryPierEstateName, optsPierEstateName)
         log(results.estateNames)
       } catch (e) {
-        error('Redis search query feiled:')
+        error('Redis search query failed:')
         error(`using index: ${idxPierEstateName}`)
         error(`query: FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}"`, optsPierEstateName)
         error(e)
@@ -982,7 +1009,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         results.ownerNames = await redis.ft.search(idxPierOwnerName, queryPierOwnerName, optsPierOwnerName)
         log(results.ownerNames)
       } catch (e) {
-        error('Redis search query feiled:')
+        error('Redis search query failed:')
         error(`using index: ${idxPierOwnerName}`)
         error(`query: FT.SEARCH ${idxPierOwnerName} "${queryPierOwnerName}"`, optsPierOwnerName)
         error(e)
@@ -1016,7 +1043,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         results.associations = await redis.ft.search(idxPierAssociation, queryPierAssociation, optsPierAssociation)
         log(results.associations)
       } catch (e) {
-        error('Redis search query feiled:')
+        error('Redis search query failed:')
         error(`using index: ${idxPierAssociation}`)
         error(`query: FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`, optsPierAssociation)
         error(e)
@@ -1050,7 +1077,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
         results.businesses = await redis.ft.search(idxPierBusiness, queryPierBusiness, optsPierBusiness)
         log(results.businesses)
       } catch (e) {
-        error('Redis search query feiled:')
+        error('Redis search query failed:')
         error(`using index: ${idxPierBusiness}`)
         error(`query: FT.SEARCH ${idxPierBusiness} "${queryPierBusiness}"`, optsPierBusiness)
         error(e)
