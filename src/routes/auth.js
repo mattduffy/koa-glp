@@ -95,11 +95,12 @@ router.post('postLogin', '/login', async (ctx) => {
     const users = new Users(collection, ctx)
     const authUser = await users.authenticateAndGetUser(username, password)
     log('authentication result: %o', authUser)
+    const doc = { attemptedAt: new Date(), username }
+    if (ctx.state?.logEntry) {
+      doc.from = { ip: ctx.state.logEntry.ip, geo: ctx.state.logEntry.geo }
+    }
     if (!authUser.user) {
-      const doc = { attemptedAt: new Date(), username, password }
-      if (ctx.state?.logEntry) {
-        doc.from = { ip: ctx.state.logEntry.ip, geo: ctx.state.logEntry.geo }
-      }
+      doc.incorrectPassword = password
       await db.collection('loginAttempts').insertOne(doc)
       ctx.state.isAuthenticated = false
       ctx.flash = {
@@ -112,6 +113,7 @@ router.post('postLogin', '/login', async (ctx) => {
       }
       ctx.redirect('/login')
     } else if (authUser) {
+      await db.collection('loginAttempts').insertOne(doc)
       log('successful user login')
       authUser.user.sessionId = sessionId
       const loggedInUser = await authUser.user.update()
