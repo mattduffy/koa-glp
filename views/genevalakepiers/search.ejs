@@ -32,14 +32,18 @@
       const formData = new FormData()
       formData.append('csrfTokenHidden', search['csrf-token'].value)
       formData.append('searchBox', search.searchBox.value)
-
       // mapkit search service
       // center of lake 42.598788, -88.423885
+      //                42.568642, -88.478089
       const mapkitSearch = new window.mapkit.Search({
-        coordinate: new window.mapkit.Coordinate(42.598788, -88.423885),
-        region: window.map.region,
+        addressFilter: mapkit.AddressFilter.including([
+          mapkit.AddressCategory.Locality
+        ]),
+        coordinate: new window.mapkit.Coordinate(42.568642, -88.478089),
+        // region: window.map.region,
+        limitToCountries: 'US',
       })
-      console.info(formData.get('searchBox'))
+      // console.info(formData.get('searchBox'))
       const mapkitSearchResults = mapkitSearch.search(formData.get('searchBox'),
         {
           searchDidError: (error) => {
@@ -51,7 +55,7 @@
             if (data.places.length > 0) {
               const localityFilter = ['Lake Geneva', 'Williams Bay', 'Fontana', 'Fontana-on-Geneva Lake', 'Walworth', 'Linn']
               data.locallyFiltered = data.places.filter((place) => localityFilter.includes(place.locality) )
-              console.log(data.locallyFiltered)
+              // console.log(data.locallyFiltered)
               if (data.locallyFiltered.length > 0) {
                 mapkitResultsList = document.createElement('ul')
                 mapkitResultsList.setAttribute('id', 'mapkitResults')
@@ -88,7 +92,7 @@
               }
             }
           }
-        }
+        }, { limitToCountries: 'us' }
       )
       console.info(`mapkit search results: ${mapkitSearchResults}`)
       function annotateSearchResultItem(span) {
