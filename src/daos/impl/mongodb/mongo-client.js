@@ -32,14 +32,17 @@ const dbCAKeyFile = path.resolve(root, mongoEnv.MONGODB_CAKEYFILE)
 // const dbCAKeyFile = encodeURIComponent(mongoEnv.MONGODB_CAKEYFILE)
 const uri = `mongodb://${clientDn}@${dbHost}:${dbPort1},${dbHost}:${dbPort2},${dbHost}:${dbPort3}/${dbName}?replicaSet=myReplicaSet&authMechanism=${authMechanism}&tls=true&tlsCertificateKeyFile=${clientPEMFile}&tlsCAFile=${dbCAKeyFile}&authSource=${authSource}&appName=${appName}`
 
-// console.log('mongo-client.js >> root = ', root)
-// console.log(`mongo-client env path: ${mongodbEnvPath}`)
-// console.log(`MongoDB Host: ${dbHost}`)
-// console.log(`MongoDB TLS client key: ${clientPEMFile}`)
-// console.log(`MongoDB TLS server key: ${dbCAKeyFile}`)
-// console.log(`MongoDB TLS Subject: ${clientDn}`)
+console.log('mongo-client.js >> root = ', root)
+console.log(`mongo-client env path: ${mongodbEnvPath}`)
+console.log(`MongoDB Host: ${dbHost}`)
+console.log(`MongoDB TLS client key: ${clientPEMFile}`)
+console.log(`MongoDB TLS server key: ${dbCAKeyFile}`)
+console.log(`MongoDB TLS Subject: ${clientDn}`)
 
-const client = new MongoClient(uri)
+const options = {
+  tlsAllowInvalidCertificates: true,
+}
+const client = new MongoClient(uri, options)
 
 export {
   uri,
