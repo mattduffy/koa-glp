@@ -382,7 +382,7 @@ router.get('Towns', '/towns', hasFlash, async (ctx) => {
     { t: 'city-of-lake-geneva', n: 'City of Lake Geneva' },
     { t: 'town-of-linn', n: 'Town of Linn' },
     { t: 'village-of-williams-bay', n: 'Village of Williams Bay' },
-    { t: 'village-of-fontana-on-geneva-lake', n: 'Village of Fontana-on-Geneva Lake' },
+    { t: 'village_of_fontana-on-geneva_lake', n: 'Village of Fontana-on-Geneva Lake' },
     { t: 'town-of-walworth', n: 'Town of Walworth' },
   ]
   log(towns)
