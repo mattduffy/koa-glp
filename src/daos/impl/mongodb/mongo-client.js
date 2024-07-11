@@ -40,7 +40,7 @@ console.log(`MongoDB TLS server key: ${dbCAKeyFile}`)
 console.log(`MongoDB TLS Subject: ${clientDn}`)
 
 const options = {
-  tlsAllowInvalidCertificates: true,
+  tlsAllowInvalidCertificates: false,
 }
 const client = new MongoClient(uri, options)
 
