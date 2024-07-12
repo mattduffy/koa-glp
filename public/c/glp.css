@@ -673,6 +673,7 @@ footer > section {
 
   header span.hamburger {
     display: block!important;
+    cursor: pointer;
   }
 
   .hamburger::before {
