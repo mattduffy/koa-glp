@@ -76,7 +76,7 @@
         <% if (pier?.property?.tel !== undefined && pier?.property?.tel.length !== 0) { %>
           <li>Telephone: <a href="tel:<%= pier.property.tel %>"><%= pier.property.tel %></a></li>
         <% } %>
-        <% if (pier?.property?.established !== undefined && pier?.property?.established?.length !== 0) { %>
+        <% if (pier?.property?.established && pier?.property?.established?.length !== 0) { %>
           <li>Established in <%= pier.property.established %></li>
         <% } %>
         <% if (pier.owners[0]?.estateName !== "") { %>
