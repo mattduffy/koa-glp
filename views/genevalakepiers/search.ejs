@@ -23,8 +23,26 @@
     const search = document.forms.search
     const searchResults = document.querySelector('div#searchResults')
     const annotations = []
-    // console.log(search)
-    search.addEventListener('submit', async (e) => {
+    window.addEventListener('load', async (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      const searchParams = new URLSearchParams(document.location.search)
+      const q = searchParams.get('q') 
+      console.log(`q=${q}`)
+      if (q !== null) {
+        search.searchBox.value = q
+        search.submit.click()
+      }
+    })
+    window.addEventListener('popstate', (e) => {
+      if (e.state) {
+        // console.log('popstate: ', e.state)
+        search.searchBox.value = e.state.tokens
+        search.submit.click()
+      }
+    })
+    search.addEventListener('submit', await doSearch)
+    async function doSearch(e) {
       document.activeElement.blur()
       e.stopPropagation()
       e.preventDefault()
@@ -32,6 +50,12 @@
       const formData = new FormData()
       formData.append('csrfTokenHidden', search['csrf-token'].value)
       formData.append('searchBox', search.searchBox.value)
+      // console.info(formData.get('searchBox'))
+      const queryState = {
+        q: encodeURI(`q=${formData.get('searchBox')}`),
+        tokens: formData.get('searchBox'), 
+      } 
+      history.pushState(queryState, "", queryState.q)
       // mapkit search service
       // center of lake 42.598788, -88.423885
       //                42.568642, -88.478089
@@ -43,7 +67,6 @@
         // region: window.map.region,
         limitToCountries: 'US',
       })
-      // console.info(formData.get('searchBox'))
       const mapkitSearchResults = mapkitSearch.search(formData.get('searchBox'),
         {
           searchDidError: (error) => {
@@ -123,7 +146,6 @@
       const response = await fetch(request, { credentials: 'same-origin' })
       const json = await response.json()
       console.log(json) 
-      // if (
       if ((json.pierNumbers.total === 0 )
         && (json.estateNames.total === 0)
         && (json.ownerNames.total === 0)
@@ -494,5 +516,5 @@
           // await annotateSearchResults(searchResults)
         }
       }
-    })
+    }
   </script>
