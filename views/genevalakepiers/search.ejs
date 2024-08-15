@@ -50,9 +50,8 @@
       const formData = new FormData()
       formData.append('csrfTokenHidden', search['csrf-token'].value)
       formData.append('searchBox', search.searchBox.value)
-      // console.info(formData.get('searchBox'))
       const queryState = {
-        q: encodeURI(`q=${formData.get('searchBox')}`),
+        q: encodeURI(`?q=${formData.get('searchBox')}`),
         tokens: formData.get('searchBox'), 
       } 
       history.pushState(queryState, "", queryState.q)
