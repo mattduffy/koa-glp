@@ -1,13 +1,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <meta name='description' content='<%= pageDescription %>'>
-    <% if (structuredData !== null) { %>
-    <script type="application/ld+json">
-      <%- structuredData %>
-    </script>
-    <% } %>
     <% if (typeof openGraph !== undefined) { %>
     <%- openGraph %>
+    <% } %>
+    <% if (structuredData) { %>
+    <script type="application/ld+json" nonce="<%= nonce %>">
+        <%- structuredData %>
+    </script>
     <% } %>
     <title><%- title -%></title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico"> 

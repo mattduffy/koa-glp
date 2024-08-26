@@ -130,7 +130,7 @@ app.use(async (ctx, next) => {
     isHTTPS = false
     config.secure = false
   }
-  log(config)
+  // log(config)
   return next()
 })
 log(`isHTTPS: ${isHTTPS}`)
@@ -280,7 +280,7 @@ async function viewGlobals(ctx, next) {
   ctx.state.caching = false
   ctx.state.structuredData = JSON.stringify({
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
+    '@type': 'website',
     name: 'Geneva Lake Piers',
     url: ctx.state.origin,
   }, null, 2)
