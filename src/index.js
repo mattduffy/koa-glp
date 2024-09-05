@@ -304,21 +304,39 @@ async function logRequest(ctx, next) {
       const db = ctx.state.mongodb.client.db(ctx.state.mongodb.dbName)
       const mainLog = db.collection('mainLog')
       const logEntry = {}
-      logEntry.remoteIp = ctx.request.ips
-      if (geoIPCity && ctx.request.ip) {
+      logEntry.remoteIps = ctx.request.ips
+      const geos = []
+      if (geoIPCity && ctx.request.ips) {
         try {
-          const city = geoIPCity.city(ctx.request.ip)
-          const geo = {}
-          geo.ip = ctx.request.ip
-          geo.country = city?.country?.names?.en
-          geo.city = city?.city?.names?.en
-          geo.subdivision = city?.subdivisions?.[0]?.names?.en
-          geo.zip = city?.postal?.code
-          geo.coords = [city?.location?.latitude, city?.location?.longitude]
-          logEntry.geo = geo
-          logg('Request ip geo:     %o', geo)
+          if (Array.isArray(ctx.request.ips)) {
+            ctx.request.ips.forEach((ip, i) => {
+              const city = geoIPCity.city(ip)
+              const geo = {}
+              geo.ip = ip
+              geo.country = city?.country?.names?.en
+              geo.city = city?.city?.names?.en
+              geo.subdivision = city?.subdivisions?.[0]?.names?.en
+              geo.zip = city?.postal?.code
+              geo.coords = [city?.location?.latitude, city?.location?.longitude]
+              logEntry[`geo_${i}`] = geo
+              geos.push(geo)
+              logg('Request ip geo:     %o', geo)
+            })
+          } else {
+            const city = geoIPCity.city(ctx.request.ip)
+            const geo = {}
+            geo.ip = ctx.request.ip
+            geo.country = city?.country?.names?.en
+            geo.city = city?.city?.names?.en
+            geo.subdivision = city?.subdivisions?.[0]?.names?.en
+            geo.zip = city?.postal?.code
+            geo.coords = [city?.location?.latitude, city?.location?.longitude]
+            logEntry.geo = geo
+            geos.push(geo)
+            logg('Request ip geo:     %o', geo)
+          }
         } catch (e) {
-          logg(e.message)
+          err(e.message)
         }
       }
       logEntry.date = new Date()
@@ -327,7 +345,7 @@ async function logRequest(ctx, next) {
       logEntry.httpVersion = `${ctx.req.httpVersionMajor}.${ctx.req.httpVersionMinor}`
       logEntry.referer = ctx.request.headers?.referer
       logEntry.userAgent = ctx.request.headers['user-agent']
-      ctx.state.logEntry = { ip: logEntry.remoteIp[0], geo: logEntry.geo }
+      ctx.state.logEntry = { ip: logEntry.remoteIps, geos }
       await mainLog.insertOne(logEntry)
     }
     logg(`Request href:        ${ctx.request.href}`)
