@@ -101,6 +101,7 @@ app.dirs = {
   archive: {
     archive: `${appRoot}/archive`,
   },
+  config: `${appRoot}/config`,
   keys: `${appRoot}/keys`,
   public: {
     dir: `${appRoot}/public`,
