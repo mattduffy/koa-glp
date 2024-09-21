@@ -1,5 +1,5 @@
 /**
- * @module @mattduffy/koa-stub
+ * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
  * @file src/session-handler.js The setup and configuration of the koa app session handler.
  */
@@ -38,7 +38,6 @@ const redisConnOpts = {
   username: redisEnv.REDIS_USER,
   password: redisEnv.REDIS_PASSWORD,
   connectionName: 'glp-sessions',
-  // keyPrefix: 'koasessions:',
   keyPrefix: `${redisEnv.REDIS_KEY_PREFIX}:sessions:` ?? 'koa:sessions:',
   enableTLSForSentinelMode: true,
   sentinelRetryStrategy: 100,
@@ -57,16 +56,16 @@ const redis = redisStore(redisConnOpts)
 
 const config = {
   store: redis,
-  key: redisEnv.SESSION_KEY,
-  maxAge: redisEnv.SESSION_MAX_AGE,
-  httpOnly: redisEnv.SESSION_HTTPONLY,
-  signed: redisEnv.SESSION_SIGNED,
-  rolling: redisEnv.SESSION_ROLLING,
-  renew: redisEnv.SESSION_RENEW,
-  secure: redisEnv.SESSION_SECURE,
-  autoCommit: true,
+  key: redisEnv.SESSION_KEY ?? 'session',
+  maxAge: redisEnv.SESSION_1_DAY * 2 ?? (84600000 * 2),
+  rolling: (redisEnv.SESSION_ROLLING.toLowerCase() === 'true') ?? true,
+  renew: (redisEnv.SESSION_RENEW.toLowerCase() === 'true') ?? true,
   overwrite: true,
-  sameSite: 'strict',
+  autoCommit: true,
+  secure: (redisEnv.SESSION_SECURE.toLowerCase() === 'true') ?? true,
+  httpOnly: (redisEnv.SESSION_HTTPONLY.toLowerCase() === 'true') ?? true,
+  signed: (redisEnv.SESSION_SIGNED.toLowerCase() === 'true') ?? true,
+  sameSite: null,
 }
 
 export { session, config, redis }

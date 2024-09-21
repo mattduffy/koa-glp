@@ -125,19 +125,19 @@ const o = {
 let isHTTPS
 log(`isHTTPS: ${isHTTPS}`)
 app.use(async (ctx, next) => {
+  log('isHTTPS: ', ctx.request.secure)
   if (!ctx.request.secure) {
-    log('isHTTPS: ', ctx.request.secure)
     isHTTPS = false
     config.secure = false
   }
-  // log(config)
+  log(config)
   return next()
 })
 log(`isHTTPS: ${isHTTPS}`)
 if (!isHTTPS) {
   // config.secure = false
   log('request is NOT secure.')
-  log('session cookies stored in the clear.')
+  log('session cookie stored in the clear.')
 }
 app.use(session(config, app))
 
