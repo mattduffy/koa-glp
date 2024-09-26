@@ -131,7 +131,7 @@ app.use(async (ctx, next) => {
     isHTTPS = false
     config.secure = false
   }
-  log(config)
+  // log(config)
   return next()
 })
 log(`isHTTPS: ${isHTTPS}`)
