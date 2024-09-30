@@ -30,8 +30,10 @@
     "addNewFields": "DEBUG_DEPTH=2 DEBUG=* node src/utils/addNewFields.js",
     "normalizeAssocs": "DEBUG_DEPTH=2 DEBUG=* node src/utils/normalizeAssocs.js",
     "dev": "DEBUG_DEPTH=2 DEBUG=* node src/index.js",
+    "walk": "DEBUG_DEPTH=2 DEBUG=* CORES_WALK=1 node src-walk/walk.js",
     "cluster": "DEBUG_DEPTH=2 DEBUG=* node src/cluster.js",
-    "cluster-glp": "DEBUG_DEPTH=2 DEBUG=* node src/cluster.js"
+    "cluster-glp": "DEBUG_DEPTH=2 DEBUG=* node src/cluster.js",
+    "walk-test": "DEBUG_DEPTH=2 DEBUG=* node src/cluster.js; CORES_WALK=1 node src-walk/walk.js"
   },
   "devDependencies": {
     "eslint": "8.38.0",
