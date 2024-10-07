@@ -49,7 +49,7 @@
       console.log(`query param s: ${s}`)
       let ulResultsList = document.querySelector('ul#resultsList')
       const previousDiv = document.querySelector('div.previousPier')
-      let previousLink = (previousDiv.children)[0]
+      let previousLink = (previousDiv?.children)?.[0]
       
       function updatePrevLink(len) {
         if (s <= 1) {
@@ -78,7 +78,7 @@
         previousLink.addEventListener('click', setAndUpdatePrevNextLinks)
       }
       const nextDiv = document.querySelector('div.nextPier')
-      let nextLink = (nextDiv.children)[0]
+      let nextLink = (nextDiv?.children)?.[0]
       if (nextLink?.tagName === 'A') {
         // console.log(`nextLink ${nextLink}`)
         nextLink.addEventListener('click', setAndUpdatePrevNextLinks)
@@ -201,8 +201,8 @@
           mapType: mapkit.Map.MapTypes.Hybrid,
           loadPriority: mapkit.Map.LoadPriorities.PointsOfInterest,
           selectableMapFeatures: [mapkit.MapFeatureType.PhysicalFeature, mapkit.MapFeatureType.PointOfInterest],
-          visibleMapRect: mapkit.MapRect(0, 0, 1, 1),
-          visibleMapRect: mapkit.MapRect(0, 0, 1, 1),
+          visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
+          // visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
           isZoomEnabled: true,
           showsCompass: mapkit.FeatureVisibility.Visible,
           showsScale: mapkit.FeatureVisibility.Visible,
