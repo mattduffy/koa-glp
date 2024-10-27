@@ -123,7 +123,7 @@
     <script nonce="<%= nonce %>">
       const ex = document.querySelectorAll('a[href]')
       ex.forEach((a) => {
-        if (!/genevalakepiers/.test(a.href)) {
+        if (!/genevalakepiers|192\./.test(a.href)) {
           a.setAttribute('target', '_blank')
         }
       })
