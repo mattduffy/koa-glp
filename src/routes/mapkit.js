@@ -524,7 +524,8 @@ router.get('mapkitGetToken', '/mapkit/getToken', async (ctx) => {
   let mapKitAccessToken
   const csrfTokenCookie = ctx.cookies.get('csrfToken')
   const csrfTokenSession = ctx.session.csrfToken
-  info(`${csrfTokenCookie},\n${csrfTokenSession}`)
+  info(`csrfTokenCookie:  ${csrfTokenCookie}`)
+  info(`csrfTokenSession: ${csrfTokenSession}`)
   if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
   if (!(csrfTokenCookie === csrfTokenSession)) {
     error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)

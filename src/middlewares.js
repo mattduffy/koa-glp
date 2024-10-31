@@ -204,12 +204,13 @@ export function tokenAuthMiddleware(options = {}) {
         ctx.body = `HTTP 400 Bad Request\nWWW-Authenticate: Bearer realm="${ctx.app.domain}"`
       } else {
         try {
-          if (ctx.state.accessToken !== ctx.searchAccesToken) {
+          if (ctx.state.accessToken === ctx.state.searchAccessToken) {
             log(`ctx.state.accessToken: ${ctx.state.accessToken}`)
             const db = ctx.state.mongodb.client.db()
             const collection = db.collection(USERS)
             const users = new Users(collection, ctx)
             const tokenUser = await users.authenticateByAccessToken(ctx.state.accessToken)
+            log(`success: ${tokenUser?.message}`)
             if (tokenUser && tokenUser.message === 'success') {
               ctx.state.sessionUser = tokenUser.user
               ctx.state.isAuthenticated = true
