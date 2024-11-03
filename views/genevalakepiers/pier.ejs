@@ -216,6 +216,8 @@
           const pierMarker = new window.mapkit.Coordinate(lat, lon)
           const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
           pierAnnotation.title = `Pier ${pierNumber}`
+          pierAnnotation.animates = true
+          pierAnnotation.selected = true
           annotations.push(pierAnnotation)
         }
         if (annotations.length > 0) {
