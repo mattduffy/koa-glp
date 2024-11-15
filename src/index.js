@@ -334,11 +334,13 @@ async function logRequest(ctx, next) {
             geo.coords = [city?.location?.latitude, city?.location?.longitude]
             logEntry.geo = geo
             geos.push(geo)
-            logg('Request ip geo:     %o', geo)
+            logg('Request ip geo:     %O', geo)
           }
         } catch (e) {
           err(e.message)
         }
+      } else {
+        logg(`failed to log ip geo for ${ctx.request.ips}`)
       }
       logEntry.date = new Date()
       logEntry.method = ctx.method
