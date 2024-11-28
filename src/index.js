@@ -48,7 +48,6 @@ const appRoot = path.resolve(`${__dirname}/..`)
 const appEnv = {}
 const showDebug = process.env.NODE_ENV !== 'production'
 dotenv.config({ path: path.resolve(appRoot, 'config/app.env'), processEnv: appEnv, debug: showDebug })
-// dotenv.config({ path: path.resolve(appRoot, 'config/test.env'), debug: showDebug })
 
 const horizontalborder = '*'
 let _startingup = `Starting up: ${appEnv.SITE_NAME}`
@@ -100,6 +99,9 @@ app.templateName = 'genevalakepiers'
 app.dirs = {
   archive: {
     archive: `${appRoot}/archive`,
+  },
+  cache: {
+    pages: `${appRoot}/cached_pages`,
   },
   config: `${appRoot}/config`,
   keys: `${appRoot}/keys`,
@@ -170,7 +172,7 @@ async function proxyCheck(ctx, next) {
     await next()
   } catch (e) {
     err(e)
-    ctx.throw(500, 'Rethrown in CSP middleware', e)
+    ctx.throw(500, 'Rethrown in proxyCheck middleware', e)
   }
 }
 
@@ -191,6 +193,27 @@ async function openGraph(ctx, next) {
   ctx.state.openGraph = ogArray.join('\n')
   logg(ctx.state.openGraph)
   await next()
+}
+
+async function permissions(ctx, next) {
+  const logg = log.extend('Permissions')
+  const err = error.extend('Permissions')
+  let perms
+  logg(ctx.request.origin)
+  logg(ctx.request.hostname)
+  if (/^192(\.\d{1,3})+/.test(ctx.request.hostname)) {
+    perms = 'geolocation=(*)'
+    logg(`Permissions-Policy: ${perms}`)
+  } else {
+    perms = `geolocation=("${ctx.request.origin}")`
+  }
+  ctx.set('Permissions-Policy', perms)
+  try {
+    await next()
+  } catch (e) {
+    err(e)
+    ctx.throw(500, 'Rethrown in Permissions middleware', e)
+  }
 }
 
 async function csp(ctx, next) {
@@ -376,16 +399,17 @@ app.use(prepareRequest())
 app.use(tokenAuthMiddleware())
 app.use(checkServerJWKs)
 app.use(proxyCheck)
+app.use(permissions)
 app.use(csp)
 app.use(cors)
 app.use(serve(app.dirs.public.dir))
 app.use(theApp.routes())
 app.use(Auth.routes())
 app.use(Mapkit.routes())
+app.use(Account.routes())
 app.use(Main.routes())
 app.use(Edit.routes())
 app.use(Users.routes())
-app.use(Account.routes())
 app.use(wellKnown.routes())
 app.use(Seo.routes())
 // app.use(activityV1.routes())
