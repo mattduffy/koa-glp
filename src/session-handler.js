@@ -33,14 +33,15 @@ const redisConnOpts = {
   ],
   name: 'myprimary',
   db: redisEnv.REDIS_DB,
+  keyPrefix: `${redisEnv.REDIS_KEY_PREFIX}:sessions:` ?? 'koa:sessions:',
   sentinelUsername: redisEnv.REDIS_SENTINEL_USER,
   sentinelPassword: redisEnv.REDIS_SENTINEL_PASSWORD,
   username: redisEnv.REDIS_USER,
   password: redisEnv.REDIS_PASSWORD,
-  connectionName: 'glp-sessions',
-  keyPrefix: `${redisEnv.REDIS_KEY_PREFIX}:sessions:` ?? 'koa:sessions:',
+  connectionName: `${redisEnv.REDIS_CONNECTION_NAME}-sessions`,
   enableTLSForSentinelMode: true,
-  sentinelRetryStrategy: 100,
+  showFriendlyErrorStack: true,
+  keepAlive: 10000,
   tls: {
     ca: fs.readFileSync(redisEnv.REDIS_CACERT),
     rejectUnauthorized: false,
@@ -51,13 +52,30 @@ const redisConnOpts = {
     rejectUnauthorized: false,
     requestCert: true,
   },
+  retryStrategy(times) {
+    const delay = Math.min(times * 50, 2000)
+    return delay
+  },
+  // sentinelRetryStrategy: 100,
+  sentinelRetryStrategy(times) {
+    const delay = Math.min(times * 50, 2000)
+    return delay
+  },
+  /* eslint-disable consistent-return */
+  reconnectOnError(err) {
+    const targetError = 'closed'
+    if (err.message.includes(targetError)) {
+      return true
+    }
+    // return false
+  },
 }
 const redis = redisStore(redisConnOpts)
 
 const config = {
   store: redis,
   key: redisEnv.SESSION_KEY ?? 'session',
-  maxAge: redisEnv.SESSION_1_DAY * 2 ?? (84600000 * 2),
+  maxAge: redisEnv.SESSION_1_DAY * 3 ?? (86400000 * 3),
   rolling: (redisEnv.SESSION_ROLLING.toLowerCase() === 'true') ?? true,
   renew: (redisEnv.SESSION_RENEW.toLowerCase() === 'true') ?? true,
   overwrite: true,
