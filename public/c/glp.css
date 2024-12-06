@@ -196,9 +196,13 @@ header > div > picture > img {
 header > h1 {
   display: block;
   text-align: -webkit-auto;
+  position: relative;
+  margin-left: -25%;
 }
 header > h1 > a:active, a:visited, a:link {
   color: black;
+  position: relative;
+  /* margin-left: 33%; */
   text-align: center;
   max-width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Helvetica Neue, HelveticaNeue, Helvetica, Arial, sans-serif;
@@ -210,7 +214,7 @@ header > ul.header-links {
   display: none;
   grid-column-start: 2;
   position: relative;
-  left: -10%;
+  left: -19%;
   margin-top: -5px;
 }
 
@@ -685,6 +689,8 @@ footer > section {
   header > h1 {
     display: block!important;
     text-align: -webkit-auto;
+    position: relative;
+    margin-left: 0%;
   }
 
   header > h1 > a:active, a:visited, a:link {
