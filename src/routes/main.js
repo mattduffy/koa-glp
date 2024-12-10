@@ -11,6 +11,12 @@ import formidable from 'formidable'
 import { Albums } from '@mattduffy/albums/Albums' // eslint-disable-line import/no-unresolved
 import { AggregateGroupByReducers, AggregateSteps } from 'redis'
 import {
+  addIpToSession,
+  doTokensMatch,
+  processFormData,
+  hasFlash,
+} from './middlewares.js'
+import {
   _log,
   _error,
   getSetName,
@@ -47,18 +53,18 @@ function leftZeroPad(x) {
 }
 
 const router = new Router()
-async function hasFlash(ctx, next) {
-  const log = mainLog.extend('hasFlash')
-  const error = mainError.extend('hasFlash')
-  if (ctx.flash) {
-    log('ctx.flash is present: %o', ctx.flash)
-  } else {
-    error('ctx.flash is missing.')
-  }
-  await next()
-}
+// async function hasFlash(ctx, next) {
+//   const log = mainLog.extend('hasFlash')
+//   const error = mainError.extend('hasFlash')
+//   if (ctx.flash) {
+//     log('ctx.flash is present: %o', ctx.flash)
+//   } else {
+//     error('ctx.flash is missing.')
+//   }
+//   await next()
+// }
 
-router.get('index', '/', hasFlash, async (ctx) => {
+router.get('index', '/', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('index')
   // const error = mainError.extend('index')
   log('inside main router: /')
@@ -90,7 +96,7 @@ router.get('index', '/', hasFlash, async (ctx) => {
   await ctx.render('index', locals)
 })
 
-router.get('piersByTown', '/towns/:town', hasFlash, async (ctx) => {
+router.get('piersByTown', '/towns/:town', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('GET-piersByTown')
   const error = mainError.extend('GET-piersByTown')
   const town = getSetName(sanitize(ctx.params.town))
@@ -128,7 +134,7 @@ router.get('piersByTown', '/towns/:town', hasFlash, async (ctx) => {
   await ctx.render('town', locals)
 })
 
-router.get('pierBigSwimPiers', '/swim', hasFlash, async (ctx) => {
+router.get('pierBigSwimPiers', '/swim', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('GET-piersSwim')
   const error = mainError.extend('GET-piersSwim')
   if (ctx.state.isAsyncRequest === true) {
@@ -188,7 +194,7 @@ router.get('pierBigSwimPiers', '/swim', hasFlash, async (ctx) => {
   }
 })
 
-router.get('pierPublic', '/public', hasFlash, async (ctx) => {
+router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('GET-piersPublic')
   const error = mainError.extend('GET-piersPublic')
   if (ctx.state.isAsyncRequest === true) {
@@ -253,7 +259,7 @@ router.get('pierPublic', '/public', hasFlash, async (ctx) => {
   }
 })
 
-router.get('pierBusinesses', '/businesses', hasFlash, async (ctx) => {
+router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('GET-piersBusinesses')
   const error = mainError.extend('GET-piersBusinesses')
   if (ctx.state.isAsyncRequest === true) {
@@ -321,7 +327,7 @@ router.get('pierBusinesses', '/businesses', hasFlash, async (ctx) => {
   }
 })
 
-router.get('pierMarinas', '/marinas', hasFlash, async (ctx) => {
+router.get('pierMarinas', '/marinas', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('GET-piersMarinas')
   const error = mainError.extend('GET-piersMarinas')
   const offset = 0
@@ -373,7 +379,7 @@ router.get('pierMarinas', '/marinas', hasFlash, async (ctx) => {
   await ctx.render('marinas', locals)
 })
 
-router.get('Towns', '/towns', hasFlash, async (ctx) => {
+router.get('Towns', '/towns', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('GET-Towns')
   // const error = mainError.extend('GET-Towns')
   const towns = {}
@@ -396,7 +402,7 @@ router.get('Towns', '/towns', hasFlash, async (ctx) => {
   await ctx.render('towns', locals)
 })
 
-router.get('pierFood', '/food', hasFlash, async (ctx) => {
+router.get('pierFood', '/food', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('GET-piersFood')
   const error = mainError.extend('GET-piersFood')
   const offset = 0
@@ -448,7 +454,7 @@ router.get('pierFood', '/food', hasFlash, async (ctx) => {
   await ctx.render('food', locals)
 })
 
-router.get('pierAssociations', '/associations', hasFlash, async (ctx) => {
+router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('GET-piersAssociations')
   const error = mainError.extend('GET-piersAssociations')
   if (ctx.state.isAsyncRequest === true) {
@@ -526,7 +532,7 @@ router.get('pierAssociations', '/associations', hasFlash, async (ctx) => {
   }
 })
 
-router.get('piersByAssociation', '/assoc/:assoc', hasFlash, async (ctx) => {
+router.get('piersByAssociation', '/assoc/:assoc', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('GET-piersByAssoc')
   const error = mainError.extend('GET-piersByAssoc')
   const assoc = sanitize(ctx.params.assoc)
@@ -564,7 +570,7 @@ router.get('piersByAssociation', '/assoc/:assoc', hasFlash, async (ctx) => {
   await ctx.render('assoc', locals)
 })
 
-router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
+router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('GET-pierByNumber')
   const error = mainError.extend('GET-pierByNumber')
   const pierNumber = sanitize(ctx.params.pier.toUpperCase())
@@ -682,7 +688,7 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, async (ctx) => {
   }
 })
 
-router.get('pierEdit-GET', '/pier/edit/:pier', hasFlash, async (ctx) => {
+router.get('pierEdit-GET', '/pier/edit/:pier', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('GET-pierEdit')
   const error = mainError.extend('GET-pierEdit')
   if (!ctx.state?.isAuthenticated) {
@@ -743,35 +749,14 @@ router.get('pierEdit-GET', '/pier/edit/:pier', hasFlash, async (ctx) => {
   }
 })
 
-router.post('search', '/search', hasFlash, async (ctx) => {
+router.post('search', '/search', hasFlash, addIpToSession, processFormData, async (ctx) => {
   const log = mainLog.extend('search')
   const error = mainError.extend('search')
-  const form = formidable({
-    encoding: 'utf-8',
-    // type: 'urlencoded',
-    multipart: true,
-  })
-  form.type = 'urlencoded'
-  await new Promise((resolve, reject) => {
-    form.parse(ctx.req, (err, fields) => {
-      if (err) {
-        error('There was a problem parsing the multipart form data.')
-        error(err)
-        reject(err)
-        return
-      }
-      log('Multipart form data was successfully parsed.')
-      ctx.request.body = fields
-      log(fields)
-      resolve()
-    })
-  })
   const searchTerms = ctx.request.body.searchBox
   // log(searchTerms, ctx.request.body.searchBox)
   const csrfTokenCookie = ctx.cookies.get('csrfToken')
   const csrfTokenSession = ctx.session.csrfToken
-  const { csrfTokenHidden } = ctx.request.body
-  if (csrfTokenCookie === csrfTokenSession && csrfTokenSession === csrfTokenHidden) {
+  if (!doTokensMatch(ctx)) {
     error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
     ctx.status = 401
     ctx.body = { error: 'csrf token mismatch' }
@@ -1097,7 +1082,7 @@ router.post('search', '/search', hasFlash, async (ctx) => {
   }
 })
 
-router.get('galleries', '/galleries', hasFlash, async (ctx) => {
+router.get('galleries', '/galleries', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('galleries')
   const error = mainError.extend('galleries')
   log('inside index router: /galleries')
@@ -1146,7 +1131,7 @@ router.get('galleries', '/galleries', hasFlash, async (ctx) => {
   })
 })
 
-router.get('about', '/about', hasFlash, async (ctx) => {
+router.get('about', '/about', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('about')
   // const error = mainError.extend('about')
   log('inside index router: /about')
@@ -1159,7 +1144,7 @@ router.get('about', '/about', hasFlash, async (ctx) => {
   })
 })
 
-router.get('contact', '/contact', hasFlash, async (ctx) => {
+router.get('contact', '/contact', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('contact')
   // const error = mainError.extend('contact')
   log('inside index router: /contact')
