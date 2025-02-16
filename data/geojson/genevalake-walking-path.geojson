@@ -4,6 +4,29 @@
     {
       "type":"Feature",
       "properties":{
+        "name":"test-restaurant",
+        "type":"POI",
+        "category":"restaurant"
+      },
+      "geometry":{
+        "type":"Point",
+        "coordinates": []
+      }
+    },{
+      "type":"Feature",
+      "properties":{
+        "name":"test-toilet",
+        "type":"POI",
+        "category":"public_restroom"
+      },
+      "geometry":{
+        "type":"Point",
+        "coordinates": []
+      }
+    },
+    {
+      "type":"Feature",
+      "properties":{
         "id":null
       },
       "geometry":{
