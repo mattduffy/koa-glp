@@ -1,0 +1,285 @@
+<% if (flash?.info) { %>
+  <div id="info" class="info">
+    <span><%= flash.info %></span>
+  </div>
+<% } %>
+<% if (flash?.message) { %>
+  <div id="messages" class="messages">
+    <span><%= flash.message %></span>
+  </div>
+<% } %>
+<% if (flash?.error) { %>
+  <div id="errors" class="errors">
+    <span><%= flash.error %></span>
+  </div>
+<% } %>
+<article>
+  <section class="main">
+    <% if (!pier?.pier) { %>
+      <h2><%= pierNumber %> is not a valid pier number on Geneva Lake</h2>
+    <% } else { %>
+      <br>
+      <div class="nextPier">
+        <% if (nextPier.length !== 0) { %>
+        <a href="<%= origin %>/pier/<%= nextPier %>">&lt; Pier <%= nextPier %></a>
+        <% } else { %>
+        Pier <%= pier.pier %> 
+        <% } %>
+      </div>
+      <div class="previousPier">
+        <% if (previousPier?.length !== 0) { %>
+        <a href="<%= origin %>/pier/<%= previousPier %>">Pier <%= previousPier %> &gt;</a>
+        <% } else { %>
+        Pier <%= pier.pier %> 
+        <% } %>
+      </div>
+
+      <h2>
+        Pier <%= pier.pier %> <% if (isAuthenticated) { %><a href="<%= origin %>/edit/pier/<%= pierNumber %>"><span class="edit"></span></a><% } %><br>
+        Located in the <nobr><a href="<%= origin %>/towns/<%= setTown %>"><%= town %></a></nobr>
+      </h2>
+
+
+      <% if (photo) { %>
+      <picture>
+        <source media="(max-width:820px)" srcset="">
+        <source media="(min-width:821px)" srcset="">
+        <img alt="Photo of pier <%= pier %> in <%= town %>." src="">
+      </picture>
+      <% } %>
+      <h3 id="location">Location:</h3>
+      <ul class="location">
+        <li>latitude: <%= pier.loc.split(',')[1] %></li>
+        <li>longitude: <%= pier.loc.split(',')[0] %></li>
+        <li>geohash: <%= pier.geohash %></li>
+        <li>pluscode: <a class="external" href="https://www.google.com/maps/place/<%= encodeURIComponent(pier.pluscode) %>"><%= pier.pluscode %></a></li>
+      </ul>
+      <h3 id="address">Street Address:</h3>
+      <ul class="location">
+        <% if (pier.property?.association !== undefined && pier.property?.association?.length !== 0) {
+          let assoc = `<a href="${origin}/assoc/${encodeURI(pier.property.association)}">${pier.property.association}</a>`
+          let assocExternal
+          if (pier.property?.associationUrl !== undefined && pier.property?.associationUrl.length !== 0) {
+            assocExternal = `<a class="external" href="${pier.property.associationUrl}"></a>`
+          } %>
+          <li>Association: <%- assoc %> <%- assocExternal %></li>
+        <% } %>
+        <% if (pier.property?.business !== undefined && pier.property?.business?.length !== 0) {
+          let business 
+          if (pier.property?.associationUrl !== undefined && pier.property?.associationUrl.length !== 0) {
+            business = `<a class="external" href="${pier.property.associationUrl}">${pier.property.business}</a>`
+          } else {
+            business = pier.property.business
+          } %>
+          <li>Business: <%- business %></li>
+        <% } %>
+        <% if (pier?.property?.tel !== undefined && pier?.property?.tel.length !== 0) { %>
+          <li>Telephone: <a href="tel:<%= pier.property.tel %>"><%= pier.property.tel %></a></li>
+        <% } %>
+        <% if (pier?.property?.established && pier?.property?.established?.length !== 0) { %>
+          <li>Established in <%= pier.property.established %></li>
+        <% } %>
+        <% if (pier.owners[0]?.estateName !== "") { %>
+          <li><span class="estateName"><%= pier.owners[0]?.estateName %></span></li>
+        <% } %>
+        <% if (pier.property?.address?.street !== undefined) { %>
+          <li><%= pier.property.address.street %></li>
+        <% } %>
+        <% if (pier.property?.address?.city !== undefined) { %>
+          <li><%= pier.property.address.city %>, WI <%= pier.property.address?.zip %></li>
+        <% } %>
+      </ul>
+      <h3 id="owners">Owners:</h3>
+      <% if (pier?.owners?.members?.length < 1 || pier?.owners.length < 1) { %>
+        Pier owner information is missing.  
+      <% } else { %>
+        <ul class="owners">
+        <% pier.owners.forEach((owner) => {
+          let name = '' %>
+          <li>
+            <ul class="owners" <%- (owner?.estateName !== '') ? `aria-label="${owner.estateName} Estate"` : '' %>>
+          <% if (owner?.members.length > 0) {
+            owner.members.forEach((m) => {
+              n = `${m.t} ${m.f} ${m.m} ${m.l} ${m.s}`
+              if ((n.replace(/ /g, '')).length === 0) {
+                name = n.replace(/ /g, '')
+              } else {
+                name += `<div>${n}</div>`
+              }
+            })
+            if (owner.member === true) {
+              // name += `<div>GLA memberhip level: ${owner.membershipType}</div>`
+            }
+          }
+          if (name.length < 1) {
+            name = 'Owner information not available.'
+          } %> 
+          <li><%- name %></li>
+          </ul></li>
+        <% }) %>
+        </ul>
+      <% } %>
+    <% } %>
+    <script nonce="<%= nonce %>">
+      const ex = document.querySelectorAll('a[href]')
+      ex.forEach((a) => {
+        if (!/genevalakepiers|192\./.test(a.href)) {
+          a.setAttribute('target', '_blank')
+        }
+      })
+    </script>
+  </section>
+  <section class="map">
+    <%# map embed %>
+    <%- await include('./mapkit-embed.ejs') -%>
+    <%# map embed %>
+    <script nonce="<%= nonce %>"
+      src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.core.js"
+      crossorigin async
+      data-callback="initMapKit"
+      data-libraries="full-map"
+      data-initial-token="">
+    </script>
+    <script nonce="<%= nonce %>" type="module">
+      let page = 'pier'
+
+      const origin = '<%= origin %>'
+      const jwtAccess = '<%= searchJwtAccess %>'     
+      let map
+      async function setupMapKitJs() {
+        const tokenOpts = {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${jwtAccess}`,
+          },
+        }
+        const request = new Request(`${origin}/mapkit/getToken`, tokenOpts)
+        const response = await fetch(request)
+        if (response.status !== 200) {
+          console.log(response)
+        } else {
+          const { tokenID } = await response.json()
+          if (!window.mapkit || window.mapkit.loadedLibraries.length === 0) {
+            // mapkit.core.js or the libraries are not loaded yet.
+            // Set up the callback and wait for it to be called.
+            await new Promise(resolve => { window.initMapKit = resolve })
+            // Clean up
+            delete window.initMapKit
+          }
+          mapkit.init({
+            authorizationCallback: function(done) {
+              done(tokenID)
+            },
+          })
+        }
+      }
+
+      async function main() {
+        await setupMapKitJs()
+        // init / center the map over Geneva Bay 
+        const lat = 42.587751
+        const lon = -88.440669
+        const genevaBay = new mapkit.CoordinateRegion(
+          new mapkit.Coordinate(lat, lon),
+          new mapkit.CoordinateSpan(0.1, 0.1)
+        );
+        const opts = {
+          mapType: mapkit.Map.MapTypes.Hybrid,
+          loadPriority: mapkit.Map.LoadPriorities.PointsOfInterest,
+          visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
+          isZoomEnabled: true,
+          showsCompass: mapkit.FeatureVisibility.Visible,
+          showsScale: mapkit.FeatureVisibility.Visible,
+          showsZoomControl: true,
+          cameraDistance: 100,
+          showsPointsOfInterest: true,
+          isRotationEnabled: true,
+          isScrollEnabled: true,
+          showsMapTypeControl: false,
+        } 
+         window.map = new mapkit.Map("map", opts);
+         window.map.region = genevaBay;
+      }
+      await main()
+
+      let pierNumber = '<%= pier.pier %>'
+      let coords = '<%= pier.loc %>'
+      let [lon, lat] = coords.split(',')
+      lon = parseFloat(lon, 10)
+      lat = parseFloat(lat, 10)
+
+      async function showThisPier() {
+        const annotations = []
+        if (lat !== 0 && lon !== 0) {
+          console.log(`(lat, lon): ${lat}, ${lon}`)
+          const pierMarker = new window.mapkit.Coordinate(lat, lon)
+          const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+          pierAnnotation.title = `Pier ${pierNumber}`
+          pierAnnotation.animates = true
+          pierAnnotation.selected = true
+          annotations.push(pierAnnotation)
+        }
+        if (annotations.length > 0) {
+          // console.dir(annotations, { depth: null })
+          window.map.showItems(annotations)
+        }
+      }
+      await showThisPier()
+
+      window.map.addEventListener("single-tap", async (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        const {latitude, longitude} = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
+        // const coordinate = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
+        // const defaultRadius = 50
+        const defaultRadius = 25
+        const defaultUnits = 'ft'
+        console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: ${longitude}, ${latitude}`)
+        const results = await (await fetch(`${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`)).json()
+        console.log(results)
+        if (results?.total > 0) {
+          results.documents.forEach((p) => {
+            console.log(`${p.value.pier}, ${p.value.coords}, ${p.value.estateName}, ${p.value.business}, ${p.value.association}`)
+              let subtitle
+              if (p.value.business !== '' && p.value.association === '') subtitle = p.value.business
+              if (p.value.association !== '' && p.value.business === '') subtitle = p.value.association
+              if (p.value.estateName !== '') subtitle = p.value.estateName
+              // if (p.value.firstname !== '' && p.value.lastname !== '') subtitle = `${p.value.firstname} ${p.value.lastname}`
+              if (p.value.firstname !== undefined && p.value.lastname !== undefined) subtitle = `${p.value.firstname} ${p.value.lastname}`
+              // if (p.value.firstname !== '' && p.value.lastname === '') subtitle = p.value.firstname
+              if (p.value.firstname !== undefined && p.value.lastname === undefined) subtitle = p.value.firstname
+              // if (p.value.firstname === '' && p.value.lastname !== '') subtitle = p.value.lastname
+              if (p.value.firstname === undefined && p.value.lastname !== undefined) subtitle = p.value.lastname
+              if (subtitle.length < 1 || subtitle.length === undefined) subtitle = 'Owner info not available.'
+              console.info(`subtitle: ${subtitle}`)
+              const annotationCallout = {
+                calloutLeftAccessoryForAnnotation: () => {
+                  const accessoryViewLeft = document.createElement("div")
+                  return accessoryViewLeft
+                },
+                calloutRightAccessoryForAnnotation: () => {
+                  const accessoryViewRight = document.createElement("a")
+                  accessoryViewRight.className = "right-accessory-view"
+                  accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
+                  accessoryViewRight.target = "_self"
+                  accessoryViewRight.textContent = "\u{24D8}"
+                  return accessoryViewRight
+                }
+              }
+              const pierMarker = new window.mapkit.Coordinate(latitude, longitude)
+              const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+              pierAnnotation.title = `Pier ${p.value.pier}`
+              pierAnnotation.subtitle = subtitle 
+              pierAnnotation.animates = true
+              pierAnnotation.selected = true
+              pierAnnotation.color = "#4B93E0"
+              pierAnnotation.callout = annotationCallout
+              window.map.addAnnotation(pierAnnotation)
+          })
+        }
+      })
+    </script>
+  </section>
+</article>
+

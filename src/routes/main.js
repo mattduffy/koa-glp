@@ -327,6 +327,21 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
   }
 })
 
+router.get('walkingRedirect', '/walkingpath', async (ctx) => {
+  ctx.status = 301
+  ctx.redirect('/walking-path')
+})
+
+router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx) => {
+  const log = mainLog.extend('GET-walking-path')
+  const error = mainError.extend('GET-piersMarinas')
+})
+
+router.get('poi', '/point-of-interest/:poi', hasFlash, addIpToSession, async (ctx) => {
+  const log = mainLog.extend('GET-point-of-interest')
+  const error = mainError.extend('GET-point-of-interest')
+})
+
 router.get('pierMarinas', '/marinas', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('GET-piersMarinas')
   const error = mainError.extend('GET-piersMarinas')
