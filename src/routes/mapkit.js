@@ -118,7 +118,7 @@ router.get('pois', '/mapkit/pois', async (ctx) => {
   ctx.body = { documents: [] }
 })
 
-router.get('walkiingPathGeoJson', '/mapkit/walkingpath', async (ctx) => {
+router.get('walkingPathGeoJson', '/mapkit/walkingpath', async (ctx) => {
   const log = Log.extend('mapkitWalkingPath')
   const info = Info.extend('mapkitWalkingPath')
   const error = Error.extend('mapkitWalkingPath')
