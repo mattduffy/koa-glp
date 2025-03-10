@@ -15,29 +15,29 @@
 <% } %>
 <article>
   <section class="main">
-    <h2><%= total %> Marinas With Piers on Geneva Lake</h2>
+    <h2>Walking Path of Geneva Lake</h2>
 
     <% /* %>
     <div class="previousPier">
       <% if (skipBack > 1) { %>
-      <a href="/associations?s=<%= skipBack %>">&lt; Prev</a>
+      <a href="/pois?s=<%= skipBack %>">&lt; Prev</a>
       <% } else if (skipBack === 1) { %>
-      <a href="/associations">&lt; Prev</a>
+      <a href="/pois">&lt; Prev</a>
       <% } else { %>
       < Prev 
       <% } %>
     </div>
     <div class="nextPier">
       <% if ((offset + num) < total) { %>
-      <a href="/associations?s=<%= skipForward %>">Next &gt;</a>
+      <a href="/pois?s=<%= skipForward %>">Next &gt;</a>
       <% } else { %>
       Next > 
       <% } %>
     </div>
     <% */ %>
     <ul id="resultsList" class="searchResults">
-      <% marinas.forEach((p, i) => {
-        let a = `<li><a href="${origin}/pier/${p.pier[0]}">${p.business}</a></li>`  %>
+      <% pois.forEach((p, i) => {
+        let a = `<li><a href="${origin}/point-of-interest/${p.name}">${p.name}</a></li>`  %>
       <%- a %>
     <% }) %></ul>
 
@@ -50,7 +50,7 @@
       src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.core.js"
       crossorigin async
       data-callback="initMapKit"
-      data-libraries="full-map"
+      data-libraries="full-map,geojson,overlays"
       data-initial-token="">
     </script>
     <script nonce="<%= nonce %>" type="module">
@@ -86,39 +86,67 @@
 
       async function main() {
         await setupMapKitJs()
-        // init / center the map over Geneva Bay 
-        const lat = 42.587751
-        const lon = -88.440669
-        const genevaBay = new mapkit.CoordinateRegion(
-          new mapkit.Coordinate(lat, lon),
-          new mapkit.CoordinateSpan(0.1, 0.1)
-        );
+        
         const opts = {
           mapType: mapkit.Map.MapTypes.Hybrid,
           loadPriority: mapkit.Map.LoadPriorities.PointsOfInterest,
-          selectableMapFeatures: [mapkit.MapFeatureType.PhysicalFeature, mapkit.MapFeatureType.PointOfInterest],
+          selectableMapFeatures: [
+            mapkit.MapFeatureType.PhysicalFeature,
+            mapkit.MapFeatureType.PointOfInterest
+          ],
           visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
-          isZoomEnabled: true,
           showsCompass: mapkit.FeatureVisibility.Visible,
           showsScale: mapkit.FeatureVisibility.Visible,
+          isZoomEnabled: true,
           showsZoomControl: true,
-          cameraDistance: 3500,
-          showsPointsOfInterest: true,
           isRotationEnabled: true,
           isScrollEnabled: true,
           showsPointsOfInterest: true,
           showsMapTypeControl: false,
         } 
-         window.map = new mapkit.Map("map", opts);
-         window.map.region = genevaBay;
+        window.map = new mapkit.Map("map", opts)
+        // init / center the map over Geneva Bay 
+        const lat = 42.566588
+        const lon = -88.503125
+        // const center = [ 42.566588, -88.503125 ]
+        const genevaBay = new mapkit.CoordinateRegion(
+          new mapkit.Coordinate(lat, lon),
+          new mapkit.CoordinateSpan(0.1, 0.1)
+        )
+        window.map.region = genevaBay
+        window.map.cameraDistance = 9500
       }
       await main()
 
       const annotations = []
 
-      async function showMarinaPiers() {
+      async function showWalkingPath() {
         try {
-          const response = await (await fetch(`${origin}/mapkit/marinas`)).json()
+          const response = await (await fetch(`${origin}/mapkit/walkingpath`)).json()
+          console.log(response)
+          window.mapkit.importGeoJSON(response, {
+            itemForFeature: (overlay, geoJSON) => {
+              overlay.style = new window.mapkit.Style({
+                lineWidth: 1.5,
+                lineJoin: "round",
+                lineDash: [],
+                strokeColor: "royalblue",
+              })
+              return overlay
+            },
+            geoJSONDidComplete: overlays => {
+              window.map.showItems(overlays)
+            },
+          })
+        } catch (e) {
+          console.error(e)
+        }
+      }
+      await showWalkingPath()
+
+      async function showPointsOfInterest() {
+        try {
+          const response = await (await fetch(`${origin}/mapkit/pois`)).json()
           console.log(response)
           response.documents.forEach((m) => {
             let [lon, lat] = m.value.coords.split(',')
@@ -165,13 +193,12 @@
           console.error(e)
         }
       }
-      await showMarinaPiers()
+      await showPointsOfInterest()
 
       window.map.addEventListener("single-tap", async (e) => {
         e.preventDefault()
         e.stopPropagation()
         const {latitude, longitude} = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
-        // const coordinate = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
         const defaultRadius = 50
         const defaultUnits = 'ft'
         console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: ${longitude}, ${latitude}`)
