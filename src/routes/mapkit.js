@@ -110,6 +110,48 @@ router.get('mapkitSwim', '/mapkit/swim', async (ctx) => {
   }
 })
 
+router.get('pois', '/mapkit/pois', async (ctx) => {
+  const log = Log.extend('GET-point-of-interest')
+  const error = Error.extend('GET-point-of-interest')
+  ctx.status = 200
+  ctx.type = 'application/json; charset=utf-8'
+  ctx.body = { documents: [] }
+})
+
+router.get('walkiingPathGeoJson', '/mapkit/walkingpath', async (ctx) => {
+  const log = Log.extend('mapkitWalkingPath')
+  const info = Info.extend('mapkitWalkingPath')
+  const error = Error.extend('mapkitWalkingPath')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+  const csrfTokenCookie = ctx.cookies.get('csrfToken')
+  const csrfTokenSession = ctx.session.csrfToken
+  info(`${csrfTokenCookie},\n${csrfTokenSession}`)
+  if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
+  if (!(csrfTokenCookie === csrfTokenSession)) {
+    error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 401
+    ctx.body = { error: 'csrf token mismatch' }
+  } else {
+    let result
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.status = 200
+    try {
+      const key = 'glp:geojson:geneva_lake_walking_path'
+      log(`JSON.GET ${key}`)
+      result = await redis.json.get(key, '$')
+      log(result)
+    } catch (e) {
+      error('Failed to get walking path geoJSON coordinate data.')
+      ctx.status = 500
+      result = { error: 'Failed to get walking path geoJSON coordinate data.' }
+    }
+    ctx.body = result
+  }
+})
+
 router.get('mapkitFood', '/mapkit/food', async (ctx) => {
   const log = Log.extend('mapkitFood')
   const info = Info.extend('mapkitFood')
