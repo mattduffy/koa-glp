@@ -96,7 +96,10 @@
         const opts = {
           mapType: mapkit.Map.MapTypes.Hybrid,
           loadPriority: mapkit.Map.LoadPriorities.PointsOfInterest,
-          selectableMapFeatures: [mapkit.MapFeatureType.PhysicalFeature, mapkit.MapFeatureType.PointOfInterest],
+          selectableMapFeatures: [
+            mapkit.MapFeatureType.PhysicalFeature,
+            mapkit.MapFeatureType.PointOfInterest
+          ],
           visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
           isZoomEnabled: true,
           showsCompass: mapkit.FeatureVisibility.Visible,
