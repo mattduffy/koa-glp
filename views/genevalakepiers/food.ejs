@@ -118,7 +118,15 @@
 
       async function showFoodPiers() {
         try {
-          const response = await (await fetch(`${origin}/mapkit/food`)).json()
+          const opts = {
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              Authorization: `Bearer ${jwtAccess}`,
+            },
+          }
+          const request = new Request(`${origin}/mapkit/food`, opts)
+          const response = await (await fetch(request)).json()
           console.log(response)
           response.documents.forEach((m) => {
             let [lon, lat] = m.value.coords.split(',')
