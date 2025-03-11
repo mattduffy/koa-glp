@@ -122,7 +122,15 @@
 
       async function showWalkingPath() {
         try {
-          const response = await (await fetch(`${origin}/mapkit/walkingpath`)).json()
+          const opts = {
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              Authorization: `Bearer ${jwtAccess}`,
+            },
+          }
+        const request = new Request(`${origin}/mapkit/walking-path`, opts)
+          const response = await (await fetch(request)).json()
           console.log(response)
           window.mapkit.importGeoJSON(response, {
             itemForFeature: (overlay, geoJSON) => {
@@ -146,7 +154,15 @@
 
       async function showPointsOfInterest() {
         try {
-          const response = await (await fetch(`${origin}/mapkit/pois`)).json()
+          const opts = {
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              Authorization: `Bearer ${jwtAccess}`,
+            },
+          }
+          const request = new Request(`${origin}/mapkit/walking-path-pois`, opts)
+          const response = await (await fetch(request)).json()
           console.log(response)
           response.documents.forEach((m) => {
             let [lon, lat] = m.value.coords.split(',')
