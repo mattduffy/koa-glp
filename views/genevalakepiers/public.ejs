@@ -125,18 +125,19 @@
           }
           return false
         }
-      const opts = {
-        method: 'GET',
-        headers: {
-          Accept: 'application/json',
-          Authorization: `Bearer ${jwtAccess}`,
-        },
-      }
+      
       async function getPublicPiers(skip) {
+        const opts = {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${jwtAccess}`,
+          },
+        }
         const request = new Request(`${origin}/public?s=${skip}`, opts)
         let json
         try {
-          const response = await fetch(request, { credentials: 'same-origin' })
+          const response = await fetch(request)
           json = await response.json()
         } catch (e) {
           console.error(e)
@@ -223,7 +224,15 @@
 
       async function showPublicPiers() {
         try {
-          const response = await (await fetch(`${origin}/mapkit/public`)).json()
+          const opts = {
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              Authorization: `Bearer ${jwtAccess}`,
+            },
+          }
+          const request = new Request(`${origin}/mapkit/public`, opts)
+          const response = await (await fetch(request)).json()
           console.log(response)
           response.documents.forEach((p) => {
             let [lon, lat] = p.value.coords.split(',')
