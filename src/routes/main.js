@@ -7,7 +7,7 @@
 
 import Router from '@koa/router'
 import { ulid } from 'ulid'
-import formidable from 'formidable'
+// import formidable from 'formidable'
 import { Albums } from '@mattduffy/albums/Albums' // eslint-disable-line import/no-unresolved
 import { AggregateGroupByReducers, AggregateSteps } from 'redis'
 import {
@@ -327,6 +327,11 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
   }
 })
 
+router.get('poi', '/point-of-interest/:poi', hasFlash, addIpToSession, async (ctx) => {
+  const log = mainLog.extend('GET-point-of-interest')
+  const error = mainError.extend('GET-point-of-interest')
+})
+
 router.get('walkingRedirect', '/walkingpath', async (ctx) => {
   ctx.status = 301
   ctx.redirect('/walking-path')
@@ -335,11 +340,52 @@ router.get('walkingRedirect', '/walkingpath', async (ctx) => {
 router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('GET-walking-path')
   const error = mainError.extend('GET-piersMarinas')
-})
-
-router.get('poi', '/point-of-interest/:poi', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('GET-point-of-interest')
-  const error = mainError.extend('GET-point-of-interest')
+  const offset = 0
+  const num = 100
+  let pois = []
+  const locals = {}
+  try {
+    log(`ft.aggregate glp:idx:pois:type "*" LOAD 6 $.type AS type $.name AS NAME GROUPBY 1 @type REDUCE TOLIST 1 @type AS TYPE SORTBY 2 @name ASC LIMIT ${offset} ${num}`)
+    const optsAggregatePois = {
+      LOAD: ['@type', '@name'],
+      STEPS: [
+        {
+          type: AggregateSteps.GROUPBY,
+          properties: '@type',
+          REDUCE: [{
+            type: AggregateGroupByReducers.TOLIST,
+            propertie: 'type',
+            AS: 'type',
+          }],
+        },
+        {
+          type: AggregateSteps.SORTBY,
+          BY: '@name',
+          MAX: 1,
+        },
+        {
+          type: AggregateSteps.LIMIT,
+          from: offset,
+          size: num,
+        },
+      ],
+    }
+    // pois = await redis.ft.aggregate('glp:idx:pois:type', '*', optsAggregatePois)
+    log(pois)
+  } catch (e) {
+    error('Failed to get list of walking path pois.')
+    error(e)
+    throw new Error('Redis query failed retrieving walking path pois.', { cause: e })
+  }
+  locals.offset = offset
+  locals.num = num
+  locals.total = pois?.total
+  locals.pois = pois
+  locals.flash = ctx.flash.view ?? {}
+  locals.title = `${ctx.app.site}: Walking Path`
+  locals.sessinUser = ctx.state.sessionUser
+  locals.isAuthenticated = ctx.state.isAuthenticated
+  await ctx.render('walking-path', locals)
 })
 
 router.get('pierMarinas', '/marinas', hasFlash, addIpToSession, async (ctx) => {
@@ -349,7 +395,7 @@ router.get('pierMarinas', '/marinas', hasFlash, addIpToSession, async (ctx) => {
   const num = 100
   let marinas
   try {
-    log(`ft.AGGREGATE glp:idx:piers:marina "*" LOAD 6 $.pier AS pier $.property.business AS business REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
+    log(`ft.AGGREGATE glp:idx:piers:marina "*" LOAD 6 $.pier AS pier $.property.business AS business GROUPBY 1 @busineess REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
     const optsAggregateMarina = {
       LOAD: ['@pier', '@business', '@marina'],
       STEPS: [
@@ -476,24 +522,16 @@ router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async 
     log('Async query received.')
   }
   log(ctx.request.query.s)
-  // const num = (ctx.request.query?.c) ? sanitize(Math.abs(parseInt(ctx.request.query?.c, 10))) : 15
   const x = 70
   const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
   const num = 12
-  // const offset = (s === 1) ? 0 : (s - 1) * num
   const offset = (s <= 1) ? 0 : (s - 1) * num
   const skipBack = (s <= 1) ? 0 : s - 1
   const skipForward = s + 1
-  // log(`page 1 s: ${s}, offset: ${offset} num: ${num}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
-  // log(`page 2 s: ${s}, offset: ${offset} num: ${num}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
-  // log(`page 3 s: ${s}, offset: ${offset} num: ${num}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
-  // log(`page 4 s: ${s}, offset: ${offset} num: ${num}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
-  // log(`page 5 s: ${s}, offset: ${offset} num: ${num}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
-  // log(`page 6 s: ${s}, offset: ${offset} num: ${num}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
   log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
   let associations
   try {
-    log(`ft.AGGREGATE glp:idx:piers:association "*" LOAD 3 $.pier AS pier GROUPBY 1 @association SORTBY 2 @association ASC LIMIT ${offset} ${num}`)
+    log(`ft.AGGREGATE glp:idx:piers:association "*" LOAD 3 $.pier AS pier GROUPBY 1 @association REDUCE COUNT_DISTINCT SORTBY 2 @association ASC LIMIT ${offset} ${num}`)
     const optsAggregateAssoc = {
       LOAD: ['@pier', '@association'],
       STEPS: [
