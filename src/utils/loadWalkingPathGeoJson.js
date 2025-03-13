@@ -7,13 +7,15 @@
 import path from 'node:path'
 // import { Buffer } from 'node:buffer'
 import {
-  writeFile,
+  // writeFile,
   readFile,
 } from 'node:fs/promises'
 import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
 import { Command } from 'commander'
+import { SchemaFieldTypes } from '@redis/search'
 import { redis } from '../daos/impl/redis/redis-om.js'
+import { pointDistance } from './Heading.js'
 import { _log, _error } from './logging.js'
 /* eslint-enable import/no-extraneous-dependencies */
 
@@ -41,15 +43,69 @@ const options = program.opts()
 log(options)
 
 const dataDir = path.resolve(appRoot, options.dataDir)
+let pathJson
 try {
-  const pathJson = await readFile(path.resolve(dataDir, 'geojson', 'genevalake-walking-path.geojson'), 'utf-8')
+  pathJson = await readFile(path.resolve(dataDir, 'geojson', 'genevalake-walking-path.geojson'), 'utf-8')
   log(pathJson)
   const pathParsed = JSON.parse(pathJson)
   log(pathParsed)
-  let rSaved = await redis.json.set(`${DB_PREFIX}:geojson:geneva_lake_walking_path`, '$', pathParsed)
+  const rSaved = await redis.json.set(`${DB_PREFIX}:geojson:geneva_lake_walking_path`, '$', pathParsed)
   log(rSaved)
 } catch (e) {
   error(e)
 }
 
+const distanceArray = path.Json.features[0].geometry.coordinates.map((c, i, arr) => {
+  if (i === 0) {
+    return 0
+  }
+  return pointDistance(c, arr[i - 1], 'feet')
+})
+console.log(distanceArray)
+
+const transparentKeyPrefix = redis?.options?.keyPrefix
+let prefix
+if (transparentKeyPrefix === null || transparentKeyPrefix === undefined || transparentKeyPrefix === '') {
+  prefix = `${DB_PREFIX}:pois`
+} else {
+  prefix = 'pois'
+}
+try {
+  const poiTypeIndex = `${DB_PREFIX}:idx:pois:type`
+  await redis.ft.create(
+    poiTypeIndex,
+    {
+      '$.type': {
+        type: SchemaFieldTypes.TEXT,
+        SORTABLE: true,
+        AS: 'poiType',
+      },
+    },
+    {
+      ON: 'JSON',
+      PREFIX: prefix,
+    },
+  )
+} catch (e) {
+  console.error(e)
+}
+try {
+  const poiNameIndex = `${DB_PREFIX}:idx:pois:name`
+  await redis.ft.create(
+    poiNameIndex,
+    {
+      '$.type': {
+        type: SchemaFieldTypes.TEXT,
+        SORTABLE: true,
+        AS: 'poiName',
+      },
+    },
+    {
+      ON: 'JSON',
+      PREFIX: prefix,
+    },
+  )
+} catch (e) {
+  console.error(e)
+}
 process.exit()
