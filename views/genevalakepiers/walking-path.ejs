@@ -83,10 +83,8 @@
           },
         })
       }
-
       async function main() {
         await setupMapKitJs()
-        
         const opts = {
           mapType: mapkit.Map.MapTypes.Hybrid,
           loadPriority: mapkit.Map.LoadPriorities.PointsOfInterest,
@@ -97,27 +95,46 @@
           visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
           showsCompass: mapkit.FeatureVisibility.Visible,
           showsScale: mapkit.FeatureVisibility.Visible,
-          isZoomEnabled: true,
           showsZoomControl: true,
-          isRotationEnabled: true,
-          isScrollEnabled: true,
           showsPointsOfInterest: true,
           showsMapTypeControl: false,
+          isRotationEnabled: true,
+          isScrollEnabled: true,
+          isZoomEnabled: true,
         } 
+        let geneva
+        let cameraDistance
+        let lat, lon
+        if (window.innerWidth < 450) {
+          // center on Geneva Bay for small screens
+          lat = 42.587751
+          lon = -88.440669
+          geneva = new mapkit.CoordinateRegion(
+            new mapkit.Coordinate(lat, lon),
+            new mapkit.CoordinateSpan(0.015, 0.02)
+          )
+          cameraDistance = 1500
+          console.log(`small screen (${window.innerWidth} x ${window.innerHeight}), camera distance: ${cameraDistance}`)
+        } else {
+          // center the map over Geneva Lake for big screens
+          lat = 42.587751
+          lon = -88.440669
+          geneva = new mapkit.CoordinateRegion(
+            new mapkit.Coordinate(lat, lon),
+            new mapkit.CoordinateSpan(0.1, 0.1)
+          )
+          cameraDistance = 9000
+          console.log(`larger screen (${window.innerWidth} x ${window.innerHeight}), camera distance: ${cameraDistance}`)
+        }
+        console.log(geneva)
+        console.log(cameraDistance)
         window.map = new mapkit.Map("map", opts)
-        // init / center the map over Geneva Bay 
-        const lat = 42.566588
-        const lon = -88.503125
-        // const center = [ 42.566588, -88.503125 ]
-        const genevaBay = new mapkit.CoordinateRegion(
-          new mapkit.Coordinate(lat, lon),
-          new mapkit.CoordinateSpan(0.1, 0.1)
-        )
-        window.map.region = genevaBay
-        window.map.cameraDistance = 9500
+        window.map.region = geneva
+        window.map.cameraDistance = cameraDistance 
       }
       await main()
-
+      console.info('after main, map.region', window.map.region)
+      console.info('after main, map.cameraDistance', window.map.cameraDistance)
       const annotations = []
 
       async function showWalkingPath() {
