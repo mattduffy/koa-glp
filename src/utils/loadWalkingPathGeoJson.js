@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url'
 import { Command } from 'commander'
 import { SchemaFieldTypes } from '@redis/search'
 import { redis } from '../daos/impl/redis/redis-om.js'
-import { pointDistance } from './Heading.js'
+import { pointDistanceArr } from './Heading.js'
 import { _log, _error } from './logging.js'
 /* eslint-enable import/no-extraneous-dependencies */
 
@@ -44,25 +44,44 @@ log(options)
 
 const dataDir = path.resolve(appRoot, options.dataDir)
 let pathJson
+let pathParsed
 try {
   pathJson = await readFile(path.resolve(dataDir, 'geojson', 'genevalake-walking-path.geojson'), 'utf-8')
-  log(pathJson)
-  const pathParsed = JSON.parse(pathJson)
+  // log(pathJson)
+  pathParsed = JSON.parse(pathJson)
   log(pathParsed)
+
+  /* eslint-disable no-param-reassign */
+  pathParsed.features[0].geometry.coordinates.forEach((c, i, arr) => {
+    if (i === 0) {
+      arr[i][2] = 0
+      return
+    }
+    arr[i][2] = pointDistanceArr(c, arr[i - 1], 'feet')
+    console.log(arr[i])
+  })
+  /* eslint-enable no-param-reassign */
+
   const rSaved = await redis.json.set(`${DB_PREFIX}:geojson:geneva_lake_walking_path`, '$', pathParsed)
   log(rSaved)
 } catch (e) {
   error(e)
 }
 
-const distanceArray = path.Json.features[0].geometry.coordinates.map((c, i, arr) => {
-  if (i === 0) {
-    return 0
+const markers = []
+const mile = 5280
+let counter = 0
+let miles = 0
+pathParsed.features[0].geometry.coordinates.forEach((c, i, arr) => {
+  counter += c[2]
+  console.log(`Math.trunc(${c[2]}) ${Math.trunc(c[2])}, Math.trunc(${counter}) ${Math.trunc(counter)}`)
+  if ((miles * mile) + mile < counter) {
+    console.log('logging mile', mile)
+    miles += 1
+    markers.push([i, c, miles])
   }
-  return pointDistance(c, arr[i - 1], 'feet')
 })
-console.log(distanceArray)
-
+console.log('mile markers', markers)
 const transparentKeyPrefix = redis?.options?.keyPrefix
 let prefix
 if (transparentKeyPrefix === null || transparentKeyPrefix === undefined || transparentKeyPrefix === '') {
@@ -87,7 +106,7 @@ try {
     },
   )
 } catch (e) {
-  console.error(e)
+  console.info(e)
 }
 try {
   const poiNameIndex = `${DB_PREFIX}:idx:pois:name`
@@ -106,6 +125,6 @@ try {
     },
   )
 } catch (e) {
-  console.error(e)
+  console.info(e)
 }
 process.exit()
