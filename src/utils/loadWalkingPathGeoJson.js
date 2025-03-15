@@ -62,29 +62,21 @@ try {
   })
   /* eslint-enable no-param-reassign */
 
-  const rSaved = await redis.json.set(`${DB_PREFIX}:geojson:geneva_lake_walking_path`, '$', pathParsed)
+  const rSaved = await redis.json.set(
+    `${DB_PREFIX}:geojson:geneva_lake_walking_path`,
+    '$',
+    pathParsed,
+  )
   log(rSaved)
 } catch (e) {
   error(e)
 }
 
-const markers = []
-const mile = 5280
-let counter = 0
-let miles = 0
-pathParsed.features[0].geometry.coordinates.forEach((c, i, arr) => {
-  counter += c[2]
-  console.log(`Math.trunc(${c[2]}) ${Math.trunc(c[2])}, Math.trunc(${counter}) ${Math.trunc(counter)}`)
-  if ((miles * mile) + mile < counter) {
-    console.log('logging mile', mile)
-    miles += 1
-    markers.push([i, c, miles])
-  }
-})
-console.log('mile markers', markers)
 const transparentKeyPrefix = redis?.options?.keyPrefix
 let prefix
-if (transparentKeyPrefix === null || transparentKeyPrefix === undefined || transparentKeyPrefix === '') {
+if (transparentKeyPrefix === null
+  || transparentKeyPrefix === undefined
+  || transparentKeyPrefix === '') {
   prefix = `${DB_PREFIX}:pois`
 } else {
   prefix = 'pois'
@@ -94,7 +86,7 @@ try {
   await redis.ft.create(
     poiTypeIndex,
     {
-      '$.type': {
+      '$.properties.type': {
         type: SchemaFieldTypes.TEXT,
         SORTABLE: true,
         AS: 'poiType',
@@ -113,7 +105,7 @@ try {
   await redis.ft.create(
     poiNameIndex,
     {
-      '$.type': {
+      '$.properties.name': {
         type: SchemaFieldTypes.TEXT,
         SORTABLE: true,
         AS: 'poiName',
@@ -125,6 +117,45 @@ try {
     },
   )
 } catch (e) {
+  console.info(e)
+}
+const markers = []
+const mile = 5280
+let counter = 0
+let miles = 0
+pathParsed.features[0].geometry.coordinates.forEach((c, i) => {
+  counter += c[2]
+  console.log(`Math.trunc(${c[2]}) ${Math.trunc(c[2])}, `
+    + `Math.trunc(${counter}) ${Math.trunc(counter)}`)
+  if ((miles * mile) + mile < counter) {
+    console.log('logging mile', mile)
+    miles += 1
+    markers.push([i, c, miles])
+  }
+})
+console.log('mile markers', markers)
+// create the walking path mile marker geojson
+try {
+  /* eslint-disable no-restricted-syntax */
+  for await (const marker of markers) {
+    const geo = {
+      type: 'Feature',
+      properties: {
+        id: marker[2],
+        type: 'mileMarker',
+        name: `Mile ${marker[2]}`,
+        waypoint: marker[0],
+      },
+      geometry: {
+        type: 'Point',
+        coordinates: [marker[1][0], marker[1][1]],
+      },
+    }
+    await redis.json.set(`${DB_PREFIX}:pois:mileMarker_${marker[2]}`, '$', geo)
+  }
+  /* eslint-enable no-restricted-syntax */
+} catch (e) {
+  console.info('failed to insert mile marker geojson')
   console.info(e)
 }
 process.exit()
