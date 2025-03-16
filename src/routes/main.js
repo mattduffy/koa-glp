@@ -143,7 +143,7 @@ router.get('pierBigSwimPiers', '/swim', hasFlash, addIpToSession, async (ctx) =>
   log(ctx.request.query.s)
   const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
   const num = 12
-  const offset = (s === 1) ? 0 : (s - 1) * num
+  const offset = (s <= 1) ? 0 : (s - 1) * num
   const skipBack = (s <= 1) ? 0 : s - 1
   const skipForward = s + 1
   log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: 43 - ${offset} = ${43 - offset}`)
@@ -201,7 +201,6 @@ router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
     log('Async query received.')
   }
   log(ctx.request.query.s)
-  // const num = (ctx.request.query?.c) ? sanitize(Math.abs(parseInt(ctx.request.query?.c, 10))) : 15
   const x = 17
   const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
   const num = 12
@@ -339,28 +338,38 @@ router.get('walkingRedirect', '/walkingpath', async (ctx) => {
 
 router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx) => {
   const log = mainLog.extend('GET-walking-path')
-  const error = mainError.extend('GET-piersMarinas')
-  const offset = 0
+  const error = mainError.extend('GET-walking-path')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+  log('ctx.request.query.s', ctx.request.query.s)
+  const x = 25
+  const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
   const num = 100
-  let pois = []
+  const offset = 0
+  const skipBack = (s <= 1) ? 0 : s - 1
+  const skipForward = s + 1
+
+  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
+  let mileMarkers = []
   const locals = {}
   try {
-    log(`ft.aggregate glp:idx:pois:type "*" LOAD 6 $.type AS type $.name AS NAME GROUPBY 1 @type REDUCE TOLIST 1 @type AS TYPE SORTBY 2 @name ASC LIMIT ${offset} ${num}`)
+    log(`ft.aggregate glp:idx:pois:type '@type:"mileMarker"' LOAD * SORTBY 2 @id ASC LIMIT ${offset} ${num}`)
     const optsAggregatePois = {
-      LOAD: ['@type', '@name'],
+      LOAD: ['*'],
       STEPS: [
-        {
-          type: AggregateSteps.GROUPBY,
-          properties: '@type',
-          REDUCE: [{
-            type: AggregateGroupByReducers.TOLIST,
-            propertie: 'type',
-            AS: 'type',
-          }],
-        },
+        // {
+        //   type: AggregateSteps.GROUPBY,
+        //   properties: '@type',
+        //   REDUCE: [{
+        //     type: AggregateGroupByReducers.TOLIST,
+        //     property: 'type',
+        //     AS: 'list',
+        //   }],
+        // },
         {
           type: AggregateSteps.SORTBY,
-          BY: '@name',
+          BY: '@id',
           MAX: 1,
         },
         {
@@ -370,8 +379,8 @@ router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx)
         },
       ],
     }
-    // pois = await redis.ft.aggregate('glp:idx:pois:type', '*', optsAggregatePois)
-    log(pois)
+    mileMarkers = await redis.ft.aggregate('glp:idx:pois:type', '@type:"mileMarker"', optsAggregatePois)
+    log(mileMarkers)
   } catch (e) {
     error('Failed to get list of walking path pois.')
     error(e)
@@ -379,8 +388,11 @@ router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx)
   }
   locals.offset = offset
   locals.num = num
-  locals.total = pois?.total
-  locals.pois = pois
+  locals.skipBack = skipBack
+  locals.skipForward = skipForward
+  locals.total = mileMarkers?.total
+  locals.mileMarkers = mileMarkers
+  locals.pois = []
   locals.flash = ctx.flash.view ?? {}
   locals.title = `${ctx.app.site}: Walking Path`
   locals.sessinUser = ctx.state.sessionUser
@@ -395,7 +407,7 @@ router.get('pierMarinas', '/marinas', hasFlash, addIpToSession, async (ctx) => {
   const num = 100
   let marinas
   try {
-    log(`ft.AGGREGATE glp:idx:piers:marina "*" LOAD 6 $.pier AS pier $.property.business AS business GROUPBY 1 @busineess REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
+    log(`ft.AGGREGATE glp:idx:piers:marina "*" LOAD 6 $.pier AS pier $.property.business AS business GROUPBY 1 @business REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
     const optsAggregateMarina = {
       LOAD: ['@pier', '@business', '@marina'],
       STEPS: [
