@@ -81,15 +81,27 @@ if (transparentKeyPrefix === null
 } else {
   prefix = 'pois'
 }
+const poiTypeIndex = `${DB_PREFIX}:idx:pois:type`
 try {
-  const poiTypeIndex = `${DB_PREFIX}:idx:pois:type`
+  // log(await redis.ft.dropIndex(poiTypeIndex))
+  log(`poiTypeIndex name: ${poiTypeIndex}`)
   await redis.ft.create(
     poiTypeIndex,
     {
       '$.properties.type': {
         type: SchemaFieldTypes.TEXT,
         SORTABLE: true,
-        AS: 'poiType',
+        AS: 'type',
+      },
+      '$.properties.id': {
+        type: SchemaFieldTypes.NUMERIC,
+        SORTABLE: true,
+        AS: 'id',
+      },
+      '$.properties.name': {
+        type: SchemaFieldTypes.TEXT,
+        SORTABLE: true,
+        AS: 'name',
       },
     },
     {
@@ -100,15 +112,25 @@ try {
 } catch (e) {
   console.info(e)
 }
+const poiNameIndex = `${DB_PREFIX}:idx:pois:name`
 try {
-  const poiNameIndex = `${DB_PREFIX}:idx:pois:name`
   await redis.ft.create(
     poiNameIndex,
     {
       '$.properties.name': {
         type: SchemaFieldTypes.TEXT,
         SORTABLE: true,
-        AS: 'poiName',
+        AS: 'name',
+      },
+      '$.properties.id': {
+        type: SchemaFieldTypes.NUMERIC,
+        SORTABLE: true,
+        AS: 'id',
+      },
+      '$.properties.type': {
+        type: SchemaFieldTypes.TEXT,
+        SORTABLE: true,
+        AS: 'type',
       },
     },
     {
