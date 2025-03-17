@@ -36,11 +36,12 @@
     </div>
     <% */ %>
     <ul id="resultsList" class="searchResults">
-      <% pois.forEach((p, i) => {
+      <% pois?.results?.forEach((p, i) => {
         let a = `<li><a href="${origin}/point-of-interest/${p.name}">${p.name}</a></li>`  %>
       <%- a %>
-    <% }) %></ul>
-
+    <% }) %>
+    </ul>
+    
   </section>
   <section class="map">
     <%# map embed %>
@@ -54,8 +55,7 @@
       data-initial-token="">
     </script>
     <script nonce="<%= nonce %>" type="module">
-      let page = 'marinas'
-
+      let page = 'walking-path'
       const origin = '<%= origin %>'
       const jwtAccess = '<%= searchJwtAccess %>'     
       let map
@@ -169,6 +169,39 @@
       }
       await showWalkingPath()
 
+      function showWalkingPathMileMarkers() {
+        const annotations = []
+        const miles = <%- JSON.stringify(mileMarkers) %>
+        miles.forEach((m) => {
+          console.log(m.value.properties.name, m.value.properties.waypoint)
+          let [lon, lat] = m.value.geometry.coordinates
+          lon = parseFloat(lon, 10)
+          lat = parseFloat(lat, 10)
+          const coordinate = new mapkit.Coordinate(lat, lon)
+          const annotationCallout = {
+            calloutLeftAccessoryForAnnotations: () => {
+              const accessoryViewLeft = document.createElement("div")
+
+              return accessoryViewLeft
+            },
+            calloutRightAccessoryForAnnotation: () => {
+               const accessoryViewRight = document.createElement('div')
+               return accessoryViewRight
+            }
+          }
+          const annotation  = new mapkit.MarkerAnnotation(coordinate, {
+            title: m.value.properties.name,
+            subtitle: '',
+            animates: true,
+            selected: false,
+            color: 'royalblue',
+            callout: annotationCallout,
+          })
+          annotations.push(annotation)
+        })
+        window.map.showItems(annotations.reverse())
+      }
+      showWalkingPathMileMarkers()
       async function showPointsOfInterest() {
         try {
           const opts = {
