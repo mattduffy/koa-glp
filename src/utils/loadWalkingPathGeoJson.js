@@ -145,27 +145,48 @@ const markers = []
 const mile = 5280
 let counter = 0
 let miles = 0
-pathParsed.features[0].geometry.coordinates.forEach((c, i) => {
-  counter += c[2]
-  console.log(`Math.trunc(${c[2]}) ${Math.trunc(c[2])}, `
-    + `Math.trunc(${counter}) ${Math.trunc(counter)}`)
-  if ((miles * mile) + mile < counter) {
-    console.log('logging mile', mile)
-    miles += 1
+pathParsed.features[0].geometry.coordinates.forEach((c, i, arr) => {
+  // c = [lon, lat, dist]
+  if (i === 0) {
     markers.push([i, c, miles])
+  } else if (i === arr.length - 1) {
+    markers.push([i, c, miles])
+  } else {
+    console.log(`Math.trunc(${c[2]}) ${Math.trunc(c[2])}, `
+      + `Math.trunc(${counter}) ${Math.trunc(counter)}`)
+    if ((miles * mile) + mile < counter) {
+      console.log('logging mile', mile)
+      miles += 1
+      markers.push([i, c, miles])
+    }
   }
+  counter += c[2]
 })
 console.log('mile markers', markers)
 // create the walking path mile marker geojson
 try {
+  let x = 0
   /* eslint-disable no-restricted-syntax */
   for await (const marker of markers) {
+    // marker = [ lon, lat, dist ]
+    console.log('x', x, marker)
+    const id = marker[2]
+    const type = 'mileMarker'
+    let name
+    if (marker[2] === 0) {
+      name = 'Start'
+    } else if (x === markers.length - 1) {
+      name = 'Finish'
+      marker[2] += 1
+    } else {
+      name = `Mile ${marker[2]}`
+    }
     const geo = {
       type: 'Feature',
       properties: {
-        id: marker[2],
-        type: 'mileMarker',
-        name: `Mile ${marker[2]}`,
+        id,
+        type,
+        name,
         waypoint: marker[0],
       },
       geometry: {
@@ -173,7 +194,9 @@ try {
         coordinates: [marker[1][0], marker[1][1]],
       },
     }
-    await redis.json.set(`${DB_PREFIX}:pois:mileMarker_${marker[2]}`, '$', geo)
+    const mark = marker[2].toString().padStart(2, '0')
+    await redis.json.set(`${DB_PREFIX}:pois:mileMarker_${mark}`, '$', geo)
+    x += 1
   }
   /* eslint-enable no-restricted-syntax */
 } catch (e) {
