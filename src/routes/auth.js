@@ -6,10 +6,16 @@
  */
 
 import Router from '@koa/router'
-import formidable from 'formidable'
+// import formidable from 'formidable'
 import { ulid } from 'ulid'
 /* eslint-disable-next-line no-unused-vars */
 import { ObjectId } from 'mongodb'
+import {
+  addIpToSession,
+  doTokensMatch,
+  processFormData,
+  // hasFlash,
+} from './middlewares.js'
 import { _log, _error } from '../utils/logging.js'
 import { Users } from '../models/users.js'
 
@@ -51,44 +57,18 @@ router.get('getLogin', '/login', async (ctx, next) => {
   await ctx.render('login', locals)
 })
 
-router.post('postLogin', '/login', async (ctx) => {
+router.post('postLogin', '/login', addIpToSession, processFormData, async (ctx) => {
   const log = authLog.extend('POST-login')
   const error = authError.extend('POST-login')
-  const form = formidable({
-    encoding: 'utf-8',
-    uploadDir: ctx.app.uploadsDir,
-    keepExtensions: true,
-    multipart: true,
-  })
-  await new Promise((resolve, reject) => {
-    form.parse(ctx.req, (err, fields, files) => {
-      if (err) {
-        reject(err)
-        return
-      }
-      ctx.request.body = fields
-      ctx.request.files = files
-      log(fields)
-      resolve()
-    })
-  })
-  // log(ctx.request.body)
+  const csrfTokenCookie = ctx.cookies.get('csrfToken')
+  const csrfTokenSession = ctx.session.csrfToken
   const sessionId = ctx.cookies.get('session')
   const username = ctx.request.body.username[0]
   const password = ctx.request.body.password[0]
-  const csrfTokenCookie = ctx.cookies.get('csrfToken')
-  const csrfTokenSession = ctx.session.csrfToken
-  const csrfTokenHidden = ctx.request.body['csrf-token'][0]
-  if (csrfTokenCookie === csrfTokenSession) log(`cookie ${csrfTokenCookie} === session ${csrfTokenSession}`)
-  if (csrfTokenCookie === csrfTokenHidden) log(`cookie ${csrfTokenCookie} === hidden ${csrfTokenHidden}`)
-  if (csrfTokenSession === csrfTokenHidden) log(`session ${csrfTokenSession} === hidden ${csrfTokenHidden}`)
-  if (!(csrfTokenCookie === csrfTokenSession && csrfTokenSession === csrfTokenHidden)) {
-    error(`csrf token mismatch: header: ${csrfTokenCookie}`)
-    error(`                     hidden: ${csrfTokenHidden}`)
-    error(`                    session: ${csrfTokenSession}`)
-    ctx.status = 403
-    ctx.type = 'application/json; charset=utf-8'
-    ctx.body = { status: 'Error, csrf tokens do not match' }
+  if (!doTokensMatch(ctx)) {
+    error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+    ctx.status = 401
+    ctx.body = { error: 'csrf token mismatch' }
   } else {
     const db = ctx.state.mongodb.client.db()
     const collection = db.collection('users')
