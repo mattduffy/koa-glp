@@ -354,33 +354,21 @@ router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx)
   let mileMarkers = []
   const locals = {}
   try {
-    log(`ft.aggregate glp:idx:pois:type '@type:"mileMarker"' LOAD * SORTBY 2 @id ASC LIMIT ${offset} ${num}`)
-    const optsAggregatePois = {
-      LOAD: ['*'],
-      STEPS: [
-        // {
-        //   type: AggregateSteps.GROUPBY,
-        //   properties: '@type',
-        //   REDUCE: [{
-        //     type: AggregateGroupByReducers.TOLIST,
-        //     property: 'type',
-        //     AS: 'list',
-        //   }],
-        // },
-        {
-          type: AggregateSteps.SORTBY,
-          BY: '@id',
-          MAX: 1,
-        },
-        {
-          type: AggregateSteps.LIMIT,
-          from: offset,
-          size: num,
-        },
-      ],
+    const idxMileMarkers = 'glp:idx:pois:type'
+    const queryMileMarkers = '@type:"mileMarker"'
+    const optsMileMarkers = {
+      SORTBY: {
+        BY: 'id',
+        DIRECTION: 'ASC',
+      },
+      LIMIT: { from: offset, size: num },
+      RETURN: ['$'],
     }
-    mileMarkers = await redis.ft.aggregate('glp:idx:pois:type', '@type:"mileMarker"', optsAggregatePois)
-    log(mileMarkers)
+    const query = `ft.search ${idxMileMarkers} ${queryMileMarkers} `
+      + `SORTBY id ASC LIMIT ${offset} ${num}`
+    log(query)
+    mileMarkers = await redis.ft.search(idxMileMarkers, queryMileMarkers, optsMileMarkers)
+    log(mileMarkers?.total, mileMarkers?.documents)
   } catch (e) {
     error('Failed to get list of walking path pois.')
     error(e)
@@ -391,7 +379,7 @@ router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx)
   locals.skipBack = skipBack
   locals.skipForward = skipForward
   locals.total = mileMarkers?.total
-  locals.mileMarkers = mileMarkers
+  locals.mileMarkers = mileMarkers?.documents
   locals.pois = []
   locals.flash = ctx.flash.view ?? {}
   locals.title = `${ctx.app.site}: Walking Path`
