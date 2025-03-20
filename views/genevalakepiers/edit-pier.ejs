@@ -745,7 +745,7 @@
         const request = new Request(`${origin}/mapkit/getToken`, tokenOpts)
         const response = await fetch(request)
         const { tokenID } = await response.json()
-        console.log('tokenID: ', tokenID)
+        // console.log('tokenID: ', tokenID)
         if (!window.mapkit || window.mapkit.loadedLibraries.length === 0) {
           // mapkit.core.js or the libraries are not loaded yet.
           // Set up the callback and wait for it to be called.
@@ -771,7 +771,7 @@
         );
         const opts = {
           mapType: mapkit.Map.MapTypes.Satellite,
-          visibleMapRect: mapkit.MapRect(0, 0, 1, 1),
+          visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
           isZoomEnabled: true,
           showsCompass: mapkit.FeatureVisibility.Visible,
           showsScale: mapkit.FeatureVisibility.Visible,
@@ -782,8 +782,8 @@
           isScrollEnabled: true,
           showsMapTypeControl: false,
         } 
-         window.map = new mapkit.Map("map", opts);
-         window.map.region = genevaBay;
+        window._map = new mapkit.Map("map", opts);
+        window._map.region = genevaBay;
       }
       await main()
 
@@ -804,19 +804,19 @@
         }
         if (annotations.length > 0) {
           // console.dir(annotations, { depth: null })
-          window.map.showItems(annotations)
+          window._map.showItems(annotations)
         }
       }
       await showThisPier()
       let selectCoordsMarker = null
-      window.map.addEventListener("single-tap", async (e) => {
+      window._map.addEventListener("single-tap", async (e) => {
         if (selectCoordsMarker) {
-          window.map.removeAnnotation(selectCoordsMarker)
+          window._map.removeAnnotation(selectCoordsMarker)
         }
         e.preventDefault()
         e.stopPropagation()
-        const {latitude, longitude} = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
-        // const coordinate = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
+        const {latitude, longitude} = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
+        // const coordinate = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
         const defaultRadius = 50
         const defaultUnits = 'ft'
         console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: ${longitude}, ${latitude}`)
@@ -855,7 +855,7 @@
               pierAnnotation.selected = true
               pierAnnotation.color = "#4B93E0"
               pierAnnotation.callout = annotationCallout
-              window.map.addAnnotation(pierAnnotation)
+              window._map.addAnnotation(pierAnnotation)
           })
         } else {
           console.log(`pointOnPageToCoordinate... lon: ${longitude}, lat: ${latitude}`)
@@ -880,7 +880,7 @@
           selectCoordsMarker.selected = true
           selectCoordsMarker.color = "#4B93E0"
           selectCoordsMarker.callout = annotationCallout
-          window.map.addAnnotation(selectCoordsMarker)
+          window._map.addAnnotation(selectCoordsMarker)
           document.forms.pierEditId.lonId.value = Number.parseFloat(longitude).toFixed(6)
           document.forms.pierEditId.latId.value = Number.parseFloat(latitude).toFixed(6)
           document.forms.pierEditId.latId.dispatchEvent(new InputEvent('change'))
