@@ -2,7 +2,7 @@
  * @summary Koa router for the main top-level pages.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/main.js The router for the top level app URLs.
+ * @file src/routes/glp.js The router for the top level app URLs.
  */
 
 import Router from '@koa/router'
@@ -25,8 +25,8 @@ import {
 import { redis } from '../daos/impl/redis/redis-om.js'
 import { redis as ioredis } from '../daos/impl/redis/redis-client.js'
 
-const mainLog = _log.extend('main')
-const mainError = _error.extend('main')
+const glpLog = _log.extend('glp')
+const glpError = _error.extend('glp')
 function sanitize(param) {
   // fill in with some effective input scubbing logic
   return param
@@ -48,14 +48,14 @@ function leftZeroPad(x) {
       pierNumber += matches.groups.letters.toUpperCase()
     }
   }
-  mainLog(`Pier number input: ${x}, normalized pier number output: ${pierNumber}`)
+  glpLog(`Pier number input: ${x}, normalized pier number output: ${pierNumber}`)
   return pierNumber
 }
 
 const router = new Router()
 // async function hasFlash(ctx, next) {
-//   const log = mainLog.extend('hasFlash')
-//   const error = mainError.extend('hasFlash')
+//   const log = glpLog.extend('hasFlash')
+//   const error = glpError.extend('hasFlash')
 //   if (ctx.flash) {
 //     log('ctx.flash is present: %o', ctx.flash)
 //   } else {
@@ -65,9 +65,9 @@ const router = new Router()
 // }
 
 router.get('index', '/', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('index')
-  // const error = mainError.extend('index')
-  log('inside main router: /')
+  const log = glpLog.extend('index')
+  // const error = glpError.extend('index')
+  log('inside glp router: /')
   ctx.status = 200
   const locals = {}
   const items = []
@@ -97,8 +97,8 @@ router.get('index', '/', hasFlash, addIpToSession, async (ctx) => {
 })
 
 router.get('piersByTown', '/towns/:town', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('GET-piersByTown')
-  const error = mainError.extend('GET-piersByTown')
+  const log = glpLog.extend('GET-piersByTown')
+  const error = glpError.extend('GET-piersByTown')
   const town = getSetName(sanitize(ctx.params.town))
   log(town)
   let prevTown
@@ -135,8 +135,8 @@ router.get('piersByTown', '/towns/:town', hasFlash, addIpToSession, async (ctx) 
 })
 
 router.get('pierBigSwimPiers', '/swim', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('GET-piersSwim')
-  const error = mainError.extend('GET-piersSwim')
+  const log = glpLog.extend('GET-piersSwim')
+  const error = glpError.extend('GET-piersSwim')
   if (ctx.state.isAsyncRequest === true) {
     log('Async query received.')
   }
@@ -195,8 +195,8 @@ router.get('pierBigSwimPiers', '/swim', hasFlash, addIpToSession, async (ctx) =>
 })
 
 router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('GET-piersPublic')
-  const error = mainError.extend('GET-piersPublic')
+  const log = glpLog.extend('GET-piersPublic')
+  const error = glpError.extend('GET-piersPublic')
   if (ctx.state.isAsyncRequest === true) {
     log('Async query received.')
   }
@@ -259,8 +259,8 @@ router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
 })
 
 router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('GET-piersBusinesses')
-  const error = mainError.extend('GET-piersBusinesses')
+  const log = glpLog.extend('GET-piersBusinesses')
+  const error = glpError.extend('GET-piersBusinesses')
   if (ctx.state.isAsyncRequest === true) {
     log('Async query received.')
   }
@@ -327,8 +327,11 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
 })
 
 router.get('poi', '/point-of-interest/:poi', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('GET-point-of-interest')
-  const error = mainError.extend('GET-point-of-interest')
+  const log = glpLog.extend('GET-point-of-interest')
+  // const error = glpError.extend('GET-point-of-interest')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
 })
 
 router.get('walkingRedirect', '/walkingpath', async (ctx) => {
@@ -337,8 +340,8 @@ router.get('walkingRedirect', '/walkingpath', async (ctx) => {
 })
 
 router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('GET-walking-path')
-  const error = mainError.extend('GET-walking-path')
+  const log = glpLog.extend('GET-walking-path')
+  const error = glpError.extend('GET-walking-path')
   if (ctx.state.isAsyncRequest === true) {
     log('Async query received.')
   }
@@ -389,8 +392,8 @@ router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx)
 })
 
 router.get('pierMarinas', '/marinas', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('GET-piersMarinas')
-  const error = mainError.extend('GET-piersMarinas')
+  const log = glpLog.extend('GET-piersMarinas')
+  const error = glpError.extend('GET-piersMarinas')
   const offset = 0
   const num = 100
   let marinas
@@ -441,8 +444,8 @@ router.get('pierMarinas', '/marinas', hasFlash, addIpToSession, async (ctx) => {
 })
 
 router.get('Towns', '/towns', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('GET-Towns')
-  // const error = mainError.extend('GET-Towns')
+  const log = glpLog.extend('GET-Towns')
+  // const error = glpError.extend('GET-Towns')
   const towns = {}
   towns.total = 5
   towns.results = [
@@ -464,8 +467,8 @@ router.get('Towns', '/towns', hasFlash, addIpToSession, async (ctx) => {
 })
 
 router.get('pierFood', '/food', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('GET-piersFood')
-  const error = mainError.extend('GET-piersFood')
+  const log = glpLog.extend('GET-piersFood')
+  const error = glpError.extend('GET-piersFood')
   const offset = 0
   const num = 100
   let foods
@@ -516,8 +519,8 @@ router.get('pierFood', '/food', hasFlash, addIpToSession, async (ctx) => {
 })
 
 router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('GET-piersAssociations')
-  const error = mainError.extend('GET-piersAssociations')
+  const log = glpLog.extend('GET-piersAssociations')
+  const error = glpError.extend('GET-piersAssociations')
   if (ctx.state.isAsyncRequest === true) {
     log('Async query received.')
   }
@@ -586,8 +589,8 @@ router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async 
 })
 
 router.get('piersByAssociation', '/assoc/:assoc', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('GET-piersByAssoc')
-  const error = mainError.extend('GET-piersByAssoc')
+  const log = glpLog.extend('GET-piersByAssoc')
+  const error = glpError.extend('GET-piersByAssoc')
   const assoc = sanitize(ctx.params.assoc)
   const decodedAssoc = decodeURI(assoc)
   log(assoc)
@@ -624,8 +627,8 @@ router.get('piersByAssociation', '/assoc/:assoc', hasFlash, addIpToSession, asyn
 })
 
 router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('GET-pierByNumber')
-  const error = mainError.extend('GET-pierByNumber')
+  const log = glpLog.extend('GET-pierByNumber')
+  const error = glpError.extend('GET-pierByNumber')
   const pierNumber = sanitize(ctx.params.pier.toUpperCase())
   const zeroPaddedPierNumber = leftZeroPad(pierNumber)
   log(`pierNumber: ${pierNumber}, zeroPaddedPierNumber: ${zeroPaddedPierNumber}`)
@@ -742,8 +745,8 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) 
 })
 
 router.get('pierEdit-GET', '/pier/edit/:pier', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('GET-pierEdit')
-  const error = mainError.extend('GET-pierEdit')
+  const log = glpLog.extend('GET-pierEdit')
+  const error = glpError.extend('GET-pierEdit')
   if (!ctx.state?.isAuthenticated) {
     error('User is not authenticated.  Redirect to /')
     ctx.status = 401
@@ -803,8 +806,8 @@ router.get('pierEdit-GET', '/pier/edit/:pier', hasFlash, addIpToSession, async (
 })
 
 router.post('search', '/search', hasFlash, addIpToSession, processFormData, async (ctx) => {
-  const log = mainLog.extend('search')
-  const error = mainError.extend('search')
+  const log = glpLog.extend('search')
+  const error = glpError.extend('search')
   const searchTerms = ctx.request.body.searchBox
   // log(searchTerms, ctx.request.body.searchBox)
   const csrfTokenCookie = ctx.cookies.get('csrfToken')
@@ -1136,8 +1139,8 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
 })
 
 router.get('galleries', '/galleries', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('galleries')
-  const error = mainError.extend('galleries')
+  const log = glpLog.extend('galleries')
+  const error = glpError.extend('galleries')
   log('inside index router: /galleries')
   ctx.status = 200
   let recent10
@@ -1185,8 +1188,8 @@ router.get('galleries', '/galleries', hasFlash, addIpToSession, async (ctx) => {
 })
 
 router.get('about', '/about', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('about')
-  // const error = mainError.extend('about')
+  const log = glpLog.extend('about')
+  // const error = glpError.extend('about')
   log('inside index router: /about')
   ctx.status = 200
   await ctx.render('about', {
@@ -1198,8 +1201,8 @@ router.get('about', '/about', hasFlash, addIpToSession, async (ctx) => {
 })
 
 router.get('contact', '/contact', hasFlash, addIpToSession, async (ctx) => {
-  const log = mainLog.extend('contact')
-  // const error = mainError.extend('contact')
+  const log = glpLog.extend('contact')
+  // const error = glpError.extend('contact')
   log('inside index router: /contact')
   ctx.status = 200
   await ctx.render('contact', {
@@ -1210,7 +1213,7 @@ router.get('contact', '/contact', hasFlash, addIpToSession, async (ctx) => {
 })
 
 router.get('renderTest', '/renderTest', async (ctx) => {
-  const log = mainLog.extend('renderTest')
+  const log = glpLog.extend('renderTest')
   const rendered = await ctx.render('renderTest', {
     title: `${ctx.app.site}: render test`,
     user: ctx.state?.user ?? 'Matt',
@@ -1221,4 +1224,4 @@ router.get('renderTest', '/renderTest', async (ctx) => {
   ctx.redirect('/')
 })
 
-export { router as main }
+export { router as glp }

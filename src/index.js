@@ -34,7 +34,8 @@ import { account as Account } from './routes/account.js'
 import { auth as Auth } from './routes/auth.js'
 import { edit as Edit } from './routes/edit.js'
 import { mapkit as Mapkit } from './routes/mapkit.js'
-import { main as Main } from './routes/main.js'
+// import { main as Main } from './routes/main.js'
+import { glp as Glp } from './routes/glp.js'
 import { app as theApp } from './routes/app.js'
 import { users as Users } from './routes/users.js'
 import { seo as Seo } from './routes/seo.js'
@@ -407,7 +408,7 @@ app.use(theApp.routes())
 app.use(Auth.routes())
 app.use(Mapkit.routes())
 app.use(Account.routes())
-app.use(Main.routes())
+app.use(Glp.routes())
 app.use(Edit.routes())
 app.use(Users.routes())
 app.use(wellKnown.routes())
