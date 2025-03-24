@@ -2,7 +2,7 @@
  * @summary Koa router for editing the main top-level pages.
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/edit-pier.js The router for editing the top level app URLs.
+ * @file src/routes/edit.js The router for editing the top level app URLs.
  */
 
 import path from 'node:path'
@@ -13,8 +13,6 @@ import { fileURLToPath } from 'node:url'
 import Router from '@koa/router'
 import { ulid } from 'ulid'
 import formidable from 'formidable'
-// import { Albums } from '@mattduffy/albums/Albums' // eslint-disable-line import/no-unresolved
-// import { AggregateGroupByReducers, AggregateSteps } from 'redis'
 import {
   _log,
   _info,
@@ -24,6 +22,7 @@ import {
 } from '../utils/logging.js'
 import { redis } from '../daos/impl/redis/redis-om.js'
 // import { redis as ioredis } from '../daos/impl/redis/redis-client.js'
+// import { AggregateGroupByReducers, AggregateSteps } from 'redis'
 
 const editLog = _log.extend('edit')
 const editInfo = _info.extend('edit')
@@ -216,6 +215,35 @@ async function hasFlash(ctx, next) {
   }
   await next()
 }
+
+router.get('editPOI-GET', '/edit/poi/:poi', hasFlash, async (ctx) => {
+  const log = editLog.extend('GET-editPOI')
+  const error = editError.extend('GET-editPOI')
+  if (!ctx.state?.isAuthenticated) {
+    error('User is not authenticated.  Redirect to /')
+    ctx.status = 401
+    ctx.redirect('/')
+  } else {
+    log('edit this poi')
+    let poi
+    let nextPOI
+    let previousPOI
+    const csrfToken = ulid()
+    const locals = {}
+    ctx.session.csrfToken = csrfToken
+    ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })
+    locals.jwtAccess = ctx.state.searchJwtAccess
+    locals.csrfToken = csrfToken
+    locals.poi = poi
+    locals.nextPOI = nextPOI
+    locals.previousPOI = previousPOI
+    locals.flash = ctx.flash.view ?? {}
+    locals.title = `${ctx.app.site}: Point of Interest - ${poi.name}`
+    locals.sessionUser = ctx.state.sessionUser
+    locals.isAuthenticated = ctx.state.isAuthenticated
+    await ctx.render('edit-poi', locals)
+  }
+})
 
 router.get('editPier-GET', '/edit/pier/:pier', hasFlash, async (ctx) => {
   const log = editLog.extend('GET-editPier')
