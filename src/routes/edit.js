@@ -224,6 +224,7 @@ router.get('editPOI-GET', '/edit/poi/:poi', hasFlash, async (ctx) => {
     ctx.status = 401
     ctx.redirect('/')
   } else {
+    log('bump')
     log('edit this poi')
     let poi
     let nextPOI
