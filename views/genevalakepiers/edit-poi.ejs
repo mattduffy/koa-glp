@@ -1,0 +1,892 @@
+<% if (flash?.info) { %>
+  <div id="info" class="info">
+    <span><%= flash.info %></span>
+  </div>
+<% } %>
+<% if (flash?.message) { %>
+  <div id="messages" class="messages">
+    <span><%= flash.message %></span>
+  </div>
+<% } %>
+<% if (flash?.error) { %>
+  <div id="errors" class="errors">
+    <span><%= flash.error %></span>
+  </div>
+<% } %>
+<article>
+  <section class="main">
+    <% if (!pier?.pier) { %>
+      <h2><%= pierNumber %> is not a valid pier number on Geneva Lake</h2>
+    <% } else { %>
+      <br>
+      <div class="nextPier">
+        <% if (nextPier.length !== 0) { %>
+        <a href="<%= origin %>/edit/pier/<%= nextPier %>">&lt; Pier <%= nextPier %></a>
+        <% } else { %>
+        Pier <%= pier.pier %> 
+        <% } %>
+      </div>
+      <div class="previousPier">
+        <% if (previousPier?.length !== 0) { %>
+        <a href="<%= origin %>/edit/pier/<%= previousPier %>">Pier <%= previousPier %> &gt; </a>
+        <% } else { %>
+        Pier <%= pier.pier %> 
+        <% } %>
+      </div>
+
+      <h2>Pier <%= pier.pier %> <% if (isAuthenticated) { %><a href="<%= origin %>/pier/<%= pierNumber %>"><span class="view"></span></a><% } %><br>located in the <nobr><a href="/towns/<%= setTown %>"><%= town %></a></nobr></h2>
+
+      <p></p>
+      <form id="pierEditId" name="pierEdit" action="<%= origin %>/edit/pier/<%= pierNumber %>" method="POST" enctype="multipart/form-data">
+        <fieldset id="messagesId" name="messages" class="hidden" title="Update Results">
+          <legend>Update Results</legend>
+        </fieldset>
+        <fieldset id="infoId" name="info" form="pierEditId" class="edit_fieldset" title="Meta Data">
+          <legend>Meta Data</legend>
+          <% if (pier?.updatedOn?.length > 0) { %>
+            Last updated on: <%= pier.updatedOn[0] %><br>
+          <% } %>
+          Pier data schema version: <%= pier.version %>
+          <input id="numberId" name="number" type="hidden" value="<%= pierNumber %>">
+          <input id="versionId" name="version" type="hidden" value="<%= pier.version %>">
+          <input id="setTownId" name="setTown" type="hidden" value="<%= setTown %>">
+          <input id="csrf-tokenId" type="hidden" value="<%= csrfToken %>">
+        </fieldset>
+        <fieldset id="pierPhotoId" name="pierPhoto" form="pierEditId" class="edit_fieldset" title="Pier Photo Form">
+          <legend>Pier Photo</legend>
+          <% if (pier?.images?.length > 0) { %>
+          <picture>
+            <source media="(max-width:820px)" srcset="">
+            <source media="(min-width:821px)" srcset="">
+            <img alt="Photo of pier <%= pierNumber %> in <%= town %>." src="<%= origin %>/<%= pier.images[0] %>">
+          </picture><br>
+          <% } %>
+          <span>Add an image for this pier.</span><br>
+          <input id="photo_0Id" name="photo_0" type="file" accept=".png,.jpg,.jpeg">
+        </fieldset>
+        <fieldset id="pierLocationId" name="pierLocation" form="pierEditId" class="edit_fieldset" title="Pier Location Form">
+          <legend>Pier Location</legend>
+          <label for="lonId">Longtitude</label>
+          <input id="lonId" name="lon" type="number" value="<%= lon %>" min="-180.000000" max="180.000000" step="0.000001" required><br>
+          <label for="latId">Latitude</label>
+          <input id="latId" name="lat" type="number" value="<%= lat %>" min="-180.000000" max="180.000000" step="0.000001" required><br>
+          <label for="geohashId">Geohash</label>
+          <input id="geohashId" name="geohash" type="text" size="30" value="<%= pier.geohash %>"><br>
+          <label for="pluscodeId">Pluscode</label>
+          <input id="pluscodeId" name="pluscode" type="text" size="30" value="<%= pier.pluscode %>"><br>
+        </fieldset>
+        <fieldset id="pierAddressId" name="pierAddress" form="pierEditId" class="edit_fieldset" title="Pier Address Form">
+          <legend>Pier Address</legend>
+          <input type="radio" id="addressType1Id" name="addressType" value="ass" required><label for="addressType1Id">Association</label>
+          <input type="radio" id="addressType2Id" name="addressType" value="bus"><label for="addressType2Id">Business</label>
+          <input type="radio" id="addressType3Id" name="addressType" value="res"><label for="addressType3Id">Residential</label><br>
+          <label for="associationId">Association Name</label>
+          <input id="associationId" name="association" type="text" size="29" maxlendgth="100" value="<%= pier.property.association %>"><br>
+
+          <label for="businessId">Business Name</label>
+          <input id="businessId" name="business" type="text" size="30" maxlength="100" value="<%= pier.property.business %>"></br>
+
+          <label for="isMarinaId">Is a marina?</label>
+          <input id="isMarinaId" name="isMarina" type="checkbox" <%= (pier.property.isMarina=== 1) ? 'checked' : '' %>><br>
+
+          <label for="hasFoodId">Has food?</label>
+          <input id="hasFoodId" name="hasFood" type="checkbox" <%= (pier.property.hasFood=== 1) ? 'checked' : '' %>><br>
+
+          <label for="publicId">Is a public pier?</label>
+          <input id="publicId" name="public" type="checkbox" <%= (pier.public=== 1) ? 'checked' : '' %>><br>
+
+          <label for="bigSwimPierId">Is a big swim pier?</label>
+          <input id="bigSwimPierId" name="bigSwimPier" type="checkbox" <%= (pier.bigSwimPier === 1) ? 'checked' : '' %>><br>
+
+          <label for="establishedId">Established In</label>
+          <input id="establishedId" name="established" type="text" size="30" maxlength=4 value="<%= pier.property.established %>"><br>
+
+          <label for="associationUrlId">Website</label>
+          <input id="associationUrlId" name="associationUrl" type="url" size="30" placeholder="https://genevalakepiers.com" maxlength="100" value="<%= pier.property.associationUrl %>"><br>
+
+          <label for="telId">Telephone</label>
+          <input id="telId" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= pier.property.tel %>"><br>
+
+          <label for="streetId">Street</label>
+          <input id="streetId" name="street" type="text" size="30" maxlength="70" value="<%= pier.property.address.street %>"><br>
+
+          <label for="cityId">City</label>
+          <input id="cityId" name="city" type="text" size="30" maxlength="50" value="<%= pier.property.address.city %>"><br>
+
+          <label for="stateId">State</label>
+          <input id="stateId" name="state" type="text" size="3" maxlength="2" value="<%= pier.property.address.state %>"><br>
+
+          <label for="zipId">Zip Code</label>
+          <input id="zipId" name="zip" type="text" size="10" maxlength="9" value="<%= pier.property.address.zip %>"><br>
+        </fieldset>
+        <fieldset id="pierOwnersId" name="pierOwners" form="pierEditId" class="edit_fieldset" title="Pier Owners">
+          <legend>Pier Owners</legend>
+          <% if (pier.owners.length > 0) { %>
+            <% pier.owners.forEach((o, i) => { %>
+              <div class="editOwner" data-o=<%= i %>>
+              <label for="o_<%= i %>_estateNameId">Estate Name</label>
+              <input id="o_<%= i %>_estateNameId" name="o_<%= i %>_estateName" type="text" size="30" maxlength="100" value="<%= o.estateName %>"><br>
+              <label for="o_<%= i %>_membershipTypeId">GLA Membership</label>
+              <select id="o_<%= i %>_membershipTypeId" name="o_<%= i %>_membershipType" type="text">
+                <%
+                  const memberTypes = ['Residential Non-member', 'Regular', 'Sustaining', 'Contributing', 'Donor', 'Benefactor']
+                  memberTypes.forEach((t) => {
+                    const re = new RegExp(`${t}`)
+                    const selected = (re.test(o.membershipType)) ? 'selected' : '' %>
+                  <option value="<%= t %>" <%= selected %>><%= t %></option>
+                  <% }) %>
+              </select>
+              <br>
+              <% if (o.members.length > 0) { %>
+                  <div>
+                <% o.members.forEach((m, j) => { %>
+                    <div data-o=<%= i %> data-m=<%= j %>>
+                      <input id="o_<%= i %>_m_<%= j %>_member_tId" name="o_<%= i %>_m_<%= j %>_member_t" type="text" size="3" maxlength="10" value="<%= m.t %>" placeholder="Title"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_fId" name="o_<%= i %>_m_<%= j %>_member_f" type="text" size="11" maxlength="60" value="<%= m.f %>" placeholder="First"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_mId" name="o_<%= i %>_m_<%= j %>_member_m" type="text" size="3" maxlength="10" value="<%= m.m %>" placeholder="M"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_lId" name="o_<%= i %>_m_<%= j %>_member_l" type="text" size="11" maxlength="30" value="<%= m.l %>" placeholder="Last"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_sId" name="o_<%= i %>_m_<%= j %>_member_s" type="text" size="3" maxlength="10" value="<%= m.s %>" placeholder="suffix"> 
+                      <input id="o_<%= i %>_m_<%= j %>_member_hiddenId" name="o_<%= i %>_m_<%= j %>_member_hidden" type="checkbox" <%= (m.hidden === 1) ? 'checked' : '' %>>
+                      <label for="o_<%= i %>_m_<%= j %>_member_hiddenId">hide</label>
+                    </div>
+                <% }) %>
+              <% } else { %>
+                  <div>
+                    <div data-o=0 data-m=0>
+                      <input id="o_0_m_0_member_tId" name="o_0_m_0_member_t" type="text" size="3" maxlength="10" value="" placeholder="Title"> 
+                      <input id="o_0_m_0_member_fId" name="o_0_m_0_member_f" type="text" size="11" maxlength="60" value="" placeholder="First"> 
+                      <input id="o_0_m_0_member_mId" name="o_0_m_0_member_m" type="text" size="3" maxlength="10" value="" placeholder="M"> 
+                      <input id="o_0_m_0_member_lId" name="o_0_m_0_member_l" type="text" size="11" maxlength="30" value="" placeholder="Last"> 
+                      <input id="o_0_m_0_member_sId" name="o_0_m_0_member_s" type="text" size="3" maxlength="10" value="" placeholder="suffix"> 
+                      <input id="o_0_m_0_member_hiddenId" name="o_0_m_0_member_hidden" type="checkbox" >
+                      <label for="o_0_m_0_member_hiddenId">hide</label>
+                    </div>
+              <% } %>
+                    <span class="addPerson" title="Add another person.">+ person</span>
+                    <span class="delEstate" title="Remove this estate and owners.">- estate</span>
+                  </div>
+              </div>
+            <% }) %>
+              <span class="addEstate" title="Add another estate and owner.">+ estate</span>
+          <% } else { %>
+          No owners entered.  <span class="addOwner">+ owner</span>.
+          <% } %>
+        </fieldset>
+        <fieldset id="finishId" name="finish" form="pierEditId">
+          <div style="display: inline-block; width: 45%; margin: auto; position: relative; text-align: left; padding-left: 10px;">
+            <input type="reset" value="Reset" />
+          </div>
+          <div style="display: inline-block; width: 50%; position: relative; right: 0px; text-align: right;">
+            <input type="submit" value="Submit" /> 
+          </div>
+        </fieldset>
+      </form>
+      <!-- 
+      <% if (photo) { %>
+      <picture>
+        <source media="(max-width:820px)" srcset="">
+        <source media="(min-width:821px)" srcset="">
+        <img alt="Photo of pier <%= pier %> in <%= town %>." src="">
+      </picture>
+      <% } %>
+      <h3 id="location">Location:</h3>
+      <ul class="location">
+        <li>lat: <%= pier.loc.split(',')[1] %></li>
+        <li>lon: <%= pier.loc.split(',')[0] %></li>
+        <li>geohash: <%= pier.geohash %></li>
+        <li>pluscode: <a href="https://www.google.com/maps/place/<%= encodeURIComponent(pier.pluscode) %>"><%= pier.pluscode %></a></li>
+      </ul>
+      <h3 id="address">Street Address:</h3>
+      <ul class="location">
+        <% if (pier.property?.association !== undefined && pier.property?.association?.length !== 0) {
+          let assoc
+          if (pier.property?.associationUrl !== undefined && pier.property?.associationUrl.length !== 0) {
+            assoc = `<a href="${pier.property.associationUrl}">${pier.property.association}</a>`
+          } else {
+            assoc = pier.property.association
+          } %>
+          <li>Association: <%- assoc %></li>
+        <% } %>
+        <% if (pier?.property?.tel !== undefined && pier?.property?.tel.length !== 0) { %>
+          <li>Telephone: <a href="tel:<%= pier.property.tel %>"><%= pier.property.tel %></a></li>
+        <% } %>
+        <% if (pier?.property?.established !== undefined && pier?.property?.established?.length !== 0) { %>
+          <li>Established in <%= pier.property.established %></li>
+        <% } %>
+        <% if (pier.owners[0]?.estateName !== "") { %>
+          <li><span class="estateName"><%= pier.owners[0]?.estateName %></span></li>
+        <% } %>
+        <% if (pier.property?.address?.street !== undefined) { %>
+          <li><%= pier.property.address.street %></li>
+        <% } %>
+        <% if (pier.property?.address?.city !== undefined) { %>
+          <li><%= pier.property.address.city %>, WI <%= pier.property.address?.zip %></li>
+        <% } %>
+      </ul>
+      <h3 id="owners">Owners:</h3>
+      <% if (pier?.owners.length < 1) { %>
+        Pier owner information is missing.  
+      <% } else { %>
+        <ul class="owners">
+        <% pier.owners.forEach((owner) => {
+          let o = '' %>
+          <li>
+          <ul class="owners">
+          <% if (owner?.members.length > 0) {
+            owner.members.forEach((m) => {
+              o += `<div>${m.t} ${m.f} ${m.m} ${m.l} ${m.s}</div>`
+            })
+          }
+          if (owner.member === true) {
+            o += `<div>GLA memberhip level: ${owner.membershipType}</div>`
+          } %>
+          <li><%- o %></li>
+          </ul></li>
+        <% }) %>
+        </ul>
+      <% } %>
+    <% } %>
+      -->
+    <script nonce="<%= nonce %>">
+      const form = document.forms['pierEditId']
+      const radio = form['addressType']
+      const assocInput = form['associationId']
+      const busInput = form['businessId']
+      const isMar = form['isMarinaId']
+      let isMarCheckedTemp
+      const hasFood = form['hasFoodId']
+      let hasFoodCheckedTemp
+      const public = form['publicId']
+      let publicCheckedTemp
+      const bigSwimPier = form['bigSwimPierId']
+      let bigSwimPierCheckedTemp
+      if (assocInput.value !== '') {
+        form['addressType1Id'].disabled =  false
+        form['addressType1Id'].checked = true
+        form['bigSwimPierId'].disabled = false
+        form['publicId'].disabled = true
+        form['publicId'].checked = false
+        busInput.disabled = true
+        form['isMarinaId'].checked = false
+        form['isMarinaId'].disabled = true
+        form['hasFoodId'].checked = false
+        form['hasFoodId'].disabled = true
+      } else if (busInput.value !== '') {
+        form['addressType2Id'].disabled =  false
+        form['addressType2Id'].checked = true
+        form['isMarinaId'].disabled = false 
+        form['hasFoodId'].disabled = false 
+        form['bigSwimPierId'].disabled = true 
+      } else {
+        form['addressType3Id'].checked = true
+        assocInput.disabled = true
+        busInput.disabled = true
+        form['bigSwimPierId'].disabled = true 
+        form['bigSwimPierId'].checked = false
+        form['publicId'].disabled = true 
+        form['publicId'].checked = false
+        form['isMarinaId'].checked = false
+        form['isMarinaId'].disabled = true
+        form['hasFoodId'].checked = false
+        form['hasFoodId'].disabled = true
+      }
+      radio.forEach((r) => {
+        r.addEventListener('change', radioSelection)
+      })
+      let assocTemp = []
+      let busTemp = []
+      
+      function radioSelection(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        const val = e.target.value
+        // console.log(val)
+        console.info('Assoc: ', assocInput.value, assocTemp)
+        console.info('Bus: ', busInput.value, busTemp)
+        if (val === 'ass') {
+          if (busInput !== '' && busInput !== undefined) {
+            busTemp.push(busInput.value)
+            busInput.value = ''
+          }
+          busInput.disabled = true
+          assocInput.disabled = false
+          assocInput.value = (assocTemp.length > 0) ? assocTemp.pop() : ''
+          bigSwimPier.checked = bigSwimPierCheckedTemp
+          bigSwimPier.disabled = false
+          isMarCheckedTemp = isMar.checked
+          isMar.checked = false
+          isMar.disabled = true
+          hasFoodCheckedTemp = hasFood.checked
+          hasFood.checked = false
+          hasFood.disabled = true
+        }
+        if (val === 'bus') {
+          if (assocInput.value !== '' && assocInput !== undefined) {
+            assocTemp.push(assocInput.value)
+            assocInput.value = ''
+          }
+          assocInput.disabled = true
+          busInput.value = (busTemp.length > 0) ? busTemp.pop() : ''
+          busInput.disabled = false
+          isMar.checked = isMarCheckedTemp
+          isMar.disabled = false
+          hasFood.checked = hasFoodCheckedTemp
+          hasFood.disabled = false
+          public.checked = publicCheckedTemp
+          public.disabled = false
+          bigSwimPier.checked = bigSwimPierCheckedTemp
+          bigSwimPier.disabled = true
+        } 
+        if (val === 'res') {
+          if (assocInput.value !== '' && assocInput !== undefined) {
+            assocTemp.push(assocInput.value)
+            assocInput.value = ''
+          }
+          assocInput.disabled = true
+          if (busInput !== '' && busInput !== undefined) {
+            busTemp.push(busInput.value)
+            busInput.value = ''
+          }
+          busInput.disabled = true
+          isMarCheckedTemp = isMar.checked
+          isMar.checked = false
+          isMar.disabled = true
+          hasFoodCheckedTemp = hasFood.checked
+          hasFood.checked = false
+          hasFood.disabled = true
+          publicCheckedTemp = public.checked
+          public.checked = false
+          public.disabled = true
+          bigSwimPierCheckedTemp = bigSwimPier.checked
+          bigSwimPier.disabled = true
+        }}
+
+        const addEstateSpan = document.querySelector('span.addEstate')
+        addEstateSpan.addEventListener('click', (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          const ownerDivs = document.querySelectorAll('div.editOwner')
+          const parent = ownerDivs.parentElement
+          const newOwnerIndex = parseInt(ownerDivs[ownerDivs.length -1].dataset.o, 10) + 1
+          const newEstateDiv = document.createElement('div')
+          newEstateDiv.classList.add('editOwner')
+          newEstateDiv.dataset.o = newOwnerIndex
+          newEstateDiv.innerHTML = `<label for="o_${newOwnerIndex}_estateNameId">Estate Name</label>`
+            + `<input id="o_${newOwnerIndex}_estateNameId" name="o_${newOwnerIndex}_estateName" type="text" size="30" maxlength="100" value="">`
+            + '<br>'
+            + `<label for="o_${newOwnerIndex}_membershipTypeId">GLA Membership</label>`
+            + `<select id="o_${newOwnerIndex}_membershipTypeId" name="o_${newOwnerIndex}_membershipType" type="text">`
+            + '\t<option value="Residential Non-member" selected>Residential Non-member</option>'
+            + '\t<option value="Regular">Regular</option>'
+            + '\t<option value="Sustaining">Sustaining</option>'
+            + '\t<option value="Contributing">Contributing</option>'
+            + '\t<option value="Donor">Donor</option>'
+            + '\t<option value="Benefactor">Benefactor</option>'
+            + '</select>'
+            + '<br>'
+            + '<div>'
+            + `<div data-o="${newOwnerIndex}" data-m="0">
+                 <input id="o_${newOwnerIndex}_m_0_member_tId" name="o_${newOwnerIndex}_m_0_member_t" type="text" size="3" maxlength="10" value="" placeholder="Title"> 
+                 <input id="o_${newOwnerIndex}_m_0_member_fId" name="o_${newOwnerIndex}_m_0_member_f" type="text" size="11" maxlength="60" value="" placeholder="First"> 
+                 <input id="o_${newOwnerIndex}_m_0_member_mId" name="o_${newOwnerIndex}_m_0_member_m" type="text" size="3" maxlength="10" value="" placeholder="M"> 
+                 <input id="o_${newOwnerIndex}_m_0_member_lId" name="o_${newOwnerIndex}_m_0_member_l" type="text" size="11" maxlength="30" value="" placeholder="Last"> 
+                 <input id="o_${newOwnerIndex}_m_0_member_sId" name="o_${newOwnerIndex}_m_0_member_s" type="text" size="3" maxlength="10" value="" placeholder="suffix"> 
+                 <input id="o_${newOwnerIndex}_m_0_member_hiddenId" name="o_${newOwnerIndex}_m_0_member_hidden"  type="checkbox">
+                 <label for="o_${newOwnerIndex}_m_0_member_hiddenId">hide</label>
+               </div>`
+            + '<span class="addPerson">+ person</span>'
+          ownerDivs[ownerDivs.length -1].after(newEstateDiv)
+          document.querySelectorAll('span.addPerson').forEach((p) => {
+            p.addEventListener('click', addPerson)
+          })
+        })
+
+        const delEstateSpans = document.querySelectorAll('span.delEstate')
+        delEstateSpans.forEach((estate) => {
+          estate.addEventListener('click', (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            const ownerDiv = e.target.parentElement.parentElement
+            if (ownerDiv.classList.contains('editOwner') && ownerDiv.dataset.hasOwnProperty('o')) {
+              console.info(ownerDiv)
+              ownerDiv.remove()
+            }
+          })
+        })
+
+        const addPersonSpans = document.querySelectorAll('span.addPerson')
+        addPersonSpans.forEach((p) => {
+          p.addEventListener('click', addPerson)
+        })
+
+        function addPerson(e) { 
+          e.preventDefault()
+          e.stopPropagation()
+          const dataSet = e.target.previousElementSibling.dataset
+          // console.info(dataSet)
+          const o = dataSet.o
+          const m = parseInt(dataSet.m) + 1
+          const newPersonDiv = document.createElement('div')
+          newPersonDiv.setAttribute('data-o', o)
+          newPersonDiv.setAttribute('data-m', m)
+          const title = document.createElement('input')
+          title.setAttribute('type', 'text')
+          title.setAttribute('id', `o_${o}_m_${m}_member_tId`)
+          title.setAttribute('name', `o_${o}_m_${m}_member_t`)
+          title.setAttribute('size', '3')
+          title.setAttribute('maxlength', '10')
+          title.setAttribute('value', '')
+          title.setAttribute('placeholder', 'Title')
+          newPersonDiv.appendChild(title)
+          const first = document.createElement('input')
+          first.setAttribute('type', 'text')
+          first.setAttribute('id', `o_${o}_m_${m}_member_fId`)
+          first.setAttribute('name', `o_${o}_m_${m}_member_f`)
+          first.setAttribute('size', '11')
+          first.setAttribute('maxlength', '60')
+          first.setAttribute('value', '')
+          first.setAttribute('placeholder', 'First')
+          newPersonDiv.appendChild(first)
+          const middle = document.createElement('input')
+          middle.setAttribute('type', 'text')
+          middle.setAttribute('id', `o_${o}_m_${m}_member_mId`)
+          middle.setAttribute('name', `o_${o}_m_${m}__member_m`)
+          middle.setAttribute('size', '3')
+          middle.setAttribute('maxlength', '10')
+          middle.setAttribute('value', '')
+          middle.setAttribute('placeholder', 'M')
+          newPersonDiv.appendChild(middle)
+          const last = document.createElement('input')
+          last.setAttribute('type', 'text')
+          last.setAttribute('id', `o_${o}_m_${m}_member_lId`)
+          last.setAttribute('name', `o_${o}_m_${m}_member_l`)
+          last.setAttribute('size', '11')
+          last.setAttribute('maxlength', '30')
+          last.setAttribute('value', '')
+          last.setAttribute('placeholder', 'Last')
+          newPersonDiv.appendChild(last)
+          const suffix = document.createElement('input')
+          suffix.setAttribute('type', 'text')
+          suffix.setAttribute('id', `o_${o}_m_${m}_member_sId`)
+          suffix.setAttribute('name', `o_${o}_m_${m}_member_s`)
+          suffix.setAttribute('size', '3')
+          suffix.setAttribute('maxlength', '10')
+          suffix.setAttribute('value', '')
+          suffix.setAttribute('placeholder', 'suffix')
+          newPersonDiv.appendChild(suffix)
+          const hidden = document.createElement('input')
+          hidden.setAttribute('type', 'checkbox')
+          hidden.setAttribute('id', `o_${o}_m_${m}_member_hiddenId`)
+          hidden.setAttribute('name', `o_${o}_m_${m}_member_hidden`)
+          const shouldBeChecked = document.querySelector(`input[type=checkbox]#o_${o}_m_${dataSet?.m}_member_hidden`)?.checked
+          if (shouldBeChecked === true) {
+            hidden.setAttribute('checked', '')
+          }
+          newPersonDiv.appendChild(hidden)
+          const hlabel = document.createElement('label')
+          hlabel.innerText = 'hide'
+          hlabel.setAttribute('for', `o_${o}_m_${m}_member_hiddenId`)
+          newPersonDiv.appendChild(hlabel)
+          const insertInto = e.target.parentElement
+          // console.log(insertInto)
+          insertInto.insertBefore(newPersonDiv, e.target)
+        }
+
+        const fileInput = form['photo_0']
+        fileInput.addEventListener('change', handlePhoto, false)
+        function handlePhoto(e) {
+          e.preventDefault()
+          e.stopPropagation()
+          prepareNewImage(e)
+        }
+        const imageDropTarget = form['pierPhotoId']
+        imageDropTarget.addEventListener('dragenter', dragnoop, false)
+        imageDropTarget.addEventListener('dragover', dragnoop, false)
+        imageDropTarget.addEventListener('drop', dragdrop, false)
+        function dragnoop(e) {
+          e.preventDefault()
+          e.stopPropagation()
+          // console.log(e)
+        }
+        function dragdrop(e) {
+          e.preventDefault()
+          e.stopPropagation()
+          const files = e.dataTransfer.files
+          const fileInput = form['photo_0Id']
+          fileInput.files = files
+          console.log(files)
+          prepareNewImage(e) 
+        }
+        // const fileElement = document.forms[0]['photo_0Id'] 
+        // fileElement.addEventListener('change', (e) => {
+        //   e.preventDefault()
+        //   e.stopPropagation()
+        //   prepareNewImage(e)
+        // })
+        function preparePierData(e) {
+          console.log('step 1: prepare form data')
+          const pier = {}
+          pier.pier = form['numberId'].value
+          pier.version = form['versionId'].value
+          pier.loc = `${form['lonId'].value.toString()},${form['latId'].value.toString()}`
+          pier.geohash = form['geohashId'].value
+          pier.pluscode = form['pluscodeId'].value
+          pier.public = (form['publicId'].checked) ? 1 : 0
+          pier.bigSwimPier = (form['bigSwimPierId'].checked) ? 1 : 0
+          const property = {}
+          property.association = form['associationId'].value
+          property.established = parseInt(form['establishedId'].value, 10)
+          property.associationUrl = form['associationUrlId'].value
+          property.tel = form['telId'].value.replace(/(?<area>\d{3})-(?<prefix>\d{3})-(?<exch>\d{4})/, '+1 ($<area>) $<prefix>-$<exch>')
+          property.business = form['businessId'].value
+          property.isMarina = (form['isMarinaId'].checked) ? 1 : 0
+          property.hasFood = (form['hasFoodId'].checked) ? 1 : 0
+          const address = {}
+          address.street = form['streetId'].value
+          address.city = (form['cityId'].value !== '') ? form['cityId'].value : 'Lake Geneva'
+          address.state = (form['stateId'].value !== '') ? form['stateId'].value : 'WI'
+          address.zip = (form['zipId'].value !== '') ? form['zipId'].value : '53147'
+          property.address = address
+          pier.property = property
+          const owners = []
+          const ownerNodes = document.querySelectorAll('div.editOwner')
+          // ownerNodes.forEach((o, i) => {
+          ownerNodes.forEach((o) => {
+            const i = o.dataset.o
+            // console.log(`ownerNodes: ${i}`)
+            const owner = {}
+            owner.estateName = form[`o_${i}_estateName`].value
+            owner.membershipType = form[`o_${i}_membershipTypeId`].options[form[`o_${i}_membershipTypeId`].selectedIndex].value
+            owner.member = !(/non-member/i.test(owner.membershipType))
+            const mCollection = o.querySelector(':scope > div').children
+            const members = []
+            for (personRow of mCollection) {
+              if (/div/i.test(personRow.tagName)) {
+                const o = i
+                const m = personRow.dataset.m
+                // console.info(form[`o_${o}_m_${m}_member_fId`]?.value, form[`o_${o}_m_${m}_member_lId`]?.value)
+                if (typeof (form[`o_${o}_m_${m}_member_fId`]?.value + form[`o_${o}_m_${m}_member_lId`]?.value) === 'string') {
+                  // console.log(`person: ${o} ${m}`)
+                  members[m] = {
+                    t: form[`o_${o}_m_${m}_member_tId`].value,
+                    f: form[`o_${o}_m_${m}_member_fId`].value,
+                    m: form[`o_${o}_m_${m}_member_mId`].value,
+                    l: form[`o_${o}_m_${m}_member_lId`].value,
+                    s: form[`o_${o}_m_${m}_member_sId`].value,
+                    hidden: (form[`o_${o}_m_${m}_member_hiddenId`].checked) ? 1 : 0
+                  }
+                }
+              }
+            }
+            owner.members = members
+            // console.info(owner)
+            owners.push(owner)
+          })
+          pier.owners = owners
+          console.log(pier)
+          return pier
+        }
+
+        function prepareNewImage() {
+          const fileList = form['photo_0Id'].files
+          if (arguments.length > 0) {
+            const span = form['pierPhotoId'].querySelector(':scope > span')
+            span.innerHTML = `Image selected for pier <%= pierNumber %><br>${fileList[0].name} <br>type: ${fileList[0].type} <br>${Math.floor(fileList[0].size/1024)} KBs.`
+            console.log(span)
+          } else {
+            console.log('step 2: prepare new image')
+            console.info(fileList[0])
+            return fileList[0]
+          }
+        }
+
+        async function send(data) {
+          console.log('step 3: send data')
+          let jwtAccess = '<%= searchJwtAccess %>'
+          const opts = {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              Authorization: `Bearer ${jwtAccess}`,
+            },
+            body: data,
+          }
+          console.dir(opts)
+          const url = new URL(`${origin}/edit/pier/<%= pierNumber %>`)
+          console.log(url.toString())
+          const request = new Request(url, opts)
+          console.dir(request)
+          const response = await (await fetch(request, { credentials: 'same-origin' })).json()
+          console.dir(response)
+          const messagesId = document.forms[0].elements['messagesId']
+          const messageSpan = document.createElement('span')
+          if (/failed/.test(response.status.toLowerCase())) {
+            messageSpan.appendChild(document.createTextNode(response.msg))
+            messageSpan.appendChild(document.createElement('br'))
+            messageSpan.appendChild(document.createTextNode(`pier update status: ${response.okPierUpdate}`))
+            messageSpan.appendChild(document.createElement('br'))
+            messageSpan.appendChild(document.createTextNode(`town geojson update status: ${response.okTownGeoJson}`))
+            messageSpan.appendChild(document.createElement('br'))
+            messageSpan.appendChild(document.createTextNode(`combined geojson update status: ${response.okCombinedGeoJson}`))
+            messageSpan.appendChild(document.createElement('br'))
+            messageSpan.appendChild(document.createTextNode(`image upload status: ${response.okPierImage}`))
+          } else {
+            messageSpan.appendChild(document.createTextNode('Pier data successfully updated.'))
+            messageSpan.appendChild(document.createElement('br'))
+            messageSpan.appendChild(document.createTextNode(`image upload status: ${response.imageUploadStatus}`))
+            messageSpan.appendChild(document.createElement('br'))
+            messageSpan.appendChild(document.createTextNode(`regenderated ${response.setTown} geojson: ${response.okTownGeoJson}`))
+            messageSpan.appendChild(document.createElement('br'))
+            messageSpan.appendChild(document.createTextNode(`regenderated combined geojson: ${response.okCombinedGeoJson}`))
+          }
+          messagesId.appendChild(messageSpan)
+          messagesId.classList.remove('hidden')
+          messagesId.scrollIntoView(true)
+          document.querySelector('section.main h2').scrollIntoView(true)
+        }
+
+        const submit = document.querySelector('input[type=submit]')
+        submit.addEventListener('click', submitPierEdits)
+        async function submitPierEdits(e) {
+          e.preventDefault()
+          e.stopPropagation()
+          const formData = new FormData()
+          const pier = preparePierData(e)
+          const file = prepareNewImage()
+          if (file !== undefined) {
+            console.log(`files ready to be uploaded: ${file}`)
+            formData.append('photo_0', file)
+          }
+          formData.append('csrfTokenHidden', form['csrf-tokenId'].value)
+          formData.append('pier', JSON.stringify(pier))
+          formData.append('version', form['versionId'].value)
+          formData.append('setTown', form['setTownId'].value)
+          await send(formData)
+        }
+        // Event hander for lon/lat fields to get geohash
+        async function getGeoHash(e) {
+          const lon = parseFloat(form['lonId'].value, 10)
+          const lat = parseFloat(form['latId'].value, 10)
+          console.log(lon, lat)
+          if ((lon === 0 || isNaN(lon)) || (lat === 0 || isNaN(lat))) {
+          // if (lon === 0 || lat === 0) {
+            return false
+          }
+          const data = new FormData()
+          data.append('csrfTokenHidden', form['csrf-tokenId'].value)
+          data.append('pier', form['numberId'].value)
+          data.append('lon', lon.toString())
+          data.append('lat', lat.toString())
+          let jwtAccess = '<%= searchJwtAccess %>'
+          const opts = {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              Authorization: `Bearer ${jwtAccess}`,
+            },
+            body: data,
+          }
+          console.dir(opts)
+          const request = new Request(`${origin}/edit/geohash`, opts)
+          console.dir(request)
+          const response = await (await fetch(request, { credentials: 'same-origin' })).json()
+          console.log(response)
+          if (response?.geoHash !== 0) {
+            form['geohash'].value = response.geoHash
+            form['csrf-tokenId'].value = response.newCsrfToken
+            console.log(`New csrf token: ${response.newCsrfToken}`)
+          }
+        }
+        form['lonId'].addEventListener('change', getGeoHash, false)
+        form['latId'].addEventListener('change', getGeoHash, false)
+        // Event handler for lon/lat fields to get google pluscode
+        async function getPluscode(e) {
+          const lon = parseFloat(form['lonId'].value, 10)
+          const lat = parseFloat(form['latId'].value, 10)
+          if ((lon === 0 || isNaN(lon)) || (lat === 0 || isNaN(lat))) {
+            return false
+          }
+          const request = new Request(`https://plus.codes/api?address=${lat},${lon}`)
+          const response = await (await fetch(request)).json()
+          console.log(response)
+          if (response?.plus_code?.global_code !== '') {
+            form['pluscodeId'].value = response.plus_code.global_code
+          }
+        }
+        form['lonId'].addEventListener('change', getPluscode, false)
+        form['latId'].addEventListener('change', getPluscode, false)
+    </script>
+  </section> 
+  <section class="map">
+    <%# map embed %>
+    <%- await include('./map-embed.ejs') -%>
+    <%# map embed %>
+    <script nonce="<%= nonce %>"
+      src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.core.js"
+      crossorigin async
+      data-callback="initMapKit"
+      data-libraries="full-map"
+      data-initial-token="">
+    </script>
+    <script nonce="<%= nonce %>" type="module">
+      let page = 'edit/pier'
+
+      const origin = '<%= origin %>'
+      const jwtAccess = '<%= searchJwtAccess %>'     
+      let map
+      async function setupMapKitJs() {
+        const tokenOpts = {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${jwtAccess}`,
+          },
+        }
+        const request = new Request(`${origin}/mapkit/getToken`, tokenOpts)
+        const response = await fetch(request)
+        const { tokenID } = await response.json()
+        // console.log('tokenID: ', tokenID)
+        if (!window.mapkit || window.mapkit.loadedLibraries.length === 0) {
+          // mapkit.core.js or the libraries are not loaded yet.
+          // Set up the callback and wait for it to be called.
+          await new Promise(resolve => { window.initMapKit = resolve })
+          // Clean up
+          delete window.initMapKit
+        }
+        mapkit.init({
+          authorizationCallback: function(done) {
+            done(tokenID)
+          },
+        })
+      }
+
+      async function main() {
+        await setupMapKitJs()
+        // init / center the map over Geneva Bay 
+        const lat = 42.587751
+        const lon = -88.440669
+        const genevaBay = new mapkit.CoordinateRegion(
+          new mapkit.Coordinate(lat, lon),
+          new mapkit.CoordinateSpan(0.1, 0.1)
+        );
+        const opts = {
+          mapType: mapkit.Map.MapTypes.Satellite,
+          visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
+          isZoomEnabled: true,
+          showsCompass: mapkit.FeatureVisibility.Visible,
+          showsScale: mapkit.FeatureVisibility.Visible,
+          showsZoomControl: true,
+          cameraDistance: 900,
+          showsPointsOfInterest: true,
+          isRotationEnabled: true,
+          isScrollEnabled: true,
+          showsMapTypeControl: false,
+        } 
+        window._map = new mapkit.Map("map", opts);
+        window._map.region = genevaBay;
+      }
+      await main()
+
+      let pierNumber = '<%= pier.pier %>'
+      let coords = '<%= pier.loc %>'
+      let [lon, lat] = coords.split(',')
+      lon = parseFloat(lon, 10)
+      lat = parseFloat(lat, 10)
+
+      async function showThisPier() {
+        const annotations = []
+        if (lat !== 0 && lon !== 0) {
+          console.log(`(lat, lon): ${lat}, ${lon}`)
+          const pierMarker = new window.mapkit.Coordinate(lat, lon)
+          const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+          pierAnnotation.title = `Pier ${pierNumber}`
+          annotations.push(pierAnnotation)
+        }
+        if (annotations.length > 0) {
+          // console.dir(annotations, { depth: null })
+          window._map.showItems(annotations)
+        }
+      }
+      await showThisPier()
+      let selectCoordsMarker = null
+      window._map.addEventListener("single-tap", async (e) => {
+        if (selectCoordsMarker) {
+          window._map.removeAnnotation(selectCoordsMarker)
+        }
+        e.preventDefault()
+        e.stopPropagation()
+        const {latitude, longitude} = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
+        // const coordinate = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
+        const defaultRadius = 50
+        const defaultUnits = 'ft'
+        console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: ${longitude}, ${latitude}`)
+        const results = await (await fetch(`${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`)).json()
+        console.log(results)
+        if (results?.total > 0) {
+          results.documents.forEach((p) => {
+            console.log(`${p.value.pier}, ${p.value.coords}, ${p.value.estateName}, ${p.value.business}, ${p.value.association}`)
+              let subtitle = ' '
+              if (p.value.business !== '' && p.value.association === '') subtitle = p.value.business
+              if (p.value.association !== '' && p.value.business === '') subtitle = p.value.association
+              if (p.value.firstname !== '' && p.value.lastname !== '') subtitle = `${p.value.firstname} ${p.value.lastname}`
+              if (p.value.firstname !== '' && p.value.lastname === '') subtitle = p.value.firstname
+              if (p.value.firstname === '' && p.value.lastname !== '') subtitle = p.value.lastname
+              if (p.value.estateName !== '') subtitle = p.value.estateName
+              console.info(`subtitle: ${subtitle}`)
+              const annotationCallout = {
+                calloutLeftAccessoryForAnnotation: () => {
+                  const accessoryViewLeft = document.createElement("div")
+                  return accessoryViewLeft
+                },
+                calloutRightAccessoryForAnnotation: () => {
+                  const accessoryViewRight = document.createElement("a")
+                  accessoryViewRight.className = "right-accessory-view"
+                  accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
+                  accessoryViewRight.target = "_self"
+                  accessoryViewRight.textContent = "\u{24D8}"
+                  return accessoryViewRight
+                }
+              }
+              const pierMarker = new window.mapkit.Coordinate(latitude, longitude)
+              const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+              pierAnnotation.title = `Pier ${p.value.pier}`
+              pierAnnotation.subtitle = subtitle 
+              pierAnnotation.animates = true
+              pierAnnotation.selected = true
+              pierAnnotation.color = "#4B93E0"
+              pierAnnotation.callout = annotationCallout
+              window._map.addAnnotation(pierAnnotation)
+          })
+        } else {
+          console.log(`pointOnPageToCoordinate... lon: ${longitude}, lat: ${latitude}`)
+          const annotationCallout = {
+            calloutLeftAccessoryForAnnotation: () => {
+              const accessoryViewLeft = document.createElement("div")
+              return accessoryViewLeft
+            },
+            calloutRightAccessoryForAnnotation: () => {
+              const accessoryViewRight = document.createElement("a")
+              // accessoryViewRight.className = "right-accessory-view"
+              // accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
+              // accessoryViewRight.target = "_self"
+              // accessoryViewRight.textContent = `lon/lat: ${longitude},${latitude}`
+              return accessoryViewRight
+            }
+          }
+          const selectCoords = new window.mapkit.Coordinate(latitude, longitude)
+          selectCoordsMarker = new window.mapkit.MarkerAnnotation(selectCoords)
+          selectCoordsMarker.title = `lon/lat: ${Number.parseFloat(longitude).toFixed(6)},${Number.parseFloat(latitude).toFixed(6)}`
+          selectCoordsMarker.animates = true
+          selectCoordsMarker.selected = true
+          selectCoordsMarker.color = "#4B93E0"
+          selectCoordsMarker.callout = annotationCallout
+          window._map.addAnnotation(selectCoordsMarker)
+          document.forms.pierEditId.lonId.value = Number.parseFloat(longitude).toFixed(6)
+          document.forms.pierEditId.latId.value = Number.parseFloat(latitude).toFixed(6)
+          document.forms.pierEditId.latId.dispatchEvent(new InputEvent('change'))
+        }
+      })
+    </script>
+  </section>
+</article>
+
