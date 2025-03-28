@@ -86,25 +86,28 @@
           new mapkit.Coordinate(lat, lon),
           // new mapkit.CoordinateSpan(0, 0.01)
           new mapkit.CoordinateSpan(0.006, 0.001)
-        );
+        )
         const opts = {
           mapType: mapkit.Map.MapTypes.Hybrid,
           loadPriority: mapkit.Map.LoadPriorities.PointsOfInterest,
-          selectableMapFeatures: [mapkit.MapFeatureType.PhysicalFeature, mapkit.MapFeatureType.PointOfInterest],
+          selectableMapFeatures: [
+            mapkit.MapFeatureType.PhysicalFeature,
+            mapkit.MapFeatureType.PointOfInterest
+          ],
           visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
-          isZoomEnabled: true,
           showsCompass: mapkit.FeatureVisibility.Visible,
           showsScale: mapkit.FeatureVisibility.Visible,
           showsZoomControl: true,
-          cameraDistance: 1100,
           showsPointsOfInterest: true,
+          showsMapTypeControl: false,
+          cameraDistance: 1100,
           isRotationEnabled: true,
           isScrollEnabled: true,
-          showsMapTypeControl: false,
+          isZoomEnabled: true,
         } 
         mapkit.Map.LoadPriorities = mapkit.Map.LoadPriorities.PointsOfInterest
-        window.map = new mapkit.Map("map", opts);
-        window.map.region = genevaBay;
+        window.map = new mapkit.Map('map', opts)
+        window.map.region = genevaBay
       }
       await main()
 
