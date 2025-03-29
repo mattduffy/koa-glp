@@ -108,7 +108,7 @@
           console.log(`larger screen (${window.innerWidth} x ${window.innerHeight}), `
            + `camera distance: ${cameraDistance}`)
         }
-        console.log(genevaBay)
+        // console.log(genevaBay)
       }
       
       async function main() {
@@ -137,8 +137,6 @@
         window.map.cameraDistance = window.cameraDistance
       }
       await main()
-      console.info('after main, map.region', window.map.region)
-      console.info('after main, map.cameraDistance', window.map.cameraDistance)
       const annotations = []
 
       async function showWalkingPath() {
@@ -152,7 +150,7 @@
           }
         const request = new Request(`${origin}/mapkit/walking-path`, opts)
           const response = await (await fetch(request)).json()
-          console.log(response)
+          // console.log(response)
           window.mapkit.importGeoJSON(response, {
             itemForFeature: (overlay, geoJSON) => {
               overlay.style = new window.mapkit.Style({
@@ -172,14 +170,15 @@
         } catch (e) {
           console.error(e)
         }
+        await showWalkingPathMileMarkers()
       }
       await showWalkingPath()
 
-      function showWalkingPathMileMarkers() {
+      async function showWalkingPathMileMarkers() {
         const annotations = []
         const miles = <%- JSON.stringify(mileMarkers) %>
         miles.forEach((m) => {
-          console.log(m.value.properties.name, m.value.properties.waypoint)
+          // console.log(m.value.properties.name, m.value.properties.waypoint)
           let [lon, lat] = m.value.geometry.coordinates
           lon = parseFloat(lon, 10)
           lat = parseFloat(lat, 10)
@@ -208,8 +207,8 @@
         window.map.showItems(annotations.reverse())
         window.map.cameraDistance = window.cameraDistance
         window.map.region = window.genevaBay
+        await showPointsOfInterest()
       }
-      showWalkingPathMileMarkers()
       async function showPointsOfInterest() {
         try {
           const opts = {
@@ -267,7 +266,6 @@
           console.error(e)
         }
       }
-      // await showPointsOfInterest()
 
       window.map.addEventListener("single-tap", async (e) => {
         e.preventDefault()
