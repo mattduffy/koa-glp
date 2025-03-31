@@ -55,7 +55,7 @@
       data-initial-token="">
     </script>
     <script nonce="<%= nonce %>" type="module">
-      let page = 'marinas'
+      let page = 'towns'
 
       const origin = '<%= origin %>'
       const jwtAccess = '<%= searchJwtAccess %>'     
@@ -128,7 +128,6 @@
           showsZoomControl: true,
           showsPointsOfInterest: true,
           showsMapTypeControl: false,
-          showsPointsOfInterest: true,
           cameraDistance: window.cameraDistance,
           isRotationEnabled: true,
           isScrollEnabled: true,
@@ -168,7 +167,7 @@
             },
             geoJSONDidComplete: overlays => {
               window.map.showItems(overlays)
-              window.map.region = genevaBay;
+              window.map.region = genevaBay
               window.map.cameraDistance = window.cameraDistance
             },
           })
