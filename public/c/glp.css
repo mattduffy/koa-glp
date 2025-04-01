@@ -197,7 +197,8 @@ header > h1 {
   display: block;
   text-align: -webkit-auto;
   position: relative;
-  margin-left: -25%;
+  /* margin-left: -25%; */
+  left: -10%;
 }
 header > h1 > a:active, a:visited, a:link {
   color: black;
@@ -317,6 +318,10 @@ div.previousPier {
   position: relative;
   right: 0px;
   text-align: right;
+}
+
+a[rel="prev"] {
+  float: left;
 }
 
 div.previousBusiness, div.previousPublic, div.previousSwim, div.previousAssocs {
@@ -690,7 +695,8 @@ footer > section {
     display: block!important;
     text-align: -webkit-auto;
     position: relative;
-    margin-left: 0%;
+    /* margin-left: 0%; */
+    left: 1em;
   }
 
   header > h1 > a:active, a:visited, a:link {
