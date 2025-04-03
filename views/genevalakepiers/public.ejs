@@ -187,36 +187,65 @@
             done(tokenID)
           },
         })
+        let lat, lon
+        if (window.innerWidth < 450) {
+          // center on Geneva Bay for small screens
+          // -88.50148420898438, 42.56224219184264 
+          lat = 42.5475673457749
+          lon = -88.50148420898438
+          window.genevaCenter = new mapkit.CoordinateRegion(
+            new mapkit.Coordinate(lat, lon),
+            new mapkit.CoordinateSpan(0.015, 0.02)
+          )
+          window.cameraDistance = 11000
+          console.log(`small screen (${window.innerWidth} x ${window.innerHeight}), `
+           + `camera distance: ${window.cameraDistance}`)
+        } else {
+          // center the map over Geneva Lake for big screens
+          // -88.5016442433777, 42.56597732718751
+          lat = 42.56597732718751 
+          lon = -88.5016442433777
+          window.genevaCenter = new mapkit.CoordinateRegion(
+            new mapkit.Coordinate(lat, lon),
+            new mapkit.CoordinateSpan(0.1, 0.1)
+          )
+          window.cameraDistance = 11000
+          console.log(`larger screen (${window.innerWidth} x ${window.innerHeight}), `
+           + `camera distance: ${window.cameraDistance}`)
+        }
+        console.log(genevaCenter)
       }
 
       async function main() {
         await setupMapKitJs()
         // init / center the map over Geneva Bay 
-        const lat = 42.587751
-        const lon = -88.440669
-        const genevaBay = new mapkit.CoordinateRegion(
-          new mapkit.Coordinate(lat, lon),
-          new mapkit.CoordinateSpan(.016, 0)
-        );
+        // const lat = 42.587751
+        // const lon = -88.440669
+        // const genevaBay = new mapkit.CoordinateRegion(
+        //   new mapkit.Coordinate(lat, lon),
+        //   new mapkit.CoordinateSpan(.016, 0)
+        // )
         const opts = {
           mapType: mapkit.Map.MapTypes.Hybrid,
           loadPriority: mapkit.Map.LoadPriorities.PointsOfInterest,
-          selectableMapFeatures: [mapkit.MapFeatureType.PhysicalFeature, mapkit.MapFeatureType.PointOfInterest],
+          selectableMapFeatures: [
+            mapkit.MapFeatureType.PhysicalFeature,
+            mapkit.MapFeatureType.PointOfInterest
+          ],
           visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
-          // visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
-          isZoomEnabled: true,
           showsCompass: mapkit.FeatureVisibility.Visible,
           showsScale: mapkit.FeatureVisibility.Visible,
           showsZoomControl: true,
-          cameraDistance: 3500,
-          showsPointsOfInterest: true,
-          isRotationEnabled: true,
-          isScrollEnabled: true,
           showsPointsOfInterest: true,
           showsMapTypeControl: false,
+          cameraDistance: window.cameraDistance,
+          isRotationEnabled: true,
+          isScrollEnabled: true,
+          isZoomEnabled: true,
         } 
-         window.map = new mapkit.Map("map", opts);
-         window.map.region = genevaBay;
+         window.map = new mapkit.Map('map', opts)
+         window.map.region = genevaCenter
+         window.map.cameraDistance = window.cameraDistance
       }
       await main()
 
@@ -276,6 +305,8 @@
           })
           // window.map.showItems(annotations.reverse())
           window.map.showItems(annotations)
+          window.map.region = window.genevaCenter
+          window.map.cameraDistance = window.cameraDistance
         } catch (e) {
           console.error(e)
         }
@@ -326,6 +357,8 @@
               pierAnnotation.color = "#4B93E0"
               pierAnnotation.callout = annotationCallout
               window.map.addAnnotation(pierAnnotation)
+              window.map.region = window.genevaCenter
+              window.map.cameraDistance = window.cameraDistance
           })
         }
       })
