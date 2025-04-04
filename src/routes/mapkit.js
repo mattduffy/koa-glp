@@ -402,9 +402,9 @@ router.get('mapkitAssociations', '/mapkit/associations', async (ctx) => {
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 200
       try {
-        log('FT.AGGREGATE glp:idx:piers:association "*" LOAD 3 $.loc AS coords GROUPBY 1 @association REDUCE TOLIST 1 @coords SORTBY 2 @association ASC LIMIT 0 15')
+        log('FT.AGGREGATE glp:idx:piers:association "*" LOAD 6 $.pier as pier $.loc AS coords GROUPBY 1 @association REDUCE TOLIST 1 @coords SORTBY 2 @association ASC LIMIT 0 15')
         const optsAggregateAssociation = {
-          LOAD: ['$.loc'],
+          LOAD: ['$.loc', '$.pier'],
           STEPS: [
             {
               type: AggregateSteps.GROUPBY,

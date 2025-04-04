@@ -37,7 +37,9 @@
 
     <ul id="resultsList" class="searchResults">
       <% associations.forEach((p, i) => { %>
-      <li><a href="/assoc/<%= encodeURI(p.association) %>"><%= p.association %></a></li>
+        <li><a 
+            href="/assoc/<%= encodeURI(p.association) %>"
+            data-name="<%= p.association %>"><%= p.association %></a></li>
       <% }) %>
     </ul>
     <script nonce="<%= nonce %>">
@@ -188,35 +190,65 @@
             done(tokenID)
           },
         })
+        let lat, lon
+        if (window.innerWidth < 450) {
+          // center on Geneva Bay for small screens
+          // -88.50148420898438, 42.56224219184264 
+          lat = 42.5475673457749
+          lon = -88.50148420898438
+          window.genevaCenter = new mapkit.CoordinateRegion(
+            new mapkit.Coordinate(lat, lon),
+            new mapkit.CoordinateSpan(0.015, 0.02)
+          )
+          window.cameraDistance = 11000
+          console.log(`small screen (${window.innerWidth} x ${window.innerHeight}), `
+           + `camera distance: ${window.cameraDistance}`)
+        } else {
+          // center the map over Geneva Lake for big screens
+          // -88.5016442433777, 42.56597732718751
+          lat = 42.56597732718751 
+          lon = -88.5016442433777
+          window.genevaCenter = new mapkit.CoordinateRegion(
+            new mapkit.Coordinate(lat, lon),
+            new mapkit.CoordinateSpan(0.1, 0.1)
+          )
+          window.cameraDistance = 11000
+          console.log(`larger screen (${window.innerWidth} x ${window.innerHeight}), `
+           + `camera distance: ${window.cameraDistance}`)
+        }
+        console.log(genevaCenter)
       }
 
       async function main() {
         await setupMapKitJs()
         // init / center the map over Geneva Bay 
-        const lat = 42.587751
-        const lon = -88.440669
-        const genevaBay = new mapkit.CoordinateRegion(
-          new mapkit.Coordinate(lat, lon),
-          new mapkit.CoordinateSpan(0.1, 0.1)
-        );
+        // const lat = 42.587751
+        // const lon = -88.440669
+        // const genevaBay = new mapkit.CoordinateRegion(
+        //   new mapkit.Coordinate(lat, lon),
+        //   new mapkit.CoordinateSpan(0.1, 0.1)
+        // )
         const opts = {
           mapType: mapkit.Map.MapTypes.Hybrid,
           loadPriority: mapkit.Map.LoadPriorities.PointsOfInterest,
-          selectableMapFeatures: [mapkit.MapFeatureType.PhysicalFeature, mapkit.MapFeatureType.PointOfInterest],
+          selectableMapFeatures: [
+            mapkit.MapFeatureType.PhysicalFeature,
+            mapkit.MapFeatureType.PointOfInterest
+          ],
           visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
-          isZoomEnabled: true,
           showsCompass: mapkit.FeatureVisibility.Visible,
           showsScale: mapkit.FeatureVisibility.Visible,
           showsZoomControl: true,
-          cameraDistance: 3500,
-          showsPointsOfInterest: true,
-          isRotationEnabled: true,
-          isScrollEnabled: true,
           showsPointsOfInterest: true,
           showsMapTypeControl: false,
+          cameraDistance: window.cameraDistance,
+          isRotationEnabled: true,
+          isScrollEnabled: true,
+          isZoomEnabled: true,
         } 
-         window.map = new mapkit.Map("map", opts);
-         window.map.region = genevaBay;
+         window.map = new mapkit.Map('map', opts)
+         window.map.region = genevaCenter
+         window.map.cameraDistance = window.cameraDistance
       }
       await main()
 
@@ -265,15 +297,19 @@
               const coordinate = new mapkit.Coordinate(lat, lon);
               const annotation = new mapkit.MarkerAnnotation(coordinate, {
                 title: a.association,
-                animates: true,
-                selected: true,
+                animates: false,
+                selected: false,
                 color: "#4B93E0",
-                callout: annotationCallout
+                callout: annotationCallout,
+                data: { a: a.association },
               })
               annotations.push(annotation)
             }
           })
-          window.map.showItems(annotations.reverse())
+          // window.map.showItems(annotations.reverse())
+          window.map.showItems(annotations)
+          window.map.region = window.genevaCenter
+          window.map.cameraDistance = window.cameraDistance
         } catch (e) {
           console.error(e)
         }
@@ -293,38 +329,40 @@
         if (results?.total > 0) {
           results.documents.forEach((p) => {
             console.log(`${p.value.pier}, ${p.value.coords}, ${p.value.estateName}, ${p.value.business}, ${p.value.association}`)
-              let subtitle = ' '
-              if (p.value.business !== '' && p.value.association === '') subtitle = p.value.business
-              if (p.value.association !== '' && p.value.business === '') subtitle = p.value.association
-              if (p.value.firstname !== '' && p.value.lastname !== '') subtitle = `${p.value.firstname} ${p.value.lastname}`
-              if (p.value.firstname !== '' && p.value.lastname === '') subtitle = p.value.firstname
-              if (p.value.firstname === '' && p.value.lastname !== '') subtitle = p.value.lastname
-              if (p.value.estateName !== '') subtitle = p.value.estateName
-              console.info(`subtitle: ${subtitle}`)
-              const annotationCallout = {
-                calloutLeftAccessoryForAnnotation: () => {
-                  const accessoryViewLeft = document.createElement("div")
-                  return accessoryViewLeft
-                },
-                calloutRightAccessoryForAnnotation: () => {
-                  const accessoryViewRight = document.createElement("a")
-                  accessoryViewRight.className = "right-accessory-view"
-                  accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
-                  accessoryViewRight.target = "_self"
-                  accessoryViewRight.textContent = "\u{24D8}"
-                  return accessoryViewRight
-                }
+            let subtitle = ' '
+            if (p.value.business !== '' && p.value.association === '') subtitle = p.value.business
+            if (p.value.association !== '' && p.value.business === '') subtitle = p.value.association
+            if (p.value.firstname !== '' && p.value.lastname !== '') subtitle = `${p.value.firstname} ${p.value.lastname}`
+            if (p.value.firstname !== '' && p.value.lastname === '') subtitle = p.value.firstname
+            if (p.value.firstname === '' && p.value.lastname !== '') subtitle = p.value.lastname
+            if (p.value.estateName !== '') subtitle = p.value.estateName
+            console.info(`subtitle: ${subtitle}`)
+            const annotationCallout = {
+              calloutLeftAccessoryForAnnotation: () => {
+                const accessoryViewLeft = document.createElement("div")
+                return accessoryViewLeft
+              },
+              calloutRightAccessoryForAnnotation: () => {
+                const accessoryViewRight = document.createElement("a")
+                accessoryViewRight.className = "right-accessory-view"
+                accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
+                accessoryViewRight.target = "_self"
+                accessoryViewRight.textContent = "\u{24D8}"
+                return accessoryViewRight
               }
-              const pierMarker = new window.mapkit.Coordinate(latitude, longitude)
-              const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
-              pierAnnotation.title = `Pier ${p.value.pier}`
-              pierAnnotation.subtitle = subtitle 
-              pierAnnotation.animates = true
-              pierAnnotation.selected = true
-              pierAnnotation.color = "#4B93E0"
-              pierAnnotation.callout = annotationCallout
-              window.map.addAnnotation(pierAnnotation)
+            }
+            const pierMarker = new window.mapkit.Coordinate(latitude, longitude)
+            const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+            pierAnnotation.title = `Pier ${p.value.pier}`
+            pierAnnotation.subtitle = subtitle 
+            pierAnnotation.animates = true 
+            pierAnnotation.selected = true
+            pierAnnotation.color = "#4B93E0"
+            pierAnnotation.callout = annotationCallout
+            window.map.addAnnotation(pierAnnotation)
           })
+          window.map.region = window.genevaCenter
+          window.map.cameraDistance = window.cameraDistance
         }
       })
     </script>

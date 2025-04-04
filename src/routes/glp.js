@@ -203,7 +203,7 @@ router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
   log(ctx.request.query.s)
   const x = 17
   const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
-  const num = 12
+  const num = 10
   // const offset = (s === 1) ? 0 : (s - 1) * num
   const offset = (s <= 1) ? 0 : (s - 1) * num
   const skipBack = (s <= 1) ? 0 : s - 1
@@ -527,7 +527,7 @@ router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async 
   log(ctx.request.query.s)
   const x = 70
   const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
-  const num = 12
+  const num = 10
   const offset = (s <= 1) ? 0 : (s - 1) * num
   const skipBack = (s <= 1) ? 0 : s - 1
   const skipForward = s + 1
