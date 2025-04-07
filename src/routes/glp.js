@@ -334,6 +334,36 @@ router.get('poi', '/point-of-interest/:poi', hasFlash, addIpToSession, async (ct
   }
 })
 
+router.get('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, async (ctx) => {
+  const log = glpLog.extend('GET-pioEdit')
+  const error = glpError.extend('GET-pioEdit')
+  if (!ctx.state?.isAuthenticated) {
+    error('User is not authenticated.  Redirect to /')
+    ctx.status = 401
+    ctx.redirect('/')
+  } else {
+    const locals = {}
+    await ctx.render('edit-poi', locals)
+  }
+})
+
+router.post('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, processFormData, async (ctx) => {
+  const log = glpLog.extend('POST-pioEdit')
+  const error = glpError.extend('POST-pioEdit')
+  if (!ctx.state?.isAuthenticated) {
+    error('User is not authenticated.  Redirect to /')
+    ctx.status = 401
+    ctx.redirect('/')
+  } else {
+    const locals = {}
+    await ctx.render('edit-poi', locals)
+  }
+})
+
+router.get('poiNew', '/poi/new', async (ctx) => {
+
+})
+
 router.get('walkingRedirect', '/walkingpath', async (ctx) => {
   ctx.status = 301
   ctx.redirect('/walking-path')
