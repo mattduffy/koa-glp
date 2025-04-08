@@ -319,7 +319,7 @@ router.get('editPier-GET', '/edit/pier/:pier', hasFlash, async (ctx) => {
     locals.title = `${ctx.app.site}: Pier ${pierNumber}`
     locals.sessionUser = ctx.state.sessionUser
     locals.isAuthenticated = ctx.state.isAuthenticated
-    await ctx.render('edit-pier', locals)
+    await ctx.render('pier-edit', locals)
   }
 })
 

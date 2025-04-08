@@ -758,32 +758,60 @@
             done(tokenID)
           },
         })
+        let lat, lon
+        if (window.innerWidth < 450) {
+          // center on Geneva Bay for small screens
+          // -88.44350141271971, 42.57864224253392
+          lat = 42.57864224253392
+          lon = -88.44350141271971
+          window.genevaCenter = new mapkit.CoordinateRegion(
+            new mapkit.Coordinate(lat, lon),
+            new mapkit.CoordinateSpan(0.015, 0.02)
+          )
+          window.cameraDistance = 1500
+          console.log(`small screen (${window.innerWidth} x ${window.innerHeight}), `
+           + `camera distance: ${cameraDistance}`)
+        } else {
+          // center the map over Geneva Lake for big screens
+          // -88.500361383511, 42.566809828133316
+          lat = 42.56798979707351
+          lon = -88.500361383511
+          window.genevaCenter = new mapkit.CoordinateRegion(
+            new mapkit.Coordinate(lat, lon),
+            new mapkit.CoordinateSpan(0.1, 0.1)
+          )
+          window.cameraDistance = 500
+          console.log(`larger screen (${window.innerWidth} x ${window.innerHeight}), `
+           + `camera distance: ${cameraDistance}`)
+        }
+        // console.log(genevaCenter)
       }
 
       async function main() {
         await setupMapKitJs()
         // init / center the map over Geneva Bay 
-        const lat = 42.587751
-        const lon = -88.440669
-        const genevaBay = new mapkit.CoordinateRegion(
-          new mapkit.Coordinate(lat, lon),
-          new mapkit.CoordinateSpan(0.1, 0.1)
-        );
+        // const lat = 42.587751
+        // const lon = -88.440669
+        // const genevaCenter = new mapkit.CoordinateRegion(
+        //   new mapkit.Coordinate(lat, lon),
+        //   new mapkit.CoordinateSpan(0.1, 0.1)
+        // )
         const opts = {
           mapType: mapkit.Map.MapTypes.Satellite,
           visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
-          isZoomEnabled: true,
           showsCompass: mapkit.FeatureVisibility.Visible,
           showsScale: mapkit.FeatureVisibility.Visible,
           showsZoomControl: true,
-          cameraDistance: 900,
           showsPointsOfInterest: true,
+          showsMapTypeControl: false,
+          cameraDistance: window.cameraDistance,
           isRotationEnabled: true,
           isScrollEnabled: true,
-          showsMapTypeControl: false,
+          isZoomEnabled: true,
         } 
-        window._map = new mapkit.Map("map", opts);
-        window._map.region = genevaBay;
+        window._map = new mapkit.Map('map', opts)
+        window._map.region = genevaCenter
+        window._map.cameraDistance = window.cameraDistance
       }
       await main()
 
