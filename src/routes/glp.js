@@ -334,6 +334,19 @@ router.get('poi', '/point-of-interest/:poi', hasFlash, addIpToSession, async (ct
   }
 })
 
+router.get('poiNew', '/poi/new', async (ctx) => {
+  const log = glpLog.extend('GET-pioNew')
+  const error = glpError.extend('GET-pioNew')
+  if (!ctx.state?.isAuthenticated) {
+    error('User is not authenticated.  Redirect to /')
+    ctx.status = 401
+    ctx.redirect('/')
+  } else {
+    const locals = {}
+    await ctx.render('poi-new', locals)
+  }
+})
+
 router.get('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, async (ctx) => {
   const log = glpLog.extend('GET-pioEdit')
   const error = glpError.extend('GET-pioEdit')
@@ -343,7 +356,7 @@ router.get('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, async (ctx) =>
     ctx.redirect('/')
   } else {
     const locals = {}
-    await ctx.render('edit-poi', locals)
+    await ctx.render('poi-edit', locals)
   }
 })
 
@@ -358,10 +371,6 @@ router.post('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, processFormDa
     const locals = {}
     await ctx.render('edit-poi', locals)
   }
-})
-
-router.get('poiNew', '/poi/new', async (ctx) => {
-
 })
 
 router.get('walkingRedirect', '/walkingpath', async (ctx) => {
@@ -831,7 +840,7 @@ router.get('pierEdit-GET', '/pier/edit/:pier', hasFlash, addIpToSession, async (
     locals.title = `${ctx.app.site}: Pier ${pierNumber}`
     locals.sessionUser = ctx.state.sessionUser
     locals.isAuthenticated = ctx.state.isAuthenticated
-    await ctx.render('edit-pier', locals)
+    await ctx.render('pier-edit', locals)
   }
 })
 
