@@ -1,6 +1,7 @@
 /* default presentation for mobile devices, portrait orientation */
 html, body {
-  min-height: 100vh;
+  min-height: 90vh;
+  max-height: 100vh;
   margin: 0px;
   padding: 0px;
   font-family: 'Avenir Next', 'HelveticaNeue-Light', 'Helvetica Neue', 'Helvetica, Arial, san-serif';
@@ -112,6 +113,8 @@ h3 {
 h4 {
   font-size: 1.0em;
   font-weight: 400;
+  margin-top: .25em;
+  margin-bottom: .25em;
 }
 
 .smallem {
@@ -132,7 +135,8 @@ nav.small-landscape-nav {
 }
 
 div.grid-layout {
-  min-height: 100vh;
+  min-height: 90vh;
+  max-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: auto;
@@ -429,6 +433,7 @@ footer {
 }
 
 footer > section {
+  padding-left: 1em;
 }
 
 /* Mobile devices with screen orientation: landscape */
@@ -444,7 +449,8 @@ footer > section {
     display: none;
     /*
     display: inherit;
-    min-height: 100vh;
+    min-height: 90vh;
+    max-height: 100vh;
     grid-row-start: 1;
     grid-row-end: 2;
     grid-column-start: 1;
@@ -593,7 +599,7 @@ footer > section {
 
  div#map {
     height: 85vh;
-    max-height: 100vh;
+    max-height: 81vh;
     min-width: 50vw;
   }
 
@@ -635,7 +641,8 @@ footer > section {
 /* Desktop sizes */
 @media screen and (min-width: 1181px) {
   div.grid-layout {
-    min-height: 100vh;
+    min-height: 90vh;
+    max-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-columns: auto;
@@ -743,7 +750,7 @@ footer > section {
   }
   div#searchResults {
     overflow-y: auto;
-    max-height: 65vh!important;
+    max-height: 60vh!important;
     padding-bottom: 0px;
     margin-bottom: 0px;
   }
@@ -756,6 +763,6 @@ footer > section {
   }
 
   div#map {
-    min-height: 85vh;
+    min-height: 81vh;
   }
 }
