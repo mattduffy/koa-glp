@@ -334,6 +334,7 @@ router.get('poi', '/point-of-interest/:poi', hasFlash, addIpToSession, async (ct
   }
 })
 
+// move to src/router/edit.js
 router.get('poiNew', '/poi/new', async (ctx) => {
   const log = glpLog.extend('GET-pioNew')
   const error = glpError.extend('GET-pioNew')
@@ -347,6 +348,7 @@ router.get('poiNew', '/poi/new', async (ctx) => {
   }
 })
 
+// move to src/router/edit.js
 router.get('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, async (ctx) => {
   const log = glpLog.extend('GET-pioEdit')
   const error = glpError.extend('GET-pioEdit')
@@ -360,6 +362,7 @@ router.get('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, async (ctx) =>
   }
 })
 
+// move to src/router/edit.js
 router.post('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, processFormData, async (ctx) => {
   const log = glpLog.extend('POST-pioEdit')
   const error = glpError.extend('POST-pioEdit')
