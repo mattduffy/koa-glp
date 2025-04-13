@@ -326,6 +326,19 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
   }
 })
 
+router.get('poiRedirect', '/pois', async (ctx) => {
+  ctx.status = 301
+  ctx.redirect('/points-of-interest')
+})
+
+router.get('poiList', '/points-of-interest', hasFlash, addIpToSession, async (ctx) => {
+  const log = glpLog.extend('GET-points-of-interest')
+  // const error = glpError.extend('GET-points-of-interest')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+  }
+})
+
 router.get('poi', '/point-of-interest/:poi', hasFlash, addIpToSession, async (ctx) => {
   const log = glpLog.extend('GET-point-of-interest')
   // const error = glpError.extend('GET-point-of-interest')
@@ -344,6 +357,10 @@ router.get('poiNew', '/poi/new', async (ctx) => {
     ctx.redirect('/')
   } else {
     const locals = {}
+    locals.title = 'New Point of Interest'
+    locals.flash = {}
+    locals.pier = 0
+    locals.pierNumber = 0
     await ctx.render('poi-new', locals)
   }
 })
