@@ -333,9 +333,63 @@ router.get('poiRedirect', '/pois', async (ctx) => {
 
 router.get('poiList', '/points-of-interest', hasFlash, addIpToSession, async (ctx) => {
   const log = glpLog.extend('GET-points-of-interest')
-  // const error = glpError.extend('GET-points-of-interest')
+  const error = glpError.extend('GET-points-of-interest')
   if (ctx.state.isAsyncRequest === true) {
     log('Async query received.')
+  }
+  log(ctx.request.query.s)
+  const x = 70
+  const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
+  const num = 10
+  const offset = (s <= 1) ? 0 : (s - 1) * num
+  const skipback = (s <= 1) ? 0 : s - 1
+  const skipforward = s + 1
+  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipback: ${skipback} skipforward: ${skipforward}, remaining: ${x} - ${offset} = ${x - offset}`)
+  let pois
+  try {
+    // convert redis aggregation to a ft.search query.  check local ft.search for query ex.
+    log(`ft.AGGREGATE glp:idx:pois:type "*" SORTBY 2 @type ASC LIMIT ${offset} ${num}`)
+    const optsAggregatePois = {
+      LOAD: ['*'],
+      STEPS: [
+        {
+          type: AggregateSteps.SORTBY,
+          BY: '@type',
+          MAX: 1,
+        },
+        {
+          type: AggregateSteps.LIMIT,
+          from: offset,
+          size: num,
+        },
+      ],
+    }
+    pois = await redis.ft.aggregate('glp:idx:pois:type', '*', optsAggregatePois)
+    log(pois.total)
+    log(pois.results)
+  } catch (e) {
+    error('Failed to get list of points-of-interest.')
+    error(e.message)
+    throw new Error('Redis points-of-interest query failed.', { cause: e })
+  }
+  if (ctx.state.isAsyncRequest === true) {
+    ctx.status = 200
+    ctx.type = 'application/json; charset=utf-8'
+    ctx.body = pois.results
+  } else {
+    const locals = {}
+    locals.s = s
+    locals.offset = offset
+    locals.skipForward = skipforward
+    locals.skipBack = skipback
+    locals.num = num
+    locals.total = pois.total
+    locals.pois = pois.results
+    locals.flash = ctx.flash.view ?? {}
+    locals.title = `${ctx.app.site}: Points of Interest on Geneva Lake`
+    locals.sessionUser = ctx.state.sessionUser
+    locals.isAuthenticated = ctx.state.isAuthenticated
+    await ctx.render('pois', locals)
   }
 })
 
@@ -580,17 +634,17 @@ router.get('pierFood', '/food', hasFlash, addIpToSession, async (ctx) => {
 router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async (ctx) => {
   const log = glpLog.extend('GET-piersAssociations')
   const error = glpError.extend('GET-piersAssociations')
-  if (ctx.state.isAsyncRequest === true) {
-    log('Async query received.')
+  if (ctx.state.isAsyncrequest === true) {
+    log('async query received.')
   }
   log(ctx.request.query.s)
   const x = 70
   const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
   const num = 10
   const offset = (s <= 1) ? 0 : (s - 1) * num
-  const skipBack = (s <= 1) ? 0 : s - 1
-  const skipForward = s + 1
-  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
+  const skipback = (s <= 1) ? 0 : s - 1
+  const skipforward = s + 1
+  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipback: ${skipback} skipforward: ${skipforward}, remaining: ${x} - ${offset} = ${x - offset}`)
   let associations
   try {
     log(`ft.AGGREGATE glp:idx:piers:association "*" LOAD 3 $.pier AS pier GROUPBY 1 @association REDUCE COUNT_DISTINCT SORTBY 2 @association ASC LIMIT ${offset} ${num}`)
@@ -634,8 +688,8 @@ router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async 
     const locals = {}
     locals.s = s
     locals.offset = offset
-    locals.skipForward = skipForward
-    locals.skipBack = skipBack
+    locals.skipForward = skipforward
+    locals.skipBack = skipback
     locals.num = num
     locals.total = associations.total
     locals.associations = associations.results

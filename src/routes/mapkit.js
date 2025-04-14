@@ -116,6 +116,27 @@ router.get('mapkitSwim', '/mapkit/swim', processFormData, addIpToSession, async 
   }
 })
 
+router.get('poisList', '/mapkit/pois', async (ctx) => {
+  const log = Log.extend('GET-mapkitPoints-of-interest')
+  const error = Error.extend('GET-mapkitPoints-of-interest')
+  if (ctx.state.isAsyncRequest === true) {
+    log('Async query received.')
+    const csrfTokenCookie = ctx.cookies.get('csrfToken')
+    const csrfTokenSession = ctx.session.csrfToken
+    if (!doTokensMatch(ctx)) {
+      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+      ctx.status = 401
+      ctx.body = { error: 'csrf token mismatch' }
+    } else {
+      ctx.status = 200
+      ctx.type = 'application/json; charset=utf-8'
+      ctx.body = { results: [] }
+    }
+  } else {
+    ctx.redirect('/')
+  }
+})
+
 router.get('walkingPathPois', '/mapkit/walking-path-pois', async (ctx) => {
   const log = Log.extend('GET-mapkitWalkingPathPois')
   const error = Error.extend('GET-mapkitWalkingPathPois-of-interest')
