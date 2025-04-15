@@ -347,26 +347,27 @@ router.get('poiList', '/points-of-interest', hasFlash, addIpToSession, async (ct
   log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipback: ${skipback} skipforward: ${skipforward}, remaining: ${x} - ${offset} = ${x - offset}`)
   let pois
   try {
-    // convert redis aggregation to a ft.search query.  check local ft.search for query ex.
-    log(`ft.AGGREGATE glp:idx:pois:type "*" SORTBY 2 @type ASC LIMIT ${offset} ${num}`)
-    const optsAggregatePois = {
-      LOAD: ['*'],
-      STEPS: [
-        {
-          type: AggregateSteps.SORTBY,
-          BY: '@type',
-          MAX: 1,
-        },
-        {
-          type: AggregateSteps.LIMIT,
-          from: offset,
-          size: num,
-        },
-      ],
+    const idxPoiType = 'glp:idx:pois:type'
+    const dialect = 2
+    const optsPois = {
+      SORTBY: {
+        BY: 'id',
+        DIRECTION: 'ASC',
+      },
+      LIMIT: { from: offset, size: num },
+      RETURN: ['$'],
+      DIALECT: dialect,
+      PARAMS: {
+        exclude: 'mileMarker',
+      },
     }
-    pois = await redis.ft.aggregate('glp:idx:pois:type', '*', optsAggregatePois)
-    log(pois.total)
-    log(pois.results)
+    const queryPointsOfInterest = `-@type:(${optsPois.PARAMS.exclude})`
+    const query = `ft.search ${idxPoiType} ${queryPointsOfInterest} `
+      + `SORTBY id ASC LIMIT ${offset} ${num} DIALECT ${dialect}`
+    log(query)
+    pois = await redis.ft.search(idxPoiType, queryPointsOfInterest, optsPois)
+    // pois = await redis.ft.search(idxPoiType, '-@type:($exclude)', optsPois)
+    log(pois.documents[0])
   } catch (e) {
     error('Failed to get list of points-of-interest.')
     error(e.message)
@@ -384,7 +385,7 @@ router.get('poiList', '/points-of-interest', hasFlash, addIpToSession, async (ct
     locals.skipBack = skipback
     locals.num = num
     locals.total = pois.total
-    locals.pois = pois.results
+    locals.pois = pois
     locals.flash = ctx.flash.view ?? {}
     locals.title = `${ctx.app.site}: Points of Interest on Geneva Lake`
     locals.sessionUser = ctx.state.sessionUser

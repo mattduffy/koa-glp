@@ -36,11 +36,10 @@
     </div>
 
     <ul id="resultsList" class="searchResults">
-      <% pois.forEach((p, i) => { 
-        console.log(p) %>
+      <% pois?.documents.forEach((p, i) => { %>
         <li><a 
-            href="/point-of-interest/<%= encodeURI(p.poi) %>"
-            data-name="<%= p.poi %>"><%= p.poi %></a></li>
+            href="/point-of-interest/<%= encodeURI(p.value.properties.id) %>"
+            data-id ="<%= p.value.properties.id%>"><%= p.value.properties.name%></a></li>
       <% }) %>
     </ul>
     <script nonce="<%= nonce %>">
@@ -124,24 +123,27 @@
           ulResultsList.replaceChildren()
           links.forEach((p) => {
             const li = document.createElement('li')
-            li.innerHTML = `<a href="${origin}/poi/${encodeURI(p.poi)}" `
-              + `data-name='${p.poi}'>${p.poi}</a>`
+            li.innerHTML = `<a href="${origin}/point-of-interest/${encodeURI(p.properties.id)}" `
+              + `data-id ='${p.properties.id}'>${p.properties.name}</a>`
             li.firstChild.addEventListener('mouseover', linkAnnotationHandler)
             ulResultsList.appendChild(li)
           })
         }
         return false
       }
-      document.querySelectorAll('a[data-name]').forEach((a) => {
+      document.querySelectorAll('a[data-id]').forEach((a) => {
         a.addEventListener('mouseover', linkAnnotationHandler)
       })
       function linkAnnotationHandler(e) {
         e.preventDefault()
         e.stopPropagation()
-        // console.log(e.target.dataset.name)
-        const pio = e.target.dataset.name
-        const annotation = window.map.annotations.find((a) => a.data.a === poi )
-        annotation.selected = true
+        console.log(e.target.dataset.id)
+        const id = e.target.dataset.id
+        const annotation = window.map.annotations.find((a) => a.data.id === id)
+        console.log(annotation)
+        if (annotation) {
+          annotation.selected = true
+        }
       }
 
       async function getAssocs(skip) {
@@ -302,7 +304,7 @@
                 calloutRightAccessoryForAnnotation: () => {
                   const accessoryViewRight = document.createElement("a")
                   accessoryViewRight.className = "right-accessory-view"
-                  accessoryViewRight.href = `${origin}/point-of-interest/${encodeURI(a.poi)}`
+                  accessoryViewRight.href = `${origin}/point-of-interest/${encodeURI(a.properties.id)}`
                   accessoryViewRight.target = "_self"
                   accessoryViewRight.textContent = "\u{24D8}"
                   return accessoryViewRight
@@ -310,12 +312,12 @@
               }
               const coordinate = new mapkit.Coordinate(lat, lon);
               const annotation = new mapkit.MarkerAnnotation(coordinate, {
-                title: a.poi,
+                title: a.properties.name,
                 animates: false,
                 selected: false,
                 color: "#4B93E0",
                 callout: annotationCallout,
-                data: { a: a.poi },
+                data: { a: a.properties.id },
               })
               annotations.push(annotation)
             }
