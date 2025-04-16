@@ -128,9 +128,36 @@ router.get('poisList', '/mapkit/pois', async (ctx) => {
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
     } else {
+      let pois
+      try {
+        const idxPoiType = 'glp:idx:pois:type'
+        const dialect = 2
+        const optsPois = {
+          SORTBY: {
+            BY: 'id',
+            DIRECTION: 'ASC',
+          },
+          // LIMIT: { from: offset, size: num },
+          RETURN: ['$'],
+          DIALECT: dialect,
+          PARAMS: {
+            exclude: 'mileMarker',
+          },
+        }
+        const queryPointsOfInterest = `-@type:(${optsPois.PARAMS.exclude})`
+        const query = `ft.search ${idxPoiType} ${queryPointsOfInterest} `
+          // + `SORTBY id ASC LIMIT ${offset} ${num} DIALECT ${dialect}`
+          + `SORTBY id ASC DIALECT ${dialect}`
+        log(query)
+        pois = await redis.ft.search(idxPoiType, queryPointsOfInterest, optsPois)
+      } catch (e) {
+        error('Failed to get list of points-of-interest.')
+        error(e.message)
+        throw new Error('Redis points-of-interest query failed.', { cause: e })
+      }
       ctx.status = 200
       ctx.type = 'application/json; charset=utf-8'
-      ctx.body = { results: [] }
+      ctx.body = pois
     }
   } else {
     ctx.redirect('/')

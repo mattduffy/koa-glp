@@ -15,7 +15,7 @@
 <% } %>
 <article>
   <section class="main">
-    <h2><%= total %> Points of Interest</h2>
+    <h2><%= total %> Point<%= (total > 1) ? 's' : '' %> of Interest</h2>
 
     <div class="previousAssocs">
       <% if (skipBack > 1) { %>
@@ -140,8 +140,8 @@
         console.log(e.target.dataset.id)
         const id = e.target.dataset.id
         const annotation = window.map.annotations.find((a) => a.data.id === id)
-        console.log(annotation)
         if (annotation) {
+          console.log(annotation)
           annotation.selected = true
         }
       }
@@ -282,8 +282,8 @@
           const request = new Request(`${origin}/mapkit/pois`, opts)
           const response = await (await fetch(request)).json()
           console.log(response)
-          response.results.forEach((a) => {
-            let [lon, lat] = a.coords[0].split(',')
+          response.documents.forEach((a) => {
+            let [lon, lat] = a.value.geometry.coordinates
             lon = parseFloat(lon, 10)
             lat = parseFloat(lat, 10)
             if (lat !== 0 && lon !== 0) {
@@ -304,20 +304,20 @@
                 calloutRightAccessoryForAnnotation: () => {
                   const accessoryViewRight = document.createElement("a")
                   accessoryViewRight.className = "right-accessory-view"
-                  accessoryViewRight.href = `${origin}/point-of-interest/${encodeURI(a.properties.id)}`
+                  accessoryViewRight.href = `${origin}/point-of-interest/${encodeURI(a.value.properties.id)}`
                   accessoryViewRight.target = "_self"
                   accessoryViewRight.textContent = "\u{24D8}"
                   return accessoryViewRight
                 }
               }
-              const coordinate = new mapkit.Coordinate(lat, lon);
+              const coordinate = new mapkit.Coordinate(lat, lon)
               const annotation = new mapkit.MarkerAnnotation(coordinate, {
-                title: a.properties.name,
+                title: a.value.properties.name,
                 animates: false,
                 selected: false,
                 color: "#4B93E0",
                 callout: annotationCallout,
-                data: { a: a.properties.id },
+                data: { id: a.value.properties.id },
               })
               annotations.push(annotation)
             }
@@ -372,7 +372,7 @@
             pierAnnotation.title = `Pier ${p.value.pier}`
             pierAnnotation.subtitle = subtitle 
             pierAnnotation.animates = true 
-            pierAnnotation.selected = true
+            pierAnnotation.selected = false
             pierAnnotation.color = "#4B93E0"
             pierAnnotation.callout = annotationCallout
             window.map.addAnnotation(pierAnnotation)
