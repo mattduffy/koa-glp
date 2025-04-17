@@ -17,7 +17,7 @@
   <section class="main">
     <h2><%= total %> Point<%= (total > 1) ? 's' : '' %> of Interest</h2>
 
-    <div class="previousAssocs">
+    <div class="previousAssocs" <%- (total < num) ? 'style="display: none;"' : '' %>>
       <% if (skipBack > 1) { %>
         <a rel="prev" href="<%= origin %>/points-of-interest?s=<%= skipBack %>">&lt; Prev</a>
       <% } else if (skipBack === 1) { %>
@@ -26,8 +26,7 @@
       < Prev 
       <% } %>
     </div>
-    <!-- s:<%= s %>  -->
-    <div class="nextAssocs">
+    <div class="nextAssocs" <%- (total < num) ? 'style="display: none;"' : '' %>>
       <% if ((offset + num) < total) { %>
       <a rel="next" href="<%= origin %>/points-of-interest?s=<%= skipForward %>">Next &gt;</a>
       <% } else { %>
@@ -39,7 +38,7 @@
       <% pois?.documents.forEach((p, i) => { %>
         <li><a 
             href="/point-of-interest/<%= encodeURI(p.value.properties.id) %>"
-            data-id ="<%= p.value.properties.id%>"><%= p.value.properties.name%></a></li>
+            data-id="<%= p.value.properties.id%>"><%= p.value.properties.name%></a></li>
       <% }) %>
     </ul>
     <script nonce="<%= nonce %>">
@@ -124,7 +123,7 @@
           links.forEach((p) => {
             const li = document.createElement('li')
             li.innerHTML = `<a href="${origin}/point-of-interest/${encodeURI(p.properties.id)}" `
-              + `data-id ='${p.properties.id}'>${p.properties.name}</a>`
+              + `data-id='${p.properties.id}'>${p.properties.name}</a>`
             li.firstChild.addEventListener('mouseover', linkAnnotationHandler)
             ulResultsList.appendChild(li)
           })
