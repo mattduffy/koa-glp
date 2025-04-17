@@ -20,9 +20,9 @@
     <% /* %>
     <div class="previousPier">
       <% if (skipBack > 1) { %>
-      <a href="/associations?s=<%= skipBack %>">&lt; Prev</a>
+      <a href="/marinas?s=<%= skipBack %>">&lt; Prev</a>
       <% } else if (skipBack === 1) { %>
-      <a href="/associations">&lt; Prev</a>
+      <a href="/marinas">&lt; Prev</a>
       <% } else { %>
       < Prev 
       <% } %>
@@ -36,11 +36,12 @@
     </div>
     <% */ %>
     <ul id="resultsList" class="searchResults">
-      <% marinas.forEach((p, i) => {
-        let a = `<li><a href="${origin}/pier/${p.pier[0]}">${p.business}</a></li>`  %>
-      <%- a %>
-    <% }) %></ul>
-
+      <% marinas.forEach((p, i) => { %>
+        <li><a
+            href="<%= origin %>/pier/<%= p.pier[0] %>"
+          data-id="<%= p.pier[0] %>"><%= p.business %></a></li>
+      <% }) %>
+    </ul>
   </section>
   <section class="map">
     <%# map embed %>
@@ -144,6 +145,20 @@
       }
       await main()
 
+      document.querySelectorAll('a[data-id]').forEach((a) => {
+        a.addEventListener('mouseover', linkAnnotationHandler)
+      })
+      function linkAnnotationHandler(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        // console.log(e.target.dataset.id)
+        const id = e.target.dataset.id
+        const annotation = window.map.annotations.find((a) => a.data.id === id)
+        if (annotation) {
+          // console.log(annotation)
+          annotation.selected = true
+        }
+      }
       const annotations = []
 
       async function showMarinaPiers() {
@@ -190,10 +205,11 @@
               const annotation = new mapkit.MarkerAnnotation(coordinate, {
                 title: `Pier ${m.value.pier}`,
                 subtitle: m.value.business,
-                animates: true,
-                selected: true,
+                animates: false,
+                selected: false,
                 color: "#4B93E0",
-                callout: annotationCallout
+                callout: annotationCallout,
+                data: { id: m.value.pier },
               })
               annotations.push(annotation)
             }
