@@ -35,11 +35,12 @@
     </div>
     
     <ul id="resultsList" class="searchResults">
-    <% businesses.forEach((p, i) => {
-      console.log(p.pier[0])
-      let a = `<li><a href="/pier/${p.pier[0]}">${p.business}</a></li>` %>
-      <%- a %>
-    <% }) %></ul>
+      <% businesses.forEach((p, i) => { %>
+        <li><a 
+          href="<%= origin %>/pier/<%= p.pier[0] %>"
+          data-id="<%= p.pier[0] %>"><%- p.business %></a></li>
+      <% }) %>
+    </ul>
     <script nonce="<%= nonce %>">
       let origin = '<%= origin %>'
       let jwtAccess = '<%= searchJwtAccess %>'
@@ -86,48 +87,63 @@
         nextLink.addEventListener('click', setAndUpdatePrevNextLinks)
       }
       async function setAndUpdatePrevNextLinks(e) {
-          e.preventDefault()
-          e.stopPropagation()
-          if (previousLink === undefined) {
-            console.log(`recreating previousLink: ${previousLink}`)
-            previousLink = document.createElement('a')
-            previousLink.setAttribute('rel', 'prev')
-            previousLink.href = `${origin}/businesses?s=1`
-            previousLink.innerText = '< Prev'
-            previousDiv.replaceChildren()
-            previousDiv.appendChild(previousLink)
-            previousLink.addEventListener('click', setAndUpdatePrevNextLinks)
-          }
-          if (nextLink === undefined) {
-            console.log(`recreating nextLink: ${nextLink}`)
-            nextLink = document.createElement('a')
-            nextLink.setAttribute('rel', 'next')
-            nextLink.href = `${origin}/businesses?s=${s}`
-            nextLink.innerText = 'Next >'
-            nextDiv.replaceChildren()
-            nextDiv.appendChild(nextLink)
-            nextLink.addEventListener('click', setAndUpdatePrevNextLinks)
-          }
-          const rel = e.target.getAttribute('rel') 
-          s = (rel === 'prev') ? parseInt(s) - 1 : parseInt(s) + 1
-          // console.info(`rel: ${rel}, s: ${s}`)
-          const links = await getBusinesses(s)
-          console.log(links)
-          if (links.length > 0) {
-            updatePrevLink()
-            console.info(`rel: ${rel}, s: ${s}`)
-            // console.info(`current s: ${s}`)
-            updateNextLink(links.length)
-            ulResultsList.replaceChildren()
-            links.forEach((a) => {
-              const li = document.createElement('li')
-              li.innerHTML = `<a href="${origin}/pier/${a.pier[0]}">${a.business}</a>`
-              ulResultsList.appendChild(li)
-            })
-          }
-          return false
+        e.preventDefault()
+        e.stopPropagation()
+        if (previousLink === undefined) {
+          console.log(`recreating previousLink: ${previousLink}`)
+          previousLink = document.createElement('a')
+          previousLink.setAttribute('rel', 'prev')
+          previousLink.href = `${origin}/businesses?s=1`
+          previousLink.innerText = '< Prev'
+          previousDiv.replaceChildren()
+          previousDiv.appendChild(previousLink)
+          previousLink.addEventListener('click', setAndUpdatePrevNextLinks)
         }
-      
+        if (nextLink === undefined) {
+          console.log(`recreating nextLink: ${nextLink}`)
+          nextLink = document.createElement('a')
+          nextLink.setAttribute('rel', 'next')
+          nextLink.href = `${origin}/businesses?s=${s}`
+          nextLink.innerText = 'Next >'
+          nextDiv.replaceChildren()
+          nextDiv.appendChild(nextLink)
+          nextLink.addEventListener('click', setAndUpdatePrevNextLinks)
+        }
+        const rel = e.target.getAttribute('rel') 
+        s = (rel === 'prev') ? parseInt(s) - 1 : parseInt(s) + 1
+        // console.info(`rel: ${rel}, s: ${s}`)
+        const links = await getBusinesses(s)
+        console.log(links)
+        if (links.length > 0) {
+          updatePrevLink()
+          console.info(`rel: ${rel}, s: ${s}`)
+          // console.info(`current s: ${s}`)
+          updateNextLink(links.length)
+          ulResultsList.replaceChildren()
+          links.forEach((a) => {
+            const li = document.createElement('li')
+            li.innerHTML = `<a href="${origin}/pier/${a.pier[0]}" `
+              + `data-id="${a.pier[0]}">${a.business}</a>`
+            li.firstChild.addEventListener('mouseover', linkAnnotationHandler)
+            ulResultsList.appendChild(li)
+          })
+        }
+        return false
+      }
+      document.querySelectorAll('a[data-id]').forEach((a) => {
+        a.addEventListener('mouseover', linkAnnotationHandler)
+      })
+      function linkAnnotationHandler(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        console.log(e.target.dataset.id)
+        const id = e.target.dataset.id
+        const annotation = window.map.annotations.find((a) => a.data.id === id)
+        if (annotation) {
+          console.log(annotation)
+          annotation.selected = true
+        }
+      }
       async function getBusinesses(skip) {
         const opts = {
           method: 'GET',
@@ -296,10 +312,11 @@
               const annotation = new mapkit.MarkerAnnotation(coordinate, {
                 title: `Pier ${b.value.pier}`,
                 subtitle: b.value.business,
-                animates: true,
-                selected: true,
+                animates: false,
+                selected: false,
                 color: "#4B93E0",
-                callout: annotationCallout
+                callout: annotationCallout,
+                data: { id: b.value.pier },
               })
               annotations.push(annotation)
             }
@@ -353,7 +370,7 @@
               pierAnnotation.title = `Pier ${p.value.pier}`
               pierAnnotation.subtitle = subtitle 
               pierAnnotation.animates = true
-              pierAnnotation.selected = true
+              pierAnnotation.selected = false 
               pierAnnotation.color = "#4B93E0"
               pierAnnotation.callout = annotationCallout
               window.map.addAnnotation(pierAnnotation)
