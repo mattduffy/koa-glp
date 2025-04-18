@@ -15,238 +15,214 @@
 <% } %>
 <article>
   <section class="main">
-    <% if (!pier?.pier) { %>
-      <h2><%= pierNumber %> is not a valid pier number on Geneva Lake</h2>
-    <% } else { %>
-      <br>
-      <div class="nextPier">
-        <% if (nextPier.length !== 0) { %>
-        <a href="<%= origin %>/edit/pier/<%= nextPier %>">&lt; Pier <%= nextPier %></a>
-        <% } else { %>
-        Pier <%= pier.pier %> 
+    <h2>Point of Interest: </h2>
+
+    <form id="pierEditId" name="pierEdit" action="<%= origin %>/edit/pier/<%= pierNumber %>" method="POST" enctype="multipart/form-data">
+      <fieldset id="messagesId" name="messages" class="hidden" title="Update Results">
+        <legend>Update Results</legend>
+      </fieldset>
+      <fieldset id="infoId" name="info" form="pierEditId" class="edit_fieldset" title="Meta Data">
+        <legend>Meta Data</legend>
+        <% if (pier?.updatedOn?.length > 0) { %>
+          Last updated on: <%= pier.updatedOn[0] %><br>
         <% } %>
-      </div>
-      <div class="previousPier">
-        <% if (previousPier?.length !== 0) { %>
-        <a href="<%= origin %>/edit/pier/<%= previousPier %>">Pier <%= previousPier %> &gt; </a>
-        <% } else { %>
-        Pier <%= pier.pier %> 
+        Pier data schema version: <%= pier.version %>
+        <input id="numberId" name="number" type="hidden" value="<%= pierNumber %>">
+        <input id="versionId" name="version" type="hidden" value="<%= pier?.version %>">
+        <input id="setTownId" name="setTown" type="hidden" value="<%= pier?.setTown %>">
+        <input id="csrf-tokenId" type="hidden" value="<%= csrfToken %>">
+      </fieldset>
+      <fieldset id="pierPhotoId" name="pierPhoto" form="pierEditId" class="edit_fieldset" title="Pier Photo Form">
+        <legend>Pier Photo</legend>
+        <% if (pier?.images?.length > 0) { %>
+        <picture>
+          <source media="(max-width:820px)" srcset="">
+          <source media="(min-width:821px)" srcset="">
+          <img alt="Photo of pier <%= pierNumber %> in <%= town %>." src="<%= origin %>/<%= pier.images[0] %>">
+        </picture><br>
         <% } %>
-      </div>
+        <span>Add an image for this pier.</span><br>
+        <input id="photo_0Id" name="photo_0" type="file" accept=".png,.jpg,.jpeg">
+      </fieldset>
+      <fieldset id="pierLocationId" name="pierLocation" form="pierEditId" class="edit_fieldset" title="Pier Location Form">
+        <legend>Pier Location</legend>
+        <label for="lonId">Longtitude</label>
+        <input id="lonId" name="lon" type="number" value="<%= lon %>" min="-180.000000" max="180.000000" step="0.000001" required><br>
+        <label for="latId">Latitude</label>
+        <input id="latId" name="lat" type="number" value="<%= lat %>" min="-180.000000" max="180.000000" step="0.000001" required><br>
+        <label for="geohashId">Geohash</label>
+        <input id="geohashId" name="geohash" type="text" size="30" value="<%= poi?.geohash %>"><br>
+        <label for="pluscodeId">Pluscode</label>
+        <input id="pluscodeId" name="pluscode" type="text" size="30" value="<%= poi?.pluscode %>"><br>
+      </fieldset>
+      <fieldset id="pierAddressId" name="pierAddress" form="pierEditId" class="edit_fieldset" title="Pier Address Form">
+        <legend>Pier Address</legend>
+        <input type="radio" id="addressType1Id" name="addressType" value="ass" required><label for="addressType1Id">Association</label>
+        <input type="radio" id="addressType2Id" name="addressType" value="bus"><label for="addressType2Id">Business</label>
+        <input type="radio" id="addressType3Id" name="addressType" value="res"><label for="addressType3Id">Residential</label><br>
+        <label for="associationId">Association Name</label>
+        <input id="associationId" name="association" type="text" size="29" maxlendgth="100" value="<%= poi?.property?.association %>"><br>
 
-      <h2>Pier <%= pier.pier %> <% if (isAuthenticated) { %><a href="<%= origin %>/pier/<%= pierNumber %>"><span class="view"></span></a><% } %><br>located in the <nobr><a href="/towns/<%= setTown %>"><%= town %></a></nobr></h2>
+        <label for="businessId">Business Name</label>
+        <input id="businessId" name="business" type="text" size="30" maxlength="100" value="<%= poi?.property?.business %>"></br>
 
-      <p></p>
-      <form id="pierEditId" name="pierEdit" action="<%= origin %>/edit/pier/<%= pierNumber %>" method="POST" enctype="multipart/form-data">
-        <fieldset id="messagesId" name="messages" class="hidden" title="Update Results">
-          <legend>Update Results</legend>
-        </fieldset>
-        <fieldset id="infoId" name="info" form="pierEditId" class="edit_fieldset" title="Meta Data">
-          <legend>Meta Data</legend>
-          <% if (pier?.updatedOn?.length > 0) { %>
-            Last updated on: <%= pier.updatedOn[0] %><br>
-          <% } %>
-          Pier data schema version: <%= pier.version %>
-          <input id="numberId" name="number" type="hidden" value="<%= pierNumber %>">
-          <input id="versionId" name="version" type="hidden" value="<%= pier.version %>">
-          <input id="setTownId" name="setTown" type="hidden" value="<%= setTown %>">
-          <input id="csrf-tokenId" type="hidden" value="<%= csrfToken %>">
-        </fieldset>
-        <fieldset id="pierPhotoId" name="pierPhoto" form="pierEditId" class="edit_fieldset" title="Pier Photo Form">
-          <legend>Pier Photo</legend>
-          <% if (pier?.images?.length > 0) { %>
-          <picture>
-            <source media="(max-width:820px)" srcset="">
-            <source media="(min-width:821px)" srcset="">
-            <img alt="Photo of pier <%= pierNumber %> in <%= town %>." src="<%= origin %>/<%= pier.images[0] %>">
-          </picture><br>
-          <% } %>
-          <span>Add an image for this pier.</span><br>
-          <input id="photo_0Id" name="photo_0" type="file" accept=".png,.jpg,.jpeg">
-        </fieldset>
-        <fieldset id="pierLocationId" name="pierLocation" form="pierEditId" class="edit_fieldset" title="Pier Location Form">
-          <legend>Pier Location</legend>
-          <label for="lonId">Longtitude</label>
-          <input id="lonId" name="lon" type="number" value="<%= lon %>" min="-180.000000" max="180.000000" step="0.000001" required><br>
-          <label for="latId">Latitude</label>
-          <input id="latId" name="lat" type="number" value="<%= lat %>" min="-180.000000" max="180.000000" step="0.000001" required><br>
-          <label for="geohashId">Geohash</label>
-          <input id="geohashId" name="geohash" type="text" size="30" value="<%= pier.geohash %>"><br>
-          <label for="pluscodeId">Pluscode</label>
-          <input id="pluscodeId" name="pluscode" type="text" size="30" value="<%= pier.pluscode %>"><br>
-        </fieldset>
-        <fieldset id="pierAddressId" name="pierAddress" form="pierEditId" class="edit_fieldset" title="Pier Address Form">
-          <legend>Pier Address</legend>
-          <input type="radio" id="addressType1Id" name="addressType" value="ass" required><label for="addressType1Id">Association</label>
-          <input type="radio" id="addressType2Id" name="addressType" value="bus"><label for="addressType2Id">Business</label>
-          <input type="radio" id="addressType3Id" name="addressType" value="res"><label for="addressType3Id">Residential</label><br>
-          <label for="associationId">Association Name</label>
-          <input id="associationId" name="association" type="text" size="29" maxlendgth="100" value="<%= pier.property.association %>"><br>
+        <label for="isMarinaId">Is a marina?</label>
+        <input id="isMarinaId" name="isMarina" type="checkbox" <%= (poi?.property?.isMarina === 1) ? 'checked' : '' %>><br>
 
-          <label for="businessId">Business Name</label>
-          <input id="businessId" name="business" type="text" size="30" maxlength="100" value="<%= pier.property.business %>"></br>
+        <label for="hasFoodId">Has food?</label>
+        <input id="hasFoodId" name="hasFood" type="checkbox" <%= (poi?.property?.hasFood === 1) ? 'checked' : '' %>><br>
 
-          <label for="isMarinaId">Is a marina?</label>
-          <input id="isMarinaId" name="isMarina" type="checkbox" <%= (pier.property.isMarina=== 1) ? 'checked' : '' %>><br>
+        <label for="publicId">Is a public pier?</label>
+        <input id="publicId" name="public" type="checkbox" <%= (poi?.public === 1) ? 'checked' : '' %>><br>
 
-          <label for="hasFoodId">Has food?</label>
-          <input id="hasFoodId" name="hasFood" type="checkbox" <%= (pier.property.hasFood=== 1) ? 'checked' : '' %>><br>
+        <label for="bigSwimPierId">Is a big swim pier?</label>
+        <input id="bigSwimPierId" name="bigSwimPier" type="checkbox" <%= (poi?.bigSwimPier === 1) ? 'checked' : '' %>><br>
 
-          <label for="publicId">Is a public pier?</label>
-          <input id="publicId" name="public" type="checkbox" <%= (pier.public=== 1) ? 'checked' : '' %>><br>
+        <label for="establishedId">Established In</label>
+        <input id="establishedId" name="established" type="text" size="30" maxlength=4 value="<%= poi?.property?.established %>"><br>
 
-          <label for="bigSwimPierId">Is a big swim pier?</label>
-          <input id="bigSwimPierId" name="bigSwimPier" type="checkbox" <%= (pier.bigSwimPier === 1) ? 'checked' : '' %>><br>
+        <label for="associationUrlId">Website</label>
+        <input id="associationUrlId" name="associationUrl" type="url" size="30" placeholder="https://genevalakepiers.com" maxlength="100" value="<%= poi?.property?.associationUrl %>"><br>
 
-          <label for="establishedId">Established In</label>
-          <input id="establishedId" name="established" type="text" size="30" maxlength=4 value="<%= pier.property.established %>"><br>
+        <label for="telId">Telephone</label>
+        <input id="telId" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= poi?.property?.tel %>"><br>
 
-          <label for="associationUrlId">Website</label>
-          <input id="associationUrlId" name="associationUrl" type="url" size="30" placeholder="https://genevalakepiers.com" maxlength="100" value="<%= pier.property.associationUrl %>"><br>
+        <label for="streetId">Street</label>
+        <input id="streetId" name="street" type="text" size="30" maxlength="70" value="<%= poi?.property?.address.street %>"><br>
 
-          <label for="telId">Telephone</label>
-          <input id="telId" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= pier.property.tel %>"><br>
+        <label for="cityId">City</label>
+        <input id="cityId" name="city" type="text" size="30" maxlength="50" value="<%= poi?.property?.address.city %>"><br>
 
-          <label for="streetId">Street</label>
-          <input id="streetId" name="street" type="text" size="30" maxlength="70" value="<%= pier.property.address.street %>"><br>
+        <label for="stateId">State</label>
+        <input id="stateId" name="state" type="text" size="3" maxlength="2" value="<%= poi?.property?.address.state %>"><br>
 
-          <label for="cityId">City</label>
-          <input id="cityId" name="city" type="text" size="30" maxlength="50" value="<%= pier.property.address.city %>"><br>
-
-          <label for="stateId">State</label>
-          <input id="stateId" name="state" type="text" size="3" maxlength="2" value="<%= pier.property.address.state %>"><br>
-
-          <label for="zipId">Zip Code</label>
-          <input id="zipId" name="zip" type="text" size="10" maxlength="9" value="<%= pier.property.address.zip %>"><br>
-        </fieldset>
-        <fieldset id="pierOwnersId" name="pierOwners" form="pierEditId" class="edit_fieldset" title="Pier Owners">
-          <legend>Pier Owners</legend>
-          <% if (pier.owners.length > 0) { %>
-            <% pier.owners.forEach((o, i) => { %>
-              <div class="editOwner" data-o=<%= i %>>
-              <label for="o_<%= i %>_estateNameId">Estate Name</label>
-              <input id="o_<%= i %>_estateNameId" name="o_<%= i %>_estateName" type="text" size="30" maxlength="100" value="<%= o.estateName %>"><br>
-              <label for="o_<%= i %>_membershipTypeId">GLA Membership</label>
-              <select id="o_<%= i %>_membershipTypeId" name="o_<%= i %>_membershipType" type="text">
-                <%
-                  const memberTypes = ['Residential Non-member', 'Regular', 'Sustaining', 'Contributing', 'Donor', 'Benefactor']
-                  memberTypes.forEach((t) => {
-                    const re = new RegExp(`${t}`)
-                    const selected = (re.test(o.membershipType)) ? 'selected' : '' %>
-                  <option value="<%= t %>" <%= selected %>><%= t %></option>
-                  <% }) %>
-              </select>
-              <br>
-              <% if (o.members.length > 0) { %>
-                  <div>
-                <% o.members.forEach((m, j) => { %>
-                    <div data-o=<%= i %> data-m=<%= j %>>
-                      <input id="o_<%= i %>_m_<%= j %>_member_tId" name="o_<%= i %>_m_<%= j %>_member_t" type="text" size="3" maxlength="10" value="<%= m.t %>" placeholder="Title"> 
-                      <input id="o_<%= i %>_m_<%= j %>_member_fId" name="o_<%= i %>_m_<%= j %>_member_f" type="text" size="11" maxlength="60" value="<%= m.f %>" placeholder="First"> 
-                      <input id="o_<%= i %>_m_<%= j %>_member_mId" name="o_<%= i %>_m_<%= j %>_member_m" type="text" size="3" maxlength="10" value="<%= m.m %>" placeholder="M"> 
-                      <input id="o_<%= i %>_m_<%= j %>_member_lId" name="o_<%= i %>_m_<%= j %>_member_l" type="text" size="11" maxlength="30" value="<%= m.l %>" placeholder="Last"> 
-                      <input id="o_<%= i %>_m_<%= j %>_member_sId" name="o_<%= i %>_m_<%= j %>_member_s" type="text" size="3" maxlength="10" value="<%= m.s %>" placeholder="suffix"> 
-                      <input id="o_<%= i %>_m_<%= j %>_member_hiddenId" name="o_<%= i %>_m_<%= j %>_member_hidden" type="checkbox" <%= (m.hidden === 1) ? 'checked' : '' %>>
-                      <label for="o_<%= i %>_m_<%= j %>_member_hiddenId">hide</label>
-                    </div>
+        <label for="zipId">Zip Code</label>
+        <input id="zipId" name="zip" type="text" size="10" maxlength="9" value="<%= poi?.property?.address.zip %>"><br>
+      </fieldset>
+      <fieldset id="pierOwnersId" name="pierOwners" form="pierEditId" class="edit_fieldset" title="Pier Owners">
+        <legend>Pier Owners</legend>
+        <% if (poi?.owners?.length > 0) { %>
+          <% poi?.owners.forEach((o, i) => { %>
+            <div class="editOwner" data-o=<%= i %>>
+            <label for="o_<%= i %>_estateNameId">Estate Name</label>
+            <input id="o_<%= i %>_estateNameId" name="o_<%= i %>_estateName" type="text" size="30" maxlength="100" value="<%= o?.estateName %>"><br>
+            <label for="o_<%= i %>_membershipTypeId">GLA Membership</label>
+            <select id="o_<%= i %>_membershipTypeId" name="o_<%= i %>_membershipType" type="text">
+              <%
+                const memberTypes = ['Residential Non-member', 'Regular', 'Sustaining', 'Contributing', 'Donor', 'Benefactor']
+                memberTypes.forEach((t) => {
+                  const re = new RegExp(`${t}`)
+                  const selected = (re.test(o.membershipType)) ? 'selected' : '' %>
+                <option value="<%= t %>" <%= selected %>><%= t %></option>
                 <% }) %>
-              <% } else { %>
-                  <div>
-                    <div data-o=0 data-m=0>
-                      <input id="o_0_m_0_member_tId" name="o_0_m_0_member_t" type="text" size="3" maxlength="10" value="" placeholder="Title"> 
-                      <input id="o_0_m_0_member_fId" name="o_0_m_0_member_f" type="text" size="11" maxlength="60" value="" placeholder="First"> 
-                      <input id="o_0_m_0_member_mId" name="o_0_m_0_member_m" type="text" size="3" maxlength="10" value="" placeholder="M"> 
-                      <input id="o_0_m_0_member_lId" name="o_0_m_0_member_l" type="text" size="11" maxlength="30" value="" placeholder="Last"> 
-                      <input id="o_0_m_0_member_sId" name="o_0_m_0_member_s" type="text" size="3" maxlength="10" value="" placeholder="suffix"> 
-                      <input id="o_0_m_0_member_hiddenId" name="o_0_m_0_member_hidden" type="checkbox" >
-                      <label for="o_0_m_0_member_hiddenId">hide</label>
-                    </div>
-              <% } %>
-                    <span class="addPerson" title="Add another person.">+ person</span>
-                    <span class="delEstate" title="Remove this estate and owners.">- estate</span>
+            </select>
+            <br>
+            <% if (o.members.length > 0) { %>
+                <div>
+              <% o.members.forEach((m, j) => { %>
+                  <div data-o=<%= i %> data-m=<%= j %>>
+                    <input id="o_<%= i %>_m_<%= j %>_member_tId" name="o_<%= i %>_m_<%= j %>_member_t" type="text" size="3" maxlength="10" value="<%= m.t %>" placeholder="Title"> 
+                    <input id="o_<%= i %>_m_<%= j %>_member_fId" name="o_<%= i %>_m_<%= j %>_member_f" type="text" size="11" maxlength="60" value="<%= m.f %>" placeholder="First"> 
+                    <input id="o_<%= i %>_m_<%= j %>_member_mId" name="o_<%= i %>_m_<%= j %>_member_m" type="text" size="3" maxlength="10" value="<%= m.m %>" placeholder="M"> 
+                    <input id="o_<%= i %>_m_<%= j %>_member_lId" name="o_<%= i %>_m_<%= j %>_member_l" type="text" size="11" maxlength="30" value="<%= m.l %>" placeholder="Last"> 
+                    <input id="o_<%= i %>_m_<%= j %>_member_sId" name="o_<%= i %>_m_<%= j %>_member_s" type="text" size="3" maxlength="10" value="<%= m.s %>" placeholder="suffix"> 
+                    <input id="o_<%= i %>_m_<%= j %>_member_hiddenId" name="o_<%= i %>_m_<%= j %>_member_hidden" type="checkbox" <%= (m.hidden === 1) ? 'checked' : '' %>>
+                    <label for="o_<%= i %>_m_<%= j %>_member_hiddenId">hide</label>
                   </div>
-              </div>
-            <% }) %>
-              <span class="addEstate" title="Add another estate and owner.">+ estate</span>
-          <% } else { %>
-          No owners entered.  <span class="addOwner">+ owner</span>.
-          <% } %>
-        </fieldset>
-        <fieldset id="finishId" name="finish" form="pierEditId">
-          <div style="display: inline-block; width: 45%; margin: auto; position: relative; text-align: left; padding-left: 10px;">
-            <input type="reset" value="Reset" />
-          </div>
-          <div style="display: inline-block; width: 50%; position: relative; right: 0px; text-align: right;">
-            <input type="submit" value="Submit" /> 
-          </div>
-        </fieldset>
-      </form>
-      <!-- 
-      <% if (photo) { %>
-      <picture>
-        <source media="(max-width:820px)" srcset="">
-        <source media="(min-width:821px)" srcset="">
-        <img alt="Photo of pier <%= pier %> in <%= town %>." src="">
-      </picture>
-      <% } %>
-      <h3 id="location">Location:</h3>
-      <ul class="location">
-        <li>lat: <%= pier.loc.split(',')[1] %></li>
-        <li>lon: <%= pier.loc.split(',')[0] %></li>
-        <li>geohash: <%= pier.geohash %></li>
-        <li>pluscode: <a href="https://www.google.com/maps/place/<%= encodeURIComponent(pier.pluscode) %>"><%= pier.pluscode %></a></li>
-      </ul>
-      <h3 id="address">Street Address:</h3>
-      <ul class="location">
-        <% if (pier.property?.association !== undefined && pier.property?.association?.length !== 0) {
-          let assoc
-          if (pier.property?.associationUrl !== undefined && pier.property?.associationUrl.length !== 0) {
-            assoc = `<a href="${pier.property.associationUrl}">${pier.property.association}</a>`
-          } else {
-            assoc = pier.property.association
-          } %>
-          <li>Association: <%- assoc %></li>
+              <% }) %>
+            <% } else { %>
+                <div>
+                  <div data-o=0 data-m=0>
+                    <input id="o_0_m_0_member_tId" name="o_0_m_0_member_t" type="text" size="3" maxlength="10" value="" placeholder="Title"> 
+                    <input id="o_0_m_0_member_fId" name="o_0_m_0_member_f" type="text" size="11" maxlength="60" value="" placeholder="First"> 
+                    <input id="o_0_m_0_member_mId" name="o_0_m_0_member_m" type="text" size="3" maxlength="10" value="" placeholder="M"> 
+                    <input id="o_0_m_0_member_lId" name="o_0_m_0_member_l" type="text" size="11" maxlength="30" value="" placeholder="Last"> 
+                    <input id="o_0_m_0_member_sId" name="o_0_m_0_member_s" type="text" size="3" maxlength="10" value="" placeholder="suffix"> 
+                    <input id="o_0_m_0_member_hiddenId" name="o_0_m_0_member_hidden" type="checkbox" >
+                    <label for="o_0_m_0_member_hiddenId">hide</label>
+                  </div>
+            <% } %>
+                  <span class="addPerson" title="Add another person.">+ person</span>
+                  <span class="delEstate" title="Remove this estate and owners.">- estate</span>
+                </div>
+            </div>
+          <% }) %>
+            <span class="addEstate" title="Add another estate and owner.">+ estate</span>
+        <% } else { %>
+        No owners entered.  <span class="addOwner">+ owner</span>.
         <% } %>
-        <% if (pier?.property?.tel !== undefined && pier?.property?.tel.length !== 0) { %>
-          <li>Telephone: <a href="tel:<%= pier.property.tel %>"><%= pier.property.tel %></a></li>
-        <% } %>
-        <% if (pier?.property?.established !== undefined && pier?.property?.established?.length !== 0) { %>
-          <li>Established in <%= pier.property.established %></li>
-        <% } %>
-        <% if (pier.owners[0]?.estateName !== "") { %>
-          <li><span class="estateName"><%= pier.owners[0]?.estateName %></span></li>
-        <% } %>
-        <% if (pier.property?.address?.street !== undefined) { %>
-          <li><%= pier.property.address.street %></li>
-        <% } %>
-        <% if (pier.property?.address?.city !== undefined) { %>
-          <li><%= pier.property.address.city %>, WI <%= pier.property.address?.zip %></li>
-        <% } %>
-      </ul>
-      <h3 id="owners">Owners:</h3>
-      <% if (pier?.owners.length < 1) { %>
-        Pier owner information is missing.  
-      <% } else { %>
-        <ul class="owners">
-        <% pier.owners.forEach((owner) => {
-          let o = '' %>
-          <li>
-          <ul class="owners">
-          <% if (owner?.members.length > 0) {
-            owner.members.forEach((m) => {
-              o += `<div>${m.t} ${m.f} ${m.m} ${m.l} ${m.s}</div>`
-            })
-          }
-          if (owner.member === true) {
-            o += `<div>GLA memberhip level: ${owner.membershipType}</div>`
-          } %>
-          <li><%- o %></li>
-          </ul></li>
-        <% }) %>
-        </ul>
-      <% } %>
+      </fieldset>
+      <fieldset id="finishId" name="finish" form="pierEditId">
+        <div style="display: inline-block; width: 45%; margin: auto; position: relative; text-align: left; padding-left: 10px;">
+          <input type="reset" value="Reset" />
+        </div>
+        <div style="display: inline-block; width: 50%; position: relative; right: 0px; text-align: right;">
+          <input type="submit" value="Submit" /> 
+        </div>
+      </fieldset>
+    </form>
+    <% if (photo) { %>
+    <picture>
+      <source media="(max-width:820px)" srcset="">
+      <source media="(min-width:821px)" srcset="">
+      <img alt="Photo of pier <%= pier %> in <%= town %>." src="">
+    </picture>
     <% } %>
-      -->
+    <h3 id="location">Location:</h3>
+    <ul class="location">
+      <li>lat: <%= poi?.loc %></li>
+      <li>lon: <%= poi?.loc %></li>
+      <li>geohash: <%= poi?.geohash %></li>
+      <li>pluscode: <a href="https://www.google.com/maps/place/<%= encodeURIComponent(poi?.pluscode) %>"><%= poi?.pluscode %></a></li>
+    </ul>
+    <h3 id="address">Street Address:</h3>
+    <ul class="location">
+      <% if (poi?.property?.association !== undefined && poi?.property?.association?.length !== 0) {
+        let assoc
+        if (poi?.property?.associationUrl !== undefined && poi?.property?.associationUrl?.length !== 0) {
+          assoc = `<a href="${poi?.property?.associationUrl}">${poi?.property?.association}</a>`
+        } else {
+          assoc = poi?.property?.association
+        } %>
+        <li>Association: <%- assoc %></li>
+      <% } %>
+      <% if (pier?.property?.tel !== undefined && pier?.property?.tel.length !== 0) { %>
+        <li>Telephone: <a href="tel:<%= poi?.property?.tel %>"><%= poi?.property?.tel %></a></li>
+      <% } %>
+      <% if (pier?.property?.established !== undefined && pier?.property?.established?.length !== 0) { %>
+        <li>Established in <%= poi?.property?.established %></li>
+      <% } %>
+      <% if (poi?.owners[0]?.estateName !== "") { %>
+        <li><span class="estateName"><%= poi?.owners[0]?.estateName %></span></li>
+      <% } %>
+      <% if (poi?.property?.address?.street !== undefined) { %>
+        <li><%= poi?.property?.address?.street %></li>
+      <% } %>
+      <% if (poi?.property?.address?.city !== undefined) { %>
+        <li><%= poi?.property?.address?.city %>, WI <%= poi?.property?.address?.zip %></li>
+      <% } %>
+    </ul>
+    <h3 id="owners">Owners:</h3> <% if (pier?.owners?.length < 1) { %>
+      Pier owner information is missing.  
+    <% } else { %>
+      <ul class="owners">
+      <% poi?.owners?.forEach((owner) => {
+        let o = '' %>
+        <li>
+        <ul class="owners">
+        <% if (owner?.members?.length > 0) {
+          owner.members.forEach((m) => {
+            o += `<div>${m.t} ${m.f} ${m.m} ${m.l} ${m.s}</div>`
+          })
+        }
+        if (owner.member === true) {
+          o += `<div>GLA memberhip level: ${owner.membershipType}</div>`
+        } %>
+        <li><%- o %></li>
+        </ul></li>
+      <% }) %>
+      </ul>
+    <% } %>
     <script nonce="<%= nonce %>">
       const form = document.forms['pierEditId']
       const radio = form['addressType']

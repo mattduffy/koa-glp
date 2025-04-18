@@ -404,26 +404,36 @@ router.get('poi', '/point-of-interest/:poi', hasFlash, addIpToSession, async (ct
 
 // move to src/router/edit.js
 router.get('poiNew', '/poi/new', async (ctx) => {
-  const log = glpLog.extend('GET-pioNew')
-  const error = glpError.extend('GET-pioNew')
+  const log = glpLog.extend('GET-poiNew')
+  const error = glpError.extend('GET-poiNew')
   if (!ctx.state?.isAuthenticated) {
     error('User is not authenticated.  Redirect to /')
     ctx.status = 401
     ctx.redirect('/')
   } else {
+    const csrfToken = ulid()
+    ctx.session.csrfToken = csrfToken
+    ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })
     const locals = {}
     locals.title = 'New Point of Interest'
-    locals.flash = {}
+    locals.flash = ctx.flash?.poiNew ?? {}
+    locals.isAuthenticated = ctx.state.isAuthenticated
+    locals.csrfToken = csrfToken
+    locals.poi = {}
     locals.pier = 0
     locals.pierNumber = 0
+    locals.lon = 0
+    locals.lat = 0
+    locals.photo = 0
+    locals.town = 0
     await ctx.render('poi-new', locals)
   }
 })
 
 // move to src/router/edit.js
 router.get('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, async (ctx) => {
-  const log = glpLog.extend('GET-pioEdit')
-  const error = glpError.extend('GET-pioEdit')
+  const log = glpLog.extend('GET-poiEdit')
+  const error = glpError.extend('GET-poiEdit')
   if (!ctx.state?.isAuthenticated) {
     error('User is not authenticated.  Redirect to /')
     ctx.status = 401
@@ -436,8 +446,8 @@ router.get('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, async (ctx) =>
 
 // move to src/router/edit.js
 router.post('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, processFormData, async (ctx) => {
-  const log = glpLog.extend('POST-pioEdit')
-  const error = glpError.extend('POST-pioEdit')
+  const log = glpLog.extend('POST-poiEdit')
+  const error = glpError.extend('POST-poiEdit')
   if (!ctx.state?.isAuthenticated) {
     error('User is not authenticated.  Redirect to /')
     ctx.status = 401
