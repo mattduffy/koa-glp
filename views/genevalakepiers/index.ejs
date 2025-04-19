@@ -92,7 +92,7 @@
           loadPriority: mapkit.Map.LoadPriorities.PointsOfInterest,
           selectableMapFeatures: [
             mapkit.MapFeatureType.PhysicalFeature,
-            mapkit.MapFeatureType.PointOfInterest
+            mapkit.MapFeatureType.PointOfInterest,
           ],
           visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
           showsCompass: mapkit.FeatureVisibility.Visible,
@@ -105,7 +105,6 @@
           isScrollEnabled: true,
           isZoomEnabled: true,
         } 
-        mapkit.Map.LoadPriorities = mapkit.Map.LoadPriorities.PointsOfInterest
         window.map = new mapkit.Map('map', opts)
         window.map.region = genevaBay
       }
