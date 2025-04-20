@@ -26,12 +26,12 @@
         <% if (poi?.createdOn?.length > 0) { %>
           Created on: <%= poi?.createdOn[0] %><br>
         <% } %>
-        Poi geojson schema version: <%= poi?.version %>
+        Poi geojson schema version: <%= (poi?.properties?.version) ? poi.properties.version : '1' %>
         <input id="versionId" name="version" type="hidden" value="<%= poi?.version %>">
         <input id="setTownId" name="setTown" type="hidden" value="<%= poi?.setTown %>">
         <input id="csrf-tokenId" type="hidden" value="<%= csrfToken %>">
       </fieldset>
-      <fieldset id="poiPhotoId" name="poiPhoto" form="poiEditId" class="edit_fieldset" title="Poi Photo Form">
+      <fieldset id="poiPhotoId" name="poiPhoto" form="poiEditId" class="edit_fieldset" title="POI Photo Form">
         <legend>Poi Photo</legend>
         <% if (poi?.images?.length > 0) { %>
         <picture>
@@ -43,8 +43,8 @@
         <span>Add an image for this poi.</span><br>
         <input id="photo_0Id" name="photo_0" type="file" accept=".png,.jpg,.jpeg">
       </fieldset>
-      <fieldset id="poiLocationId" name="poiLocation" form="poiEditId" class="edit_fieldset" title="Poi Location Form">
-        <legend>Poi Location</legend>
+      <fieldset id="poiLocationId" name="poiLocation" form="poiEditId" class="edit_fieldset" title="POI Location Form">
+        <legend>POI Location</legend>
         <label for="lonId">Longtitude</label>
         <input id="lonId" name="lon" type="number" value="<%= lon %>" min="-180.000000" max="180.000000" step="0.000001" required><br>
         <label for="latId">Latitude</label>
@@ -54,25 +54,22 @@
         <label for="pluscodeId">Pluscode</label>
         <input id="pluscodeId" name="pluscode" type="text" size="30" value="<%= poi?.pluscode %>"><br>
       </fieldset>
-      <fieldset id="poiAddressId" name="poiAddress" form="poiEditId" class="edit_fieldset" title="Poi Address Form">
-        <legend>Poi Address</legend>
-        <input type="radio" id="addressType1Id" name="addressType" value="ass" required><label for="addressType1Id">Association</label>
-        <input type="radio" id="addressType2Id" name="addressType" value="bus"><label for="addressType2Id">Business</label>
-        <input type="radio" id="addressType3Id" name="addressType" value="res"><label for="addressType3Id">Residential</label><br>
-        <label for="associationId">Association Name</label>
-        <input id="associationId" name="association" type="text" size="29" maxlendgth="100" value="<%= poi?.property?.association %>"><br>
+      <fieldset id="poiTypeId" name="poiType" form="poiEditId" class="edit_fieldset" title="POI Type">
+        <label for="type1Id">Access</label><input type="radio" id="type1Id" name="poiType" value="access" required style="margin-right: 10px" checked>
+        <label for="type2Id">Bathroom</label><input type="radio" id="type2Id" name="poiType" value="bathroom" style="margin-right: 10px">
+        <label for="type3Id">Food</label><input type="radio" id="type3Id" name="poiType" value="food" style="margin-right: 10px">
+        <label for="type4Id">Historical</label><input type="radio" id="type4Id" name="poiType" value="historical" style="margin-right: 10px"><br>
+      </fieldset>
+      <fieldset id="poiAddressId" name="poiAddress" form="poiEditId" class="edit_fieldset" title="POI Description Form">
+        <legend>POI Description</legend>
+        <label for="poiDescriptionId">Description</label><br>
+        <textarea id="poiDescriptionId" name="poiDescription" type="text" rows="10" cols="45"><%= poi?.properties?.description%></textarea>
 
-        <label for="businessId">Business Name</label>
-        <input id="businessId" name="business" type="text" size="30" maxlength="100" value="<%= poi?.property?.business %>"></br>
-
-        <label for="isMarinaId">Is a marina?</label>
-        <input id="isMarinaId" name="isMarina" type="checkbox" <%= (poi?.property?.isMarina === 1) ? 'checked' : '' %>><br>
-
-        <label for="hasFoodId">Has food?</label>
-        <input id="hasFoodId" name="hasFood" type="checkbox" <%= (poi?.property?.hasFood === 1) ? 'checked' : '' %>><br>
-
-        <label for="publicId">Is a public pier?</label>
-        <input id="publicId" name="public" type="checkbox" <%= (poi?.public === 1) ? 'checked' : '' %>><br>
+      </fieldset>
+      <fieldset id="poiAddressId" name="poiAddress" form="poiEditId" class="edit_fieldset" title="POI Address Form">
+        <legend>POI Address</legend>
+        <label for="poiNameId">Name</label>
+        <input id="poiNameId" name="poiName" type="text" size="30" maxlength="100" value="<%= poi?.properties?.name%>"></br>
 
         <label for="telId">Telephone</label>
         <input id="telId" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= poi?.property?.tel %>"><br>
@@ -107,229 +104,230 @@
     <% } %>
     
     <script nonce="<%= nonce %>">
-        const fileInput = form['photo_0']
-        fileInput.addEventListener('change', handlePhoto, false)
-        function handlePhoto(e) {
-          e.preventDefault()
-          e.stopPropagation()
-          prepareNewImage(e)
-        }
-        const imageDropTarget = form['pierPhotoId']
-        imageDropTarget.addEventListener('dragenter', dragnoop, false)
-        imageDropTarget.addEventListener('dragover', dragnoop, false)
-        imageDropTarget.addEventListener('drop', dragdrop, false)
-        function dragnoop(e) {
-          e.preventDefault()
-          e.stopPropagation()
-          // console.log(e)
-        }
-        function dragdrop(e) {
-          e.preventDefault()
-          e.stopPropagation()
-          const files = e.dataTransfer.files
-          const fileInput = form['photo_0Id']
-          fileInput.files = files
-          console.log(files)
-          prepareNewImage(e) 
-        }
-        // const fileElement = document.forms[0]['photo_0Id'] 
-        // fileElement.addEventListener('change', (e) => {
-        //   e.preventDefault()
-        //   e.stopPropagation()
-        //   prepareNewImage(e)
-        // })
-        function preparePoiData(e) {
-          console.log('step 1: prepare form data')
-          const pier = {}
-          pier.pier = form['numberId'].value
-          pier.version = form['versionId'].value
-          pier.loc = `${form['lonId'].value.toString()},${form['latId'].value.toString()}`
-          pier.geohash = form['geohashId'].value
-          pier.pluscode = form['pluscodeId'].value
-          pier.public = (form['publicId'].checked) ? 1 : 0
-          pier.bigSwimPier = (form['bigSwimPierId'].checked) ? 1 : 0
-          const property = {}
-          property.association = form['associationId'].value
-          property.established = parseInt(form['establishedId'].value, 10)
-          property.associationUrl = form['associationUrlId'].value
-          property.tel = form['telId'].value.replace(/(?<area>\d{3})-(?<prefix>\d{3})-(?<exch>\d{4})/, '+1 ($<area>) $<prefix>-$<exch>')
-          property.business = form['businessId'].value
-          property.isMarina = (form['isMarinaId'].checked) ? 1 : 0
-          property.hasFood = (form['hasFoodId'].checked) ? 1 : 0
-          const address = {}
-          address.street = form['streetId'].value
-          address.city = (form['cityId'].value !== '') ? form['cityId'].value : 'Lake Geneva'
-          address.state = (form['stateId'].value !== '') ? form['stateId'].value : 'WI'
-          address.zip = (form['zipId'].value !== '') ? form['zipId'].value : '53147'
-          property.address = address
-          pier.property = property
-          const owners = []
-          const ownerNodes = document.querySelectorAll('div.editOwner')
-          // ownerNodes.forEach((o, i) => {
-          ownerNodes.forEach((o) => {
-            const i = o.dataset.o
-            // console.log(`ownerNodes: ${i}`)
-            const owner = {}
-            owner.estateName = form[`o_${i}_estateName`].value
-            owner.membershipType = form[`o_${i}_membershipTypeId`].options[form[`o_${i}_membershipTypeId`].selectedIndex].value
-            owner.member = !(/non-member/i.test(owner.membershipType))
-            const mCollection = o.querySelector(':scope > div').children
-            const members = []
-            for (personRow of mCollection) {
-              if (/div/i.test(personRow.tagName)) {
-                const o = i
-                const m = personRow.dataset.m
-                // console.info(form[`o_${o}_m_${m}_member_fId`]?.value, form[`o_${o}_m_${m}_member_lId`]?.value)
-                if (typeof (form[`o_${o}_m_${m}_member_fId`]?.value + form[`o_${o}_m_${m}_member_lId`]?.value) === 'string') {
-                  // console.log(`person: ${o} ${m}`)
-                  members[m] = {
-                    t: form[`o_${o}_m_${m}_member_tId`].value,
-                    f: form[`o_${o}_m_${m}_member_fId`].value,
-                    m: form[`o_${o}_m_${m}_member_mId`].value,
-                    l: form[`o_${o}_m_${m}_member_lId`].value,
-                    s: form[`o_${o}_m_${m}_member_sId`].value,
-                    hidden: (form[`o_${o}_m_${m}_member_hiddenId`].checked) ? 1 : 0
-                  }
+      const form = document.forms['poiNewId'] 
+      const fileInput = form['photo_0']
+      fileInput.addEventListener('change', handlePhoto, false)
+      function handlePhoto(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        prepareNewImage(e)
+      }
+      const imageDropTarget = form.children['poiPhotoId']
+      imageDropTarget.addEventListener('dragenter', dragnoop, false)
+      imageDropTarget.addEventListener('dragover', dragnoop, false)
+      imageDropTarget.addEventListener('drop', dragdrop, false)
+      function dragnoop(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        // console.log(e)
+      }
+      function dragdrop(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        const files = e.dataTransfer.files
+        const fileInput = form['photo_0Id']
+        fileInput.files = files
+        console.log(files)
+        prepareNewImage(e) 
+      }
+      // const fileElement = document.forms[0]['photo_0Id'] 
+      // fileElement.addEventListener('change', (e) => {
+      //   e.preventDefault()
+      //   e.stopPropagation()
+      //   prepareNewImage(e)
+      // })
+      function preparePoiData(e) {
+        console.log('step 1: prepare form data')
+        const pier = {}
+        pier.pier = form['numberId'].value
+        pier.version = form['versionId'].value
+        pier.loc = `${form['lonId'].value.toString()},${form['latId'].value.toString()}`
+        pier.geohash = form['geohashId'].value
+        pier.pluscode = form['pluscodeId'].value
+        pier.public = (form['publicId'].checked) ? 1 : 0
+        pier.bigSwimPier = (form['bigSwimPierId'].checked) ? 1 : 0
+        const property = {}
+        property.association = form['associationId'].value
+        property.established = parseInt(form['establishedId'].value, 10)
+        property.associationUrl = form['associationUrlId'].value
+        property.tel = form['telId'].value.replace(/(?<area>\d{3})-(?<prefix>\d{3})-(?<exch>\d{4})/, '+1 ($<area>) $<prefix>-$<exch>')
+        property.business = form['businessId'].value
+        property.isMarina = (form['isMarinaId'].checked) ? 1 : 0
+        property.hasFood = (form['hasFoodId'].checked) ? 1 : 0
+        const address = {}
+        address.street = form['streetId'].value
+        address.city = (form['cityId'].value !== '') ? form['cityId'].value : 'Lake Geneva'
+        address.state = (form['stateId'].value !== '') ? form['stateId'].value : 'WI'
+        address.zip = (form['zipId'].value !== '') ? form['zipId'].value : '53147'
+        property.address = address
+        pier.property = property
+        const owners = []
+        const ownerNodes = document.querySelectorAll('div.editOwner')
+        // ownerNodes.forEach((o, i) => {
+        ownerNodes.forEach((o) => {
+          const i = o.dataset.o
+          // console.log(`ownerNodes: ${i}`)
+          const owner = {}
+          owner.estateName = form[`o_${i}_estateName`].value
+          owner.membershipType = form[`o_${i}_membershipTypeId`].options[form[`o_${i}_membershipTypeId`].selectedIndex].value
+          owner.member = !(/non-member/i.test(owner.membershipType))
+          const mCollection = o.querySelector(':scope > div').children
+          const members = []
+          for (personRow of mCollection) {
+            if (/div/i.test(personRow.tagName)) {
+              const o = i
+              const m = personRow.dataset.m
+              // console.info(form[`o_${o}_m_${m}_member_fId`]?.value, form[`o_${o}_m_${m}_member_lId`]?.value)
+              if (typeof (form[`o_${o}_m_${m}_member_fId`]?.value + form[`o_${o}_m_${m}_member_lId`]?.value) === 'string') {
+                // console.log(`person: ${o} ${m}`)
+                members[m] = {
+                  t: form[`o_${o}_m_${m}_member_tId`].value,
+                  f: form[`o_${o}_m_${m}_member_fId`].value,
+                  m: form[`o_${o}_m_${m}_member_mId`].value,
+                  l: form[`o_${o}_m_${m}_member_lId`].value,
+                  s: form[`o_${o}_m_${m}_member_sId`].value,
+                  hidden: (form[`o_${o}_m_${m}_member_hiddenId`].checked) ? 1 : 0
                 }
               }
             }
-            owner.members = members
-            // console.info(owner)
-            owners.push(owner)
-          })
-          pier.owners = owners
-          console.log(pier)
-          return pier
-        }
+          }
+          owner.members = members
+          // console.info(owner)
+          owners.push(owner)
+        })
+        pier.owners = owners
+        console.log(pier)
+        return pier
+      }
 
-        function prepareNewImage() {
-          const fileList = form['photo_0Id'].files
-          if (arguments.length > 0) {
-            const span = form['pierPhotoId'].querySelector(':scope > span')
-            span.innerHTML = `Image selected for pier <%= pierNumber %><br>${fileList[0].name} <br>type: ${fileList[0].type} <br>${Math.floor(fileList[0].size/1024)} KBs.`
-            console.log(span)
-          } else {
-            console.log('step 2: prepare new image')
-            console.info(fileList[0])
-            return fileList[0]
-          }
+      function prepareNewImage() {
+        const fileList = form['photo_0Id'].files
+        if (arguments.length > 0) {
+          const span = form['pierPhotoId'].querySelector(':scope > span')
+          span.innerHTML = `Image selected for pier <%= pierNumber %><br>${fileList[0].name} <br>type: ${fileList[0].type} <br>${Math.floor(fileList[0].size/1024)} KBs.`
+          console.log(span)
+        } else {
+          console.log('step 2: prepare new image')
+          console.info(fileList[0])
+          return fileList[0]
         }
+      }
 
-        async function send(data) {
-          console.log('step 3: send data')
-          let jwtAccess = '<%= searchJwtAccess %>'
-          const opts = {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              Authorization: `Bearer ${jwtAccess}`,
-            },
-            body: data,
-          }
-          console.dir(opts)
-          const url = new URL(`${origin}/edit/poi/new`)
-          console.log(url.toString())
-          const request = new Request(url, opts)
-          console.dir(request)
-          const response = await (await fetch(request, { credentials: 'same-origin' })).json()
-          console.dir(response)
-          const messagesId = document.forms[0].elements['messagesId']
-          const messageSpan = document.createElement('span')
-          if (/failed/.test(response.status.toLowerCase())) {
-            messageSpan.appendChild(document.createTextNode(response.msg))
-            messageSpan.appendChild(document.createElement('br'))
-            messageSpan.appendChild(document.createTextNode(`pier update status: ${response.okPierUpdate}`))
-            messageSpan.appendChild(document.createElement('br'))
-            messageSpan.appendChild(document.createTextNode(`town geojson update status: ${response.okTownGeoJson}`))
-            messageSpan.appendChild(document.createElement('br'))
-            messageSpan.appendChild(document.createTextNode(`combined geojson update status: ${response.okCombinedGeoJson}`))
-            messageSpan.appendChild(document.createElement('br'))
-            messageSpan.appendChild(document.createTextNode(`image upload status: ${response.okPierImage}`))
-          } else {
-            messageSpan.appendChild(document.createTextNode('Pier data successfully updated.'))
-            messageSpan.appendChild(document.createElement('br'))
-            messageSpan.appendChild(document.createTextNode(`image upload status: ${response.imageUploadStatus}`))
-            messageSpan.appendChild(document.createElement('br'))
-            messageSpan.appendChild(document.createTextNode(`regenderated ${response.setTown} geojson: ${response.okTownGeoJson}`))
-            messageSpan.appendChild(document.createElement('br'))
-            messageSpan.appendChild(document.createTextNode(`regenderated combined geojson: ${response.okCombinedGeoJson}`))
-          }
-          messagesId.appendChild(messageSpan)
-          messagesId.classList.remove('hidden')
-          messagesId.scrollIntoView(true)
-          document.querySelector('section.main h2').scrollIntoView(true)
+      async function send(data) {
+        console.log('step 3: send data')
+        let jwtAccess = '<%= searchJwtAccess %>'
+        const opts = {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${jwtAccess}`,
+          },
+          body: data,
         }
+        console.dir(opts)
+        const url = new URL(`${origin}/edit/poi/new`)
+        console.log(url.toString())
+        const request = new Request(url, opts)
+        console.dir(request)
+        const response = await (await fetch(request, { credentials: 'same-origin' })).json()
+        console.dir(response)
+        const messagesId = document.forms[0].elements['messagesId']
+        const messageSpan = document.createElement('span')
+        if (/failed/.test(response.status.toLowerCase())) {
+          messageSpan.appendChild(document.createTextNode(response.msg))
+          messageSpan.appendChild(document.createElement('br'))
+          messageSpan.appendChild(document.createTextNode(`pier update status: ${response.okPierUpdate}`))
+          messageSpan.appendChild(document.createElement('br'))
+          messageSpan.appendChild(document.createTextNode(`town geojson update status: ${response.okTownGeoJson}`))
+          messageSpan.appendChild(document.createElement('br'))
+          messageSpan.appendChild(document.createTextNode(`combined geojson update status: ${response.okCombinedGeoJson}`))
+          messageSpan.appendChild(document.createElement('br'))
+          messageSpan.appendChild(document.createTextNode(`image upload status: ${response.okPierImage}`))
+        } else {
+          messageSpan.appendChild(document.createTextNode('Pier data successfully updated.'))
+          messageSpan.appendChild(document.createElement('br'))
+          messageSpan.appendChild(document.createTextNode(`image upload status: ${response.imageUploadStatus}`))
+          messageSpan.appendChild(document.createElement('br'))
+          messageSpan.appendChild(document.createTextNode(`regenderated ${response.setTown} geojson: ${response.okTownGeoJson}`))
+          messageSpan.appendChild(document.createElement('br'))
+          messageSpan.appendChild(document.createTextNode(`regenderated combined geojson: ${response.okCombinedGeoJson}`))
+        }
+        messagesId.appendChild(messageSpan)
+        messagesId.classList.remove('hidden')
+        messagesId.scrollIntoView(true)
+        document.querySelector('section.main h2').scrollIntoView(true)
+      }
 
-        const submit = document.querySelector('input[type=submit]')
-        submit.addEventListener('click', submitPierEdits)
-        async function submitPierEdits(e) {
-          e.preventDefault()
-          e.stopPropagation()
-          const formData = new FormData()
-          const poi = preparePoiData(e)
-          const file = prepareNewImage()
-          if (file !== undefined) {
-            console.log(`files ready to be uploaded: ${file}`)
-            formData.append('photo_0', file)
-          }
-          formData.append('csrfTokenHidden', form['csrf-tokenId'].value)
-          formData.append('poi', JSON.stringify(pier))
-          formData.append('version', form['versionId'].value)
-          formData.append('setTown', form['setTownId'].value)
-          await send(formData)
+      const submit = document.querySelector('input[type=submit]')
+      submit.addEventListener('click', submitPierEdits)
+      async function submitPierEdits(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        const formData = new FormData()
+        const poi = preparePoiData(e)
+        const file = prepareNewImage()
+        if (file !== undefined) {
+          console.log(`files ready to be uploaded: ${file}`)
+          formData.append('photo_0', file)
         }
-        // Event hander for lon/lat fields to get geohash
-        async function getGeoHash(e) {
-          const lon = parseFloat(form['lonId'].value, 10)
-          const lat = parseFloat(form['latId'].value, 10)
-          console.log(lon, lat)
-          if ((lon === 0 || isNaN(lon)) || (lat === 0 || isNaN(lat))) {
-          // if (lon === 0 || lat === 0) {
-            return false
-          }
-          const data = new FormData()
-          data.append('csrfTokenHidden', form['csrf-tokenId'].value)
-          data.append('pier', form['numberId'].value)
-          data.append('lon', lon.toString())
-          data.append('lat', lat.toString())
-          let jwtAccess = '<%= searchJwtAccess %>'
-          const opts = {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              Authorization: `Bearer ${jwtAccess}`,
-            },
-            body: data,
-          }
-          console.dir(opts)
-          const request = new Request(`${origin}/edit/geohash`, opts)
-          console.dir(request)
-          const response = await (await fetch(request, { credentials: 'same-origin' })).json()
-          console.log(response)
-          if (response?.geoHash !== 0) {
-            form['geohash'].value = response.geoHash
-            form['csrf-tokenId'].value = response.newCsrfToken
-            console.log(`New csrf token: ${response.newCsrfToken}`)
-          }
+        formData.append('csrfTokenHidden', form['csrf-tokenId'].value)
+        formData.append('poi', JSON.stringify(pier))
+        formData.append('version', form['versionId'].value)
+        formData.append('setTown', form['setTownId'].value)
+        await send(formData)
+      }
+      // Event hander for lon/lat fields to get geohash
+      async function getGeoHash(e) {
+        const lon = parseFloat(form['lonId'].value, 10)
+        const lat = parseFloat(form['latId'].value, 10)
+        console.log(lon, lat)
+        if ((lon === 0 || isNaN(lon)) || (lat === 0 || isNaN(lat))) {
+        // if (lon === 0 || lat === 0) {
+          return false
         }
-        form['lonId'].addEventListener('change', getGeoHash, false)
-        form['latId'].addEventListener('change', getGeoHash, false)
-        // Event handler for lon/lat fields to get google pluscode
-        async function getPluscode(e) {
-          const lon = parseFloat(form['lonId'].value, 10)
-          const lat = parseFloat(form['latId'].value, 10)
-          if ((lon === 0 || isNaN(lon)) || (lat === 0 || isNaN(lat))) {
-            return false
-          }
-          const request = new Request(`https://plus.codes/api?address=${lat},${lon}`)
-          const response = await (await fetch(request)).json()
-          console.log(response)
-          if (response?.plus_code?.global_code !== '') {
-            form['pluscodeId'].value = response.plus_code.global_code
-          }
+        const data = new FormData()
+        data.append('csrfTokenHidden', form['csrf-tokenId'].value)
+        data.append('pier', form['numberId'].value)
+        data.append('lon', lon.toString())
+        data.append('lat', lat.toString())
+        let jwtAccess = '<%= searchJwtAccess %>'
+        const opts = {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${jwtAccess}`,
+          },
+          body: data,
         }
-        form['lonId'].addEventListener('change', getPluscode, false)
-        form['latId'].addEventListener('change', getPluscode, false)
+        console.dir(opts)
+        const request = new Request(`${origin}/edit/geohash`, opts)
+        console.dir(request)
+        const response = await (await fetch(request, { credentials: 'same-origin' })).json()
+        console.log(response)
+        if (response?.geoHash !== 0) {
+          form['geohash'].value = response.geoHash
+          form['csrf-tokenId'].value = response.newCsrfToken
+          console.log(`New csrf token: ${response.newCsrfToken}`)
+        }
+      }
+      form['lonId'].addEventListener('change', getGeoHash, false)
+      form['latId'].addEventListener('change', getGeoHash, false)
+      // Event handler for lon/lat fields to get google pluscode
+      async function getPluscode(e) {
+        const lon = parseFloat(form['lonId'].value, 10)
+        const lat = parseFloat(form['latId'].value, 10)
+        if ((lon === 0 || isNaN(lon)) || (lat === 0 || isNaN(lat))) {
+          return false
+        }
+        const request = new Request(`https://plus.codes/api?address=${lat},${lon}`)
+        const response = await (await fetch(request)).json()
+        console.log(response)
+        if (response?.plus_code?.global_code !== '') {
+          form['pluscodeId'].value = response.plus_code.global_code
+        }
+      }
+      form['lonId'].addEventListener('change', getPluscode, false)
+      form['latId'].addEventListener('change', getPluscode, false)
     </script>
   </section> 
   <section class="map">
@@ -383,7 +381,7 @@
           new mapkit.Coordinate(lat, lon),
           // new mapkit.CoordinateSpan(0.1, 0.1)
           new mapkit.CoordinateSpan(0.006, 0.001)
-        );
+        )
         const opts = {
           mapType: mapkit.Map.MapTypes.Satellite,
           loadPriority: mapkit.Map.LoadPriorities.PointsOfInterest,
@@ -413,23 +411,26 @@
       lon = parseFloat(lon, 10)
       lat = parseFloat(lat, 10)
 
-      async function showThisPoi() {
-        const annotations = []
-        if (lat !== 0 && lon !== 0) {
-          console.log(`(lat, lon): ${lat}, ${lon}`)
-          const poiMarker = new window.mapkit.Coordinate(lat, lon)
-          const pierAnnotation = new window.mapkit.MarkerAnnotation(poiMarker)
-          pierAnnotation.title = `Pier ${pierNumber}`
-          annotations.push(pierAnnotation)
-        }
-        if (annotations.length > 0) {
-          // console.dir(annotations, { depth: null })
-          window._map.showItems(annotations)
-        }
-      }
-      await showThisPier()
+      // async function showThisPoi() {
+      //   const annotations = []
+      //   if (lat !== 0 && lon !== 0) {
+      //     console.log(`(lat, lon): ${lat}, ${lon}`)
+      //     const poiMarker = new window.mapkit.Coordinate(lat, lon)
+      //     const pierAnnotation = new window.mapkit.MarkerAnnotation(poiMarker)
+      //     pierAnnotation.title = `Pier ${pierNumber}`
+      //     annotations.push(pierAnnotation)
+      //   }
+      //   if (annotations.length > 0) {
+      //     // console.dir(annotations, { depth: null })
+      //     window._map.showItems(annotations)
+      //   }
+      // }
+      // await showThisPier()
       let selectCoordsMarker = null
-      window._map.addEventListener("single-tap", async (e) => {
+      window._map.addEventListener("single-tap", mapTap)
+      window._map.addEventListener("click", mapTap)
+      async function mapTap(e) {
+        console.log(e)
         if (selectCoordsMarker) {
           window._map.removeAnnotation(selectCoordsMarker)
         }
@@ -499,7 +500,7 @@
           document.forms.poiEditId.latId.value = Number.parseFloat(latitude).toFixed(6)
           document.forms.poiEditId.latId.dispatchEvent(new InputEvent('change'))
         }
-      })
+      }
     </script>
   </section>
 </article>
