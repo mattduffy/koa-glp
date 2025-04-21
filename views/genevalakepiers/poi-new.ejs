@@ -287,7 +287,8 @@
         }
         const data = new FormData()
         data.append('csrfTokenHidden', form['csrf-tokenId'].value)
-        data.append('pier', form['numberId'].value)
+        // data.append('pier', form['numberId'].value)
+        data.append('pier', 'xxx')
         data.append('lon', lon.toString())
         data.append('lat', lat.toString())
         let jwtAccess = '<%= searchJwtAccess %>'
@@ -496,9 +497,9 @@
           selectCoordsMarker.color = "#4B93E0"
           selectCoordsMarker.callout = annotationCallout
           window._map.addAnnotation(selectCoordsMarker)
-          document.forms.poiEditId.lonId.value = Number.parseFloat(longitude).toFixed(6)
-          document.forms.poiEditId.latId.value = Number.parseFloat(latitude).toFixed(6)
-          document.forms.poiEditId.latId.dispatchEvent(new InputEvent('change'))
+          document.forms.poiNewId.lonId.value = Number.parseFloat(longitude).toFixed(6)
+          document.forms.poiNewId.latId.value = Number.parseFloat(latitude).toFixed(6)
+          document.forms.poiNewId.latId.dispatchEvent(new InputEvent('change'))
         }
       }
     </script>
