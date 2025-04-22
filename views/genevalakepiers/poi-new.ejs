@@ -26,13 +26,13 @@
         <% if (poi?.createdOn?.length > 0) { %>
           Created on: <%= poi?.createdOn[0] %><br>
         <% } %>
-        Poi geojson schema version: <%= (poi?.properties?.version) ? poi.properties.version : '1' %>
+        POI geojson schema version: <%= (poi?.properties?.version) ? poi.properties.version : '1' %>
         <input id="versionId" name="version" type="hidden" value="<%= poi?.version %>">
         <input id="setTownId" name="setTown" type="hidden" value="<%= poi?.setTown %>">
         <input id="csrf-tokenId" type="hidden" value="<%= csrfToken %>">
       </fieldset>
       <fieldset id="poiPhotoId" name="poiPhoto" form="poiEditId" class="edit_fieldset" title="POI Photo Form">
-        <legend>Poi Photo</legend>
+        <legend>POI Photo</legend>
         <% if (poi?.images?.length > 0) { %>
         <picture>
           <source media="(max-width:820px)" srcset="">
@@ -40,58 +40,62 @@
           <img alt="Photo of <%= poi?.name %> in <%= town %>." src="<%= origin %>/<%= poi?.images[0] %>">
         </picture><br>
         <% } %>
-        <span>Add an image for this poi.</span><br>
-        <input id="photo_0Id" name="photo_0" type="file" accept=".png,.jpg,.jpeg">
+        <span>Add an image for this POI.</span><br>
+        <input id="photo_0Id" name="photo_0" type="file" accept=".png,.jpg,.jpeg" tabindex=0>
       </fieldset>
       <fieldset id="poiLocationId" name="poiLocation" form="poiEditId" class="edit_fieldset" title="POI Location Form">
         <legend>POI Location</legend>
         <label for="lonId">Longtitude</label>
-        <input id="lonId" name="lon" type="number" value="<%= lon %>" min="-180.000000" max="180.000000" step="0.000001" required><br>
+        <input id="lonId" name="lon" type="number" value="<%= lon %>" min="-180.000000" max="180.000000" step="0.000001" required tabindex=0><br>
         <label for="latId">Latitude</label>
-        <input id="latId" name="lat" type="number" value="<%= lat %>" min="-180.000000" max="180.000000" step="0.000001" required><br>
+        <input id="latId" name="lat" type="number" value="<%= lat %>" min="-180.000000" max="180.000000" step="0.000001" required tabindex=0><br>
         <label for="geohashId">Geohash</label>
-        <input id="geohashId" name="geohash" type="text" size="30" value="<%= poi?.geohash %>"><br>
+        <input id="geohashId" name="geohash" type="text" size="30" value="<%= poi?.geohash %>" tabindex=0><br>
         <label for="pluscodeId">Pluscode</label>
-        <input id="pluscodeId" name="pluscode" type="text" size="30" value="<%= poi?.pluscode %>"><br>
+        <input id="pluscodeId" name="pluscode" type="text" size="30" value="<%= poi?.pluscode %>" tabindex=0><br>
       </fieldset>
       <fieldset id="poiTypeId" name="poiType" form="poiEditId" class="edit_fieldset" title="POI Type">
-        <label for="type1Id">Access</label><input type="radio" id="type1Id" name="poiType" value="access" required style="margin-right: 10px" checked>
-        <label for="type2Id">Bathroom</label><input type="radio" id="type2Id" name="poiType" value="bathroom" style="margin-right: 10px">
-        <label for="type3Id">Food</label><input type="radio" id="type3Id" name="poiType" value="food" style="margin-right: 10px">
-        <label for="type4Id">Historical</label><input type="radio" id="type4Id" name="poiType" value="historical" style="margin-right: 10px"><br>
-      </fieldset>
-      <fieldset id="poiAddressId" name="poiAddress" form="poiEditId" class="edit_fieldset" title="POI Description Form">
-        <legend>POI Description</legend>
-        <label for="poiDescriptionId">Description</label><br>
-        <textarea id="poiDescriptionId" name="poiDescription" type="text" rows="10" cols="45"><%= poi?.properties?.description%></textarea>
+        <legend>POI Details</legend>
+        <label for="poiNameId">Name</label>
+        <input id="poiNameId" name="poiName" type="text" size="30" maxlength="100" value="<%= poi?.properties?.name%>" tabindex=0></br>
 
+        <label>Type
+          <label for="type1Id" class="radioLabel">Access<input type="radio" id="type1Id" name="poiType" value="access" required style="margin-right: 10px" checked tabindex=0></label>
+          <label for="type2Id" class="radioLabel">Bathroom<input type="radio" id="type2Id" name="poiType" value="bathroom" style="margin-right: 10px" tabindex=0></label>
+          <label for="type3Id" class="radioLabel">Food<input type="radio" id="type3Id" name="poiType" value="food" style="margin-right: 10px"></label>
+          <label for="type4Id" class="radioLabel">Historical<input type="radio" id="type4Id" name="poiType" value="historical" style="margin-right: 10px" tabindex=0></label><br>
+        </label>
+
+        <label for="poiDescriptionId">Description</label><br>
+        <textarea id="poiDescriptionId" name="poiDescription" type="text" rows="10" cols="45" tabindex=0><%= poi?.properties?.description%></textarea>
       </fieldset>
       <fieldset id="poiAddressId" name="poiAddress" form="poiEditId" class="edit_fieldset" title="POI Address Form">
         <legend>POI Address</legend>
-        <label for="poiNameId">Name</label>
-        <input id="poiNameId" name="poiName" type="text" size="30" maxlength="100" value="<%= poi?.properties?.name%>"></br>
 
         <label for="telId">Telephone</label>
-        <input id="telId" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= poi?.property?.tel %>"><br>
+        <input id="telId" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= poi?.property?.tel %>" tabindex=0><br>
 
         <label for="streetId">Street</label>
-        <input id="streetId" name="street" type="text" size="30" maxlength="70" value="<%= poi?.property?.address?.street %>"><br>
+        <input id="streetId" name="street" type="text" size="30" maxlength="70" value="<%= poi?.property?.address?.street %>" tabindex=0><br>
 
         <label for="cityId">City</label>
-        <input id="cityId" name="city" type="text" size="30" maxlength="50" value="<%= poi?.property?.address?.city %>"><br>
+        <input id="cityId" name="city" type="text" size="30" maxlength="50" value="<%= poi?.property?.address?.city %>" tabindex=0><br>
 
         <label for="stateId">State</label>
-        <input id="stateId" name="state" type="text" size="3" maxlength="2" value="<%= poi?.property?.address?.state %>"><br>
+        <input id="stateId" name="state" type="text" size="3" maxlength="2" value="<%= poi?.property?.address?.state %>" tabindex=0><br>
 
         <label for="zipId">Zip Code</label>
-        <input id="zipId" name="zip" type="text" size="10" maxlength="9" value="<%= poi?.property?.address?.zip %>"><br>
+        <input id="zipId" name="zip" type="text" size="10" maxlength="9" value="<%= poi?.property?.address?.zip %>" tabindex=0><br>
+
+        <label for="urlId">Web</label>
+        <input id="urlId" name="url" type="text" size="50" maxlength="100" value="<%= poi?.property?.url%>" tabindex=0><br>
       </fieldset>
       <fieldset id="finishId" name="finish" form="poiEditId">
         <div style="display: inline-block; width: 45%; margin: auto; position: relative; text-align: left; padding-left: 10px;">
-          <input type="reset" value="Reset" />
+          <input type="submit" value="Submit" tabindex=0 /> 
         </div>
         <div style="display: inline-block; width: 50%; position: relative; right: 0px; text-align: right;">
-          <input type="submit" value="Submit" /> 
+          <input type="reset" value="Reset" tabindex=0 />
         </div>
       </fieldset>
     </form>
@@ -288,7 +292,7 @@
         const data = new FormData()
         data.append('csrfTokenHidden', form['csrf-tokenId'].value)
         // data.append('pier', form['numberId'].value)
-        data.append('pier', 'xxx')
+        data.append('pier', '_poi_')
         data.append('lon', lon.toString())
         data.append('lat', lat.toString())
         let jwtAccess = '<%= searchJwtAccess %>'

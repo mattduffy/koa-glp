@@ -66,6 +66,13 @@ a:active, a:hover, a:visited, a:link .view::after {
   text-decoration: underline;
 }
 
+label.radioLabel {
+  background-color: #f0f8ff;
+  margin: .25em .25em .25em 0em;
+  padding: .25em 0em .25em .25em;
+  border-radius: .5em;
+}
+
 span.addEstate {
   display: inline-block;
   width: 45%;
