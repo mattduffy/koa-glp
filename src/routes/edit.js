@@ -12,6 +12,7 @@ import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
 import Router from '@koa/router'
 import { ulid } from 'ulid'
+import { processFormData, doTokensMatch } from './middlewares.js'
 import formidable from 'formidable'
 import {
   _log,
@@ -215,6 +216,30 @@ async function hasFlash(ctx, next) {
   }
   await next()
 }
+
+router.post('newPoi-POST', '/new/poi', processFormData, async (ctx) => {
+  const log = editLog.extend('POST-newPoi')
+  const error = editError.extend('POST-newPoi')
+  if (!ctx.state?.isAuthenticated) {
+    error('User is not authenticated.  Redirect to /')
+    ctx.status = 401
+    ctx.redirect('/')
+  } else {
+    let body
+    const newCsrfToken = ulid()
+    const [csrfTokenHidden] = ctx.request.body.csrfTokenHidden
+    log(`csrfTokenHidden: ${csrfTokenHidden}`)
+    ctx.session.csrfToken = newCsrfToken
+    ctx.cookies.set('csrfToken', newCsrfToken, { httpOnly: true, sameSite: 'strict' })
+    if (!doTokensMatch(ctx)) {
+      ctx.body = { status: 'fail', message: 'csrf tokens do not match', csrfToken: newCsrfToken }
+    } else {
+      log(ctx.request.body)
+      body = { status: 'success', message: 'new poi created', newCsrfToken }
+      ctx.body = body
+    }
+  }
+})
 
 router.get('editPOI-GET', '/edit/poi/:poi', hasFlash, async (ctx) => {
   const log = editLog.extend('GET-editPOI')
