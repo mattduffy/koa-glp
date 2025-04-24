@@ -229,12 +229,13 @@ router.post('newPoi-POST', '/new/poi', processFormData, async (ctx) => {
     const newCsrfToken = ulid()
     const [csrfTokenHidden] = ctx.request.body.csrfTokenHidden
     log(`csrfTokenHidden: ${csrfTokenHidden}`)
-    ctx.session.csrfToken = newCsrfToken
     ctx.cookies.set('csrfToken', newCsrfToken, { httpOnly: true, sameSite: 'strict' })
     if (!doTokensMatch(ctx)) {
       ctx.body = { status: 'fail', message: 'csrf tokens do not match', csrfToken: newCsrfToken }
     } else {
       log(ctx.request.body)
+      ctx.session.csrfToken = newCsrfToken
+      ctx.cookies.set('csrfToken', newCsrfToken, { httpOnly: true, sameSite: 'strict' })
       body = ctx.request.body
       body = { status: 'success', message: 'new poi created', newCsrfToken }
       ctx.body = body
@@ -584,15 +585,15 @@ router.post('geohash', '/edit/geohash', processFormData, async (ctx) => {
       }
       info(`geoAdd result: ${geoAdd}`)
       info(`geoHash result: ${geoHash}`)
-      const csrfToken = ulid()
-      ctx.session.csrfToken = csrfToken
-      ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })
+      const newCsrfToken = ulid()
+      ctx.session.csrfToken = newCsrfToken
+      ctx.cookies.set('csrfToken', newCsrfToken, { httpOnly: true, sameSite: 'strict' })
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 200
       ctx.body = {
         pier,
         geoHash: geoHash[0],
-        newCsrfToken: csrfToken,
+        newCsrfToken,
       }
     }
   }
