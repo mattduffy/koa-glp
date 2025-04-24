@@ -12,8 +12,8 @@ import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
 import Router from '@koa/router'
 import { ulid } from 'ulid'
-import { processFormData, doTokensMatch } from './middlewares.js'
 import formidable from 'formidable'
+import { processFormData, doTokensMatch } from './middlewares.js'
 import {
   _log,
   _info,
@@ -235,6 +235,7 @@ router.post('newPoi-POST', '/new/poi', processFormData, async (ctx) => {
       ctx.body = { status: 'fail', message: 'csrf tokens do not match', csrfToken: newCsrfToken }
     } else {
       log(ctx.request.body)
+      body = ctx.request.body
       body = { status: 'success', message: 'new poi created', newCsrfToken }
       ctx.body = body
     }
@@ -545,7 +546,7 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
   }
 })
 
-router.post('geohash', '/edit/geohash', async (ctx) => {
+router.post('geohash', '/edit/geohash', processFormData, async (ctx) => {
   const log = editLog.extend('geohash')
   const info = editInfo.extend('geohash')
   const error = editError.extend('geohash')
@@ -554,48 +555,21 @@ router.post('geohash', '/edit/geohash', async (ctx) => {
     ctx.status = 401
     ctx.redirect('/')
   } else {
-    const form = formidable({
-      encoding: 'utf-8',
-      uploadDir: ctx.app.uploadsDir,
-      keepExtensions: true,
-      multipart: true,
-    })
-    // form.type = 'urlencoded'
-    await new Promise((resolve, reject) => {
-      form.parse(ctx.req, (err, fields) => {
-        if (err) {
-          error('There was a problem parsing the multipart form data.')
-          error(err)
-          reject(err)
-          return
-        }
-        log('Multipart form data was successfully parsed.')
-        ctx.state.fields = fields
-        info(fields)
-        resolve()
-      })
-    })
+    log('form values:', ctx.request.body)
     const csrfTokenCookie = ctx.cookies.get('csrfToken')
     const csrfTokenSession = ctx.session.csrfToken
-    const [csrfTokenHidden] = ctx.state.fields.csrfTokenHidden
+    const { csrfTokenHidden } = ctx.request.body
     info(`${csrfTokenCookie},\n${csrfTokenSession},\n${csrfTokenHidden}`)
-    if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
-    if (csrfTokenSession === csrfTokenHidden) info('session === hidden')
-    if (csrfTokenCookie === csrfTokenHidden) info('cookie === hidden')
-    if (!(csrfTokenCookie === csrfTokenSession && csrfTokenSession === csrfTokenHidden)) {
+    if (!doTokensMatch(ctx)) {
       error(`CSRF-Token mismatch: header:${csrfTokenCookie} hidden:${csrfTokenHidden} - session:${csrfTokenSession}`)
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
     } else {
-      info(`pier: ${ctx.state.fields.pier[0]}`)
-      info(`csrf: ${ctx.state.fields.csrfTokenHidden[0]}`)
-      info(`lon: ${ctx.state.fields.lon[0].toString()}`)
-      info(`lat: ${ctx.state.fields.lat[0].toString()}`)
-      const lon = ctx.state.fields.lon[0].toString()
-      const lat = ctx.state.fields.lat[0].toString()
-      const pier = ctx.state.fields.pier[0].toString()
+      const { lon, lat } = ctx.request.body
+      const pier = ctx.request.body.pier[0]
       const coords = { longitude: lon, latitude: lat, member: pier }
+      log(coords)
       let geoAdd
       let geoHash
       try {
@@ -609,12 +583,16 @@ router.post('geohash', '/edit/geohash', async (ctx) => {
         geoHash = 0
       }
       info(`geoAdd result: ${geoAdd}`)
+      info(`geoHash result: ${geoHash}`)
+      const csrfToken = ulid()
+      ctx.session.csrfToken = csrfToken
+      ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 200
       ctx.body = {
         pier,
         geoHash: geoHash[0],
-        newCsrfToken: ctx.session.csrfToken,
+        newCsrfToken: csrfToken,
       }
     }
   }
