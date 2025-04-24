@@ -140,13 +140,12 @@
       //   e.stopPropagation()
       //   prepareNewImage(e)
       // })
-      function preparePoiData(e) {
+      async function preparePoiData(e) {
         console.log('step 1: prepare form data')
         const poi = {}
         poi.properties = {}
-        poi.properties.version = form['versionId'].value
-        // poi.propreties.type = form['poiTypeId'].value
-        poi.propreties.type = form['newPoiType'].value
+        poi.properties.version = form['versionId'].value ?? 1
+        poi.properties.type = form['newPoiType'].value
         poi.loc = `${form['lonId'].value.toString()},${form['latId'].value.toString()}`
         poi.properties.geohash = form['geohashId'].value
         poi.properties.pluscode = form['pluscodeId'].value
@@ -157,41 +156,13 @@
         address.state = (form['stateId'].value !== '') ? form['stateId'].value : 'WI'
         address.zip = (form['zipId'].value !== '') ? form['zipId'].value : '53147'
         poi.properties.address = address
-        // const owners = []
-        // const ownerNodes = document.querySelectorAll('div.editOwner')
-        // // ownerNodes.forEach((o, i) => {
-        // ownerNodes.forEach((o) => {
-        //   const i = o.dataset.o
-        //   // console.log(`ownerNodes: ${i}`)
-        //   const owner = {}
-        //   owner.estateName = form[`o_${i}_estateName`].value
-        //   owner.membershipType = form[`o_${i}_membershipTypeId`].options[form[`o_${i}_membershipTypeId`].selectedIndex].value
-        //   owner.member = !(/non-member/i.test(owner.membershipType))
-        //   const mCollection = o.querySelector(':scope > div').children
-        //   const members = []
-        //   for (personRow of mCollection) {
-        //     if (/div/i.test(personRow.tagName)) {
-        //       const o = i
-        //       const m = personRow.dataset.m
-        //       // console.info(form[`o_${o}_m_${m}_member_fId`]?.value, form[`o_${o}_m_${m}_member_lId`]?.value)
-        //       if (typeof (form[`o_${o}_m_${m}_member_fId`]?.value + form[`o_${o}_m_${m}_member_lId`]?.value) === 'string') {
-        //         // console.log(`person: ${o} ${m}`)
-        //         members[m] = {
-        //           t: form[`o_${o}_m_${m}_member_tId`].value,
-        //           f: form[`o_${o}_m_${m}_member_fId`].value,
-        //           m: form[`o_${o}_m_${m}_member_mId`].value,
-        //           l: form[`o_${o}_m_${m}_member_lId`].value,
-        //           s: form[`o_${o}_m_${m}_member_sId`].value,
-        //           hidden: (form[`o_${o}_m_${m}_member_hiddenId`].checked) ? 1 : 0
-        //         }
-        //       }
-        //     }
-        //   }
-        //   owner.members = members
-        //   // console.info(owner)
-        //   owners.push(owner)
-        // })
-        // pier.owners = owners
+        const lat = Number.parseFloat(form['latId'].value)
+        const lon = Number.parseFloat(form['lonId'].value)
+        // if (form['lonId'].value !== 0 && form['latId'] !== 0) {
+        if (lon !== 0 && lat !== 0) {
+          const locality = await myGeocoder({ lat, lon })
+          console.log(locality)
+        }
         console.log(poi)
         return poi 
       }
@@ -221,7 +192,7 @@
           body: data,
         }
         console.dir(opts)
-        const url = new URL(`${origin}/edit/poi/new`)
+        const url = new URL(`${origin}/new/poi`)
         console.log(url.toString())
         const request = new Request(url, opts)
         console.dir(request)
@@ -297,16 +268,24 @@
           },
           body: data,
         }
-        console.dir(opts)
+        // console.dir(opts)
         const request = new Request(`${origin}/edit/geohash`, opts)
-        console.dir(request)
+        // console.dir(request)
         const response = await (await fetch(request, { credentials: 'same-origin' })).json()
-        console.log(response)
+        // console.log(response)
         if (response?.geoHash !== 0) {
           form['geohash'].value = response.geoHash
           form['csrf-tokenId'].value = response.newCsrfToken
           console.log(`New csrf token: ${response.newCsrfToken}`)
         }
+        const result = await myGeocoder({ lon, lat })
+        const query = `${(result?.name) ? result.name : (result?.fullThoroughfare) ? ' | ' + result.fullThoroughfare : ''}`
+          + `${(result?.areasOfInterest?.[0]) ? ' | ' + result.areasOfInterest[0] : ''}`
+        // console.log('query', query)
+        await mySearch(
+          { lon, lat },
+          query,
+        )
       }
       form['lonId'].addEventListener('change', getGeoHash, false)
       form['latId'].addEventListener('change', getGeoHash, false)
@@ -326,6 +305,72 @@
       }
       form['lonId'].addEventListener('change', getPluscode, false)
       form['latId'].addEventListener('change', getPluscode, false)
+      async function myGeocoder(coords) {
+        return new Promise((resolve, reject) => {
+          // console.log('geocoder with:', coords)
+          const opts = {
+            getsUserLocation: false,
+            language: 'en-US',
+          }
+          const geocoder = new window.mapkit.Geocoder(opts)
+          // console.log(geocoder)
+          const reverseLookup = geocoder.reverseLookup(
+            new window.mapkit.Coordinate(coords.lat, coords.lon),
+            function(error, data) {
+            if (error) {
+              console.warn(error)
+            }
+            if (data && data.results.length > 0) {
+              console.log('geocoder', data)
+              // const result = data.results[0]
+              // form['telId'].value = result.telephone ?? ''
+              // form['streetId'].value = result.fullThoroughfare ?? ''
+              // form['cityId'].value = result.locality ?? ''
+              // form['stateId'].value = result.administrativeAreaCode ?? ''
+              // form['zipId'].value = result.postCode ?? ''
+              // form['poiNameId'].value = result.name ?? ''
+              resolve(data.results[0])
+            }
+          })
+        })
+      }
+      async function mySearch(coords, query) {
+        return new Promise((resolve, reject) => {
+          const opts = {
+            language: 'en-US',
+            getsUserLocation: false,
+            coordinate: new window.mapkit.Coordinate(coords.lat, coords.lon),
+            includeAddresses: true,
+            includePointsOfInterest: true,
+          }
+          const search = new window.mapkit.Search(opts)
+          const results = search.search(
+            query,
+            function(error, data) {
+              if (error) {
+                console.warn(error)
+              } else {
+                console.log(data)
+                if (data && data.places.length > 0) {
+                  const result = data.places[0]
+                  const reg = /^(\+1)?(?<ac>\d{3})(?<pre>\d{3})(?<ext>\d{4})$/
+                  function replacer(match, ...args) {
+                    return `(${args.at(-1).ac})-${args.at(-1).pre}-${args.at(-1).ext}`
+                  }
+                  form['telId'].value = result?.telephone?.replace(reg, replacer) ?? ''
+                  form['streetId'].value = result.fullThoroughfare ?? ''
+                  form['cityId'].value = result.locality ?? ''
+                  form['stateId'].value = result.administrativeAreaCode ?? ''
+                  form['zipId'].value = result.postCode ?? ''
+                  form['poiNameId'].value = result.name ?? ''
+                  form['urlId'].value = result.urls[0] ?? ''
+                }
+                resolve(data)
+              }
+            }
+          )
+        })
+      }
     </script>
   </section> 
   <section class="map">
@@ -336,7 +381,7 @@
       src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.core.js"
       crossorigin async
       data-callback="initMapKit"
-      data-libraries="full-map"
+      data-libraries="services,full-map"
       data-initial-token="">
     </script>
     <script nonce="<%= nonce %>" type="module">
