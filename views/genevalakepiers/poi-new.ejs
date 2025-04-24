@@ -60,10 +60,10 @@
         <input id="poiNameId" name="poiName" type="text" size="30" maxlength="100" value="<%= poi?.properties?.name%>" tabindex=0></br>
 
         <label>Type
-          <label for="type1Id" class="radioLabel">Access<input type="radio" id="type1Id" name="poiType" value="access" required style="margin-right: 10px" checked tabindex=0></label>
-          <label for="type2Id" class="radioLabel">Bathroom<input type="radio" id="type2Id" name="poiType" value="bathroom" style="margin-right: 10px" tabindex=0></label>
-          <label for="type3Id" class="radioLabel">Food<input type="radio" id="type3Id" name="poiType" value="food" style="margin-right: 10px"></label>
-          <label for="type4Id" class="radioLabel">Historical<input type="radio" id="type4Id" name="poiType" value="historical" style="margin-right: 10px" tabindex=0></label><br>
+          <label for="type1Id" class="radioLabel">Access<input type="radio" id="type1Id" name="newPoiType" value="access" required style="margin-right: 10px" checked tabindex=0></label>
+          <label for="type2Id" class="radioLabel">Bathroom<input type="radio" id="type2Id" name="newPoiType" value="bathroom" style="margin-right: 10px" tabindex=0></label>
+          <label for="type3Id" class="radioLabel">Food<input type="radio" id="type3Id" name="newPoiType" value="food" style="margin-right: 10px"></label>
+          <label for="type4Id" class="radioLabel">Historical<input type="radio" id="type4Id" name="newPoiType" value="historical" style="margin-right: 10px" tabindex=0></label><br>
         </label>
 
         <label for="poiDescriptionId">Description</label><br>
@@ -142,73 +142,65 @@
       // })
       function preparePoiData(e) {
         console.log('step 1: prepare form data')
-        const pier = {}
-        pier.pier = form['numberId'].value
-        pier.version = form['versionId'].value
-        pier.loc = `${form['lonId'].value.toString()},${form['latId'].value.toString()}`
-        pier.geohash = form['geohashId'].value
-        pier.pluscode = form['pluscodeId'].value
-        pier.public = (form['publicId'].checked) ? 1 : 0
-        pier.bigSwimPier = (form['bigSwimPierId'].checked) ? 1 : 0
-        const property = {}
-        property.association = form['associationId'].value
-        property.established = parseInt(form['establishedId'].value, 10)
-        property.associationUrl = form['associationUrlId'].value
-        property.tel = form['telId'].value.replace(/(?<area>\d{3})-(?<prefix>\d{3})-(?<exch>\d{4})/, '+1 ($<area>) $<prefix>-$<exch>')
-        property.business = form['businessId'].value
-        property.isMarina = (form['isMarinaId'].checked) ? 1 : 0
-        property.hasFood = (form['hasFoodId'].checked) ? 1 : 0
+        const poi = {}
+        poi.properties = {}
+        poi.properties.version = form['versionId'].value
+        // poi.propreties.type = form['poiTypeId'].value
+        poi.propreties.type = form['newPoiType'].value
+        poi.loc = `${form['lonId'].value.toString()},${form['latId'].value.toString()}`
+        poi.properties.geohash = form['geohashId'].value
+        poi.properties.pluscode = form['pluscodeId'].value
+        poi.properties.tel = form['telId'].value.replace(/(?<area>\d{3})-(?<prefix>\d{3})-(?<exch>\d{4})/, '+1 ($<area>) $<prefix>-$<exch>')
         const address = {}
         address.street = form['streetId'].value
         address.city = (form['cityId'].value !== '') ? form['cityId'].value : 'Lake Geneva'
         address.state = (form['stateId'].value !== '') ? form['stateId'].value : 'WI'
         address.zip = (form['zipId'].value !== '') ? form['zipId'].value : '53147'
-        property.address = address
-        pier.property = property
-        const owners = []
-        const ownerNodes = document.querySelectorAll('div.editOwner')
-        // ownerNodes.forEach((o, i) => {
-        ownerNodes.forEach((o) => {
-          const i = o.dataset.o
-          // console.log(`ownerNodes: ${i}`)
-          const owner = {}
-          owner.estateName = form[`o_${i}_estateName`].value
-          owner.membershipType = form[`o_${i}_membershipTypeId`].options[form[`o_${i}_membershipTypeId`].selectedIndex].value
-          owner.member = !(/non-member/i.test(owner.membershipType))
-          const mCollection = o.querySelector(':scope > div').children
-          const members = []
-          for (personRow of mCollection) {
-            if (/div/i.test(personRow.tagName)) {
-              const o = i
-              const m = personRow.dataset.m
-              // console.info(form[`o_${o}_m_${m}_member_fId`]?.value, form[`o_${o}_m_${m}_member_lId`]?.value)
-              if (typeof (form[`o_${o}_m_${m}_member_fId`]?.value + form[`o_${o}_m_${m}_member_lId`]?.value) === 'string') {
-                // console.log(`person: ${o} ${m}`)
-                members[m] = {
-                  t: form[`o_${o}_m_${m}_member_tId`].value,
-                  f: form[`o_${o}_m_${m}_member_fId`].value,
-                  m: form[`o_${o}_m_${m}_member_mId`].value,
-                  l: form[`o_${o}_m_${m}_member_lId`].value,
-                  s: form[`o_${o}_m_${m}_member_sId`].value,
-                  hidden: (form[`o_${o}_m_${m}_member_hiddenId`].checked) ? 1 : 0
-                }
-              }
-            }
-          }
-          owner.members = members
-          // console.info(owner)
-          owners.push(owner)
-        })
-        pier.owners = owners
-        console.log(pier)
-        return pier
+        poi.properties.address = address
+        // const owners = []
+        // const ownerNodes = document.querySelectorAll('div.editOwner')
+        // // ownerNodes.forEach((o, i) => {
+        // ownerNodes.forEach((o) => {
+        //   const i = o.dataset.o
+        //   // console.log(`ownerNodes: ${i}`)
+        //   const owner = {}
+        //   owner.estateName = form[`o_${i}_estateName`].value
+        //   owner.membershipType = form[`o_${i}_membershipTypeId`].options[form[`o_${i}_membershipTypeId`].selectedIndex].value
+        //   owner.member = !(/non-member/i.test(owner.membershipType))
+        //   const mCollection = o.querySelector(':scope > div').children
+        //   const members = []
+        //   for (personRow of mCollection) {
+        //     if (/div/i.test(personRow.tagName)) {
+        //       const o = i
+        //       const m = personRow.dataset.m
+        //       // console.info(form[`o_${o}_m_${m}_member_fId`]?.value, form[`o_${o}_m_${m}_member_lId`]?.value)
+        //       if (typeof (form[`o_${o}_m_${m}_member_fId`]?.value + form[`o_${o}_m_${m}_member_lId`]?.value) === 'string') {
+        //         // console.log(`person: ${o} ${m}`)
+        //         members[m] = {
+        //           t: form[`o_${o}_m_${m}_member_tId`].value,
+        //           f: form[`o_${o}_m_${m}_member_fId`].value,
+        //           m: form[`o_${o}_m_${m}_member_mId`].value,
+        //           l: form[`o_${o}_m_${m}_member_lId`].value,
+        //           s: form[`o_${o}_m_${m}_member_sId`].value,
+        //           hidden: (form[`o_${o}_m_${m}_member_hiddenId`].checked) ? 1 : 0
+        //         }
+        //       }
+        //     }
+        //   }
+        //   owner.members = members
+        //   // console.info(owner)
+        //   owners.push(owner)
+        // })
+        // pier.owners = owners
+        console.log(poi)
+        return poi 
       }
 
       function prepareNewImage() {
         const fileList = form['photo_0Id'].files
         if (arguments.length > 0) {
           const span = form['pierPhotoId'].querySelector(':scope > span')
-          span.innerHTML = `Image selected for pier <%= pierNumber %><br>${fileList[0].name} <br>type: ${fileList[0].type} <br>${Math.floor(fileList[0].size/1024)} KBs.`
+          span.innerHTML = `Image selected for new point of interest<br>${fileList[0].name} <br>type: ${fileList[0].type} <br>${Math.floor(fileList[0].size/1024)} KBs.`
           console.log(span)
         } else {
           console.log('step 2: prepare new image')
@@ -241,20 +233,20 @@
           messageSpan.appendChild(document.createTextNode(response.msg))
           messageSpan.appendChild(document.createElement('br'))
           messageSpan.appendChild(document.createTextNode(`pier update status: ${response.okPierUpdate}`))
-          messageSpan.appendChild(document.createElement('br'))
-          messageSpan.appendChild(document.createTextNode(`town geojson update status: ${response.okTownGeoJson}`))
-          messageSpan.appendChild(document.createElement('br'))
-          messageSpan.appendChild(document.createTextNode(`combined geojson update status: ${response.okCombinedGeoJson}`))
-          messageSpan.appendChild(document.createElement('br'))
-          messageSpan.appendChild(document.createTextNode(`image upload status: ${response.okPierImage}`))
+          // messageSpan.appendChild(document.createElement('br'))
+          // messageSpan.appendChild(document.createTextNode(`town geojson update status: ${response.okTownGeoJson}`))
+          // messageSpan.appendChild(document.createElement('br'))
+          // messageSpan.appendChild(document.createTextNode(`combined geojson update status: ${response.okCombinedGeoJson}`))
+          // messageSpan.appendChild(document.createElement('br'))
+          // messageSpan.appendChild(document.createTextNode(`image upload status: ${response.okPierImage}`))
         } else {
           messageSpan.appendChild(document.createTextNode('Pier data successfully updated.'))
           messageSpan.appendChild(document.createElement('br'))
-          messageSpan.appendChild(document.createTextNode(`image upload status: ${response.imageUploadStatus}`))
+          messageSpan.appendChild(document.createTextNode(`image upload status: ${response?.imageUploadStatus}`))
           messageSpan.appendChild(document.createElement('br'))
-          messageSpan.appendChild(document.createTextNode(`regenderated ${response.setTown} geojson: ${response.okTownGeoJson}`))
+          messageSpan.appendChild(document.createTextNode(`regenderated ${response.setTown} geojson: ${response?.okTownGeoJson}`))
           messageSpan.appendChild(document.createElement('br'))
-          messageSpan.appendChild(document.createTextNode(`regenderated combined geojson: ${response.okCombinedGeoJson}`))
+          messageSpan.appendChild(document.createTextNode(`regenderated combined geojson: ${response?.okCombinedGeoJson}`))
         }
         messagesId.appendChild(messageSpan)
         messagesId.classList.remove('hidden')
@@ -263,8 +255,8 @@
       }
 
       const submit = document.querySelector('input[type=submit]')
-      submit.addEventListener('click', submitPierEdits)
-      async function submitPierEdits(e) {
+      submit.addEventListener('click', submitNewPoi)
+      async function submitNewPoi(e) {
         e.preventDefault()
         e.stopPropagation()
         const formData = new FormData()
@@ -275,9 +267,10 @@
           formData.append('photo_0', file)
         }
         formData.append('csrfTokenHidden', form['csrf-tokenId'].value)
-        formData.append('poi', JSON.stringify(pier))
+        formData.append('poi', JSON.stringify(poi))
         formData.append('version', form['versionId'].value)
-        formData.append('setTown', form['setTownId'].value)
+        // formData.append('setTown', form['setTownId'].value)
+        console.log(formData)
         await send(formData)
       }
       // Event hander for lon/lat fields to get geohash
