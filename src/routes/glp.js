@@ -426,6 +426,9 @@ router.get('poiNew', '/poi/new', async (ctx) => {
     locals.lat = 0
     locals.photo = 0
     locals.town = 0
+    log(ctx.session.csrfToken)
+    log(csrfToken)
+    log(locals.csrfToken)
     await ctx.render('poi-new', locals)
   }
 })
@@ -439,6 +442,7 @@ router.get('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, async (ctx) =>
     ctx.status = 401
     ctx.redirect('/')
   } else {
+    log('GET poi edit noop')
     const locals = {}
     await ctx.render('poi-edit', locals)
   }
@@ -453,6 +457,7 @@ router.post('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, processFormDa
     ctx.status = 401
     ctx.redirect('/')
   } else {
+    log('POST poi edit noop')
     const locals = {}
     await ctx.render('edit-poi', locals)
   }

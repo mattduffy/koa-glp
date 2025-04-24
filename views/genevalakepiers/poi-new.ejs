@@ -27,7 +27,7 @@
           Created on: <%= poi?.createdOn[0] %><br>
         <% } %>
         POI geojson schema version: <%= (poi?.properties?.version) ? poi.properties.version : '1' %>
-        <input id="versionId" name="version" type="hidden" value="<%= poi?.version %>">
+        <input id="versionId" name="version" type="hidden" value="1">
         <input id="setTownId" name="setTown" type="hidden" value="<%= poi?.setTown %>">
         <input id="csrf-tokenId" type="hidden" value="<%= csrfToken %>">
       </fieldset>
@@ -142,23 +142,28 @@
       // })
       async function preparePoiData(e) {
         console.log('step 1: prepare form data')
-        const poi = {}
-        poi.properties = {}
-        poi.properties.version = form['versionId'].value ?? 1
-        poi.properties.type = form['newPoiType'].value
-        poi.loc = `${form['lonId'].value.toString()},${form['latId'].value.toString()}`
-        poi.properties.geohash = form['geohashId'].value
-        poi.properties.pluscode = form['pluscodeId'].value
-        poi.properties.tel = form['telId'].value.replace(/(?<area>\d{3})-(?<prefix>\d{3})-(?<exch>\d{4})/, '+1 ($<area>) $<prefix>-$<exch>')
-        const address = {}
-        address.street = form['streetId'].value
-        address.city = (form['cityId'].value !== '') ? form['cityId'].value : 'Lake Geneva'
-        address.state = (form['stateId'].value !== '') ? form['stateId'].value : 'WI'
-        address.zip = (form['zipId'].value !== '') ? form['zipId'].value : '53147'
-        poi.properties.address = address
         const lat = Number.parseFloat(form['latId'].value)
         const lon = Number.parseFloat(form['lonId'].value)
-        // if (form['lonId'].value !== 0 && form['latId'] !== 0) {
+        const poi = {}
+        poi.type = 'Point'
+        poi.coordinates = [lon, lat]
+        poi.properties = {}
+        poi.properties.version = form['versionId'].value
+        poi.properties.geohash = form['geohashId'].value
+        poi.properties.pluscode = form['pluscodeId'].value
+        poi.properties.name = form['poiNameId'].value ?? ''
+        poi.properties.type = form['newPoiType'].value
+        poi.properties.description = form['poiDescriptionId'].value ?? ''
+        poi.properties.tel = form['telId'].value.replace(
+          /(?<area>\d{3})-(?<prefix>\d{3})-(?<exch>\d{4})/,
+          '+1 ($<area>) $<prefix>-$<exch>'
+        )
+        const address = {}
+        address.street = form['streetId'].value
+        address.city = (form['cityId'].value !== '') ? form['cityId'].value : ''
+        address.state = (form['stateId'].value !== '') ? form['stateId'].value : ''
+        address.zip = (form['zipId'].value !== '') ? form['zipId'].value : ''
+        poi.properties.address = address
         if (lon !== 0 && lat !== 0) {
           const locality = await myGeocoder({ lat, lon })
           console.log(locality)
@@ -231,7 +236,8 @@
         e.preventDefault()
         e.stopPropagation()
         const formData = new FormData()
-        const poi = preparePoiData(e)
+        const poi = await preparePoiData(e)
+        console.log('submitting poi', poi)
         const file = prepareNewImage()
         if (file !== undefined) {
           console.log(`files ready to be uploaded: ${file}`)
@@ -239,7 +245,6 @@
         }
         formData.append('csrfTokenHidden', form['csrf-tokenId'].value)
         formData.append('poi', JSON.stringify(poi))
-        formData.append('version', form['versionId'].value)
         // formData.append('setTown', form['setTownId'].value)
         console.log(formData)
         await send(formData)
