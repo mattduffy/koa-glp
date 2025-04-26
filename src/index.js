@@ -231,15 +231,15 @@ async function csp(ctx, next) {
     + `style-src 'self' ${ctx.request.protocol}://${ctx.app.domain} 'unsafe-inline' 'nonce-${nonce}'; `
     + `style-src-attr 'self' ${ctx.request.protocol}://${ctx.app.domain} 'unsafe-inline'; `
     + `style-src-elem 'self' ${ctx.request.protocol}://${ctx.app.domain} 'unsafe-inline'; `
-    + `script-src 'self' ${ctx.request.protocol}://${ctx.app.domain} 'nonce-${nonce}'; `
+    + `script-src 'unsafe-inline' 'self' ${ctx.request.protocol}://${ctx.app.domain} 'nonce-${nonce}'; `
     + `script-src-attr 'self' ${ctx.request.protocol}://${ctx.app.domain} 'nonce-${nonce}'; `
     + `script-src-elem 'self' ${ctx.request.protocol}://${ctx.app.domain} 'nonce-${nonce}'; `
     + `img-src 'self' data: blob: ${ctx.request.protocol}://${ctx.app.domain} *.apple-mapkit.com; `
     + `font-src 'self' ${ctx.request.protocol}://${ctx.app.domain}; `
     + `media-src 'self' data: ${ctx.request.protocol}://${ctx.app.domain}; `
-    + 'frame-src \'self\'; '
+    + 'frame-src \'self\' https://*.apple-mapkit.com; '
     + `child-src 'self' blob: ${ctx.request.protocol}://${ctx.app.domain}; `
-    + `worker-src 'self' blob: ${ctx.request.protocol}://${ctx.app.domain}; `
+    + `worker-src 'self' blob: ${ctx.request.protocol}://${ctx.app.domain} https://*.apple-mapkit.com blob:; `
     + `manifest-src 'self' blob: ${ctx.request.protocol}://${ctx.app.domain}; `
     + `connect-src 'self' blob: ${ctx.request.protocol}://${ctx.app.domain} https://plus.codes *.apple-mapkit.com *.geo.apple.com https://mw-ci1-mapkitjs.geo.apple.com; `
   ctx.set('Content-Security-Policy', policy)
