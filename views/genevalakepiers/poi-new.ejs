@@ -28,6 +28,7 @@
         <% } %>
         POI geojson schema version: <%= (poi?.properties?.version) ? poi.properties.version : '1' %>
         <input id="versionId" name="version" type="hidden" value="1">
+        <input id="poiId" name="poiId" type="text" value="">
         <input id="setTownId" name="setTown" type="hidden" value="<%= poi?.setTown %>">
         <input id="csrf-tokenId" type="hidden" value="<%= csrfToken %>">
       </fieldset>
@@ -149,6 +150,7 @@
         poi.coordinates = [lon, lat]
         poi.properties = {}
         poi.properties.version = form['versionId'].value
+        poi.properties.id = form['vesrionId'].value
         poi.properties.geohash = form['geohashId'].value
         poi.properties.pluscode = form['pluscodeId'].value
         poi.properties.name = form['poiNameId'].value ?? ''
@@ -230,6 +232,12 @@
         document.querySelector('section.main h2').scrollIntoView(true)
       }
 
+      const reset = document.querySelector('input[type=reset]')
+      reset.addEventListener('click', resetPoi)
+      async function resetPoi(e) {
+        // window._map.annotations.forEach(a => a.selected = false)
+        window._map.removeAnnotations(window._map.annotations)
+      }
       const submit = document.querySelector('input[type=submit]')
       submit.addEventListener('click', submitNewPoi)
       async function submitNewPoi(e) {
@@ -328,6 +336,7 @@
             if (data && data.results.length > 0) {
               console.log('geocoder', data)
               // const result = data.results[0]
+              // form['poiId'] = result.id ?? ''
               // form['telId'].value = result.telephone ?? ''
               // form['streetId'].value = result.fullThoroughfare ?? ''
               // form['cityId'].value = result.locality ?? ''
@@ -343,37 +352,58 @@
         return new Promise((resolve, reject) => {
           const opts = {
             language: 'en-US',
-            getsUserLocation: false,
-            coordinate: new window.mapkit.Coordinate(coords.lat, coords.lon),
-            includeAddresses: true,
-            includePointsOfInterest: true,
+            region: new window.mapkit.CoordinateRegion(
+              new window.mapkit.Coordinate(coords.lat, coords.lon),
+              new window.mapkit.CoordinateSpan(0.001, 0.001)
+            ),
+            pointOfInterestFilter: window.mapkit.PointOfInterestFilter.including([
+              window.mapkit.PointOfInterestCategory.ATM,
+              window.mapkit.PointOfInterestCategory.Beach,
+              window.mapkit.PointOfInterestCategory.Cafe,
+              window.mapkit.PointOfInterestCategory.Campground,
+              window.mapkit.PointOfInterestCategory.FoodMarket,
+              window.mapkit.PointOfInterestCategory.Library,
+              window.mapkit.PointOfInterestCategory.Marina,
+              window.mapkit.PointOfInterestCategory.Park,
+              window.mapkit.PointOfInterestCategory.Parking,
+              window.mapkit.PointOfInterestCategory.Restaurant,
+              window.mapkit.PointOfInterestCategory.Restroom,
+            ]),
           }
-          const search = new window.mapkit.Search(opts)
-          const results = search.search(
-            query,
-            function(error, data) {
-              if (error) {
-                console.warn(error)
-              } else {
-                console.log(data)
-                if (data && data.places.length > 0) {
-                  const result = data.places[0]
-                  const reg = /^(\+1)?(?<ac>\d{3})(?<pre>\d{3})(?<ext>\d{4})$/
-                  function replacer(match, ...args) {
-                    return `(${args.at(-1).ac})-${args.at(-1).pre}-${args.at(-1).ext}`
-                  }
-                  form['telId'].value = result?.telephone?.replace(reg, replacer) ?? ''
-                  form['streetId'].value = result.fullThoroughfare ?? ''
-                  form['cityId'].value = result.locality ?? ''
-                  form['stateId'].value = result.administrativeAreaCode ?? ''
-                  form['zipId'].value = result.postCode ?? ''
-                  form['poiNameId'].value = result.name ?? ''
-                  form['urlId'].value = result.urls[0] ?? ''
-                }
-                resolve(data)
-              }
-            }
-          )
+          console.log(opts)
+          const search = new window.mapkit.PointsOfInterestSearch()
+          const results = search.search(console.log, opts)
+          // const search = new window.mapkit.Search(opts)
+          // const results = search.search(
+          //   query,
+          //   function(error, data) {
+          //     if (error) {
+          //       console.warn(error)
+          //     } else {
+          //       console.log(data)
+          //       if (data && data.places.length > 0) {
+          //         const result = data.places[0]
+          //         const reg = /^(\+1)?(?<ac>\d{3})(?<pre>\d{3})(?<ext>\d{4})$/
+          //         function replacer(match, ...args) {
+          //           return `(${args.at(-1).ac})-${args.at(-1).pre}-${args.at(-1).ext}`
+          //         }
+          //         form['telId'].value = result?.telephone?.replace(reg, replacer) ?? ''
+          //         form['streetId'].value = result.fullThoroughfare ?? ''
+          //         form['cityId'].value = result.locality ?? ''
+          //         form['stateId'].value = result.administrativeAreaCode ?? ''
+          //         form['zipId'].value = result.postCode ?? ''
+          //         form['poiNameId'].value = result.name ?? ''
+          //         form['poiId'].value = result.id ?? ''
+          //         form['urlId'].value = result.urls[0] ?? ''
+          //       }
+          //       const place = new window.mapkit.PlaceAnnotation(data.places[0])
+          //       window._map.addItems([place])
+          //       const accessory = new mapkit.PlaceSelectionAccessory()
+          //       place.selectionAccessory = accessory
+          //       resolve(data)
+          //     }
+          //   }
+          // )
         })
       }
     </script>
@@ -430,6 +460,8 @@
           // new mapkit.CoordinateSpan(0.1, 0.1)
           new mapkit.CoordinateSpan(0.006, 0.001)
         )
+        window._lat = lat
+        window._lon = lon
         const opts = {
           mapType: mapkit.Map.MapTypes.Satellite,
           loadPriority: mapkit.Map.LoadPriorities.PointsOfInterest,
@@ -538,12 +570,14 @@
           }
           const selectCoords = new window.mapkit.Coordinate(latitude, longitude)
           selectCoordsMarker = new window.mapkit.MarkerAnnotation(selectCoords)
-          selectCoordsMarker.title = `lon/lat: ${Number.parseFloat(longitude).toFixed(6)},${Number.parseFloat(latitude).toFixed(6)}`
+          selectCoordsMarker.title = `lon/lat: `
+            + `${Number.parseFloat(longitude).toFixed(6)},`
+            + `${Number.parseFloat(latitude).toFixed(6)}`
           selectCoordsMarker.animates = true
           selectCoordsMarker.selected = true
           selectCoordsMarker.color = "#4B93E0"
           selectCoordsMarker.callout = annotationCallout
-          window._map.addAnnotation(selectCoordsMarker)
+          // window._map.addAnnotation(selectCoordsMarker)
           document.forms.poiNewId.lonId.value = Number.parseFloat(longitude).toFixed(6)
           document.forms.poiNewId.latId.value = Number.parseFloat(latitude).toFixed(6)
           document.forms.poiNewId.latId.dispatchEvent(new InputEvent('change'))
