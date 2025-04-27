@@ -292,9 +292,46 @@
           console.log(`New csrf token: ${response.newCsrfToken}`)
         }
         const result = await myGeocoder({ lon, lat })
-        const query = `${(result?.name) ? result.name : (result?.fullThoroughfare) ? ' | ' + result.fullThoroughfare : ''}`
-          + `${(result?.areasOfInterest?.[0]) ? ' | ' + result.areasOfInterest[0] : ''}`
-        // console.log('query', query)
+        // const query = `${(result?.name) ? result.name : (result?.fullThoroughfare) ? ' | ' + result.fullThoroughfare : ''}`
+        //   + `${(result?.areasOfInterest?.[0]) ? ' | ' + result.areasOfInterest[0] : ''}`
+        let query
+        switch(form['newPoiType'].value) {
+          case 'access':
+            query = [
+              window.mapkit.PointOfInterestCategory.ATM,
+              window.mapkit.PointOfInterestCategory.Beach,
+              window.mapkit.PointOfInterestCategory.Campground,
+              window.mapkit.PointOfInterestCategory.Marina,
+              window.mapkit.PointOfInterestCategory.Park,
+              window.mapkit.PointOfInterestCategory.Parking,
+            ]
+            break
+         case 'bathroom':
+            query = [window.mapkit.PointOfInterestCategory.Restroom]
+            break
+          case 'food':
+            query = [
+              window.mapkit.PointOfInterestCategory.Cafe,
+              window.mapkit.PointOfInterestCategory.FoodMarket,
+              window.mapkit.PointOfInterestCategory.Restaurant,
+            ]
+            break
+          default:
+            query = [
+              window.mapkit.PointOfInterestCategory.ATM,
+              window.mapkit.PointOfInterestCategory.Beach,
+              window.mapkit.PointOfInterestCategory.Cafe,
+              window.mapkit.PointOfInterestCategory.Campground,
+              window.mapkit.PointOfInterestCategory.FoodMarket,
+              window.mapkit.PointOfInterestCategory.Library,
+              window.mapkit.PointOfInterestCategory.Marina,
+              window.mapkit.PointOfInterestCategory.Park,
+              window.mapkit.PointOfInterestCategory.Parking,
+              window.mapkit.PointOfInterestCategory.Restaurant,
+              window.mapkit.PointOfInterestCategory.Restroom,
+            ]
+        }
+        console.log('query', query)
         await mySearch(
           { lon, lat },
           query,
@@ -356,54 +393,40 @@
               new window.mapkit.Coordinate(coords.lat, coords.lon),
               new window.mapkit.CoordinateSpan(0.001, 0.001)
             ),
-            pointOfInterestFilter: window.mapkit.PointOfInterestFilter.including([
-              window.mapkit.PointOfInterestCategory.ATM,
-              window.mapkit.PointOfInterestCategory.Beach,
-              window.mapkit.PointOfInterestCategory.Cafe,
-              window.mapkit.PointOfInterestCategory.Campground,
-              window.mapkit.PointOfInterestCategory.FoodMarket,
-              window.mapkit.PointOfInterestCategory.Library,
-              window.mapkit.PointOfInterestCategory.Marina,
-              window.mapkit.PointOfInterestCategory.Park,
-              window.mapkit.PointOfInterestCategory.Parking,
-              window.mapkit.PointOfInterestCategory.Restaurant,
-              window.mapkit.PointOfInterestCategory.Restroom,
-            ]),
+            pointOfInterestFilter: window.mapkit.PointOfInterestFilter.including(query),
           }
           console.log(opts)
           const search = new window.mapkit.PointsOfInterestSearch()
-          const results = search.search(console.log, opts)
-          // const search = new window.mapkit.Search(opts)
-          // const results = search.search(
-          //   query,
-          //   function(error, data) {
-          //     if (error) {
-          //       console.warn(error)
-          //     } else {
-          //       console.log(data)
-          //       if (data && data.places.length > 0) {
-          //         const result = data.places[0]
-          //         const reg = /^(\+1)?(?<ac>\d{3})(?<pre>\d{3})(?<ext>\d{4})$/
-          //         function replacer(match, ...args) {
-          //           return `(${args.at(-1).ac})-${args.at(-1).pre}-${args.at(-1).ext}`
-          //         }
-          //         form['telId'].value = result?.telephone?.replace(reg, replacer) ?? ''
-          //         form['streetId'].value = result.fullThoroughfare ?? ''
-          //         form['cityId'].value = result.locality ?? ''
-          //         form['stateId'].value = result.administrativeAreaCode ?? ''
-          //         form['zipId'].value = result.postCode ?? ''
-          //         form['poiNameId'].value = result.name ?? ''
-          //         form['poiId'].value = result.id ?? ''
-          //         form['urlId'].value = result.urls[0] ?? ''
-          //       }
-          //       const place = new window.mapkit.PlaceAnnotation(data.places[0])
-          //       window._map.addItems([place])
-          //       const accessory = new mapkit.PlaceSelectionAccessory()
-          //       place.selectionAccessory = accessory
-          //       resolve(data)
-          //     }
-          //   }
-          // )
+          const results = search.search(
+            function(error, data) {
+              if (error) {
+                console.warn(error)
+              } else {
+                console.log(data)
+                if (data && data.places.length > 0) {
+                  const result = data.places[0]
+                  const reg = /^(\+1)?(?<ac>\d{3})(?<pre>\d{3})(?<ext>\d{4})$/
+                  function replacer(match, ...args) {
+                    return `(${args.at(-1).ac})-${args.at(-1).pre}-${args.at(-1).ext}`
+                  }
+                  form['telId'].value = result?.telephone?.replace(reg, replacer) ?? ''
+                  form['streetId'].value = result.fullThoroughfare ?? ''
+                  form['cityId'].value = result.locality ?? ''
+                  form['stateId'].value = result.administrativeAreaCode ?? ''
+                  form['zipId'].value = result.postCode ?? ''
+                  form['poiNameId'].value = result.name ?? ''
+                  form['poiId'].value = result.id ?? ''
+                  form['urlId'].value = result.urls[0] ?? ''
+                }
+                const place = new window.mapkit.PlaceAnnotation(data.places[0])
+                window._map.addItems([place])
+                const accessory = new mapkit.PlaceSelectionAccessory()
+                place.selectionAccessory = accessory
+                resolve(data)
+              }
+            },
+            opts 
+          )
         })
       }
     </script>
