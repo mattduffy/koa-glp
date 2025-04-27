@@ -60,7 +60,7 @@
         <label for="poiNameId">Name</label>
         <input id="poiNameId" name="poiName" type="text" size="30" maxlength="100" value="<%= poi?.properties?.name%>" tabindex=0></br>
 
-        <label>Type
+        <label>Type<br>
           <label for="type1Id" class="radioLabel">Access<input type="radio" id="type1Id" name="newPoiType" value="access" required style="margin-right: 10px" checked tabindex=0></label>
           <label for="type2Id" class="radioLabel">Bathroom<input type="radio" id="type2Id" name="newPoiType" value="bathroom" style="margin-right: 10px" tabindex=0></label>
           <label for="type3Id" class="radioLabel">Food<input type="radio" id="type3Id" name="newPoiType" value="food" style="margin-right: 10px"></label>
@@ -261,7 +261,7 @@
       async function getGeoHash(e) {
         const lon = parseFloat(form['lonId'].value, 10)
         const lat = parseFloat(form['latId'].value, 10)
-        console.log(lon, lat)
+        console.log('getGeoHash', lon, lat)
         if ((lon === 0 || isNaN(lon)) || (lat === 0 || isNaN(lat))) {
         // if (lon === 0 || lat === 0) {
           return false
@@ -281,15 +281,15 @@
           },
           body: data,
         }
-        // console.dir(opts)
+        // console.dir('getGeoHash', opts)
         const request = new Request(`${origin}/edit/geohash`, opts)
-        // console.dir(request)
+        // console.dir('getGeoHash', request)
         const response = await (await fetch(request, { credentials: 'same-origin' })).json()
-        // console.log(response)
+        // console.log('getGeoHash', response)
         if (response?.geoHash !== 0) {
           form['geohash'].value = response.geoHash
           form['csrf-tokenId'].value = response.newCsrfToken
-          console.log(`New csrf token: ${response.newCsrfToken}`)
+          console.log(`getGeoHash - New csrf token: ${response.newCsrfToken}`)
         }
         const result = await myGeocoder({ lon, lat })
         // const query = `${(result?.name) ? result.name : (result?.fullThoroughfare) ? ' | ' + result.fullThoroughfare : ''}`
@@ -331,7 +331,7 @@
               window.mapkit.PointOfInterestCategory.Restroom,
             ]
         }
-        console.log('query', query)
+        console.log('myGeocoder - query', query)
         await mySearch(
           { lon, lat },
           query,
@@ -348,7 +348,7 @@
         }
         const request = new Request(`https://plus.codes/api?address=${lat},${lon}`)
         const response = await (await fetch(request)).json()
-        console.log(response)
+        console.log('getPluscode', response)
         if (response?.plus_code?.global_code !== '') {
           form['pluscodeId'].value = response.plus_code.global_code
         }
@@ -363,15 +363,15 @@
             language: 'en-US',
           }
           const geocoder = new window.mapkit.Geocoder(opts)
-          // console.log(geocoder)
+          // console.log('myGeocoder', geocoder)
           const reverseLookup = geocoder.reverseLookup(
             new window.mapkit.Coordinate(coords.lat, coords.lon),
             function(error, data) {
             if (error) {
-              console.warn(error)
+              console.warn('myGeocoder', error)
             }
             if (data && data.results.length > 0) {
-              console.log('geocoder', data)
+              console.log('myGeocoder', data)
               // const result = data.results[0]
               // form['poiId'] = result.id ?? ''
               // form['telId'].value = result.telephone ?? ''
@@ -395,14 +395,14 @@
             ),
             pointOfInterestFilter: window.mapkit.PointOfInterestFilter.including(query),
           }
-          console.log(opts)
+          console.log('mySearch', opts)
           const search = new window.mapkit.PointsOfInterestSearch()
           const results = search.search(
             function(error, data) {
               if (error) {
-                console.warn(error)
+                console.warn('mySearch', error)
               } else {
-                console.log(data)
+                console.log('mySearch', data)
                 if (data && data.places.length > 0) {
                   const result = data.places[0]
                   const reg = /^(\+1)?(?<ac>\d{3})(?<pre>\d{3})(?<ext>\d{4})$/
@@ -417,11 +417,11 @@
                   form['poiNameId'].value = result.name ?? ''
                   form['poiId'].value = result.id ?? ''
                   form['urlId'].value = result.urls[0] ?? ''
+                  const place = new window.mapkit.PlaceAnnotation(data.places[0])
+                  window._map.addItems([place])
+                  const accessory = new mapkit.PlaceSelectionAccessory()
+                  place.selectionAccessory = accessory
                 }
-                const place = new window.mapkit.PlaceAnnotation(data.places[0])
-                window._map.addItems([place])
-                const accessory = new mapkit.PlaceSelectionAccessory()
-                place.selectionAccessory = accessory
                 resolve(data)
               }
             },
@@ -592,6 +592,7 @@
             }
           }
           const selectCoords = new window.mapkit.Coordinate(latitude, longitude)
+          console.log('selectCoords', selectCoords)
           selectCoordsMarker = new window.mapkit.MarkerAnnotation(selectCoords)
           selectCoordsMarker.title = `lon/lat: `
             + `${Number.parseFloat(longitude).toFixed(6)},`
