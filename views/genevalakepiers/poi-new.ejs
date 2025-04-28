@@ -63,10 +63,10 @@
         <label for="poiNameId">Name</label>
         <input id="poiNameId" name="poiName" type="text" size="30" maxlength="100" value="<%= poi?.properties?.name%>" tabindex=0></br>
         <label>Type<br>
-          <label for="type1Id" class="radioLabel">Access<input type="radio" id="type1Id" name="newPoiType" value="access" style="margin-right: 10px" tabindex=0></label>
+          <label for="type1Id" class="radioLabel">Access<input type="radio" id="type1Id" name="newPoiType" value="Access" style="margin-right: 10px" tabindex=0></label>
           <label for="type2Id" class="radioLabel">Restroom<input type="radio" id="type2Id" name="newPoiType" value="Restroom" style="margin-right: 10px" tabindex=0></label>
           <label for="type3Id" class="radioLabel">Food<input type="radio" id="type3Id" name="newPoiType" value="food" style="margin-right: 10px"></label>
-          <label for="type4Id" class="radioLabel">Historical<input type="radio" id="type4Id" name="newPoiType" value="historical" style="margin-right: 10px" tabindex=0></label><br>
+          <label for="type4Id" class="radioLabel">Landmark<input type="radio" id="type4Id" name="newPoiType" value="Landmark" style="margin-right: 10px" tabindex=0></label><br>
         </label>
         <label for="poiDescriptionId">Description</label><br>
         <textarea id="poiDescriptionId" name="poiDescription" type="text" rows="10" cols="45" tabindex=0><%= poi?.properties?.description%></textarea>
@@ -145,7 +145,7 @@
         poi.coordinates = [lon, lat]
         poi.properties = {}
         poi.properties.version = form['versionId'].value
-        poi.properties.id = form['vesrionId'].value
+        poi.properties.id = form['poiId'].value ?? ''
         poi.properties.geohash = form['geohashId'].value
         poi.properties.pluscode = form['pluscodeId'].value
         poi.properties.name = form['poiNameId'].value ?? ''
@@ -252,6 +252,7 @@
         console.log(formData)
         await send(formData)
       }
+      window.placeId = null
       // Event hander for lon/lat fields to get geohash
       async function getGeoHash(e) {
         const lon = parseFloat(form['lonId'].value, 10)
@@ -286,56 +287,81 @@
           form['csrf-tokenId'].value = response.newCsrfToken
           console.log(`getGeoHash - New csrf token: ${response.newCsrfToken}`)
         }
-        const result = await myGeocoder({ lon, lat })
-        let query
-        switch(form['newPoiType'].value) {
-          case 'access':
-            query = [
-              window.mapkit.PointOfInterestCategory.ATM,
-              window.mapkit.PointOfInterestCategory.Beach,
-              window.mapkit.PointOfInterestCategory.Campground,
-              window.mapkit.PointOfInterestCategory.Marina,
-              window.mapkit.PointOfInterestCategory.Park,
-              window.mapkit.PointOfInterestCategory.Parking,
-            ]
-            break
-         case 'Restroom':
-            query = [
-              window.mapkit.PointOfInterestCategory.Restroom,
-            ]
-            break
-          case 'food':
-            query = [
-              window.mapkit.PointOfInterestCategory.Cafe,
-              window.mapkit.PointOfInterestCategory.FoodMarket,
-              window.mapkit.PointOfInterestCategory.Restaurant,
-            ]
-            break
-          case 'historical':
-            query = [
-              // window.mapkit.PointOfInterestCategory.Restroom,
-            ]
-            break
-          default:
-            query = [
-              window.mapkit.PointOfInterestCategory.ATM,
-              window.mapkit.PointOfInterestCategory.Beach,
-              window.mapkit.PointOfInterestCategory.Cafe,
-              window.mapkit.PointOfInterestCategory.Campground,
-              window.mapkit.PointOfInterestCategory.FoodMarket,
-              window.mapkit.PointOfInterestCategory.Library,
-              window.mapkit.PointOfInterestCategory.Marina,
-              window.mapkit.PointOfInterestCategory.Park,
-              window.mapkit.PointOfInterestCategory.Parking,
-              window.mapkit.PointOfInterestCategory.Restaurant,
-              window.mapkit.PointOfInterestCategory.Restroom,
-            ]
+        if (form['poiId'].value !== '' && form['poiId'] !== window?.placeId) {
+          window.placeId = form['poiId'].value
+          console.log('window.placeId', window.placeId)
+          console.log('poiId', form['poiId'].value)
+          const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
+          place.getPlace(
+            form['poiId'].value,
+            function(error, data) {
+              if (error) {
+                console.warn(error)
+              }
+              if (data) {
+                console.log(data)
+                const p = new window.mapkit.PlaceAnnotation(data)
+                window._map.addItems([p])
+                const accessory = new mapkit.PlaceSelectionAccessory()
+                p.selectionAccessory = accessory
+              }
+            }
+          ) 
+        } else {
+          const result = await myGeocoder({ lon, lat })
+          let query
+          switch(form['newPoiType'].value) {
+            case 'Access':
+              query = [
+                window.mapkit.PointOfInterestCategory.ATM,
+                window.mapkit.PointOfInterestCategory.Beach,
+                window.mapkit.PointOfInterestCategory.Campground,
+                window.mapkit.PointOfInterestCategory.Marina,
+                window.mapkit.PointOfInterestCategory.Park,
+                window.mapkit.PointOfInterestCategory.Parking,
+              ]
+              break
+            case 'Restroom':
+              query = [
+                window.mapkit.PointOfInterestCategory.Restroom,
+              ]
+              break
+            case 'food':
+              query = [
+                window.mapkit.PointOfInterestCategory.Cafe,
+                window.mapkit.PointOfInterestCategory.FoodMarket,
+                window.mapkit.PointOfInterestCategory.Restaurant,
+              ]
+              break
+            case 'Landmark':
+              query = [
+                window.mapkit.PointOfInterestCategory.Landmark,
+              ]
+              break
+            default:
+              query = [
+                window.mapkit.PointOfInterestCategory.ATM,
+                window.mapkit.PointOfInterestCategory.Beach,
+                window.mapkit.PointOfInterestCategory.Cafe,
+                window.mapkit.PointOfInterestCategory.Campground,
+                window.mapkit.PointOfInterestCategory.FoodMarket,
+                window.mapkit.PointOfInterestCategory.Landmark,
+                window.mapkit.PointOfInterestCategory.Library,
+                window.mapkit.PointOfInterestCategory.Marina,
+                window.mapkit.PointOfInterestCategory.Museum,
+                window.mapkit.PointOfInterestCategory.Park,
+                window.mapkit.PointOfInterestCategory.Parking,
+                window.mapkit.PointOfInterestCategory.Restaurant,
+                window.mapkit.PointOfInterestCategory.Restroom,
+                window.mapkit.PointOfInterestCategory.University,
+              ]
+          }
+          console.log('myGeocoder - query', query)
+          await mySearch(
+            { lon, lat },
+            query,
+          )
         }
-        console.log('myGeocoder - query', query)
-        await mySearch(
-          { lon, lat },
-          query,
-        )
       }
       form['lonId'].addEventListener('change', getGeoHash, false)
       form['latId'].addEventListener('change', getGeoHash, false)
@@ -547,11 +573,15 @@
         e.preventDefault()
         e.stopPropagation()
         const {latitude, longitude} = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
-        // const coordinate = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
         const defaultRadius = 50
         const defaultUnits = 'ft'
-        console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: ${longitude}, ${latitude}`)
-        const results = await (await fetch(`${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`)).json()
+        console.log(`locate piers within ${defaultRadius} ${defaultUnits} `
+          + `of coords: ${longitude}, ${latitude}`)
+        const results = await (
+          await fetch(
+            `${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`
+          )
+        ).json()
         console.log(results)
         if (results?.total > 0) {
           results.documents.forEach((p) => {
@@ -611,6 +641,9 @@
           // window._map.addAnnotation(selectCoordsMarker)
           document.forms.poiNewId.lonId.value = Number.parseFloat(longitude).toFixed(6)
           document.forms.poiNewId.latId.value = Number.parseFloat(latitude).toFixed(6)
+          if (window?.placeId && window.placeId !== '') {
+            document.forms.poiNewId.poiId.value = ''
+          }
           document.forms.poiNewId.latId.dispatchEvent(new InputEvent('change'))
         }
       }
