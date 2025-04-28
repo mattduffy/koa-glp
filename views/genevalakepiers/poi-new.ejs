@@ -27,10 +27,13 @@
           Created on: <%= poi?.createdOn[0] %><br>
         <% } %>
         POI geojson schema version: <%= (poi?.properties?.version) ? poi.properties.version : '1' %>
+        <br>
         <input id="versionId" name="version" type="hidden" value="1">
-        <input id="poiId" name="poiId" type="text" value="">
         <input id="setTownId" name="setTown" type="hidden" value="<%= poi?.setTown %>">
         <input id="csrf-tokenId" type="hidden" value="<%= csrfToken %>">
+        <label for="poiId">Place ID
+          <input id="poiId" name="poiId" type="text" value="" tabindex=0>
+        </label>
       </fieldset>
       <fieldset id="poiPhotoId" name="poiPhoto" form="poiEditId" class="edit_fieldset" title="POI Photo Form">
         <legend>POI Photo</legend>
@@ -59,35 +62,27 @@
         <legend>POI Details</legend>
         <label for="poiNameId">Name</label>
         <input id="poiNameId" name="poiName" type="text" size="30" maxlength="100" value="<%= poi?.properties?.name%>" tabindex=0></br>
-
         <label>Type<br>
-          <label for="type1Id" class="radioLabel">Access<input type="radio" id="type1Id" name="newPoiType" value="access" required style="margin-right: 10px" checked tabindex=0></label>
-          <label for="type2Id" class="radioLabel">Bathroom<input type="radio" id="type2Id" name="newPoiType" value="bathroom" style="margin-right: 10px" tabindex=0></label>
+          <label for="type1Id" class="radioLabel">Access<input type="radio" id="type1Id" name="newPoiType" value="access" style="margin-right: 10px" tabindex=0></label>
+          <label for="type2Id" class="radioLabel">Restroom<input type="radio" id="type2Id" name="newPoiType" value="Restroom" style="margin-right: 10px" tabindex=0></label>
           <label for="type3Id" class="radioLabel">Food<input type="radio" id="type3Id" name="newPoiType" value="food" style="margin-right: 10px"></label>
           <label for="type4Id" class="radioLabel">Historical<input type="radio" id="type4Id" name="newPoiType" value="historical" style="margin-right: 10px" tabindex=0></label><br>
         </label>
-
         <label for="poiDescriptionId">Description</label><br>
         <textarea id="poiDescriptionId" name="poiDescription" type="text" rows="10" cols="45" tabindex=0><%= poi?.properties?.description%></textarea>
       </fieldset>
       <fieldset id="poiAddressId" name="poiAddress" form="poiEditId" class="edit_fieldset" title="POI Address Form">
         <legend>POI Address</legend>
-
         <label for="telId">Telephone</label>
         <input id="telId" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= poi?.property?.tel %>" tabindex=0><br>
-
         <label for="streetId">Street</label>
         <input id="streetId" name="street" type="text" size="30" maxlength="70" value="<%= poi?.property?.address?.street %>" tabindex=0><br>
-
         <label for="cityId">City</label>
         <input id="cityId" name="city" type="text" size="30" maxlength="50" value="<%= poi?.property?.address?.city %>" tabindex=0><br>
-
         <label for="stateId">State</label>
         <input id="stateId" name="state" type="text" size="3" maxlength="2" value="<%= poi?.property?.address?.state %>" tabindex=0><br>
-
         <label for="zipId">Zip Code</label>
         <input id="zipId" name="zip" type="text" size="10" maxlength="9" value="<%= poi?.property?.address?.zip %>" tabindex=0><br>
-
         <label for="urlId">Web</label>
         <input id="urlId" name="url" type="text" size="50" maxlength="100" value="<%= poi?.property?.url%>" tabindex=0><br>
       </fieldset>
@@ -292,8 +287,6 @@
           console.log(`getGeoHash - New csrf token: ${response.newCsrfToken}`)
         }
         const result = await myGeocoder({ lon, lat })
-        // const query = `${(result?.name) ? result.name : (result?.fullThoroughfare) ? ' | ' + result.fullThoroughfare : ''}`
-        //   + `${(result?.areasOfInterest?.[0]) ? ' | ' + result.areasOfInterest[0] : ''}`
         let query
         switch(form['newPoiType'].value) {
           case 'access':
@@ -306,14 +299,21 @@
               window.mapkit.PointOfInterestCategory.Parking,
             ]
             break
-         case 'bathroom':
-            query = [window.mapkit.PointOfInterestCategory.Restroom]
+         case 'Restroom':
+            query = [
+              window.mapkit.PointOfInterestCategory.Restroom,
+            ]
             break
           case 'food':
             query = [
               window.mapkit.PointOfInterestCategory.Cafe,
               window.mapkit.PointOfInterestCategory.FoodMarket,
               window.mapkit.PointOfInterestCategory.Restaurant,
+            ]
+            break
+          case 'historical':
+            query = [
+              // window.mapkit.PointOfInterestCategory.Restroom,
             ]
             break
           default:
@@ -372,14 +372,6 @@
             }
             if (data && data.results.length > 0) {
               console.log('myGeocoder', data)
-              // const result = data.results[0]
-              // form['poiId'] = result.id ?? ''
-              // form['telId'].value = result.telephone ?? ''
-              // form['streetId'].value = result.fullThoroughfare ?? ''
-              // form['cityId'].value = result.locality ?? ''
-              // form['stateId'].value = result.administrativeAreaCode ?? ''
-              // form['zipId'].value = result.postCode ?? ''
-              // form['poiNameId'].value = result.name ?? ''
               resolve(data.results[0])
             }
           })
@@ -395,6 +387,10 @@
             ),
             pointOfInterestFilter: window.mapkit.PointOfInterestFilter.including(query),
           }
+          const access = ['ATM','Beach','Campground','Marina','Park','Parking']
+          const restroom = ['Restroom'] 
+          const food = ['Cafe', 'FoodMarket',' Restaurant'] 
+          const historical = []              
           console.log('mySearch', opts)
           const search = new window.mapkit.PointsOfInterestSearch()
           const results = search.search(
@@ -404,19 +400,30 @@
               } else {
                 console.log('mySearch', data)
                 if (data && data.places.length > 0) {
-                  const result = data.places[0]
-                  const reg = /^(\+1)?(?<ac>\d{3})(?<pre>\d{3})(?<ext>\d{4})$/
-                  function replacer(match, ...args) {
-                    return `(${args.at(-1).ac})-${args.at(-1).pre}-${args.at(-1).ext}`
-                  }
-                  form['telId'].value = result?.telephone?.replace(reg, replacer) ?? ''
-                  form['streetId'].value = result.fullThoroughfare ?? ''
-                  form['cityId'].value = result.locality ?? ''
-                  form['stateId'].value = result.administrativeAreaCode ?? ''
-                  form['zipId'].value = result.postCode ?? ''
-                  form['poiNameId'].value = result.name ?? ''
-                  form['poiId'].value = result.id ?? ''
-                  form['urlId'].value = result.urls[0] ?? ''
+                  const radio = document.forms[0]['newPoiType'].value
+                  let placeId
+                  let placeName
+                  let placeUrl
+                  data.places.forEach((p) => {
+                    // const result = data.places[0]
+                    const result = p
+                    placeId = result.id ?? ''
+                    placeUrl = result.urls[0] ?? ''
+                    placeName = result.name ?? ''
+                    
+                    const reg = /^(\+1)?(?<ac>\d{3})(?<pre>\d{3})(?<ext>\d{4})$/
+                    function replacer(match, ...args) {
+                      return `(${args.at(-1).ac})-${args.at(-1).pre}-${args.at(-1).ext}`
+                    }
+                    form['telId'].value = result?.telephone?.replace(reg, replacer) ?? ''
+                    form['streetId'].value = result.fullThoroughfare ?? ''
+                    form['cityId'].value = result.locality ?? ''
+                    form['stateId'].value = result.administrativeAreaCode ?? ''
+                    form['zipId'].value = result.postCode ?? ''
+                    form['urlId'].value = result.urls[0] ?? placeId ?? ''
+                    form['poiId'].value = result.id ?? placeUrl ?? ''
+                    form['poiNameId'].value = result.name ?? placeName ?? ''
+                  })
                   const place = new window.mapkit.PlaceAnnotation(data.places[0])
                   window._map.addItems([place])
                   const accessory = new mapkit.PlaceSelectionAccessory()
