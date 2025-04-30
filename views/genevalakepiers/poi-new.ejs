@@ -29,10 +29,10 @@
         POI geojson schema version: <%= (poi?.properties?.version) ? poi.properties.version : '1' %>
         <br>
         <input id="versionId" name="version" type="hidden" value="1">
-        <input id="setTownId" name="setTown" type="hidden" value="<%= poi?.setTown %>">
+        <input id="setTownId" name="setTown" type="hidden" value="<%= poi?.properties?.setTown %>">
         <input id="csrf-tokenId" type="hidden" value="<%= csrfToken %>">
         <label for="poiId">Place ID
-          <input id="poiId" name="poiId" type="text" value="" tabindex=0>
+          <input id="poiId" name="poiId" type="text" value="<%= poi?.properties?.id %>" tabindex=0>
         </label>
       </fieldset>
       <fieldset id="poiPhotoId" name="poiPhoto" form="poiEditId" class="edit_fieldset" title="POI Photo Form">
@@ -41,7 +41,7 @@
         <picture>
           <source media="(max-width:820px)" srcset="">
           <source media="(min-width:821px)" srcset="">
-          <img alt="Photo of <%= poi?.name %> in <%= town %>." src="<%= origin %>/<%= poi?.images[0] %>">
+          <img alt="Photo of <%= poi?.name %> in <%= town %>." src="<%= origin %>/<%= poi?.properties?.images[0] %>">
         </picture><br>
         <% } %>
         <span>Add an image for this POI.</span><br>
@@ -54,9 +54,9 @@
         <label for="latId">Latitude</label>
         <input id="latId" name="lat" type="number" value="<%= lat %>" min="-180.000000" max="180.000000" step="0.000001" required tabindex=0><br>
         <label for="geohashId">Geohash</label>
-        <input id="geohashId" name="geohash" type="text" size="30" value="<%= poi?.geohash %>" tabindex=0><br>
+        <input id="geohashId" name="geohash" type="text" size="30" value="<%= poi?.properties?.geohash %>" tabindex=0><br>
         <label for="pluscodeId">Pluscode</label>
-        <input id="pluscodeId" name="pluscode" type="text" size="30" value="<%= poi?.pluscode %>" tabindex=0><br>
+        <input id="pluscodeId" name="pluscode" type="text" size="30" value="<%= poi?.properties?.pluscode %>" tabindex=0><br>
       </fieldset>
       <fieldset id="poiTypeId" name="poiType" form="poiEditId" class="edit_fieldset" title="POI Type">
         <legend>POI Details</legend>
@@ -74,17 +74,17 @@
       <fieldset id="poiAddressId" name="poiAddress" form="poiEditId" class="edit_fieldset" title="POI Address Form">
         <legend>POI Address</legend>
         <label for="telId">Telephone</label>
-        <input id="telId" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= poi?.property?.tel %>" tabindex=0><br>
+        <input id="telId" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= poi?.properties?.tel %>" tabindex=0><br>
         <label for="streetId">Street</label>
-        <input id="streetId" name="street" type="text" size="30" maxlength="70" value="<%= poi?.property?.address?.street %>" tabindex=0><br>
+        <input id="streetId" name="street" type="text" size="30" maxlength="70" value="<%= poi?.properties?.address?.street %>" tabindex=0><br>
         <label for="cityId">City</label>
-        <input id="cityId" name="city" type="text" size="30" maxlength="50" value="<%= poi?.property?.address?.city %>" tabindex=0><br>
+        <input id="cityId" name="city" type="text" size="30" maxlength="50" value="<%= poi?.properties?.address?.city %>" tabindex=0><br>
         <label for="stateId">State</label>
-        <input id="stateId" name="state" type="text" size="3" maxlength="2" value="<%= poi?.property?.address?.state %>" tabindex=0><br>
+        <input id="stateId" name="state" type="text" size="3" maxlength="2" value="<%= poi?.properties?.address?.state %>" tabindex=0><br>
         <label for="zipId">Zip Code</label>
-        <input id="zipId" name="zip" type="text" size="10" maxlength="9" value="<%= poi?.property?.address?.zip %>" tabindex=0><br>
+        <input id="zipId" name="zip" type="text" size="10" maxlength="9" value="<%= poi?.properties?.address?.zip %>" tabindex=0><br>
         <label for="urlId">Web</label>
-        <input id="urlId" name="url" type="text" size="50" maxlength="100" value="<%= poi?.property?.url%>" tabindex=0><br>
+        <input id="urlId" name="url" type="text" size="45" maxlength="100" value="<%= poi?.properties?.url%>" tabindex=0><br>
       </fieldset>
       <fieldset id="finishId" name="finish" form="poiEditId">
         <div style="display: inline-block; width: 45%; margin: auto; position: relative; text-align: left; padding-left: 10px;">
@@ -446,8 +446,8 @@
                     form['cityId'].value = result.locality ?? ''
                     form['stateId'].value = result.administrativeAreaCode ?? ''
                     form['zipId'].value = result.postCode ?? ''
-                    form['urlId'].value = result.urls[0] ?? placeId ?? ''
-                    form['poiId'].value = result.id ?? placeUrl ?? ''
+                    form['urlId'].value = result.urls[0] ?? placeUrl ?? ''
+                    form['poiId'].value = result.id ?? placeId ?? ''
                     form['poiNameId'].value = result.name ?? placeName ?? ''
                   })
                   const place = new window.mapkit.PlaceAnnotation(data.places[0])
