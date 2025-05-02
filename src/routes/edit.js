@@ -204,6 +204,31 @@ async function savePierFile(dir, data) {
   return file
 }
 
+async function getNextRedisJsonKey(keyPattern) {
+  const log = editLog.extend('getNextRedisJsonKey')
+  const error = editError.extend('getNextRedisJsonKey')
+  let keys
+  try {
+    keys = await redis.keys(keyPattern)
+    log(keys)
+    let highestKey = 0
+    /* eslint-disable-next-line */
+    for (const key of keys) {
+      log(key)
+      const keyNum = Number.parseInt(key.split(':').pop(), 10)
+      if (!Number.isNaN(keyNum) && keyNum > highestKey) {
+        highestKey = keyNum
+      }
+    }
+    const nextKey = highestKey + 1
+    const paddedNextKey = nextKey.toString().padStart(3, 0)
+    return paddedNextKey
+  } catch (e) {
+    error(e)
+    return false
+  }
+}
+
 const router = new Router()
 
 async function hasFlash(ctx, next) {
@@ -234,9 +259,25 @@ router.post('newPoi-POST', '/new/poi', processFormData, async (ctx) => {
       ctx.body = { status: 'fail', message: 'csrf tokens do not match', csrfToken: newCsrfToken }
     } else {
       log(ctx.request.body)
+      let newPoi
+      const DB_PREFIX = 'glp:pois'
+      const id = getNextRedisJsonKey(`${DB_PREFIX}:???`)
+      try {
+        newPoi = await redis.json.set(`${DB_PREFIX}:${id}`, '$', ctx.request.body.poi[0])
+        log(newPoi)
+      } catch (e) {
+        error(e)
+        error('Failed to save poi json.')
+        body = {
+          status: 'fail',
+          message: 'Failed to save new poi.',
+          cause: e,
+          newCsrfToken,
+        }
+      }
       ctx.session.csrfToken = newCsrfToken
       ctx.cookies.set('csrfToken', newCsrfToken, { httpOnly: true, sameSite: 'strict' })
-      body = ctx.request.body
+      // body = ctx.request.body
       body = { status: 'success', message: 'new poi created', newCsrfToken }
       ctx.body = body
     }
