@@ -141,8 +141,10 @@
         const lat = Number.parseFloat(form['latId'].value)
         const lon = Number.parseFloat(form['lonId'].value)
         const poi = {}
-        poi.type = 'Point'
-        poi.coordinates = [lon, lat]
+        poi.type = 'Feature'
+        poi.geometry = {}
+        poi.geometry.type = 'Point'
+        poi.geometry.coordinates = [lon, lat]
         poi.properties = {}
         poi.properties.version = form['versionId'].value
         poi.properties.id = form['poiId'].value ?? ''
