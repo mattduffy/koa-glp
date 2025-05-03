@@ -176,9 +176,32 @@ router.get('walkingPathPois', '/mapkit/walking-path-pois', async (ctx) => {
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
     } else {
+      let pois = []
+      try {
+        const idxPoisType = 'glp:idx:pois:type'
+        const queryPois = '-@type:"mileMarker"'
+        const optsPois = {
+          SORTBY: {
+            BY: 'id',
+            DIRECTION: 'ASC',
+          },
+          // LIMIT: { from: offset, size: num },
+          RETURN: ['$'],
+        }
+        const query = `ft.search ${idxPoisType} ${queryPois} `
+          + 'SORTBY id ASC'
+          // + `SORTBY id ASC LIMIT ${offset} ${num}`
+        log(query)
+        pois = await redis.ft.search(idxPoisType, queryPois, optsPois)
+        log(pois?.total, pois?.documents)
+      } catch (e) {
+        error('Failed to get list of walking path pois.')
+        error(e)
+        throw new Error('Redis query failed retrieving walking path pois.', { cause: e })
+      }
       ctx.status = 200
       ctx.type = 'application/json; charset=utf-8'
-      ctx.body = { documents: [] }
+      ctx.body = { documents: pois.documents }
     }
   } else {
     ctx.redirect('/')
