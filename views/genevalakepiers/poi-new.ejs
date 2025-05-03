@@ -31,8 +31,8 @@
         <input id="versionId" name="version" type="hidden" value="1">
         <input id="setTownId" name="setTown" type="hidden" value="<%= poi?.properties?.setTown %>">
         <input id="csrf-tokenId" type="hidden" value="<%= csrfToken %>">
-        <label for="poiId">Place ID
-          <input id="poiId" name="poiId" type="text" value="<%= poi?.properties?.id %>" tabindex=0>
+        <label for="placeId">Place ID
+          <input id="placeId" name="placeId" type="text" value="<%= poi?.properties?.placeId %>" tabindex=0>
         </label>
       </fieldset>
       <fieldset id="poiPhotoId" name="poiPhoto" form="poiEditId" class="edit_fieldset" title="POI Photo Form">
@@ -147,7 +147,8 @@
         poi.geometry.coordinates = [lon, lat]
         poi.properties = {}
         poi.properties.version = form['versionId'].value
-        poi.properties.id = form['poiId'].value ?? ''
+        poi.properties.id = 4
+        poi.properties.placeId = form['placeId'].value ?? ''
         poi.properties.geohash = form['geohashId'].value
         poi.properties.pluscode = form['pluscodeId'].value
         poi.properties.name = form['poiNameId'].value ?? ''
@@ -289,13 +290,13 @@
           form['csrf-tokenId'].value = response.newCsrfToken
           console.log(`getGeoHash - New csrf token: ${response.newCsrfToken}`)
         }
-        if (form['poiId'].value !== '' && form['poiId'] !== window?.placeId) {
-          window.placeId = form['poiId'].value
+        if (form['placeId'].value !== '' && form['placeId'] !== window?.placeId) {
+          window.placeId = form['placeId'].value
           console.log('window.placeId', window.placeId)
-          console.log('poiId', form['poiId'].value)
+          console.log('placeId', form['placeId'].value)
           const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
           place.getPlace(
-            form['poiId'].value,
+            form['placeId'].value,
             function(error, data) {
               if (error) {
                 console.warn(error)
@@ -449,7 +450,7 @@
                     form['stateId'].value = result.administrativeAreaCode ?? ''
                     form['zipId'].value = result.postCode ?? ''
                     form['urlId'].value = result.urls[0] ?? placeUrl ?? ''
-                    form['poiId'].value = result.id ?? placeId ?? ''
+                    form['placeId'].value = result.id ?? placeId ?? ''
                     form['poiNameId'].value = result.name ?? placeName ?? ''
                   })
                   const place = new window.mapkit.PlaceAnnotation(data.places[0])
@@ -644,7 +645,7 @@
           document.forms.poiNewId.lonId.value = Number.parseFloat(longitude).toFixed(6)
           document.forms.poiNewId.latId.value = Number.parseFloat(latitude).toFixed(6)
           if (window?.placeId && window.placeId !== '') {
-            document.forms.poiNewId.poiId.value = ''
+            document.forms.poiNewId.placeId.value = ''
           }
           document.forms.poiNewId.latId.dispatchEvent(new InputEvent('change'))
         }
