@@ -208,20 +208,29 @@ async function getNextRedisJsonKey(keyPattern) {
   const log = editLog.extend('getNextRedisJsonKey')
   const error = editError.extend('getNextRedisJsonKey')
   let keys
+  let highestKey = 0
   try {
-    keys = await redis.keys(keyPattern)
-    log(keys)
-    let highestKey = 0
+    // keys = await redis.keys(keyPattern)
+    const scanOpts = {
+      MATCH: keyPattern,
+      COUNT: 2000,
+    }
+    // keys = await redis.scanIterator()
+    // log('keys', keys)
+    // for await (const key of keys) {
     /* eslint-disable-next-line */
-    for (const key of keys) {
-      log(key)
+    for await (const key of redis.scanIterator(scanOpts)) {
+      log('key', key)
       const keyNum = Number.parseInt(key.split(':').pop(), 10)
       if (!Number.isNaN(keyNum) && keyNum > highestKey) {
         highestKey = keyNum
+        log('keyNum', keyNum)
+        log('highestKey', highestKey)
       }
     }
     const nextKey = highestKey + 1
     const paddedNextKey = nextKey.toString().padStart(3, 0)
+    log('paddedNextKey', paddedNextKey)
     return paddedNextKey
   } catch (e) {
     error(e)
@@ -261,9 +270,12 @@ router.post('newPoi-POST', '/new/poi', processFormData, async (ctx) => {
       log(ctx.request.body)
       let newPoi
       const DB_PREFIX = 'glp:pois'
-      const id = getNextRedisJsonKey(`${DB_PREFIX}:???`)
+      const id = await getNextRedisJsonKey(`${DB_PREFIX}:???`)
+      log('next id', id)
+      const poi = JSON.parse(ctx.request.body.poi[0])
+      log('poi json', poi)
       try {
-        newPoi = await redis.json.set(`${DB_PREFIX}:${id}`, '$', ctx.request.body.poi[0])
+        newPoi = await redis.json.set(`${DB_PREFIX}:${id}`, '$', poi)
         log(newPoi)
       } catch (e) {
         error(e)
