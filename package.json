@@ -31,8 +31,8 @@
     "addNewFields": "DEBUG_DEPTH=2 DEBUG=* node src/utils/addNewFields.js",
     "normalizeAssocs": "DEBUG_DEPTH=2 DEBUG=* node src/utils/normalizeAssocs.js",
     "dev": "DEBUG_DEPTH=2 DEBUG=* node src/index.js",
-    "cluster": "DEBUG_DEPTH=2 DEBUG=* node src/cluster.js",
-    "cluster-glp": "DEBUG_DEPTH=2 DEBUG=* node src/cluster.js"
+    "cluster-glp": "DEBUG_DEPTH=2 DEBUG=* node src/cluster.js",
+    "cluster": "DEBUG_DEPTH=2 DEBUG=* node src/cluster.js"
   },
   "devDependencies": {
     "eslint": "8.38.0",
