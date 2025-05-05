@@ -24,12 +24,11 @@
       <fieldset id="infoId" name="info" form="poiNewId" class="edit_fieldset" title="Meta Data">
         <legend>Meta Data</legend>
         <% if (poi?.createdOn?.length > 0) { %>
-          Created on: <%= poi?.createdOn[0] %><br>
+          Created on: <%= poi?.properties?.createdOn[0] %><br>
         <% } %>
         POI geojson schema version: <%= (poi?.properties?.version) ? poi.properties.version : '1' %>
         <br>
         <input id="versionId" name="version" type="hidden" value="1">
-        <input id="setTownId" name="setTown" type="hidden" value="<%= poi?.properties?.setTown %>">
         <input id="csrf-tokenId" type="hidden" value="<%= csrfToken %>">
         <label for="placeId">Place ID
           <input id="placeId" name="placeId" type="text" value="<%= poi?.properties?.placeId %>" tabindex=0>
@@ -41,7 +40,7 @@
         <picture>
           <source media="(max-width:820px)" srcset="">
           <source media="(min-width:821px)" srcset="">
-          <img alt="Photo of <%= poi?.name %> in <%= town %>." src="<%= origin %>/<%= poi?.properties?.images[0] %>">
+          <img alt="Photo of <%= poi?.properties.name %> in <%= town %>." src="<%= origin %>/<%= poi?.properties?.images[0] %>">
         </picture><br>
         <% } %>
         <span>Add an image for this POI.</span><br>
@@ -69,22 +68,30 @@
           <label for="type4Id" class="radioLabel">Landmark<input type="radio" id="type4Id" name="newPoiType" value="Landmark" style="margin-right: 10px" tabindex=0></label><br>
         </label>
         <label for="poiDescriptionId">Description</label><br>
-        <textarea id="poiDescriptionId" name="poiDescription" type="text" rows="10" cols="45" tabindex=0><%= poi?.properties?.description%></textarea>
+        <textarea id="poiDescriptionId" name="poiDescription" type="text" rows="10" cols="45" tabindex=0>
+          <%= poi?.properties?.description%>
+        </textarea>
       </fieldset>
       <fieldset id="poiAddressId" name="poiAddress" form="poiEditId" class="edit_fieldset" title="POI Address Form">
         <legend>POI Address</legend>
         <label for="telId">Telephone</label>
-        <input id="telId" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= poi?.properties?.tel %>" tabindex=0><br>
+        <input id="telId" name="tel" type="tel" size="30" placeholder="123-456-7890" pattern="(?:\+1)?\(?\d{3}\)?(?:-| )\d{3}-\d{4}" title="Enter number as 123-456-7890" maxlength="15" value="<%= poi?.properties?.tel %>" tabindex=0>
+        <br>
         <label for="streetId">Street</label>
-        <input id="streetId" name="street" type="text" size="30" maxlength="70" value="<%= poi?.properties?.address?.street %>" tabindex=0><br>
+        <input id="streetId" name="street" type="text" size="30" maxlength="70" value="<%= poi?.properties?.address?.street %>" tabindex=0>
+        <br>
         <label for="cityId">City</label>
-        <input id="cityId" name="city" type="text" size="30" maxlength="50" value="<%= poi?.properties?.address?.city %>" tabindex=0><br>
+        <input id="cityId" name="city" type="text" size="30" maxlength="50" value="<%= poi?.properties?.address?.city %>" tabindex=0>
+        <br>
         <label for="stateId">State</label>
-        <input id="stateId" name="state" type="text" size="3" maxlength="2" value="<%= poi?.properties?.address?.state %>" tabindex=0><br>
+        <input id="stateId" name="state" type="text" size="3" maxlength="2" value="<%= poi?.properties?.address?.state %>" tabindex=0>
+        <br>
         <label for="zipId">Zip Code</label>
-        <input id="zipId" name="zip" type="text" size="10" maxlength="9" value="<%= poi?.properties?.address?.zip %>" tabindex=0><br>
+        <input id="zipId" name="zip" type="text" size="10" maxlength="9" value="<%= poi?.properties?.address?.zip %>" tabindex=0>
+        <br>
         <label for="urlId">Web</label>
-        <input id="urlId" name="url" type="text" size="45" maxlength="100" value="<%= poi?.properties?.url%>" tabindex=0><br>
+        <input id="urlId" name="url" type="text" size="45" maxlength="100" value="<%= poi?.properties?.url%>" tabindex=0>
+        <br>
       </fieldset>
       <fieldset id="finishId" name="finish" form="poiEditId">
         <div style="display: inline-block; width: 45%; margin: auto; position: relative; text-align: left; padding-left: 10px;">
@@ -216,13 +223,10 @@
           // messageSpan.appendChild(document.createElement('br'))
           // messageSpan.appendChild(document.createTextNode(`image upload status: ${response.okPierImage}`))
         } else {
-          messageSpan.appendChild(document.createTextNode('Pier data successfully updated.'))
+          messageSpan.appendChild(document.createTextNode('POI data successfully updated.'))
           messageSpan.appendChild(document.createElement('br'))
           messageSpan.appendChild(document.createTextNode(`image upload status: ${response?.imageUploadStatus}`))
           messageSpan.appendChild(document.createElement('br'))
-          messageSpan.appendChild(document.createTextNode(`regenderated ${response.setTown} geojson: ${response?.okTownGeoJson}`))
-          messageSpan.appendChild(document.createElement('br'))
-          messageSpan.appendChild(document.createTextNode(`regenderated combined geojson: ${response?.okCombinedGeoJson}`))
         }
         messagesId.appendChild(messageSpan)
         messagesId.classList.remove('hidden')
@@ -251,7 +255,6 @@
         }
         formData.append('csrfTokenHidden', form['csrf-tokenId'].value)
         formData.append('poi', JSON.stringify(poi))
-        // formData.append('setTown', form['setTownId'].value)
         console.log(formData)
         await send(formData)
       }
@@ -479,7 +482,7 @@
       data-initial-token="">
     </script>
     <script nonce="<%= nonce %>" type="module">
-      let page = 'edit/pier'
+      let page = 'poi/new'
 
       const origin = '<%= origin %>'
       const jwtAccess = '<%= searchJwtAccess %>'     
@@ -516,7 +519,6 @@
         const lon = -88.440669
         const genevaBay = new mapkit.CoordinateRegion(
           new mapkit.Coordinate(lat, lon),
-          // new mapkit.CoordinateSpan(0.1, 0.1)
           new mapkit.CoordinateSpan(0.006, 0.001)
         )
         window._lat = lat
@@ -550,21 +552,6 @@
       lon = parseFloat(lon, 10)
       lat = parseFloat(lat, 10)
 
-      // async function showThisPoi() {
-      //   const annotations = []
-      //   if (lat !== 0 && lon !== 0) {
-      //     console.log(`(lat, lon): ${lat}, ${lon}`)
-      //     const poiMarker = new window.mapkit.Coordinate(lat, lon)
-      //     const pierAnnotation = new window.mapkit.MarkerAnnotation(poiMarker)
-      //     pierAnnotation.title = `Pier ${pierNumber}`
-      //     annotations.push(pierAnnotation)
-      //   }
-      //   if (annotations.length > 0) {
-      //     // console.dir(annotations, { depth: null })
-      //     window._map.showItems(annotations)
-      //   }
-      // }
-      // await showThisPier()
       let selectCoordsMarker = null
       window._map.addEventListener("single-tap", mapTap)
       window._map.addEventListener("click", mapTap)
