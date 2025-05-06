@@ -433,10 +433,9 @@ router.get('poiNew', '/poi/new', async (ctx) => {
   }
 })
 
-// move to src/router/edit.js
-router.get('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, async (ctx) => {
-  const log = glpLog.extend('GET-poiEdit')
-  const error = glpError.extend('GET-poiEdit')
+router.get('poiList', '/pois/list', hasFlash, addIpToSession, async (ctx) => {
+  const log = glpLog.extend('GET-poiList')
+  const error = glpError.extend('GET-poiList')
   if (!ctx.state?.isAuthenticated) {
     error('User is not authenticated.  Redirect to /')
     ctx.status = 401
@@ -444,22 +443,7 @@ router.get('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, async (ctx) =>
   } else {
     log('GET poi edit noop')
     const locals = {}
-    await ctx.render('poi-edit', locals)
-  }
-})
-
-// move to src/router/edit.js
-router.post('poiEdit', '/poi/edit/:poi', hasFlash, addIpToSession, processFormData, async (ctx) => {
-  const log = glpLog.extend('POST-poiEdit')
-  const error = glpError.extend('POST-poiEdit')
-  if (!ctx.state?.isAuthenticated) {
-    error('User is not authenticated.  Redirect to /')
-    ctx.status = 401
-    ctx.redirect('/')
-  } else {
-    log('POST poi edit noop')
-    const locals = {}
-    await ctx.render('edit-poi', locals)
+    await ctx.render('pois-list', locals)
   }
 })
 

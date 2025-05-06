@@ -24,6 +24,7 @@
       <div>There <%= (items.length > 1) ? 'are' : 'is' %> <%= items.length %> item<%= (items.length > 1) ? 's' : '' %> that need<%= (items.length === 1) ? 's' : '' %> attention.</div> 
       <ul class="admin-items">
         <li><a href="<%= origin %>/poi/new">Add a new point of interest.</a></li>
+        <li><a href="<% origin %>/pois/list">Edit a point of interest.</a></li>
         <% items.forEach((item) => { %>
         <li><a href="<%= origin %>/nullisland"><%= item.list.length %> <%= item.title %></a></li>
         <% }) %>
