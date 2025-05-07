@@ -402,7 +402,6 @@ router.get('poi', '/point-of-interest/:poi', hasFlash, addIpToSession, async (ct
   }
 })
 
-// move to src/router/edit.js
 router.get('poiNew', '/poi/new', async (ctx) => {
   const log = glpLog.extend('GET-poiNew')
   const error = glpError.extend('GET-poiNew')
@@ -441,8 +440,40 @@ router.get('poiList', '/pois/list', hasFlash, addIpToSession, async (ctx) => {
     ctx.status = 401
     ctx.redirect('/')
   } else {
-    log('GET poi edit noop')
     const locals = {}
+    let pois
+    try {
+      const idxPoiType = 'glp:idx:pois:type'
+      const dialect = 2
+      const optsPois = {
+        SORTBY: {
+          BY: 'id',
+          DIRECTION: 'ASC',
+        },
+        // LIMIT: { from: offset, size: num },
+        RETURN: ['$'],
+        DIALECT: dialect,
+        PARAMS: {
+          exclude: 'mileMarker',
+        },
+      }
+      const queryPointsOfInterest = `-@type:(${optsPois.PARAMS.exclude})`
+      const query = `ft.search ${idxPoiType} ${queryPointsOfInterest} `
+        // + `SORTBY id ASC LIMIT ${offset} ${num} DIALECT ${dialect}`
+        + `SORTBY id ASC DIALECT ${dialect}`
+      log(query)
+      pois = await redis.ft.search(idxPoiType, queryPointsOfInterest, optsPois)
+      log('pois', pois)
+    } catch (e) {
+      error('Failed to get list of points-of-interest.')
+      error(e.message)
+      throw new Error('Redis points-of-interest query failed.', { cause: e })
+    }
+    locals.title = 'Points of Interest to Edit'
+    locals.num = pois.total ?? 0
+    locals.total = pois.total ?? 0
+    locals.pois = pois
+    locals.flash = ctx.flash.view ?? {}
     await ctx.render('pois-list', locals)
   }
 })
