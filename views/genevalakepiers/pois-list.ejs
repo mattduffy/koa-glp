@@ -17,6 +17,7 @@
   <section class="main">
     <h2><%= total %> Point<%= (total > 1) ? 's' : '' %> of Interest</h2>
 
+    <% if(false) { %>
     <div class="previousAssocs" <%- (total < num) ? 'style="display: none;"' : '' %>>
       <% if (skipBack > 1) { %>
         <a rel="prev" href="<%= origin %>/points-of-interest?s=<%= skipBack %>">&lt; Prev</a>
@@ -33,12 +34,13 @@
       Next > 
       <% } %>
     </div>
+    <% } %>
 
     <ul id="resultsList" class="searchResults">
       <% pois?.documents.forEach((p, i) => { %>
         <li><a 
-            href="/point-of-interest/<%= encodeURI(p.value.properties.id) %>"
-            data-id="<%= p.value.properties.id%>"><%= p.value.properties.name%></a></li>
+            href="/poi/edit/<%= encodeURI(p.value.properties.placeId) %>"
+            data-id="<%= p.value.properties.placeId %>"><%= p.value.properties.name%></a></li>
       <% }) %>
     </ul>
     <script nonce="<%= nonce %>">
@@ -173,7 +175,7 @@
       src="https://cdn.apple-mapkit.com/mk/5.x.x/mapkit.core.js"
       crossorigin async
       data-callback="initMapKit"
-      data-libraries="full-map"
+      data-libraries="services,full-map"
       data-initial-token="">
     </script>
     <script nonce="<%= nonce %>" type="module">
@@ -193,6 +195,7 @@
         const request = new Request(`${origin}/mapkit/getToken`, tokenOpts)
         const response = await fetch(request)
         const { tokenID } = await response.json()
+        // console.log('tokenID: ', tokenID)
         if (!window.mapkit || window.mapkit.loadedLibraries.length === 0) {
           // mapkit.core.js or the libraries are not loaded yet.
           // Set up the callback and wait for it to be called.
@@ -205,50 +208,25 @@
             done(tokenID)
           },
         })
-        let lat, lon
-        if (window.innerWidth < 450) {
-          // center on Geneva Bay for small screens
-          // -88.50148420898438, 42.56224219184264 
-          lat = 42.5475673457749
-          lon = -88.50148420898438
-          window.genevaCenter = new mapkit.CoordinateRegion(
-            new mapkit.Coordinate(lat, lon),
-            new mapkit.CoordinateSpan(0.015, 0.02)
-          )
-          window.cameraDistance = 11000
-          console.log(`small screen (${window.innerWidth} x ${window.innerHeight}), `
-           + `camera distance: ${window.cameraDistance}`)
-        } else {
-          // center the map over Geneva Lake for big screens
-          // -88.5016442433777, 42.56597732718751
-          lat = 42.56597732718751 
-          lon = -88.5016442433777
-          window.genevaCenter = new mapkit.CoordinateRegion(
-            new mapkit.Coordinate(lat, lon),
-            new mapkit.CoordinateSpan(0.1, 0.1)
-          )
-          window.cameraDistance = 11000
-          console.log(`larger screen (${window.innerWidth} x ${window.innerHeight}), `
-           + `camera distance: ${window.cameraDistance}`)
-        }
-        console.log(genevaCenter)
       }
 
       async function main() {
         await setupMapKitJs()
         // init / center the map over Geneva Bay 
-        // const lat = 42.587751
-        // const lon = -88.440669
-        // const genevaBay = new mapkit.CoordinateRegion(
-        //   new mapkit.Coordinate(lat, lon),
-        //   new mapkit.CoordinateSpan(0.1, 0.1)
-        // )
+        const lat = 42.587751
+        const lon = -88.440669
+        const genevaBay = new mapkit.CoordinateRegion(
+          new mapkit.Coordinate(lat, lon),
+          new mapkit.CoordinateSpan(0.006, 0.001)
+        )
+        window._lat = lat
+        window._lon = lon
         const opts = {
-          mapType: mapkit.Map.MapTypes.Hybrid,
+          mapType: mapkit.Map.MapTypes.Satellite,
           loadPriority: mapkit.Map.LoadPriorities.PointsOfInterest,
           selectableMapFeatures: [
             mapkit.MapFeatureType.PhysicalFeature,
-            mapkit.MapFeatureType.PointOfInterest
+            mapkit.MapFeatureType.PointOfInterest,
           ],
           visibleMapRect: new mapkit.MapRect(0, 0, 1, 1),
           showsCompass: mapkit.FeatureVisibility.Visible,
@@ -256,14 +234,13 @@
           showsZoomControl: true,
           showsPointsOfInterest: true,
           showsMapTypeControl: false,
-          cameraDistance: window.cameraDistance,
+          cameraDistance: 1000,
           isRotationEnabled: true,
           isScrollEnabled: true,
           isZoomEnabled: true,
         } 
-         window.map = new mapkit.Map('map', opts)
-         window.map.region = genevaCenter
-         window.map.cameraDistance = window.cameraDistance
+        window._map = new mapkit.Map("map", opts)
+        window._map.region = genevaBay
       }
       await main()
 
@@ -272,59 +249,43 @@
       async function showPointsOfInterest() {
         try {
           const opts = {
-             method: 'GET',
-             headers: {
-               Accept: 'application/json',
-               Authorization: `Bearer ${jwtAccess}`,
-             },
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              Authorization: `Bearer ${jwtAccess}`,
+            },
           }
-          const request = new Request(`${origin}/mapkit/pois`, opts)
+          const request = new Request(`${origin}/mapkit/walking-path-pois`, opts)
           const response = await (await fetch(request)).json()
           console.log(response)
-          response.documents.forEach((a) => {
-            let [lon, lat] = a.value.geometry.coordinates
+          response.documents.forEach((m) => {
+            console.log('m', m)
+            let [lon, lat] = m.value.geometry.coordinates
             lon = parseFloat(lon, 10)
             lat = parseFloat(lat, 10)
+            let places = []
             if (lat !== 0 && lon !== 0) {
-              const annotationCallout = {
-                calloutLeftAccessoryForAnnotation: () => {
-                   const accessoryViewLeft = document.createElement("div")
-                <% /* %>
-                //   accessoryViewLeft.className = "left-accessory-view"
-                //   const accessoryViewLeftIcon = document.createElement("span")
-                //   accessoryViewLeftIcon.textContent = "\u{26C5}" // Sun & Clouds
-                //   accessoryViewLeft.appendChild(accessoryViewLeftIcon)
-                //   const accessoryViewLeftText = document.createElement("div")
-                //   accessoryViewLeftText.textContent = "73 \u{00b0}F"
-                //   accessoryViewLeft.appendChild(accessoryViewLeftText)
-                <% */ %>
-                   return accessoryViewLeft
-                },
-                calloutRightAccessoryForAnnotation: () => {
-                  const accessoryViewRight = document.createElement("a")
-                  accessoryViewRight.className = "right-accessory-view"
-                  accessoryViewRight.href = `${origin}/point-of-interest/${encodeURI(a.value.properties.id)}`
-                  accessoryViewRight.target = "_self"
-                  accessoryViewRight.textContent = "\u{24D8}"
-                  return accessoryViewRight
-                }
+              if (m.value.properties?.placeId && m.value.properties.placeId !== '') {
+                const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
+                place.getPlace(
+                  m.value.properties.placeId,
+                  function(error, data) {
+                    if (error) {
+                      console.warn(error)
+                    }
+                    if (data) {
+                      console.log('data', data)
+                      const p = new window.mapkit.PlaceAnnotation(data)
+                      console.log('p', p)
+                      window._map.addItems([p])
+                      const accessory = new mapkit.PlaceSelectionAccessory()
+                      p.selectionAccessory = accessory
+                    }
+                  }
+                )
               }
-              const coordinate = new mapkit.Coordinate(lat, lon)
-              const annotation = new mapkit.MarkerAnnotation(coordinate, {
-                title: a.value.properties.name,
-                animates: false,
-                selected: false,
-                color: "#4B93E0",
-                callout: annotationCallout,
-                data: { id: a.value.properties.id },
-              })
-              annotations.push(annotation)
             }
           })
-          // window.map.showItems(annotations.reverse())
-          window.map.showItems(annotations)
-          window.map.region = window.genevaCenter
-          window.map.cameraDistance = window.cameraDistance
         } catch (e) {
           console.error(e)
         }
@@ -335,21 +296,36 @@
         e.preventDefault()
         e.stopPropagation()
         const {latitude, longitude} = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
-        // const coordinate = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
         const defaultRadius = 50
         const defaultUnits = 'ft'
-        console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: ${longitude}, ${latitude}`)
-        const results = await (await fetch(`${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`)).json()
+        console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: `
+          + `${longitude}, ${latitude}`)
+        const results = await (
+          await fetch(
+            `${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`
+          )
+        ).json()
         console.log(results)
         if (results?.total > 0) {
           results.documents.forEach((p) => {
-            console.log(`${p.value?.poi}, ${p.value?.coords}, ${p.value?.estateName}, ${p.value?.business}, ${p.value?.association}`)
+            console.log(`${p.value?.poi}, ${p.value?.coords}, ${p.value?.estateName}, `
+              + `${p.value?.business}, ${p.value?.association}`)
             let subtitle = ' '
-            if (p.value.business !== '' && p.value.association === '') subtitle = p.value.business
-            if (p.value.association !== '' && p.value.business === '') subtitle = p.value.association
-            if (p.value.firstname !== '' && p.value.lastname !== '') subtitle = `${p.value.firstname} ${p.value.lastname}`
-            if (p.value.firstname !== '' && p.value.lastname === '') subtitle = p.value.firstname
-            if (p.value.firstname === '' && p.value.lastname !== '') subtitle = p.value.lastname
+            if (p.value.business !== '' && p.value.association === '') {
+              subtitle = p.value.business
+            }
+            if (p.value.association !== '' && p.value.business === '') {
+              subtitle = p.value.association
+            }
+            if (p.value.firstname !== '' && p.value.lastname !== '') {
+              subtitle = `${p.value.firstname} ${p.value.lastname}`
+            }
+            if (p.value.firstname !== '' && p.value.lastname === '') {
+              subtitle = p.value.firstname
+            }
+            if (p.value.firstname === '' && p.value.lastname !== '') {
+              subtitle = p.value.lastname
+            }
             if (p.value.estateName !== '') subtitle = p.value.estateName
             console.info(`subtitle: ${subtitle}`)
             const annotationCallout = {
