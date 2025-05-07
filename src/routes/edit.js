@@ -296,7 +296,7 @@ router.post('newPoi-POST', '/new/poi', processFormData, async (ctx) => {
   }
 })
 
-router.get('editPOI-GET', '/edit/poi/:poi', hasFlash, async (ctx) => {
+router.get('editPOI-GET', '/edit/poi/:placeId', hasFlash, async (ctx) => {
   const log = editLog.extend('GET-editPOI')
   const error = editError.extend('GET-editPOI')
   if (!ctx.state?.isAuthenticated) {
