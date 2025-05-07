@@ -259,8 +259,13 @@
         const {latitude, longitude} = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
         const defaultRadius = 50
         const defaultUnits = 'ft'
-        console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: ${longitude}, ${latitude}`)
-        const results = await (await fetch(`${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`)).json()
+        console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: `
+          + `${longitude}, ${latitude}`)
+        const results = await (
+          await fetch(
+            `${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`
+          )
+        ).json()
         console.log(results)
         if (results?.total > 0) {
           results.documents.forEach((p) => {
