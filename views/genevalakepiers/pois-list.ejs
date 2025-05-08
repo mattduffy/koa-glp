@@ -17,7 +17,6 @@
   <section class="main">
     <h2><%= total %> Point<%= (total > 1) ? 's' : '' %> of Interest</h2>
 
-    <% if(false) { %>
     <div class="previousAssocs" <%- (total < num) ? 'style="display: none;"' : '' %>>
       <% if (skipBack > 1) { %>
         <a rel="prev" href="<%= origin %>/points-of-interest?s=<%= skipBack %>">&lt; Prev</a>
@@ -34,13 +33,12 @@
       Next > 
       <% } %>
     </div>
-    <% } %>
 
     <ul id="resultsList" class="searchResults">
       <% pois?.documents.forEach((p, i) => { %>
         <li><a 
-            href="/poi/edit/<%= encodeURI(p.value.properties.placeId) %>"
-            data-id="<%= p.value.properties.placeId %>"><%= p.value.properties.name%></a></li>
+            href="/edit/poi/<%= encodeURI(p.value.properties.placeId) %>"
+            data-placeId="<%= p.value.properties.placeId %>"><%= p.value.properties.name%></a></li>
       <% }) %>
     </ul>
     <script nonce="<%= nonce %>">
@@ -132,21 +130,37 @@
         }
         return false
       }
-      document.querySelectorAll('a[data-id]').forEach((a) => {
+      document.querySelectorAll('a[data-placeId]').forEach((a) => {
         a.addEventListener('mouseover', linkAnnotationHandler)
       })
       function linkAnnotationHandler(e) {
+        deselectAnnotations()
         e.preventDefault()
         e.stopPropagation()
-        console.log(e.target.dataset.id)
-        const id = e.target.dataset.id
-        const annotation = window.map.annotations.find((a) => a.data.id === id)
+        console.log(e.target.dataset)
+        const placeId = e.target.dataset.placeid
+        const annotation = window._map.annotations.find((a) => a._impl._place.id === placeId)
         if (annotation) {
           console.log(annotation)
           annotation.selected = true
         }
       }
-
+      function deselectAnnotations(annotations = null) {
+        let annos
+        if (!annotations) {
+          annos = window._map.annotations
+        } else if (Array.isArray(annotations)) {
+          annos = annotations
+        } else if (typeof _map.annotations[0] === 'object'
+          && _map.annotations[0]._impl._position) {
+          annos = [annotation]
+        }
+        if (annos.length > 0) {
+          annos.forEach((a) => a.selected = false)
+          return true
+        }
+        return false
+      }
       async function getAssocs(skip) {
         const opts = {
            method: 'GET',
@@ -292,10 +306,10 @@
       }
       await showPointsOfInterest()
 
-      window.map.addEventListener("single-tap", async (e) => {
+      window._map.addEventListener("single-tap", async (e) => {
         e.preventDefault()
         e.stopPropagation()
-        const {latitude, longitude} = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
+        const {latitude, longitude} = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
         const defaultRadius = 50
         const defaultUnits = 'ft'
         console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: `
@@ -350,10 +364,10 @@
             pierAnnotation.selected = false
             pierAnnotation.color = "#4B93E0"
             pierAnnotation.callout = annotationCallout
-            window.map.addAnnotation(pierAnnotation)
+            window._map.addAnnotation(pierAnnotation)
           })
-          window.map.region = window.genevaCenter
-          window.map.cameraDistance = window.cameraDistance
+          window._map.region = window.genevaCenter
+          window._map.cameraDistance = window.cameraDistance
         }
       })
     </script>
