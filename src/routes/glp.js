@@ -265,15 +265,21 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
     log('Async query received.')
   }
   log(ctx.request.query.s)
-  const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
+  const s = (ctx.request.query?.s !== undefined)
+    ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10))
+    : 1
   const num = 12
   const offset = (s === 1) ? 0 : (s - 1) * num
   const skipBack = (s <= 1) ? 0 : s - 1
   const skipForward = s + 1
-  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: 89 - ${offset} = ${89 - offset}`)
+  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, `
+    + `skipBack: ${skipBack} `
+    + `skipForward: ${skipForward}, remaining: 89 - ${offset} = ${89 - offset}`)
   let businesses
   try {
-    log(`ft.AGGREGATE glp:idx:piers:business "*" LOAD 3 $.pier AS pier GROUPBY 1 @business REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
+    log('ft.AGGREGATE glp:idx:piers:business "*" '
+      + 'LOAD 3 $.pier AS pier GROUPBY 1 @business '
+      + `REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
     const optsAggregateBusiness = {
       LOAD: ['@pier', '@business'],
       STEPS: [
@@ -442,6 +448,17 @@ router.get('poiList', '/pois/list', hasFlash, addIpToSession, async (ctx) => {
   } else {
     const locals = {}
     let pois
+    log(ctx.request.query.s)
+    const s = (ctx.request.query?.s !== undefined)
+      ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10))
+      : 1
+    const num = 12
+    const offset = (s === 1) ? 0 : (s - 1) * num
+    const skipBack = (s <= 1) ? 0 : s - 1
+    const skipForward = s + 1
+    log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, `
+      + `skipBack: ${skipBack} `
+      + `skipForward: ${skipForward}, remaining: 89 - ${offset} = ${89 - offset}`)
     try {
       const idxPoiType = 'glp:idx:pois:type'
       const dialect = 2
@@ -450,7 +467,7 @@ router.get('poiList', '/pois/list', hasFlash, addIpToSession, async (ctx) => {
           BY: 'id',
           DIRECTION: 'ASC',
         },
-        // LIMIT: { from: offset, size: num },
+        LIMIT: { from: offset, size: num },
         RETURN: ['$'],
         DIALECT: dialect,
         PARAMS: {
@@ -470,7 +487,10 @@ router.get('poiList', '/pois/list', hasFlash, addIpToSession, async (ctx) => {
       throw new Error('Redis points-of-interest query failed.', { cause: e })
     }
     locals.title = 'Points of Interest to Edit'
-    locals.num = pois.total ?? 0
+    locals.skipForward = skipForward
+    locals.skipBack = skipBack
+    locals.offset = offset
+    locals.num = num
     locals.total = pois.total ?? 0
     locals.pois = pois
     locals.flash = ctx.flash.view ?? {}
