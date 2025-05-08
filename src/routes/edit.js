@@ -322,7 +322,7 @@ router.get('editPOI-GET', '/edit/poi/:placeId', hasFlash, async (ctx) => {
     locals.title = `${ctx.app.site}: Point of Interest - ${poi.name}`
     locals.sessionUser = ctx.state.sessionUser
     locals.isAuthenticated = ctx.state.isAuthenticated
-    await ctx.render('edit-poi', locals)
+    await ctx.render('poi-edit', locals)
   }
 })
 
