@@ -207,17 +207,12 @@ async function savePierFile(dir, data) {
 async function getNextRedisJsonKey(keyPattern) {
   const log = editLog.extend('getNextRedisJsonKey')
   const error = editError.extend('getNextRedisJsonKey')
-  let keys
   let highestKey = 0
   try {
-    // keys = await redis.keys(keyPattern)
     const scanOpts = {
       MATCH: keyPattern,
       COUNT: 2000,
     }
-    // keys = await redis.scanIterator()
-    // log('keys', keys)
-    // for await (const key of keys) {
     /* eslint-disable-next-line */
     for await (const key of redis.scanIterator(scanOpts)) {
       log('key', key)
@@ -299,23 +294,42 @@ router.post('newPoi-POST', '/new/poi', processFormData, async (ctx) => {
 router.get('editPOI-GET', '/edit/poi/:placeId', hasFlash, async (ctx) => {
   const log = editLog.extend('GET-editPOI')
   const error = editError.extend('GET-editPOI')
+  const placeId = sanitize(ctx.params.placeId.toUpperCase())
   if (!ctx.state?.isAuthenticated) {
     error('User is not authenticated.  Redirect to /')
     ctx.status = 401
     ctx.redirect('/')
   } else {
-    log('bump')
-    log('edit this poi')
+    log('placeId', placeId)
     let poi
     let nextPOI
     let previousPOI
     const csrfToken = ulid()
     const locals = {}
+    try {
+      const dialect = 2
+      const opts = {
+        // SORTBY: {
+        //   BY: 'id',
+        //   DIRECTION: 'ASC',
+        // },
+        RETURN: ['$'],
+        DIALECT: dialect,
+        PARAMS: { placeId },
+      }
+      const query = `@placeId:(${opts.PARAMS.placeId})`
+      poi = await redis.ft.search('glp:idx:pois:placeId', query, opts)
+      log(poi.documents[0].value)
+    } catch (e) {
+      error('Failed to retrieve poi with placeId ', placeId)
+      error(e)
+    }
     ctx.session.csrfToken = csrfToken
     ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })
     locals.jwtAccess = ctx.state.searchJwtAccess
     locals.csrfToken = csrfToken
-    locals.poi = poi
+    locals.poi = poi.documents[0].value;
+    [locals.lon, locals.lat] = poi.documents[0].value.geometry.coordinates
     locals.nextPOI = nextPOI
     locals.previousPOI = previousPOI
     locals.flash = ctx.flash.view ?? {}
