@@ -38,6 +38,7 @@
       <% pois?.documents.forEach((p, i) => { %>
         <li><a 
             href="/edit/poi/<%= encodeURI(p.value.properties.placeId) %>"
+            data-id="<%= encodeURI((p.value.properties.id + '').padStart(3, 0)) %>"
             data-placeId="<%= p.value.properties.placeId %>"><%= p.value.properties.name%></a></li>
       <% }) %>
     </ul>
