@@ -30,8 +30,12 @@
           <br>
           <input id="versionId" name="version" type="hidden" value="<%= poi.properties.version %>">
           <input id="csrf-tokenId" type="hidden" value="<%= csrfToken %>">
-          <label for="placeId">Place ID
-            <input id="placeId" name="placeId" type="text" value="<%= poi?.properties?.placeId %>" tabindex=0>
+          <label for="poiIdId">POI ID
+            <input id="poiIdId" name="poiId" type="text" value="<%= poi?.properties?.id %>" disabled tabindex=0>
+          </label>
+          <br>
+          <label for="placeIdId">Place ID
+            <input id="placeIdId" name="placeId" type="text" value="<%= poi?.properties?.placeId %>" tabindex=0>
           </label>
         </fieldset>
         <fieldset id="poiPhotoId" name="poiPhoto" form="poiEditId" class="edit_fieldset" title="POI Photo Form">
@@ -154,7 +158,7 @@
         poi.geometry.coordinates = [lon, lat]
         poi.properties = {}
         poi.properties.version = form['versionId'].value
-        poi.properties.id = 4
+        poi.properties.id = form['poiIdId'].value
         poi.properties.placeId = form['placeId'].value ?? ''
         poi.properties.geohash = form['geohashId'].value
         poi.properties.pluscode = form['pluscodeId'].value
@@ -215,17 +219,27 @@
         if (/failed/.test(response.status.toLowerCase())) {
           messageSpan.appendChild(document.createTextNode(response.msg))
           messageSpan.appendChild(document.createElement('br'))
-          messageSpan.appendChild(document.createTextNode(`pier update status: ${response.okPierUpdate}`))
+          messageSpan.appendChild(document.createTextNode(
+            `poi update status: ${response.okPoiUpdate}`
+          ))
           // messageSpan.appendChild(document.createElement('br'))
-          // messageSpan.appendChild(document.createTextNode(`town geojson update status: ${response.okTownGeoJson}`))
+          // messageSpan.appendChild(document.createTextNode(
+          //   `town geojson update status: ${response.okTownGeoJson}`
+          // ))
           // messageSpan.appendChild(document.createElement('br'))
-          // messageSpan.appendChild(document.createTextNode(`combined geojson update status: ${response.okCombinedGeoJson}`))
+          // messageSpan.appendChild(document.createTextNode(
+          //   `combined geojson update status: ${response.okCombinedGeoJson}`
+          // ))
           // messageSpan.appendChild(document.createElement('br'))
-          // messageSpan.appendChild(document.createTextNode(`image upload status: ${response.okPierImage}`))
+          // messageSpan.appendChild(document.createTextNode(
+          //   `image upload status: ${response.okPierImage}`
+          // ))
         } else {
           messageSpan.appendChild(document.createTextNode('POI data successfully updated.'))
           messageSpan.appendChild(document.createElement('br'))
-          messageSpan.appendChild(document.createTextNode(`image upload status: ${response?.imageUploadStatus}`))
+          messageSpan.appendChild(document.createTextNode(
+            `image upload status: ${response?.imageUploadStatus}`
+          ))
           messageSpan.appendChild(document.createElement('br'))
         }
         messagesId.appendChild(messageSpan)
@@ -237,8 +251,8 @@
       const reset = document.querySelector('input[type=reset]')
       reset.addEventListener('click', resetPoi)
       async function resetPoi(e) {
-        // window._map.annotations.forEach(a => a.selected = false)
-        window._map.removeAnnotations(window._map.annotations)
+        window._map.annotations.forEach(a => a.selected = false)
+        // window._map.removeAnnotations(window._map.annotations)
       }
       const submit = document.querySelector('input[type=submit]')
       submit.addEventListener('click', submitEditPoi)
@@ -296,6 +310,7 @@
           window.placeId = form['placeId'].value
           console.log('window.placeId', window.placeId)
           console.log('placeId', form['placeId'].value)
+          // place = myPlaceLookup()
           const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
           place.getPlace(
             form['placeId'].value,
@@ -370,6 +385,26 @@
       }
       form['lonId'].addEventListener('change', getGeoHash, false)
       form['latId'].addEventListener('change', getGeoHash, false)
+
+      function myPlaceLookup() {
+        const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
+        place.getPlace(
+          form['placeId'].value,
+          function(error, data) {
+            if (error) {
+              console.warn(error)
+            }
+            if (data) {
+              console.log(data)
+              const p = new window.mapkit.PlaceAnnotation(data)
+              window._map.addItems([p])
+              const accessory = new mapkit.PlaceSelectionAccessory()
+              p.selectionAccessory = accessory
+            }
+          }
+        )
+      }
+      
       // Event handler for lon/lat fields to get google pluscode
       async function getPluscode(e) {
         const lon = parseFloat(form['lonId'].value, 10)
@@ -545,6 +580,8 @@
         window._map.region = genevaBay
       }
       await main()
+
+      myPlaceLookup()
 
       let pierNumber = '<%= poi?.pier %>'
       lon = parseFloat(lon, 10)
