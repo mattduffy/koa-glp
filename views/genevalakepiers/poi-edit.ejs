@@ -66,12 +66,22 @@
           <label for="poiNameId">Name</label>
           <input id="poiNameId" name="poiName" type="text" size="30" maxlength="100" value="<%= poi?.properties?.name%>" tabindex=0></br>
           <label>Type<br>
-          <label for="type1Id" class="radioLabel">Access<input type="radio" id="type1Id" name="newPoiType" value="Access" style="margin-right: 10px" tabindex=0></label>
-          <label for="type2Id" class="radioLabel">Restroom<input type="radio" id="type2Id" name="newPoiType" value="Restroom" style="margin-right: 10px" tabindex=0></label>
-          <label for="type3Id" class="radioLabel">Food<input type="radio" id="type3Id" name="newPoiType" value="food" style="margin-right: 10px"></label>
-          <label for="type4Id" class="radioLabel">Landmark<input type="radio" id="type4Id" name="newPoiType" value="Landmark" style="margin-right: 10px" tabindex=0></label><br>
+            <label for="type1Id" class="radioLabel">Access
+              <input type="radio" id="type1Id" name="newPoiType" value="Access" style="margin-right: 10px" <%= (poi.properties.type === 'Access') ? 'checked' : '' %> tabindex=0>
+            </label>
+            <label for="type2Id" class="radioLabel">Restroom
+              <input type="radio" id="type2Id" name="newPoiType" value="Restroom" style="margin-right: 10px" <%= (poi.properties.type === 'Restroom') ? 'checked' : '' %> tabindex=0>
+            </label>
+            <label for="type3Id" class="radioLabel">Food
+              <input type="radio" id="type3Id" name="newPoiType" value="Food" style="margin-right: 10px" <%= (poi.properties.type === 'Food') ? 'checked' : '' %> tabindex=0>
+            </label>
+            <label for="type4Id" class="radioLabel">Landmark
+              <input type="radio" id="type4Id" name="newPoiType" value="Landmark" style="margin-right: 10px" <%= (poi.properties.type === 'Landmark') ? 'checked' : '' %> tabindex=0>
+            </label>
           </label>
-          <label for="poiDescriptionId">Description</label><br>
+          <br>
+          <label for="poiDescriptionId">Description</label>
+          <br>
           <textarea id="poiDescriptionId" name="poiDescription" type="text" rows="10" cols="45" tabindex=0>
             <%= poi?.properties?.description%>
           </textarea>
@@ -346,7 +356,7 @@
                 window.mapkit.PointOfInterestCategory.Restroom,
               ]
               break
-            case 'food':
+            case 'Food':
               query = [
                 window.mapkit.PointOfInterestCategory.Cafe,
                 window.mapkit.PointOfInterestCategory.FoodMarket,
