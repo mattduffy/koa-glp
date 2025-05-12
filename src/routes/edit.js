@@ -260,7 +260,11 @@ router.post('newPoi-POST', '/new/poi', processFormData, async (ctx) => {
     log(`csrfTokenHidden: ${csrfTokenHidden}`)
     ctx.cookies.set('csrfToken', newCsrfToken, { httpOnly: true, sameSite: 'strict' })
     if (!doTokensMatch(ctx)) {
-      ctx.body = { status: 'fail', message: 'csrf tokens do not match', csrfToken: newCsrfToken }
+      ctx.body = {
+        status: 'fail',
+        message: 'csrf tokens do not match',
+        csrfToken: newCsrfToken,
+      }
     } else {
       log(ctx.request.body)
       let newPoi
@@ -291,6 +295,40 @@ router.post('newPoi-POST', '/new/poi', processFormData, async (ctx) => {
   }
 })
 
+router.post('editPoi-POST', '/edit/poi', processFormData, async (ctx) => {
+  const log = editLog.extend('POST-editPOI')
+  const error = editError.extend('POST-editPOI')
+  if (!ctx.state.isAuthenticated) {
+    error('User is not authenticated.  Redirect to /')
+    ctx.status = 401
+    ctx.redirect('/')
+  } else {
+    // let body
+    const newCsrfToken = ulid()
+    log('newCsrfToken', newCsrfToken)
+    // const [csrfTokenHidden] = ctx.request.body.csrfTokenHidden
+    if (!doTokensMatch(ctx)) {
+      ctx.cookies.set('csrfToken', newCsrfToken, { httpOnly: true, sameSite: 'strict' })
+      ctx.session.csrfToken = newCsrfToken
+      ctx.body = {
+        status: 'fail',
+        message: 'csrf tokens do not match',
+        csrfToken: newCsrfToken,
+      }
+    } else {
+      log(ctx.request.body)
+      const poi = JSON.parse(ctx.request.body.poi[0])
+      ctx.cookies.set('csrfToken', newCsrfToken, { httpOnly: true, sameSite: 'strict' })
+      ctx.session.csrfToken = newCsrfToken
+      ctx.body = {
+        status: 'success',
+        message: poi,
+        csrfToken: newCsrfToken,
+      }
+    }
+  }
+})
+
 router.get('editPOI-GET', '/edit/poi/:placeId', hasFlash, async (ctx) => {
   const log = editLog.extend('GET-editPOI')
   const error = editError.extend('GET-editPOI')
@@ -304,7 +342,7 @@ router.get('editPOI-GET', '/edit/poi/:placeId', hasFlash, async (ctx) => {
     let poi
     let nextPOI
     let previousPOI
-    const csrfToken = ulid()
+    const newCsrfToken = ulid()
     const locals = {}
     try {
       const dialect = 2
@@ -324,10 +362,10 @@ router.get('editPOI-GET', '/edit/poi/:placeId', hasFlash, async (ctx) => {
       error('Failed to retrieve poi with placeId ', placeId)
       error(e)
     }
-    ctx.session.csrfToken = csrfToken
-    ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })
+    ctx.session.csrfToken = newCsrfToken
+    ctx.cookies.set('csrfToken', newCsrfToken, { httpOnly: true, sameSite: 'strict' })
     locals.jwtAccess = ctx.state.searchJwtAccess
-    locals.csrfToken = csrfToken
+    locals.csrfToken = newCsrfToken
     locals.poi = poi.documents[0].value;
     [locals.lon, locals.lat] = poi.documents[0].value.geometry.coordinates
     locals.nextPOI = nextPOI
@@ -376,24 +414,45 @@ router.get('editPier-GET', '/edit/pier/:pier', hasFlash, async (ctx) => {
     key = 'glp:all_piers_in_order'
     try {
       // const args = [key, '[643', '+', 'bylex', 'limit', '1', '1']
-      nextPier = await redis.zRange(key, `[${pierNumber}`, '+', { BY: 'LEX', LIMIT: { offset: 1, count: 1 } })
+      nextPier = await redis.zRange(
+        key,
+        `[${pierNumber}`,
+        '+',
+        { BY: 'LEX', LIMIT: { offset: 1, count: 1 } },
+      )
       if (Number.isNaN(parseInt(nextPier, 10))) {
         nextPier = '001'
       }
       log(`next pier >> ${nextPier}`)
     } catch (e) {
       error(e)
-      throw new Error(`Failed creating next pier link for pier ${pierNumber}`, { cause: e })
+      throw new Error(
+        `Failed creating next pier link for pier ${pierNumber}`,
+        { cause: e },
+      )
     }
     try {
-      previousPier = await redis.zRange(key, `[${pierNumber}`, '-', { BY: 'LEX', REV: true, LIMIT: { offset: '1', count: '1' } })
+      previousPier = await redis.zRange(
+        key,
+        `[${pierNumber}`,
+        '-',
+        { BY: 'LEX', REV: true, LIMIT: { offset: '1', count: '1' } },
+      )
       if (Number.isNaN(parseInt(previousPier, 10))) {
-        previousPier = await redis.zRange(key, '0', '-1', { REV: true, BY: 'SCORE', LIMIT: { offset: '0', count: '1' } })
+        previousPier = await redis.zRange(
+          key,
+          '0',
+          '-1',
+          { REV: true, BY: 'SCORE', LIMIT: { offset: '0', count: '1' } },
+        )
       }
       log(`prev pier >> ${previousPier}`)
     } catch (e) {
       error(e)
-      throw new Error(`Failed creating previous pier link for pier ${pierNumber}`, { cause: e })
+      throw new Error(
+        `Failed creating previous pier link for pier ${pierNumber}`,
+        { cause: e },
+      )
     }
     const csrfToken = ulid()
     ctx.session.csrfToken = csrfToken
