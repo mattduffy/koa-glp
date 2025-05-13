@@ -154,7 +154,7 @@
         poi.geometry.coordinates = [lon, lat]
         poi.properties = {}
         poi.properties.version = form['versionId'].value
-        poi.properties.id = 4
+        poi.properties.id = null
         poi.properties.placeId = form['placeId'].value ?? ''
         poi.properties.geohash = form['geohashId'].value
         poi.properties.pluscode = form['pluscodeId'].value
@@ -171,6 +171,7 @@
         address.state = (form['stateId'].value !== '') ? form['stateId'].value : ''
         address.zip = (form['zipId'].value !== '') ? form['zipId'].value : ''
         poi.properties.address = address
+        poi.properties.url = form['urlId'].value ?? ''
         if (lon !== 0 && lat !== 0) {
           const locality = await myGeocoder({ lat, lon })
           console.log(locality)
