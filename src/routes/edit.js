@@ -272,6 +272,7 @@ router.post('newPoi-POST', '/new/poi', processFormData, async (ctx) => {
       const id = await getNextRedisJsonKey(`${DB_PREFIX}:???`)
       log('next id', id)
       const poi = JSON.parse(ctx.request.body.poi[0])
+      poi.properties.id = Number.parseInt(`${id}`, 10)
       log('poi json', poi)
       try {
         newPoi = await redis.json.set(`${DB_PREFIX}:${id}`, '$', poi)
@@ -303,28 +304,50 @@ router.post('editPoi-POST', '/edit/poi', processFormData, async (ctx) => {
     ctx.status = 401
     ctx.redirect('/')
   } else {
-    // let body
+    let body
     const newCsrfToken = ulid()
     log('newCsrfToken', newCsrfToken)
     // const [csrfTokenHidden] = ctx.request.body.csrfTokenHidden
     if (!doTokensMatch(ctx)) {
       ctx.cookies.set('csrfToken', newCsrfToken, { httpOnly: true, sameSite: 'strict' })
       ctx.session.csrfToken = newCsrfToken
-      ctx.body = {
+      body = {
         status: 'fail',
         message: 'csrf tokens do not match',
         csrfToken: newCsrfToken,
       }
+      ctx.body = body
     } else {
       log(ctx.request.body)
-      const poi = JSON.parse(ctx.request.body.poi[0])
+      try {
+        const DB_PREFIX = 'glp:pois'
+        let poi = JSON.parse(ctx.request.body.poi[0])
+        if (!poi.properties?.updatedOn) {
+          poi.properties.updatedOn = []
+        }
+        poi.properties.updatedOn.push(new Date())
+        const id = Number(poi.properties.id).toString().padStart(3, 0)
+        const savedPoi = await redis.json.set(`${DB_PREFIX}:${id}`, '$', poi)
+        log('savedPoi', savedPoi)
+        body = {
+          status: 'success',
+          message: 'Successfully updated poi.',
+          poi,
+          csrfToken: newCsrfToken,
+        }
+      } catch (e) {
+        error('Failed to save edited POI.')
+        error(e)
+        body = {
+          status: 'fail',
+          message: 'Failed to save edited POI.',
+          cause: e,
+          newCsrfToken,
+        }
+      }
       ctx.cookies.set('csrfToken', newCsrfToken, { httpOnly: true, sameSite: 'strict' })
       ctx.session.csrfToken = newCsrfToken
-      ctx.body = {
-        status: 'success',
-        message: poi,
-        csrfToken: newCsrfToken,
-      }
+      ctx.body = body
     }
   }
 })
