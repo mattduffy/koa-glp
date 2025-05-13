@@ -15,7 +15,7 @@
 <% } %>
 <article>
   <section class="main">
-    <h2><%= total %> Point<%= (total > 1) ? 's' : '' %> of Interest</h2>
+    <h2><%= total %> Point<%= (total != 1) ? 's' : '' %> of Interest</h2>
 
     <div class="previousAssocs" <%- (total < num) ? 'style="display: none;"' : '' %>>
       <% if (skipBack > 1) { %>
