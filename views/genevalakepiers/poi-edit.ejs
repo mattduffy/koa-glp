@@ -23,8 +23,8 @@
         </fieldset>
         <fieldset id="infoId" name="info" form="poiEditId" class="edit_fieldset" title="Meta Data">
           <legend>Meta Data</legend>
-          <% if (poi?.updatedOn?.length > 0) { %>
-            Updated on: <%= poi?.properties?.createdOn[0] %><br>
+          <% if (poi?.properties?.updatedOn?.length > 0) { %>
+            Updated on: <%= poi?.properties?.updatedOn[0] %><br>
           <% } %>
           POI geojson schema version: <%= (poi?.properties?.version) ? poi.properties.version : '1' %>
           <br>
@@ -185,6 +185,7 @@
         address.state = (form['stateId'].value !== '') ? form['stateId'].value : ''
         address.zip = (form['zipId'].value !== '') ? form['zipId'].value : ''
         poi.properties.address = address
+        poi.properties.url = form['urlId'].value ?? ''
         if (lon !== 0 && lat !== 0) {
           const locality = await myGeocoder({ lat, lon })
           console.log(locality)
@@ -197,7 +198,10 @@
         const fileList = form['photo_0Id'].files
         if (arguments.length > 0) {
           const span = form['pierPhotoId'].querySelector(':scope > span')
-          span.innerHTML = `Image selected for new point of interest<br>${fileList[0].name} <br>type: ${fileList[0].type} <br>${Math.floor(fileList[0].size/1024)} KBs.`
+          span.innerHTML = 'Image selected for new point of interest<br>'
+            + `${fileList[0].name} <br>`
+            + `type: ${fileList[0].type} <br>`
+            + `${Math.floor(fileList[0].size/1024)} KBs.`
           console.log(span)
         } else {
           console.log('step 2: prepare new image')
