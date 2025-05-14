@@ -321,12 +321,13 @@ router.post('editPoi-POST', '/edit/poi', processFormData, async (ctx) => {
       log(ctx.request.body)
       try {
         const DB_PREFIX = 'glp:pois'
-        let poi = JSON.parse(ctx.request.body.poi[0])
+        const poi = JSON.parse(ctx.request.body.poi[0])
         if (!poi.properties?.updatedOn) {
           poi.properties.updatedOn = []
         }
         poi.properties.updatedOn.push(new Date())
         const id = Number(poi.properties.id).toString().padStart(3, 0)
+        poi.properties.id = Number.parseInt(poi.properties.id, 10)
         const savedPoi = await redis.json.set(`${DB_PREFIX}:${id}`, '$', poi)
         log('savedPoi', savedPoi)
         body = {
