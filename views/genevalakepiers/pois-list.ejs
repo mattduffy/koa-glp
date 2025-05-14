@@ -15,6 +15,12 @@
 <% } %>
 <article>
   <section class="main">
+    <div class="previousPier">
+      <!-- a rel="prev" href="/pois/list">&lt; Edit POIs</a -->
+    </div>
+    <div class="nextPier">
+      <a rel="next" href="/poi/new" style="float: right;">New POI &gt;</a>
+    </div>
     <h2><%= total %> Point<%= (total != 1) ? 's' : '' %> of Interest</h2>
 
     <div class="previousAssocs" <%- (total < num) ? 'style="display: none;"' : '' %>>
