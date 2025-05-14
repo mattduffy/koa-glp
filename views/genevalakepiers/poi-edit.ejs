@@ -15,8 +15,14 @@
 <% } %>
 <article>
   <section class="main">
+    <div class="previousPier">
+      <a rel="prev" href="/pois/list">&lt; Edit POIs</a>
+    </div>
+    <div class="nextPier">
+      <a rel="next" href="/poi/new" style="float: right;">New POI &gt;</a>
+    </div>
     <h2>Edit Point of Interest: <%= poi.properties.name %> </h2>
-      
+        
       <form id="poiEditId" name="poioEdit" action="<%= origin %>/edit/poi/<%= poi.properties.placeId %>" method="POST" enctype="multipart/form-data">
         <fieldset id="messagesId" name="messages" class="hidden" title="Update Results">
           <legend>Update Results</legend>
