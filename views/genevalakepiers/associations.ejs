@@ -140,7 +140,9 @@
         // console.log(e.target.dataset.name)
         const association = e.target.dataset.name
         const annotation = window.map.annotations.find((a) => a.data.a === association)
-        annotation.selected = true
+        if (annotation) {
+          annotation.selected = true
+        }
       }
 
       async function getAssocs(skip) {
