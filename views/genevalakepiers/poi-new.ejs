@@ -15,6 +15,9 @@
 <% } %>
 <article>
   <section class="main">
+    <div class="previousPier">
+      <a rel="prev" href="/pois/list">&lt; Edit POIs</a>
+    </div>
     <h2>New Point of Interest: </h2>
 
     <form id="poiNewId" name="poiNew" action="<%= origin %>/edit/poi/new" method="POST" enctype="multipart/form-data">
@@ -559,7 +562,7 @@
       async function mapTap(e) {
         console.log(e)
         if (selectCoordsMarker) {
-          window._map.removeAnnotation(selectCoordsMarker)
+          // window._map.removeAnnotation(selectCoordsMarker)
         }
         e.preventDefault()
         e.stopPropagation()
