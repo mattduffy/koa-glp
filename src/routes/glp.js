@@ -53,16 +53,6 @@ function leftZeroPad(x) {
 }
 
 const router = new Router()
-// async function hasFlash(ctx, next) {
-//   const log = glpLog.extend('hasFlash')
-//   const error = glpError.extend('hasFlash')
-//   if (ctx.flash) {
-//     log('ctx.flash is present: %o', ctx.flash)
-//   } else {
-//     error('ctx.flash is missing.')
-//   }
-//   await next()
-// }
 
 router.get('index', '/', hasFlash, addIpToSession, async (ctx) => {
   const log = glpLog.extend('index')
@@ -141,15 +131,29 @@ router.get('pierBigSwimPiers', '/swim', hasFlash, addIpToSession, async (ctx) =>
     log('Async query received.')
   }
   log(ctx.request.query.s)
-  const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
+  const s = (ctx.request.query?.s !== undefined)
+    ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10))
+    : 1
   const num = 12
   const offset = (s <= 1) ? 0 : (s - 1) * num
   const skipBack = (s <= 1) ? 0 : s - 1
   const skipForward = s + 1
-  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: 43 - ${offset} = ${43 - offset}`)
+  log(
+    `s: ${s}, `
+      + `offset: ${offset} `
+      + `num: ${num.toString().padStart(2, '0')}, `
+      + `skipBack: ${skipBack} `
+      + `skipForward: ${skipForward}, `
+      + `remaining: 43 - ${offset} = ${43 - offset}`,
+  )
   let swimPiers
   try {
-    log(`ft.aggregate glp:idx:piers:swim "*" LOAD 3 $.pier AS pier SORTBY 2 @pier ASC LIMIT ${offset} ${num}`)
+    log(
+      'ft.aggregate glp:idx:piers:swim "*" '
+        + 'LOAD 3 $.pier AS pier '
+        + 'SORTBY 2 @pier ASC '
+        + `LIMIT ${offset} ${num}`,
+    )
     const optsAggregateSwim = {
       LOAD: ['@pier', '$.owners[*].members[*].f', 'AS', 'name'],
       STEPS: [
@@ -202,14 +206,23 @@ router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
   }
   log(ctx.request.query.s)
   const x = 17
-  const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
+  const s = (ctx.request.query?.s !== undefined)
+    ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10))
+    : 1
   const num = 10
   // const offset = (s === 1) ? 0 : (s - 1) * num
   const offset = (s <= 1) ? 0 : (s - 1) * num
   const skipBack = (s <= 1) ? 0 : s - 1
   const skipForward = s + 1
 
-  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
+  log(
+    `s: ${s}, `
+      + `offset: ${offset} `
+      + `num: ${num.toString().padStart(2, '0')}, `
+      + `skipBack: ${skipBack} `
+      + `skipForward: ${skipForward}, `
+      + `remaining: ${x} - ${offset} = ${x - offset}`,
+  )
   let publicPiers
   try {
     // ft.aggregate glp:idx:piers:public "*" LOAD 3 $.pier AS pier SORTBY 2 @pier ASC LIMIT 0 100
@@ -272,9 +285,14 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
   const offset = (s === 1) ? 0 : (s - 1) * num
   const skipBack = (s <= 1) ? 0 : s - 1
   const skipForward = s + 1
-  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, `
-    + `skipBack: ${skipBack} `
-    + `skipForward: ${skipForward}, remaining: 89 - ${offset} = ${89 - offset}`)
+  log(
+    `s: ${s}, `
+      + `offset: ${offset} `
+      + `num: ${num.toString().padStart(2, '0')}, `
+      + `skipBack: ${skipBack} `
+      + `skipForward: ${skipForward}, `
+      + `remaining: 89 - ${offset} = ${89 - offset}`,
+  )
   let businesses
   try {
     log('ft.AGGREGATE glp:idx:piers:business "*" '
@@ -345,12 +363,21 @@ router.get('poiList', '/points-of-interest', hasFlash, addIpToSession, async (ct
   }
   log(ctx.request.query.s)
   const x = 70
-  const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
+  const s = (ctx.request.query?.s !== undefined)
+    ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10))
+    : 1
   const num = 10
   const offset = (s <= 1) ? 0 : (s - 1) * num
   const skipback = (s <= 1) ? 0 : s - 1
   const skipforward = s + 1
-  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipback: ${skipback} skipforward: ${skipforward}, remaining: ${x} - ${offset} = ${x - offset}`)
+  log(
+    `s: ${s}, `
+      + `offset: ${offset} `
+      + `num: ${num.toString().padStart(2, '0')}, `
+      + `skipback: ${skipback} `
+      + `skipforward: ${skipforward}, `
+      + `remaining: ${x} - ${offset} = ${x - offset}`,
+  )
   let pois
   try {
     const idxPoiType = 'glp:idx:pois:type'
@@ -456,9 +483,14 @@ router.get('poiList', '/pois/list', hasFlash, addIpToSession, async (ctx) => {
     const offset = (s === 1) ? 0 : (s - 1) * num
     const skipBack = (s <= 1) ? 0 : s - 1
     const skipForward = s + 1
-    log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, `
-      + `skipBack: ${skipBack} `
-      + `skipForward: ${skipForward}, remaining: 89 - ${offset} = ${89 - offset}`)
+    log(
+      `s: ${s}, `
+        + `offset: ${offset} `
+        + `num: ${num.toString().padStart(2, '0')}, `
+        + `skipBack: ${skipBack} `
+        + `skipForward: ${skipForward}, `
+        + `remaining: 89 - ${offset} = ${89 - offset}`,
+    )
     try {
       const idxPoiType = 'glp:idx:pois:type'
       const dialect = 2
@@ -511,13 +543,22 @@ router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx)
   }
   log('ctx.request.query.s', ctx.request.query.s)
   const x = 25
-  const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
+  const s = (ctx.request.query?.s !== undefined)
+    ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10))
+    : 1
   const num = 100
   const offset = 0
   const skipBack = (s <= 1) ? 0 : s - 1
   const skipForward = s + 1
 
-  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipBack: ${skipBack} skipForward: ${skipForward}, remaining: ${x} - ${offset} = ${x - offset}`)
+  log(
+    `s: ${s}, `
+      + `offset: ${offset} `
+      + `num: ${num.toString().padStart(2, '0')}, `
+      + `skipBack: ${skipBack} `
+      + `skipForward: ${skipForward}, `
+      + `remaining: ${x} - ${offset} = ${x - offset}`,
+  )
   let mileMarkers = []
   const locals = {}
   try {
@@ -562,7 +603,14 @@ router.get('pierMarinas', '/marinas', hasFlash, addIpToSession, async (ctx) => {
   const num = 100
   let marinas
   try {
-    log(`ft.AGGREGATE glp:idx:piers:marina "*" LOAD 6 $.pier AS pier $.property.business AS business GROUPBY 1 @business REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
+    log(
+      'ft.AGGREGATE glp:idx:piers:marina "*" '
+        + 'LOAD 6 $.pier AS pier $.property.business AS business '
+        + 'GROUPBY 1 @business '
+        + 'REDUCE TOLIST 1 @pier AS pier '
+        + 'SORTBY 2 @business ASC '
+        + `LIMIT ${offset} ${num}`,
+    )
     const optsAggregateMarina = {
       LOAD: ['@pier', '@business', '@marina'],
       STEPS: [
@@ -637,7 +685,14 @@ router.get('pierFood', '/food', hasFlash, addIpToSession, async (ctx) => {
   const num = 100
   let foods
   try {
-    log(`ft.AGGREGATE glp:idx:piers:food "*" LOAD 6 $.pier AS pier $.property.business AS business GROUPBY 1 @business REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
+    log(
+      'ft.AGGREGATE glp:idx:piers:food "*" '
+      + 'LOAD 6 $.pier AS pier $.property.business AS business '
+      + 'GROUPBY 1 @business '
+      + 'REDUCE TOLIST 1 @pier AS pier '
+      + 'SORTBY 2 @business ASC '
+      + `LIMIT ${offset} ${num}`,
+    )
     const optsAggregateFood = {
       LOAD: ['@pier', '@business', '@food'],
       STEPS: [
@@ -690,15 +745,31 @@ router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async 
   }
   log(ctx.request.query.s)
   const x = 70
-  const s = (ctx.request.query?.s !== undefined) ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10)) : 1
+  const s = (ctx.request.query?.s !== undefined)
+    ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10))
+    : 1
   const num = 10
   const offset = (s <= 1) ? 0 : (s - 1) * num
   const skipback = (s <= 1) ? 0 : s - 1
   const skipforward = s + 1
-  log(`s: ${s}, offset: ${offset} num: ${num.toString().padStart(2, '0')}, skipback: ${skipback} skipforward: ${skipforward}, remaining: ${x} - ${offset} = ${x - offset}`)
+  log(
+    `s: ${s}, `
+      + `offset: ${offset} `
+      + `num: ${num.toString().padStart(2, '0')}, `
+      + `skipback: ${skipback} `
+      + `skipforward: ${skipforward}, `
+      + `remaining: ${x} - ${offset} = ${x - offset}`,
+  )
   let associations
   try {
-    log(`ft.AGGREGATE glp:idx:piers:association "*" LOAD 3 $.pier AS pier GROUPBY 1 @association REDUCE COUNT_DISTINCT SORTBY 2 @association ASC LIMIT ${offset} ${num}`)
+    log(
+      'ft.AGGREGATE glp:idx:piers:association "*" '
+        + 'LOAD 3 $.pier AS pier '
+        + 'GROUPBY 1 @association '
+        + 'REDUCE COUNT_DISTINCT '
+        + 'SORTBY 2 @association ASC '
+        + `LIMIT ${offset} ${num}`,
+    )
     const optsAggregateAssoc = {
       LOAD: ['@pier', '@association'],
       STEPS: [
@@ -769,9 +840,17 @@ router.get('piersByAssociation', '/assoc/:assoc', hasFlash, addIpToSession, asyn
   optsPierAssociation.LIMIT = { from, size }
   optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
   log(`Association piers FT.SEARCH ${idxPierAssociation} ${optsPierAssociation}`)
-  log(`ft.search ${idxPierAssociation} "@association:(${decodedAssoc})" RETURN 3 pier $.loc association SORTBY pier asc`)
+  log(
+    `ft.search ${idxPierAssociation} `
+      + `"@association:(${decodedAssoc})" `
+      + 'RETURN 3 pier $.loc association SORTBY pier asc',
+  )
   try {
-    piersInAssoc = await redis.ft.search(idxPierAssociation, queryPierAssociation, optsPierAssociation)
+    piersInAssoc = await redis.ft.search(
+      idxPierAssociation,
+      queryPierAssociation,
+      optsPierAssociation,
+    )
     log(piersInAssoc)
   } catch (e) {
     error('Failed to get list of associations.')
