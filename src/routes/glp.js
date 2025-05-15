@@ -64,7 +64,6 @@ router.get('index', '/', hasFlash, addIpToSession, async (ctx) => {
   if (ctx.state.isAuthenticated) {
     // get the list of null_island piers
     const key = 'glp:null_island'
-    // nextPier = await redis.zRange(key, `[${pierNumber}`, '+', { BY: 'LEX', LIMIT: { offset: 1, count: 1 } })
     const nullIsland = await redis.zRange(key, '-', '+', { BY: 'LEX' })
     log(nullIsland)
     if (nullIsland.length > 0) {
@@ -72,7 +71,6 @@ router.get('index', '/', hasFlash, addIpToSession, async (ctx) => {
     }
   }
   log(`sessionUser.isAuthenticated: ${ctx.state.isAuthenticated}`)
-  // locals.structuredData = JSON.stringify(ctx.state.structuredData, null, '\t')
   const csrfToken = ulid()
   ctx.session.csrfToken = csrfToken
   ctx.cookies.set('csrfToken', csrfToken, { httpOnly: true, sameSite: 'strict' })

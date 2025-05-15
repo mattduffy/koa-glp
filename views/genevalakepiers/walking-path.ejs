@@ -35,13 +35,20 @@
       <% } %>
     </div>
     <% */ %>
+    <% if (pois?.results) { %>
     <ul id="resultsList" class="searchResults">
       <% pois?.results?.forEach((p, i) => {
         let a = `<li><a href="${origin}/point-of-interest/${p.name}">${p.name}</a></li>`  %>
       <%- a %>
     <% }) %>
     </ul>
-    
+    <% } %>
+    <div id="poiTypes" class="poiButtons">
+      <span id="restrooms" class="restrooms" data-type='restrooms'>Restrooms</span>
+      <span id="access" class="access" data-type='access'>Access</span>
+      <span id="food" class="food" data-type='food'>Food</span>
+      <span id="landmarks" class="landmarks" data-type='landmarks'>Landmarks</span>
+    </div>
   </section>
   <section class="map">
     <%# map embed %>
@@ -208,6 +215,11 @@
         window.map.region = window.genevaBay
         await showPointsOfInterest()
       }
+      window._access = []
+      window._food = []
+      window._restrooms = []
+      window._landmarks = []
+      window._default = []
       async function showPointsOfInterest() {
         try {
           const opts = {
@@ -220,6 +232,14 @@
           const request = new Request(`${origin}/mapkit/walking-path-pois`, opts)
           const response = await (await fetch(request)).json()
           console.log(response)
+          const access = document.querySelector("span[data-type='access']")
+          access.addEventListener('click', poiButtonsHandler)
+          const food = document.querySelector("span[data-type='food']")
+          food.addEventListener('click', poiButtonsHandler)
+          const landmarks = document.querySelector("span[data-type='landmarks']")
+          landmarks.addEventListener('click', poiButtonsHandler)
+          const restrooms = document.querySelector("span[data-type='restrooms']")
+          restrooms.addEventListener('click', poiButtonsHandler)
           response.documents.forEach((m) => {
             console.log('m', m)
             let [lon, lat] = m.value.geometry.coordinates
@@ -236,12 +256,53 @@
                       console.warn(error)
                     }
                     if (data) {
-                      console.log('data', data)
+                      // console.log('data', data)
+                      if (m.value.properties.name) {
+                        data.name = m.value.properties.name
+                      }
+                      if (m.value.properties.tel) {
+                        data.telephone = m.value.properties.tel
+                      }
+                      if (m.value.properties.url) {
+                        data.urls[0] = m.value.properties.url
+                      }
+                      if (m.value.properties.type !== data.pointOfInterestCategory) {
+                        data.pointOfInterestCategory = m.value.properties.type
+                      }
+                      // console.log('data improved', data)
                       const p = new window.mapkit.PlaceAnnotation(data)
-                      console.log('p', p)
-                      window.map.addItems([p])
                       const accessory = new mapkit.PlaceSelectionAccessory()
                       p.selectionAccessory = accessory
+                      console.log('p', p)
+                      // window.map.addItems([p])
+                      switch (m.value.properties.type) {
+                        case 'Access':
+                          window._access.push(p)
+                          if (!access.style.display) {
+                            access.style.display = 'inline'
+                          }
+                          break     
+                        case 'Food':
+                          window._food.push(p)
+                          if (!food.style.display) {
+                            food.style.display = 'inline'
+                          }
+                          break     
+                        case 'Landmark':
+                          window._landmarks.push(p)
+                          if (!landmarks.style.display) {
+                            landmarks.style.display = 'inline'
+                          }
+                          break     
+                        case 'Restroom':
+                          window._restrooms.push(p)
+                          if (!restrooms.style.display) {
+                            restrooms.style.display = 'inline'
+                          }
+                          break     
+                        default:
+                          window._default.push(p)
+                      }
                     }
                   }
                 )
@@ -252,10 +313,22 @@
           console.error(e)
         }
       }
-
+      function poiButtonsHandler(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        // console.log(e.target) 
+        if (!e.target.classList.contains(`${e.target.dataset.type}On`)) {
+          e.target.classList.add(`${e.target.dataset.type}On`)
+          window.map.addItems(window[`_${e.target.dataset.type}`])
+        } else {
+          e.target.classList.remove(`${e.target.dataset.type}On`)
+          window.map.removeAnnotations(window[`_${e.target.dataset.type}`])
+        }
+      }
       window.map.addEventListener("single-tap", async (e) => {
         e.preventDefault()
         e.stopPropagation()
+        window._map.annotations.forEach(a => a.selected = false)
         const {latitude, longitude} = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
         const defaultRadius = 50
         const defaultUnits = 'ft'
