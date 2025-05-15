@@ -364,6 +364,122 @@ div#searchResults > ul.searchResults:before {
   margin-left: -15px;
 }
 
+.poiButtons {
+  margin-bottom: 1em;
+}
+
+.access {
+  background-color: lightyellow;
+}
+.accessOn {
+  background-color: lightgoldenrodyellow;
+  font-weight: 500;
+}
+
+span#access:before {
+  content: url('/i/access.png');
+  zoom: 20%;
+  vertical-align: sub;
+  padding-right: .25em;
+}
+
+span#access {
+  cursor: pointer;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  padding-right: 5px;
+  padding-left: 4px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  font-size: .85em;
+  display: none;
+}
+
+.food {
+  background-color: lightgreen;
+}
+.foodOn {
+  background-color: palegreen;
+  font-weight: 500;
+}
+
+span#food:before {
+  content: url('/i/food.png');
+  zoom: 20%;
+  vertical-align: sub;
+  padding-right: .25em;
+}
+
+span#food {
+  cursor: pointer;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  padding-right: 5px;
+  padding-left: 4px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  font-size: .85em;
+  display: none;
+}
+
+.restrooms {
+  background-color: lightblue;
+}
+.restroomsOn {
+  background-color: skyblue;
+  font-weight: 500;
+}
+
+span#restrooms:before {
+  content: url('/i/restroom.png');
+  zoom: 20%;
+  vertical-align: sub;
+  padding-right: .25em;
+}
+
+span#restrooms {
+  cursor: pointer;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  padding-right: 5px;
+  padding-left: 4px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  font-size: .85em;
+  display: none;
+}
+
+.landmarks {
+  background-color: lightpink;
+}
+.landmarksOn {
+  background-color: pink;
+  font-weight: 500;
+}
+
+span#landmarks:before {
+  content: url('/i/landmarks.png');
+  zoom: 20%;
+  vertical-align: sub;
+  padding-right: .25em;
+}
+
+span#landmarks {
+  cursor: pointer;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 3px;
+  padding-right: 5px;
+  padding-left: 4px;
+  margin-bottom: 1em;
+  margin-right: 1em;
+  font-size: .85em;
+  display: none;
+}
+
 ul.owners > li > ul.owners:before {
   content:attr(aria-label);
   font-weight: 500;
