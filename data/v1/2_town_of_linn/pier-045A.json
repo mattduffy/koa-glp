@@ -1,44 +1,47 @@
 {
   "pier": "045A",
+  "version": "1",
   "loc": {
     "longitude": -88.456434,
     "latitude": 42.579043
   },
+  "geohash": "dp945p7bzs0",
+  "pluscode": "HGHV+JC8 Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W3191 Snake Rd",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
-    },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0
+    }
   },
   "owners": [
     {
-      "estateName": "",
-      "member": false,
+      "estateName": "Blacktoft",
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
           "f": "",
           "m": "",
-          "s": "",
           "l": "",
+          "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp945p7bzs0",
-  "pluscode": "HGHV+JC8 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1
+  "updatedOn": [
+    "2025-05-15T21:42:27.278Z"
+  ]
 }
