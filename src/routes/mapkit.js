@@ -130,6 +130,8 @@ router.get('poisList', '/mapkit/pois', async (ctx) => {
     } else {
       let pois
       try {
+        const num = 100
+        const offset = 0
         const idxPoiType = 'glp:idx:pois:type'
         const dialect = 2
         const optsPois = {
@@ -137,7 +139,7 @@ router.get('poisList', '/mapkit/pois', async (ctx) => {
             BY: 'id',
             DIRECTION: 'ASC',
           },
-          // LIMIT: { from: offset, size: num },
+          LIMIT: { from: offset, size: num },
           RETURN: ['$'],
           DIALECT: dialect,
           PARAMS: {
@@ -146,8 +148,8 @@ router.get('poisList', '/mapkit/pois', async (ctx) => {
         }
         const queryPointsOfInterest = `-@type:(${optsPois.PARAMS.exclude})`
         const query = `ft.search ${idxPoiType} ${queryPointsOfInterest} `
-          // + `SORTBY id ASC LIMIT ${offset} ${num} DIALECT ${dialect}`
-          + `SORTBY id ASC DIALECT ${dialect}`
+          + `SORTBY id ASC LIMIT ${offset} ${num} DIALECT ${dialect}`
+          // + `SORTBY id ASC DIALECT ${dialect}`
         log(query)
         pois = await redis.ft.search(idxPoiType, queryPointsOfInterest, optsPois)
       } catch (e) {
@@ -178,6 +180,8 @@ router.get('walkingPathPois', '/mapkit/walking-path-pois', async (ctx) => {
     } else {
       let pois = []
       try {
+        const num = 100
+        const offset = 0
         const idxPoisType = 'glp:idx:pois:type'
         const queryPois = '-@type:"mileMarker"'
         const optsPois = {
@@ -185,12 +189,12 @@ router.get('walkingPathPois', '/mapkit/walking-path-pois', async (ctx) => {
             BY: 'id',
             DIRECTION: 'ASC',
           },
-          // LIMIT: { from: offset, size: num },
+          LIMIT: { from: offset, size: num },
           RETURN: ['$'],
         }
         const query = `ft.search ${idxPoisType} ${queryPois} `
           + 'SORTBY id ASC'
-          // + `SORTBY id ASC LIMIT ${offset} ${num}`
+          + `SORTBY id ASC LIMIT ${offset} ${num}`
         log(query)
         pois = await redis.ft.search(idxPoisType, queryPois, optsPois)
         log(pois?.total, pois?.documents)
