@@ -18,6 +18,9 @@
     <div class="previousPier">
       <a rel="prev" href="/pois/list">&lt; Edit POIs</a>
     </div>
+    <div class="nextPier">
+      <a rel="next" href="/poi/new" style="float: right;">New POI &gt;</a>
+    </div>
     <h2>New Point of Interest: </h2>
 
     <form id="poiNewId" name="poiNew" action="<%= origin %>/edit/poi/new" method="POST" enctype="multipart/form-data">
@@ -67,7 +70,7 @@
         <label>Type<br>
           <label for="type1Id" class="radioLabel">Access<input type="radio" id="type1Id" name="newPoiType" value="Access" style="margin-right: 10px" tabindex=0></label>
           <label for="type2Id" class="radioLabel">Restroom<input type="radio" id="type2Id" name="newPoiType" value="Restroom" style="margin-right: 10px" tabindex=0></label>
-          <label for="type3Id" class="radioLabel">Food<input type="radio" id="type3Id" name="newPoiType" value="food" style="margin-right: 10px"></label>
+          <label for="type3Id" class="radioLabel">Food<input type="radio" id="type3Id" name="newPoiType" value="Food" style="margin-right: 10px"></label>
           <label for="type4Id" class="radioLabel">Landmark<input type="radio" id="type4Id" name="newPoiType" value="Landmark" style="margin-right: 10px" tabindex=0></label><br>
         </label>
         <label for="poiDescriptionId">Description</label><br>
@@ -320,6 +323,7 @@
         } else {
           const result = await myGeocoder({ lon, lat })
           let query
+          console.log('newPoiType', form['newPoiType'].value)
           switch(form['newPoiType'].value) {
             case 'Access':
               query = [
@@ -336,8 +340,10 @@
                 window.mapkit.PointOfInterestCategory.Restroom,
               ]
               break
-            case 'food':
+            case 'Food':
               query = [
+                window.mapkit.PointOfInterestCategory.Bakery,
+                window.mapkit.PointOfInterestCategory.Brewery,
                 window.mapkit.PointOfInterestCategory.Cafe,
                 window.mapkit.PointOfInterestCategory.FoodMarket,
                 window.mapkit.PointOfInterestCategory.Restaurant,
@@ -345,7 +351,13 @@
               break
             case 'Landmark':
               query = [
-                window.mapkit.PointOfInterestCategory.Landmark,
+                window.mapkit.PointOfInterestCategory.Hotel,
+                window.mapkit.PointOfInterestCategory.Library,
+                window.mapkit.PointOfInterestCategory.Museum,
+                window.mapkit.PointOfInterestCategory.Nightlife,
+                window.mapkit.PointOfInterestCategory.School,
+                window.mapkit.PointOfInterestCategory.Theater,
+                window.mapkit.PointOfInterestCategory.University,
               ]
               break
             default:
