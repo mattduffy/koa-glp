@@ -44,10 +44,13 @@
     </ul>
     <% } %>
     <div id="poiTypes" class="poiButtons">
-      <span id="restrooms" class="restrooms" data-type='restrooms'>Restrooms</span>
-      <span id="access" class="access" data-type='access'>Access</span>
-      <span id="food" class="food" data-type='food'>Food</span>
-      <span id="landmarks" class="landmarks" data-type='landmarks'>Landmarks</span>
+      <p style="font-size: .9em;">
+        Tap buttons to see points of interest along the walking path.
+      </p>
+      <span id="restrooms" class="restrooms" data-type='restrooms'>Restrooms <span></span></span>
+      <span id="access" class="access" data-type='access'>Access <span></span></span>
+      <span id="food" class="food" data-type='food'>Food <span></span></span>
+      <span id="landmarks" class="landmarks" data-type='landmarks'>Landmarks <span></span></span>
     </div>
   </section>
   <section class="map">
@@ -254,6 +257,7 @@
                   function(error, data) {
                     if (error) {
                       console.warn(error)
+                      console.warn(m.value.properties.placeId)
                     }
                     if (data) {
                       // console.log('data', data)
@@ -280,24 +284,40 @@
                           window._access.push(p)
                           if (!access.style.display) {
                             access.style.display = 'inline'
+                            access.firstElementChild.textContent = 1
+                          } else {
+                            access.firstElementChild.textContent = (Number.parseInt(
+                              access.firstElementChild.textContent, 10) + 1)
                           }
                           break     
                         case 'Food':
                           window._food.push(p)
                           if (!food.style.display) {
                             food.style.display = 'inline'
+                            food.firstElementChild.textContent = 1
+                          } else {
+                            food.firstElementChild.textContent = (Number.parseInt(
+                              food.firstElementChild.textContent, 10) + 1)
                           }
                           break     
                         case 'Landmark':
                           window._landmarks.push(p)
                           if (!landmarks.style.display) {
                             landmarks.style.display = 'inline'
+                            landmarks.firstElementChild.textContent = 1
+                          } else {
+                            landmarks.firstElementChild.textContent = (Number.parseInt(
+                              landmarks.firstElementChild.textContent, 10) + 1)
                           }
                           break     
                         case 'Restroom':
                           window._restrooms.push(p)
                           if (!restrooms.style.display) {
                             restrooms.style.display = 'inline'
+                            restrooms.firstElementChild.textContent = 1
+                          } else {
+                            restrooms.firstElementChild.textContent = (Number.parseInt(
+                              restrooms.firstElementChild.textContent, 10) + 1)
                           }
                           break     
                         default:
