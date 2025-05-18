@@ -161,7 +161,7 @@
         poi.properties = {}
         poi.properties.version = form['versionId'].value
         poi.properties.id = null
-        poi.properties.placeId = form['placeId'].value ?? ''
+        poi.properties.placeId = form['placeId'].value ?? '00000000000000000'
         poi.properties.geohash = form['geohashId'].value
         poi.properties.pluscode = form['pluscodeId'].value
         poi.properties.name = form['poiNameId'].value ?? ''
@@ -180,7 +180,7 @@
         poi.properties.url = form['urlId'].value ?? ''
         if (lon !== 0 && lat !== 0) {
           const locality = await myGeocoder({ lat, lon })
-          console.log(locality)
+          console.log('locality', locality)
         }
         console.log(poi)
         return poi 
@@ -322,6 +322,7 @@
           ) 
         } else {
           const result = await myGeocoder({ lon, lat })
+          console.log('myGeocoder result', result)
           let query
           console.log('newPoiType', form['newPoiType'].value)
           switch(form['newPoiType'].value) {
@@ -378,7 +379,7 @@
                 window.mapkit.PointOfInterestCategory.University,
               ]
           }
-          console.log('myGeocoder - query', query)
+          console.log('mySearch - query', query)
           await mySearch(
             { lon, lat },
             query,
@@ -405,7 +406,7 @@
       form['latId'].addEventListener('change', getPluscode, false)
       async function myGeocoder(coords) {
         return new Promise((resolve, reject) => {
-          // console.log('geocoder with:', coords)
+          console.log('geocoder with:', coords)
           const opts = {
             getsUserLocation: false,
             language: 'en-US',
@@ -435,10 +436,10 @@
             ),
             pointOfInterestFilter: window.mapkit.PointOfInterestFilter.including(query),
           }
-          const access = ['ATM','Beach','Campground','Marina','Park','Parking']
-          const restroom = ['Restroom'] 
-          const food = ['Cafe', 'FoodMarket',' Restaurant'] 
-          const historical = []              
+          // const access = ['ATM','Beach','Campground','Marina','Park','Parking']
+          // const restroom = ['Restroom'] 
+          // const food = ['Cafe', 'FoodMarket',' Restaurant'] 
+          // const historical = []              
           console.log('mySearch', opts)
           const search = new window.mapkit.PointsOfInterestSearch()
           const results = search.search(
@@ -483,6 +484,35 @@
             opts 
           )
         })
+      }
+      class MockPlace {
+        constructor() {
+          const _styleAttributes = "4:226,6:134,10:0,82:8,85:13,89:1,164:1,193:1"
+          const administrativeArea = "Wisconsin"
+          const administrativeAreaCode = "WI"
+          const alternateIds = []
+          let areasOfInterest = '' 
+          let coordinate
+          const country = "United States"
+          const countryCode = "US"
+          const dependentLocalities = ["Fontana"]
+          let formattedAddress = ''
+          let fullThoroughfare = ''
+          let id = ''
+          let locality = ''
+          let muid = ''
+          let name = ''
+          let pointOfInterestCategory = ''
+          let postCode = ''
+          let region
+          let subLocality = ''
+          let subThoroughfare
+          let telephone
+          let thoroughfare
+          const timezone = "America/Chicago"
+          const timezoneSecondsFromGmt = -18000
+          let urls = []
+        }
       }
     </script>
   </section> 
