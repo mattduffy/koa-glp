@@ -366,6 +366,7 @@ div#searchResults > ul.searchResults:before {
 
 .poiButtons {
   margin-bottom: 1em;
+  text-align: center;
 }
 
 .access {
@@ -720,6 +721,11 @@ footer > section {
     padding-left: 20px;
   }
 
+  .poiButtons {
+    margin-bottom: 1em;
+    text-align: inherit;
+  }
+
   section.map {
     display: inline-block;
     vertical-align: top;
@@ -886,7 +892,11 @@ footer > section {
     margin-bottom: 0px;
   }
 
-  section.map {
+ .poiButtons {
+    margin-bottom: 1em;
+    text-align: inherit;
+  }
+ section.map {
     display: inline-block;
     vertical-align: top;
     padding-top: 25px;
