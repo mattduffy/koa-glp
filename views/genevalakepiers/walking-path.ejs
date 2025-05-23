@@ -348,7 +348,8 @@
       window.map.addEventListener("single-tap", async (e) => {
         e.preventDefault()
         e.stopPropagation()
-        window._map.annotations.forEach(a => a.selected = false)
+        // window._map.annotations.forEach(a => a.selected = false)
+        window.map.annotations.forEach(a => a.selected = false)
         const {latitude, longitude} = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
         const defaultRadius = 50
         const defaultUnits = 'ft'
