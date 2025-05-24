@@ -280,7 +280,7 @@
           const response = await (await fetch(request)).json()
           console.log(response)
           response.documents.forEach((m) => {
-            console.log('m', m)
+            // console.log('m', m)
             let [lon, lat] = m.value.geometry.coordinates
             lon = parseFloat(lon, 10)
             lat = parseFloat(lat, 10)
