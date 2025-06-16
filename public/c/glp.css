@@ -221,7 +221,16 @@ header > h1 > a:active, a:visited, a:link {
   font-weight: 300;
 }
 
-header > ul.header-links {
+header> div#menu-layer {
+  z-index: 1006;
+  position: fixed;
+  background-color: #f9f9f9;
+  width: max-content;
+  top: 60px;
+  left: 1em;
+}
+
+header > * > ul.header-links {
   list-style: none;
   display: none;
   grid-column-start: 2;
@@ -230,7 +239,7 @@ header > ul.header-links {
   margin-top: -5px;
 }
 
-header > ul > li {
+header > * > ul > li {
   line-height: 2.25em;
 }
 
@@ -673,7 +682,7 @@ footer > section {
     display: none!important;
   }
 
-  header > ul.header-links {
+  header > * > ul.header-links {
     list-style: none;
     display: block;
     grid-row-start: 2;
@@ -851,7 +860,7 @@ footer > section {
     font-weight: 300;
   }
 
-  header > ul.header-links {
+  header > * > ul.header-links {
     list-style: none;
     display: none;
     grid-column-start: 2;
@@ -860,7 +869,7 @@ footer > section {
     margin-top: -5px;
   }
 
-  header > ul > li {
+  header > * > ul > li {
     line-height: 2.25em;
     display: inline-block;
     margin-right: 20px;

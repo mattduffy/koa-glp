@@ -1,16 +1,18 @@
 <header class="header-grid">
   <span class="hamburger"></span>
   <h1><a href="/"><%= appName %></a></h1>
-  <ul class="header-links">
-    <li><a href="<%= origin %>/walking-path">Walking Path</a></li>
-    <li><a href="<%= origin %>/towns">Towns on Geneva Lake</a></li>
-    <li><a href="<%= origin %>/food">Restaurants</a></li>
-    <li><a href="<%= origin %>/marinas">Marinas</a></li>
-    <li><a href="<%= origin %>/businesses">Businesses</a></li>
-    <li><a href="<%= origin %>/public">Public Piers</a></li>
-    <li><a href="<%= origin %>/associations">Associations</a></li>
-    <li><a href="<%= origin %>/swim">Swim Piers</a></li>
-  </ul>
+  <div id="menu-layer">
+    <ul class="header-links">
+      <li><a href="<%= origin %>/walking-path">Walking Path</a></li>
+      <li><a href="<%= origin %>/towns">Towns on Geneva Lake</a></li>
+      <li><a href="<%= origin %>/food">Restaurants</a></li>
+      <li><a href="<%= origin %>/marinas">Marinas</a></li>
+      <li><a href="<%= origin %>/businesses">Businesses</a></li>
+      <li><a href="<%= origin %>/public">Public Piers</a></li>
+      <li><a href="<%= origin %>/associations">Associations</a></li>
+      <li><a href="<%= origin %>/swim">Swim Piers</a></li>
+    </ul>
+  </div>
   <script nonce="<%= nonce %>">
     const hammy = document.querySelector('span.hamburger')
     hammy.addEventListener('click', (e) => {
