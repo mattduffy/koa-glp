@@ -16,6 +16,8 @@
   <script nonce="<%= nonce %>">
     const hammy = document.querySelector('span.hamburger')
     hammy.addEventListener('click', (e) => {
+      e.preventDefault()
+      e.stopPropagation()
       const links = document.querySelector('ul.header-links')
       let toggle = links.style.display
       console.log(toggle)
@@ -23,6 +25,12 @@
           links.style.display = 'block'
       } else {
           links.style.display = 'none'
+      }
+    })
+    document.addEventListener('click', (e) => {
+      const links = document.querySelector('ul.header-links')
+      if (links.style.display === 'block') {
+        links.style.display = 'none'
       }
     })
   </script>
