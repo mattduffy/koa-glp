@@ -47,6 +47,7 @@
     "@mattduffy/koa-migrations": "/home/matt/node_package_development/koa-migrations",
     "@mattduffy/users": "/home/matt/node_package_development/users",
     "@mattduffy/webfinger": "/home/matt/node_package_development/webfinger",
+    "@mattduffy/banner": "file:../banner",
     "@maxmind/geoip2-node": "5.0.0",
     "commander": "11.0.0",
     "debug": "4.3.4",
