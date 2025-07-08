@@ -229,6 +229,15 @@ header> div#menu-layer {
   top: 60px;
   left: 1em;
   padding-left: 1.5em;
+  
+}
+
+.menuLayerBorder {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-left: solid 1px darkgray;
+  border-right: solid 1px darkgray;
+  border-bottom: solid 1px darkgray;
 }
 
 header > * > ul.header-links {

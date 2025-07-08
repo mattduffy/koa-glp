@@ -23,14 +23,17 @@
       console.log(toggle)
       if (toggle === 'none' || toggle === '' || toggle === undefined) {
           links.style.display = 'block'
+          links.parentElement.classList.add('menuLayerBorder')
       } else {
           links.style.display = 'none'
+          links.parentElement.classList.remove('menuLayerBorder')
       }
     })
     document.addEventListener('click', (e) => {
       const links = document.querySelector('ul.header-links')
       if (links.style.display === 'block') {
         links.style.display = 'none'
+        links.parentElement.classList.remove('menuLayerBorder')
       }
     })
   </script>
