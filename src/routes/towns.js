@@ -36,7 +36,9 @@ router.get('piersByTown', '/towns/:town', async (ctx) => {
     piersInTown = await redis.zRange(key, 0, -1)
   } catch (e) {
     error(e)
-    ctx.throw(500, 'Error', { town })
+    // ctx.throw(500, 'Error', { town })
+    const err = new Error('Redis query failed, \'piersInTown\'.', { cause: e })
+    ctx.throw(500, err, { town })
   }
   // ctx.status = 200
   // ctx.type = 'application/json'

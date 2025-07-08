@@ -31,7 +31,9 @@ router.get('getLogin', '/login', async (ctx, next) => {
     await next()
   } catch (e) {
     error(e)
-    ctx.throw(500, e)
+    // ctx.throw(500, e)
+    const err = new Error('Auth.js router, getLogin handler.', { cause: e })
+    ctx.throw(500, err)
   }
   ctx.state.sessionUser = ctx.state.sessionUser ?? {}
   if (ctx.state.isAuthenticated) {

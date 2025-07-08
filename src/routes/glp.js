@@ -107,7 +107,8 @@ router.get('piersByTown', '/towns/:town', hasFlash, addIpToSession, async (ctx) 
     piersInTown = await redis.zRange(key, 0, -1)
   } catch (e) {
     error(e)
-    ctx.throw(500, 'Error', { town })
+    const err = new Error(`Redis query failed for \'piersInTown\' ${town}`, { cause: e })
+    ctx.throw(500, err, { town })
   }
   const locals = {}
   locals.setName = town
@@ -173,7 +174,8 @@ router.get('pierBigSwimPiers', '/swim', hasFlash, addIpToSession, async (ctx) =>
   } catch (e) {
     error('Failed to get list of swim piers.')
     error(e.message)
-    throw new Error('Redis query failed.', { cause: e })
+    const err = Error('Redis query failed.', { cause: e })
+    ctx.throw(500, err)
   }
   if (ctx.state.isAsyncRequest === true) {
     ctx.status = 200
@@ -245,7 +247,8 @@ router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
   } catch (e) {
     error('Failed to get list of public piers.')
     error(e.message)
-    throw new Error('Redis query failed.', { cause: e })
+    const err = new Error('Redis query failed \'publicPiers\'.', { cause: e })
+    ctx.throw(500, err)
   }
   if (ctx.state.isAsyncRequest === true) {
     ctx.status = 200
@@ -326,7 +329,8 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
   } catch (e) {
     error('Failed to get list of businesses.')
     error(e.message)
-    throw new Error('Redis query failed.', { cause: e })
+    const err = new Error('Redis query failed \'businesses\'.', { cause: e })
+    ctx.throw(500, err)
   }
   if (ctx.state.isAsyncRequest === true) {
     ctx.status = 200
@@ -402,7 +406,8 @@ router.get('poiList', '/points-of-interest', hasFlash, addIpToSession, async (ct
   } catch (e) {
     error('Failed to get list of points-of-interest.')
     error(e.message)
-    throw new Error('Redis points-of-interest query failed.', { cause: e })
+    const err = new Error('Redis query failed \'points-of-interest\'.', { cause: e })
+    ctx.throw(500, err)
   }
   if (ctx.state.isAsyncRequest === true) {
     ctx.status = 200
@@ -514,7 +519,8 @@ router.get('poiList', '/pois/list', hasFlash, addIpToSession, async (ctx) => {
     } catch (e) {
       error('Failed to get list of points-of-interest.')
       error(e.message)
-      throw new Error('Redis points-of-interest query failed.', { cause: e })
+      const err = new Error('Redis query failed \'points-of-interest\'.', { cause: e })
+      ctx.throw(500, err)
     }
     locals.title = 'Points of Interest to Edit'
     locals.skipForward = skipForward
@@ -578,7 +584,8 @@ router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx)
   } catch (e) {
     error('Failed to get list of walking path pois.')
     error(e)
-    throw new Error('Redis query failed retrieving walking path pois.', { cause: e })
+    const err = new Error('Redis query failed \'mileMarkers\'.', { cause: e })
+    ctx.throw(500, err)
   }
   locals.offset = offset
   locals.num = num
@@ -639,7 +646,8 @@ router.get('pierMarinas', '/marinas', hasFlash, addIpToSession, async (ctx) => {
   } catch (e) {
     error('Failed to get list of businesses.')
     error(e.message)
-    throw new Error('Redis query failed.', { cause: e })
+    const err = new Error('Redis query failed \'businesses\'.', { cause: e })
+    ctx.throw(500, err)
   }
   const locals = {}
   locals.offset = offset
@@ -721,7 +729,8 @@ router.get('pierFood', '/food', hasFlash, addIpToSession, async (ctx) => {
   } catch (e) {
     error('Failed to get list of restaurants.')
     error(e.message)
-    throw new Error('Redis query failed.', { cause: e })
+    const err = new Error('Redis query failed, \'restaurants\'.', { cause: e })
+    ctx.throw(500, err)
   }
   const locals = {}
   locals.offset = offset
@@ -798,7 +807,8 @@ router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async 
   } catch (e) {
     error('Failed to get list of associations.')
     error(e.message)
-    throw new Error('Redis query failed.', { cause: e })
+    const err = new Error('Redis query failed, \'associations\'.', { cause: e })
+    ctx.throw(500, err)
   }
   if (ctx.state.isAsyncRequest === true) {
     ctx.status = 200
@@ -853,7 +863,8 @@ router.get('piersByAssociation', '/assoc/:assoc', hasFlash, addIpToSession, asyn
   } catch (e) {
     error('Failed to get list of associations.')
     error(e.message)
-    throw new Error('Redis query failed.', { cause: e })
+    const err = new Error('Redis query failed, \'associations\'.', { cause: e })
+    ctx.throw(500, err)
   }
   const locals = {}
   locals.associationName = decodedAssoc
@@ -897,7 +908,10 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) 
         const setkey = `glp:piers_by_town:${set}`
         log(setkey, pierNumber)
         /* eslint-disable-next-line */
-        for await (const { value } of redis.zScanIterator(setkey, { MATCH: pierNumber, COUNT: 900 })) {
+        for await (const { value } of redis.zScanIterator(
+          setkey,
+          { MATCH: pierNumber, COUNT: 900 }
+        )) {
           if (value !== null) {
             town = set.split('_').map((e) => e.toProperCase()).join(' ')
             setTown = set
@@ -909,7 +923,11 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) 
       }
     } catch (e) {
       error(e)
-      throw new Error(`Could not match pier ${pierNumber} to any town set in redis.`, { cause: e })
+      const err = new Error(
+        `Could not match pier ${pierNumber} to any town set in redis.`,
+        { cause: e },
+      )
+      ctx.throw(500, err)
     }
     try {
       pier = await redis.json.get(key)
@@ -940,36 +958,61 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) 
       })
     } catch (e) {
       error(e)
-      throw new Error(`Failed to get pier ${pierNumber}`, { cause: e })
+      const err = new Error(`Failed to get pier ${pierNumber}`, { cause: e })
+      ctx.throw(500, err)
     }
     let nextPier
     let previousPier
     key = 'glp:all_piers_in_order'
     try {
-      nextPier = await redis.zRange(key, `[${pierNumber}`, '+', { BY: 'LEX', LIMIT: { offset: 1, count: 1 } })
+      nextPier = await redis.zRange(
+        key,
+        `[${pierNumber}`,
+        '+',
+        { BY: 'LEX', LIMIT: { offset: 1, count: 1 } },
+      )
       if (Number.isNaN(parseInt(nextPier, 10))) {
         nextPier = '001'
       }
       log(`next pier >> ${nextPier}`)
     } catch (e) {
       error(e)
-      throw new Error(`Failed creating next pier link for pier ${pierNumber}`, { cause: e })
+      const err = new Error(
+        `Failed creating next pier link for pier ${pierNumber}`,
+        { cause: e },
+      )
+      ctx.throw(500, err)
     }
     try {
-      previousPier = await redis.zRange(key, `[${pierNumber}`, '-', { BY: 'LEX', REV: true, LIMIT: { offset: '1', count: '1' } })
+      previousPier = await redis.zRange(
+        key,
+        `[${pierNumber}`,
+        '-',
+        { BY: 'LEX', REV: true, LIMIT: { offset: '1', count: '1' } },
+      )
       if (Number.isNaN(parseInt(previousPier, 10))) {
-        previousPier = await redis.zRange(key, '0', '-1', { REV: true, BY: 'SCORE', LIMIT: { offset: '0', count: '1' } })
+        previousPier = await redis.zRange(
+          key,
+          '0',
+          '-1',
+          { REV: true, BY: 'SCORE', LIMIT: { offset: '0', count: '1' } },
+        )
       }
       log(`prev pier >> ${previousPier}`)
     } catch (e) {
       error(e)
-      throw new Error(`Failed creating previous pier link for pier ${pierNumber}`, { cause: e })
+      const err = new Error(
+        `Failed creating previous pier link for pier ${pierNumber}`,
+        { cause: e },
+      )
+      ctx.throw(500, err)
     }
 
     log(ctx.state.TOWNS)
     const [lon, lat] = pier.loc.split(',')
     const address = `${pier.property.address?.street}, ${pier.property.address?.city}, WI`
-    locals.pageDescription = `Geneva Lake, pier ${pierNumber}, longitude: ${lon}, latitude: ${lat}, ${address}.`
+    locals.pageDescription = `Geneva Lake, pier ${pierNumber}, longitude: ${lon}, `
+      + `latitude: ${lat}, ${address}.`
     locals.pier = pier
     locals.town = town
     locals.photo = false
@@ -1012,7 +1055,13 @@ router.get('pierEdit-GET', '/pier/edit/:pier', hasFlash, addIpToSession, async (
         const setkey = `glp:piers_by_town:${set}`
         log(setkey, pierNumber)
         /* eslint-disable-next-line */
-        for await (const { value } of redis.zScanIterator(setkey, { MATCH: pierNumber, COUNT: 900 })) {
+        for await (const { value } of redis.zScanIterator(
+          setkey,
+          {
+            MATCH: pierNumber,
+            COUNT: 900,
+          }
+        )) {
           if (value !== null) {
             town = set.split('_').map((e) => e.toProperCase()).join(' ')
             setTown = set
@@ -1024,7 +1073,11 @@ router.get('pierEdit-GET', '/pier/edit/:pier', hasFlash, addIpToSession, async (
       }
     } catch (e) {
       error(e)
-      throw new Error(`Could not match pier ${pierNumber} to any town set in redis.`, { cause: e })
+      const err = new Error(
+        `Could not match pier ${pierNumber} to any town set in redis.`,
+        { cause: e },
+      )
+      ctx.throw(500, err)
     }
     try {
       pier = await redis.json.get(key)
@@ -1032,7 +1085,8 @@ router.get('pierEdit-GET', '/pier/edit/:pier', hasFlash, addIpToSession, async (
       log(pier)
     } catch (e) {
       error(e)
-      throw new Error(`Failed to get pier ${pierNumber}`, { cause: e })
+      const err = new Error(`Failed to get pier ${pierNumber}`, { cause: e })
+      ctx.throw(500, err)
     }
     locals.town = town
     locals.photo = false
@@ -1094,9 +1148,23 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
       queryPierAddress = `'${searchTerms[0]}'`
       optsPierAddress = {}
       // optsPierAddress.SORTBY = { BY: '$.pier', DIRECTION: 'ASC' }
-      optsPierAddress.RETURN = ['$.pier', 'AS', 'pierNumber', '$.loc', 'AS', 'coords', '$.property.address.street', 'AS', 'address']
+      optsPierAddress.RETURN = [
+        '$.pier',
+        'AS',
+        'pierNumber',
+        '$.loc',
+        'AS',
+        'coords',
+        '$.property.address.street',
+        'AS',
+        'address',
+      ]
       log(`Pier address FT.SEARCH ${idxPierAddress} ${queryPierAddress}`)
-      results.addresses = await redis.ft.search(idxPierAddress, queryPierAddress, optsPierAddress)
+      results.addresses = await redis.ft.search(
+        idxPierAddress,
+        queryPierAddress,
+        optsPierAddress,
+      )
       log('address results: %O', results.addresses)
       // if (results.addresses.total > 0) {
       //   stopSearching = true
@@ -1132,7 +1200,11 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         // optsPierNumber.RETURN = 'pierNumber'
         optsPierNumber.RETURN = ['pierNumber', '$.loc', 'AS', 'coords']
         log(`Pier number FT.SEARCH ${idxPierNumber} ${queryPierNumber}`)
-        results.pierNumbers = await redis.ft.search(idxPierNumber, queryPierNumber, optsPierNumber)
+        results.pierNumbers = await redis.ft.search(
+          idxPierNumber,
+          queryPierNumber,
+          optsPierNumber,
+        )
         log(results.pierNumbers)
       } catch (e) {
         error('Redis search query failed:')
@@ -1253,12 +1325,18 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         optsPierEstateName.RETURN = ['pier', 'estateName', '$.loc', 'AS', 'coords']
         optsPierEstateName.LIMIT = { from: 0, size: 20 }
         log(`Pier estate name FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}"`)
-        results.estateNames = await redis.ft.search(idxPierEstateName, queryPierEstateName, optsPierEstateName)
+        results.estateNames = await redis.ft.search(
+          idxPierEstateName,
+          queryPierEstateName,
+          optsPierEstateName,
+        )
         log(results.estateNames)
       } catch (e) {
         error('Redis search query failed:')
         error(`using index: ${idxPierEstateName}`)
-        error(`query: FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}"`, optsPierEstateName)
+        error(
+          `query: FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}"`, optsPierEstateName
+        )
         error(e)
         // No need to disrupt the rest of the searching if this query failed.
         // throw new Error('Search by estate name failed.', { cause: e })
@@ -1283,12 +1361,26 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         log(`Pier owner name tokens: ${pierOwnernameTokens}`)
         idxPierOwnerName = 'glp:idx:piers:ownerNames'
         // queryPierOwnerName = `@fistname|lastname:${pierOwnernameTokens}`
-        queryPierOwnerName = `@lastname|firstname:${pierOwnernameTokens} (-@business:${pierOwnernameTokens}) (-@association:${pierOwnernameTokens}) (-Assoc*)`
+        queryPierOwnerName = `@lastname|firstname:${pierOwnernameTokens} `
+          + `(-@business:${pierOwnernameTokens}) (-@association:${pierOwnernameTokens}) `
+          + `(-Assoc*)`
         optsPierOwnerName = {}
         optsPierOwnerName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
-        optsPierOwnerName.RETURN = ['pier', 'firstname', 'lastname', 'business', '$.loc', 'AS', 'coords']
+        optsPierOwnerName.RETURN = [
+          'pier',
+          'firstname',
+          'lastname',
+          'business',
+          '$.loc',
+          'AS',
+          'coords',
+        ]
         log(`Pier owner name FT.SEARCH ${idxPierOwnerName} "${queryPierOwnerName}"`)
-        results.ownerNames = await redis.ft.search(idxPierOwnerName, queryPierOwnerName, optsPierOwnerName)
+        results.ownerNames = await redis.ft.search(
+          idxPierOwnerName,
+          queryPierOwnerName,
+          optsPierOwnerName,
+        )
         log(results.ownerNames)
       } catch (e) {
         error('Redis search query failed:')
@@ -1322,12 +1414,19 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
         optsPierAssociation.RETURN = ['pier', 'association', '$.loc', 'AS', 'coords']
         log(`Pier association name FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`)
-        results.associations = await redis.ft.search(idxPierAssociation, queryPierAssociation, optsPierAssociation)
+        results.associations = await redis.ft.search(
+          idxPierAssociation,
+          queryPierAssociation,
+          optsPierAssociation,
+        )
         log(results.associations)
       } catch (e) {
         error('Redis search query failed:')
         error(`using index: ${idxPierAssociation}`)
-        error(`query: FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`, optsPierAssociation)
+        error(
+          `query: FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`,
+          optsPierAssociation,
+        )
         error(e)
         // No need to disrupt the rest of the searching if this query failed.
         // throw new Error('Search by association name failed.', { cause: e })
@@ -1356,7 +1455,11 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         optsPierBusiness.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
         optsPierBusiness.RETURN = ['pier', 'business', '$.loc', 'AS', 'coords']
         log(`Pier business name FT.SEARCH ${idxPierBusiness} "${queryPierBusiness}"`)
-        results.businesses = await redis.ft.search(idxPierBusiness, queryPierBusiness, optsPierBusiness)
+        results.businesses = await redis.ft.search(
+          idxPierBusiness,
+          queryPierBusiness,
+          optsPierBusiness,
+        )
         log(results.businesses)
       } catch (e) {
         error('Redis search query failed:')

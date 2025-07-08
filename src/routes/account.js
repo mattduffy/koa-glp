@@ -189,7 +189,11 @@ router.get('accountTokens', '/account/tokens', hasFlash, async (ctx) => {
   }
 })
 
-router.get('accountCreateKeys', '/account/:username/createKeys/:type?', hasFlash, async (ctx) => {
+router.get(
+  'accountCreateKeys',
+  '/account/:username/createKeys/:type?',
+  hasFlash,
+  async (ctx) => {
   const log = accountLog.extend('GET-account-generateKeys')
   const error = accountError.extend('GET-account-generateKeys')
   let status
@@ -200,7 +204,10 @@ router.get('accountCreateKeys', '/account/:username/createKeys/:type?', hasFlash
     ctx.status = 401
     ctx.redirect('/')
   } else if (ctx.request.header.csrftoken !== ctx.session.csrfToken) {
-    error(`CSR-Token mismatch: header:${ctx.request.header.csrftoken} - session:${ctx.session.csrfToken}`)
+    error(
+      `CSR-Token mismatch: header:${ctx.request.header.csrftoken} - `
+      + `session:${ctx.session.csrfToken}`
+    )
     status = 401
     ctx.body = { error: 'csrf token mismatch' }
   } else {
@@ -471,21 +478,37 @@ router.post('accountEditPost', '/account/edit', hasFlash, async (ctx) => {
       const { avatar } = ctx.request.files
       if (avatar.size > 0) {
         const avatarOriginalFilenameCleaned = sanitizeFilename(avatar.originalFilename)
-        // const avatarSaved = path.resolve(`${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}avatar-${avatar.originalFilename}`)
-        const avatarSaved = path.resolve(`${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}avatar-${avatarOriginalFilenameCleaned}`)
+        // const avatarSaved = path.resolve(
+        //   `${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}`
+        //   + `avatar-${avatar.originalFilename}`
+        // )
+        const avatarSaved = path.resolve(
+          `${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}`
+            + `avatar-${avatarOriginalFilenameCleaned}`
+        )
         await rename(avatar.filepath, avatarSaved)
-        // ctx.state.sessionUser.avatar = `${ctx.state.sessionUser.publicDir}avatar-${avatar.originalFilename}`
-        ctx.state.sessionUser.avatar = `${ctx.state.sessionUser.publicDir}avatar-${avatarOriginalFilenameCleaned}`
+        // ctx.state.sessionUser.avatar = `${ctx.state.sessionUser.publicDir}`
+        //   + `avatar-${avatar.originalFilename}`
+        ctx.state.sessionUser.avatar = `${ctx.state.sessionUser.publicDir}`
+          + `avatar-${avatarOriginalFilenameCleaned}`
       }
       // log('header file: %O', ctx.request.files.header)
       const { header } = ctx.request.files
       if (header.size > 0) {
         const headerOriginalFilenameCleaned = sanitizeFilename(header.originalFilename)
-        // const headerSaved = path.resolve(`${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}header-${header.originalFilename}`)
-        const headerSaved = path.resolve(`${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}header-${headerOriginalFilenameCleaned}`)
+        // const headerSaved = path.resolve(
+        //   `${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}`
+        //   + `header-${header.originalFilename}`
+        // )
+        const headerSaved = path.resolve(
+          `${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}`
+          + `header-${headerOriginalFilenameCleaned}`
+        )
         await rename(header.filepath, headerSaved)
-        // ctx.state.sessionUser.header = `${ctx.state.sessionUser.publicDir}header-${header.originalFilename}`
-        ctx.state.sessionUser.header = `${ctx.state.sessionUser.publicDir}header-${headerOriginalFilenameCleaned}`
+        // ctx.state.sessionUser.header = `${ctx.state.sessionUser.publicDir}`
+        //   + `header-${header.originalFilename}`
+        ctx.state.sessionUser.header = `${ctx.state.sessionUser.publicDir}`
+          + `header-${headerOriginalFilenameCleaned}`
       }
       try {
         ctx.state.sessionUser = await ctx.state.sessionUser.update()
@@ -556,7 +579,9 @@ router.get('adminListUsers', '/admin/account/listusers', hasFlash, async (ctx) =
       })
     } catch (e) {
       error('Error trying to retrieve list of all user accounts.')
-      ctx.throw('Error trying to retrieve list of all user accounts.')
+      // ctx.throw('Error trying to retrieve list of all user accounts.')
+      const err = new Error('Error trying to retrieve list of all user accounts.', { cause: e })
+      ctx.throw(500, err)
     }
     await ctx.render('account/admin-listusers', locals)
   }
@@ -607,7 +632,12 @@ router.get('adminViewUser', '/admin/account/view/:username', hasFlash, async (ct
     } catch (e) {
       error(`Error trying to retrieve ${ctx.params.username}'s account.`)
       error(e)
-      ctx.throw(500, `Error trying to retrieve ${ctx.params.username}'s account.`)
+      // ctx.throw(500, `Error trying to retrieve ${ctx.params.username}'s account.`)
+      const err = new Error(
+        `Error trying to retrieve ${ctx.params.username}'s account.`,
+        { cause: e },
+      )
+      ctx.throw(500, err)
     }
     await ctx.render('account/admin-user-view-details', locals)
   }
@@ -651,7 +681,12 @@ router.get('adminEditUserGet', '/admin/account/edit/:username', hasFlash, async 
     } catch (e) {
       error(`Error trying to retrieve ${ctx.params.username}'s account.`)
       error(e)
-      ctx.throw(500, `Error trying to retrieve ${ctx.params.username}'s account.`)
+      // ctx.throw(500, `Error trying to retrieve ${ctx.params.username}'s account.`)
+      const err = new Error(
+        `Error trying to retrieve ${ctx.params.username}'s account.`,
+        { cause: e },
+      )
+      ctx.throw(500, err)
     }
     await ctx.render('account/admin-user-edit-details', locals)
   }
@@ -762,8 +797,14 @@ router.post('adminEditUserPost', '/admin/account/edit', hasFlash, async (ctx) =>
         const { avatar } = ctx.request.files
         if (avatar.size > 0) {
           const avatarOriginalFilenameCleaned = sanitizeFilename(avatar.originalFilename)
-          // const avatarSaved = path.resolve(`${ctx.app.dirs.public.dir}/${displayUser.publicDir}avatar-${avatar.originalFilename}`)
-          const avatarSaved = path.resolve(`${ctx.app.dirs.public.dir}/${displayUser.publicDir}avatar-${avatarOriginalFilenameCleaned}`)
+          // const avatarSaved = path.resolve(
+          //   `${ctx.app.dirs.public.dir}/${displayUser.publicDir}`
+          //   + `avatar-${avatar.originalFilename}`
+          // )
+          const avatarSaved = path.resolve(
+            `${ctx.app.dirs.public.dir}/${displayUser.publicDir}`
+              + `avatar-${avatarOriginalFilenameCleaned}`
+          )
           await rename(avatar.filepath, avatarSaved)
           // displayUser.avatar = `${displayUser.publicDir}avatar-${avatar.originalFilename}`
           displayUser.avatar = `${displayUser.publicDir}avatar-${avatarOriginalFilenameCleaned}`
@@ -772,8 +813,14 @@ router.post('adminEditUserPost', '/admin/account/edit', hasFlash, async (ctx) =>
         const { header } = ctx.request.files
         if (header.size > 0) {
           const headerOriginalFilenameCleaned = sanitizeFilename(header.originalFilename)
-          // const headerSaved = path.resolve(`${ctx.app.dirs.public.dir}/${displayUser.publicDir}header-${header.originalFilename}`)
-          const headerSaved = path.resolve(`${ctx.app.dirs.public.dir}/${displayUser.publicDir}header-${headerOriginalFilenameCleaned}`)
+          // const headerSaved = path.resolve(
+          //   `${ctx.app.dirs.public.dir}/${displayUser.publicDir}`
+          //   + `header-${header.originalFilename}`
+          // )
+          const headerSaved = path.resolve(
+            `${ctx.app.dirs.public.dir}/${displayUser.publicDir}`
+            + `header-${headerOriginalFilenameCleaned}`
+          )
           await rename(header.filepath, headerSaved)
           // displayUser.header = `${displayUser.publicDir}header-${header.originalFilename}`
           displayUser.header = `${displayUser.publicDir}header-${headerOriginalFilenameCleaned}`
@@ -792,6 +839,8 @@ router.post('adminEditUserPost', '/admin/account/edit', hasFlash, async (ctx) =>
         } catch (e) {
           error(e)
           // ctx.throw(400, 'Failed to update user account.', e)
+          // const err = new Error('Failed to update user account.', { cause: e })
+          // ctx.throw(400, err)
           ctx.flash = {
             view: {
               info: null,
@@ -812,7 +861,9 @@ router.post('adminEditUserPost', '/admin/account/edit', hasFlash, async (ctx) =>
       }
     } catch (e) {
       error(e)
-      ctx.throw(500, 'Failed up update user\'s account.', e)
+      // ctx.throw(500, 'Failed up update user\'s account.', e)
+      const err = new Error('Failed up update user\'s account.', { cause: e })
+      ctx.throw(500, err)
     }
   }
 })
