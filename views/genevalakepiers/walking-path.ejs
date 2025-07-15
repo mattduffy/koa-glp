@@ -47,10 +47,18 @@
       Tap buttons to see points of interest along the walking path.
     </p>
     <div id="poiTypes" class="poiButtons">
-      <span id="restrooms" class="restrooms" data-type='restrooms'>Restrooms <span></span></span>
-      <span id="access" class="access" data-type='access'>Access <span></span></span>
-      <span id="food" class="food" data-type='food'>Food <span></span></span>
-      <span id="landmarks" class="landmarks" data-type='landmarks'>Landmarks <span></span></span>
+      <span id="restrooms" class="restrooms" data-type='restrooms' data-n=0>Restrooms 
+        <span></span>
+      </span>
+      <span id="access" class="access" data-type='access' data-n=0>Access 
+        <span></span>
+      </span>
+      <span id="food" class="food" data-type='food' data-n=0>Food 
+        <span></span>
+      </span>
+      <span id="landmarks" class="landmarks" data-type='landmarks' data-n=0>Landmarks 
+        <span></span>
+      </span>
     </div>
   </section>
   <section class="map">
@@ -236,15 +244,11 @@
           const response = await (await fetch(request)).json()
           console.log(response)
           const access = document.querySelector("span[data-type='access']")
-          access.addEventListener('click', poiButtonsHandler)
           const food = document.querySelector("span[data-type='food']")
-          food.addEventListener('click', poiButtonsHandler)
           const landmarks = document.querySelector("span[data-type='landmarks']")
-          landmarks.addEventListener('click', poiButtonsHandler)
           const restrooms = document.querySelector("span[data-type='restrooms']")
-          restrooms.addEventListener('click', poiButtonsHandler)
           response.documents.forEach((m) => {
-            console.log('m', m)
+            // console.log('m', m)
             let [lon, lat] = m.value.geometry.coordinates
             lon = parseFloat(lon, 10)
             lat = parseFloat(lat, 10)
@@ -277,11 +281,12 @@
                       const p = new window.mapkit.PlaceAnnotation(data)
                       const accessory = new mapkit.PlaceSelectionAccessory()
                       p.selectionAccessory = accessory
-                      console.log('p', p)
+                      // console.log('p', p)
                       // window.map.addItems([p])
                       switch (m.value.properties.type) {
                         case 'Access':
                           window._access.push(p)
+                          access.dataset.n = parseInt(access.dataset.n) + 1
                           if (!access.style.display) {
                             access.style.display = 'inline'
                             access.firstElementChild.textContent = 1
@@ -291,6 +296,7 @@
                           }
                           break     
                         case 'Food':
+                          food.dataset.n = parseInt(food.dataset.n) + 1
                           window._food.push(p)
                           if (!food.style.display) {
                             food.style.display = 'inline'
@@ -301,6 +307,7 @@
                           }
                           break     
                         case 'Landmark':
+                          landmarks.dataset.n = parseInt(landmarks.dataset.n) + 1
                           window._landmarks.push(p)
                           if (!landmarks.style.display) {
                             landmarks.style.display = 'inline'
@@ -311,6 +318,7 @@
                           }
                           break     
                         case 'Restroom':
+                          restrooms.dataset.n = parseInt(restrooms.dataset.n) + 1
                           window._restrooms.push(p)
                           if (!restrooms.style.display) {
                             restrooms.style.display = 'inline'
@@ -324,11 +332,22 @@
                           window._default.push(p)
                       }
                     }
+                    const buttons = document.querySelectorAll('span[data-n]')
+                    Array.from(buttons).sort((a, b) => {
+                      // console.log(a.dataset.n, b.dataset.n)
+                      return parseInt(a.dataset.n) < parseInt(b.dataset.n)
+                    }).forEach((b) => {
+                      buttons[0].parentElement.appendChild(b)
+                    })
                   }
                 )
               }
             }
           })
+          access.addEventListener('click', poiButtonsHandler)
+          food.addEventListener('click', poiButtonsHandler)
+          landmarks.addEventListener('click', poiButtonsHandler)
+          restrooms.addEventListener('click', poiButtonsHandler)
         } catch (e) {
           console.error(e)
         }
@@ -336,13 +355,19 @@
       function poiButtonsHandler(e) {
         e.preventDefault()
         e.stopPropagation()
+        let _target
         // console.log(e.target) 
-        if (!e.target.classList.contains(`${e.target.dataset.type}On`)) {
-          e.target.classList.add(`${e.target.dataset.type}On`)
-          window.map.addItems(window[`_${e.target.dataset.type}`])
+        if (e.target?.dataset.n) {
+          _target = e.target
         } else {
-          e.target.classList.remove(`${e.target.dataset.type}On`)
-          window.map.removeAnnotations(window[`_${e.target.dataset.type}`])
+          _target = e.target.parentElement
+        }
+        if (!_target.classList.contains(`${_target.dataset.type}On`)) {
+          _target.classList.add(`${_target.dataset.type}On`)
+          window.map.addItems(window[`_${_target.dataset.type}`])
+        } else {
+          _target.classList.remove(`${_target.dataset.type}On`)
+          window.map.removeAnnotations(window[`_${_target.dataset.type}`])
         }
       }
       window.map.addEventListener("single-tap", async (e) => {
