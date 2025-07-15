@@ -390,11 +390,13 @@ div#searchResults > ul.searchResults:before {
 }
 
 .access {
-  background-color: lightyellow;
+  /*background-color: lightyellow;*/
+  background-color: #62C8EF;
   border: 1px solid white;
 }
 .accessOn {
-  background-color: lightgoldenrodyellow;
+  /*background-color: lightgoldenrodyellow;*/
+  background-color: #62C8EF;
   font-weight: 500;
   border: 1px solid black;
 }
@@ -420,11 +422,13 @@ span#access {
 }
 
 .food {
-  background-color: lightgreen;
+  /*background-color: lightgreen;*/
+  background-color: #FD9F59;
   border: 1px solid white;
 }
 .foodOn {
-  background-color: palegreen;
+  /*background-color: palegreen;*/
+  background-color: #FD9F59;
   font-weight: 500;
   border: 1px solid black;
 }
@@ -450,11 +454,12 @@ span#food {
 }
 
 .restrooms {
-  background-color: lightblue;
+  /*background-color: lightblue;*/
+  background-color: #9F69D7;
   border: 1px solid white;
 }
 .restroomsOn {
-  background-color: skyblue;
+  background-color: #9F69D7;
   font-weight: 500;
   border: 1px solid black;
 }
