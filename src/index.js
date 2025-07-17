@@ -166,20 +166,30 @@ async function openGraph(ctx, next) {
   ogArray.push('<meta property="og:type" content="website">')
   ogArray.push('<meta property="og:site_name" content="Geneva Lake Piers">')
   ogArray.push('<meta property="og:title" content="The Piers of Geneva Lake">')
-  ogArray.push(`<meta property="og:url" content="${ctx.request.protocol}://${ctx.app.domain}">`)
-  ogArray.push(`<meta property="og:image" content="${ctx.request.protocol}://${ctx.app.domain}/i/ogEmbed-450x295.jpg">`)
+  ogArray.push(`<meta property="og:url" content="${ctx.request.href}${ctx.request.search}">`)
+  ogArray.push(`<meta property="og:image" content="${ctx.state.origin}/i/ogEmbed-450x295.jpg">`)
   ogArray.push('<meta property="og:image:type" content="image/jpeg">')
   ogArray.push('<meta property="og:image:width" content="450">')
   ogArray.push('<meta property="og:image:height" content="295">')
-  ogArray.push('<meta property="og:image:alt" content="Arial photo of the municipal piers in The City of Lake Geneva, Wisconsin.">')
-  ogArray.push('<meta property="og:description" content="Information and location of all the piers on Genava Lake.">')
+  ogArray.push('<meta property="og:image:alt" content='
+    + '"Arial photo of the municipal piers in The City of Lake Geneva, Wisconsin.">'
+  )
+  ogArray.push('<meta property="og:description" content='
+    + '"Information and location of all the piers on Genava Lake.">'
+  )
   const twitArray = []
   twitArray.push('<meta name="twitter:card" content="summary_large_image">')
   twitArray.push('<meta property="twitter:domain" content="genevalakepiers.com">')
-  twitArray.push(`<meta property="twitter:url" content="${ctx.request.protocol}://${ctx.app.domain}">`)
-  twitArray.push(`<meta name="twitter:image" content="${ctx.request.protocol}://${ctx.app.domain}/i/ogEmbed-450x295.jpg">`)
+  twitArray.push('<meta property="twitter:url" content="'
+    + `${ctx.request.href}${ctx.request.search}">`
+  )
+  twitArray.push('<meta name="twitter:image" content="'
+    + `${ctx.state.origin}/i/ogEmbed-450x295.jpg">`
+  )
   twitArray.push('<meta name="twitter:title" content="The Piers of Geneva Lake">')
-  twitArray.push('<meta name="twitter:description" content="Information and location of all the piers on Genava Lake.">')
+  twitArray.push('<meta name="twitter:description" content='
+    + '"Information and location of all the piers on Genava Lake.">'
+  )
   ctx.state.openGraph = ogArray.concat(twitArray).join('\n')
   logg(ctx.state.openGraph)
   await next()
@@ -189,13 +199,13 @@ async function permissions(ctx, next) {
   const logg = log.extend('Permissions')
   const err = error.extend('Permissions')
   let perms
-  logg(ctx.request.origin)
+  logg(ctx.state.origin)
   logg(ctx.request.hostname)
   if (/^192(\.\d{1,3})+/.test(ctx.request.hostname)) {
     perms = 'geolocation=(*)'
     logg(`Permissions-Policy: ${perms}`)
   } else {
-    perms = `geolocation=("${ctx.request.origin}")`
+    perms = `geolocation=("${ctx.state.origin}")`
   }
   ctx.set('Permissions-Policy', perms)
   try {
@@ -281,11 +291,12 @@ async function viewGlobals(ctx, next) {
     ctx.state.origin = `${ctx.request.protocol}://${ctx.host}`
     ctx.state.domain = `${ctx.request.protocol}://${ctx.host}`
   } else {
-    ctx.state.origin = `${ctx.request.protocol}://${ctx.app.domain}`
+    // ctx.state.origin = `${ctx.request.protocol}://${ctx.app.domain}`
+    ctx.state.origin = `${ctx.request.protocol}://${ctx.request.host}`
     ctx.state.domain = `${ctx.request.protocol}://${ctx.app.domain}`
   }
-  logg(ctx.state.origin)
-  logg(ctx.state.domain)
+  logg('ctx.state.origin', ctx.state.origin)
+  logg('ctx.state.domain', ctx.state.domain)
   ctx.state.nonce = crypto.randomBytes(16).toString('base64')
   ctx.state.siteName = ctx.app.site
   ctx.state.appName = ctx.app.site.toProperCase()
