@@ -83,7 +83,6 @@ router.get('piersByTown', '/towns/:town', async (ctx) => {
 //       theApp,
 //       csrfToken,
 //       nonce: ctx.app.nonce,
-//       origin: ctx.request.origin,
 //       flash: ctx.flash.view ?? {},
 //       title: `${ctx.app.site}: App keys`,
 //       isAuthenticated: ctx.state.isAuthenticated,

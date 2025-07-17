@@ -12,8 +12,13 @@ import { ulid } from 'ulid'
 // import { ObjectId } from 'mongodb'
 import formidable from 'formidable'
 import { _log, _error } from '../utils/logging.js'
-/* eslint-disable-next-line no-unused-vars */
 import { Users, AdminUser } from '../models/users.js'
+import {
+  addIpToSession,
+  doTokensMatch,
+  processFormData,
+  hasFlash,
+} from './middlewares.js'
 
 const USERS = 'users'
 const accountLog = _log.extend('account')
@@ -42,17 +47,6 @@ function sanitizeFilename(filename) {
   const cleanName = filename.replace(/[\s!@#\$%&*\(\)](?!(\.\w{1,4}$))/g, '_')
   console.info(`Sanitizing filename ${filename} to ${cleanName}`)
   return cleanName
-}
-
-async function hasFlash(ctx, next) {
-  const log = accountLog.extend('hasFlash')
-  const error = accountError.extend('hasFlash')
-  if (ctx.flash) {
-    log('ctx.flash is present: %o', ctx.flash)
-  } else {
-    error('ctx.flash is missing.')
-  }
-  await next()
 }
 
 router.get('accountPasswordGET', '/account/change/password', hasFlash, async (ctx) => {
@@ -239,7 +233,7 @@ router.get(
         status = 200
         body = {
           status: 'success',
-          url: `${ctx.request.origin}/${user.url}/jwks.json`,
+          url: `${ctx.state.origin}/${user.url}/jwks.json`,
           keys: await user.publicKeys(0, 'jwk'),
         }
       } else {
@@ -279,8 +273,6 @@ router.get('accountPublicKeys', '/account/pubkeys', hasFlash, async (ctx) => {
         csrfToken,
         body: ctx.body,
         pageName: 'pubkeys',
-        // nonce: ctx.app.nonce,
-        // origin: ctx.request.origin,
         // sessionUser: ctx.state.sessionUser,
         view: ctx.flash.view ?? {},
         title: `${ctx.app.site}: View Public Key`,
@@ -323,12 +315,11 @@ router.get('accountView', '/account/view', hasFlash, async (ctx) => {
       sessionUser: ctx.state.sessionUser,
       body: ctx.body,
       edit: ctx.flash.edit ?? {},
-      origin: `${ctx.request.origin}`,
       // csrfToken: new ObjectId().toString(),
       csrfToken: ulid(),
       isAuthenticated: ctx.state.isAuthenticated,
-      defaultAvatar: `${ctx.request.origin}/i/accounts/avatars/missing.png`,
-      defaultHeader: `${ctx.request.origin}/i/accounts/headers/generic.png`,
+      defaultAvatar: '/i/accounts/avatars/missing.png',
+      defaultHeader: '/i/accounts/headers/generic.png',
       title: `${ctx.app.site}: View Account Details`,
     }
     ctx.status = 200
@@ -570,7 +561,6 @@ router.get('adminListUsers', '/admin/account/listusers', hasFlash, async (ctx) =
       locals.jwtAccess = (ctx.state.sessionUser.jwts).token
       locals.csrfToken = csrfToken
       // locals.nonce = ctx.app.nonce
-      // locals.origin = ctx.request.origin
       locals.title = `${ctx.state.siteName}: List Users`
       locals.isAuthenticated = ctx.state.isAuthenticated
       allUsers.map((u) => {
@@ -579,7 +569,6 @@ router.get('adminListUsers', '/admin/account/listusers', hasFlash, async (ctx) =
       })
     } catch (e) {
       error('Error trying to retrieve list of all user accounts.')
-      // ctx.throw('Error trying to retrieve list of all user accounts.')
       const err = new Error('Error trying to retrieve list of all user accounts.', { cause: e })
       ctx.throw(500, err)
     }
@@ -620,19 +609,17 @@ router.get('adminViewUser', '/admin/account/view/:username', hasFlash, async (ct
       locals.csrfToken = csrfToken
       locals.displayUser = displayUser
       locals.view = ctx.flash.view ?? {}
-      // locals.origin = ctx.request.origin
       locals.pageName = 'admin_account_view'
       // locals.privateDir = ctx.app.privateDir
       locals.privateDir = ctx.app.dirs.private.dir
       locals.isAuthenticated = ctx.state.isAuthenticated
       locals.jwtAccess = (ctx.state.sessionUser.jwts).token
       locals.title = `${ctx.app.site}: View ${ctx.params.username}`
-      locals.defaultAvatar = `${ctx.request.origin}/i/accounts/avatars/missing.png`
-      locals.defaultHeader = `${ctx.request.origin}/i/accounts/headers/generic.png`
+      locals.defaultAvatar = '/i/accounts/avatars/missing.png'
+      locals.defaultHeader = '/i/accounts/headers/generic.png'
     } catch (e) {
       error(`Error trying to retrieve ${ctx.params.username}'s account.`)
       error(e)
-      // ctx.throw(500, `Error trying to retrieve ${ctx.params.username}'s account.`)
       const err = new Error(
         `Error trying to retrieve ${ctx.params.username}'s account.`,
         { cause: e },
@@ -671,7 +658,6 @@ router.get('adminEditUserGet', '/admin/account/edit/:username', hasFlash, async 
       displayUser = await users.getByUsername(displayUser)
       locals.edit = ctx.flash.edit ?? {}
       locals.title = `${ctx.app.site}: Edit ${ctx.params.username}`
-      locals.origin = ctx.request.origin
       locals.isAuthenticated = ctx.state.isAuthenticated
       const csrfToken = ulid()
       ctx.session.csrfToken = csrfToken
@@ -681,7 +667,6 @@ router.get('adminEditUserGet', '/admin/account/edit/:username', hasFlash, async 
     } catch (e) {
       error(`Error trying to retrieve ${ctx.params.username}'s account.`)
       error(e)
-      // ctx.throw(500, `Error trying to retrieve ${ctx.params.username}'s account.`)
       const err = new Error(
         `Error trying to retrieve ${ctx.params.username}'s account.`,
         { cause: e },
@@ -838,7 +823,6 @@ router.post('adminEditUserPost', '/admin/account/edit', hasFlash, async (ctx) =>
           }
         } catch (e) {
           error(e)
-          // ctx.throw(400, 'Failed to update user account.', e)
           // const err = new Error('Failed to update user account.', { cause: e })
           // ctx.throw(400, err)
           ctx.flash = {
@@ -861,7 +845,6 @@ router.post('adminEditUserPost', '/admin/account/edit', hasFlash, async (ctx) =>
       }
     } catch (e) {
       error(e)
-      // ctx.throw(500, 'Failed up update user\'s account.', e)
       const err = new Error('Failed up update user\'s account.', { cause: e })
       ctx.throw(500, err)
     }

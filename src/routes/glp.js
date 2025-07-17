@@ -887,7 +887,7 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) 
   if (pierNumber !== zeroPaddedPierNumber) {
     ctx.status = 301
     ctx.redirect(`/pier/${zeroPaddedPierNumber}`)
-    ctx.body = `Redirecting to ${ctx.origin}/pier/${zeroPaddedPierNumber}`
+    ctx.body = `Redirecting to ${ctx.state.origin}/pier/${zeroPaddedPierNumber}`
   } else {
     const locals = {}
     let key = `glp:piers:${pierNumber}`
@@ -1523,7 +1523,6 @@ router.get('galleries', '/galleries', hasFlash, addIpToSession, async (ctx) => {
     recent10,
     userAlbums,
     body: ctx.body,
-    origin: ctx.request.origin,
     flash: ctx.flash?.galleries ?? {},
     title: `${ctx.app.site}: Galleries`,
     sessionUser: ctx.state.sessionUser,

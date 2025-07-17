@@ -6,9 +6,7 @@
  */
 
 import Router from '@koa/router'
-// import formidable from 'formidable'
 import { ulid } from 'ulid'
-/* eslint-disable-next-line no-unused-vars */
 import { ObjectId } from 'mongodb'
 import {
   addIpToSession,
@@ -42,10 +40,6 @@ router.get('getLogin', '/login', async (ctx, next) => {
   const csrfToken = ulid()
   // const flashMessage = ctx.flash
   const locals = {
-    // origin: ctx.request.origin,
-    // siteName: ctx.app.site,
-    // appName: ctx.app.site.toProperCase(),
-    // nonce: ctx.app.nonce,
     body: ctx.body,
     title: `${ctx.app.site}: Login`,
     sessionUser: ctx.state.sessionUser,
@@ -65,8 +59,8 @@ router.post('postLogin', '/login', addIpToSession, processFormData, async (ctx) 
   const csrfTokenCookie = ctx.cookies.get('csrfToken')
   const csrfTokenSession = ctx.session.csrfToken
   const sessionId = ctx.cookies.get('session')
-  const username = ctx.request.body.username[0]
-  const password = ctx.request.body.password[0]
+  const [username] = ctx.request.body.username
+  const [password] = ctx.request.body.password
   if (!doTokensMatch(ctx)) {
     error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
     ctx.status = 401
@@ -93,6 +87,7 @@ router.post('postLogin', '/login', addIpToSession, processFormData, async (ctx) 
           error: authUser.error,
         },
       }
+      error(`Unsuccesful login attempt for ${username}`)
       ctx.redirect('/login')
     } else if (authUser) {
       await db.collection('loginAttempts').insertOne(doc)
