@@ -39,11 +39,14 @@
           <dd><% if (sessionUser) { %><%= `${origin}/${sessionUser?.url}` %><% } %></dd>
 
           <dt>JWK Set: </dt>
-          <dd><% if (sessionUser?._keys.signing.length > 0 || sessionUser?._keys.encrypting.length > 0) { %>
-              <a href="<%= `${origin}/@${sessionUser.username}/jwks.json` %>"><%= `${origin}/@${sessionUser.username}/jwks.json` %></a>
-              <% } else { %>
-              No public keys available. 
-              <% } %>
+          <dd><% if (sessionUser?._keys.signing.length > 0
+            || sessionUser?._keys.encrypting.length > 0) { %>
+              <a href="<%= `${origin}/@${sessionUser.username}/jwks.json` %>">
+                <%= `${origin}/@${sessionUser.username}/jwks.json` %>
+              </a>
+          <% } else { %>
+            No public keys available. 
+          <% } %>
           </dd>
 
           <dt>Webfinger: </dt>
@@ -56,8 +59,11 @@
           <dd><% if (sessionUser) { %><%=sessionUser?.primaryEmail.primary %><% } %></dd>
           
           <dt>Secondary Email Address: </dt>
-          <dd><% if (sessionUser) {
-            %><%-sessionUser?.email.secondaryEmail?.secondary || '<span class="smallem">none provided</span>' %><% } %></dd>
+          <dd><% if (sessionUser) { %>
+          <%- sessionUser?.email.secondaryEmail?.secondary
+              || '<span class="smallem">none provided</span>' %>
+          <% } %>
+          </dd>
               
           <dt>Account Type: </dt>
           <dd><% if (sessionUser) { %><%=sessionUser?.type %><% } %></dd>
@@ -72,7 +78,10 @@
           <dd><% if (sessionUser) { %><%= (sessionUser?.locked) ? 'Yes': 'No' %><% } %></dd>
 
           <dt>Discoverable: </dt>
-          <dd><% if (sessionUser) { %><%= (sessionUser?.discoverable) ? 'Yes' : 'No' %><% } %></dd>
+          <dd><% if (sessionUser) { %>
+          <%= (sessionUser?.discoverable) ? 'Yes' : 'No' %>
+          <% } %>
+          </dd>
 
           <dt>Bot Account: </dt>
           <dd><% if (sessionUser) { %><%= (sessionUser?.bot) ? 'Yes': 'No' %><% } %></dd>
@@ -81,7 +90,9 @@
           <dd><% if (sessionUser) { %><%= (sessionUser?.group) ? 'Yes' : 'No' %><% } %></dd>
 
           <dt>User Upload Dir: </dt>
-          <dd><% if (sessionUser.publicDir !== '') { %><%= `${origin}/${sessionUser?.publicDir}` %><% } else { %>
+          <dd><% if (sessionUser.publicDir !== '') { %>
+          <%= `${origin}/${sessionUser?.publicDir}` %>
+          <% } else { %>
             <span class="smallem">not set yet</span>
           <% } %>
           </dd>
@@ -91,11 +102,15 @@
             <figure>
               <picture>
                 <% if (sessionUser.avatar !== '') { %>
-                <source srcset="<%= `${origin}/${sessionUser?.avatar}`%>" media="(min-width: 1200px)" id="avatar-big" width="350px" alt="avatar image">
-                <source srcset="<%= `${origin}/${sessionUser?.avatar}`%>" media="(min-width: 600px)" id="avatar-med" width="300px" alt="avatar image">
-                <source srcset="<%= `${origin}/${sessionUser?.avatar}`%>" media="(min-width: 300px)" id="avatar-sml" width="250px" alt="avatar image">
+                <source srcset="<%= `${origin}/${sessionUser?.avatar}`%>" 
+                  media="(min-width: 1200px)" id="avatar-big" width="350px" alt="avatar image">
+                <source srcset="<%= `${origin}/${sessionUser?.avatar}`%>" 
+                  media="(min-width: 600px)" id="avatar-med" width="300px" alt="avatar image">
+                <source srcset="<%= `${origin}/${sessionUser?.avatar}`%>" 
+                  media="(min-width: 300px)" id="avatar-sml" width="250px" alt="avatar image">
                 <% } %>
-                <img src="<%= defaultAvatar %>" id="defaultAvatar" alt="default avatar image">
+                <img src="<%= `${origin}${defaultAvatar}` %>" id="defaultAvatar" 
+                  alt="default avatar image">
                 <% if (sessionUser.avatar === '') { %>
                 <figcaption>
                   <span class="smallem">Default avatar.  No avatar image uploaded yet.</span><br>
@@ -110,11 +125,15 @@
             <figure>
               <picture>
                 <% if (sessionUser.header !== '') { %>
-                <source srcset="<%= `${origin}/${sessionUser?.header}` %>" media="(min-width: 1000px)" id="header-big" width="350px" alt="header image">
-                <source srcset="<%= `${origin}/${sessionUser?.header}` %>" media="(min-width: 600px)" id="header-med" width="300px" alt="header image">
-                <source srcset="<%= `${origin}/${sessionUser?.header}` %>" media="(min-width: 300px)" id="header-sml" width="250px" alt="header image">
+                <source srcset="<%= `${origin}/${sessionUser?.header}` %>" 
+                  media="(min-width: 1000px)" id="header-big" width="350px" alt="header image">
+                <source srcset="<%= `${origin}/${sessionUser?.header}` %>" 
+                  media="(min-width: 600px)" id="header-med" width="300px" alt="header image">
+                <source srcset="<%= `${origin}/${sessionUser?.header}` %>" 
+                  media="(min-width: 300px)" id="header-sml" width="250px" alt="header image">
                 <% } %>
-                <img src="<%= defaultHeader %>" id="defaultHeader" alt="default header image">
+                <img src="<%= `${origin}${defaultHeader}` %>" id="defaultHeader" 
+                  alt="default header image">
                 <% if (sessionUser.header === '') { %>
                 <figcaption>
                   <span class="smallem">Default header.  No header image uploaded yet.</span><br>
