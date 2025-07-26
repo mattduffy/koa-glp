@@ -2,7 +2,7 @@
  * @summary Koa router for the public .well-known resources.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/wellKnown.js The router for public well-known URI actions.
+ * @file src/routes/wellKnown.js
  */
 
 // import path from 'node:path'

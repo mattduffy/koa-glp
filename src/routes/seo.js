@@ -2,7 +2,7 @@
  * @summary Koa router for the app seo api endpoints.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/seo.js The router for the app seo api endpoints.
+ * @file src/routes/seo.js
  */
 
 import path from 'node:path'

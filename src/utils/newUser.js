@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/newUser.js The script to create a new user account.
+ * @summary The script to create a new user account.
+ * @file src/utils/newUser.js
  */
 
 import path from 'node:path'

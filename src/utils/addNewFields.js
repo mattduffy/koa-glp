@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/addNewField.js The script to add new fields to the pier file.
+ * @summary The script to add new fields to the pier file.
+ * @file src/utils/addNewField.js
  */
 import path from 'node:path'
 import { readdir, readFile, writeFile } from 'node:fs/promises'

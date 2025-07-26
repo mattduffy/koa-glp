@@ -2,7 +2,7 @@
  * @summary Koa router for Activity Stream related actions.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/activity_stream.js The router for Activity Stream related actions.
+ * @file src/routes/activity_stream.js
  */
 
 import Router from '@koa/router'

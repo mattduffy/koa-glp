@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/deleteData.js The script to bulk delete keys from redis.
+ * @summary The script to bulk delete keys from redis.
+ * @file src/utils/deleteData.js
  */
 /* eslint-disable import/no-extraneous-dependencies */
 import path from 'node:path'

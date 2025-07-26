@@ -2,7 +2,7 @@
  * @summary Useful router middleware functions.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/middlewares.js A small library of useful router middleware funtions.
+ * @file src/routes/middlewares.js
  */
 
 import formidable from 'formidable'

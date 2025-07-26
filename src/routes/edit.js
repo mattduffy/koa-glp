@@ -2,7 +2,7 @@
  * @summary Koa router for editing the main top-level pages.
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/edit.js The router for editing the top level app URLs.
+ * @file src/routes/edit.js
  */
 
 import path from 'node:path'

@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/cluster.js The Node.js cluster module entry point the Geneva Lake Piers app.
+ * @summary The Node.js cluster module entry point the Geneva Lake Piers app.
+ * @file src/cluster.js
  */
 
 import cluster from 'node:cluster'

@@ -2,7 +2,7 @@
  * @summary Koa router for the main top-level pages.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/glp.js The router for the top level app URLs.
+ * @file src/routes/glp.js
  */
 
 import Router from '@koa/router'

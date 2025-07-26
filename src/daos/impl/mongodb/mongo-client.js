@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/daos/imple/mongodb/mongo-client.js The low-level connection object of mongodb.
+ * @summary The low-level connection object of mongodb.
+ * @file src/daos/imple/mongodb/mongo-client.js
  */
 
 import path from 'node:path'

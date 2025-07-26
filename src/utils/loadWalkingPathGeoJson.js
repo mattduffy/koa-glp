@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/loadWalkingPathGeoJson.js The script to generate GeoJSON lineString for the walking path.
+ * @summary The script to generate GeoJSON lineString for the walking path.
+ * @file src/utils/loadWalkingPathGeoJson.js
  */
 /* eslint-disable import/no-extraneous-dependencies */
 import path from 'node:path'

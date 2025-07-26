@@ -2,7 +2,7 @@
  * @summary Koa router for the main top-level pages.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/api_v1.js The router for the version 1 api endpoints.
+ * @file src/routes/api_v1.js
  */
 
 import Router from '@koa/router'

@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/index.js The entry point the Geneva Lake Piers app.
+ * @summary The entry point the Geneva Lake Piers app.
+ * @file src/index.js
  */
 
 import path from 'node:path'

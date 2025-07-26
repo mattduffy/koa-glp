@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/addHiddenField.js The script to perform a one-time refactoring of $.owners[*].members fields.
+ * @summary The script to perform a one-time refactoring of $.owners[*].members fields.
+ * @file src/utils/addHiddenField.js
  */
 import path from 'node:path'
 import { readdir, readFile, writeFile } from 'node:fs/promises'

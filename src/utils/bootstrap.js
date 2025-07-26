@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/bootstrap.js The script to bootstrap the app.
+ * @summary The script to bootstrap the app.
+ * @file src/utils/bootstrap.js
  */
 
 import path from 'node:path'

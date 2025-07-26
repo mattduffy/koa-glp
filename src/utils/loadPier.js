@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/loadPier.js The script to load a single pier's data into redis.
+ * @summary The script to load a single pier's data into redis.
+ * @file src/utils/loadPier.js
  */
 
 import path from 'node:path'

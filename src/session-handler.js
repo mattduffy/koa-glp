@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/session-handler.js The setup and configuration of the koa app session handler.
+ * @summary The setup and configuration of the koa app session handler.
+ * @file src/session-handler.js
  */
 
 // import fs from 'node:fs/promises'

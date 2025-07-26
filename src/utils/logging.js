@@ -1,8 +1,8 @@
 /**
- * @summary A small wrapper around the Debug package to setup the namespace.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/logging.js A small wrapper around the Debug package to setup the namespace.
+ * @summary A small wrapper around the Debug package to setup the namespace.
+ * @file src/utils/logging.js
  */
 
 import Debug from 'debug'

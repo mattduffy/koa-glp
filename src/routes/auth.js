@@ -2,7 +2,7 @@
  * @summary Koa router for the main top-level pages.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/auth.js The router for authentication related actions.
+ * @file src/routes/auth.js
  */
 
 import Router from '@koa/router'

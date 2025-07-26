@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/creatGeoJsonFiles.js The script to generate GeoJSON shapefiles for each town.
+ * @summary The script to generate GeoJSON shapefiles for each town.
+ * @file src/utils/creatGeoJsonFiles.js
  */
 /* eslint-disable import/no-extraneous-dependencies */
 import path from 'node:path'

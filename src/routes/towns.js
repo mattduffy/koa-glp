@@ -2,7 +2,7 @@
  * @summary Koa router for the towns api endpoints.
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/towns.js The router for the towns api endpoints.
+ * @file src/routes/towns.js
  */
 
 import Router from '@koa/router'

@@ -2,7 +2,7 @@
  * @summary Koa router for the account api endpoints.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/account.js The router for the account api endpoints.
+ * @file src/routes/account.js
  */
 
 import path from 'node:path'

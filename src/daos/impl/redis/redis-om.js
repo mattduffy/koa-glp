@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/daos/imple/redis/redis-om.js The low-level connection object of redis-om.
+ * @summary The low-level connection object of redis-om.
+ * @file src/daos/imple/redis/redis-om.js
  */
 
 import path from 'node:path'

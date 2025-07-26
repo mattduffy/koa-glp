@@ -1,8 +1,8 @@
 /**
- * @summary Schema migrations for the User object model.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/migrations/user-schema.js A schema migration .
+ * @summary Schema migrations for the User object model.
+ * @file src/utils/migrations/user-schema.js
  */
 
 import { client } from '../../daos/impl/mongodb/mongo-client.js'

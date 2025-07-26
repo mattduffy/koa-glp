@@ -2,7 +2,7 @@
  * @summary Koa router for the apple mapkit api endpoints.
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/mapkit.js The router for the apple mapkit api endpoints.
+ * @file src/routes/mapkit.js
  */
 
 import path from 'node:path'

@@ -2,7 +2,7 @@
  * @summary Koa router for the user api endpoints.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/users.js The router for the user api endpoints.
+ * @file src/routes/users.js
  */
 
 /* eslint-disable no-unused-vars */

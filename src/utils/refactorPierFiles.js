@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/refactorPiersFiles.js The script to perform a one-time refactoring of the pier data files.
+ * @summary The script to perform a one-time refactoring of the pier data files.
+ * @file src/utils/refactorPiersFiles.js
  */
 import path from 'node:path'
 import { readdir, readFile, writeFile } from 'node:fs/promises'

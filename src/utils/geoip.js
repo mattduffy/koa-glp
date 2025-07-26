@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/exif-inspector
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/geoip.js A simple middleware to expose Maxmind GeoIP databases.
+ * @summary A simple middleware to expose Maxmind GeoIP databases.
+ * @file src/utils/geoip.js
  */
 
 import * as dotenv from 'dotenv'

@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/addNormalizeAccocs.js The script to perform a one-time normalization to abbreviated versions of Assocciation (assn, Assoc, Ass, etc).
+ * @summary The script to perform a one-time normalization to abbreviated versions of Assocciation (assn, Assoc, Ass, etc).
+ * @file src/utils/addNormalizeAccocs.js
  */
 import path from 'node:path'
 import { readdir, readFile, writeFile } from 'node:fs/promises'

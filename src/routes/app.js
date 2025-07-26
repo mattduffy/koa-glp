@@ -2,7 +2,7 @@
  * @summary Koa router for the app api endpoints.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/routes/app.js The router for the app api endpoints.
+ * @file src/routes/app.js
  */
 
 import Router from '@koa/router'
