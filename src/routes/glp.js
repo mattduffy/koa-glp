@@ -1318,11 +1318,14 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
           })
         }
         log(`Pier estate name tokens: ${pierEstatenameTokens}`)
-        idxPierEstateName = 'glp:idx:piers:estateName'
-        queryPierEstateName = `@estateName:${pierEstatenameTokens}`
+        // idxPierEstateName = 'glp:idx:piers:estateName'
+        idxPierEstateName = 'glp:idx:piers:estateNameDM'
+        // queryPierEstateName = `@estateName:${pierEstatenameTokens}`
+        queryPierEstateName = `@estateNameDM:${pierEstatenameTokens}`
         optsPierEstateName = {}
         optsPierEstateName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
-        optsPierEstateName.RETURN = ['pier', 'estateName', '$.loc', 'AS', 'coords']
+        // optsPierEstateName.RETURN = ['pier', 'estateName', '$.loc', 'AS', 'coords']
+        optsPierEstateName.RETURN = ['pier', 'estateNameDM', '$.loc', 'AS', 'coords']
         optsPierEstateName.LIMIT = { from: 0, size: 20 }
         log(`Pier estate name FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}"`)
         results.estateNames = await redis.ft.search(

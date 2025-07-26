@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @file src/utils/loadData.js The script to load pier data into redis.
+ * @summary The script to load pier data into redis.
+ * @file src/utils/loadData.js
  */
 /* eslint-disable import/no-extraneous-dependencies */
 import path from 'node:path'
@@ -213,13 +214,14 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
       {
         '$.pier': {
           type: SchemaFieldTypes.TEXT,
-          SORTABLE: true,
           AS: 'pier',
+          SORTABLE: true,
         },
         '$.owners[*].estateName': {
           type: SchemaFieldTypes.TEXT,
-          SORTABLE: true,
           AS: 'estateName',
+          SORTABLE: true,
+          // PHONETIC: 'dm:es',
         },
       },
       {

@@ -11,7 +11,7 @@
       business.</label>
       <input id="searchBoxId" name="searchBox" type="search" value="" size="30">
       <input id="csrf-tokenId" name="csrf-token" type="hidden" value="<%= csrfToken %>">
-      <input id="submit" type="submit" value="Find Piers">
+      <input id="submit" type="submit" value="Search">
     </form>
   </div>
   <div id="searchResults">
@@ -211,7 +211,9 @@
           estateNameResultsList.classList.add('searchResults', 'estateNameResults')
           json.estateNames.documents.forEach((e) => {
             const li = document.createElement('li')
-            const link = `<a href="<%= origin %>/pier/${e.value['pier']}">Pier ${e.value['pier']} ${e.value.estateName}</a>`
+            const link = `<a href="<%= origin %>/pier/${e.value['pier']}">`
+              + `Pier ${e.value['pier']} `
+              + `${(e.value.estateName) ? e.value.estateName: e.value.estateNameDM}</a>`
             li.innerHTML = link
             estateNameResultsList.appendChild(li)
             // create mapkit annotation for pier
