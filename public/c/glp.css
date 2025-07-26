@@ -226,7 +226,7 @@ header> div#menu-layer {
   z-index: 1006;
   position: absolute;
   background-color: #f9f9f9;
-  width: max-content;
+  width: fit-content;
   top: 65px;
   left: 1em;
   padding-left: 1.5em;
@@ -246,8 +246,8 @@ header > * > ul.header-links {
   display: none;
   grid-column-start: 2;
   position: relative;
-  left: -19%;
-  margin-top: -5px;
+  left: -2em;
+  margin-top: -.5em;
 }
 
 header > * > ul > li {
@@ -704,8 +704,8 @@ footer > section {
     grid-row-start: 2;
     grid-column-start: 1;
     position: relative;
-    left: -10%;
-    margin-top: 0px;
+    left: -2em;
+    margin-top: -.5em;
     overflow: scroll;
   }
 
@@ -881,8 +881,8 @@ footer > section {
     display: none;
     grid-column-start: 2;
     position: relative;
-    left: -3%!important;
-    margin-top: -5px;
+    left: -2em!important;
+    margin-top: -.5em;
   }
 
   header > * > ul > li {
