@@ -14,7 +14,7 @@ import { Command } from 'commander'
 /* eslint-disable-next-line */
 import * as Users from '@mattduffy/users/Users.js'
 import * as mongoClient from '../daos/impl/mongodb/mongo-client.js'
-// import * as redis from '../daos/impl/redis/redis-client.js'
+// import ioredis from '../daos/impl/redis/ioredis-client.js'
 // import { App } from '../models/app.js'
 // import { Users } from '../models/users.js'
 import { _log, _error } from './logging.js'
@@ -27,10 +27,18 @@ const __dirname = path.dirname(__filename)
 const appRoot = path.resolve(`${__dirname}/../..`)
 const appEnv = {}
 log(`appRoot: ${appRoot}`)
-dotenv.config({ path: path.resolve(appRoot, 'config/app.env'), processEnv: appEnv, debug: true })
+dotenv.config({
+  path: path.resolve(appRoot, 'config/app.env'),
+  processEnv: appEnv,
+  debug: true,
+})
 // log(appEnv)
 // const mongoEnv = {}
-// dotenv.config({ path: path.resolve(appRoot, 'config/mongodb.env'), processEnv: mongoEnv, debug: true })
+// dotenv.config({
+//   path: path.resolve(appRoot, 'config/mongodb.env'),
+//   processEnv: mongoEnv,
+//   debug: true,
+//  })
 // log(mongoEnv)
 
 const program = new Command()
@@ -38,7 +46,9 @@ program.name('newUser')
   .requiredOption('--first <name>', 'User\'s first name')
   .requiredOption('--last <name>', 'User\'s last name')
   .requiredOption('--email <addr>', 'User\'s email address')
-  .requiredOption('--desc <description>', 'Short description of the account', 'New account created using cli.')
+  .requiredOption(
+    '--desc <description>',
+    'Short description of the account', 'New account created using cli.')
   .requiredOption('--password <password>', 'The new user\'s initial password.')
   .option('-a, --admin', 'Make this user account admin, otherwise regular.')
   .option('-t, --test', 'A test user account, not a real user.')
@@ -76,7 +86,8 @@ const userProps = {
   first: options.first ?? 'First',
   last: options.last ?? 'User',
   emails: [{ primary: email ?? 'new_user@genevalakepiers.com', verified: false }],
-  description: `A new (${(options?.test) ? 'test' : ''}) ${(options?.admin) ? 'admin' : 'user'} account created.`,
+  description: `A new (${(options?.test) ? 'test' : ''}) `
+    + `${(options?.admin) ? 'admin' : 'user'} account created.`,
   username: `${options.first.toLowerCase()}${options.last.toLowerCase()}`,
   password: options.password,
   jwts: { token: '', refresh: '' },

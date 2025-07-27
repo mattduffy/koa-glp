@@ -12,7 +12,7 @@ import crypto from 'node:crypto'
 /* eslint-disable-next-line */
 import * as Users from '@mattduffy/users/Users.js'
 import * as mongoClient from '../daos/impl/mongodb/mongo-client.js'
-// import * as redis from '../daos/impl/redis/redis-client.js'
+// import { ioredis } from '../daos/impl/redis/ioredis-client.js'
 import { App } from '../models/app.js'
 // import { Users } from '../models/users.js'
 import { _log, _error } from './logging.js'
@@ -24,19 +24,38 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const appRoot = path.resolve(`${__dirname}/../..`)
 const appEnv = {}
-dotenv.config({ path: path.resolve(appRoot, 'config/app.env'), processEnv: appEnv, debug: true })
+dotenv.config({
+  path: path.resolve(appRoot, 'config/app.env'),
+  processEnv: appEnv,
+  debug: true,
+})
 // log(appEnv)
 const bootEnv = {}
-dotenv.config({ path: path.resolve(appRoot, 'config/bootstrap.env'), processEnv: bootEnv, debug: true })
+dotenv.config({
+  path: path.resolve(appRoot, 'config/bootstrap.env'),
+  processEnv: bootEnv,
+  debug: true,
+})
 const mongoEnv = {}
-dotenv.config({ path: path.resolve(appRoot, 'config/mongodb.env'), processEnv: mongoEnv, debug: true })
+dotenv.config({
+  path: path.resolve(appRoot, 'config/mongodb.env'),
+  processEnv: mongoEnv,
+  debug: true,
+})
 // log(mongoEnv)
 
 // const redisEnv = {}
-// dotenv.config({ path: path.resolve(appRoot, 'config/redis.env'), processEnv: redisEnv, debug: true })
+// dotenv.config({
+//   path: path.resolve(appRoot, 'config/redis.env'),
+//   processEnv: redisEnv,
+//   debug: true,
+// })
 // log(process.env.REDIS_KEY_PREFIX)
 // log(process.env.REDIS_SENTINEL_USER)
-// let pier = await readFile(path.resolve(appRoot, 'data/1_city_of_lake_geneva/pier-001.json'), { encoding: 'utf-8' })
+// let pier = await readFile(
+//   path.resolve(appRoot, 'data/1_city_of_lake_geneva/pier-001.json'),
+//   { encoding: 'utf-8' }
+// )
 // pier = pier.replace(/\n/g, '')
 // // pier = JSON.parse(pier)
 // await redis.redis.call('JSON.SET', 'glp:piers:001', '$', pier)

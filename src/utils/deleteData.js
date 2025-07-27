@@ -9,7 +9,7 @@ import path from 'node:path'
 import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
 import { Command } from 'commander'
-import { redis } from '../daos/impl/redis/redis-client.js'
+import { ioredis } from '../daos/impl/redis/ioredis-client.js'
 import { _log, _error } from './logging.js'
 /* eslint-enable import/no-extraneous-dependencies */
 
@@ -29,7 +29,9 @@ const DB_PREFIX = redisEnv.REDIS_KEY_PREFIX
 const program = new Command()
 program.name('loadData')
   .requiredOption('--key-prefix <prefix>', 'The app-specific key prefix for Redis to use.')
-  .requiredOption('--key-name <name>', 'The key name for Redis to append to the app-specific key prefix.')
+  .requiredOption(
+    '--key-name <name>',
+    'The key name for Redis to append to the app-specific key prefix.')
   .requiredOption('--key-type <type>', 'The redis data type of the keys to delete.')
   .option('--key-count <count>', 'The number of keys to return per cursor.', 500)
 
@@ -40,7 +42,9 @@ log(options)
 
 const transparentKeyPrefix = redis?.options?.keyPrefix
 let keyPath
-if (transparentKeyPrefix === null || transparentKeyPrefix === undefined || transparentKeyPrefix === '') {
+if (transparentKeyPrefix === null
+  || transparentKeyPrefix === undefined
+  || transparentKeyPrefix === '') {
   keyPath = `${DB_PREFIX}:${options.keyPrefix}:${options.keyName}:*`
 } else {
   keyPath = `${transparentKeyPrefix}${options.keyName}:*`
@@ -58,16 +62,17 @@ async function del() {
       count: options.keyCount,
     }
     log(scanArgs)
-    const stream = redis.scanStream(scanArgs)
+    const stream = ioredis.scanStream(scanArgs)
     stream.on('data', async (keys) => {
       log(`Current scan cursor size: ${keys.length}`)
       let result
       if (keys.length > 0) {
         stream.pause()
-        const pipeline = redis.pipeline()
+        const pipeline = ioredis.pipeline()
         keys.forEach(async (key) => {
           log(`current cursor key: ${key}`)
-          // Super sketchy hack to get around ioredis client config with transparent key prefix set.
+          // Super sketchy hack to get around ioredis client config
+          // with transparent key prefix set.
           // May be super fragile...
           const k = key.split(':').slice(-1)[0]
           pipeline.del(`${options.keyName}:${k}`)
