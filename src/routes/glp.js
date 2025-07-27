@@ -23,7 +23,7 @@ import {
   TOWNS,
 } from '../utils/logging.js'
 import { redis } from '../daos/impl/redis/redis-om.js'
-import { redis as ioredis } from '../daos/impl/redis/redis-client.js'
+import { ioredis } from '../daos/impl/redis/ioredis-client.js'
 
 const glpLog = _log.extend('glp')
 const glpError = _error.extend('glp')
@@ -1307,7 +1307,8 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         // Conduct search by estate name.
         let pierEstatenameTokens = ''
         if (strings.length === 1) {
-          pierEstatenameTokens = `(${strings[0]})`
+          // pierEstatenameTokens = `(${strings[0]})`
+          pierEstatenameTokens = `${strings[0]}`
         } else {
           strings.forEach((t, i) => {
             if (i === 0) pierEstatenameTokens += '('
@@ -1327,7 +1328,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         // optsPierEstateName.RETURN = ['pier', 'estateName', '$.loc', 'AS', 'coords']
         optsPierEstateName.RETURN = ['pier', 'estateNameDM', '$.loc', 'AS', 'coords']
         optsPierEstateName.LIMIT = { from: 0, size: 20 }
-        log(`Pier estate name FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}"`)
+        log(`Pier estate name FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}" DIALECT 2`)
         results.estateNames = await redis.ft.search(
           idxPierEstateName,
           queryPierEstateName,

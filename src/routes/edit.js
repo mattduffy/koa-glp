@@ -22,7 +22,7 @@ import {
   getTownDirName,
 } from '../utils/logging.js'
 import { redis } from '../daos/impl/redis/redis-om.js'
-// import { redis as ioredis } from '../daos/impl/redis/redis-client.js'
+// import { ioredis } from '../daos/impl/redis/ioredis-client.js'
 // import { AggregateGroupByReducers, AggregateSteps } from 'redis'
 
 const editLog = _log.extend('edit')
