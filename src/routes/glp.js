@@ -1305,26 +1305,26 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
       let optsPierEstateName
       try {
         // Conduct search by estate name.
-        let pierEstatenameTokens = ''
+        let pierEstateNameTokens = ''
         if (strings.length === 1) {
-          // pierEstatenameTokens = `(${strings[0]})`
-          pierEstatenameTokens = `${strings[0]}`
+          // pierEstateNameTokens = `(${strings[0]})`
+          pierEstateNameTokens = `${strings[0]}`
         } else {
           strings.forEach((t, i) => {
-            if (i === 0) pierEstatenameTokens += '('
-            pierEstatenameTokens += `${t}`
-            if (i < strings.length - 1) pierEstatenameTokens += '|'
-            if (i === strings.length - 1) pierEstatenameTokens += ')'
-            log(pierEstatenameTokens)
+            if (i === 0) pierEstateNameTokens += '('
+            pierEstateNameTokens += `${t}`
+            if (i < strings.length - 1) pierEstateNameTokens += '|'
+            if (i === strings.length - 1) pierEstateNameTokens += ')'
+            log(pierEstateNameTokens)
           })
         }
-        log(`Pier estate name tokens: ${pierEstatenameTokens}`)
+        log(`Pier estate name tokens: ${pierEstateNameTokens}`)
         const DIALECT_2 = 2
         const DIALECT_3 = 3
         // idxPierEstateName = 'glp:idx:piers:estateName'
         idxPierEstateName = 'glp:idx:piers:estateNameDM'
-        // queryPierEstateName = `@estateName:${pierEstatenameTokens}`
-        queryPierEstateName = `@estateNameDM:*${pierEstatenameTokens}*`
+        // queryPierEstateName = `@estateName:${pierEstateNameTokens}`
+        queryPierEstateName = `@estateNameDM:*${pierEstateNameTokens}*`
         optsPierEstateName = {}
         optsPierEstateName.DIALECT = DIALECT_2
         optsPierEstateName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
