@@ -1324,7 +1324,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         // idxPierEstateName = 'glp:idx:piers:estateName'
         idxPierEstateName = 'glp:idx:piers:estateNameDM'
         // queryPierEstateName = `@estateName:${pierEstateNameTokens}`
-        queryPierEstateName = `@estateNameDM:*${pierEstateNameTokens}*`
+        queryPierEstateName = `@estateNameDM:*${pierEstateNameTokens}* | %${pierEstateNameTokens}%`
         optsPierEstateName = {}
         optsPierEstateName.DIALECT = DIALECT_2
         optsPierEstateName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
