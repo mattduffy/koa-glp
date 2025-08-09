@@ -1303,28 +1303,33 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
       let idxPierEstateName
       let queryPierEstateName
       let optsPierEstateName
+      let fuzzyPierEstateName
       try {
         // Conduct search by estate name.
         let pierEstateNameTokens = ''
         if (strings.length === 1) {
+          log('strings', strings)
           // pierEstateNameTokens = `(${strings[0]})`
           pierEstateNameTokens = `${strings[0]}`
         } else {
           strings.forEach((t, i) => {
             if (i === 0) pierEstateNameTokens += '('
-            pierEstateNameTokens += `${t}`
+            pierEstateNameTokens += `*${t}*`
             if (i < strings.length - 1) pierEstateNameTokens += '|'
             if (i === strings.length - 1) pierEstateNameTokens += ')'
             log(pierEstateNameTokens)
           })
         }
+        fuzzyPierEstateName = strings.map(s => `%${s}%`).join(' | ')
         log(`Pier estate name tokens: ${pierEstateNameTokens}`)
         const DIALECT_2 = 2
         const DIALECT_3 = 3
         // idxPierEstateName = 'glp:idx:piers:estateName'
         idxPierEstateName = 'glp:idx:piers:estateNameDM'
         // queryPierEstateName = `@estateName:${pierEstateNameTokens}`
-        queryPierEstateName = `@estateNameDM:*${pierEstateNameTokens}* | %${pierEstateNameTokens}%`
+        queryPierEstateName = `@estateNameDM:${pierEstateNameTokens}`
+          // + ` | %${pierEstateNameTokens}%`
+          + ` | ${fuzzyPierEstateName}`
         optsPierEstateName = {}
         optsPierEstateName.DIALECT = DIALECT_2
         optsPierEstateName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
@@ -1371,11 +1376,13 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         log(`Pier owner name tokens: ${pierOwnernameTokens}`)
         idxPierOwnerName = 'glp:idx:piers:ownerNames'
         // queryPierOwnerName = `@fistname|lastname:${pierOwnernameTokens}`
-        queryPierOwnerName = `@lastname|firstname:${pierOwnernameTokens} `
+        queryPierOwnerName = `@firstname|lastname:${pierOwnernameTokens} `
           + `(-@business:${pierOwnernameTokens}) (-@association:${pierOwnernameTokens}) `
           + `(-Assoc*)`
         optsPierOwnerName = {}
-        optsPierOwnerName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+        optsPierOwnerName.WITHSCORES = true
+        // optsPierOwnerName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+        // optsPierOwnerName.SORTBY = { BY: '__score', DIRECTION: 'DESC' }
         optsPierOwnerName.RETURN = [
           'pier',
           'firstname',
