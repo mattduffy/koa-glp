@@ -1310,7 +1310,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         if (strings.length === 1) {
           log('strings', strings)
           // pierEstateNameTokens = `(${strings[0]})`
-          pierEstateNameTokens = `${strings[0]}`
+          pierEstateNameTokens = `*${strings[0]}*`
         } else {
           strings.forEach((t, i) => {
             if (i === 0) pierEstateNameTokens += '('
