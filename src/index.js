@@ -50,7 +50,16 @@ const __dirname = path.dirname(__filename)
 const appRoot = path.resolve(`${__dirname}/..`)
 const appEnv = {}
 const showDebug = process.env.NODE_ENV !== 'production'
-dotenv.config({ path: path.resolve(appRoot, 'config/app.env'), processEnv: appEnv, debug: showDebug })
+dotenv.config({
+  path: path.resolve(appRoot, 'config/app.env'),
+  processEnv: appEnv,
+  debug: showDebug,
+})
+let aiEnv = {}
+dotenv.config({
+  path: path.resolve(appRoot, 'config/ai.env'),
+  processEnv: aiEnv,
+})
 
 const banner = new Banner({
   name: appEnv.SITE_NAME,
@@ -85,6 +94,7 @@ app.dirs = {
   },
   cache: {
     pages: `${appRoot}/cached_pages`,
+    models: `${appRoot}/${aiEnv.MODEL_CACHE_DIR}`,
   },
   config: `${appRoot}/config`,
   keys: `${appRoot}/keys`,
@@ -102,6 +112,19 @@ app.dirs = {
   },
 }
 appEnv.UPLOADSDIR = app.dirs.private.uploads
+
+async function aiSetup(ctx, next) {
+  ctx.state.ai = {
+    model: aiEnv.EMBEDDING_MODEL,
+    embeddingTask: aiEnv.EMBEDDING_TASK,
+    vectorType: aiEnv.VECTOR_TYPE,
+    vectorAlg: aiEnv.VECTOR_ALGORITHM,
+    vectorDistanceMetric: aiEnv.VECTOR_DIST_METRIC,
+    vectorDIM: aiEnv.VECTOR_DIM,
+  }
+  return next()
+}
+app.use(aiSetup)
 
 const o = {
   db: path.resolve(`${app.root}/src`, 'daos/impl/mongodb/mongo-client.js'),
