@@ -56,6 +56,9 @@ function leftZeroPad(x) {
   return pierNumber
 }
 
+const ASC = 'ASC'
+const DESC = 'DESC'
+
 const router = new Router()
 
 router.get('index', '/', hasFlash, addIpToSession, async (ctx) => {
@@ -141,6 +144,7 @@ router.get('pierBigSwimPiers', '/swim', hasFlash, addIpToSession, async (ctx) =>
   const offset = (s <= 1) ? 0 : (s - 1) * num
   const skipBack = (s <= 1) ? 0 : s - 1
   const skipForward = s + 1
+  const sortDir = 'ASC'
   log(
     `s: ${s}, `
       + `offset: ${offset} `
@@ -154,7 +158,7 @@ router.get('pierBigSwimPiers', '/swim', hasFlash, addIpToSession, async (ctx) =>
     log(
       'ft.aggregate glp:idx:piers:swim "*" '
         + 'LOAD 3 $.pier AS pier '
-        + 'SORTBY 2 @pier ASC '
+        + `SORTBY 2 @pier ${sortDir}`
         + `LIMIT ${offset} ${num}`,
     )
     const optsAggregateSwim = {
@@ -163,7 +167,8 @@ router.get('pierBigSwimPiers', '/swim', hasFlash, addIpToSession, async (ctx) =>
         {
           type: AggregateSteps.SORTBY,
           BY: '@pier',
-          MAX: 1,
+          DIRECTION: sortDir,
+          // MAX: 1,
         },
         {
           type: AggregateSteps.LIMIT,
@@ -218,7 +223,7 @@ router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
   const offset = (s <= 1) ? 0 : (s - 1) * num
   const skipBack = (s <= 1) ? 0 : s - 1
   const skipForward = s + 1
-
+  const sortDir = 'ASC'
   log(
     `s: ${s}, `
       + `offset: ${offset} `
@@ -229,14 +234,19 @@ router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
   )
   let publicPiers
   try {
-    // ft.aggregate glp:idx:piers:public "*" LOAD 3 $.pier AS pier SORTBY 2 @pier ASC LIMIT 0 100
+    // log(
+    //   'ft.aggregate glp:idx:piers:public "*" '
+    //   + 'LOAD 3 $.pier AS pier '
+    //   + `SORTBY 2 @pier ${sortDir} LIMIT 0 100`
+    // )
     const optsAggregatePublic = {
       LOAD: ['@pier', '$.owners[*].members[*].f', 'AS', 'name'],
       STEPS: [
         {
           type: AggregateSteps.SORTBY,
           BY: '@pier',
-          MAX: 1,
+          DIRECTION: sortDir,
+          // MAX: 1,
         },
         {
           type: AggregateSteps.LIMIT,
@@ -290,6 +300,7 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
   const offset = (s === 1) ? 0 : (s - 1) * num
   const skipBack = (s <= 1) ? 0 : s - 1
   const skipForward = s + 1
+  const sortDir = 'ASC'
   log(
     `s: ${s}, `
       + `offset: ${offset} `
@@ -302,7 +313,7 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
   try {
     log('ft.AGGREGATE glp:idx:piers:business "*" '
       + 'LOAD 3 $.pier AS pier GROUPBY 1 @business '
-      + `REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ASC LIMIT ${offset} ${num}`)
+      + `REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ${sortDir} LIMIT ${offset} ${num}`)
     const optsAggregateBusiness = {
       LOAD: ['@pier', '@business'],
       STEPS: [
@@ -318,7 +329,8 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
         {
           type: AggregateSteps.SORTBY,
           BY: '@business',
-          MAX: 1,
+          DIRECTION: sortDir,
+          // MAX: 1,
         },
         {
           type: AggregateSteps.LIMIT,
@@ -376,6 +388,7 @@ router.get('poiList', '/points-of-interest', hasFlash, addIpToSession, async (ct
   const offset = (s <= 1) ? 0 : (s - 1) * num
   const skipback = (s <= 1) ? 0 : s - 1
   const skipforward = s + 1
+  const sortDir = 'ASC'
   log(
     `s: ${s}, `
       + `offset: ${offset} `
@@ -391,7 +404,7 @@ router.get('poiList', '/points-of-interest', hasFlash, addIpToSession, async (ct
     const optsPois = {
       SORTBY: {
         BY: 'id',
-        DIRECTION: 'ASC',
+        DIRECTION: sortDir,
       },
       LIMIT: { from: offset, size: num },
       RETURN: ['$'],
@@ -402,7 +415,7 @@ router.get('poiList', '/points-of-interest', hasFlash, addIpToSession, async (ct
     }
     const queryPointsOfInterest = `-@type:(${optsPois.PARAMS.exclude})`
     const query = `ft.search ${idxPoiType} ${queryPointsOfInterest} `
-      + `SORTBY id ASC LIMIT ${offset} ${num} DIALECT ${dialect}`
+      + `SORTBY id ${sortDir} LIMIT ${offset} ${num} DIALECT ${dialect}`
     log(query)
     pois = await redis.ft.search(idxPoiType, queryPointsOfInterest, optsPois)
     // pois = await redis.ft.search(idxPoiType, '-@type:($exclude)', optsPois)
@@ -490,6 +503,7 @@ router.get('poiList', '/pois/list', hasFlash, addIpToSession, async (ctx) => {
     const offset = (s === 1) ? 0 : (s - 1) * num
     const skipBack = (s <= 1) ? 0 : s - 1
     const skipForward = s + 1
+    const sortDir = 'ASC'
     log(
       `s: ${s}, `
         + `offset: ${offset} `
@@ -504,7 +518,7 @@ router.get('poiList', '/pois/list', hasFlash, addIpToSession, async (ctx) => {
       const optsPois = {
         SORTBY: {
           BY: 'id',
-          DIRECTION: 'ASC',
+          DIRECTION: sortDir,
         },
         LIMIT: { from: offset, size: num },
         RETURN: ['$'],
@@ -515,8 +529,8 @@ router.get('poiList', '/pois/list', hasFlash, addIpToSession, async (ctx) => {
       }
       const queryPointsOfInterest = `-@type:(${optsPois.PARAMS.exclude})`
       const query = `ft.search ${idxPoiType} ${queryPointsOfInterest} `
-        // + `SORTBY id ASC LIMIT ${offset} ${num} DIALECT ${dialect}`
-        + `SORTBY id ASC DIALECT ${dialect}`
+        // + `SORTBY id ${sortDir} LIMIT ${offset} ${num} DIALECT ${dialect}`
+        + `SORTBY id ${sortDir} DIALECT ${dialect}`
       log(query)
       pois = await redis.ft.search(idxPoiType, queryPointsOfInterest, optsPois)
       log('pois', pois)
@@ -558,7 +572,7 @@ router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx)
   const offset = 0
   const skipBack = (s <= 1) ? 0 : s - 1
   const skipForward = s + 1
-
+  const sortDir = 'ASC'
   log(
     `s: ${s}, `
       + `offset: ${offset} `
@@ -575,13 +589,13 @@ router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx)
     const optsMileMarkers = {
       SORTBY: {
         BY: 'id',
-        DIRECTION: 'ASC',
+        DIRECTION: sortDir,
       },
       LIMIT: { from: offset, size: num },
       RETURN: ['$'],
     }
     const query = `ft.search ${idxMileMarkers} ${queryMileMarkers} `
-      + `SORTBY id ASC LIMIT ${offset} ${num}`
+      + `SORTBY id ${sortDir} LIMIT ${offset} ${num}`
     log(query)
     mileMarkers = await redis.ft.search(idxMileMarkers, queryMileMarkers, optsMileMarkers)
     log(mileMarkers?.total, mileMarkers?.documents)
@@ -610,6 +624,7 @@ router.get('pierMarinas', '/marinas', hasFlash, addIpToSession, async (ctx) => {
   const error = glpError.extend('GET-piersMarinas')
   const offset = 0
   const num = 100
+  const sortDir = 'ASC'
   let marinas
   try {
     log(
@@ -617,7 +632,7 @@ router.get('pierMarinas', '/marinas', hasFlash, addIpToSession, async (ctx) => {
         + 'LOAD 6 $.pier AS pier $.property.business AS business '
         + 'GROUPBY 1 @business '
         + 'REDUCE TOLIST 1 @pier AS pier '
-        + 'SORTBY 2 @business ASC '
+        + `SORTBY 2 @business ${sortDir}`
         + `LIMIT ${offset} ${num}`,
     )
     const optsAggregateMarina = {
@@ -635,7 +650,8 @@ router.get('pierMarinas', '/marinas', hasFlash, addIpToSession, async (ctx) => {
         {
           type: AggregateSteps.SORTBY,
           BY: '@business',
-          MAX: 1,
+          DIRECTION: sortDir,
+          // MAX: 1,
         },
         {
           type: AggregateSteps.LIMIT,
@@ -693,6 +709,7 @@ router.get('pierFood', '/food', hasFlash, addIpToSession, async (ctx) => {
   const error = glpError.extend('GET-piersFood')
   const offset = 0
   const num = 100
+  const sortDir = 'ASC'
   let foods
   try {
     log(
@@ -700,7 +717,7 @@ router.get('pierFood', '/food', hasFlash, addIpToSession, async (ctx) => {
       + 'LOAD 6 $.pier AS pier $.property.business AS business '
       + 'GROUPBY 1 @business '
       + 'REDUCE TOLIST 1 @pier AS pier '
-      + 'SORTBY 2 @business ASC '
+      + `SORTBY 2 @business ${sortDir} `
       + `LIMIT ${offset} ${num}`,
     )
     const optsAggregateFood = {
@@ -718,7 +735,8 @@ router.get('pierFood', '/food', hasFlash, addIpToSession, async (ctx) => {
         {
           type: AggregateSteps.SORTBY,
           BY: '@business',
-          MAX: 1,
+          DIRECTION: sortDir,
+          // MAX: 1,
         },
         {
           type: AggregateSteps.LIMIT,
@@ -763,6 +781,7 @@ router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async 
   const offset = (s <= 1) ? 0 : (s - 1) * num
   const skipback = (s <= 1) ? 0 : s - 1
   const skipforward = s + 1
+  const sortDir = 'ASC'
   log(
     `s: ${s}, `
       + `offset: ${offset} `
@@ -777,8 +796,8 @@ router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async 
       'ft.AGGREGATE glp:idx:piers:association "*" '
         + 'LOAD 3 $.pier AS pier '
         + 'GROUPBY 1 @association '
-        + 'REDUCE COUNT_DISTINCT '
-        + 'SORTBY 2 @association ASC '
+        + 'REDUCE COUNT_DISTINCT 1 '
+        + `SORTBY 3 @association ${sortDir} MAX 1 `
         + `LIMIT ${offset} ${num}`,
     )
     const optsAggregateAssoc = {
@@ -796,7 +815,9 @@ router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async 
         {
           type: AggregateSteps.SORTBY,
           BY: '@association',
-          MAX: 1,
+          // DIRECTION: sortDir,
+          direction: sortDir,
+          // MAX: 1,
         },
         {
           type: AggregateSteps.LIMIT,
@@ -805,7 +826,12 @@ router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async 
         },
       ],
     }
-    associations = await redis.ft.aggregate('glp:idx:piers:association', '*', optsAggregateAssoc)
+    log('aggregation step opts', optsAggregateAssoc)
+    associations = await redis.ft.aggregate(
+      'glp:idx:piers:association',
+      '*',
+      optsAggregateAssoc,
+    )
     log(associations.total)
     log(associations.results)
   } catch (e) {
@@ -844,18 +870,19 @@ router.get('piersByAssociation', '/assoc/:assoc', hasFlash, addIpToSession, asyn
   log(decodedAssoc)
   const from = 0
   const size = 60
+  const sortDir = 'ASC'
   let piersInAssoc
   const idxPierAssociation = 'glp:idx:piers:association'
   const queryPierAssociation = `@association:(${decodedAssoc})`
   const optsPierAssociation = {}
   optsPierAssociation.RETURN = ['pier', '$.loc', 'association']
   optsPierAssociation.LIMIT = { from, size }
-  optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+  optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: sortDir }
   log(`Association piers FT.SEARCH ${idxPierAssociation} ${optsPierAssociation}`)
   log(
     `ft.search ${idxPierAssociation} `
       + `"@association:(${decodedAssoc})" `
-      + 'RETURN 3 pier $.loc association SORTBY pier asc',
+      + `RETURN 3 pier $.loc association SORTBY pier ${sortDir}`,
   )
   try {
     piersInAssoc = await redis.ft.search(
@@ -1147,11 +1174,12 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
     let idxPierAddress
     let queryPierAddress
     let optsPierAddress
+    const sortDir = 'ASC'
     try {
       idxPierAddress = 'glp:idx:piers:address'
       queryPierAddress = `'${searchTerms[0]}'`
       optsPierAddress = {}
-      // optsPierAddress.SORTBY = { BY: '$.pier', DIRECTION: 'ASC' }
+      // optsPierAddress.SORTBY = { BY: '$.pier', DIRECTION: sortDir }
       optsPierAddress.RETURN = [
         '$.pier',
         'AS',
@@ -1187,6 +1215,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
       let idxPierNumber
       let queryPierNumber
       let optsPierNumber
+      const sortDir = 'ASC'
       try {
         // Conduct seach by pier numbers.
         let pierNumberTokens = ''
@@ -1200,7 +1229,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         idxPierNumber = 'glp:idx:piers:number'
         queryPierNumber = `@pierNumber:${pierNumberTokens}`
         optsPierNumber = {}
-        optsPierNumber.SORTBY = { BY: 'pierNumber', DIRECTION: 'ASC' }
+        optsPierNumber.SORTBY = { BY: 'pierNumber', DIRECTION: sortDir }
         // optsPierNumber.RETURN = 'pierNumber'
         optsPierNumber.RETURN = ['pierNumber', '$.loc', 'AS', 'coords']
         log(`Pier number FT.SEARCH ${idxPierNumber} ${queryPierNumber}`)
@@ -1230,6 +1259,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         let idxPierPublic
         let queryPierPublic
         let optsPierPublic
+        const sortDir = 'ASC'
         try {
           // Conduct search for public piers.
           let pierPublicTokens = ''
@@ -1248,7 +1278,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
           idxPierPublic = 'glp:idx:piers:public'
           queryPierPublic = '@public:[1 1]'
           optsPierPublic = {}
-          optsPierPublic.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+          optsPierPublic.SORTBY = { BY: 'pier', DIRECTION: sortDir }
           optsPierPublic.RETURN = ['pier', 'firstname', '$.loc', 'AS', 'coords']
           optsPierPublic.LIMIT = { from: 0, size: 20 }
           log(`Pier public FT.SEARCH ${idxPierPublic} "${queryPierPublic}"`)
@@ -1269,6 +1299,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         let idxPierFood
         let queryPierFood
         let optsPierFood
+        const sortDir = 'ASC'
         try {
           // Conduct search for food piers.
           let pierFoodTokens = ''
@@ -1287,7 +1318,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
           idxPierFood = 'glp:idx:piers:food'
           queryPierFood = '@food:[1 1]'
           optsPierFood = {}
-          optsPierFood.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+          optsPierFood.SORTBY = { BY: 'pier', DIRECTION: sortDir }
           optsPierFood.RETURN = ['pier', 'business', '$.loc', 'AS', 'coords']
           optsPierFood.LIMIT = { from: 0, size: 20 }
           log(`Pier food FT.SEARCH ${idxPierFood} "${queryPierFood}"`)
@@ -1328,6 +1359,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         log(`Pier estate name tokens: ${pierEstateNameTokens}`)
         const DIALECT_2 = 2
         const DIALECT_3 = 3
+        const sortDir = 'ASC'
         // idxPierEstateName = 'glp:idx:piers:estateName'
         idxPierEstateName = 'glp:idx:piers:estateNameDM'
         // queryPierEstateName = `@estateName:${pierEstateNameTokens}`
@@ -1336,7 +1368,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
           + ` | ${fuzzyPierEstateName}`
         optsPierEstateName = {}
         optsPierEstateName.DIALECT = DIALECT_2
-        optsPierEstateName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+        optsPierEstateName.SORTBY = { BY: 'pier', DIRECTION: sortDir }
         // optsPierEstateName.RETURN = ['pier', 'estateName', '$.loc', 'AS', 'coords']
         optsPierEstateName.RETURN = ['pier', 'estateNameDM', '$.loc', 'AS', 'coords']
         optsPierEstateName.LIMIT = { from: 0, size: 20 }
@@ -1354,7 +1386,8 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         error('Redis search query failed:')
         error(`using index: ${idxPierEstateName}`)
         error(
-          `query: FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}"`, optsPierEstateName
+          `query: FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}"`,
+          optsPierEstateName,
         )
         error(e)
         // No need to disrupt the rest of the searching if this query failed.
@@ -1385,8 +1418,8 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
           + `(-Assoc*)`
         optsPierOwnerName = {}
         optsPierOwnerName.WITHSCORES = true
-        // optsPierOwnerName.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
-        // optsPierOwnerName.SORTBY = { BY: '__score', DIRECTION: 'DESC' }
+        // optsPierOwnerName.SORTBY = { BY: 'pier', DIRECTION: sortDir }
+        // optsPierOwnerName.SORTBY = { BY: '__score', DIRECTION: sortDir }
         optsPierOwnerName.RETURN = [
           'pier',
           'firstname',
@@ -1415,6 +1448,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
       let idxPierAssociation
       let optsPierAssociation
       try {
+        const sortDir = 'ASC'
         // Conduct search by association names.
         let pierAssociationTokens = ''
         if (strings.length === 1) {
@@ -1432,7 +1466,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         idxPierAssociation = 'glp:idx:piers:association'
         queryPierAssociation = `@association:${pierAssociationTokens}`
         optsPierAssociation = {}
-        optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+        optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: sortDir }
         optsPierAssociation.RETURN = ['pier', 'association', '$.loc', 'AS', 'coords']
         log(`Pier association name FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`)
         results.associations = await redis.ft.search(
@@ -1456,6 +1490,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
       let idxPierBusiness
       let optsPierBusiness
       try {
+        const sortDir = 'ASC'
         // Conduct search by business names.
         let pierBusinessTokens = ''
         if (strings.length === 1) {
@@ -1473,7 +1508,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         idxPierBusiness = 'glp:idx:piers:business'
         queryPierBusiness = `@business:${pierBusinessTokens}`
         optsPierBusiness = {}
-        optsPierBusiness.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+        optsPierBusiness.SORTBY = { BY: 'pier', DIRECTION: sortDir }
         optsPierBusiness.RETURN = ['pier', 'business', '$.loc', 'AS', 'coords']
         log(`Pier business name FT.SEARCH ${idxPierBusiness} "${queryPierBusiness}"`)
         results.businesses = await redis.ft.search(
