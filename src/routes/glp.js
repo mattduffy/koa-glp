@@ -9,7 +9,11 @@ import Router from '@koa/router'
 import { ulid } from 'ulid'
 // import formidable from 'formidable'
 import { Albums } from '@mattduffy/albums/Albums' // eslint-disable-line import/no-unresolved
-import { AggregateGroupByReducers, AggregateSteps } from 'redis'
+// import { AggregateGroupByReducers, AggregateSteps } from 'redis'
+import {
+  FT_AGGREGATE_GROUP_BY_REDUCERS as AggregateGroupByReducers,
+  FT_AGGREGATE_STEPS as AggregateSteps,
+} from 'redis'
 import {
   addIpToSession,
   doTokensMatch,

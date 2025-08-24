@@ -26,15 +26,15 @@ export async function townSetNames(ctx, next) {
     const townSets = await redis.scanIterator({
       TYPE: 'zset',
       MATCH: 'glp:piers_by_town:*',
-      COUNT: 3000,
+      COUNT: 9000,
     })
+    const _towns = await townSets.next() || []
     const towns = []
-    /* eslint-disable-next-line */
-    for await (const t of townSets) {
-      const name = t.substr(t.lastIndexOf(':') + 1)
+    _towns.value.forEach(town => {
+      const name = town.substr(town.lastIndexOf(':') + 1)
       towns.push(name)
-    }
-    log(`${towns.length} town sets found.`)
+    })
+    log(`${towns.length} town sets found.`, towns)
     ctx.state.TOWNS = towns
   } catch (e) {
     error(e)

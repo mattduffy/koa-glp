@@ -9,7 +9,11 @@ import path from 'node:path'
 import { Buffer } from 'node:buffer'
 import { writeFile } from 'node:fs/promises'
 import Router from '@koa/router'
-import { AggregateGroupByReducers, AggregateSteps } from 'redis'
+// import { AggregateGroupByReducers, AggregateSteps } from 'redis'
+import {
+  FT_AGGREGATE_GROUP_BY_REDUCERS as AggregateGroupByReducers,
+  FT_AGGREGATE_STEPS as AggregateSteps,
+} from 'redis'
 import { redis } from '../daos/impl/redis/redis-om.js'
 import { _log, _info, _error } from '../utils/logging.js'
 

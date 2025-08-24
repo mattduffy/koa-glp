@@ -9,7 +9,11 @@ import path from 'node:path'
 import { readFile } from 'node:fs/promises'
 import Router from '@koa/router'
 // import { ulid } from 'ulid'
-import { AggregateGroupByReducers, AggregateSteps } from 'redis'
+// import { AggregateGroupByReducers, AggregateSteps } from 'redis'
+import {
+  FT_AGGREGATE_GROUP_BY_REDUCERS as AggregateGroupByReducers,
+  FT_AGGREGATE_STEPS as AggregateSteps,
+} from 'redis'
 import { redis } from '../daos/impl/redis/redis-om.js'
 import {
   addIpToSession,
