@@ -1177,7 +1177,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
     const sortDir = 'ASC'
     try {
       idxPierAddress = 'glp:idx:piers:address'
-      queryPierAddress = `'${searchTerms[0]}'`
+      queryPierAddress = `${searchTerms[0]}`
       optsPierAddress = {}
       // optsPierAddress.SORTBY = { BY: '$.pier', DIRECTION: sortDir }
       optsPierAddress.RETURN = [
@@ -1254,7 +1254,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
       results.pierNumbers = { total: 0 }
     }
     if (strings.length > 0) {
-      log(`strings: ${strings}`)
+      log('strings[]:', strings)
       if (/public|municip/i.test(strings)) {
         let idxPierPublic
         let queryPierPublic
@@ -1343,7 +1343,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         // Conduct search by estate name.
         let pierEstateNameTokens = ''
         if (strings.length === 1) {
-          log('strings', strings)
+          log('strings[]', strings)
           // pierEstateNameTokens = `(${strings[0]})`
           pierEstateNameTokens = `*${strings[0]}*`
         } else {
@@ -1355,16 +1355,17 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
             log(pierEstateNameTokens)
           })
         }
-        fuzzyPierEstateName = strings.map(s => `%${s}%`).join(' | ')
-        log(`Pier estate name tokens: ${pierEstateNameTokens}`)
+        log('search strings', strings)
+        fuzzyPierEstateName = strings.map(s => String.raw`%${s}%`).join(' | ')
+        log('fuzzyPierEstateName', fuzzyPierEstateName)
+        log(String.raw`Pier estate name tokens: ${pierEstateNameTokens}`)
         const DIALECT_2 = 2
         const DIALECT_3 = 3
         const sortDir = 'ASC'
         // idxPierEstateName = 'glp:idx:piers:estateName'
-        idxPierEstateName = 'glp:idx:piers:estateNameDM'
         // queryPierEstateName = `@estateName:${pierEstateNameTokens}`
+        idxPierEstateName = 'glp:idx:piers:estateNameDM'
         queryPierEstateName = `@estateNameDM:${pierEstateNameTokens}`
-          // + ` | %${pierEstateNameTokens}%`
           + ` | ${fuzzyPierEstateName}`
         optsPierEstateName = {}
         optsPierEstateName.DIALECT = DIALECT_2
