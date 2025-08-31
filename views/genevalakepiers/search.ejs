@@ -29,7 +29,7 @@
       const searchParams = new URLSearchParams(document.location.search)
       const q = searchParams.get('q') 
       console.log(`q=${q}`)
-      if (q !== '' || q !== null) {
+      if (q !== null) {
         search.searchBox.value = q
         search.submit.click()
       }
@@ -162,7 +162,9 @@
             marker.title = `${span.dataset.name}`
             marker.animates = true
             marker.selected = true
-            window.map.showItems([marker])
+            if (window.map) {
+              window.map.showItems([marker])
+            }
           })
         }
 
@@ -560,7 +562,9 @@
             // console.log(window.map)
             if (annotations.length > 0) {
               // console.log(annotations)
-              window.map.showItems(annotations?.reverse())
+              if (window.map) {
+                window.map.showItems(annotations?.reverse())
+              }
             }
             // await annotateSearchResults(searchResults)
           }
