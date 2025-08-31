@@ -21,12 +21,22 @@
   <% if (sessionUser) { %>
     <div>Hi, <%= sessionUser.displayName %></div>
     <% if (items.length > 0) { %>
-      <div>There <%= (items.length > 1) ? 'are' : 'is' %> <%= items.length %> item<%= (items.length > 1) ? 's' : '' %> that need<%= (items.length === 1) ? 's' : '' %> attention.</div> 
+      <div>
+        There <%=
+          (items.length > 1) ? 'are' : 'is'
+        %> <%=items.length %> item<%= (items.length > 1) ? 's' : '' %> that need<%=
+          (items.length === 1) ? 's' : ''
+        %> attention.
+      </div> 
       <ul class="admin-items">
         <li><a href="<%= origin %>/poi/new">Add a new point of interest.</a></li>
         <li><a href="<% origin %>/pois/list">Edit a point of interest.</a></li>
         <% items.forEach((item) => { %>
-        <li><a href="<%= origin %>/nullisland"><%= item.list.length %> <%= item.title %></a></li>
+        <li>
+          <a href="<%= origin %>/nullisland">
+            <%= item.list.length %> <%= item.title %>
+          </a>
+        </li>
         <% }) %>
       </ul>
     <% } %>
@@ -148,18 +158,38 @@
         // const coordinate = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
         const defaultRadius = 50
         const defaultUnits = 'ft'
-        console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: ${longitude}, ${latitude}`)
-        const results = await (await fetch(`${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`)).json()
+        console.log(
+          `locate piers within ${defaultRadius} ${defaultUnits} `
+            + `of coords: ${longitude}, ${latitude}`
+        )
+        const results = await (await fetch(
+          `${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`
+        )).json()
         console.log(results)
         if (results?.total > 0) {
           results.documents.forEach((p) => {
-            console.log(`${p.value.pier}, ${p.value.coords}, ${p.value.estateName}, ${p.value.business}, ${p.value.association}`)
+            console.log(
+              `${p.value.pier}, ${p.value.coords}, `
+                + `${p.value.estateName}, `
+                + `${p.value.business}, `
+                + `${p.value.association}`
+            )
               let subtitle = ' '
-              if (p.value.business !== '' && p.value.association === '') subtitle = p.value.business
-              if (p.value.association !== '' && p.value.business === '') subtitle = p.value.association
-              if (p.value.firstname !== '' && p.value.lastname !== '') subtitle = `${p.value.firstname} ${p.value.lastname}`
-              if (p.value.firstname !== '' && p.value.lastname === '') subtitle = p.value.firstname
-              if (p.value.firstname === '' && p.value.lastname !== '') subtitle = p.value.lastname
+              if (p.value.business !== '' && p.value.association === '') {
+                subtitle = p.value.business
+              }
+              if (p.value.association !== '' && p.value.business === '') {
+                subtitle = p.value.association
+              }
+              if (p.value.firstname !== '' && p.value.lastname !== '') {
+                subtitle = `${p.value.firstname} ${p.value.lastname}`
+              }
+              if (p.value.firstname !== '' && p.value.lastname === '') {
+                subtitle = p.value.firstname
+              }
+              if (p.value.firstname === '' && p.value.lastname !== '') {
+                subtitle = p.value.lastname
+              }
               if (p.value.estateName !== '') subtitle = p.value.estateName
               console.info(`subtitle: ${subtitle}`)
               const annotationCallout = {
