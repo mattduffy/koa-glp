@@ -1,0 +1,55 @@
+{
+  "pier": "160",
+  "version": "1",
+  "loc": {
+    "longitude": -88.513784,
+    "latitude": 42.574093
+  },
+  "geohash": "dp941y6hp60",
+  "pluscode": "86JHHFFP+JF",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "",
+    "established": null,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "W4409 N Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Crystal Falls",
+      "membershipType": "Sustaining",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Michael",
+          "m": "",
+          "l": "Loeber",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Julie",
+          "m": "",
+          "l": "Loeber",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2025-09-01T20:51:47.012Z"
+  ]
+}
