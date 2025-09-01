@@ -22,8 +22,6 @@ import {
   getTownDirName,
 } from '../utils/logging.js'
 import { redis } from '../daos/impl/redis/redis-om.js'
-// import { ioredis } from '../daos/impl/redis/ioredis-client.js'
-// import { AggregateGroupByReducers, AggregateSteps } from 'redis'
 
 const editLog = _log.extend('edit')
 const editInfo = _info.extend('edit')
@@ -34,7 +32,9 @@ const __dirname = path.dirname(__filename)
 const appRoot = path.resolve(`${__dirname}/../..`)
 const appEnv = {}
 editLog(`appRoot: ${appRoot}`)
-dotenv.config({ path: path.resolve(appRoot, 'config/app.env'), processEnv: appEnv })
+dotenv.config({
+  path: path.resolve(appRoot, 'config/app.env'),
+  processEnv: appEnv,})
 
 function sanitize(param) {
   // fill in with some effective input scrubbing logic
@@ -44,7 +44,10 @@ function sanitize(param) {
 // Null Island check
 async function isPierNullIsland(pierNumber) {
   let isNullIsland = false
-  const nullIslandIterator = await redis.zScanIterator('glp:null_island', { MATCH: pierNumber, COUNT: 1 })
+  const nullIslandIterator = await redis.zScanIterator(
+    'glp:null_island',
+    { MATCH: pierNumber, COUNT: 1 },
+  )
   /* eslint-disable-next-line */
   for await(const { score, value } of nullIslandIterator) {
     if (value === pierNumber) {
@@ -67,7 +70,10 @@ async function townForPier(pierNumber, townsArray) {
       const setkey = `glp:piers_by_town:${set}`
       log(setkey, pierNumber)
       /* eslint-disable-next-line */
-      for await (const { value } of redis.zScanIterator(setkey, { MATCH: pierNumber, COUNT: 1000 })) {
+      for await (const { value } of redis.zScanIterator(
+        setkey,
+        { MATCH: pierNumber, COUNT: 1000 },
+      )) {
         if (value !== null) {
           town = set.split('_').map((e) => e.toProperCase()).join(' ')
           setTown = set
@@ -79,7 +85,10 @@ async function townForPier(pierNumber, townsArray) {
     }
   } catch (e) {
     error(e)
-    throw new Error(`Could not match pier ${pierNumber} to any town set in redis.`, { cause: e })
+    throw new Error(
+      `Could not match pier ${pierNumber} to any town set in redis.`,
+      { cause: e },
+    )
   }
   return { setTown, town }
 }
@@ -561,8 +570,13 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
     if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
     if (csrfTokenSession === csrfTokenHidden) info('session === hidden')
     if (csrfTokenCookie === csrfTokenHidden) info('cookie === hidden')
-    if (!(csrfTokenCookie === csrfTokenSession && csrfTokenSession === csrfTokenHidden)) {
-      error(`CSRF-Token mismatch: header:${csrfTokenCookie} hidden:${csrfTokenHidden} - session:${csrfTokenSession}`)
+    if (!(csrfTokenCookie === csrfTokenSession 
+      && csrfTokenSession === csrfTokenHidden)) {
+      error(
+        `CSRF-Token mismatch: header:${csrfTokenCookie} `
+          + `hidden:${csrfTokenHidden} - `
+          + `session:${csrfTokenSession}`
+      )
       error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
@@ -654,9 +668,15 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
         try {
           const mkdirResult = await mkdir(savePath, { recursive: true })
           info(`mkdirResult: ${mkdirResult}`)
-          await rename(pierImage.filepath, `${savePath}/image_${pierUpdated.images.length}.${fileExt}`)
+          await rename(
+            pierImage.filepath,
+            `${savePath}/image_${pierUpdated.images.length}.${fileExt}`,
+          )
           fileUploadStatus = 'success'
-          info(`${fileUploadStatus} - saved new pier ${pierUpdated.pier} photo: ${savePath}/image_${pierUpdated.images.length}.${fileExt}`)
+          info(
+            `${fileUploadStatus} - saved new pier ${pierUpdated.pier} `
+              + `photo: ${savePath}/image_${pierUpdated.images.length}.${fileExt}`
+          )
           pierUpdated.images.unshift(imgSrc)
           okPierImage = true
         } catch (e) {
@@ -712,7 +732,10 @@ router.post('geohash', '/edit/geohash', processFormData, async (ctx) => {
     const { csrfTokenHidden } = ctx.request.body
     info(`${csrfTokenCookie},\n${csrfTokenSession},\n${csrfTokenHidden}`)
     if (!doTokensMatch(ctx)) {
-      error(`CSRF-Token mismatch: header:${csrfTokenCookie} hidden:${csrfTokenHidden} - session:${csrfTokenSession}`)
+      error(
+        `CSRF-Token mismatch: header:${csrfTokenCookie} `
+          + `hidden:${csrfTokenHidden} - session:${csrfTokenSession}`
+      )
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
