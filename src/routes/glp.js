@@ -7,9 +7,7 @@
 
 import Router from '@koa/router'
 import { ulid } from 'ulid'
-// import formidable from 'formidable'
-import { Albums } from '@mattduffy/albums/Albums' // eslint-disable-line import/no-unresolved
-// import { AggregateGroupByReducers, AggregateSteps } from 'redis'
+import { Albums } from '@mattduffy/albums/Albums'
 import {
   FT_AGGREGATE_GROUP_BY_REDUCERS as AggregateGroupByReducers,
   FT_AGGREGATE_STEPS as AggregateSteps,
@@ -26,8 +24,9 @@ import {
   getSetName,
   TOWNS,
 } from '../utils/logging.js'
-import { redis } from '../daos/impl/redis/redis-om.js'
-import { ioredis } from '../daos/impl/redis/ioredis-client.js'
+// import { redis } from '../daos/impl/redis/redis-om.js'
+import { redis } from '../daos/impl/redis/redis-client.js'
+import { redis_single } from '../daos/impl/redis/redis-single.js'
 
 const glpLog = _log.extend('glp')
 const glpError = _error.extend('glp')
@@ -939,10 +938,11 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) 
         const setkey = `glp:piers_by_town:${set}`
         log(setkey, pierNumber)
         /* eslint-disable-next-line */
-        for await (const { value } of redis.zScanIterator(
+        for await (const { value } of redis_single.zScanIterator(
           setkey,
           { MATCH: pierNumber, COUNT: 900 }
         )) {
+          log('iterator value?', value)
           if (value !== null) {
             town = set.split('_').map((e) => e.toProperCase()).join(' ')
             setTown = set
@@ -1086,7 +1086,7 @@ router.get('pierEdit-GET', '/pier/edit/:pier', hasFlash, addIpToSession, async (
         const setkey = `glp:piers_by_town:${set}`
         log(setkey, pierNumber)
         /* eslint-disable-next-line */
-        for await (const { value } of redis.zScanIterator(
+        for await (const { value } of redis_single.zScanIterator(
           setkey,
           {
             MATCH: pierNumber,
@@ -1546,7 +1546,7 @@ router.get('galleries', '/galleries', hasFlash, addIpToSession, async (ctx) => {
   ctx.status = 200
   let recent10
   try {
-    recent10 = await Albums.recentlyAdded(ioredis)
+    recent10 = await Albums.recentlyAdded(redis)
   } catch (e) {
     error(e)
   }
