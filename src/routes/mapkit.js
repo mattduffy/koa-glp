@@ -1,15 +1,13 @@
 /**
- * @summary Koa router for the apple mapkit api endpoints.
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
+ * @summary Koa router for the apple mapkit api endpoints.
  * @file src/routes/mapkit.js
  */
 
 import path from 'node:path'
 import { readFile } from 'node:fs/promises'
 import Router from '@koa/router'
-// import { ulid } from 'ulid'
-// import { AggregateGroupByReducers, AggregateSteps } from 'redis'
 import {
   FT_AGGREGATE_GROUP_BY_REDUCERS as AggregateGroupByReducers,
   FT_AGGREGATE_STEPS as AggregateSteps,

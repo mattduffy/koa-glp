@@ -1,7 +1,7 @@
 /**
- * @summary Koa router for the app seo api endpoints.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
+ * @summary Koa router for the app seo api endpoints.
  * @file src/routes/seo.js
  */
 

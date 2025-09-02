@@ -34,7 +34,8 @@ const appEnv = {}
 editLog(`appRoot: ${appRoot}`)
 dotenv.config({
   path: path.resolve(appRoot, 'config/app.env'),
-  processEnv: appEnv,})
+  processEnv: appEnv,
+})
 
 function sanitize(param) {
   // fill in with some effective input scrubbing logic
