@@ -2,13 +2,12 @@
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
  * @summary The low-level connection object of redis - single client, not sentinel.
- * @file src/daos/imple/redis/ioredis-single.js
+ * @file src/daos/imple/redis/redis-single.js
  */
 
 import path from 'node:path'
 import fs from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
-// import { Redis } from 'ioredis'
 import { createClient } from 'redis'
 import * as Dotenv from 'dotenv'
 
@@ -24,6 +23,11 @@ Dotenv.config({
   debug: showDebug,
 })
 
+if (process.env.R_DEL_USER && process.env.R_DEL_PASSWORD) {
+  redisEnv.REDIS_USER = process.env.R_DEL_USER
+  redisEnv.REDIS_PASSWORD = process.env.R_DEL_PASSWORD
+  // console.log('updated redisEnv with delete powers', redisEnv)
+}
 const redisConnOpts = {
   name: 'redis_single',
   url: `rediss://${redisEnv.REDIS_USER}:${redisEnv.REDIS_PASSWORD}`
@@ -41,7 +45,7 @@ const redisConnOpts = {
   },
   keyPrefix: `${redisEnv.REDIS_KEY_PREFIX}:` ?? 'koa:',
 }
-console.log('redis_single connection options', redisConnOpts)
+// console.log('redis_single connection options', redisConnOpts)
 let client 
 try {
   client = await createClient(redisConnOpts)
