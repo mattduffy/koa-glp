@@ -9,96 +9,72 @@ import path from 'node:path'
 import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
 import { Command } from 'commander'
-import { ioredis } from '../daos/impl/redis/ioredis-client.js'
+import { redis_single as redis } from '../daos/impl/redis/redis-single.js'
 import { _log, _error } from './logging.js'
 /* eslint-enable import/no-extraneous-dependencies */
 
-const log = _log.extend('utils:load-data')
-const error = _error.extend('utils:load-data')
+const log = _log.extend('utils:delete-data')
+const error = _error.extend('utils:delete-data')
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const appRoot = path.resolve(`${__dirname}/../..`)
 const appEnv = {}
 log(`appRoot: ${appRoot}`)
-dotenv.config({ path: path.resolve(appRoot, 'config/app.env'), processEnv: appEnv })
+dotenv.config({
+  path: path.resolve(appRoot, 'config/app.env'),
+  processEnv: appEnv,
+})
 const redisEnv = {}
-dotenv.config({ path: path.resolve(appRoot, 'config/redis.env'), processEnv: redisEnv })
+dotenv.config({
+  path: path.resolve(appRoot, 'config/redis.env'),
+  processEnv: redisEnv,
+})
 const DB_PREFIX = redisEnv.REDIS_KEY_PREFIX
 
 const program = new Command()
-program.name('loadData')
+program.name('deleteData')
+  .option('--key-count <count>', 'The number of keys to return per cursor.', 900)
   .requiredOption('--key-prefix <prefix>', 'The app-specific key prefix for Redis to use.')
-  .requiredOption(
-    '--key-name <name>',
-    'The key name for Redis to append to the app-specific key prefix.')
   .requiredOption('--key-type <type>', 'The redis data type of the keys to delete.')
-  .option('--key-count <count>', 'The number of keys to return per cursor.', 500)
+  .requiredOption('--key-name <name>',
+    'The key name for Redis to append to the app-specific key prefix.'
+  )
 
 program.parse(process.argv)
 const options = program.opts()
 options.dbPrefix = DB_PREFIX
-log(options)
+log('options:', options)
 
-const transparentKeyPrefix = redis?.options?.keyPrefix
-let keyPath
-if (transparentKeyPrefix === null
-  || transparentKeyPrefix === undefined
-  || transparentKeyPrefix === '') {
-  keyPath = `${DB_PREFIX}:${options.keyPrefix}:${options.keyName}:*`
-} else {
-  keyPath = `${transparentKeyPrefix}${options.keyName}:*`
-}
-log(`prefix: ${keyPath}`)
-// log(`redis.optins.keyPrefix: ${redis.options.keyPrefix}`)
+let keyPath = options?.keyPrefix ?? options.dbPrefix
+log(`full keyPath: ${keyPath}:${options.keyName}`)
+log(`redis.options.keyPrefix: ${redis.options.keyPrefix}`)
 // process.exit()
 
 async function del() {
-  return new Promise((resolve, reject) => {
-    let deletedKeys = 0
-    const scanArgs = {
-      match: keyPath,
-      type: options.keyType,
-      count: options.keyCount,
-    }
-    log(scanArgs)
-    const stream = ioredis.scanStream(scanArgs)
-    stream.on('data', async (keys) => {
-      log(`Current scan cursor size: ${keys.length}`)
-      let result
-      if (keys.length > 0) {
-        stream.pause()
-        const pipeline = ioredis.pipeline()
-        keys.forEach(async (key) => {
-          log(`current cursor key: ${key}`)
-          // Super sketchy hack to get around ioredis client config
-          // with transparent key prefix set.
-          // May be super fragile...
-          const k = key.split(':').slice(-1)[0]
-          pipeline.del(`${options.keyName}:${k}`)
-          deletedKeys += 1
-        })
-        result = await pipeline.exec()
-        log(`pipeline result: ${result}`)
-        stream.resume()
-      } else {
-        log(`no keys found matching ${keyPath}`)
-      }
-    })
-    stream.on('end', () => {
-      resolve(`Deleted ${deletedKeys} from ${keyPath}`)
-    })
-    stream.on('error', (e) => {
-      reject(e)
-    })
-  })
+  const scanArgs = {
+    cursor: '0',
+    match: `${keyPath}:${options.keyName}`,
+    type: options.keyType,
+    count: options.keyCount,
+  }
+  // log(scanArgs)
+  // const myIterator = await redis.scanIterator(scanArgs)
+  // for await (const keys of myIterator) {
+  //   console.log(keys)
+  // }
+  return await redis.del(`${keyPath}:${options.keyName}`)
+  
 }
 try {
   const result = await del()
-  log(result)
+  log(`key ${keyPath}:${options.keyName} deleted?`, result)
 } catch (e) {
   error(e)
-  throw new Error(e.message, { cause: e })
+  // throw new Error(e.message, { cause: e })
+  console.error(e.message)
+  console.info('Try overriding the default redis user/password with ones that can use DEL.')
+  console.info('R_DEL_USER=<user> R_DEL_PASSWORD=<psswd> npm run deleteData ...')
 }
 
 // Done deleting the data, exit process.
