@@ -8,7 +8,6 @@
 import path from 'node:path'
 import fs from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
-// import { Redis } from 'ioredis'
 import { createSentinel } from 'redis'
 import * as Dotenv from 'dotenv'
 
