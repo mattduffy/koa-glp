@@ -56,7 +56,7 @@ const redisConnOpts = {
   role: 'master',
   keyPrefix: `${redisEnv.REDIS_KEY_PREFIX}:` ?? 'koa:',
 }
-console.log(redisConnOpts)
+// console.log(redisConnOpts)
 let sentinel
 try {
   sentinel = await createSentinel(redisConnOpts)
