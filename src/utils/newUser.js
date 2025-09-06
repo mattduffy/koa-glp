@@ -14,7 +14,6 @@ import { Command } from 'commander'
 /* eslint-disable-next-line */
 import * as Users from '@mattduffy/users/Users.js'
 import * as mongoClient from '../daos/impl/mongodb/mongo-client.js'
-// import ioredis from '../daos/impl/redis/ioredis-client.js'
 // import { App } from '../models/app.js'
 // import { Users } from '../models/users.js'
 import { _log, _error } from './logging.js'
