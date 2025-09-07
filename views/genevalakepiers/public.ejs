@@ -35,7 +35,16 @@
     </div>
 
     <ul id="resultsList" class="searchResults">
-      <% public.forEach((p, i) => { %> 
+      <% public.forEach((_public, i) => { %> 
+        <% let p %>
+        <% if (_public.extra_attributes) {
+          p = {
+            name: _public.extra_attributes.name,
+            pier: _public.extra_attributes.pier,
+          }
+        } else {
+          p = _public
+        } %>
         <li><a
           href="<%= origin %>/pier/<%= p.pier %>"
           data-id="<%= p.pier %>">Pier <%= p.pier %>, <%= p.name %></a></li>
