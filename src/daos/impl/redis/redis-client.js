@@ -25,14 +25,21 @@ Dotenv.config({
 
 const sentinelPort = redisEnv.REDIS_SENTINEL_PORT ?? 26379
 const redisConnOpts = {
+  RESP: 3,
+  unstableResp3: true,
+  name: 'myprimary',
+  database: redisEnv.REDIS_DB,
+  sentinelRetryDelayOnFailover: 100,
+  maxRetriesPerRequest: 3,
+  lazyConnect: true,
+  role: 'master',
+  keyPrefix: `${redisEnv.REDIS_KEY_PREFIX}:` ?? 'koa:',
   sentinelRootNodes: [
     { host: redisEnv.REDIS_SENTINEL_01, port: sentinelPort },
     { host: redisEnv.REDIS_SENTINEL_02, port: sentinelPort },
     { host: redisEnv.REDIS_SENTINEL_03, port: sentinelPort },
   ],
-  name: 'myprimary',
-  database: redisEnv.REDIS_DB,
-  sentinelClientOptions: {
+   sentinelClientOptions: {
     username: redisEnv.REDIS_SENTINEL_USER,
     password: redisEnv.REDIS_SENTINEL_PASSWORD,
     socket: {
@@ -50,11 +57,6 @@ const redisConnOpts = {
       ca: await fs.readFile(redisEnv.REDIS_CACERT),
     },
   },
-  sentinelRetryDelayOnFailover: 100,
-  maxRetriesPerRequest: 3,
-  lazyConnect: true,
-  role: 'master',
-  keyPrefix: `${redisEnv.REDIS_KEY_PREFIX}:` ?? 'koa:',
 }
 // console.log(redisConnOpts)
 let sentinel
