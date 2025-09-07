@@ -111,6 +111,7 @@ router.get('piersByTown', '/towns/:town', hasFlash, addIpToSession, async (ctx) 
   log(`key: ${key}`)
   try {
     piersInTown = await redis.zRange(key, 0, -1)
+    log('piersInTown', piersInTown)
   } catch (e) {
     error(e)
     const err = new Error(`Redis query failed for \'piersInTown\' ${town}`, { cause: e })
@@ -212,7 +213,7 @@ router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
   if (ctx.state.isAsyncRequest === true) {
     log('Async query received.')
   }
-  log(ctx.request.query.s)
+  log('s', ctx.request.query.s)
   const x = 17
   const s = (ctx.request.query?.s !== undefined)
     ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10))
@@ -255,8 +256,7 @@ router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
       ],
     }
     publicPiers = await redis.ft.aggregate('glp:idx:piers:public', '*', optsAggregatePublic)
-    log(publicPiers.total)
-    log(publicPiers.results)
+    log('public piers', publicPiers.results)
   } catch (e) {
     error('Failed to get list of public piers.')
     error(e.message)
@@ -274,7 +274,8 @@ router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
     locals.offset = offset
     locals.skipBack = skipBack
     locals.skipForward = skipForward
-    locals.total = publicPiers.total
+    // locals.total = publicPiers.total
+    locals.total = publicPiers.total_results
     locals.public = publicPiers.results
     locals.photo = false
     locals.flash = ctx.flash.view ?? {}
@@ -339,8 +340,8 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
       ],
     }
     businesses = await redis.ft.aggregate('glp:idx:piers:business', '*', optsAggregateBusiness)
-    log(businesses.total)
-    log(businesses.results)
+    log('businesses', businesses.results)
+    // log(businesses.results)
   } catch (e) {
     error('Failed to get list of businesses.')
     error(e.message)
@@ -357,7 +358,8 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
     locals.skipBack = skipBack
     locals.offset = offset
     locals.num = num
-    locals.total = businesses.total
+    // locals.total = businesses.total
+    locals.total = businesses.total_results
     locals.businesses = businesses.results
     locals.flash = ctx.flash.view ?? {}
     locals.title = `${ctx.app.site}: Businesses on Geneva Lake`
@@ -597,7 +599,8 @@ router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx)
       + `SORTBY id ${sortDir} LIMIT ${offset} ${num}`
     log(query)
     mileMarkers = await redis.ft.search(idxMileMarkers, queryMileMarkers, optsMileMarkers)
-    log(mileMarkers?.total, mileMarkers?.documents)
+    // log(mileMarkers?.total, mileMarkers?.documents)
+    log('mileMarkers', mileMarkers)
   } catch (e) {
     error('Failed to get list of walking path pois.')
     error(e)
@@ -609,7 +612,7 @@ router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx)
   locals.skipBack = skipBack
   locals.skipForward = skipForward
   locals.total = mileMarkers?.total
-  locals.mileMarkers = mileMarkers?.documents
+  locals.mileMarkers = mileMarkers?.documents || mileMarkers.results
   locals.pois = []
   locals.flash = ctx.flash.view ?? {}
   locals.title = `${ctx.app.site}: Walking Path`
@@ -745,8 +748,7 @@ router.get('pierFood', '/food', hasFlash, addIpToSession, async (ctx) => {
       ],
     }
     foods = await redis.ft.aggregate('glp:idx:piers:food', '*', optsAggregateFood)
-    log(foods.total)
-    log(foods.results)
+    log('foods', foods.results)
   } catch (e) {
     error('Failed to get list of restaurants.')
     error(e.message)
@@ -756,7 +758,8 @@ router.get('pierFood', '/food', hasFlash, addIpToSession, async (ctx) => {
   const locals = {}
   locals.offset = offset
   locals.num = num
-  locals.total = foods.total
+  // locals.total = foods.total
+  locals.total = foods.total_results
   locals.foods = foods.results
   locals.flash = ctx.flash.view ?? {}
   locals.title = `${ctx.app.site}: Restaurants with piers on Geneva Lake`
@@ -1382,7 +1385,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
           queryPierEstateName,
           optsPierEstateName,
         )
-        log(results.estateNames)
+        log('restults.estateNames', results.estateNames)
       } catch (e) {
         error('Redis search query failed:')
         error(`using index: ${idxPierEstateName}`)
@@ -1469,6 +1472,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         optsPierAssociation = {}
         optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: sortDir }
         optsPierAssociation.RETURN = ['pier', 'association', '$.loc', 'AS', 'coords']
+        optsPierAssociation.LIMIT = { from: '0', size: '1000' }
         log(`Pier association name FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`)
         results.associations = await redis.ft.search(
           idxPierAssociation,
