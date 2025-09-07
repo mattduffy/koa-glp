@@ -1,7 +1,7 @@
 /**
- * @summary Useful middleware functions.
  * @module @mattduffy/koa-stub
  * @author Matthew Duffy <mattduffy@gmail.com>
+ * @summary Useful middleware functions.
  * @file src/middlewares.js
  */
 
@@ -12,7 +12,7 @@ import { METHODS } from 'node:http'
 import { _log, _error } from './utils/logging.js'
 import { Users } from './models/users.js'
 import { App } from './models/app.js'
-import { redis } from './daos/impl/redis/redis-om.js'
+import { redis_single as redis } from './daos/impl/redis/redis-single.js'
 
 // const DBNAME = 'genevalakepiers'
 const USERS = 'users'
@@ -31,6 +31,7 @@ export async function townSetNames(ctx, next) {
     const _towns = await townSets.next() || []
     const towns = []
     _towns.value.forEach(town => {
+      log('town found: ', town)
       const name = town.substr(town.lastIndexOf(':') + 1)
       towns.push(name)
     })

@@ -94,7 +94,7 @@ router.get('piersByTown', '/towns/:town', hasFlash, addIpToSession, async (ctx) 
   const log = glpLog.extend('GET-piersByTown')
   const error = glpError.extend('GET-piersByTown')
   const town = getSetName(sanitize(ctx.params.town))
-  log(town)
+  log(`/towns/:${town}`)
   let prevTown
   let nextTown
   TOWNS.forEach((t, i) => {

@@ -23,7 +23,7 @@ const TOWNS = [
   'city_of_lake_geneva',
   'town_of_linn',
   'village_of_williams_bay',
-  'village_of_fontana-on-Lake_geneva',
+  'village_of_fontana-on-geneva_lake',
   'town_of_walworth',
 ]
 
