@@ -37,6 +37,7 @@
     <% */ %>
     <% if (pois?.results) { %>
     <ul id="resultsList" class="searchResults">
+      <% console.log(pois) %>
       <% pois?.results?.forEach((p, i) => {
         let a = `<li><a href="${origin}/point-of-interest/${p.name}">${p.name}</a></li>`  %>
       <%- a %>
@@ -194,8 +195,16 @@
       async function showWalkingPathMileMarkers() {
         const annotations = []
         const miles = <%- JSON.stringify(mileMarkers) %>
-        miles.forEach((m) => {
-          // console.log(m.value.properties.name, m.value.properties.waypoint)
+        miles.forEach((mile) => {
+          let m
+          if (mile.extra_attributes) {
+            m = {
+              value: JSON.parse(mile.extra_attributes.$),
+            }
+          } else {
+            m = mile
+          }
+          console.log(m.value.properties.name, m.value.properties.waypoint)
           let [lon, lat] = m.value.geometry.coordinates
           lon = parseFloat(lon, 10)
           lat = parseFloat(lat, 10)
@@ -242,7 +251,7 @@
           }
           const request = new Request(`${origin}/mapkit/walking-path-pois`, opts)
           const response = await (await fetch(request)).json()
-          console.log(response)
+          // console.log(response)
           const access = document.querySelector("span[data-type='access']")
           const food = document.querySelector("span[data-type='food']")
           const landmarks = document.querySelector("span[data-type='landmarks']")
