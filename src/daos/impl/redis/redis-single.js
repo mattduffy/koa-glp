@@ -23,10 +23,10 @@ Dotenv.config({
   debug: showDebug,
 })
 
-if (process.env.R_DEL_USER && process.env.R_DEL_PASSWORD) {
-  redisEnv.REDIS_USER = process.env.R_DEL_USER
-  redisEnv.REDIS_PASSWORD = process.env.R_DEL_PASSWORD
-  // console.log('updated redisEnv with delete powers', redisEnv)
+if (process.env.R_PRIV_USER && process.env.R_PRIV_PASSWORD) {
+  redisEnv.REDIS_USER = process.env.R_PRIV_USER
+  redisEnv.REDIS_PASSWORD = process.env.R_PRIV_PASSWORD
+  // console.log('updated redisEnv with privileged powers', redisEnv)
 }
 const redisConnOpts = {
   name: 'redis_single',
