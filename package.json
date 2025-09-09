@@ -25,6 +25,7 @@
     "loadData": "DEBUG_DEPTH=2 DEBUG=* node src/utils/loadData.js",
     "loadPier": "DEBUG_DEPTH=2 DEBUG=* node src/utils/loadPier.js",
     "createGeoJson": "DEBUG_DEPTH=4 DEBUG=* node src/utils/createGeoJsonFiles.js",
+    "createVectorSearchIndex": "DEBUG_DEPTH=4 DEBUG=* node src/utils/createVectorSearchIndex.js",
     "loadWalkingPathGeoJson": "DEBUG_DEPTH=4 DEBUG=* node src/utils/loadWalkingPathGeoJson",
     "deleteData": "DEBUG_DEPTH=2 DEBUG=* node src/utils/deleteData.js",
     "refactorPierFiles": "DEBUG_DEPTH=2 DEBUG=* node src/utils/refactorPierFiles.js",
