@@ -74,7 +74,7 @@ try {
   // throw new Error(e.message, { cause: e })
   console.error(e.message)
   console.info('Try overriding the default redis user/password with ones that can use DEL.')
-  console.info('R_DEL_USER=<user> R_DEL_PASSWORD=<psswd> npm run deleteData ...')
+  console.info('R_PRIV_USER=<user> R_PRIV_PASSWORD=<psswd> npm run deleteData ...')
 }
 
 // Done deleting the data, exit process.
