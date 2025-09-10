@@ -51,28 +51,38 @@ const pipeOptions = {
 
 const program = new Command()
 program.name('deleteData')
-  .requiredOption('--key-prefix <prefix>', 'The app-specific key prefix for Redis to use.')
-  .requiredOption('--key-type <type>', 'The redis data type of the keys to scan.', 'ReJSON-RL')
-  .requiredOption('--idx-name <name>', 'The index name for Redis to create.')
-  .option('--count <count>', 'Number to batch scan.', 20)
+  .requiredOption('--scan-key-prefix <prefix>', 'The key prefix for Redis to scan.')
+  .requiredOption('--scan-key-type <type>', 'The redis data type of the keys to scan.')
+  .option('--scan-count <count>', 'Number to batch scan.', 20)
+  .option('--vector-set-name <vector-set>', 'Name of vector set to create/add to.')
+  .option('--vector-idx-name <idx-name>', 'Name of vector search index to create.')
+  .option('--idx-name <name>', 'The index name for Redis to create.')
 
 program.parse(process.argv)
 const options = program.opts()
 options.dbPrefix = DB_PREFIX
 log('options:', options)
 
-let keyPrefix
-if (options.keyPrefix.slice(-1) !== ':') {
-  options.keyPrefix += ':'
+let scanKeyPrefix
+if (options.scanKeyPrefix.slice(-1) !== ':') {
+  options.scanKeyPrefix += ':'
 }
-keyPrefix = `${options.keyPrefix}`
-const keyPrefixStar = keyPrefix + '*'
+scanKeyPrefix = `${options.scanKeyPrefix}`
+const scanKeyPrefixStar = scanKeyPrefix + '*'
+
+const vectorSet = `${options.dbPrefix}:vectors:${options?.vectorSetName}`
+
+const keyPrefixIdxVectors = `${options.dbPrefix}:idx:vector:`
+const pierIdxVector = `${keyPrefixIdxVectors}${options.vectorIdxName}`
+// const pierEmbeddingsPrefix = `${keyPrefix}embeddings:pier:`
 // process.exit()
 
 async function deleteVectorIndex(idxName) {
   let result
-  log('droping vector index (if it exists): ', idxName)
+  // const pierVectorIndex = `${keyPrefixIdxVectors}${idxName}`
+  log('dropping vector index (if it exists): ', idxName)
   try {
+    log(await redis.ft.info(idxName))
     result = await redis.ft.dropIndex(idxName) 
   } catch (e) {
     log(`Redis responded to ft.dropIndex(${idxName}) with: ${e.message}`)
@@ -82,13 +92,11 @@ async function deleteVectorIndex(idxName) {
 }
 
 async function createVectorIndex(idxName) {
-  const pierVectorIndex = `${DB_PREFIX}:idx:vector:${idxName}`
-  log('creating vector index:', pierVectorIndex)
-  const pierEmbeddingsPrefix = `${keyPrefix}embeddings:`
+  log('creating vector index:', idxName)
   log('referencing embedding keys with prefix: ', pierEmbeddingsPrefix)
   let result
   try {
-    result = await redis.ft.create(pierVectorIndex, {
+    result = await redis.ft.create(idxName, {
       '$.content': {
         type: SCHEMA_FIELD_TYPE.TEXT,
         AS: 'content',
@@ -117,12 +125,25 @@ async function createVectorIndex(idxName) {
   return result
 }
 
+async function vAdd(vs, input) {
+  const pier = input.slice(5, input.indexOf(','))
+  log(`vector set: ${vs}`)
+  log(`      pier: ${pier}`)
+  log(`      line: ${input}`)
+  log(' ')
+
+}
+
+async function jsonSet(idx, input) {
+
+}
+
 async function scan() {
   const scanArgs = {
     CURSOR: '0',
-    MATCH: keyPrefixStar,
-    TYPE: options.keyType,
-    COUNT: options.keyCount,
+    MATCH: `${options.scanKeyPrefix}*`,
+    TYPE: options.scanKeyType,
+    COUNT: options.scanCount,
   }
   log(scanArgs)
   const myIterator = await redis.scanIterator(scanArgs)
@@ -145,17 +166,26 @@ async function scan() {
       }).join(', ')
       const text = `pier ${pier.pier}, ${street}, ${lines}`
       console.log(text)
+      if (options.vectorSetName) {
+        await vAdd(vectorSet, text)
+      }
+      if (options.vectorIdxName) {
+        await jsonSet(pierIdxVector, text)
+      }
       count += 1
     }
-    // console.log(batch)
   }
   return count
 }
+let deleteResult
+let createResult
 try {
-  const deleteResult = await deleteVectorIndex(options.idxName)
-  const createResult = await createVectorIndex(options.idxName)
+  if (options.vectorIdxName) {
+    deleteResult = await deleteVectorIndex(pierIdxVector)
+    createResult = await createVectorIndex(pierIdxVector)
+  }
   const scanResult = await scan()
-  log(`keys scanned ${keyPrefix}?`, scanResult)
+  log(`keys scanned ${scanKeyPrefixStar}?`, scanResult)
 } catch (e) {
   error(e)
   // throw new Error(e.message, { cause: e })
