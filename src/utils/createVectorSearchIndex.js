@@ -55,12 +55,17 @@ program.name('deleteData')
   .requiredOption('--scan-key-type <type>', 'The redis data type of the keys to scan.')
   .option('--scan-count <count>', 'Number to batch scan.', 20)
   .option('--vector-set-name <vector-set>', 'Name of vector set to create/add to.')
-  .option('--vector-idx-name <idx-name>', 'Name of vector search index to create.')
-  .option('--idx-name <name>', 'The index name for Redis to create.')
+  .option('--vss-idx-name <idx-name>', 'Name of VSS index to create.')
+  .option('--vss-embeddings-prefix <key-prefix>', 'The prefix VSS embeddings key to search.')
+  .option('--test', 'If used, add \'test:\' to the key prefix.')
 
 program.parse(process.argv)
 const options = program.opts()
-options.dbPrefix = DB_PREFIX
+if (options.test) {
+  options.dbPrefix = `${DB_PREFIX}:test`
+} else {
+  options.dbPrefix = DB_PREFIX
+}
 log('options:', options)
 
 let scanKeyPrefix
@@ -72,14 +77,13 @@ const scanKeyPrefixStar = scanKeyPrefix + '*'
 
 const vectorSet = `${options.dbPrefix}:vectors:${options?.vectorSetName}`
 
-const keyPrefixIdxVectors = `${options.dbPrefix}:idx:vector:`
-const pierIdxVector = `${keyPrefixIdxVectors}${options.vectorIdxName}`
-// const pierEmbeddingsPrefix = `${keyPrefix}embeddings:pier:`
+const idxVectorsPrefix = `${options.dbPrefix}:idx:vector:`
+const idxVectorsPier = `${idxVectorsPrefix}${options.vssIdxName}`
+const pierEmbeddingsPrefix = `${options.dbPrefix}:embeddings:pier:`
 // process.exit()
 
 async function deleteVectorIndex(idxName) {
   let result
-  // const pierVectorIndex = `${keyPrefixIdxVectors}${idxName}`
   log('dropping vector index (if it exists): ', idxName)
   try {
     log(await redis.ft.info(idxName))
@@ -91,9 +95,9 @@ async function deleteVectorIndex(idxName) {
   return result
 }
 
-async function createVectorIndex(idxName) {
+async function createVectorIndex(idxName, keyPrefix) {
   log('creating vector index:', idxName)
-  log('referencing embedding keys with prefix: ', pierEmbeddingsPrefix)
+  log('referencing embedding keys with prefix: ', keyPrefix)
   let result
   try {
     result = await redis.ft.create(idxName, {
@@ -105,18 +109,22 @@ async function createVectorIndex(idxName) {
         type: SCHEMA_FIELD_TYPE.TAG,
         AS: 'pier',
       },
+      '$.estateName': {
+        type: SCHEMA_FIELD_TYPE.TAG,
+        AS: 'estateName',
+      },
       '$.embedding': {
         type: SCHEMA_FIELD_TYPE.VECTOR,
-        TYPE: 'FLOAT32',
         ALGORITHM: SCHEMA_VECTOR_FIELD_ALGORITHM.FLAT,
-        DISTANCE_METRIC: 'COSINE',
-        DIM: 768,
+        TYPE: aiEnv.VECTOR_TYPE,
+        DISTANCE_METRIC: aiEnv.VECTOR_DIST_METRIC,
+        DIM: aiEnv.VECTOR_DIM,
         AS: 'embedding',
       },
     },
     {
       ON: 'JSON',
-      PREFIX: pierEmbeddingsPrefix,
+      PREFIX: keyPrefix,
     })
   } catch (e) {
     log(e)
@@ -125,17 +133,17 @@ async function createVectorIndex(idxName) {
   return result
 }
 
+async function jsonSet(idx, input) {
+  log('jsonSet', idx, input)
+}
+
 async function vAdd(vs, input) {
   const pier = input.slice(5, input.indexOf(','))
   log(`vector set: ${vs}`)
   log(`      pier: ${pier}`)
   log(`      line: ${input}`)
   log(' ')
-
-}
-
-async function jsonSet(idx, input) {
-
+  const embedding = pipeline(input, pipeOptions)
 }
 
 async function scan() {
@@ -153,15 +161,14 @@ async function scan() {
     if (batch.done) {
       break
     }
-    // batch.value.forEach((k) => {
     for await (const k of batch.value) {
       const pier = await redis.json.get(k)
       // const property = pier.property
-      const street = pier.property.address.street || '<ADDR>'
+      const street = pier.property.address.street || '<add>'
       const lines = pier.owners.map((o) => {
-        return `${o.estateName || '<ESTA>'}: `
+        return `${o.estateName || '<est>'}: `
           + `${o.members.map((m) => {
-            return (m.hidden === 0) ? `${m.f} ${m.l}` : '<UNKN>'
+            return (m.hidden === 0) ? `${m.f} ${m.l}` : '<unk>'
           }).join(', ')}`
       }).join(', ')
       const text = `pier ${pier.pier}, ${street}, ${lines}`
@@ -169,8 +176,8 @@ async function scan() {
       if (options.vectorSetName) {
         await vAdd(vectorSet, text)
       }
-      if (options.vectorIdxName) {
-        await jsonSet(pierIdxVector, text)
+      if (options.vssIdxName) {
+        await jsonSet(idxVectorsPier, text)
       }
       count += 1
     }
@@ -180,9 +187,9 @@ async function scan() {
 let deleteResult
 let createResult
 try {
-  if (options.vectorIdxName) {
-    deleteResult = await deleteVectorIndex(pierIdxVector)
-    createResult = await createVectorIndex(pierIdxVector)
+  if (options.vssIdxName) {
+    deleteResult = await deleteVectorIndex(idxVectorsPier)
+    createResult = await createVectorIndex(idxVectorsPier, pierEmbeddingsPrefix)
   }
   const scanResult = await scan()
   log(`keys scanned ${scanKeyPrefixStar}?`, scanResult)
