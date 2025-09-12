@@ -21,6 +21,10 @@ __tests__/images/gps
 __tests__/images/copy*
 __tests__/images/*_original
 src/exiftool.config
+cached_models/*
+!cached_models/.keep
+cached_pages/*
+!cached_pages/.keep
 keys/*
 !keys/Readme.md
 archive/*
