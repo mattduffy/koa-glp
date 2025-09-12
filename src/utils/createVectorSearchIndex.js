@@ -42,8 +42,12 @@ dotenv.config({
 })
 log('aiEnv', aiEnv)
 transformers.env.localModelPath = path.resolve(appRoot, aiEnv.MODEL_CACHE_DIR)
+transformers.env.cacheDir = path.resolve(appRoot, aiEnv.MODEL_CACHE_DIR)
+transformers.env.IS_NODE_ENV = true
 // transformers.env.allowRemoteModels = false
-let pipeline = transformers.pipeline(aiEnv.EMBEDDING_TASK, aiEnv.EMBEDDING_MODEL)
+let pipeline = await transformers.pipeline(aiEnv.EMBEDDING_TASK, aiEnv.EMBEDDING_MODEL)
+// log('what is pipeline', pipeline)
+// log(transformers.env)
 const pipeOptions = {
   pooling: 'mean',
   normalize: true,
@@ -86,7 +90,7 @@ async function deleteVectorIndex(idxName) {
   let result
   log('dropping vector index (if it exists): ', idxName)
   try {
-    log(await redis.ft.info(idxName))
+    // log(await redis.ft.info(idxName))
     result = await redis.ft.dropIndex(idxName) 
   } catch (e) {
     log(`Redis responded to ft.dropIndex(${idxName}) with: ${e.message}`)
@@ -134,26 +138,47 @@ async function createVectorIndex(idxName, keyPrefix) {
 }
 
 async function jsonSet(idx, input) {
-  log('jsonSet', idx, input)
+  const info = log.extend('jsonSet()')
+  // info('jsonSet', idx, input)
+  const pier = input.slice(5, input.indexOf(','))
+  const estateName = input.slice(
+    input.indexOf(',', input.indexOf(',')+1)+2,
+    input.indexOf(':')
+  ) 
+  const embedding = [...(await pipeline(input, pipeOptions)).data]
+  const key = pierEmbeddingsPrefix + pier
+  info('pier:', pier)
+  info('estate:', estateName)
+  info('json key path:', key)
+  info('embedding:', embedding)
+  const insert = await redis.json.set(key, '$', {
+    content: input,
+    pier,
+    estateName,
+    embedding,
+  })
+  log('inserted', insert)
+  return insert
 }
 
 async function vAdd(vs, input) {
+  const info = log.extend('vAdd()')
   const pier = input.slice(5, input.indexOf(','))
-  log(`vector set: ${vs}`)
-  log(`      pier: ${pier}`)
-  log(`      line: ${input}`)
-  log(' ')
-  const embedding = pipeline(input, pipeOptions)
+  info(`vector set: ${vs}`)
+  info(`      pier: ${pier}`)
+  info(`      line: ${input}`)
+  info(' ')
 }
 
 async function scan() {
+  const info = log.extend('scan()')
   const scanArgs = {
     CURSOR: '0',
     MATCH: `${options.scanKeyPrefix}*`,
     TYPE: options.scanKeyType,
     COUNT: options.scanCount,
   }
-  log(scanArgs)
+  info(scanArgs)
   const myIterator = await redis.scanIterator(scanArgs)
   let batch
   let count = 0
@@ -172,7 +197,7 @@ async function scan() {
           }).join(', ')}`
       }).join(', ')
       const text = `pier ${pier.pier}, ${street}, ${lines}`
-      console.log(text)
+      info(text)
       if (options.vectorSetName) {
         await vAdd(vectorSet, text)
       }
@@ -193,6 +218,18 @@ try {
   }
   const scanResult = await scan()
   log(`keys scanned ${scanKeyPrefixStar}?`, scanResult)
+  const lakewood = await redis.ft.search(
+    idxVectorsPier,
+    '*=>[KNN 3 @embedding $B AS score]',
+    { PARAMS:
+      {
+        B: [...(await pipeline('Lakewood', pipeOptions)).data],
+      },
+      RETURN: ['score', 'pier', 'estateName'],
+      DIALECT: 2,
+    }
+  )
+  log('found?', lakewood)
 } catch (e) {
   error(e)
   // throw new Error(e.message, { cause: e })
