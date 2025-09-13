@@ -55,12 +55,15 @@ const pipeOptions = {
 
 const program = new Command()
 program.name('deleteData')
-  .requiredOption('--scan-key-prefix <prefix>', 'The key prefix for Redis to scan.')
-  .requiredOption('--scan-key-type <type>', 'The redis data type of the keys to scan.')
+  .option('--scan-key-prefix <prefix>', 'The key prefix for Redis to scan.')
+  .option('--scan-key-type <type>', 'The redis data type of the keys to scan.')
   .option('--scan-count <count>', 'Number to batch scan.', 20)
+  .option('--scan-action <addvss|delvss|knn|addvs|delvs>', 'Action during scan iteration.')
   .option('--vector-set-name <vector-set>', 'Name of vector set to create/add to.')
   .option('--vss-idx-name <idx-name>', 'Name of VSS index to create.')
   .option('--vss-embeddings-prefix <key-prefix>', 'The prefix VSS embeddings key to search.')
+  .option('--scan-delete-vss-embeddings', 'Delete all vss embeddings for a given key prefix.')
+  .option('--knn-query <query>', 'Term to KNN search.')
   .option('--test', 'If used, add \'test:\' to the key prefix.')
 
 program.parse(process.argv)
@@ -73,7 +76,7 @@ if (options.test) {
 log('options:', options)
 
 let scanKeyPrefix
-if (options.scanKeyPrefix.slice(-1) !== ':') {
+if (options?.scanKeyPrefix && options?.scanKeyPrefix.slice(-1) !== ':') {
   options.scanKeyPrefix += ':'
 }
 scanKeyPrefix = `${options.scanKeyPrefix}`
@@ -161,13 +164,74 @@ async function jsonSet(idx, input) {
   return insert
 }
 
-async function vAdd(vs, input) {
-  const info = log.extend('vAdd()')
+async function knn(token) {
+  const info = log.extend('knn(token)')
+  info(token, idxVectorsPier)
+  const vector = Buffer.from((await pipeline(token, pipeOptions)).data.buffer)
+  info(vector)
+  const result = await redis.ft.search(
+    idxVectorsPier,
+    '*=>[KNN 3 @embedding $B AS score]',
+    { PARAMS:
+      {
+        B: vector,
+      },
+      RETURN: ['score', 'pier', 'estateName'],
+      SORTBY: { BY: 'score', DIRECTION: 'DESC' },
+      DIALECT: 2,
+    }
+  )
+  if (result.total > 0) {
+    result.documents.forEach((d) => {
+      log('pier', d)
+
+    })
+  }
+}
+
+async function vsAdd(vs, input) {
+  const info = log.extend('vsAdd(vs, input)')
   const pier = input.slice(5, input.indexOf(','))
   info(`vector set: ${vs}`)
   info(`      pier: ${pier}`)
   info(`      line: ${input}`)
   info(' ')
+}
+
+async function vsDel(vs, input) {
+  const info = log.extend('vsDel(vs, input)')
+  const pier = input.slice(5, input.indexOf(','))
+  info(`vector set: ${vs}`)
+  info(`      pier: ${pier}`)
+  info(`      line: ${input}`)
+  info(' ')
+}
+
+async function delvss(key) {
+  const info = log.extend('delvss(key)')
+  let deleteResult
+  deleteResult = await deleteVectorIndex(idxVectorsPier)
+  info(`deleted ${idxVectorsPier}`, deletedResult)
+}
+
+async function addvss(key) {
+  const info = log.extend('addvss(key')
+  // const property = pier.property
+  const street = pier.property.address.street || '<add>'
+  const lines = pier.owners.map((o) => {
+    return `${o.estateName || '<est>'}: `
+      + `${o.members.map((m) => {
+        return (m.hidden === 0) ? `${m.f} ${m.l}` : '<unk>'
+      }).join(', ')}`
+  }).join(', ')
+  const text = `pier ${pier.pier}, ${street}, ${lines}`
+  info(text)
+  if (options.vectorSetName) {
+    await vAdd(vectorSet, text)
+  }
+  if (options.vssIdxName) {
+    await jsonSet(idxVectorsPier, text)
+  }
 }
 
 async function scan() {
@@ -187,49 +251,47 @@ async function scan() {
       break
     }
     for await (const k of batch.value) {
-      const pier = await redis.json.get(k)
-      // const property = pier.property
-      const street = pier.property.address.street || '<add>'
-      const lines = pier.owners.map((o) => {
-        return `${o.estateName || '<est>'}: `
-          + `${o.members.map((m) => {
-            return (m.hidden === 0) ? `${m.f} ${m.l}` : '<unk>'
-          }).join(', ')}`
-      }).join(', ')
-      const text = `pier ${pier.pier}, ${street}, ${lines}`
-      info(text)
-      if (options.vectorSetName) {
-        await vAdd(vectorSet, text)
-      }
-      if (options.vssIdxName) {
-        await jsonSet(idxVectorsPier, text)
+      const key = await redis.json.get(k)
+      switch(options.scanAction) {
+        case 'addvss':
+          let createResult
+          createResult = await createVectorIndex(idxVectorsPier, pierEmbeddingsPrefix)
+          await addvss(key)
+          break
+        case 'delvss':
+          await delvss(key)
+          break
+        case 'addvs':
+          await vsAdd(options.vectorSetName, key)
+          break
+        case 'delvs':
+          await vsDel(options.vectorSetName, key)
+          break
+        case 'knn':
+          await knn(options.knnQuery)
+          break
+        default:
+          info(key)
       }
       count += 1
     }
   }
   return count
 }
-let deleteResult
-let createResult
+let scanResult
 try {
   if (options.vssIdxName) {
-    deleteResult = await deleteVectorIndex(idxVectorsPier)
-    createResult = await createVectorIndex(idxVectorsPier, pierEmbeddingsPrefix)
+    // deleteResult = await deleteVectorIndex(idxVectorsPier)
+    // createResult = await createVectorIndex(idxVectorsPier, pierEmbeddingsPrefix)
   }
-  const scanResult = await scan()
-  log(`keys scanned ${scanKeyPrefixStar}?`, scanResult)
-  const lakewood = await redis.ft.search(
-    idxVectorsPier,
-    '*=>[KNN 3 @embedding $B AS score]',
-    { PARAMS:
-      {
-        B: [...(await pipeline('Lakewood', pipeOptions)).data],
-      },
-      RETURN: ['score', 'pier', 'estateName'],
-      DIALECT: 2,
-    }
-  )
-  log('found?', lakewood)
+  if (options.scanAction) {
+    scanResult = await scan()
+    log(`keys scanned ${scanKeyPrefixStar}?`, scanResult)
+  }
+  if (options.knnQuery) {
+    await knn(options.knnQuery)
+  }
+  
 } catch (e) {
   error(e)
   // throw new Error(e.message, { cause: e })
