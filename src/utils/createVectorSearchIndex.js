@@ -54,15 +54,15 @@ const pipeOptions = {
 }
 
 const program = new Command()
-program.name('deleteData')
-  .option('--scan-key-prefix <prefix>', 'The key prefix for Redis to scan.')
-  .option('--scan-key-type <type>', 'The redis data type of the keys to scan.')
+program.name('Create VSS Embeddings')
+  .option('--scan-key-prefix <prefix>', 'The source data key prefix for Redis to scan.')
+  .option('--scan-key-type <type>', 'The data type of the source data keys to scan.')
   .option('--scan-count <count>', 'Number to batch scan.', 20)
-  .option('--scan-action <addvss|delvss|knn|addvs|delvs>', 'Action during scan iteration.')
+  .option('--scan-action <addVss|delVss|knn|vsAdd|vsDel>', 'Action during scan iteration.')
   .option('--vector-set-name <vector-set>', 'Name of vector set to create/add to.')
   .option('--vss-idx-name <idx-name>', 'Name of VSS index to create.')
   .option('--vss-embeddings-prefix <key-prefix>', 'The prefix VSS embeddings key to search.')
-  .option('--scan-delete-vss-embeddings', 'Delete all vss embeddings for a given key prefix.')
+  .option('--delete-vss-embeddings', 'Delete all vss embeddings for a given key prefix.')
   .option('--knn-query <query>', 'Term to KNN search.')
   .option('--test', 'If used, add \'test:\' to the key prefix.')
 
@@ -79,13 +79,15 @@ let scanKeyPrefix
 if (options?.scanKeyPrefix && options?.scanKeyPrefix.slice(-1) !== ':') {
   options.scanKeyPrefix += ':'
 }
-scanKeyPrefix = `${options.scanKeyPrefix}`
+log('options.scanKeyPrefix', options.scanKeyPrefix)
+scanKeyPrefix = `${options.dbPrefix}:${options.scanKeyPrefix}`
 const scanKeyPrefixStar = scanKeyPrefix + '*'
+log('scanKeyPrefixStar', scanKeyPrefixStar)
 
 const vectorSet = `${options.dbPrefix}:vectors:${options?.vectorSetName}`
 
-const idxVectorsPrefix = `${options.dbPrefix}:idx:vector:`
-const idxVectorsPier = `${idxVectorsPrefix}${options.vssIdxName}`
+const idxVectorsPrefix = `${options.dbPrefix}:idx:vectors:`
+const idxVectorsPiers = `${idxVectorsPrefix}${options.vssIdxName}`
 const pierEmbeddingsPrefix = `${options.dbPrefix}:embeddings:pier:`
 // process.exit()
 
@@ -117,7 +119,7 @@ async function createVectorIndex(idxName, keyPrefix) {
         AS: 'pier',
       },
       '$.estateName': {
-        type: SCHEMA_FIELD_TYPE.TAG,
+        type: SCHEMA_FIELD_TYPE.TEXT,
         AS: 'estateName',
       },
       '$.embedding': {
@@ -148,14 +150,15 @@ async function jsonSet(idx, input) {
     input.indexOf(',', input.indexOf(',')+1)+2,
     input.indexOf(':')
   ) 
-  const embedding = [...(await pipeline(input, pipeOptions)).data]
+  const content = input.toLowerCase()
+  const embedding = [...(await pipeline(content, pipeOptions)).data]
   const key = pierEmbeddingsPrefix + pier
   info('pier:', pier)
   info('estate:', estateName)
   info('json key path:', key)
   info('embedding:', embedding)
   const insert = await redis.json.set(key, '$', {
-    content: input,
+    content,
     pier,
     estateName,
     embedding,
@@ -166,18 +169,19 @@ async function jsonSet(idx, input) {
 
 async function knn(token) {
   const info = log.extend('knn(token)')
-  info(token, idxVectorsPier)
+  info(token, idxVectorsPiers)
   const vector = Buffer.from((await pipeline(token, pipeOptions)).data.buffer)
   info(vector)
   const result = await redis.ft.search(
-    idxVectorsPier,
-    '*=>[KNN 3 @embedding $B AS score]',
+    idxVectorsPiers,
+    // '*=>[KNN 3 @embedding $B AS score]',
+    '(-@estateName:<est>)=>[KNN 4 @embedding $B AS score]',
     { PARAMS:
       {
         B: vector,
       },
       RETURN: ['score', 'pier', 'estateName'],
-      SORTBY: { BY: 'score', DIRECTION: 'DESC' },
+      SORTBY: { BY: 'score', DIRECTION: 'ASC' },
       DIALECT: 2,
     }
   )
@@ -207,17 +211,17 @@ async function vsDel(vs, input) {
   info(' ')
 }
 
-async function delvss(key) {
-  const info = log.extend('delvss(key)')
-  let deleteResult
-  deleteResult = await deleteVectorIndex(idxVectorsPier)
-  info(`deleted ${idxVectorsPier}`, deletedResult)
+async function delVss(key) {
+  const info = log.extend('delVss(key)')
+  const result = await redis.json.del(key)
+  log('deleted?', result)
 }
 
-async function addvss(key) {
-  const info = log.extend('addvss(key')
-  // const property = pier.property
+async function addVss(key) {
+  const info = log.extend('addVss(key)')
+  const pier = key 
   const street = pier.property.address.street || '<add>'
+  info('street', street)
   const lines = pier.owners.map((o) => {
     return `${o.estateName || '<est>'}: `
       + `${o.members.map((m) => {
@@ -230,17 +234,21 @@ async function addvss(key) {
     await vAdd(vectorSet, text)
   }
   if (options.vssIdxName) {
-    await jsonSet(idxVectorsPier, text)
+    await jsonSet(idxVectorsPiers, text)
   }
 }
 
-async function scan() {
+async function scan(keyPath=null) {
   const info = log.extend('scan()')
   const scanArgs = {
     CURSOR: '0',
-    MATCH: `${options.scanKeyPrefix}*`,
-    TYPE: options.scanKeyType,
-    COUNT: options.scanCount,
+    COUNT:  options.scanCount,
+  }
+  if (options.scanKeyPrefix) {
+    scanArgs.MATCH = (keyPath !== null) ? keyPath : scanKeyPrefixStar
+  }
+  if (options.scanKeyType) {
+    scanArgs.TYPE = options.scanKeyType
   }
   info(scanArgs)
   const myIterator = await redis.scanIterator(scanArgs)
@@ -253,18 +261,19 @@ async function scan() {
     for await (const k of batch.value) {
       const key = await redis.json.get(k)
       switch(options.scanAction) {
-        case 'addvss':
-          let createResult
-          createResult = await createVectorIndex(idxVectorsPier, pierEmbeddingsPrefix)
-          await addvss(key)
+        case 'addVss':
+          info('key', key)
+          await addVss(key)
           break
-        case 'delvss':
-          await delvss(key)
+        case 'delVss':
+          // await delVss(key)
+          info('deleting:', k, key.content)
+          await delVss(k)
           break
-        case 'addvs':
+        case 'vsAdd':
           await vsAdd(options.vectorSetName, key)
           break
-        case 'delvs':
+        case 'vsDel':
           await vsDel(options.vectorSetName, key)
           break
         case 'knn':
@@ -279,16 +288,18 @@ async function scan() {
   return count
 }
 let scanResult
+let deleteResult
+let createResult
 try {
-  if (options.vssIdxName) {
-    // deleteResult = await deleteVectorIndex(idxVectorsPier)
-    // createResult = await createVectorIndex(idxVectorsPier, pierEmbeddingsPrefix)
+  if (options?.vssIdxName && ['addVss', 'delVss'].includes(options?.scanAction)) {
+    log('dropping and recreating vss index:', idxVectorsPiers)
+    deleteResult = await deleteVectorIndex(idxVectorsPiers)
+    createResult = await createVectorIndex(idxVectorsPiers, pierEmbeddingsPrefix)
   }
-  if (options.scanAction) {
+  if (options?.scanAction) {
     scanResult = await scan()
     log(`keys scanned ${scanKeyPrefixStar}?`, scanResult)
-  }
-  if (options.knnQuery) {
+  } else if (options?.knnQuery) {
     await knn(options.knnQuery)
   }
   
