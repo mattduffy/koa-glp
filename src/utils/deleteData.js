@@ -34,12 +34,10 @@ const DB_PREFIX = redisEnv.REDIS_KEY_PREFIX
 
 const program = new Command()
 program.name('deleteData')
-  .option('--key-count <count>', 'The number of keys to return per cursor.', 900)
   .requiredOption('--key-prefix <prefix>', 'The app-specific key prefix for Redis to use.')
   .requiredOption('--key-type <type>', 'The redis data type of the keys to delete.')
-  .requiredOption('--key-name <name>',
-    'The key name for Redis to append to the app-specific key prefix.'
-  )
+  .requiredOption('--key-name <name>', 'Key name to append to the app-specific key prefix.')
+  .option('--key-count <count>', 'The number of keys to return per cursor.', 20)
 
 program.parse(process.argv)
 const options = program.opts()
@@ -53,18 +51,31 @@ log(`redis.options.keyPrefix: ${redis.options.keyPrefix}`)
 
 async function del() {
   const scanArgs = {
-    cursor: '0',
-    match: `${keyPath}:${options.keyName}`,
-    type: options.keyType,
-    count: options.keyCount,
+    CURSOR: '0',
+    MATCH: `${keyPath}:${options.keyName}`,
+    TYPE: options.keyType,
+    COUNT: options.keyCount,
   }
-  // log(scanArgs)
-  // const myIterator = await redis.scanIterator(scanArgs)
-  // for await (const keys of myIterator) {
-  //   console.log(keys)
-  // }
-  return await redis.del(`${keyPath}:${options.keyName}`)
-  
+  log(scanArgs)
+  let myIterator = await redis.scanIterator(scanArgs)
+  let batch
+  let count = 0
+  while (batch = await myIterator.next()) {
+    if (batch.done) {
+      break
+    }
+    for await (const k of batch.value) {
+      let deleted
+      if (options.keyType === 'ReJSON-RL') {
+        deleted = await redis.json.del(k) 
+      } else {
+        deleted = await redis.del(k)
+      }
+      console.log('deleted', k, deleted)
+      count += 1
+    }
+  }
+  return count 
 }
 try {
   const result = await del()
@@ -72,9 +83,9 @@ try {
 } catch (e) {
   error(e)
   // throw new Error(e.message, { cause: e })
-  console.error(e.message)
-  console.info('Try overriding the default redis user/password with ones that can use DEL.')
-  console.info('R_PRIV_USER=<user> R_PRIV_PASSWORD=<psswd> npm run deleteData ...')
+  error(e.message)
+  info('Try overriding the default redis user/password with ones that can use DEL.')
+  info('R_PRIV_USER=<user> R_PRIV_PASSWORD=<psswd> npm run deleteData ...')
 }
 
 // Done deleting the data, exit process.
