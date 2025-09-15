@@ -115,12 +115,14 @@ appEnv.UPLOADSDIR = app.dirs.private.uploads
 
 async function aiSetup(ctx, next) {
   ctx.state.ai = {
+    root: appRoot,
     model: aiEnv.EMBEDDING_MODEL,
     embeddingTask: aiEnv.EMBEDDING_TASK,
     vectorType: aiEnv.VECTOR_TYPE,
     vectorAlg: aiEnv.VECTOR_ALGORITHM,
     vectorDistanceMetric: aiEnv.VECTOR_DIST_METRIC,
     vectorDIM: aiEnv.VECTOR_DIM,
+    modelCacheDir: aiEnv.MODEL_CACHE_DIR,
   }
   return next()
 }
