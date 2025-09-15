@@ -5,8 +5,8 @@
  * @file src/utils/createVectorSearchIndex.js
  */
 import path from 'node:path'
-import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
+import * as dotenv from 'dotenv'
 import * as transformers from '@xenova/transformers'
 import {
   SCHEMA_VECTOR_FIELD_ALGORITHM,
@@ -122,6 +122,10 @@ async function createVectorIndex(idxName, keyPrefix) {
         type: SCHEMA_FIELD_TYPE.TEXT,
         AS: 'estateName',
       },
+      '$.coords': {
+        type: SCHEMA_FIELD_TYPE.GEO,
+        AS: 'coords',
+      },
       '$.embedding': {
         type: SCHEMA_FIELD_TYPE.VECTOR,
         ALGORITHM: SCHEMA_VECTOR_FIELD_ALGORITHM.FLAT,
@@ -142,7 +146,7 @@ async function createVectorIndex(idxName, keyPrefix) {
   return result
 }
 
-async function jsonSet(idx, input) {
+async function jsonSet(idx, input, coords) {
   const info = log.extend('jsonSet()')
   // info('jsonSet', idx, input)
   const pier = input.slice(5, input.indexOf(','))
@@ -155,11 +159,13 @@ async function jsonSet(idx, input) {
   const key = pierEmbeddingsPrefix + pier
   info('pier:', pier)
   info('estate:', estateName)
+  info('coords:', coords)
   info('json key path:', key)
   info('embedding:', embedding)
   const insert = await redis.json.set(key, '$', {
     content,
     pier,
+    coords,
     estateName,
     embedding,
   })
@@ -180,7 +186,7 @@ async function knn(token) {
       {
         B: vector,
       },
-      RETURN: ['score', 'pier', 'estateName'],
+      RETURN: ['score', 'pier', 'estateName', 'coords'],
       SORTBY: { BY: 'score', DIRECTION: 'ASC' },
       DIALECT: 2,
     }
@@ -234,7 +240,7 @@ async function addVss(key) {
     await vAdd(vectorSet, text)
   }
   if (options.vssIdxName) {
-    await jsonSet(idxVectorsPiers, text)
+    await jsonSet(idxVectorsPiers, text, pier.loc)
   }
 }
 
