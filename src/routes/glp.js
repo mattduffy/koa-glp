@@ -5,8 +5,11 @@
  * @file src/routes/glp.js
  */
 
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import Router from '@koa/router'
 import { ulid } from 'ulid'
+import * as transformers from '@xenova/transformers'
 import { Albums } from '@mattduffy/albums/Albums'
 import {
   FT_AGGREGATE_GROUP_BY_REDUCERS as AggregateGroupByReducers,
@@ -1385,6 +1388,42 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
           queryPierEstateName,
           optsPierEstateName,
         )
+
+        // Vector Similarity Search on estate name
+        log('vss: ', searchTerms[0])
+        transformers.env.localModelPath = path.resolve(
+          ctx.state.ai.root,
+          ctx.state.ai.modelCacheDir,
+        )
+        transformers.env.cacheDir = path.resolve(
+          ctx.state.ai.root,
+          ctx.state.ai.modelCacheDir,
+        )
+        transformers.env.IS_NODE_ENV = true
+        let pipeline = await transformers.pipeline(
+          ctx.state.ai.embeddingTask,
+          ctx.state.ai.model,
+        )
+        const pipeOptions = {
+          pooling: 'mean',
+          normalize: true,
+        }
+        const vector = Buffer.from((await pipeline(searchTerms[0], pipeOptions)).data.buffer)
+        const idxVectorsPiers = 'glp:idx:vectors:pier'
+        const vector_result = await redis.ft.search(
+          idxVectorsPiers,
+          '(-@estateName:<est>)=>[KNN 4 @embedding $B AS score]',
+          { PARAMS:
+            {
+              B: vector,
+            },
+            RETURN: ['score', 'pier', 'estateName', 'coords'],
+            SORTBY: { BY: 'score', DIRECTION: 'ASC' },
+            DIALECT: 2,
+          }
+        )
+        results.vss = vector_result
+        log('vector_result', vector_result)
         log('restults.estateNames', results.estateNames)
       } catch (e) {
         error('Redis search query failed:')
