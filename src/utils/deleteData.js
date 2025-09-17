@@ -38,6 +38,7 @@ program.name('deleteData')
   .requiredOption('--key-type <type>', 'The redis data type of the keys to delete.')
   .requiredOption('--key-name <name>', 'Key name to append to the app-specific key prefix.')
   .option('--key-count <count>', 'The number of keys to return per cursor.', 20)
+  .option('--dry-run', 'Dry run the delete command, don\'t actully delete anything.')
 
 program.parse(process.argv)
 const options = program.opts()
@@ -67,9 +68,17 @@ async function del() {
     for await (const k of batch.value) {
       let deleted
       if (options.keyType === 'ReJSON-RL') {
-        deleted = await redis.json.del(k) 
+        if (!options.dryRun) {
+          deleted = await redis.json.del(k)
+        } else {
+          log(`DRY-RUN: redis.json.del(${k})`)
+        }
       } else {
-        deleted = await redis.del(k)
+        if (!options.dryRun) {
+          deleted = await redis.del(k)
+        } else {
+          log(`DRY-RUN: redis.del(${k})`)
+        }
       }
       console.log('deleted', k, deleted)
       count += 1
