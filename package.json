@@ -28,6 +28,7 @@
     "createVectorSearchIndex": "DEBUG_DEPTH=4 DEBUG=* node src/utils/createVectorSearchIndex.js",
     "loadWalkingPathGeoJson": "DEBUG_DEPTH=4 DEBUG=* node src/utils/loadWalkingPathGeoJson",
     "deleteData": "DEBUG_DEPTH=2 DEBUG=* node src/utils/deleteData.js",
+    "propertyValue": "DEBUG_DEPTH=2 DEBUG=* node src/utils/mcpPropertyValue.js",
     "refactorPierFiles": "DEBUG_DEPTH=2 DEBUG=* node src/utils/refactorPierFiles.js",
     "addNewFields": "DEBUG_DEPTH=2 DEBUG=* node src/utils/addNewFields.js",
     "normalizeAssocs": "DEBUG_DEPTH=2 DEBUG=* node src/utils/normalizeAssocs.js",
