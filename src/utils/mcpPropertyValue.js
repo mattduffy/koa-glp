@@ -13,8 +13,8 @@ import { redis_single as redis } from '../daos/impl/redis/redis-single.js'
 import { _log, _error } from './logging.js'
 /* eslint-enable import/no-extraneous-dependencies */
 
-const log = _log.extend('utils:delete-data')
-const error = _error.extend('utils:delete-data')
+const log = _log.extend('utils:propertyValue')
+const error = _error.extend('utils:propertyValue')
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -35,64 +35,46 @@ const DB_PREFIX = redisEnv.REDIS_KEY_PREFIX
 const program = new Command()
 program.name('propertyValue')
   .requiredOption('--pier-number <pier>', 'The pier number to find a property value for.')
-  .option('--dry-run', 'Dry run the delete command, don\'t actully delete anything.')
+  .option('--dry-run', 'Dry run the command, don\'t actully change anything.')
 
 program.parse(process.argv)
 const options = program.opts()
 options.dbPrefix = DB_PREFIX
 log('options:', options)
 
-let keyPath = options?.keyPrefix ?? options.dbPrefix
-log(`full keyPath: ${keyPath}:${options.keyName}`)
+let keyPath = `${options?.keyPrefix ?? options.dbPrefix}:piers:`
+log(`full keyPath: ${keyPath}${options.pierNumber}`)
 log(`redis.options.keyPrefix: ${redis.options.keyPrefix}`)
 // process.exit()
 
-async function del() {
-  const scanArgs = {
-    CURSOR: '0',
-    MATCH: `${keyPath}:${options.keyName}`,
-    TYPE: options.keyType,
-    COUNT: options.keyCount,
+async function pier(number) {
+  let pier 
+  if (!number) {
+    throw new Error('Missing pier number.')
   }
-  log(scanArgs)
-  let myIterator = await redis.scanIterator(scanArgs)
-  let batch
-  let count = 0
-  while (batch = await myIterator.next()) {
-    if (batch.done) {
-      break
-    }
-    for await (const k of batch.value) {
-      let deleted
-      if (options.keyType === 'ReJSON-RL') {
-        if (!options.dryRun) {
-          deleted = await redis.json.del(k)
-        } else {
-          log(`DRY-RUN: redis.json.del(${k})`)
-        }
-      } else {
-        if (!options.dryRun) {
-          deleted = await redis.del(k)
-        } else {
-          log(`DRY-RUN: redis.del(${k})`)
-        }
-      }
-      console.log('deleted', k, deleted)
-      count += 1
-    }
+  try {
+    pier = await redis.json.get(number)
+    log(pier)
+  } catch (e) {
+    error(e)
+    throw new Error(`Failed retreiving pier ${number}`, { cause: e })
   }
-  return count 
+  return pier 
 }
 try {
-  const result = await del()
-  log(`key ${keyPath}:${options.keyName} deleted?`, result)
+  const result = await pier(`${keyPath}${options.pierNumber}`)
+  const address = `${result.property.address.street.split(' ').join('-')}-`
+    + `${result.property.address.city.split(' ').join('-')}-`
+    + `${result.property.address.city.split(' ').join('-')}-`
+    + `${result.property.address.zip}`
+  log(address)
 } catch (e) {
   error(e)
   // throw new Error(e.message, { cause: e })
   error(e.message)
-  info('Try overriding the default redis user/password with ones that can use DEL.')
-  info('R_PRIV_USER=<user> R_PRIV_PASSWORD=<psswd> npm run deleteData ...')
+  log('Try overriding the default redis user/password with ones that can use DEL.')
+  log('R_PRIV_USER=<user> R_PRIV_PASSWORD=<psswd> npm run mcpPropertyValue...')
 }
 
-// Done deleting the data, exit process.
+// Done getting property value data, exit process.
 process.exit()
