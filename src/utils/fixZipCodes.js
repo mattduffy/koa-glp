@@ -58,7 +58,7 @@ const towns = [
   'town_of_linn',
   'town_of_walworth',
   'village_of_williams_bay',
-  'village_of_fontana-on-geneva-lake',
+  'village_of_fontana-on-geneva_lake',
 ]
 
 async function town(t) {
@@ -67,7 +67,7 @@ async function town(t) {
     let key = `glp:piers_by_town:${t}`
     log('town sorted set key:', key)
     result = await redis.zRange(key, 0, -1)
-    log(result)
+    // log(result)
   } catch (e) {
     error(e)
     throw e
@@ -78,12 +78,10 @@ let set
 try {
   if (options?.town) {
     set = await town(options.town)
-
   } else {
     for await (const t of towns) {
       set = await town(t)
     }
-    set = await town(options.town)
   }
   log(set)
 } catch (e) {
