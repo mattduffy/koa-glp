@@ -6,8 +6,9 @@
  */
 /* eslint-disable import/no-extraneous-dependencies */
 import path from 'node:path'
-import * as dotenv from 'dotenv'
+import { writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
+import * as dotenv from 'dotenv'
 import { Command } from 'commander'
 import { redis_single as redis } from '../daos/impl/redis/redis-single.js'
 import { _log, _error } from './logging.js'
@@ -25,6 +26,9 @@ dotenv.config({
   path: path.resolve(appRoot, 'config/app.env'),
   processEnv: appEnv,
 })
+const dataRoot = path.resolve(appRoot, 'data', 'v1')
+log(`dataRoot ${dataRoot}`)
+
 const redisEnv = {}
 dotenv.config({
   path: path.resolve(appRoot, 'config/redis.env'),
@@ -40,11 +44,40 @@ program.name('fix zip codes')
 program.parse(process.argv)
 const options = program.opts()
 options.dbPrefix = DB_PREFIX
-options.fontana =     '53125'
-options.lakeGeneva =  '53147'
-options.linn =        '53147'
-options.walworth =    '53184'
-options.williamsBay = '53191'
+options['city_of_lake_geneva'] = {
+  zip: '53147',
+  dir1: {
+    key: '039',
+    dir: '1_city_of_lake_geneva',
+  },
+  dir2: {
+    key: '836',
+    dir: '7_city_of_lake_geneva',
+  },
+}
+options['town_of_linn'] = {
+  zip: '53147',
+  dir1: {
+    key: '167',
+    dir: '2_town_of_linn',
+  },
+  dir2: {
+    key: '525',
+    dir: '6_town_of_linn',
+  },
+}
+options['village_of_williams_bay'] = {
+  zip: '53191',
+  dir: '3_village_of_williams_bay',
+}
+options['town_of_walworth'] = {
+  zip: '53125',
+  dir: '4_town_of_walworth',
+}
+options['village_of_fontana-on-geneva-lake'] = {
+  zip: '53125',
+  dir: '5_village_of_fontana-on-geneva_lake',
+}
 
 log('options:', options)
 
@@ -74,16 +107,69 @@ async function town(t) {
   }
   return result 
 }
-let set 
+
+async function getPier(pier) {
+  let p
+  try {
+    const key = `glp:piers:${pier}`
+    log('getting pier:', key)
+    p = await redis.json.get(key) 
+  } catch (e) {
+    throw e
+  }
+  return p
+}
+
+async function setPier(num, pier) {
+  let result
+  try {
+    const key = `glp:piers:${num}`
+    if (options?.dryRun) {
+      log('pretending to set pier', key)
+    } else {
+      result = await redis.json.set(key, '$', pier)
+      log('setting pier: ', key, result)
+    }
+  } catch (e) {
+    throw e
+  }
+  return result
+}
+
+let piers 
+let numberOfPiers = 0
 try {
+  if (options?.dryRun) {
+    log('DRY RUN!!!!\n')
+  }
   if (options?.town) {
-    set = await town(options.town)
+    piers = await town(options.town)
+    for await (const pierNumber of piers) {
+      const pier = await getPier(pierNumber)
+      log(pier.property.address)
+      const saved = await setPier(pierNumber, pier)
+      const town = options[options.town]
+      const pierDir = (town?.dir) ? town.dir :
+        ((Number.parseInt(pierNumber, 10) < Number.parseInt(town.dir1.key)) ?
+          town.dir1.dir :
+          town.dir2.dir)
+      const pierFile = path.resolve(dataRoot, pierDir, `pier-${pierNumber}.json`)
+      log('pierFile', pierFile)
+      log('\n')
+    }
+    numberOfPiers = piers.length
+    // log(piers)
   } else {
     for await (const t of towns) {
-      set = await town(t)
+      piers = await town(t)
+      numberOfPiers += piers.length
+      log(piers.length)
     }
   }
-  log(set)
+  log('number of piers:', numberOfPiers)
+  if (options?.dryRun) {
+    log('DRY RUN!!!!')
+  }
 } catch (e) {
   error(e)
   // throw new Error(e.message, { cause: e })
