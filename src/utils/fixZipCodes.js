@@ -46,6 +46,7 @@ const options = program.opts()
 options.dbPrefix = DB_PREFIX
 options['city_of_lake_geneva'] = {
   zip: '53147',
+  name: 'Lake Geneva',
   dir1: {
     key: '039',
     dir: '1_city_of_lake_geneva',
@@ -57,6 +58,7 @@ options['city_of_lake_geneva'] = {
 }
 options['town_of_linn'] = {
   zip: '53147',
+  name: 'Town of Linn',
   dir1: {
     key: '167',
     dir: '2_town_of_linn',
@@ -68,14 +70,17 @@ options['town_of_linn'] = {
 }
 options['village_of_williams_bay'] = {
   zip: '53191',
+  name: 'Williams Bay',
   dir: '3_village_of_williams_bay',
 }
 options['town_of_walworth'] = {
   zip: '53125',
+  name: 'Walworth',
   dir: '4_town_of_walworth',
 }
-options['village_of_fontana-on-geneva-lake'] = {
+options['village_of_fontana-on-geneva_lake'] = {
   zip: '53125',
+  name: 'Fontana',
   dir: '5_village_of_fontana-on-geneva_lake',
 }
 
@@ -138,6 +143,7 @@ async function setPier(num, pier) {
 
 let piers 
 let numberOfPiers = 0
+let needToBeUpdated = []
 try {
   if (options?.dryRun) {
     log('DRY RUN!!!!\n')
@@ -145,14 +151,18 @@ try {
   if (options?.town) {
     piers = await town(options.town)
     for await (const pierNumber of piers) {
+      const town = options[options.town]
       const pier = await getPier(pierNumber)
       log(pier.property.address)
+      if (pier.property.address.zip !== town.zip) {
+        log(`Zip Code needs to be updated! ${pier.property.address.zip} != ${town.zip}`)
+        needToBeUpdated.push(pierNumber)
+      }
       const saved = await setPier(pierNumber, pier)
-      const town = options[options.town]
-      const pierDir = (town?.dir) ? town.dir :
-        ((Number.parseInt(pierNumber, 10) < Number.parseInt(town.dir1.key)) ?
-          town.dir1.dir :
-          town.dir2.dir)
+      const pierDir = (town?.dir) ? town.dir
+        : ((Number.parseInt(pierNumber, 10) <= Number.parseInt(town.dir1.key, 10))
+          ? town.dir1.dir
+          : town.dir2.dir)
       const pierFile = path.resolve(dataRoot, pierDir, `pier-${pierNumber}.json`)
       log('pierFile', pierFile)
       log('\n')
@@ -169,6 +179,7 @@ try {
   log('number of piers:', numberOfPiers)
   if (options?.dryRun) {
     log('DRY RUN!!!!')
+    log('Piers that needed to be updated:', needToBeUpdated.join(', '))
   }
 } catch (e) {
   error(e)
