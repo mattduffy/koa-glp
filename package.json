@@ -29,7 +29,7 @@
     "loadWalkingPathGeoJson": "DEBUG_DEPTH=4 DEBUG=* node src/utils/loadWalkingPathGeoJson",
     "deleteData": "DEBUG_DEPTH=2 DEBUG=* node src/utils/deleteData.js",
     "fixZipCodes": "DEBUG_DEPTH=2 DEBUG=* node src/utils/fixZipCodes.js",
-    "propertyValue": "DEBUG_DEPTH=2 DEBUG=* node src/utils/mcpPropertyValue.js",
+    "propertyValue": "DEBUG_DEPTH=2 DEBUG=* node src/utils/propertyValue.js",
     "refactorPierFiles": "DEBUG_DEPTH=2 DEBUG=* node src/utils/refactorPierFiles.js",
     "addNewFields": "DEBUG_DEPTH=2 DEBUG=* node src/utils/addNewFields.js",
     "normalizeAssocs": "DEBUG_DEPTH=2 DEBUG=* node src/utils/normalizeAssocs.js",
