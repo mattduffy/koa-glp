@@ -4,7 +4,6 @@
  * @summary The script to automate retrieving property values.
  * @file src/utils/propertyValue.js
  */
-/* eslint-disable import/no-extraneous-dependencies */
 import path from 'node:path'
 import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
@@ -12,7 +11,6 @@ import Anthropic from '@anthropic-ai/sdk'
 import { Command } from 'commander'
 import { redis_single as redis } from '../daos/impl/redis/redis-single.js'
 import { _log, _error } from './logging.js'
-/* eslint-enable import/no-extraneous-dependencies */
 
 const log = _log.extend('utils:propertyValue')
 const error = _error.extend('utils:propertyValue')
@@ -59,17 +57,24 @@ async function askClaude(address) {
   const anthropic = new Anthropic({
     apiKey: aiEnv.ANTHROPIC_API_KEY,
   })
-  const system = 'You are a helpful agent.  '
-    + 'You can look up realestate property values using the popular website https://www.zillow.com.\n'
+  const system_prompt = [{
+    type: 'text',
+    text: 'You are a helpful agent.  '
+    + 'You can look up realestate property values using the popular website '
+    + 'https://www.zillow.com.\n'
     + 'Zillow calls their best estimate of a property\'s market value a Zestimate.\n'
-    + 'Include the URL to the page on the Zillow website that where you find the Zestimate.\n'
-    + 'If you are unable to find the Zestimate for the property, simply return the phrase "No Zestimate Available".'
-  const query = `I would like you to find the Zestimate for the property at this address: ${address}.`
+    + 'Include the URL to the page on the Zillow website that where you find the '
+    + 'Zestimate.\n'
+    + 'If you are unable to find the Zestimate for the property, simply return the '
+    + 'phrase "No Zestimate Available".',
+  }]
+  const query = 'I would like you to find the Zestimate for the property at this '
+    + `address: ${address}.`
   log(query)
   const msg = await anthropic.messages.create({
     model: "claude-sonnet-4-0",
     max_tokens: 1024,
-    system,
+    system: system_prompt,
     messages: [{ role: "user", content: query }],
   })
   return msg
@@ -97,15 +102,12 @@ try {
     + `${result.property.address.zip}`
   const claudeResponse = await askClaude(addr)
   log(claudeResponse)
-  // const address = `${result.property.address.street.split(' ').join('-')}-`
-  //   + `${result.property.address.city.split(' ').join('-')}-`
-  //   + `${result.property.address.zip}`
-  // log(address)
+  
 } catch (e) {
   error(e)
   // throw new Error(e.message, { cause: e })
   error(e.message)
-  log('Try overriding the default redis user/password with ones that have more privileges.')
+  log('Try overriding the default redis user/password with ones with  more privileges.')
   log('R_PRIV_USER=<user> R_PRIV_PASSWORD=<psswd> npm run propertyValue...')
 }
 
