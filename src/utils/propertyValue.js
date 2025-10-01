@@ -39,7 +39,7 @@ log(aiEnv)
 
 const program = new Command()
 program.name('propertyValue')
-  .requiredOption('--pier-number <pier>', 'The pier number to find a property value for.')
+  .requiredOption('--pier-number <pier>', 'Pier number to find a property value for.')
   .option('--dry-run', 'Dry run the command, don\'t actully change anything.')
 
 program.parse(process.argv)
@@ -51,6 +51,8 @@ let keyPath = `${options?.keyPrefix ?? options.dbPrefix}:piers:`
 log(`full keyPath: ${keyPath}${options.pierNumber}`)
 log(`redis.options.keyPrefix: ${redis.options.keyPrefix}`)
 // process.exit()
+
+const MODEL = 'claude-opus-4-1-20250805'
 
 async function askClaude(address) {
   log(aiEnv.ANTHROPIC_API_KEY)
@@ -72,10 +74,15 @@ async function askClaude(address) {
     + `address: ${address}.`
   log(query)
   const msg = await anthropic.messages.create({
-    model: "claude-sonnet-4-0",
+    model: MODEL,
     max_tokens: 1024,
     system: system_prompt,
     messages: [{ role: "user", content: query }],
+    tools: [{
+      type: 'web_search_20250305',
+      name: 'web_search',
+      max_uses: 5,
+    }]
   })
   return msg
 }
