@@ -45,7 +45,9 @@ router.get('allPiers', '/mapkit/allPiers', addIpToSession, async (ctx) => {
     const csrfTokenCookie = ctx.cookies.get('csrfToken')
     const csrfTokenSession = ctx.session.csrfToken
     if (!doTokensMatch(ctx)) {
-      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+      error(
+        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
+      )
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
     } else {
@@ -78,7 +80,12 @@ router.get('allPiers', '/mapkit/allPiers', addIpToSession, async (ctx) => {
   }
 })
 
-router.get('mapkitSwim', '/mapkit/swim', processFormData, addIpToSession, async (ctx) => {
+router.get(
+  'mapkitSwim',
+  '/mapkit/swim',
+  processFormData,
+  addIpToSession,
+  async (ctx) => {
   const log = Log.extend('GET-mapkitSwim')
   const info = Info.extend('GET-mapkitSwim')
   const error = Error.extend('GET-mapkitSwim')
@@ -89,7 +96,9 @@ router.get('mapkitSwim', '/mapkit/swim', processFormData, addIpToSession, async 
     const csrfTokenSession = ctx.session.csrfToken
     info(`csrfTokenCookie: ${csrfTokenCookie},\ncsrfTokenSession: ${csrfTokenSession}`)
     if (!doTokensMatch(ctx)) {
-      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+      error(
+        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
+      )
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
     } else {
@@ -118,7 +127,11 @@ router.get('mapkitSwim', '/mapkit/swim', processFormData, addIpToSession, async 
         ]
         optsPierSwim.LIMIT = { from, size }
         optsPierSwim.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
-        const piersInSwim = await redis.ft.search(idxPierSwim, queryPierSwim, optsPierSwim)
+        const piersInSwim = await redis.ft.search(
+          idxPierSwim,
+          queryPierSwim,
+          optsPierSwim,
+        )
         log(piersInSwim)
         result = piersInSwim
       } catch (e) {
@@ -141,7 +154,9 @@ router.get('poisList', '/mapkit/pois', async (ctx) => {
     const csrfTokenCookie = ctx.cookies.get('csrfToken')
     const csrfTokenSession = ctx.session.csrfToken
     if (!doTokensMatch(ctx)) {
-      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+      error(
+        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
+      )
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
     } else {
@@ -191,7 +206,9 @@ router.get('walkingPathPois', '/mapkit/walking-path-pois', async (ctx) => {
     const csrfTokenCookie = ctx.cookies.get('csrfToken')
     const csrfTokenSession = ctx.session.csrfToken
     if (!doTokensMatch(ctx)) {
-      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+      error(
+        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
+      )
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
     } else {
@@ -240,7 +257,9 @@ router.get('walkingPathGeoJson', '/mapkit/walking-path', async (ctx) => {
     info(`${csrfTokenCookie},\n${csrfTokenSession}`)
     if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
     if (!(csrfTokenCookie === csrfTokenSession)) {
-      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+      error(
+        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
+      )
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
@@ -276,7 +295,9 @@ router.get('mapkitFood', '/mapkit/food', async (ctx) => {
     info(`${csrfTokenCookie},\n${csrfTokenSession}`)
     if (csrfTokenCookie === csrfTokenSession) info('cookie ===session')
     if (!(csrfTokenCookie === csrfTokenSession)) {
-      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+      error(
+        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
+      )
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
@@ -330,7 +351,9 @@ router.get('mapkitPublicPiers', '/mapkit/public', async (ctx) => {
     info(`${csrfTokenCookie},\n${csrfTokenSession}`)
     if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
     if (!(csrfTokenCookie === csrfTokenSession)) {
-      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+      error(
+        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
+      )
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
@@ -386,7 +409,9 @@ router.get('mapkitBusinesses', '/mapkit/businesses', async (ctx) => {
     info(`${csrfTokenCookie},\n${csrfTokenSession}`)
     if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
     if (!(csrfTokenCookie === csrfTokenSession)) {
-      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+      error(
+        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
+      )
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
@@ -416,7 +441,11 @@ router.get('mapkitBusinesses', '/mapkit/businesses', async (ctx) => {
         optsPierBusiness.LIMIT = { from, size }
         // optsPierBusiness.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
         optsPierBusiness.SORTBY = { BY: 'business', DIRECTION: 'ASC' }
-        result = await redis.ft.search(idxPierBusiness, queryPierBusiness, optsPierBusiness)
+        result = await redis.ft.search(
+          idxPierBusiness,
+          queryPierBusiness,
+          optsPierBusiness,
+        )
         log(result.results)
       } catch (e) {
         error('Failed to get business pier coordinate data.')
@@ -475,7 +504,9 @@ router.get('mapkitMarinas', '/mapkit/marinas', async (ctx) => {
     info(`${csrfTokenCookie},\n${csrfTokenSession}`)
     if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
     if (!(csrfTokenCookie === csrfTokenSession)) {
-      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+      error(
+        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
+      )
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
@@ -529,7 +560,9 @@ router.get('mapkitAssociations', '/mapkit/associations', async (ctx) => {
     info(`${csrfTokenCookie},\n${csrfTokenSession}`)
     if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
     if (!(csrfTokenCookie === csrfTokenSession)) {
-      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+      error(
+        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
+      )
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
@@ -627,7 +660,8 @@ router.get('mapkitLocate', '/mapkit/locate/:lon/:lat/:radius/:units', async (ctx
     ctx.status = 200
     try {
       log(
-        `FT.SEARCH glp:idx:piers:coords "@coords:[${lon} ${lat} ${radius} ${units}]" RETURN 22 `
+        `FT.SEARCH glp:idx:piers:coords "@coords:[${lon} ${lat} ${radius} ${units}]" `
+          + 'RETURN 22 '
           + 'pier $.loc AS coords '
           + '$.owners[*].estateName AS estateName '
           + '$.owners[*].members[*].f AS firstname '
@@ -660,7 +694,8 @@ router.get('mapkitLocate', '/mapkit/locate/:lon/:lat/:radius/:units', async (ctx
         })
       }
     } catch (e) {
-      const msg = `Failed to locate piers within ${radius} ${units} of coords: ${lon}, ${lat}.`
+      const msg = `Failed to locate piers within ${radius} ${units} `
+        + `of coords: ${lon}, ${lat}.`
       error(msg)
       ctx.status = 500
       result = { error: msg }
