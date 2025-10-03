@@ -36,7 +36,16 @@
     </div>
     <% */ %>
     <ul id="resultsList" class="searchResults">
-      <% marinas.forEach((p, i) => { %>
+      <% marinas.forEach((marina, i) => { %>
+        <% let p %>
+        <% if (marina.extra_attributes) {
+          p = {
+            business: marina.extra_attributes.business,
+            pier: marina.extra_attributes.pier,
+          }
+        } else {
+          p = marina
+        } %>
         <li><a
             href="<%= origin %>/pier/<%= p.pier[0] %>"
           data-id="<%= p.pier[0] %>"><%= p.business %></a></li>
