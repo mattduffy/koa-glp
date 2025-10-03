@@ -76,6 +76,7 @@ try {
       }
       // Make changes to the pier file here
       pierFromRedis.property.value = value
+      pierFromRedis.updatedOn.unshift(new Date())
       if (!DRYRUN) {
         const saved = await redis.json.set(key, '$', pierFromRedis)
         log('saved', saved)
