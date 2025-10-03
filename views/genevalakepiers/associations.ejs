@@ -26,7 +26,6 @@
       < Prev 
       <% } %>
     </div>
-    <!-- s:<%= s %>  -->
     <div class="nextAssocs">
       <% if ((offset + num) < total) { %>
       <a rel="next" href="<%= origin %>/associations?s=<%= skipForward %>">Next &gt;</a>
@@ -36,10 +35,19 @@
     </div>
 
     <ul id="resultsList" class="searchResults">
-      <% associations.forEach((p, i) => { %>
+      <% associations.forEach((assoc, i) => { %>
+        <% let p %>
+        <% if (assoc.extra_attributes) {
+          p = {
+            association: assoc.extra_attributes.association,
+            pier: assoc.extra_attributes.pier,
+          }
+        } else {
+          p = assoc
+        } %>
         <li><a 
             href="/assoc/<%= encodeURI(p.association) %>"
-            data-name="<%= p.association %>"><%= p.association %></a></li>
+            data-id="<%= p.association %>"><%= p.association %></a></li>
       <% }) %>
     </ul>
     <script nonce="<%= nonce %>">
@@ -121,8 +129,17 @@
           // console.info(`current s: ${s}`)
           updateNextLink(links.length)
           ulResultsList.replaceChildren()
-          links.forEach((a) => {
+          links.forEach((assoc) => {
+            let a
+            if (assoc.extra_attributes) {
+              a = {
+                association: assoc.extra_attributes.association,
+              }
+            } else {
+              a = assoc
+            }
             const li = document.createElement('li')
+            
             li.innerHTML = `<a href="${origin}/assoc/${encodeURI(a.association)}" `
               + `data-name='${a.association}'>${a.association}</a>`
             li.firstChild.addEventListener('mouseover', linkAnnotationHandler)
@@ -139,7 +156,8 @@
         e.stopPropagation()
         // console.log(e.target.dataset.name)
         const association = e.target.dataset.name
-        const annotation = window.map.annotations.find((a) => a.data.a === association)
+        // const annotation = window.map.annotations.find((a) => a.data.a === association)
+        const annotation = window.map.annotations.find((a) => a.data.id === association)
         if (annotation) {
           annotation.selected = true
         }
