@@ -117,7 +117,10 @@ router.get('piersByTown', '/towns/:town', hasFlash, addIpToSession, async (ctx) 
     log('piersInTown', piersInTown)
   } catch (e) {
     error(e)
-    const err = new Error(`Redis query failed for \'piersInTown\' ${town}`, { cause: e })
+    const err = new Error(
+      `Redis query failed for \'piersInTown\' ${town}`,
+      { cause: e },
+    )
     ctx.throw(500, err, { town })
   }
   const locals = {}
@@ -199,7 +202,8 @@ router.get('pierBigSwimPiers', '/swim', hasFlash, addIpToSession, async (ctx) =>
     locals.skipBack = skipBack
     locals.offset = offset
     locals.num = num
-    locals.total = swimPiers.total
+    // locals.total = swimPiers.total
+    locals.total = swimPiers.total_results
     locals.swim = swimPiers.results
     locals.photo = false
     locals.flash = ctx.flash.view ?? {}
@@ -316,7 +320,8 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
   try {
     log('ft.AGGREGATE glp:idx:piers:business "*" '
       + 'LOAD 3 $.pier AS pier GROUPBY 1 @business '
-      + `REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ${sortDir} LIMIT ${offset} ${num}`)
+      + `REDUCE TOLIST 1 @pier AS pier SORTBY 2 @business ${sortDir} `
+      + `LIMIT ${offset} ${num}`)
     const optsAggregateBusiness = {
       LOAD: ['@pier', '@business'],
       STEPS: [
@@ -342,7 +347,11 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
         },
       ],
     }
-    businesses = await redis.ft.aggregate('glp:idx:piers:business', '*', optsAggregateBusiness)
+    businesses = await redis.ft.aggregate(
+      'glp:idx:piers:business',
+      '*',
+      optsAggregateBusiness,
+    )
     log('businesses', businesses.results)
     // log(businesses.results)
   } catch (e) {
@@ -771,7 +780,12 @@ router.get('pierFood', '/food', hasFlash, addIpToSession, async (ctx) => {
   await ctx.render('food', locals)
 })
 
-router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async (ctx) => {
+router.get(
+  'pierAssociations',
+  '/associations',
+  hasFlash,
+  addIpToSession,
+  async (ctx) => {
   const log = glpLog.extend('GET-piersAssociations')
   const error = glpError.extend('GET-piersAssociations')
   if (ctx.state.isAsyncrequest === true) {
@@ -851,12 +865,13 @@ router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async 
     ctx.body = associations.results
   } else {
     const locals = {}
-    locals.s = s
-    locals.offset = offset
     locals.skipForward = skipforward
     locals.skipBack = skipback
+    locals.offset = offset
     locals.num = num
-    locals.total = associations.total
+    locals.s = s
+    // locals.total = associations.total
+    locals.total = associations.total_results
     locals.associations = associations.results
     locals.flash = ctx.flash.view ?? {}
     locals.title = `${ctx.app.site}: Associations with piers on Geneva Lake`
@@ -866,7 +881,12 @@ router.get('pierAssociations', '/associations', hasFlash, addIpToSession, async 
   }
 })
 
-router.get('piersByAssociation', '/assoc/:assoc', hasFlash, addIpToSession, async (ctx) => {
+router.get(
+  'piersByAssociation',
+  '/assoc/:assoc',
+  hasFlash,
+  addIpToSession,
+  async (ctx) => {
   const log = glpLog.extend('GET-piersByAssoc')
   const error = glpError.extend('GET-piersByAssoc')
   const assoc = sanitize(ctx.params.assoc)
@@ -895,7 +915,8 @@ router.get('piersByAssociation', '/assoc/:assoc', hasFlash, addIpToSession, asyn
       queryPierAssociation,
       optsPierAssociation,
     )
-    log(piersInAssoc)
+    // log(piersInAssoc)
+    console.dir(piersInAssoc.results)
   } catch (e) {
     error('Failed to get list of associations.')
     error(e.message)
@@ -904,8 +925,8 @@ router.get('piersByAssociation', '/assoc/:assoc', hasFlash, addIpToSession, asyn
   }
   const locals = {}
   locals.associationName = decodedAssoc
-  locals.total = piersInAssoc.total
-  locals.association = piersInAssoc.documents
+  locals.total = piersInAssoc.total_results
+  locals.association = piersInAssoc.results
   locals.flash = ctx.flash.view ?? {}
   locals.title = `${ctx.app.site}: ${decodedAssoc}`
   locals.sessionUser = ctx.state.sessionUser
