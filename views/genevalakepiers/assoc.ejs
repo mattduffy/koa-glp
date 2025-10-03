@@ -18,7 +18,17 @@
     <h2><%= associationName %></h2>
     <h3><%= total %> Pier<%= (association.length > 1) ? 's' : '' %></h3>
 
-    <p><% association.forEach((p, i) => {
+    <p><% association.forEach((assoc, i) => {
+      let p
+      if (assoc.extra_attributes) {
+        p = {
+          value: {
+            pier: assoc.extra_attributes.pier,
+          }
+        }
+      } else {
+        p = assoc
+      }
       let a = `<a href="/pier/${p.value.pier}">${p.value.pier}</a>, `
       if (i === (association.length - 1)) {
         a = a.substr(0, a.lastIndexOf(', '))
@@ -104,7 +114,18 @@
       async function showAssociationPiers() {
         const piers = <%- JSON.stringify(association) %>
         console.log(piers)
-        piers.forEach((p) => {
+        piers.forEach((pier) => {
+          let p
+          if (pier.extra_attributes) {
+            p = {
+              value: {
+                pier: pier.extra_attributes.pier,
+                '$.loc': pier.extra_attributes['$.loc'],
+              },
+            }
+          } else {
+            p = pier
+          }
           let [lon, lat] = p.value['$.loc'].split(',')
           lon = parseFloat(lon, 10)
           lat = parseFloat(lat, 10)
@@ -112,15 +133,6 @@
             const annotationCallout = {
               calloutLeftAccessoryForAnnotation: () => {
                  const accessoryViewLeft = document.createElement("div")
-              <% /* %>
-              //   accessoryViewLeft.className = "left-accessory-view"
-              //   const accessoryViewLeftIcon = document.createElement("span")
-              //   accessoryViewLeftIcon.textContent = "\u{26C5}" // Sun & Clouds
-              //   accessoryViewLeft.appendChild(accessoryViewLeftIcon)
-              //   const accessoryViewLeftText = document.createElement("div")
-              //   accessoryViewLeftText.textContent = "73 \u{00b0}F"
-              //   accessoryViewLeft.appendChild(accessoryViewLeftText)
-              <% */ %>
                  return accessoryViewLeft
               },
               calloutRightAccessoryForAnnotation: () => {
