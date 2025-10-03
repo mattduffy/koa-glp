@@ -129,7 +129,16 @@
           // console.info(`current s: ${s}`)
           updateNextLink(links.length)
           ulResultsList.replaceChildren()
-          links.forEach((a) => {
+          links.forEach((business) => {
+            let a
+            if (business.extra_attributes) {
+              a = {
+                business: business.extra_attributes.business,
+                pier: business.extra_attributes.pier,
+              }
+            } else {
+              a = business
+            }
             const li = document.createElement('li')
             li.innerHTML = `<a href="${origin}/pier/${a.pier[0]}" `
               + `data-id="${a.pier[0]}">${a.business}</a>`
