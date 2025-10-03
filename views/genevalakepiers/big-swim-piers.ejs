@@ -35,7 +35,16 @@
     </div>
     
     <ul id="resultsList" class="searchResults">
-      <% swim.forEach((p, i) => { %>
+      <% swim.forEach((swim, i) => { %>
+        <% let p %>
+        <% if (swim.extra_attributes) {
+          p = {
+            name: swim.extra_attributes.name,
+            pier: swim.extra_attributes.pier,
+          }
+        } else {
+          p = swim
+        } %>
         <li><a
             href="<%= origin %>/pier/<%= p.pier %>"
             data-pier="<%= p.pier %>">Pier <%= p.pier %>, <%= p.name %></a></li>
@@ -113,14 +122,23 @@
         s = (rel === 'prev') ? parseInt(s) - 1 : parseInt(s) + 1
         // console.info(`rel: ${rel}, s: ${s}`)
         const links = await getSwims(s)
-        console.log(links)
+        // console.log(links)
         if (links.length > 0) {
           updatePrevLink()
           console.info(`rel: ${rel}, s: ${s}`)
           // console.info(`current s: ${s}`)
           updateNextLink(links.length)
           ulResultsList.replaceChildren()
-          links.forEach((a) => {
+          links.forEach((swim) => {
+            let a
+            if (swim.extra_attributes) {
+              a = {
+                name: swim.extra_attributes.name,
+                pier: swim.extra_attributes.pier,
+              }
+            } else {
+              a = swim
+            }
             const li = document.createElement('li')
             li.innerHTML = `<a href="${origin}/pier/${a.pier}" `
               + `data-pier="${a.pier}">Pier ${a.pier}, ${a.name}</a>`
@@ -138,7 +156,7 @@
         e.stopPropagation()
         // console.log(e.target.dataset.pier)
         const pier = e.target.dataset.pier
-        const annotation = window.map.annotations.find((a) => a.data.p === pier)
+        const annotation = window.map.annotations.find((a) => a.data.pier === pier)
         annotation.selected = true
       }
       
