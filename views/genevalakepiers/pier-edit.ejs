@@ -118,6 +118,13 @@
 
           <label for="zipId">Zip Code</label>
           <input id="zipId" name="zip" type="text" size="10" maxlength="9" value="<%= pier.property.address.zip %>"><br>
+          <label for="valueId">Property Value</label>
+          <input id="valueId" name="value" type="text" size="20" maxlength="20" value="<%= pier.property?.value?.value %>" placeholder="$1,000,000"><br>
+          <label for="valueSourceId">Source</label>
+          <input id="valueSourceId" name="valueSource" type="text" size="30" maxlength="50" value="<%= pier.property?.value?.source %>" placeholder="Zillow"><br>
+          <label for="valueLinkId">Link</label>
+          <input id="valueLinkId" name="valueLink" type="url" placeholder="https://zillow.com/homedetails/W4411-N-Lake-Shore-Dr-Williams-Bay-WI-53191/40743273_zpid/" pattern="https://*" size="40" value="<%= pier.property?.value?.source %>"><br>
+
         </fieldset>
         <fieldset id="pierOwnersId" name="pierOwners" form="pierEditId" class="edit_fieldset" title="Pier Owners">
           <legend>Pier Owners</legend>
@@ -290,6 +297,9 @@
         form['hasFoodId'].checked = false
         form['hasFoodId'].disabled = true
       }
+      const propertyValue = form['valueId']
+      const propertyValueSource = form['valueSourceId']
+      const propertyValueLink = form['valueLinkId']
       radio.forEach((r) => {
         r.addEventListener('change', radioSelection)
       })
@@ -528,7 +538,8 @@
           const pier = {}
           pier.pier = form['numberId'].value
           pier.version = form['versionId'].value
-          pier.loc = `${form['lonId'].value.toString()},${form['latId'].value.toString()}`
+          pier.loc = `${form['lonId'].value.toString()},`
+            + `${form['latId'].value.toString()}`
           pier.geohash = form['geohashId'].value
           pier.pluscode = form['pluscodeId'].value
           pier.public = (form['publicId'].checked) ? 1 : 0
@@ -537,26 +548,39 @@
           property.association = form['associationId'].value
           property.established = parseInt(form['establishedId'].value, 10)
           property.associationUrl = form['associationUrlId'].value
-          property.tel = form['telId'].value.replace(/(?<area>\d{3})-(?<prefix>\d{3})-(?<exch>\d{4})/, '+1 ($<area>) $<prefix>-$<exch>')
+          property.tel = form['telId']
+            .value
+            .replace(
+              /(?<area>\d{3})-(?<prefix>\d{3})-(?<exch>\d{4})/,
+              '+1 ($<area>) $<prefix>-$<exch>',
+            )
           property.business = form['businessId'].value
           property.isMarina = (form['isMarinaId'].checked) ? 1 : 0
           property.hasFood = (form['hasFoodId'].checked) ? 1 : 0
           const address = {}
           address.street = form['streetId'].value
-          address.city = (form['cityId'].value !== '') ? form['cityId'].value : 'Lake Geneva'
+          address.city = (form['cityId'].value !== '')
+            ? form['cityId'].value
+            : 'Lake Geneva'
           address.state = (form['stateId'].value !== '') ? form['stateId'].value : 'WI'
           address.zip = (form['zipId'].value !== '') ? form['zipId'].value : '53147'
           property.address = address
+          const value = {
+            value: propertyValue.value ?? null,
+            source: propertyValueSource.value ?? null,
+            link: propertyValueLink.value ?? null,
+          }
+          pier.property.value = value 
           pier.property = property
           const owners = []
           const ownerNodes = document.querySelectorAll('div.editOwner')
-          // ownerNodes.forEach((o, i) => {
           ownerNodes.forEach((o) => {
             const i = o.dataset.o
             // console.log(`ownerNodes: ${i}`)
             const owner = {}
             owner.estateName = form[`o_${i}_estateName`].value
-            owner.membershipType = form[`o_${i}_membershipTypeId`].options[form[`o_${i}_membershipTypeId`].selectedIndex].value
+            owner.membershipType = form[`o_${i}_membershipTypeId`]
+              .options[form[`o_${i}_membershipTypeId`].selectedIndex].value
             owner.member = !(/non-member/i.test(owner.membershipType))
             const mCollection = o.querySelector(':scope > div').children
             const members = []
@@ -564,7 +588,6 @@
               if (/div/i.test(personRow.tagName)) {
                 const o = i
                 const m = personRow.dataset.m
-                // console.info(form[`o_${o}_m_${m}_member_fId`]?.value, form[`o_${o}_m_${m}_member_lId`]?.value)
                 if (typeof (form[`o_${o}_m_${m}_member_fId`]?.value + form[`o_${o}_m_${m}_member_lId`]?.value) === 'string') {
                   // console.log(`person: ${o} ${m}`)
                   members[m] = {
