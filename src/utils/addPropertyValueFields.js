@@ -1,7 +1,7 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @summary The script to perform a one-time refactoring of $.owners[*].members fields.
+ * @summary The script to perform a one-time addition of property value fields.
  * @file src/utils/addPropertyValueFields.js
  */
 import path from 'node:path'
@@ -34,6 +34,7 @@ const DB_PREFIX = redisEnv.REDIS_KEY_PREFIX
 const program = new Command()
 program.name('add PropertyValue Fields')
   .requiredOption('--data-dir <dir>', 'Directory name of JSON files to update', 'test')
+  .option('--just-town <town>', 'Just run update on given town only.')
   .option('--dry-run', 'Run the script as a dry-run, so no changes are saved.')
   .option('--test-one', 'test run on only the first pier.')
 
@@ -50,7 +51,14 @@ let subDirs
 const failedToSaveFiles = []
 try {
   subDirs = (await readdir(dataDir)).sort().filter((x) => /^\d/.test(x))
-  log(subDirs)
+  let re
+  if (options?.justTown) {
+    re = new RegExp(options.justTown)
+    subDirs = subDirs.filter((x) => {
+      return re.test(x)
+    })
+  }
+  log('subDirs', subDirs)
   let ttlGrand = 0
   const ttlCounts = {}
   for await (const d of subDirs) {
@@ -75,9 +83,9 @@ try {
         link: '',
       }
       // Make changes to the pier file here
-      pierFromRedis.property.value = value
-      pierFromRedis.updatedOn.unshift(new Date())
       if (!DRYRUN) {
+        pierFromRedis.property.value = valu
+        pierFromRedis.updatedOn.unshift(new Date())
         const saved = await redis.json.set(key, '$', pierFromRedis)
         log('saved', saved)
       } else {
@@ -90,13 +98,13 @@ try {
         const refactoredPier = await writeFile(file, pierFromRedis)
         if (refactoredPier === undefined) {
           log(`Successfully refactored ${file}`)
-          ttlCounter += 1
         } else {
           error(`Failed to save refactored pier ${file}`)
           failedToSaveFiles.push(file)
           break
         }
       }
+      ttlCounter += 1
       if (options.testOne && ttlCounter === 1) {
         break
       }
