@@ -21,6 +21,27 @@ export async function addIpToSession(ctx, next) {
   }
 }
 
+export async function logSearchQueryTerms(ctx, query) {
+  const log = _log.extend('logSearchQueryTerms')
+  const err = _error.extend('logSearchQueryTerms')
+  try {
+    const doc = {
+      date: new Date(),
+      location: {
+        ip: ctx.state.logEntry.ip[0],
+        geo: ctx.state.logEntry.geos,
+      },
+      query,
+    }
+    const db = ctx.state.mongodb.client.db()
+    const result = await db.collection('searchQueries').insertOne(doc)
+    // log(result)
+  } catch (e) {
+    err('Failed to save query terms to db.')
+    err(e.message)
+  }
+}
+
 export function doTokensMatch(ctx) {
   const log = _log.extend('doTokensMatch')
   const error = _error.extend('doTokensMatch')
