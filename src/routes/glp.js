@@ -20,6 +20,7 @@ import {
   doTokensMatch,
   processFormData,
   hasFlash,
+  logSearchQueryTerms,
 } from './middlewares.js'
 import {
   _log,
@@ -40,7 +41,9 @@ function sanitize(param) {
 
 function leftZeroPad(x) {
   let pierNumber = x
-  const matches = x.match(/^(?<numbers>\d{1,3}(?<decimal>\.\d)?)(?<letters>[A-Za-z]{0,3})/)
+  const matches = x.match(
+    /^(?<numbers>\d{1,3}(?<decimal>\.\d)?)(?<letters>[A-Za-z]{0,3})/
+  )
   if (!matches) {
     return null
   }
@@ -262,7 +265,11 @@ router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
         },
       ],
     }
-    publicPiers = await redis.ft.aggregate('glp:idx:piers:public', '*', optsAggregatePublic)
+    publicPiers = await redis.ft.aggregate(
+      'glp:idx:piers:public',
+      '*',
+      optsAggregatePublic,
+    )
     log('public piers', publicPiers.results)
   } catch (e) {
     error('Failed to get list of public piers.')
@@ -610,7 +617,11 @@ router.get('walkingPath', '/walking-path', hasFlash, addIpToSession, async (ctx)
     const query = `ft.search ${idxMileMarkers} ${queryMileMarkers} `
       + `SORTBY id ${sortDir} LIMIT ${offset} ${num}`
     log(query)
-    mileMarkers = await redis.ft.search(idxMileMarkers, queryMileMarkers, optsMileMarkers)
+    mileMarkers = await redis.ft.search(
+      idxMileMarkers,
+      queryMileMarkers,
+      optsMileMarkers,
+    )
     // log(mileMarkers?.total, mileMarkers?.documents)
     log('mileMarkers', mileMarkers)
   } catch (e) {
@@ -1068,7 +1079,8 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) 
 
     log(ctx.state.TOWNS)
     const [lon, lat] = pier.loc.split(',')
-    const address = `${pier.property.address?.street}, ${pier.property.address?.city}, WI`
+    const address = `${pier.property.address?.street}, `
+      + `${pier.property.address?.city}, WI`
     locals.pageDescription = `Geneva Lake, pier ${pierNumber}, longitude: ${lon}, `
       + `latitude: ${lat}, ${address}.`
     locals.pier = pier
@@ -1086,7 +1098,12 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) 
   }
 })
 
-router.get('pierEdit-GET', '/pier/edit/:pier', hasFlash, addIpToSession, async (ctx) => {
+router.get(
+  'pierEdit-GET',
+  '/pier/edit/:pier',
+  hasFlash,
+  addIpToSession,
+  async (ctx) => {
   const log = glpLog.extend('GET-pierEdit')
   const error = glpError.extend('GET-pierEdit')
   if (!ctx.state?.isAuthenticated) {
@@ -1158,7 +1175,13 @@ router.get('pierEdit-GET', '/pier/edit/:pier', hasFlash, addIpToSession, async (
   }
 })
 
-router.post('search', '/search', hasFlash, addIpToSession, processFormData, async (ctx) => {
+router.post(
+  'search',
+  '/search',
+  hasFlash,
+  addIpToSession,
+  processFormData,
+  async (ctx) => {
   const log = glpLog.extend('search')
   const error = glpError.extend('search')
   const searchTerms = ctx.request.body.searchBox
@@ -1179,6 +1202,7 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
       estateNames: { total: 0 },
       ownerNames: { total: 0 },
     }
+    await logSearchQueryTerms(ctx, searchTerms[0])
     searchTerms[0].split(' ').forEach((t) => {
       log(`split search term: ${t}`)
       if (!Number.isNaN(parseInt(t, 10))) {
@@ -1309,12 +1333,18 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
           optsPierPublic.RETURN = ['pier', 'firstname', '$.loc', 'AS', 'coords']
           optsPierPublic.LIMIT = { from: 0, size: 20 }
           log(`Pier public FT.SEARCH ${idxPierPublic} "${queryPierPublic}"`)
-          results.public = await redis.ft.search(idxPierPublic, queryPierPublic, optsPierPublic)
+          results.public = await redis.ft.search(
+            idxPierPublic,
+            queryPierPublic,
+            optsPierPublic,
+          )
           log(results.public)
         } catch (e) {
           error('Redis search query failed:')
           error(`using index: ${idxPierPublic}`)
-          error(`query: FT.SEARCH ${idxPierPublic} "${queryPierPublic}"`, optsPierPublic)
+          error(
+            `query: FT.SEARCH ${idxPierPublic} "${queryPierPublic}"`, optsPierPublic
+        )
           error(e)
           // No need to disrupt the rest of the searching if this query failed.
           // throw new Error('Search by estate name failed.', { cause: e })
@@ -1429,7 +1459,10 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
           pooling: 'mean',
           normalize: true,
         }
-        const vector = Buffer.from((await pipeline(searchTerms[0], pipeOptions)).data.buffer)
+        const vector = Buffer.from(
+          (await pipeline(searchTerms[0], pipeOptions))
+          .data.buffer
+        )
         const idxVectorsPiers = 'glp:idx:vectors:pier'
         const vector_result = await redis.ft.search(
           idxVectorsPiers,
@@ -1478,7 +1511,8 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         idxPierOwnerName = 'glp:idx:piers:ownerNames'
         // queryPierOwnerName = `@fistname|lastname:${pierOwnernameTokens}`
         queryPierOwnerName = `@firstname|lastname:${pierOwnernameTokens} `
-          + `(-@business:${pierOwnernameTokens}) (-@association:${pierOwnernameTokens}) `
+          + `(-@business:${pierOwnernameTokens}) `
+          + `(-@association:${pierOwnernameTokens}) `
           + `(-Assoc*)`
         optsPierOwnerName = {}
         optsPierOwnerName.WITHSCORES = true
@@ -1503,7 +1537,10 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
       } catch (e) {
         error('Redis search query failed:')
         error(`using index: ${idxPierOwnerName}`)
-        error(`query: FT.SEARCH ${idxPierOwnerName} "${queryPierOwnerName}"`, optsPierOwnerName)
+        error(
+          `query: FT.SEARCH ${idxPierOwnerName} "${queryPierOwnerName}"`,
+           optsPierOwnerName
+        )
         error(e)
         // No need to disrupt the rest of the searching if this query failed.
         // throw new Error('Search by owner names failed.', { cause: e })
@@ -1533,7 +1570,10 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
         optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: sortDir }
         optsPierAssociation.RETURN = ['pier', 'association', '$.loc', 'AS', 'coords']
         optsPierAssociation.LIMIT = { from: '0', size: '1000' }
-        log(`Pier association name FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`)
+        log(
+          `Pier association name FT.SEARCH ${idxPierAssociation} `
+          + `"${queryPierAssociation}"`
+        )
         results.associations = await redis.ft.search(
           idxPierAssociation,
           queryPierAssociation,
@@ -1585,7 +1625,10 @@ router.post('search', '/search', hasFlash, addIpToSession, processFormData, asyn
       } catch (e) {
         error('Redis search query failed:')
         error(`using index: ${idxPierBusiness}`)
-        error(`query: FT.SEARCH ${idxPierBusiness} "${queryPierBusiness}"`, optsPierBusiness)
+        error(
+          `query: FT.SEARCH ${idxPierBusiness} "${queryPierBusiness}"`,
+          optsPierBusiness
+        )
         error(e)
         // No need to disrupt the rest of the searching if this query failed.
         // throw new Error('Search by business name failed.', { cause: e })
