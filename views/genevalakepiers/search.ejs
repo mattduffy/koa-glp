@@ -113,7 +113,11 @@
                   )
                   mapkitResultsList.classList.add('searchResults', 'mapkitResults')
                   data.locallyFiltered.forEach((place) => {
-                    console.log(place.locality, place.pointOfInterestCategory, place.name)
+                    console.log(
+                      place.locality,
+                      place.pointOfInterestCategory,
+                      place.name,
+                    )
                     const li = document.createElement('li')
                     const nameSpan = document.createElement('span')
                     nameSpan.style.fontWeight = 600
