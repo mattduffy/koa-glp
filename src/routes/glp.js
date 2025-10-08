@@ -548,9 +548,10 @@ router.get('poiList', '/pois/list', hasFlash, addIpToSession, async (ctx) => {
         },
       }
       const queryPointsOfInterest = `-@type:(${optsPois.PARAMS.exclude})`
-      const query = `ft.search ${idxPoiType} ${queryPointsOfInterest} `
-        // + `SORTBY id ${sortDir} LIMIT ${offset} ${num} DIALECT ${dialect}`
-        + `SORTBY id ${sortDir} DIALECT ${dialect}`
+      const query = `ft.search ${idxPoiType} `
+        + `${queryPointsOfInterest} `
+        + `SORTBY id ${sortDir} `
+        + `DIALECT ${dialect}`
       log(query)
       pois = await redis.ft.search(idxPoiType, queryPointsOfInterest, optsPois)
       log('pois', pois)
@@ -565,7 +566,7 @@ router.get('poiList', '/pois/list', hasFlash, addIpToSession, async (ctx) => {
     locals.skipBack = skipBack
     locals.offset = offset
     locals.num = num
-    locals.total = pois.total ?? 0
+    locals.total = pois.total_results ?? 0
     locals.pois = pois
     locals.flash = ctx.flash.view ?? {}
     await ctx.render('pois-list', locals)
