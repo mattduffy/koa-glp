@@ -41,7 +41,27 @@
     </div>
 
     <ul id="resultsList" class="searchResults">
-      <% pois?.documents.forEach((p, i) => { %>
+      <% pois?.results.forEach((poi, i) => {
+        let p
+        if (poi.extra_attributes) {
+          if (typeof poi.extra_attributes['$'] === 'string') {
+            const _p = JSON.parse(poi.extra_attributes['$'])
+            poi.extra_attributes['$'] = _p
+          }
+          p = {
+            value: {
+              properties: {
+                id: poi.extra_attributes['$'].properties.id,
+                placeId: poi.extra_attributes['$'].properties.placeId,
+                name: poi.extra_attributes['$'].properties.name,
+              },
+            }
+          }
+        } else {
+          p = poi
+        }
+        console.log(p)
+      %>
         <li><a 
             href="/edit/poi/<%= encodeURI(p.value.properties.placeId) %>"
             data-id="<%= encodeURI((p.value.properties.id + '').padStart(3, 0)) %>"
