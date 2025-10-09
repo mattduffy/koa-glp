@@ -67,7 +67,7 @@
         <legend>POI Details</legend>
         <label for="poiNameId">Name</label>
         <input id="poiNameId" name="poiName" type="text" size="30" maxlength="100" value="<%= poi?.properties?.name%>" tabindex=0></br>
-        <label>Type<br>
+        <label id="type" name="type">Type<br>
           <label for="type1Id" class="radioLabel">Access<input type="radio" id="type1Id" name="newPoiType" value="Access" style="margin-right: 10px" tabindex=0></label>
           <label for="type2Id" class="radioLabel">Restroom<input type="radio" id="type2Id" name="newPoiType" value="Restroom" style="margin-right: 10px" tabindex=0></label>
           <label for="type3Id" class="radioLabel">Food<input type="radio" id="type3Id" name="newPoiType" value="Food" style="margin-right: 10px"></label>
@@ -149,6 +149,40 @@
       //   e.stopPropagation()
       //   prepareNewImage(e)
       // })
+      window.placeId = null
+      const placeIdElement = document.forms[0]['placeId']
+      placeIdElement.addEventListener('change', async (e) => {
+        console.log(e)
+        const place = myPlaceLookup(placeIdElement.value) 
+        console.log(place)
+        if (place) {
+          window.placeId = place.id
+          form['lonId'].value = place.coordinate.longitude
+          form['latId'].value = place.coordinate.latitude
+          form['poiNameId'].value = place.name
+          //
+          // fill in address and other stuff
+          //
+        } else {
+          console.info('no place found with id ', placeIdElement.value)
+        }
+      })
+      function myPlaceLookup(pId) {
+        const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
+        place.getPlace(
+          pId,
+          function(error, data) {
+            if (error) {
+              console.warn(error)
+              return false
+            }
+            if (data) {
+              // console.log(data)
+              return data
+            }
+          }
+        )
+      }
       async function preparePoiData(e) {
         console.log('step 1: prepare form data')
         const lat = Number.parseFloat(form['latId'].value)
@@ -190,7 +224,9 @@
         const fileList = form['photo_0Id'].files
         if (arguments.length > 0) {
           const span = form['pierPhotoId'].querySelector(':scope > span')
-          span.innerHTML = `Image selected for new point of interest<br>${fileList[0].name} <br>type: ${fileList[0].type} <br>${Math.floor(fileList[0].size/1024)} KBs.`
+          span.innerHTML = 'Image selected for new point of interest<br>'
+            + `${fileList[0].name} <br>type: ${fileList[0].type} <br>`
+            + `${Math.floor(fileList[0].size/1024)} KBs.`
           console.log(span)
         } else {
           console.log('step 2: prepare new image')
@@ -215,24 +251,26 @@
         console.log(url.toString())
         const request = new Request(url, opts)
         console.dir(request)
-        const response = await (await fetch(request, { credentials: 'same-origin' })).json()
+        const response = await (
+          await fetch(request, { credentials: 'same-origin' })
+        ).json()
         console.dir(response)
         const messagesId = document.forms[0].elements['messagesId']
         const messageSpan = document.createElement('span')
         if (/failed/.test(response.status.toLowerCase())) {
           messageSpan.appendChild(document.createTextNode(response.msg))
           messageSpan.appendChild(document.createElement('br'))
-          messageSpan.appendChild(document.createTextNode(`pier update status: ${response.okPierUpdate}`))
-          // messageSpan.appendChild(document.createElement('br'))
-          // messageSpan.appendChild(document.createTextNode(`town geojson update status: ${response.okTownGeoJson}`))
-          // messageSpan.appendChild(document.createElement('br'))
-          // messageSpan.appendChild(document.createTextNode(`combined geojson update status: ${response.okCombinedGeoJson}`))
-          // messageSpan.appendChild(document.createElement('br'))
-          // messageSpan.appendChild(document.createTextNode(`image upload status: ${response.okPierImage}`))
+          messageSpan.appendChild(document.createTextNode(
+            `pier update status: ${response.okPierUpdate}`
+            ))
         } else {
-          messageSpan.appendChild(document.createTextNode('POI data successfully updated.'))
+          messageSpan.appendChild(document.createTextNode(
+            'POI data successfully updated.'
+          ))
           messageSpan.appendChild(document.createElement('br'))
-          messageSpan.appendChild(document.createTextNode(`image upload status: ${response?.imageUploadStatus}`))
+          messageSpan.appendChild(document.createTextNode(
+            `image upload status: ${response?.imageUploadStatus}`
+          ))
           messageSpan.appendChild(document.createElement('br'))
         }
         messagesId.appendChild(messageSpan)
@@ -265,7 +303,6 @@
         console.log(formData)
         await send(formData)
       }
-      window.placeId = null
       // Event hander for lon/lat fields to get geohash
       async function getGeoHash(e) {
         const lon = parseFloat(form['lonId'].value, 10)
@@ -293,7 +330,9 @@
         // console.dir('getGeoHash', opts)
         const request = new Request(`${origin}/edit/geohash`, opts)
         // console.dir('getGeoHash', request)
-        const response = await (await fetch(request, { credentials: 'same-origin' })).json()
+        const response = await (
+          await fetch(request, { credentials: 'same-origin' })
+        ).json()
         // console.log('getGeoHash', response)
         if (response?.geoHash !== 0) {
           form['geohash'].value = response.geoHash
@@ -304,22 +343,29 @@
           window.placeId = form['placeId'].value
           console.log('window.placeId', window.placeId)
           console.log('placeId', form['placeId'].value)
-          const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
-          place.getPlace(
-            form['placeId'].value,
-            function(error, data) {
-              if (error) {
-                console.warn(error)
-              }
-              if (data) {
-                console.log(data)
-                const p = new window.mapkit.PlaceAnnotation(data)
-                window._map.addItems([p])
-                const accessory = new mapkit.PlaceSelectionAccessory()
-                p.selectionAccessory = accessory
-              }
-            }
-          ) 
+          const place = myPlaceLookup(form['placeId'].value)
+          if (place) {
+            const p = new window.mapkit.PlaceAnnotation(place)
+            window._map.addItems([p])
+            const accessory = new mapkit.PlaceSelectionAccessory()
+            p.selectionAccessory = accessory
+          }
+          //const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
+          // place.getPlace(
+          //   form['placeId'].value,
+          //   function(error, data) {
+          //     if (error) {
+          //       console.warn(error)
+          //     }
+          //     if (data) {
+          //       console.log(data)
+          //       const p = new window.mapkit.PlaceAnnotation(data)
+          //       window._map.addItems([p])
+          //       const accessory = new mapkit.PlaceSelectionAccessory()
+          //       p.selectionAccessory = accessory
+          //     }
+          //   }
+          // ) 
         } else {
           const result = await myGeocoder({ lon, lat })
           console.log('myGeocoder result', result)
@@ -608,14 +654,18 @@
         }
         e.preventDefault()
         e.stopPropagation()
-        const {latitude, longitude} = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
+        const {latitude, longitude} = window._map.convertPointOnPageToCoordinate(
+          e.pointOnPage
+        )
         const defaultRadius = 50
         const defaultUnits = 'ft'
         console.log(`locate piers within ${defaultRadius} ${defaultUnits} `
           + `of coords: ${longitude}, ${latitude}`)
         const results = await (
           await fetch(
-            `${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`
+            `${origin}/mapkit/locate/`
+            + `${longitude}/${latitude}/`
+            + `${defaultRadius}/${defaultUnits}`
           )
         ).json()
         console.log(results)
