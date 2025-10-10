@@ -1190,7 +1190,9 @@ router.post(
   const csrfTokenCookie = ctx.cookies.get('csrfToken')
   const csrfTokenSession = ctx.session.csrfToken
   if (!doTokensMatch(ctx)) {
-    error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
+    error(
+      `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
+    )
     ctx.status = 401
     ctx.body = { error: 'csrf token mismatch' }
   } else {
@@ -1256,7 +1258,10 @@ router.post(
     } catch (e) {
       error('Redis address search query failed:')
       error(`using index: ${idxPierAddress}`)
-      error(`query: FT.SEARCH ${idxPierAddress} "${queryPierAddress}"`, optsPierAddress)
+      error(
+        `query: FT.SEARCH ${idxPierAddress} "${queryPierAddress}"`,
+        optsPierAddress
+      )
       error(e)
       // No need to disrupt the rest of the searching if this query failed.
       // throw new Error('Search by pier numbers failed.', { cause: e })
