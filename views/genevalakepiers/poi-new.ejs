@@ -36,6 +36,7 @@
         <br>
         <input id="versionId" name="version" type="hidden" value="1">
         <input id="csrf-tokenId" type="hidden" value="<%= csrfToken %>">
+        <input id="mapkitPlaceId" name="mapkitPlace" type="hidden" value="">
         <label for="placeId">Place ID
           <input id="placeId" name="placeId" type="text" value="<%= poi?.properties?.placeId %>" tabindex=0>
         </label>
@@ -150,13 +151,15 @@
       //   prepareNewImage(e)
       // })
       window.placeId = null
-      const placeIdElement = document.forms[0]['placeId']
+      const placeIdElement = form['placeId']
       placeIdElement.addEventListener('change', async (e) => {
         console.log(e)
-        const place = myPlaceLookup(placeIdElement.value) 
+        const place = await myPlaceLookup(e.target.value) 
+        console.log('place id', e.target.value)
         console.log(place)
         if (place) {
           window.placeId = place.id
+          form['mapkitPlaceId'].value = place 
           form['lonId'].value = place.coordinate.longitude
           form['latId'].value = place.coordinate.latitude
           form['poiNameId'].value = place.name
@@ -167,8 +170,9 @@
           console.info('no place found with id ', placeIdElement.value)
         }
       })
-      function myPlaceLookup(pId) {
+      async function myPlaceLookup(pId) {
         const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
+        // convert to a promise instead of callback style
         place.getPlace(
           pId,
           function(error, data) {
@@ -177,7 +181,7 @@
               return false
             }
             if (data) {
-              // console.log(data)
+              console.log(data)
               return data
             }
           }
@@ -215,6 +219,11 @@
         if (lon !== 0 && lat !== 0) {
           const locality = await myGeocoder({ lat, lon })
           console.log('locality', locality)
+        }
+        if (form['mapkitPlaceId'].value !== '') {
+          poi.mapkitPlace = (typeof form['mapkitPlaceId'] === 'object')
+            ? JSON.stringify(form['mapkitPlaceId'])
+            : form['mapkitPlaceId']
         }
         console.log(poi)
         return poi 
@@ -343,7 +352,7 @@
           window.placeId = form['placeId'].value
           console.log('window.placeId', window.placeId)
           console.log('placeId', form['placeId'].value)
-          const place = myPlaceLookup(form['placeId'].value)
+          const place = await myPlaceLookup(form['placeId'].value)
           if (place) {
             const p = new window.mapkit.PlaceAnnotation(place)
             window._map.addItems([p])
