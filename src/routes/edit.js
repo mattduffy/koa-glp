@@ -21,7 +21,8 @@ import {
   // getSetName,
   getTownDirName,
 } from '../utils/logging.js'
-import { redis } from '../daos/impl/redis/redis-om.js'
+// import { redis } from '../daos/impl/redis/redis-om.js'
+import { redis_single as redis } from '../daos/impl/redis/redis-single.js'
 
 const editLog = _log.extend('edit')
 const editInfo = _info.extend('edit')
@@ -223,7 +224,6 @@ async function getNextRedisJsonKey(keyPattern) {
       MATCH: keyPattern,
       COUNT: 2000,
     }
-    /* eslint-disable-next-line */
     for await (const key of redis.scanIterator(scanOpts)) {
       log('key', key)
       const keyNum = Number.parseInt(key.split(':').pop(), 10)
