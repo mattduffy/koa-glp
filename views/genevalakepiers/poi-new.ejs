@@ -153,39 +153,53 @@
       window.placeId = null
       const placeIdElement = form['placeId']
       placeIdElement.addEventListener('change', async (e) => {
-        console.log(e)
         const place = await myPlaceLookup(e.target.value) 
-        console.log('place id', e.target.value)
-        console.log(place)
         if (place) {
           window.placeId = place.id
-          form['mapkitPlaceId'].value = place 
+          form['mapkitPlace'].value = place 
           form['lonId'].value = place.coordinate.longitude
           form['latId'].value = place.coordinate.latitude
+          form['latId'].focus()
           form['poiNameId'].value = place.name
+          form['telId'].value = place.telephone ?? ''
+          form['streetId'].value = place.fullThoroughfare
+          form['cityId'].value = place.locality
+          form['stateId'].value = place.administrativeAreaCode
+          form['zipId'].value = place.postCode
+          form['urlId'].value = place.urls[0] ?? ''
+          
           //
           // fill in address and other stuff
           //
+          const p = new window.mapkit.PlaceAnnotation(place)
+          window._map.addItems([p])
+          const accessory = new mapkit.PlaceSelectionAccessory()
+          p.selectionAccessory = accessory
+          window._map.setCenterAnimated(place.coordinate, true)
         } else {
           console.info('no place found with id ', placeIdElement.value)
         }
       })
       async function myPlaceLookup(pId) {
-        const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
-        // convert to a promise instead of callback style
-        place.getPlace(
-          pId,
-          function(error, data) {
-            if (error) {
-              console.warn(error)
-              return false
+        return new Promise((resolve, reject) => {
+          const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
+          // convert to a promise instead of callback style
+          place.getPlace(
+            pId,
+            function(error, data) {
+              if (error) {
+                console.warn(error)
+                // return false
+                reject(error)
+              }
+              if (data) {
+                console.log('found place', data)
+                // return data
+                resolve(data)
+              }
             }
-            if (data) {
-              console.log(data)
-              return data
-            }
-          }
-        )
+          )
+        })
       }
       async function preparePoiData(e) {
         console.log('step 1: prepare form data')
@@ -220,10 +234,10 @@
           const locality = await myGeocoder({ lat, lon })
           console.log('locality', locality)
         }
-        if (form['mapkitPlaceId'].value !== '') {
-          poi.mapkitPlace = (typeof form['mapkitPlaceId'] === 'object')
-            ? JSON.stringify(form['mapkitPlaceId'])
-            : form['mapkitPlaceId']
+        if (form['mapkitPlace'].value !== '') {
+          poi.mapkitPlace = (typeof form['mapkitPlace'] === 'object')
+            ? JSON.stringify(form['mapkitPlace'])
+            : form['mapkitPlace']
         }
         console.log(poi)
         return poi 
@@ -274,7 +288,7 @@
             ))
         } else {
           messageSpan.appendChild(document.createTextNode(
-            'POI data successfully updated.'
+            'POI data successfully added.'
           ))
           messageSpan.appendChild(document.createElement('br'))
           messageSpan.appendChild(document.createTextNode(
@@ -314,8 +328,8 @@
       }
       // Event hander for lon/lat fields to get geohash
       async function getGeoHash(e) {
-        const lon = parseFloat(form['lonId'].value, 10)
-        const lat = parseFloat(form['latId'].value, 10)
+        const lon = parseFloat(form['lonId'].value, 10) ?? null
+        const lat = parseFloat(form['latId'].value, 10) ?? null
         console.log('getGeoHash', lon, lat)
         if ((lon === 0 || isNaN(lon)) || (lat === 0 || isNaN(lat))) {
         // if (lon === 0 || lat === 0) {
@@ -354,27 +368,8 @@
           console.log('placeId', form['placeId'].value)
           const place = await myPlaceLookup(form['placeId'].value)
           if (place) {
-            const p = new window.mapkit.PlaceAnnotation(place)
-            window._map.addItems([p])
-            const accessory = new mapkit.PlaceSelectionAccessory()
-            p.selectionAccessory = accessory
+            // moved annotation markup to the event handler myPlaceLookup() 
           }
-          //const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
-          // place.getPlace(
-          //   form['placeId'].value,
-          //   function(error, data) {
-          //     if (error) {
-          //       console.warn(error)
-          //     }
-          //     if (data) {
-          //       console.log(data)
-          //       const p = new window.mapkit.PlaceAnnotation(data)
-          //       window._map.addItems([p])
-          //       const accessory = new mapkit.PlaceSelectionAccessory()
-          //       p.selectionAccessory = accessory
-          //     }
-          //   }
-          // ) 
         } else {
           const result = await myGeocoder({ lon, lat })
           console.log('myGeocoder result', result)
