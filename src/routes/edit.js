@@ -221,16 +221,25 @@ async function getNextRedisJsonKey(keyPattern) {
   let highestKey = 0
   try {
     const scanOpts = {
+      CURSOR: '0',
       MATCH: keyPattern,
+      TYPE: 'ReJSON-RL',
       COUNT: 2000,
     }
-    for await (const key of redis.scanIterator(scanOpts)) {
-      log('key', key)
-      const keyNum = Number.parseInt(key.split(':').pop(), 10)
-      if (!Number.isNaN(keyNum) && keyNum > highestKey) {
-        highestKey = keyNum
-        log('keyNum', keyNum)
-        log('highestKey', highestKey)
+    let myIterator = await redis.scanIterator(scanOpts)
+    let batch
+    while (batch = await myIterator.next()) {
+      if (batch.done) {
+        break
+      }
+      for await (const key of batch.value) {
+        log('key', key)
+        const keyNum = Number.parseInt(key.split(':').pop(), 10)
+        if (!Number.isNaN(keyNum) && keyNum > highestKey) {
+          highestKey = keyNum
+          log('keyNum', keyNum)
+          log('highestKey', highestKey)
+        }
       }
     }
     const nextKey = highestKey + 1
