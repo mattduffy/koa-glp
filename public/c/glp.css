@@ -403,9 +403,9 @@ div#searchResults > ul.searchResults:before {
 
 span#access:before {
   content: url('/i/access.png');
-  zoom: 20%;
+  zoom: 19%;
   vertical-align: sub;
-  padding-right: .25em;
+  padding-right: .24em;
 }
 
 span#access {
@@ -417,8 +417,9 @@ span#access {
   padding-left: 4px;
   margin-bottom: 1em;
   margin-right: .25em;
-  font-size: .80em;
+  font-size: .75em;
   display: none;
+  white-space: nowrap;
 }
 
 .food {
@@ -435,9 +436,9 @@ span#access {
 
 span#food:before {
   content: url('/i/food.png');
-  zoom: 20%;
+  zoom: 19%;
   vertical-align: sub;
-  padding-right: .25em;
+  padding-right: .24em;
 }
 
 span#food {
@@ -449,8 +450,9 @@ span#food {
   padding-left: 4px;
   margin-bottom: 1em;
   margin-right: .25em;
-  font-size: .80em;
+  font-size: .75em;
   display: none;
+  white-space: nowrap;
 }
 
 .restrooms {
@@ -466,9 +468,9 @@ span#food {
 
 span#restrooms:before {
   content: url('/i/restroom.png');
-  zoom: 20%;
+  zoom: 19%;
   vertical-align: sub;
-  padding-right: .25em;
+  padding-right: .24em;
 }
 
 span#restrooms {
@@ -480,8 +482,9 @@ span#restrooms {
   padding-left: 4px;
   margin-bottom: 1em;
   margin-right: .25em;
-  font-size: .80em;
+  font-size: .75em;
   display: none;
+  white-space: nowrap;
 }
 
 .landmarks {
@@ -496,9 +499,9 @@ span#restrooms {
 
 span#landmarks:before {
   content: url('/i/landmark.png');
-  zoom: 20%;
+  zoom: 19%;
   vertical-align: sub;
-  padding-right: .25em;
+  padding-right: .24em;
 }
 
 span#landmarks {
@@ -510,8 +513,9 @@ span#landmarks {
   padding-left: 4px;
   margin-bottom: 1em;
   margin-right: .25em;
-  font-size: .80em;
+  font-size: .75em;
   display: none;
+  white-space: nowrap;
 }
 
 ul.owners > li > ul.owners:before {
