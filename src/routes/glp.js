@@ -436,10 +436,9 @@ router.get('poiList', '/points-of-interest', hasFlash, addIpToSession, async (ct
     const queryPointsOfInterest = `-@type:(${optsPois.PARAMS.exclude})`
     const query = `ft.search ${idxPoiType} ${queryPointsOfInterest} `
       + `SORTBY id ${sortDir} LIMIT ${offset} ${num} DIALECT ${dialect}`
-    log(query)
+    log('query', query)
     pois = await redis.ft.search(idxPoiType, queryPointsOfInterest, optsPois)
-    // pois = await redis.ft.search(idxPoiType, '-@type:($exclude)', optsPois)
-    log(pois.documents[0])
+    // log(pois.results)
   } catch (e) {
     error('Failed to get list of points-of-interest.')
     error(e.message)
@@ -457,7 +456,7 @@ router.get('poiList', '/points-of-interest', hasFlash, addIpToSession, async (ct
     locals.skipForward = skipforward
     locals.skipBack = skipback
     locals.num = num
-    locals.total = pois.total
+    locals.total = pois.total_results
     locals.pois = pois
     locals.flash = ctx.flash.view ?? {}
     locals.title = `${ctx.app.site}: Points of Interest on Geneva Lake`
