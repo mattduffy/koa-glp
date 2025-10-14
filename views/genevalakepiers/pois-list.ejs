@@ -25,7 +25,9 @@
 
     <div class="previousAssocs" <%- (total < num) ? 'style="display: none;"' : '' %>>
       <% if (skipBack > 1) { %>
-        <a rel="prev" href="<%= origin %>/points-of-interest?s=<%= skipBack %>">&lt; Prev</a>
+        <a rel="prev" href="<%= origin %>/points-of-interest?s=<%= skipBack %>">
+          &lt; Prev
+        </a>
       <% } else if (skipBack === 1) { %>
       <a href="/points-of-interest">&lt; Prev</a>
       <% } else { %>
@@ -34,7 +36,9 @@
     </div>
     <div class="nextAssocs" <%- (total < num) ? 'style="display: none;"' : '' %>>
       <% if ((offset + num) < total) { %>
-      <a rel="next" href="<%= origin %>/points-of-interest?s=<%= skipForward %>">Next &gt;</a>
+        <a rel="next" href="<%= origin %>/points-of-interest?s=<%= skipForward %>">
+          Next &gt;
+        </a>
       <% } else { %>
       Next > 
       <% } %>
@@ -65,7 +69,9 @@
         <li><a 
             href="/edit/poi/<%= encodeURI(p.value.properties.placeId) %>"
             data-id="<%= encodeURI((p.value.properties.id + '').padStart(3, 0)) %>"
-            data-placeId="<%= p.value.properties.placeId %>"><%= p.value.properties.name%></a></li>
+            data-placeId="<%= p.value.properties.placeId %>"><%=
+              p.value.properties.name
+            %></a></li>
       <% }) %>
     </ul>
     <script nonce="<%= nonce %>">
@@ -147,9 +153,11 @@
           // console.info(`current s: ${s}`)
           updateNextLink(links.length)
           ulResultsList.replaceChildren()
-          links.forEach((p) => {
+          links.forEach((_p) => {
+            const p = JSON.parse(_p.extra_attributes['$'])
             const li = document.createElement('li')
-            li.innerHTML = `<a href="${origin}/point-of-interest/${encodeURI(p.properties.id)}" `
+            li.innerHTML = `<a href="${origin}/point-of-interest/`
+              + `${encodeURI(p.properties.id)}" `
               + `data-id='${p.properties.id}'>${p.properties.name}</a>`
             li.firstChild.addEventListener('mouseover', linkAnnotationHandler)
             ulResultsList.appendChild(li)
@@ -166,7 +174,9 @@
         e.stopPropagation()
         console.log(e.target.dataset)
         const placeId = e.target.dataset.placeid
-        const annotation = window._map.annotations.find((a) => a._impl._place.id === placeId)
+        const annotation = window._map.annotations.find((a) => {
+          a._impl._place.id === placeId
+        })
         if (annotation) {
           console.log(annotation)
           annotation.selected = true
@@ -336,14 +346,17 @@
       window._map.addEventListener("single-tap", async (e) => {
         e.preventDefault()
         e.stopPropagation()
-        const {latitude, longitude} = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
+        const {latitude, longitude} = window._map.convertPointOnPageToCoordinate(
+          e.pointOnPage
+        )
         const defaultRadius = 50
         const defaultUnits = 'ft'
         console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: `
           + `${longitude}, ${latitude}`)
         const results = await (
           await fetch(
-            `${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`
+            `${origin}/mapkit/locate/${longitude}/${latitude}/`
+            + `${defaultRadius}/${defaultUnits}`
           )
         ).json()
         console.log(results)
