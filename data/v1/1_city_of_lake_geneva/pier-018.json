@@ -1,9 +1,6 @@
 {
   "pier": "018",
-  "loc": {
-    "longitude": -88.446424,
-    "latitude": 42.587284
-  },
+  "loc": "-88.446424,42.587284",
   "property": {
     "association": "Lake Geneva Manor",
     "established": "1924",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -55,5 +57,8 @@
   "pluscode": "HHP3+WC8 Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-15T03:10:12.802Z"
+  ]
 }

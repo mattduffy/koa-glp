@@ -1,9 +1,6 @@
 {
   "pier": "900",
-  "loc": {
-    "longitude": -88.436883,
-    "latitude": 42.589268
-  },
+  "loc": "-88.436883,42.589268",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "Lake Geneva Cruise Line",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -55,5 +57,8 @@
   "pluscode": "HHQ7+P72 Lake Geneva, Wisconsin",
   "public": 1,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-15T03:10:13.188Z"
+  ]
 }

@@ -1,9 +1,6 @@
 {
   "pier": "030A",
-  "loc": {
-    "longitude": -88.449824,
-    "latitude": 42.584808
-  },
+  "loc": "-88.449824,42.584808",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "Covenant Harbor Bible Camp",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HHM2+W3F Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-15T03:10:12.848Z"
+  ]
 }

@@ -1,9 +1,6 @@
 {
   "pier": "032",
-  "loc": {
-    "longitude": -88.450384,
-    "latitude": 42.582909
-  },
+  "loc": "-88.450384,42.582909",
   "property": {
     "association": "Geneva Bay Estates",
     "established": "1956",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HGMX+5R9 Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-15T03:10:12.857Z"
+  ]
 }

@@ -1,9 +1,6 @@
 {
   "pier": "837",
-  "loc": {
-    "longitude": -88.438019,
-    "latitude": 42.572103
-  },
+  "loc": "-88.438019,42.572103",
   "property": {
     "association": "",
     "established": "1873",
@@ -17,7 +14,12 @@
     },
     "business": "Lake Geneva Youth Camp",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HHC6+RQX Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 1,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-15T03:10:12.923Z"
+  ]
 }

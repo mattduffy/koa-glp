@@ -1,9 +1,6 @@
 {
   "pier": "850",
-  "loc": {
-    "longitude": -88.44074,
-    "latitude": 42.574635
-  },
+  "loc": "-88.44074,42.574635",
   "property": {
     "association": "Ceylon Court Estates",
     "established": "1948",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HHF5+VP2 Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-15T03:10:12.989Z"
+  ]
 }

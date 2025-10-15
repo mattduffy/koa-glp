@@ -1,9 +1,6 @@
 {
   "pier": "856",
-  "loc": {
-    "longitude": -88.439713,
-    "latitude": 42.577336
-  },
+  "loc": "-88.439713,42.577336",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HHG6+W4M Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-15T03:10:13.011Z"
+  ]
 }

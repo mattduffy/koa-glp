@@ -1,9 +1,6 @@
 {
   "pier": "897",
-  "loc": {
-    "longitude": -88.43351,
-    "latitude": 42.588028
-  },
+  "loc": "-88.43351,42.588028",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "Bella Vista",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HHQ8+6H9 Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 1,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-15T03:10:13.171Z"
+  ]
 }

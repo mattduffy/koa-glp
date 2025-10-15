@@ -1,9 +1,6 @@
 {
   "pier": "898",
-  "loc": {
-    "longitude": -88.433751,
-    "latitude": 42.588282
-  },
+  "loc": "-88.433751,42.588282",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "The Baker House",
     "isMarina": 0,
-    "hasFood": 1
+    "hasFood": 1,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -55,5 +57,8 @@
   "pluscode": "HHQ8+8F9 Lake Geneva, Wisconsin",
   "public": 1,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-15T03:10:13.175Z"
+  ]
 }

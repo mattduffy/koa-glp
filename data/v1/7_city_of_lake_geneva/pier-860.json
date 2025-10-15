@@ -1,9 +1,6 @@
 {
   "pier": "860",
-  "loc": {
-    "longitude": -88.439402,
-    "latitude": 42.578208
-  },
+  "loc": "-88.439402,42.578208",
   "property": {
     "association": "East Shore Estates",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -55,5 +57,8 @@
   "pluscode": "HHH6+76Q Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-15T03:10:13.024Z"
+  ]
 }

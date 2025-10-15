@@ -1,10 +1,7 @@
 {
   "pier": "019",
   "version": "1",
-  "loc": {
-    "longitude": -88.446627,
-    "latitude": 42.587153
-  },
+  "loc": "-88.446627,42.587153",
   "geohash": "dp9472g0hh0",
   "pluscode": "HHP3+V89 Lake Geneva, Wisconsin",
   "public": 0,
@@ -22,6 +19,11 @@
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
     }
   },
   "owners": [
@@ -50,6 +52,7 @@
     }
   ],
   "updatedOn": [
+    "2025-10-15T03:10:12.807Z",
     "2024-05-12T23:48:18.184Z"
   ]
 }

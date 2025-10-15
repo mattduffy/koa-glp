@@ -1,9 +1,6 @@
 {
   "pier": "894",
-  "loc": {
-    "longitude": -88.433211,
-    "latitude": 42.587463
-  },
+  "loc": "-88.433211,42.587463",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -63,5 +65,8 @@
   "pluscode": "HHP8+XPM Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-15T03:10:13.159Z"
+  ]
 }

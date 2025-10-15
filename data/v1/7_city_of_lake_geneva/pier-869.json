@@ -1,9 +1,6 @@
 {
   "pier": "869",
-  "loc": {
-    "longitude": -88.437327,
-    "latitude": 42.581004
-  },
+  "loc": "-88.437327,42.581004",
   "property": {
     "association": "Syverstad",
     "established": "1955",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HHJ7+C33 Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-15T03:10:13.061Z"
+  ]
 }

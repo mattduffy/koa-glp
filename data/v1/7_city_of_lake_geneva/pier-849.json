@@ -1,9 +1,6 @@
 {
   "pier": "849",
-  "loc": {
-    "longitude": -88.440575,
-    "latitude": 42.574343
-  },
+  "loc": "-88.440575,42.574343",
   "property": {
     "association": "Ceylon Court Estates",
     "established": "1948",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HHF5+PQM Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-15T03:10:12.981Z"
+  ]
 }

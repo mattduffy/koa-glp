@@ -1,9 +1,6 @@
 {
   "pier": "893",
-  "loc": {
-    "longitude": -88.433173,
-    "latitude": 42.587329
-  },
+  "loc": "-88.433173,42.587329",
   "property": {
     "association": "Wrigley Drive Residences, LLC",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HHP8+WPP Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 1,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-15T03:10:13.154Z"
+  ]
 }
