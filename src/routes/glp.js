@@ -1207,8 +1207,9 @@ router.post(
     await logSearchQueryTerms(ctx, searchTerms[0])
     searchTerms[0].split(' ').forEach((t) => {
       log(`split search term: ${t}`)
-      if (!Number.isNaN(parseInt(t, 10))) {
-        let padded = parseInt(t, 10) < 100 ? `0${t}` : t
+      if (!Number.isNaN(Number.parseInt(t, 10))) {
+        // let padded = Number.parseInt(t, 10) < 100 ? `0${t}` : t
+        let padded = `${t}`.padStart(3, '0')
         if (/\./.test(t)) {
           padded = padded.slice(0, -2)
         }
@@ -1223,6 +1224,7 @@ router.post(
         }
       }
     })
+    log('numbers:', numbers)
     // Address check
     let idxPierAddress
     let queryPierAddress
@@ -1266,7 +1268,8 @@ router.post(
       // throw new Error('Search by pier numbers failed.', { cause: e })
     }
     // if (numbers.length > 0 && !stopSearching) {
-    if (numbers.length > 0 && strings.length === 0) {
+    // if (numbers.length > 0 && strings.length === 0) {
+    if (numbers.length > 0) {
       log(`numbers: ${numbers}`)
       let idxPierNumber
       let queryPierNumber
