@@ -1,9 +1,6 @@
 {
   "pier": "542",
-  "loc": {
-    "longitude": -88.529596,
-    "latitude": 42.550364
-  },
+  "loc": "-88.529596,42.550364",
   "property": {
     "association": "Shore Haven",
     "established": "1926",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HF2C+45R Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
   "bigSwimPier": 1,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.397Z"
+  ]
 }

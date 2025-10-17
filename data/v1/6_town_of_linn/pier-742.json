@@ -1,9 +1,6 @@
 {
   "pier": "742",
-  "loc": {
-    "longitude": -88.463475,
-    "latitude": 42.55804
-  },
+  "loc": "-88.463475,42.55804",
   "property": {
     "association": "Trinke Estates",
     "established": "1951",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HG5P+6J6 Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:32.139Z"
+  ]
 }

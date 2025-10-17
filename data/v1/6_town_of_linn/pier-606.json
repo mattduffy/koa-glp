@@ -1,9 +1,6 @@
 {
   "pier": "606",
-  "loc": {
-    "longitude": -88.504942,
-    "latitude": 42.559481
-  },
+  "loc": "-88.504942,42.559481",
   "property": {
     "association": "Lake Geneva Highlands",
     "established": "1922",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HF5W+Q2V Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.663Z"
+  ]
 }

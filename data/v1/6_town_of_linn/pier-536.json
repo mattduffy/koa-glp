@@ -1,9 +1,6 @@
 {
   "pier": "536",
-  "loc": {
-    "longitude": -88.530307,
-    "latitude": 42.549985
-  },
+  "loc": "-88.530307,42.549985",
   "property": {
     "association": "The Chicago Club of Lake Geneva",
     "established": "1875",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HF29+2FW Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
   "bigSwimPier": 1,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.378Z"
+  ]
 }

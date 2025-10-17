@@ -1,9 +1,6 @@
 {
   "pier": "587",
-  "loc": {
-    "longitude": -88.509523,
-    "latitude": 42.559965
-  },
+  "loc": "-88.509523,42.559965",
   "property": {
     "association": "Estates of Black Point",
     "established": "1888",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HF5R+X5Q Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.611Z"
+  ]
 }

@@ -1,9 +1,6 @@
 {
   "pier": "530",
-  "loc": {
-    "longitude": -88.533043,
-    "latitude": 42.549715
-  },
+  "loc": "-88.533043,42.549715",
   "property": {
     "association": "Oak Shores",
     "established": "1950",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "GFX8+VQP Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.365Z"
+  ]
 }

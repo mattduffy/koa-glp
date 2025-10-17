@@ -1,9 +1,6 @@
 {
   "pier": "804",
-  "loc": {
-    "longitude": -88.439685,
-    "latitude": 42.565221
-  },
+  "loc": "-88.439685,42.565221",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "The Geneva Inn",
     "isMarina": 0,
-    "hasFood": 1
+    "hasFood": 1,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HH86+34P Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 1,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:32.398Z"
+  ]
 }

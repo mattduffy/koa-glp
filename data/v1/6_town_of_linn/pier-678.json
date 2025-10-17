@@ -1,9 +1,6 @@
 {
   "pier": "678",
-  "loc": {
-    "longitude": -88.483077,
-    "latitude": 42.563821
-  },
+  "loc": "-88.483077,42.563821",
   "property": {
     "association": "Birches",
     "established": "1924",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HG78+GQF Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.969Z"
+  ]
 }

@@ -1,9 +1,6 @@
 {
   "pier": "620",
-  "loc": {
-    "longitude": -88.50111,
-    "latitude": 42.559232
-  },
+  "loc": "-88.50111,42.559232",
   "property": {
     "association": "Edgewater Terrace",
     "established": "1925",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HF5X+MHR Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.727Z"
+  ]
 }

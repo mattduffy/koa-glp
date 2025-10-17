@@ -1,9 +1,6 @@
 {
   "pier": "625",
-  "loc": {
-    "longitude": -88.499711,
-    "latitude": 42.559097
-  },
+  "loc": "-88.499711,42.559097",
   "property": {
     "association": "Valley Park Association",
     "established": "1970",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HG52+J4M Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.745Z"
+  ]
 }

@@ -1,10 +1,7 @@
 {
   "pier": "545",
   "version": "1",
-  "loc": {
-    "longitude": -88.525809,
-    "latitude": 42.55078
-  },
+  "loc": "-88.525809,42.550780",
   "geohash": "dp941d1kr00",
   "pluscode": "86JHHF2F+8M",
   "public": 0,
@@ -22,6 +19,11 @@
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
     }
   },
   "owners": [
@@ -180,6 +182,7 @@
     }
   ],
   "updatedOn": [
+    "2025-10-17T03:31:31.410Z",
     "2024-05-19T19:16:31.207Z"
   ]
 }

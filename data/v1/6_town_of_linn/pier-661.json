@@ -1,9 +1,6 @@
 {
   "pier": "661",
-  "loc": {
-    "longitude": -88.491335,
-    "latitude": 42.560685
-  },
+  "loc": "-88.491335,42.560685",
   "property": {
     "association": "Lackey Lane",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HG65+7FF Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.887Z"
+  ]
 }

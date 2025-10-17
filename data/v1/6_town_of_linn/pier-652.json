@@ -1,9 +1,6 @@
 {
   "pier": "652",
-  "loc": {
-    "longitude": -88.494203,
-    "latitude": 42.56007
-  },
+  "loc": "-88.494203,42.56007",
   "property": {
     "association": "Wooddale Lakeshore Property Owners Association",
     "established": "1942",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HG64+28F Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.845Z"
+  ]
 }

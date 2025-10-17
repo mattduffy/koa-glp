@@ -1,9 +1,6 @@
 {
   "pier": "666",
-  "loc": {
-    "longitude": -88.489317,
-    "latitude": 42.561047
-  },
+  "loc": "-88.489317,42.561047",
   "property": {
     "association": "Lackey Lane",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HG66+C77 Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.912Z"
+  ]
 }

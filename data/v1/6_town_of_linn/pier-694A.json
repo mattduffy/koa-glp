@@ -1,9 +1,6 @@
 {
   "pier": "694A",
-  "loc": {
-    "longitude": -88.476756,
-    "latitude": 42.566016
-  },
+  "loc": "-88.476756,42.566016",
   "property": {
     "association": "700 Lake Shore Drive Association",
     "established": "1950",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -71,5 +73,8 @@
   "pluscode": "HG8F+C75 Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:32.038Z"
+  ]
 }

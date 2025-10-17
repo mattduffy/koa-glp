@@ -1,9 +1,6 @@
 {
   "pier": "692",
-  "loc": {
-    "longitude": -88.478021,
-    "latitude": 42.566129
-  },
+  "loc": "-88.478021,42.566129",
   "property": {
     "association": "Maple Lane",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HG8C+FQ5 Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:32.027Z"
+  ]
 }

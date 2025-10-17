@@ -1,9 +1,6 @@
 {
   "pier": "791",
-  "loc": {
-    "longitude": -88.442485,
-    "latitude": 42.564232
-  },
+  "loc": "-88.442485,42.564232",
   "property": {
     "association": "Holly Bush",
     "established": "1948",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HH75+M2R Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:32.356Z"
+  ]
 }

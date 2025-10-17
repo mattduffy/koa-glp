@@ -1,9 +1,6 @@
 {
   "pier": "756",
-  "loc": {
-    "longitude": -88.460145,
-    "latitude": 42.557589
-  },
+  "loc": "-88.460145,42.557589",
   "property": {
     "association": "Lake Geneva Beach Association",
     "established": "1925",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HG5Q+2WQ Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:32.185Z"
+  ]
 }
