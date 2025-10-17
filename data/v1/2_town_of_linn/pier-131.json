@@ -1,9 +1,6 @@
 {
   "pier": "131",
-  "loc": {
-    "longitude": -88.502474,
-    "latitude": 42.574828
-  },
+  "loc": "-88.502474,42.574828",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HFFX+W2J Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.150Z"
+  ]
 }

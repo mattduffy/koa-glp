@@ -1,9 +1,6 @@
 {
   "pier": "104",
-  "loc": {
-    "longitude": -88.495636,
-    "latitude": 42.574008
-  },
+  "loc": "-88.495636,42.574008",
   "property": {
     "association": "Sunset Hills",
     "established": "1926",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HGF3+JP5 Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 1,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.034Z"
+  ]
 }

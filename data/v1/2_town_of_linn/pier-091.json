@@ -1,9 +1,6 @@
 {
   "pier": "091",
-  "loc": {
-    "longitude": -88.490086,
-    "latitude": 42.572697
-  },
+  "loc": "-88.490086,42.572697",
   "property": {
     "association": "S. B. Chapin",
     "established": "1921",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HGF5+3XF Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:30.976Z"
+  ]
 }

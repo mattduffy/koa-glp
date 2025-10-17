@@ -1,9 +1,6 @@
 {
   "pier": "103",
-  "loc": {
-    "longitude": -88.495054,
-    "latitude": 42.573953
-  },
+  "loc": "-88.495054,42.573953",
   "property": {
     "association": "Geneva Oaks",
     "established": "1970",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HGF3+HXP Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.026Z"
+  ]
 }

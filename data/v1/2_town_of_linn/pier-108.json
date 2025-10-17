@@ -1,9 +1,6 @@
 {
   "pier": "108",
-  "loc": {
-    "longitude": -88.497302,
-    "latitude": 42.574526
-  },
+  "loc": "-88.497302,42.574526",
   "property": {
     "association": "Elgin Club",
     "established": "1874",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HGF3+R38 Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.055Z"
+  ]
 }

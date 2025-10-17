@@ -1,9 +1,6 @@
 {
   "pier": "145",
-  "loc": {
-    "longitude": -88.50985,
-    "latitude": 42.576019
-  },
+  "loc": "-88.50985,42.576019",
   "property": {
     "association": "Knollwood",
     "established": "1926",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HFGR+C32 Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.222Z"
+  ]
 }

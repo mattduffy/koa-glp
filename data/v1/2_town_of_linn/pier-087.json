@@ -1,9 +1,6 @@
 {
   "pier": "087",
-  "loc": {
-    "longitude": -88.487377,
-    "latitude": 42.571796
-  },
+  "loc": "-88.487377,42.571796",
   "property": {
     "association": "Alta Vista",
     "established": "1954",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HGC7+P29 Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:30.960Z"
+  ]
 }

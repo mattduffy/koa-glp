@@ -1,10 +1,7 @@
 {
   "pier": "122",
   "version": "1",
-  "loc": {
-    "longitude": -88.499916,
-    "latitude": 42.574915
-  },
+  "loc": "-88.499916,42.574915",
   "geohash": "dp944ns2f70",
   "pluscode": "HGF2+X28 Williams Bay, Wisconsin",
   "public": 0,
@@ -22,6 +19,11 @@
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
     }
   },
   "owners": [
@@ -58,6 +60,7 @@
     }
   ],
   "updatedOn": [
+    "2025-10-17T03:31:31.109Z",
     "2024-05-13T15:17:44.630Z"
   ]
 }

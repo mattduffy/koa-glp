@@ -1,9 +1,6 @@
 {
   "pier": "163",
-  "loc": {
-    "longitude": -88.515849,
-    "latitude": 42.573128
-  },
+  "loc": "-88.515849,42.573128",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HFFM+7M2 Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:31.318Z"
+  ]
 }

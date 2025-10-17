@@ -1,9 +1,6 @@
 {
   "pier": "060",
-  "loc": {
-    "longitude": -88.466567,
-    "latitude": 42.57455
-  },
+  "loc": "-88.466567,42.57455",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HGFM+R97 Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:30.829Z"
+  ]
 }

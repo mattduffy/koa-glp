@@ -1,9 +1,6 @@
 {
   "pier": "082",
-  "loc": {
-    "longitude": -88.484686,
-    "latitude": 42.57096
-  },
+  "loc": "-88.484686,42.57096",
   "property": {
     "association": "Bonnie Brae",
     "established": "1916",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HGC8+94P Lake Geneva, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:31:30.939Z"
+  ]
 }
