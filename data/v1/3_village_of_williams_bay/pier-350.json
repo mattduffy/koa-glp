@@ -1,9 +1,6 @@
 {
   "pier": "350",
-  "loc": {
-    "longitude": -88.556188,
-    "latitude": 42.565584
-  },
+  "loc": "-88.556188,42.565584",
   "property": {
     "association": "",
     "established": "1886",
@@ -17,7 +14,12 @@
     },
     "business": "George Williams College of Aurora University",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HC8V+6GM Williams Bay, Wisconsin",
   "public": 1,
   "bigSwimPier": 1,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:33:59.012Z"
+  ]
 }

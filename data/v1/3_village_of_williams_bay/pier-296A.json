@@ -1,9 +1,6 @@
 {
   "pier": "296A",
-  "loc": {
-    "longitude": -88.539957,
-    "latitude": 42.57092
-  },
+  "loc": "-88.539957,42.57092",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HFC6+927 Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:33:58.844Z"
+  ]
 }

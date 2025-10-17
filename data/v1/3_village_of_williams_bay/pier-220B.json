@@ -1,10 +1,7 @@
 {
   "pier": "220B",
   "version": "1",
-  "loc": {
-    "longitude": -88.529357,
-    "latitude": 42.571552
-  },
+  "loc": "-88.529357,42.571552",
   "geohash": "dp941myvk20",
   "pluscode": "HFCC+J7C Williams Bay, Wisconsin",
   "public": 0,
@@ -22,6 +19,11 @@
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
     }
   },
   "owners": [
@@ -65,6 +67,7 @@
     }
   ],
   "updatedOn": [
+    "2025-10-17T03:33:58.615Z",
     "2024-05-15T23:15:15.895Z"
   ]
 }

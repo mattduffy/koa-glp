@@ -1,9 +1,6 @@
 {
   "pier": "356",
-  "loc": {
-    "longitude": -88.558837,
-    "latitude": 42.564634
-  },
+  "loc": "-88.558837,42.564634",
   "property": {
     "association": "Oak Bank",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HC7R+VF3 Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:33:59.036Z"
+  ]
 }

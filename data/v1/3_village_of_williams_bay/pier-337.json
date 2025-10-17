@@ -1,9 +1,6 @@
 {
   "pier": "337",
-  "loc": {
-    "longitude": -88.550133,
-    "latitude": 42.56706
-  },
+  "loc": "-88.550133,42.56706",
   "property": {
     "association": "Dartmouth Woods Association ",
     "established": "1984",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HC8X+RWH Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:33:58.955Z"
+  ]
 }

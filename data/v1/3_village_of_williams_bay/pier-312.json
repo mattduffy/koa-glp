@@ -1,9 +1,6 @@
 {
   "pier": "312",
-  "loc": {
-    "longitude": -88.541506,
-    "latitude": 42.568348
-  },
+  "loc": "-88.541506,42.568348",
   "property": {
     "association": "Congress Club",
     "established": "1882",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HF95+89Q Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 1,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:33:58.910Z"
+  ]
 }

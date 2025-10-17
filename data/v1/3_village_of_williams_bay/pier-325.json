@@ -1,9 +1,6 @@
 {
   "pier": "325",
-  "loc": {
-    "longitude": -88.541423,
-    "latitude": 42.567599
-  },
+  "loc": "-88.541423,42.567599",
   "property": {
     "association": "",
     "established": "1873",
@@ -17,7 +14,12 @@
     },
     "business": "Conference Point Center",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HF95+2CP Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:33:58.918Z"
+  ]
 }

@@ -1,10 +1,7 @@
 {
   "pier": "357A",
   "version": "1",
-  "loc": {
-    "longitude": -88.559211,
-    "latitude": 42.564597
-  },
+  "loc": "-88.559170,42.564601",
   "geohash": "dp940u9hub0",
   "pluscode": "86JHHC7R+R8",
   "public": 0,
@@ -22,17 +19,32 @@
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
     }
   },
   "owners": [
     {
       "estateName": "",
-      "membershipType": "Residential Non-member",
       "member": false,
-      "members": []
+      "membershipType": "Residential Non-member",
+      "members": [
+        {
+          "t": "",
+          "f": "",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
+    "2025-10-17T03:33:59.045Z",
     "2023-11-22T00:43:03.660Z"
   ]
 }

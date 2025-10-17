@@ -1,9 +1,6 @@
 {
   "pier": "345",
-  "loc": {
-    "longitude": -88.551489,
-    "latitude": 42.566729
-  },
+  "loc": "-88.551489,42.566729",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HC8X+MCR Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:33:58.987Z"
+  ]
 }

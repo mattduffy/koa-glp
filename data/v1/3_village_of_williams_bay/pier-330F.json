@@ -1,9 +1,6 @@
 {
   "pier": "330F",
-  "loc": {
-    "longitude": -88.546595,
-    "latitude": 42.56665
-  },
+  "loc": "-88.546595,42.56665",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "HF83+M92 Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:33:58.923Z"
+  ]
 }

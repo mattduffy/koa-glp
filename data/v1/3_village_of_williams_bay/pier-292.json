@@ -1,9 +1,6 @@
 {
   "pier": "292",
-  "loc": {
-    "longitude": -88.538992,
-    "latitude": 42.573374
-  },
+  "loc": "-88.538992,42.573374",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "Gage Marine",
     "isMarina": 1,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HFF6+8CR Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:33:58.822Z"
+  ]
 }

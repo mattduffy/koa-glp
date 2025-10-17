@@ -1,10 +1,7 @@
 {
   "pier": "275",
   "version": "1",
-  "loc": {
-    "longitude": -88.539111,
-    "latitude": 42.576595
-  },
+  "loc": "-88.539111,42.576595",
   "geohash": "dp941nzf9h0",
   "pluscode": "86JHHFG6+J9",
   "public": 0,
@@ -22,6 +19,11 @@
       "city": "Williams Bay",
       "state": "WI",
       "zip": "53191"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
     }
   },
   "owners": [
@@ -42,6 +44,7 @@
     }
   ],
   "updatedOn": [
+    "2025-10-17T03:33:58.738Z",
     "2024-05-15T23:27:38.573Z"
   ]
 }

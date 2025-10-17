@@ -1,9 +1,6 @@
 {
   "pier": "333",
-  "loc": {
-    "longitude": -88.54923,
-    "latitude": 42.567056
-  },
+  "loc": "-88.54923,42.567056",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "Wesley Woods Retreat Center",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HF82+R8C Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 1,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:33:58.937Z"
+  ]
 }

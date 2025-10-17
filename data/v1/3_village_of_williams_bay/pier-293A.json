@@ -1,9 +1,6 @@
 {
   "pier": "293A",
-  "loc": {
-    "longitude": -88.539596,
-    "latitude": 42.572266
-  },
+  "loc": "-88.539596,42.572266",
   "property": {
     "association": "Oakwood Estates",
     "established": "1921",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HFC6+W52 Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:33:58.831Z"
+  ]
 }

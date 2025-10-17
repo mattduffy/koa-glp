@@ -1,9 +1,6 @@
 {
   "pier": "200",
-  "loc": {
-    "longitude": -88.528834,
-    "latitude": 42.56687
-  },
+  "loc": "-88.528834,42.56687",
   "property": {
     "association": "Cedar Point Park",
     "established": "1922",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -63,5 +65,8 @@
   "pluscode": "HF8C+PFV Williams Bay, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:33:58.527Z"
+  ]
 }
