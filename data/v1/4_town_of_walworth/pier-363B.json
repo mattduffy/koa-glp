@@ -1,10 +1,7 @@
 {
   "pier": "363B",
   "version": "1",
-  "loc": {
-    "longitude": -88.562828,
-    "latitude": 42.562226
-  },
+  "loc": "-88.562828,42.562226",
   "geohash": "dp940snwbt0",
   "pluscode": "86JHHC6P+VV",
   "public": 0,
@@ -22,6 +19,11 @@
       "city": "Walworth",
       "state": "WI",
       "zip": "53125"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
     }
   },
   "owners": [
@@ -42,6 +44,7 @@
     }
   ],
   "updatedOn": [
+    "2025-10-17T03:34:27.129Z",
     "2023-11-22T01:02:24.233Z"
   ]
 }
