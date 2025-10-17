@@ -1,9 +1,6 @@
 {
   "pier": "414",
-  "loc": {
-    "longitude": -88.572248,
-    "latitude": 42.550611
-  },
+  "loc": "-88.572248,42.550611",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "HC2H+64R Fontana-On-Geneva Lake, Wisconsin",
   "public": 1,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:35:13.106Z"
+  ]
 }

@@ -1,9 +1,6 @@
 {
   "pier": "523",
-  "loc": {
-    "longitude": -88.536076,
-    "latitude": 42.549636
-  },
+  "loc": "-88.536076,42.549636",
   "property": {
     "association": "Lake Geneva Yacht Club",
     "established": "1874",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "GFX7+VH3 Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:35:13.659Z"
+  ]
 }

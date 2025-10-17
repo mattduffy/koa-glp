@@ -1,10 +1,7 @@
 {
   "pier": "494",
   "version": "1",
-  "loc": {
-    "longitude": -88.55455,
-    "latitude": 42.547836
-  },
+  "loc": "-88.55455,42.547836",
   "geohash": "dp940cse170",
   "pluscode": "GCXW+45P Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
@@ -22,6 +19,11 @@
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
     }
   },
   "owners": [
@@ -57,6 +59,7 @@
     }
   ],
   "updatedOn": [
+    "2025-10-17T03:35:13.461Z",
     "2024-05-18T14:21:20.450Z"
   ]
 }

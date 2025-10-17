@@ -1,9 +1,6 @@
 {
   "pier": "400",
-  "loc": {
-    "longitude": -88.570864,
-    "latitude": 42.55411
-  },
+  "loc": "-88.570864,42.55411",
   "property": {
     "association": "Buena Vista",
     "established": "1912",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -71,5 +73,8 @@
   "pluscode": "HC3H+JMR Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:35:12.978Z"
+  ]
 }

@@ -1,9 +1,6 @@
 {
   "pier": "480",
-  "loc": {
-    "longitude": -88.560552,
-    "latitude": 42.546746
-  },
+  "loc": "-88.560552,42.546746",
   "property": {
     "association": "Club Unique",
     "established": "1927",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "GCWQ+MQW Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:35:13.384Z"
+  ]
 }

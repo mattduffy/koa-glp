@@ -1,9 +1,6 @@
 {
   "pier": "521",
-  "loc": {
-    "longitude": -88.537068,
-    "latitude": 42.5493
-  },
+  "loc": "-88.537068,42.5493",
   "property": {
     "association": "Ten Acre Wood",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "GFX7+P5F Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:35:13.644Z"
+  ]
 }

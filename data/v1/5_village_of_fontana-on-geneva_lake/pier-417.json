@@ -1,9 +1,6 @@
 {
   "pier": "417",
-  "loc": {
-    "longitude": -88.571993,
-    "latitude": 42.54999
-  },
+  "loc": "-88.571993,42.54999",
   "property": {
     "association": "",
     "established": "",
@@ -17,7 +14,12 @@
     },
     "business": "Gordy's Lakefront Marine",
     "isMarina": 1,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -40,5 +42,8 @@
   "pluscode": "GCXH+X6R Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:35:13.118Z"
+  ]
 }

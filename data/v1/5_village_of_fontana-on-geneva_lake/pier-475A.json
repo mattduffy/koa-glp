@@ -1,9 +1,6 @@
 {
   "pier": "475A",
-  "loc": {
-    "longitude": -88.562161,
-    "latitude": 42.546701
-  },
+  "loc": "-88.562161,42.546701",
   "property": {
     "association": "Indian Hills",
     "established": "1927",
@@ -17,7 +14,12 @@
     },
     "business": "",
     "isMarina": 0,
-    "hasFood": 0
+    "hasFood": 0,
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
   },
   "owners": [
     {
@@ -48,5 +50,8 @@
   "pluscode": "GCWQ+M4P Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
-  "version": 1
+  "version": 1,
+  "updatedOn": [
+    "2025-10-17T03:35:13.366Z"
+  ]
 }
