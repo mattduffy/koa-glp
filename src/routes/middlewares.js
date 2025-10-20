@@ -21,17 +21,22 @@ export async function addIpToSession(ctx, next) {
   }
 }
 
-export async function logSearchQueryTerms(ctx, query) {
+export async function logSearchQueryTerms(ctx, query, results=null) {
   const log = _log.extend('logSearchQueryTerms')
   const err = _error.extend('logSearchQueryTerms')
+  const geos = ctx.state.logEntry?.geos?.[0]
+  log('ctx geos', geos)
   try {
     const doc = {
       date: new Date(),
       location: {
         ip: ctx.state.logEntry.ip[0],
-        geo: ctx.state.logEntry.geos,
+        geo: ctx.state.logEntry?.geos?.[0],
+        // mongodb requires longitude, latitude order
+        coords: { type: 'Point', coordinates: [geos?.[1] ?? 0, geos?.[0] ?? 0] },
       },
       query,
+      results,
     }
     const db = ctx.state.mongodb.client.db()
     const result = await db.collection('searchQueries').insertOne(doc)
