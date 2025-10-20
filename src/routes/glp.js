@@ -1204,7 +1204,7 @@ router.post(
       estateNames: { total: 0 },
       ownerNames: { total: 0 },
     }
-    await logSearchQueryTerms(ctx, searchTerms[0])
+    // await logSearchQueryTerms(ctx, searchTerms[0])
     searchTerms[0].split(' ').forEach((t) => {
       log(`split search term: ${t}`)
       if (!Number.isNaN(Number.parseInt(t, 10))) {
@@ -1252,7 +1252,7 @@ router.post(
         queryPierAddress,
         optsPierAddress,
       )
-      log('address results: %O', results.addresses)
+      log('address results', results.addresses)
       // if (results.addresses.total > 0) {
       //   stopSearching = true
       // }
@@ -1297,7 +1297,7 @@ router.post(
           queryPierNumber,
           optsPierNumber,
         )
-        log(results.pierNumbers)
+        log('pierNumbers results', results.pierNumbers)
       } catch (e) {
         error('Redis search query failed:')
         error(`using index: ${idxPierNumber}`)
@@ -1346,7 +1346,7 @@ router.post(
             queryPierPublic,
             optsPierPublic,
           )
-          log(results.public)
+          log('public results', results.public)
         } catch (e) {
           error('Redis search query failed:')
           error(`using index: ${idxPierPublic}`)
@@ -1388,7 +1388,7 @@ router.post(
           optsPierFood.LIMIT = { from: 0, size: 20 }
           log(`Pier food FT.SEARCH ${idxPierFood} "${queryPierFood}"`)
           results.food = await redis.ft.search(idxPierFood, queryPierFood, optsPierFood)
-          log(results.food)
+          log('food results', results.food)
         } catch (e) {
           error('Redis search query failed:')
           error(`using index: ${idxPierFood}`)
@@ -1485,8 +1485,8 @@ router.post(
           }
         )
         results.vss = vector_result
-        log('vector_result', vector_result)
-        log('restults.estateNames', results.estateNames)
+        log('vector result', vector_result)
+        log('estateNames results', results.estateNames)
       } catch (e) {
         error('Redis search query failed:')
         error(`using index: ${idxPierEstateName}`)
@@ -1541,7 +1541,7 @@ router.post(
           queryPierOwnerName,
           optsPierOwnerName,
         )
-        log(results.ownerNames)
+        log('ownerNames results', results.ownerNames)
       } catch (e) {
         error('Redis search query failed:')
         error(`using index: ${idxPierOwnerName}`)
@@ -1587,7 +1587,7 @@ router.post(
           queryPierAssociation,
           optsPierAssociation,
         )
-        log(results.associations)
+        log('associations results', results.associations)
       } catch (e) {
         error('Redis search query failed:')
         error(`using index: ${idxPierAssociation}`)
@@ -1629,7 +1629,7 @@ router.post(
           queryPierBusiness,
           optsPierBusiness,
         )
-        log(results.businesses)
+        log('business results', results.businesses)
       } catch (e) {
         error('Redis search query failed:')
         error(`using index: ${idxPierBusiness}`)
@@ -1646,8 +1646,29 @@ router.post(
       results.ownerNames = { total: 0 }
       results.associations = { total: 0 }
       results.businesses = { total: 0 }
+      // results.addresses = { total: 0 }
+      // results.associations = { total: 0 }
+      // results.businesses = { total: 0 }
+      // results.estateNames = { total: 0 }
+      // results.food = { total: 0 }
+      // results.ownerNames = { total: 0 }
+      // results.pierNumbers = { total: 0 }
+      // results.public = { total: 0 }
+      // results.vss = { total: 0 }
     }
-    log(results)
+    const numberOfResults = 
+      (results.addresses?.total_results ?? results.addresses?.total ?? 0)
+      + (results.associations?.total_results ?? results.associations?.total ?? 0)
+      + (results.businesses?.total_results ?? results.businesses?.total ?? 0)
+      + (results.estateNames?.total_results ?? results.estateNames?.total ?? 0)
+      + (results.food?.total_results ?? results.food?.total ?? 0)
+      + (results.ownerNames?.total_results ?? results.ownerNames?.total ?? 0)
+      + (results.pierNumbers?.total_results ?? results.pierNumbers?.total ?? 0)
+      + (results.public?.total_results ?? results.public?.total ?? 0)
+      + (results.vss?.total_results ?? results.vss?.total ?? 0)
+    log('numberOfResults', numberOfResults)
+    await logSearchQueryTerms(ctx, searchTerms[0], numberOfResults)
+    log('query results', results)
     ctx.type = 'application/json; charset=utf-8'
     ctx.status = 200
     ctx.body = results
