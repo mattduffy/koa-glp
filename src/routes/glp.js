@@ -1646,15 +1646,6 @@ router.post(
       results.ownerNames = { total: 0 }
       results.associations = { total: 0 }
       results.businesses = { total: 0 }
-      // results.addresses = { total: 0 }
-      // results.associations = { total: 0 }
-      // results.businesses = { total: 0 }
-      // results.estateNames = { total: 0 }
-      // results.food = { total: 0 }
-      // results.ownerNames = { total: 0 }
-      // results.pierNumbers = { total: 0 }
-      // results.public = { total: 0 }
-      // results.vss = { total: 0 }
     }
     const numberOfResults = 
       (results.addresses?.total_results ?? results.addresses?.total ?? 0)
