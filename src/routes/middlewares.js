@@ -25,8 +25,10 @@ export async function logSearchQueryTerms(ctx, query, results=null) {
   const log = _log.extend('logSearchQueryTerms')
   const err = _error.extend('logSearchQueryTerms')
   const geo = ctx.state.logEntry?.geos?.[0]
-  delete geo.coords
-  log('ctx geos', geos)
+  if (geo?.coords) {
+    delete geo.coords
+  }
+  log('ctx geos', geo)
   try {
     const doc = {
       date: new Date(),
