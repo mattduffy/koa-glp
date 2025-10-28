@@ -25,9 +25,6 @@ export async function logSearchQueryTerms(ctx, query, results=null) {
   const log = _log.extend('logSearchQueryTerms')
   const err = _error.extend('logSearchQueryTerms')
   const geo = ctx.state.logEntry?.geos?.[0]
-  if (geo?.coords) {
-    delete geo.coords
-  }
   log('ctx geos', geo)
   try {
     const doc = {
@@ -43,6 +40,9 @@ export async function logSearchQueryTerms(ctx, query, results=null) {
       },
       query,
       results,
+    }
+    if (geo?.coords) {
+      delete geo.coords
     }
     const db = ctx.state.mongodb.client.db()
     const result = await db.collection('searchQueries').insertOne(doc)
