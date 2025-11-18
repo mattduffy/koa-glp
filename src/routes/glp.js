@@ -1229,24 +1229,52 @@ router.post(
     let idxPierAddress
     let queryPierAddress
     let optsPierAddress
-    const sortDir = 'ASC'
+    let fuzzyPierAddress
     try {
+      // Conduct search by address.
+      let pierAddressTokens = ''
+      log('searchTerms[0]', searchTerms[0])
+      log('searchTerms[0]', searchTerms[0].split(' '))
+      searchTerms[0].split(' ').forEach((t, i, arr) => {
+        log('arr.length', arr.length)
+        if (i === 0) pierAddressTokens += '('
+        pierAddressTokens += Number.isInteger(Number.parseInt(t)) ? `${t}` : `%${t}%`
+        if (i < arr.length -1) pierAddressTokens += ' | '
+        if (i === arr.length -1) pierAddressTokens += ')'
+        log('pierAddressTokens', pierAddressTokens)
+      })
+      // if (strings.length === 1) {
+      //   pierAddressTokens = `*${strings[0]}*` 
+      // } else {
+      //   strings.forEach((t, i) => {
+      //     if (i === 0) pierAddressTokens += '('
+      //     pierAddressTokens += `*${t}*`
+      //     if (i < strings.length - 1) pierAddressTokens += '|'
+      //     if (i === strings.length -1) pierAddressTokens += ')'
+      //     log('pierAddressTokens', pierAddressTokens)
+      //   })
+      // }
+      fuzzyPierAddress = strings.map(s => String.raw`%${s}%`).join(' | ')
+      log('fuzzyPierAddress', fuzzyPierAddress)
+      log(String.raw`Pier address tokens: ${pierAddressTokens}`)
       idxPierAddress = 'glp:idx:piers:address'
-      queryPierAddress = `${searchTerms[0]}`
+      queryPierAddress = `@address:${pierAddressTokens}`
+        + ` | ${fuzzyPierAddress}`
+      const DIALECT_2 = 2
+      const DIALECT_3 = 3
+      const sortDir = 'ASC'
       optsPierAddress = {}
-      // optsPierAddress.SORTBY = { BY: '$.pier', DIRECTION: sortDir }
+      optsPierAddress.DIALECT = DIALECT_2
+      optsPierAddress.LIMIT = { from: 0, size: 1 }
+      // optsPierAddress.SORTBY = { BY: 'pier', DIRECTION: sortDir }
       optsPierAddress.RETURN = [
-        '$.pier',
-        'AS',
-        'pierNumber',
-        '$.loc',
-        'AS',
-        'coords',
-        '$.property.address.street',
-        'AS',
-        'address',
+        '$.pier', 'AS', 'pierNumber',
+        '$.loc', 'AS', 'coords',
+        '$.property.address.street', 'AS', 'address',
       ]
-      log(`Pier address FT.SEARCH ${idxPierAddress} ${queryPierAddress}`)
+      log(
+        `Pier address FT.SEARCH ${idxPierAddress} `
+        + `"${queryPierAddress}" DIALECT ${DIALECT_2}`)
       results.addresses = await redis.ft.search(
         idxPierAddress,
         queryPierAddress,
@@ -1260,8 +1288,8 @@ router.post(
       error('Redis address search query failed:')
       error(`using index: ${idxPierAddress}`)
       error(
-        `query: FT.SEARCH ${idxPierAddress} "${queryPierAddress}"`,
-        optsPierAddress
+        `Pier address FT.SEARCH ${idxPierAddress} `
+        + `"${queryPierAddress}" DIALECT ${DIALECT_2}`
       )
       error(e)
       // No need to disrupt the rest of the searching if this query failed.
