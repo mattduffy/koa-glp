@@ -179,11 +179,11 @@ if (!DRYRUN) { // BEGIN DRYRUN CHECK
     await redis.ft.create(
       pierAddressIndex,
       {
-        // '$.pier': {
-        //   type: SchemaFieldTypes.TEXT,
-        //   SORTABLE: true,
-        //   AS: 'pier',
-        // },
+        '$.pier': {
+          type: SchemaFieldTypes.TEXT,
+          SORTABLE: true,
+          AS: 'pier',
+        },
         '$.property.address.street': {
           type: SchemaFieldTypes.TEXT,
           SORTABLE: true,
