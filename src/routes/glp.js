@@ -1216,7 +1216,6 @@ router.post(
         log(`padded ${padded}`)
         numbers.push(`${padded}*`)
       } else {
-        /* eslint-disable-next-line */
         if (t.length > 0) {
           strings.push(t)
         } else {
@@ -1225,7 +1224,6 @@ router.post(
       }
     })
     log('numbers:', numbers)
-    // Address check
     let idxPierAddress
     let queryPierAddress
     let optsPierAddress
@@ -1233,30 +1231,15 @@ router.post(
     try {
       // Conduct search by address.
       let pierAddressTokens = ''
-      log('searchTerms[0]', searchTerms[0])
-      log('searchTerms[0]', searchTerms[0].split(' '))
       searchTerms[0].split(' ').forEach((t, i, arr) => {
-        log('arr.length', arr.length)
         if (i === 0) pierAddressTokens += '('
         pierAddressTokens += Number.isInteger(Number.parseInt(t)) ? `${t}` : `%${t}%`
         if (i < arr.length -1) pierAddressTokens += ' | '
         if (i === arr.length -1) pierAddressTokens += ')'
         log('pierAddressTokens', pierAddressTokens)
       })
-      // if (strings.length === 1) {
-      //   pierAddressTokens = `*${strings[0]}*` 
-      // } else {
-      //   strings.forEach((t, i) => {
-      //     if (i === 0) pierAddressTokens += '('
-      //     pierAddressTokens += `*${t}*`
-      //     if (i < strings.length - 1) pierAddressTokens += '|'
-      //     if (i === strings.length -1) pierAddressTokens += ')'
-      //     log('pierAddressTokens', pierAddressTokens)
-      //   })
-      // }
       fuzzyPierAddress = strings.map(s => String.raw`%${s}%`).join(' | ')
       log('fuzzyPierAddress', fuzzyPierAddress)
-      log(String.raw`Pier address tokens: ${pierAddressTokens}`)
       idxPierAddress = 'glp:idx:piers:address'
       queryPierAddress = `@address:${pierAddressTokens}`
         + ` | ${fuzzyPierAddress}`
@@ -1273,14 +1256,15 @@ router.post(
         '$.property.address.street', 'AS', 'address',
       ]
       log(
-        `Pier address FT.SEARCH ${idxPierAddress} `
-        + `"${queryPierAddress}" DIALECT ${DIALECT_2}`)
+        String.raw`Pier address FT.SEARCH ${idxPierAddress} `
+        + `"${queryPierAddress}" DIALECT ${DIALECT_2}`
+      )
       results.addresses = await redis.ft.search(
         idxPierAddress,
         queryPierAddress,
         optsPierAddress,
       )
-      log('address results', results.addresses)
+      // log('address results', results.addresses)
       // if (results.addresses.total > 0) {
       //   stopSearching = true
       // }
@@ -1288,15 +1272,13 @@ router.post(
       error('Redis address search query failed:')
       error(`using index: ${idxPierAddress}`)
       error(
-        `Pier address FT.SEARCH ${idxPierAddress} `
+        String.raw`Pier address FT.SEARCH ${idxPierAddress} `
         + `"${queryPierAddress}" DIALECT ${DIALECT_2}`
       )
       error(e)
       // No need to disrupt the rest of the searching if this query failed.
       // throw new Error('Search by pier numbers failed.', { cause: e })
     }
-    // if (numbers.length > 0 && !stopSearching) {
-    // if (numbers.length > 0 && strings.length === 0) {
     if (numbers.length > 0) {
       log(`numbers: ${numbers}`)
       let idxPierNumber
