@@ -1,4 +1,14 @@
+const restrictedGlobals = require('eslint-restricted-globals')
+
 module.exports = {
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['../'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
   globals: {
     window: true,
     document: true,
@@ -30,8 +40,9 @@ module.exports = {
     'no-console': 'off',
     'no-underscore-dangle': 'off',
     'import/extensions': 'off',
+    'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
-    'max-len': ['error', {'code': 100}],
+    'max-len': ['error', { code: 100 }],
     'new-cap': 'off',
   },
 }
