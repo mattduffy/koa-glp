@@ -6,7 +6,7 @@
  */
 
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+// import { fileURLToPath } from 'node:url'
 import Router from '@koa/router'
 import { ulid } from 'ulid'
 import * as transformers from '@xenova/transformers'
@@ -30,7 +30,7 @@ import {
 } from '../utils/logging.js'
 // import { redis } from '../daos/impl/redis/redis-om.js'
 import { redis } from '../daos/impl/redis/redis-client.js'
-import { redis_single } from '../daos/impl/redis/redis-single.js'
+import { redis_single as redisSingle } from '../daos/impl/redis/redis-single.js'
 
 const glpLog = _log.extend('glp')
 const glpError = _error.extend('glp')
@@ -42,7 +42,7 @@ function sanitize(param) {
 function leftZeroPad(x) {
   let pierNumber = x
   const matches = x.match(
-    /^(?<numbers>\d{1,3}(?<decimal>\.\d)?)(?<letters>[A-Za-z]{0,3})/
+    /^(?<numbers>\d{1,3}(?<decimal>\.\d)?)(?<letters>[A-Za-z]{0,3})/,
   )
   if (!matches) {
     return null
@@ -61,8 +61,8 @@ function leftZeroPad(x) {
   return pierNumber
 }
 
-const ASC = 'ASC'
-const DESC = 'DESC'
+// const ASC = 'ASC'
+// const DESC = 'DESC'
 
 const router = new Router()
 
@@ -121,7 +121,7 @@ router.get('piersByTown', '/towns/:town', hasFlash, addIpToSession, async (ctx) 
   } catch (e) {
     error(e)
     const err = new Error(
-      `Redis query failed for \'piersInTown\' ${town}`,
+      `Redis query failed for 'piersInTown' ${town}`,
       { cause: e },
     )
     ctx.throw(500, err, { town })
@@ -797,100 +797,101 @@ router.get(
   hasFlash,
   addIpToSession,
   async (ctx) => {
-  const log = glpLog.extend('GET-piersAssociations')
-  const error = glpError.extend('GET-piersAssociations')
-  if (ctx.state.isAsyncrequest === true) {
-    log('async query received.')
-  }
-  log(ctx.request.query.s)
-  const x = 70
-  const s = (ctx.request.query?.s !== undefined)
-    ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10))
-    : 1
-  const num = 10
-  const offset = (s <= 1) ? 0 : (s - 1) * num
-  const skipback = (s <= 1) ? 0 : s - 1
-  const skipforward = s + 1
-  const sortDir = 'ASC'
-  log(
-    `s: ${s}, `
-      + `offset: ${offset} `
-      + `num: ${num.toString().padStart(2, '0')}, `
-      + `skipback: ${skipback} `
-      + `skipforward: ${skipforward}, `
-      + `remaining: ${x} - ${offset} = ${x - offset}`,
-  )
-  let associations
-  try {
-    log(
-      'ft.AGGREGATE glp:idx:piers:association "*" '
-        + 'LOAD 3 $.pier AS pier '
-        + 'GROUPBY 1 @association '
-        + 'REDUCE COUNT_DISTINCT 1 '
-        + `SORTBY 3 @association ${sortDir} MAX 1 `
-        + `LIMIT ${offset} ${num}`,
-    )
-    const optsAggregateAssoc = {
-      LOAD: ['@pier', '@association'],
-      STEPS: [
-        {
-          type: AggregateSteps.GROUPBY,
-          properties: '@association',
-          REDUCE: [{
-            type: AggregateGroupByReducers.COUNT_DISTINCT,
-            property: 'association',
-            AS: 'num_associations',
-          }],
-        },
-        {
-          type: AggregateSteps.SORTBY,
-          BY: '@association',
-          // DIRECTION: sortDir,
-          direction: sortDir,
-          // MAX: 1,
-        },
-        {
-          type: AggregateSteps.LIMIT,
-          from: offset,
-          size: num,
-        },
-      ],
+    const log = glpLog.extend('GET-piersAssociations')
+    const error = glpError.extend('GET-piersAssociations')
+    if (ctx.state.isAsyncrequest === true) {
+      log('async query received.')
     }
-    log('aggregation step opts', optsAggregateAssoc)
-    associations = await redis.ft.aggregate(
-      'glp:idx:piers:association',
-      '*',
-      optsAggregateAssoc,
+    log(ctx.request.query.s)
+    const x = 70
+    const s = (ctx.request.query?.s !== undefined)
+      ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10))
+      : 1
+    const num = 10
+    const offset = (s <= 1) ? 0 : (s - 1) * num
+    const skipback = (s <= 1) ? 0 : s - 1
+    const skipforward = s + 1
+    const sortDir = 'ASC'
+    log(
+      `s: ${s}, `
+        + `offset: ${offset} `
+        + `num: ${num.toString().padStart(2, '0')}, `
+        + `skipback: ${skipback} `
+        + `skipforward: ${skipforward}, `
+        + `remaining: ${x} - ${offset} = ${x - offset}`,
     )
-    log(associations.total)
-    log(associations.results)
-  } catch (e) {
-    error('Failed to get list of associations.')
-    error(e.message)
-    const err = new Error('Redis query failed, \'associations\'.', { cause: e })
-    ctx.throw(500, err)
-  }
-  if (ctx.state.isAsyncRequest === true) {
-    ctx.status = 200
-    ctx.type = 'application/json; charset=utf-8'
-    ctx.body = associations.results
-  } else {
-    const locals = {}
-    locals.skipForward = skipforward
-    locals.skipBack = skipback
-    locals.offset = offset
-    locals.num = num
-    locals.s = s
-    // locals.total = associations.total
-    locals.total = associations.total_results
-    locals.associations = associations.results
-    locals.flash = ctx.flash.view ?? {}
-    locals.title = `${ctx.app.site}: Associations with piers on Geneva Lake`
-    locals.sessionUser = ctx.state.sessionUser
-    locals.isAuthenticated = ctx.state.isAuthenticated
-    await ctx.render('associations', locals)
-  }
-})
+    let associations
+    try {
+      log(
+        'ft.AGGREGATE glp:idx:piers:association "*" '
+          + 'LOAD 3 $.pier AS pier '
+          + 'GROUPBY 1 @association '
+          + 'REDUCE COUNT_DISTINCT 1 '
+          + `SORTBY 3 @association ${sortDir} MAX 1 `
+          + `LIMIT ${offset} ${num}`,
+      )
+      const optsAggregateAssoc = {
+        LOAD: ['@pier', '@association'],
+        STEPS: [
+          {
+            type: AggregateSteps.GROUPBY,
+            properties: '@association',
+            REDUCE: [{
+              type: AggregateGroupByReducers.COUNT_DISTINCT,
+              property: 'association',
+              AS: 'num_associations',
+            }],
+          },
+          {
+            type: AggregateSteps.SORTBY,
+            BY: '@association',
+            // DIRECTION: sortDir,
+            direction: sortDir,
+            // MAX: 1,
+          },
+          {
+            type: AggregateSteps.LIMIT,
+            from: offset,
+            size: num,
+          },
+        ],
+      }
+      log('aggregation step opts', optsAggregateAssoc)
+      associations = await redis.ft.aggregate(
+        'glp:idx:piers:association',
+        '*',
+        optsAggregateAssoc,
+      )
+      log(associations.total)
+      log(associations.results)
+    } catch (e) {
+      error('Failed to get list of associations.')
+      error(e.message)
+      const err = new Error('Redis query failed, \'associations\'.', { cause: e })
+      ctx.throw(500, err)
+    }
+    if (ctx.state.isAsyncRequest === true) {
+      ctx.status = 200
+      ctx.type = 'application/json; charset=utf-8'
+      ctx.body = associations.results
+    } else {
+      const locals = {}
+      locals.skipForward = skipforward
+      locals.skipBack = skipback
+      locals.offset = offset
+      locals.num = num
+      locals.s = s
+      // locals.total = associations.total
+      locals.total = associations.total_results
+      locals.associations = associations.results
+      locals.flash = ctx.flash.view ?? {}
+      locals.title = `${ctx.app.site}: Associations with piers on Geneva Lake`
+      locals.sessionUser = ctx.state.sessionUser
+      locals.isAuthenticated = ctx.state.isAuthenticated
+      await ctx.render('associations', locals)
+    }
+  },
+)
 
 router.get(
   'piersByAssociation',
@@ -898,53 +899,54 @@ router.get(
   hasFlash,
   addIpToSession,
   async (ctx) => {
-  const log = glpLog.extend('GET-piersByAssoc')
-  const error = glpError.extend('GET-piersByAssoc')
-  const assoc = sanitize(ctx.params.assoc)
-  const decodedAssoc = decodeURI(assoc)
-  log(assoc)
-  log(decodedAssoc)
-  const from = 0
-  const size = 60
-  const sortDir = 'ASC'
-  let piersInAssoc
-  const idxPierAssociation = 'glp:idx:piers:association'
-  const queryPierAssociation = `@association:(${decodedAssoc})`
-  const optsPierAssociation = {}
-  optsPierAssociation.RETURN = ['pier', '$.loc', 'association']
-  optsPierAssociation.LIMIT = { from, size }
-  optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: sortDir }
-  log(`Association piers FT.SEARCH ${idxPierAssociation} ${optsPierAssociation}`)
-  log(
-    `ft.search ${idxPierAssociation} `
-      + `"@association:(${decodedAssoc})" `
-      + `RETURN 3 pier $.loc association SORTBY pier ${sortDir}`,
-  )
-  try {
-    piersInAssoc = await redis.ft.search(
-      idxPierAssociation,
-      queryPierAssociation,
-      optsPierAssociation,
+    const log = glpLog.extend('GET-piersByAssoc')
+    const error = glpError.extend('GET-piersByAssoc')
+    const assoc = sanitize(ctx.params.assoc)
+    const decodedAssoc = decodeURI(assoc)
+    log(assoc)
+    log(decodedAssoc)
+    const from = 0
+    const size = 60
+    const sortDir = 'ASC'
+    let piersInAssoc
+    const idxPierAssociation = 'glp:idx:piers:association'
+    const queryPierAssociation = `@association:(${decodedAssoc})`
+    const optsPierAssociation = {}
+    optsPierAssociation.RETURN = ['pier', '$.loc', 'association']
+    optsPierAssociation.LIMIT = { from, size }
+    optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: sortDir }
+    log(`Association piers FT.SEARCH ${idxPierAssociation} ${optsPierAssociation}`)
+    log(
+      `ft.search ${idxPierAssociation} `
+        + `"@association:(${decodedAssoc})" `
+        + `RETURN 3 pier $.loc association SORTBY pier ${sortDir}`,
     )
-    // log(piersInAssoc)
-    console.dir(piersInAssoc.results)
-  } catch (e) {
-    error('Failed to get list of associations.')
-    error(e.message)
-    const err = new Error('Redis query failed, \'associations\'.', { cause: e })
-    ctx.throw(500, err)
-  }
-  const locals = {}
-  locals.associationName = decodedAssoc
-  locals.total = piersInAssoc.total_results
-  locals.association = piersInAssoc.results
-  locals.flash = ctx.flash.view ?? {}
-  locals.title = `${ctx.app.site}: ${decodedAssoc}`
-  locals.sessionUser = ctx.state.sessionUser
-  locals.isAuthenticated = ctx.state.isAuthenticated
-  locals.town = assoc.split('_').map((e) => e.toProperCase()).join(' ')
-  await ctx.render('assoc', locals)
-})
+    try {
+      piersInAssoc = await redis.ft.search(
+        idxPierAssociation,
+        queryPierAssociation,
+        optsPierAssociation,
+      )
+      // log(piersInAssoc)
+      console.dir(piersInAssoc.results)
+    } catch (e) {
+      error('Failed to get list of associations.')
+      error(e.message)
+      const err = new Error('Redis query failed, \'associations\'.', { cause: e })
+      ctx.throw(500, err)
+    }
+    const locals = {}
+    locals.associationName = decodedAssoc
+    locals.total = piersInAssoc.total_results
+    locals.association = piersInAssoc.results
+    locals.flash = ctx.flash.view ?? {}
+    locals.title = `${ctx.app.site}: ${decodedAssoc}`
+    locals.sessionUser = ctx.state.sessionUser
+    locals.isAuthenticated = ctx.state.isAuthenticated
+    locals.town = assoc.split('_').map((e) => e.toProperCase()).join(' ')
+    await ctx.render('assoc', locals)
+  },
+)
 
 router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) => {
   const log = glpLog.extend('GET-pierByNumber')
@@ -976,9 +978,9 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) 
         const setkey = `glp:piers_by_town:${set}`
         log(setkey, pierNumber)
         /* eslint-disable-next-line */
-        for await (const { value } of redis_single.zScanIterator(
+        for await (const { value } of redisSingle.zScanIterator(
           setkey,
-          { MATCH: pierNumber, COUNT: 900 }
+          { MATCH: pierNumber, COUNT: 900 },
         )) {
           log('iterator value?', value)
           if (value !== null) {
@@ -1104,76 +1106,77 @@ router.get(
   hasFlash,
   addIpToSession,
   async (ctx) => {
-  const log = glpLog.extend('GET-pierEdit')
-  const error = glpError.extend('GET-pierEdit')
-  if (!ctx.state?.isAuthenticated) {
-    error('User is not authenticated.  Redirect to /')
-    ctx.status = 401
-    ctx.redirect('/')
-  } else {
-    const pierNumber = sanitize(ctx.params.pier)
-    const locals = {}
-    const key = `glp:piers:${pierNumber}`
-    let pier
-    let town
-    log(pierNumber)
-    if (pierNumber.length > 6 || !/^\d/.test(pierNumber)) {
-      error('Pier number looks invalid')
-      error(pierNumber.length, !/^\d/.test(pierNumber))
-      locals.pier = `${pierNumber} is not a valid pier number.`
-    }
-    let setTown
-    try {
-      /* eslint-disable-next-line */
-      for (const set of ctx.state.TOWNS) {
-        let found = false
-        const setkey = `glp:piers_by_town:${set}`
-        log(setkey, pierNumber)
-        /* eslint-disable-next-line */
-        for await (const { value } of redis_single.zScanIterator(
-          setkey,
-          {
-            MATCH: pierNumber,
-            COUNT: 900,
-          }
-        )) {
-          if (value !== null) {
-            town = set.split('_').map((e) => e.toProperCase()).join(' ')
-            setTown = set
-            log(`Found ${value} in ${set}`)
-            found = true
-          }
-        }
-        if (found) break
+    const log = glpLog.extend('GET-pierEdit')
+    const error = glpError.extend('GET-pierEdit')
+    if (!ctx.state?.isAuthenticated) {
+      error('User is not authenticated.  Redirect to /')
+      ctx.status = 401
+      ctx.redirect('/')
+    } else {
+      const pierNumber = sanitize(ctx.params.pier)
+      const locals = {}
+      const key = `glp:piers:${pierNumber}`
+      let pier
+      let town
+      log(pierNumber)
+      if (pierNumber.length > 6 || !/^\d/.test(pierNumber)) {
+        error('Pier number looks invalid')
+        error(pierNumber.length, !/^\d/.test(pierNumber))
+        locals.pier = `${pierNumber} is not a valid pier number.`
       }
-    } catch (e) {
-      error(e)
-      const err = new Error(
-        `Could not match pier ${pierNumber} to any town set in redis.`,
-        { cause: e },
-      )
-      ctx.throw(500, err)
+      let setTown
+      try {
+        /* eslint-disable-next-line */
+        for (const set of ctx.state.TOWNS) {
+          let found = false
+          const setkey = `glp:piers_by_town:${set}`
+          log(setkey, pierNumber)
+          /* eslint-disable-next-line */
+          for await (const { value } of redisSingle.zScanIterator(
+            setkey,
+            {
+              MATCH: pierNumber,
+              COUNT: 900,
+            },
+          )) {
+            if (value !== null) {
+              town = set.split('_').map((e) => e.toProperCase()).join(' ')
+              setTown = set
+              log(`Found ${value} in ${set}`)
+              found = true
+            }
+          }
+          if (found) break
+        }
+      } catch (e) {
+        error(e)
+        const err = new Error(
+          `Could not match pier ${pierNumber} to any town set in redis.`,
+          { cause: e },
+        )
+        ctx.throw(500, err)
+      }
+      try {
+        pier = await redis.json.get(key)
+        locals.pier = pier
+        log(pier)
+      } catch (e) {
+        error(e)
+        const err = new Error(`Failed to get pier ${pierNumber}`, { cause: e })
+        ctx.throw(500, err)
+      }
+      locals.town = town
+      locals.photo = false
+      locals.setTown = setTown
+      locals.pierNumber = pierNumber
+      locals.flash = ctx.flash.view ?? {}
+      locals.title = `${ctx.app.site}: Pier ${pierNumber}`
+      locals.sessionUser = ctx.state.sessionUser
+      locals.isAuthenticated = ctx.state.isAuthenticated
+      await ctx.render('pier-edit', locals)
     }
-    try {
-      pier = await redis.json.get(key)
-      locals.pier = pier
-      log(pier)
-    } catch (e) {
-      error(e)
-      const err = new Error(`Failed to get pier ${pierNumber}`, { cause: e })
-      ctx.throw(500, err)
-    }
-    locals.town = town
-    locals.photo = false
-    locals.setTown = setTown
-    locals.pierNumber = pierNumber
-    locals.flash = ctx.flash.view ?? {}
-    locals.title = `${ctx.app.site}: Pier ${pierNumber}`
-    locals.sessionUser = ctx.state.sessionUser
-    locals.isAuthenticated = ctx.state.isAuthenticated
-    await ctx.render('pier-edit', locals)
-  }
-})
+  },
+)
 
 router.post(
   'search',
@@ -1182,499 +1185,505 @@ router.post(
   addIpToSession,
   processFormData,
   async (ctx) => {
-  const log = glpLog.extend('search')
-  const error = glpError.extend('search')
-  const searchTerms = ctx.request.body.searchBox
-  // log(searchTerms, ctx.request.body.searchBox)
-  const csrfTokenCookie = ctx.cookies.get('csrfToken')
-  const csrfTokenSession = ctx.session.csrfToken
-  if (!doTokensMatch(ctx)) {
-    error(
-      `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
-    )
-    ctx.status = 401
-    ctx.body = { error: 'csrf token mismatch' }
-  } else {
-    // let stopSearching = false
-    const strings = []
-    const numbers = []
-    const results = {
-      addresses: { total: 0 },
-      pierNumbers: { total: 0 },
-      estateNames: { total: 0 },
-      ownerNames: { total: 0 },
-    }
-    // await logSearchQueryTerms(ctx, searchTerms[0])
-    searchTerms[0].split(' ').forEach((t) => {
-      log(`split search term: ${t}`)
-      if (!Number.isNaN(Number.parseInt(t, 10))) {
-        // let padded = Number.parseInt(t, 10) < 100 ? `0${t}` : t
-        let padded = `${t}`.padStart(3, '0')
-        if (/\./.test(t)) {
-          padded = padded.slice(0, -2)
-        }
-        log(`padded ${padded}`)
-        numbers.push(`${padded}*`)
-      } else {
-        if (t.length > 0) {
-          strings.push(t)
-        } else {
-          console.log('empty string')
-        }
-      }
-    })
-    log('numbers:', numbers)
-    let idxPierAddress
-    let queryPierAddress
-    let optsPierAddress
-    let fuzzyPierAddress
-    try {
-      // Conduct search by address.
-      let pierAddressTokens = ''
-      searchTerms[0].split(' ').forEach((t, i, arr) => {
-        if (i === 0) pierAddressTokens += '('
-        pierAddressTokens += Number.isInteger(Number.parseInt(t)) ? `${t}` : `%${t}%`
-        if (i < arr.length -1) pierAddressTokens += ' | '
-        if (i === arr.length -1) pierAddressTokens += ')'
-        log('pierAddressTokens', pierAddressTokens)
-      })
-      fuzzyPierAddress = strings.map(s => String.raw`%${s}%`).join(' | ')
-      log('fuzzyPierAddress', fuzzyPierAddress)
-      idxPierAddress = 'glp:idx:piers:address'
-      queryPierAddress = `@address:${pierAddressTokens}`
-        + ` | ${fuzzyPierAddress}`
-      const DIALECT_2 = 2
-      const DIALECT_3 = 3
-      const sortDir = 'ASC'
-      optsPierAddress = {}
-      optsPierAddress.DIALECT = DIALECT_2
-      optsPierAddress.LIMIT = { from: 0, size: 1 }
-      // optsPierAddress.SORTBY = { BY: 'pier', DIRECTION: sortDir }
-      optsPierAddress.RETURN = [
-        '$.pier', 'AS', 'pierNumber',
-        '$.loc', 'AS', 'coords',
-        '$.property.address.street', 'AS', 'address',
-      ]
-      log(
-        String.raw`Pier address FT.SEARCH ${idxPierAddress} `
-        + `"${queryPierAddress}" DIALECT ${DIALECT_2}`
-      )
-      results.addresses = await redis.ft.search(
-        idxPierAddress,
-        queryPierAddress,
-        optsPierAddress,
-      )
-      // log('address results', results.addresses)
-      // if (results.addresses.total > 0) {
-      //   stopSearching = true
-      // }
-    } catch (e) {
-      error('Redis address search query failed:')
-      error(`using index: ${idxPierAddress}`)
+    const log = glpLog.extend('search')
+    const error = glpError.extend('search')
+    const searchTerms = ctx.request.body.searchBox
+    // log(searchTerms, ctx.request.body.searchBox)
+    const csrfTokenCookie = ctx.cookies.get('csrfToken')
+    const csrfTokenSession = ctx.session.csrfToken
+    if (!doTokensMatch(ctx)) {
       error(
-        String.raw`Pier address FT.SEARCH ${idxPierAddress} `
-        + `"${queryPierAddress}" DIALECT ${DIALECT_2}`
+        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`,
       )
-      error(e)
-      // No need to disrupt the rest of the searching if this query failed.
-      // throw new Error('Search by pier numbers failed.', { cause: e })
-    }
-    if (numbers.length > 0) {
-      log(`numbers: ${numbers}`)
-      let idxPierNumber
-      let queryPierNumber
-      let optsPierNumber
-      const sortDir = 'ASC'
+      ctx.status = 401
+      ctx.body = { error: 'csrf token mismatch' }
+    } else {
+      // let stopSearching = false
+      const strings = []
+      const numbers = []
+      const results = {
+        addresses: { total: 0 },
+        pierNumbers: { total: 0 },
+        estateNames: { total: 0 },
+        ownerNames: { total: 0 },
+      }
+      // await logSearchQueryTerms(ctx, searchTerms[0])
+      searchTerms[0].split(' ').forEach((t) => {
+        log(`split search term: ${t}`)
+        if (!Number.isNaN(Number.parseInt(t, 10))) {
+          // let padded = Number.parseInt(t, 10) < 100 ? `0${t}` : t
+          let padded = `${t}`.padStart(3, '0')
+          if (/\./.test(t)) {
+            padded = padded.slice(0, -2)
+          }
+          log(`padded ${padded}`)
+          numbers.push(`${padded}*`)
+        } else {
+          console.log('checking if t.length > 0')
+          if (t.length > 0) {
+            strings.push(t)
+          } else {
+            console.log('empty string')
+          }
+        }
+      })
+      log('numbers:', numbers)
+      let idxPierAddress
+      let queryPierAddress
+      let optsPierAddress
+      let fuzzyPierAddress
+      const DIALECT_2 = 2
+      // const DIALECT_3 = 3
+      // const sortDir = 'ASC'
       try {
-        // Conduct seach by pier numbers.
-        let pierNumberTokens = ''
-        numbers.forEach((t, i) => {
-          if (i === 0) pierNumberTokens += '('
-          pierNumberTokens += `${t}`
-          if (i < numbers.length - 1) pierNumberTokens += '|'
-          if (i === numbers.length - 1) pierNumberTokens += ')'
+        // Conduct search by address.
+        let pierAddressTokens = ''
+        searchTerms[0].split(' ').forEach((t, i, arr) => {
+          if (i === 0) pierAddressTokens += '('
+          pierAddressTokens += Number.isInteger(Number.parseInt(t, 10)) ? `${t}` : `%${t}%`
+          if (i < arr.length - 1) pierAddressTokens += ' | '
+          if (i === arr.length - 1) pierAddressTokens += ')'
+          log('pierAddressTokens', pierAddressTokens)
         })
-        log(`Pier number tokens: ${pierNumberTokens}`)
-        idxPierNumber = 'glp:idx:piers:number'
-        queryPierNumber = `@pierNumber:${pierNumberTokens}`
-        optsPierNumber = {}
-        optsPierNumber.SORTBY = { BY: 'pierNumber', DIRECTION: sortDir }
-        // optsPierNumber.RETURN = 'pierNumber'
-        optsPierNumber.RETURN = ['pierNumber', '$.loc', 'AS', 'coords']
-        log(`Pier number FT.SEARCH ${idxPierNumber} ${queryPierNumber}`)
-        results.pierNumbers = await redis.ft.search(
-          idxPierNumber,
-          queryPierNumber,
-          optsPierNumber,
+        fuzzyPierAddress = strings.map((s) => String.raw`%${s}%`).join(' | ')
+        log('fuzzyPierAddress', fuzzyPierAddress)
+        idxPierAddress = 'glp:idx:piers:address'
+        queryPierAddress = `@address:${pierAddressTokens}`
+          + ` | ${fuzzyPierAddress}`
+        optsPierAddress = {}
+        optsPierAddress.DIALECT = DIALECT_2
+        optsPierAddress.LIMIT = { from: 0, size: 1 }
+        // optsPierAddress.SORTBY = { BY: 'pier', DIRECTION: sortDir }
+        optsPierAddress.RETURN = [
+          '$.pier', 'AS', 'pierNumber',
+          '$.loc', 'AS', 'coords',
+          '$.property.address.street', 'AS', 'address',
+        ]
+        log(
+          // eslint-disable-next-line
+          String.raw`Pier address FT.SEARCH ${idxPierAddress} `
+          + `"${queryPierAddress}" DIALECT ${DIALECT_2}`,
         )
-        log('pierNumbers results', results.pierNumbers)
+        results.addresses = await redis.ft.search(
+          idxPierAddress,
+          queryPierAddress,
+          optsPierAddress,
+        )
+        // log('address results', results.addresses)
+        // if (results.addresses.total > 0) {
+        //   stopSearching = true
+        // }
       } catch (e) {
-        error('Redis search query failed:')
-        error(`using index: ${idxPierNumber}`)
-        error(`query: FT.SEARCH ${idxPierNumber} "${queryPierNumber}"`, optsPierNumber)
+        error('Redis address search query failed:')
+        error(`using index: ${idxPierAddress}`)
+        error(
+          // eslint-disable-next-line
+          String.raw`Pier address FT.SEARCH ${idxPierAddress} `
+          + `"${queryPierAddress}" DIALECT ${DIALECT_2}`,
+        )
         error(e)
         // No need to disrupt the rest of the searching if this query failed.
         // throw new Error('Search by pier numbers failed.', { cause: e })
       }
-      // Need to use a better solution here
-      results.public = { total: 0, documents: [] }
-      results.food = { total: 0, documents: [] }
-    } else {
-      results.pierNumbers = { total: 0 }
-    }
-    if (strings.length > 0) {
-      log('strings[]:', strings)
-      if (/public|municip/i.test(strings)) {
-        let idxPierPublic
-        let queryPierPublic
-        let optsPierPublic
+      if (numbers.length > 0) {
+        log(`numbers: ${numbers}`)
+        let idxPierNumber
+        let queryPierNumber
+        let optsPierNumber
         const sortDir = 'ASC'
         try {
-          // Conduct search for public piers.
-          let pierPublicTokens = ''
-          if (strings.length === 1) {
-            pierPublicTokens = `(${strings[0]})`
-          } else {
-            strings.forEach((t, i) => {
-              if (i === 0) pierPublicTokens += '('
-              pierPublicTokens += `${t}`
-              if (i < strings.length - 1) pierPublicTokens += '|'
-              if (i === strings.length - 1) pierPublicTokens += ')'
-              log(pierPublicTokens)
-            })
-          }
-          log(`Pier public tokens: ${pierPublicTokens}`)
-          idxPierPublic = 'glp:idx:piers:public'
-          queryPierPublic = '@public:[1 1]'
-          optsPierPublic = {}
-          optsPierPublic.SORTBY = { BY: 'pier', DIRECTION: sortDir }
-          optsPierPublic.RETURN = ['pier', 'firstname', '$.loc', 'AS', 'coords']
-          optsPierPublic.LIMIT = { from: 0, size: 20 }
-          log(`Pier public FT.SEARCH ${idxPierPublic} "${queryPierPublic}"`)
-          results.public = await redis.ft.search(
-            idxPierPublic,
-            queryPierPublic,
-            optsPierPublic,
+          // Conduct seach by pier numbers.
+          let pierNumberTokens = ''
+          numbers.forEach((t, i) => {
+            if (i === 0) pierNumberTokens += '('
+            pierNumberTokens += `${t}`
+            if (i < numbers.length - 1) pierNumberTokens += '|'
+            if (i === numbers.length - 1) pierNumberTokens += ')'
+          })
+          log(`Pier number tokens: ${pierNumberTokens}`)
+          idxPierNumber = 'glp:idx:piers:number'
+          queryPierNumber = `@pierNumber:${pierNumberTokens}`
+          optsPierNumber = {}
+          optsPierNumber.SORTBY = { BY: 'pierNumber', DIRECTION: sortDir }
+          // optsPierNumber.RETURN = 'pierNumber'
+          optsPierNumber.RETURN = ['pierNumber', '$.loc', 'AS', 'coords']
+          log(`Pier number FT.SEARCH ${idxPierNumber} ${queryPierNumber}`)
+          results.pierNumbers = await redis.ft.search(
+            idxPierNumber,
+            queryPierNumber,
+            optsPierNumber,
           )
-          log('public results', results.public)
+          log('pierNumbers results', results.pierNumbers)
         } catch (e) {
           error('Redis search query failed:')
-          error(`using index: ${idxPierPublic}`)
-          error(
-            `query: FT.SEARCH ${idxPierPublic} "${queryPierPublic}"`, optsPierPublic
-        )
+          error(`using index: ${idxPierNumber}`)
+          error(`query: FT.SEARCH ${idxPierNumber} "${queryPierNumber}"`, optsPierNumber)
           error(e)
           // No need to disrupt the rest of the searching if this query failed.
-          // throw new Error('Search by estate name failed.', { cause: e })
+          // throw new Error('Search by pier numbers failed.', { cause: e })
         }
-      } else {
+        // Need to use a better solution here
         results.public = { total: 0, documents: [] }
+        results.food = { total: 0, documents: [] }
+      } else {
+        results.pierNumbers = { total: 0 }
       }
-      if (/food|eat|restaurant|grill|bar/i.test(strings)) {
-        let idxPierFood
-        let queryPierFood
-        let optsPierFood
-        const sortDir = 'ASC'
+      if (strings.length > 0) {
+        log('strings[]:', strings)
+        if (/public|municip/i.test(strings)) {
+          let idxPierPublic
+          let queryPierPublic
+          let optsPierPublic
+          const sortDir = 'ASC'
+          try {
+            // Conduct search for public piers.
+            let pierPublicTokens = ''
+            if (strings.length === 1) {
+              pierPublicTokens = `(${strings[0]})`
+            } else {
+              strings.forEach((t, i) => {
+                if (i === 0) pierPublicTokens += '('
+                pierPublicTokens += `${t}`
+                if (i < strings.length - 1) pierPublicTokens += '|'
+                if (i === strings.length - 1) pierPublicTokens += ')'
+                log(pierPublicTokens)
+              })
+            }
+            log(`Pier public tokens: ${pierPublicTokens}`)
+            idxPierPublic = 'glp:idx:piers:public'
+            queryPierPublic = '@public:[1 1]'
+            optsPierPublic = {}
+            optsPierPublic.SORTBY = { BY: 'pier', DIRECTION: sortDir }
+            optsPierPublic.RETURN = ['pier', 'firstname', '$.loc', 'AS', 'coords']
+            optsPierPublic.LIMIT = { from: 0, size: 20 }
+            log(`Pier public FT.SEARCH ${idxPierPublic} "${queryPierPublic}"`)
+            results.public = await redis.ft.search(
+              idxPierPublic,
+              queryPierPublic,
+              optsPierPublic,
+            )
+            log('public results', results.public)
+          } catch (e) {
+            error('Redis search query failed:')
+            error(`using index: ${idxPierPublic}`)
+            error(
+              `query: FT.SEARCH ${idxPierPublic} "${queryPierPublic}"`,
+              optsPierPublic,
+            )
+            error(e)
+            // No need to disrupt the rest of the searching if this query failed.
+            // throw new Error('Search by estate name failed.', { cause: e })
+          }
+        } else {
+          results.public = { total: 0, documents: [] }
+        }
+        if (/food|eat|restaurant|grill|bar/i.test(strings)) {
+          let idxPierFood
+          let queryPierFood
+          let optsPierFood
+          const sortDir = 'ASC'
+          try {
+            // Conduct search for food piers.
+            let pierFoodTokens = ''
+            if (strings.length === 1) {
+              pierFoodTokens = `(${strings[0]})`
+            } else {
+              strings.forEach((t, i) => {
+                if (i === 0) pierFoodTokens += '('
+                pierFoodTokens += `${t}`
+                if (i < strings.length - 1) pierFoodTokens += '|'
+                if (i === strings.length - 1) pierFoodTokens += ')'
+                log(pierFoodTokens)
+              })
+            }
+            log(`Pier food tokens: ${pierFoodTokens}`)
+            idxPierFood = 'glp:idx:piers:food'
+            queryPierFood = '@food:[1 1]'
+            optsPierFood = {}
+            optsPierFood.SORTBY = { BY: 'pier', DIRECTION: sortDir }
+            optsPierFood.RETURN = ['pier', 'business', '$.loc', 'AS', 'coords']
+            optsPierFood.LIMIT = { from: 0, size: 20 }
+            log(`Pier food FT.SEARCH ${idxPierFood} "${queryPierFood}"`)
+            results.food = await redis.ft.search(idxPierFood, queryPierFood, optsPierFood)
+            log('food results', results.food)
+          } catch (e) {
+            error('Redis search query failed:')
+            error(`using index: ${idxPierFood}`)
+            error(`query: FT.SEARCH ${idxPierFood} "${queryPierFood}"`, optsPierFood)
+            error(e)
+            // No need to disrupt the rest of the searching if this query failed.
+            // throw new Error('Search by estate name failed.', { cause: e })
+          }
+        } else {
+          results.food = { total: 0, documents: [] }
+        }
+        let idxPierEstateName
+        let queryPierEstateName
+        let optsPierEstateName
+        let fuzzyPierEstateName
         try {
-          // Conduct search for food piers.
-          let pierFoodTokens = ''
+          // Conduct search by estate name.
+          let pierEstateNameTokens = ''
           if (strings.length === 1) {
-            pierFoodTokens = `(${strings[0]})`
+            log('strings[]', strings)
+            // pierEstateNameTokens = `(${strings[0]})`
+            pierEstateNameTokens = `*${strings[0]}*`
           } else {
             strings.forEach((t, i) => {
-              if (i === 0) pierFoodTokens += '('
-              pierFoodTokens += `${t}`
-              if (i < strings.length - 1) pierFoodTokens += '|'
-              if (i === strings.length - 1) pierFoodTokens += ')'
-              log(pierFoodTokens)
+              if (i === 0) pierEstateNameTokens += '('
+              pierEstateNameTokens += `*${t}*`
+              if (i < strings.length - 1) pierEstateNameTokens += '|'
+              if (i === strings.length - 1) pierEstateNameTokens += ')'
+              log(pierEstateNameTokens)
             })
           }
-          log(`Pier food tokens: ${pierFoodTokens}`)
-          idxPierFood = 'glp:idx:piers:food'
-          queryPierFood = '@food:[1 1]'
-          optsPierFood = {}
-          optsPierFood.SORTBY = { BY: 'pier', DIRECTION: sortDir }
-          optsPierFood.RETURN = ['pier', 'business', '$.loc', 'AS', 'coords']
-          optsPierFood.LIMIT = { from: 0, size: 20 }
-          log(`Pier food FT.SEARCH ${idxPierFood} "${queryPierFood}"`)
-          results.food = await redis.ft.search(idxPierFood, queryPierFood, optsPierFood)
-          log('food results', results.food)
+          log('search strings', strings)
+          fuzzyPierEstateName = strings.map((s) => String.raw`%${s}%`).join(' | ')
+          log('fuzzyPierEstateName', fuzzyPierEstateName)
+          log(String.raw`Pier estate name tokens: ${pierEstateNameTokens}`)
+          // const DIALECT_2 = 2
+          // const DIALECT_3 = 3
+          const sortDir = 'ASC'
+          // idxPierEstateName = 'glp:idx:piers:estateName'
+          // queryPierEstateName = `@estateName:${pierEstateNameTokens}`
+          idxPierEstateName = 'glp:idx:piers:estateNameDM'
+          queryPierEstateName = `@estateNameDM:${pierEstateNameTokens}`
+            + ` | ${fuzzyPierEstateName}`
+          optsPierEstateName = {}
+          optsPierEstateName.DIALECT = DIALECT_2
+          optsPierEstateName.SORTBY = { BY: 'pier', DIRECTION: sortDir }
+          // optsPierEstateName.RETURN = ['pier', 'estateName', '$.loc', 'AS', 'coords']
+          optsPierEstateName.RETURN = ['pier', 'estateNameDM', '$.loc', 'AS', 'coords']
+          optsPierEstateName.LIMIT = { from: 0, size: 20 }
+          log(
+            `Pier estate name FT.SEARCH ${idxPierEstateName} `
+              + `"${queryPierEstateName}" DIALECT ${DIALECT_2}`,
+          )
+          results.estateNames = await redis.ft.search(
+            idxPierEstateName,
+            queryPierEstateName,
+            optsPierEstateName,
+          )
+
+          // Vector Similarity Search on estate name
+          log('vss: ', searchTerms[0])
+          transformers.env.localModelPath = path.resolve(
+            ctx.state.ai.root,
+            ctx.state.ai.modelCacheDir,
+          )
+          transformers.env.cacheDir = path.resolve(
+            ctx.state.ai.root,
+            ctx.state.ai.modelCacheDir,
+          )
+          transformers.env.IS_NODE_ENV = true
+          const pipeline = await transformers.pipeline(
+            ctx.state.ai.embeddingTask,
+            ctx.state.ai.model,
+          )
+          const pipeOptions = {
+            pooling: 'mean',
+            normalize: true,
+          }
+          const vector = Buffer.from(
+            (await pipeline(searchTerms[0], pipeOptions))
+              .data.buffer,
+          )
+          const idxVectorsPiers = 'glp:idx:vectors:pier'
+          const vectorResult = await redis.ft.search(
+            idxVectorsPiers,
+            '(-@estateName:<est>)=>[KNN 4 @embedding $B AS score]',
+            {
+              PARAMS:
+              {
+                B: vector,
+              },
+              RETURN: ['score', 'pier', 'estateName', 'coords'],
+              SORTBY: { BY: 'score', DIRECTION: 'ASC' },
+              DIALECT: 2,
+            },
+          )
+          results.vss = vectorResult
+          log('vector result', vectorResult)
+          log('estateNames results', results.estateNames)
         } catch (e) {
           error('Redis search query failed:')
-          error(`using index: ${idxPierFood}`)
-          error(`query: FT.SEARCH ${idxPierFood} "${queryPierFood}"`, optsPierFood)
+          error(`using index: ${idxPierEstateName}`)
+          error(
+            `query: FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}"`,
+            optsPierEstateName,
+          )
           error(e)
           // No need to disrupt the rest of the searching if this query failed.
           // throw new Error('Search by estate name failed.', { cause: e })
         }
-      } else {
-        results.food = { total: 0, documents: [] }
-      }
-      let idxPierEstateName
-      let queryPierEstateName
-      let optsPierEstateName
-      let fuzzyPierEstateName
-      try {
-        // Conduct search by estate name.
-        let pierEstateNameTokens = ''
-        if (strings.length === 1) {
-          log('strings[]', strings)
-          // pierEstateNameTokens = `(${strings[0]})`
-          pierEstateNameTokens = `*${strings[0]}*`
-        } else {
-          strings.forEach((t, i) => {
-            if (i === 0) pierEstateNameTokens += '('
-            pierEstateNameTokens += `*${t}*`
-            if (i < strings.length - 1) pierEstateNameTokens += '|'
-            if (i === strings.length - 1) pierEstateNameTokens += ')'
-            log(pierEstateNameTokens)
-          })
-        }
-        log('search strings', strings)
-        fuzzyPierEstateName = strings.map(s => String.raw`%${s}%`).join(' | ')
-        log('fuzzyPierEstateName', fuzzyPierEstateName)
-        log(String.raw`Pier estate name tokens: ${pierEstateNameTokens}`)
-        const DIALECT_2 = 2
-        const DIALECT_3 = 3
-        const sortDir = 'ASC'
-        // idxPierEstateName = 'glp:idx:piers:estateName'
-        // queryPierEstateName = `@estateName:${pierEstateNameTokens}`
-        idxPierEstateName = 'glp:idx:piers:estateNameDM'
-        queryPierEstateName = `@estateNameDM:${pierEstateNameTokens}`
-          + ` | ${fuzzyPierEstateName}`
-        optsPierEstateName = {}
-        optsPierEstateName.DIALECT = DIALECT_2
-        optsPierEstateName.SORTBY = { BY: 'pier', DIRECTION: sortDir }
-        // optsPierEstateName.RETURN = ['pier', 'estateName', '$.loc', 'AS', 'coords']
-        optsPierEstateName.RETURN = ['pier', 'estateNameDM', '$.loc', 'AS', 'coords']
-        optsPierEstateName.LIMIT = { from: 0, size: 20 }
-        log(
-          `Pier estate name FT.SEARCH ${idxPierEstateName} `
-            + `"${queryPierEstateName}" DIALECT ${DIALECT_2}`
-        )
-        results.estateNames = await redis.ft.search(
-          idxPierEstateName,
-          queryPierEstateName,
-          optsPierEstateName,
-        )
-
-        // Vector Similarity Search on estate name
-        log('vss: ', searchTerms[0])
-        transformers.env.localModelPath = path.resolve(
-          ctx.state.ai.root,
-          ctx.state.ai.modelCacheDir,
-        )
-        transformers.env.cacheDir = path.resolve(
-          ctx.state.ai.root,
-          ctx.state.ai.modelCacheDir,
-        )
-        transformers.env.IS_NODE_ENV = true
-        let pipeline = await transformers.pipeline(
-          ctx.state.ai.embeddingTask,
-          ctx.state.ai.model,
-        )
-        const pipeOptions = {
-          pooling: 'mean',
-          normalize: true,
-        }
-        const vector = Buffer.from(
-          (await pipeline(searchTerms[0], pipeOptions))
-          .data.buffer
-        )
-        const idxVectorsPiers = 'glp:idx:vectors:pier'
-        const vector_result = await redis.ft.search(
-          idxVectorsPiers,
-          '(-@estateName:<est>)=>[KNN 4 @embedding $B AS score]',
-          { PARAMS:
-            {
-              B: vector,
-            },
-            RETURN: ['score', 'pier', 'estateName', 'coords'],
-            SORTBY: { BY: 'score', DIRECTION: 'ASC' },
-            DIALECT: 2,
+        let idxPierOwnerName
+        let queryPierOwnerName
+        let optsPierOwnerName
+        try {
+          // Conduct search by owner names.
+          let pierOwnernameTokens = ''
+          if (strings.length === 1) {
+            pierOwnernameTokens = `(${strings[0]})`
+          } else {
+            strings.forEach((t, i) => {
+              if (i === 0) pierOwnernameTokens += '('
+              pierOwnernameTokens += `${t}`
+              if (i < strings.length - 1) pierOwnernameTokens += '|'
+              if (i === strings.length - 1) pierOwnernameTokens += ')'
+              log(pierOwnernameTokens)
+            })
           }
-        )
-        results.vss = vector_result
-        log('vector result', vector_result)
-        log('estateNames results', results.estateNames)
-      } catch (e) {
-        error('Redis search query failed:')
-        error(`using index: ${idxPierEstateName}`)
-        error(
-          `query: FT.SEARCH ${idxPierEstateName} "${queryPierEstateName}"`,
-          optsPierEstateName,
-        )
-        error(e)
-        // No need to disrupt the rest of the searching if this query failed.
-        // throw new Error('Search by estate name failed.', { cause: e })
-      }
-      let idxPierOwnerName
-      let queryPierOwnerName
-      let optsPierOwnerName
-      try {
-        // Conduct search by owner names.
-        let pierOwnernameTokens = ''
-        if (strings.length === 1) {
-          pierOwnernameTokens = `(${strings[0]})`
-        } else {
-          strings.forEach((t, i) => {
-            if (i === 0) pierOwnernameTokens += '('
-            pierOwnernameTokens += `${t}`
-            if (i < strings.length - 1) pierOwnernameTokens += '|'
-            if (i === strings.length - 1) pierOwnernameTokens += ')'
-            log(pierOwnernameTokens)
-          })
+          log(`Pier owner name tokens: ${pierOwnernameTokens}`)
+          idxPierOwnerName = 'glp:idx:piers:ownerNames'
+          // queryPierOwnerName = `@fistname|lastname:${pierOwnernameTokens}`
+          queryPierOwnerName = `@firstname|lastname:${pierOwnernameTokens} `
+            + `(-@business:${pierOwnernameTokens}) `
+            + `(-@association:${pierOwnernameTokens}) `
+            + '(-Assoc*)'
+          optsPierOwnerName = {}
+          optsPierOwnerName.WITHSCORES = true
+          // optsPierOwnerName.SORTBY = { BY: 'pier', DIRECTION: sortDir }
+          // optsPierOwnerName.SORTBY = { BY: '__score', DIRECTION: sortDir }
+          optsPierOwnerName.RETURN = [
+            'pier',
+            'firstname',
+            'lastname',
+            'business',
+            '$.loc',
+            'AS',
+            'coords',
+          ]
+          log(`Pier owner name FT.SEARCH ${idxPierOwnerName} "${queryPierOwnerName}"`)
+          results.ownerNames = await redis.ft.search(
+            idxPierOwnerName,
+            queryPierOwnerName,
+            optsPierOwnerName,
+          )
+          log('ownerNames results', results.ownerNames)
+        } catch (e) {
+          error('Redis search query failed:')
+          error(`using index: ${idxPierOwnerName}`)
+          error(
+            `query: FT.SEARCH ${idxPierOwnerName} "${queryPierOwnerName}"`,
+            optsPierOwnerName,
+          )
+          error(e)
+          // No need to disrupt the rest of the searching if this query failed.
+          // throw new Error('Search by owner names failed.', { cause: e })
         }
-        log(`Pier owner name tokens: ${pierOwnernameTokens}`)
-        idxPierOwnerName = 'glp:idx:piers:ownerNames'
-        // queryPierOwnerName = `@fistname|lastname:${pierOwnernameTokens}`
-        queryPierOwnerName = `@firstname|lastname:${pierOwnernameTokens} `
-          + `(-@business:${pierOwnernameTokens}) `
-          + `(-@association:${pierOwnernameTokens}) `
-          + `(-Assoc*)`
-        optsPierOwnerName = {}
-        optsPierOwnerName.WITHSCORES = true
-        // optsPierOwnerName.SORTBY = { BY: 'pier', DIRECTION: sortDir }
-        // optsPierOwnerName.SORTBY = { BY: '__score', DIRECTION: sortDir }
-        optsPierOwnerName.RETURN = [
-          'pier',
-          'firstname',
-          'lastname',
-          'business',
-          '$.loc',
-          'AS',
-          'coords',
-        ]
-        log(`Pier owner name FT.SEARCH ${idxPierOwnerName} "${queryPierOwnerName}"`)
-        results.ownerNames = await redis.ft.search(
-          idxPierOwnerName,
-          queryPierOwnerName,
-          optsPierOwnerName,
-        )
-        log('ownerNames results', results.ownerNames)
-      } catch (e) {
-        error('Redis search query failed:')
-        error(`using index: ${idxPierOwnerName}`)
-        error(
-          `query: FT.SEARCH ${idxPierOwnerName} "${queryPierOwnerName}"`,
-           optsPierOwnerName
-        )
-        error(e)
-        // No need to disrupt the rest of the searching if this query failed.
-        // throw new Error('Search by owner names failed.', { cause: e })
-      }
-      let queryPierAssociation
-      let idxPierAssociation
-      let optsPierAssociation
-      try {
-        const sortDir = 'ASC'
-        // Conduct search by association names.
-        let pierAssociationTokens = ''
-        if (strings.length === 1) {
-          pierAssociationTokens = `(${strings[0]})`
-        } else {
-          strings.forEach((t, i) => {
-            if (i === 0) pierAssociationTokens += '('
-            pierAssociationTokens += `${t}`
-            if (i < strings.length - 1) pierAssociationTokens += '|'
-            if (i === strings.length - 1) pierAssociationTokens += ')'
-            log(pierAssociationTokens)
-          })
+        let queryPierAssociation
+        let idxPierAssociation
+        let optsPierAssociation
+        try {
+          const sortDir = 'ASC'
+          // Conduct search by association names.
+          let pierAssociationTokens = ''
+          if (strings.length === 1) {
+            pierAssociationTokens = `(${strings[0]})`
+          } else {
+            strings.forEach((t, i) => {
+              if (i === 0) pierAssociationTokens += '('
+              pierAssociationTokens += `${t}`
+              if (i < strings.length - 1) pierAssociationTokens += '|'
+              if (i === strings.length - 1) pierAssociationTokens += ')'
+              log(pierAssociationTokens)
+            })
+          }
+          log(`Pier association name tokens: ${pierAssociationTokens}`)
+          idxPierAssociation = 'glp:idx:piers:association'
+          queryPierAssociation = `@association:${pierAssociationTokens}`
+          optsPierAssociation = {}
+          optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: sortDir }
+          optsPierAssociation.RETURN = ['pier', 'association', '$.loc', 'AS', 'coords']
+          optsPierAssociation.LIMIT = { from: '0', size: '1000' }
+          log(
+            `Pier association name FT.SEARCH ${idxPierAssociation} `
+            + `"${queryPierAssociation}"`,
+          )
+          results.associations = await redis.ft.search(
+            idxPierAssociation,
+            queryPierAssociation,
+            optsPierAssociation,
+          )
+          log('associations results', results.associations)
+        } catch (e) {
+          error('Redis search query failed:')
+          error(`using index: ${idxPierAssociation}`)
+          error(
+            `query: FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`,
+            optsPierAssociation,
+          )
+          error(e)
+          // No need to disrupt the rest of the searching if this query failed.
+          // throw new Error('Search by association name failed.', { cause: e })
         }
-        log(`Pier association name tokens: ${pierAssociationTokens}`)
-        idxPierAssociation = 'glp:idx:piers:association'
-        queryPierAssociation = `@association:${pierAssociationTokens}`
-        optsPierAssociation = {}
-        optsPierAssociation.SORTBY = { BY: 'pier', DIRECTION: sortDir }
-        optsPierAssociation.RETURN = ['pier', 'association', '$.loc', 'AS', 'coords']
-        optsPierAssociation.LIMIT = { from: '0', size: '1000' }
-        log(
-          `Pier association name FT.SEARCH ${idxPierAssociation} `
-          + `"${queryPierAssociation}"`
-        )
-        results.associations = await redis.ft.search(
-          idxPierAssociation,
-          queryPierAssociation,
-          optsPierAssociation,
-        )
-        log('associations results', results.associations)
-      } catch (e) {
-        error('Redis search query failed:')
-        error(`using index: ${idxPierAssociation}`)
-        error(
-          `query: FT.SEARCH ${idxPierAssociation} "${queryPierAssociation}"`,
-          optsPierAssociation,
-        )
-        error(e)
-        // No need to disrupt the rest of the searching if this query failed.
-        // throw new Error('Search by association name failed.', { cause: e })
-      }
-      let queryPierBusiness
-      let idxPierBusiness
-      let optsPierBusiness
-      try {
-        const sortDir = 'ASC'
-        // Conduct search by business names.
-        let pierBusinessTokens = ''
-        if (strings.length === 1) {
-          pierBusinessTokens = `(${strings[0]})`
-        } else {
-          strings.forEach((t, i) => {
-            if (i === 0) pierBusinessTokens += '('
-            pierBusinessTokens += `${t}`
-            if (i < strings.length - 1) pierBusinessTokens += '|'
-            if (i === strings.length - 1) pierBusinessTokens += ')'
-            log(pierBusinessTokens)
-          })
+        let queryPierBusiness
+        let idxPierBusiness
+        let optsPierBusiness
+        try {
+          const sortDir = 'ASC'
+          // Conduct search by business names.
+          let pierBusinessTokens = ''
+          if (strings.length === 1) {
+            pierBusinessTokens = `(${strings[0]})`
+          } else {
+            strings.forEach((t, i) => {
+              if (i === 0) pierBusinessTokens += '('
+              pierBusinessTokens += `${t}`
+              if (i < strings.length - 1) pierBusinessTokens += '|'
+              if (i === strings.length - 1) pierBusinessTokens += ')'
+              log(pierBusinessTokens)
+            })
+          }
+          log(`Pier business name tokens: ${pierBusinessTokens}`)
+          idxPierBusiness = 'glp:idx:piers:business'
+          queryPierBusiness = `@business:${pierBusinessTokens}`
+          optsPierBusiness = {}
+          optsPierBusiness.SORTBY = { BY: 'pier', DIRECTION: sortDir }
+          optsPierBusiness.RETURN = ['pier', 'business', '$.loc', 'AS', 'coords']
+          log(`Pier business name FT.SEARCH ${idxPierBusiness} "${queryPierBusiness}"`)
+          results.businesses = await redis.ft.search(
+            idxPierBusiness,
+            queryPierBusiness,
+            optsPierBusiness,
+          )
+          log('business results', results.businesses)
+        } catch (e) {
+          error('Redis search query failed:')
+          error(`using index: ${idxPierBusiness}`)
+          error(
+            `query: FT.SEARCH ${idxPierBusiness} "${queryPierBusiness}"`,
+            optsPierBusiness,
+          )
+          error(e)
+          // No need to disrupt the rest of the searching if this query failed.
+          // throw new Error('Search by business name failed.', { cause: e })
         }
-        log(`Pier business name tokens: ${pierBusinessTokens}`)
-        idxPierBusiness = 'glp:idx:piers:business'
-        queryPierBusiness = `@business:${pierBusinessTokens}`
-        optsPierBusiness = {}
-        optsPierBusiness.SORTBY = { BY: 'pier', DIRECTION: sortDir }
-        optsPierBusiness.RETURN = ['pier', 'business', '$.loc', 'AS', 'coords']
-        log(`Pier business name FT.SEARCH ${idxPierBusiness} "${queryPierBusiness}"`)
-        results.businesses = await redis.ft.search(
-          idxPierBusiness,
-          queryPierBusiness,
-          optsPierBusiness,
-        )
-        log('business results', results.businesses)
-      } catch (e) {
-        error('Redis search query failed:')
-        error(`using index: ${idxPierBusiness}`)
-        error(
-          `query: FT.SEARCH ${idxPierBusiness} "${queryPierBusiness}"`,
-          optsPierBusiness
-        )
-        error(e)
-        // No need to disrupt the rest of the searching if this query failed.
-        // throw new Error('Search by business name failed.', { cause: e })
+      } else {
+        results.estateNames = { total: 0 }
+        results.ownerNames = { total: 0 }
+        results.associations = { total: 0 }
+        results.businesses = { total: 0 }
       }
-    } else {
-      results.estateNames = { total: 0 }
-      results.ownerNames = { total: 0 }
-      results.associations = { total: 0 }
-      results.businesses = { total: 0 }
+      const numberOfResults = (results.addresses?.total_results
+        ?? results.addresses?.total ?? 0)
+        + (results.associations?.total_results ?? results.associations?.total ?? 0)
+        + (results.businesses?.total_results ?? results.businesses?.total ?? 0)
+        + (results.estateNames?.total_results ?? results.estateNames?.total ?? 0)
+        + (results.food?.total_results ?? results.food?.total ?? 0)
+        + (results.ownerNames?.total_results ?? results.ownerNames?.total ?? 0)
+        + (results.pierNumbers?.total_results ?? results.pierNumbers?.total ?? 0)
+        + (results.public?.total_results ?? results.public?.total ?? 0)
+        + (results.vss?.total_results ?? results.vss?.total ?? 0)
+      log('numberOfResults', numberOfResults)
+      await logSearchQueryTerms(ctx, searchTerms[0], numberOfResults)
+      log('query results', results)
+      ctx.type = 'application/json; charset=utf-8'
+      ctx.status = 200
+      ctx.body = results
     }
-    const numberOfResults = 
-      (results.addresses?.total_results ?? results.addresses?.total ?? 0)
-      + (results.associations?.total_results ?? results.associations?.total ?? 0)
-      + (results.businesses?.total_results ?? results.businesses?.total ?? 0)
-      + (results.estateNames?.total_results ?? results.estateNames?.total ?? 0)
-      + (results.food?.total_results ?? results.food?.total ?? 0)
-      + (results.ownerNames?.total_results ?? results.ownerNames?.total ?? 0)
-      + (results.pierNumbers?.total_results ?? results.pierNumbers?.total ?? 0)
-      + (results.public?.total_results ?? results.public?.total ?? 0)
-      + (results.vss?.total_results ?? results.vss?.total ?? 0)
-    log('numberOfResults', numberOfResults)
-    await logSearchQueryTerms(ctx, searchTerms[0], numberOfResults)
-    log('query results', results)
-    ctx.type = 'application/json; charset=utf-8'
-    ctx.status = 200
-    ctx.body = results
-  }
-})
+  },
+)
 
 router.get('galleries', '/galleries', hasFlash, addIpToSession, async (ctx) => {
   const log = glpLog.extend('galleries')
