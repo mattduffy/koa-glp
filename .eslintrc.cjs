@@ -3,9 +3,9 @@ const restrictedGlobals = require('eslint-restricted-globals')
 module.exports = {
   settings: {
     'import/resolver': {
+      exports: {},
       node: {
-        paths: ['../'],
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        extensions: ['.js', '.mjs', '.tx', 'tsx'],
       },
     },
   },
