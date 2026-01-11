@@ -42,24 +42,24 @@ const options = program.opts()
 options.dbPrefix = DB_PREFIX
 log('options:', options)
 
-let keyPath = `${options?.keyPrefix ?? options.dbPrefix}:piers:`
+const keyPath = `${options?.keyPrefix ?? options.dbPrefix}:piers:`
 log(`full keyPath: ${keyPath}${options.pierNumber}`)
 log(`redis.options.keyPrefix: ${redis.options.keyPrefix}`)
 // process.exit()
 
 async function pier(number) {
-  let pier 
+  let _pier
   if (!number) {
     throw new Error('Missing pier number.')
   }
   try {
-    pier = await redis.json.get(number)
+    _pier = await redis.json.get(number)
     log(pier)
   } catch (e) {
     error(e)
     throw new Error(`Failed retreiving pier ${number}`, { cause: e })
   }
-  return pier 
+  return _pier
 }
 try {
   const result = await pier(`${keyPath}${options.pierNumber}`)

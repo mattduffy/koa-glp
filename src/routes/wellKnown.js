@@ -150,7 +150,7 @@ router.get('host-meta', '/.well-known/host-meta', async (ctx, next) => {
   try {
     // const host = `${ctx.request.protocol}://${ctx.request.host}`
     // const host = ctx.request.origin
-    const host = ctx.request.host
+    const { host } = ctx.request
     const o = { path: ctx.request.path, host }
     const meta = new Hostmeta(o)
     info = meta.info()

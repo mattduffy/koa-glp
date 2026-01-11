@@ -6,7 +6,7 @@
  */
 /* eslint-disable import/no-extraneous-dependencies */
 import path from 'node:path'
-import { writeFile } from 'node:fs/promises'
+// import { writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import * as dotenv from 'dotenv'
 import { Command } from 'commander'
@@ -44,7 +44,7 @@ program.name('fix zip codes')
 program.parse(process.argv)
 const options = program.opts()
 options.dbPrefix = DB_PREFIX
-options['city_of_lake_geneva'] = {
+options.city_of_lake_geneva = {
   zip: '53147',
   name: 'Lake Geneva',
   dir1: {
@@ -56,7 +56,7 @@ options['city_of_lake_geneva'] = {
     dir: '7_city_of_lake_geneva',
   },
 }
-options['town_of_linn'] = {
+options.town_of_linn = {
   zip: '53147',
   name: 'Town of Linn',
   dir1: {
@@ -68,12 +68,12 @@ options['town_of_linn'] = {
     dir: '6_town_of_linn',
   },
 }
-options['village_of_williams_bay'] = {
+options.village_of_williams_bay = {
   zip: '53191',
   name: 'Williams Bay',
   dir: '3_village_of_williams_bay',
 }
-options['town_of_walworth'] = {
+options.town_of_walworth = {
   zip: '53125',
   name: 'Walworth',
   dir: '4_town_of_walworth',
@@ -86,7 +86,7 @@ options['village_of_fontana-on-geneva_lake'] = {
 
 log('options:', options)
 
-let keyPath = options?.keyPrefix ?? options.dbPrefix
+const keyPath = options?.keyPrefix ?? options.dbPrefix
 log(`full keyPath: ${keyPath}:${options?.keyName}`)
 log(`redis.options.keyPrefix: ${redis.options.keyPrefix}`)
 // process.exit()
@@ -102,7 +102,7 @@ const towns = [
 async function town(t) {
   let result
   try {
-    let key = `glp:piers_by_town:${t}`
+    const key = `glp:piers_by_town:${t}`
     log('town sorted set key:', key)
     result = await redis.zRange(key, 0, -1)
     // log(result)
@@ -110,15 +110,16 @@ async function town(t) {
     error(e)
     throw e
   }
-  return result 
+  return result
 }
 
 async function getPier(pier) {
   let p
+  // eslint-disable-next-line
   try {
     const key = `glp:piers:${pier}`
     log('getting pier:', key)
-    p = await redis.json.get(key) 
+    p = await redis.json.get(key)
   } catch (e) {
     throw e
   }
@@ -127,6 +128,7 @@ async function getPier(pier) {
 
 async function setPier(num, pier) {
   let result
+  // eslint-disable-next-line
   try {
     const key = `glp:piers:${num}`
     if (options?.dryRun) {
@@ -141,28 +143,31 @@ async function setPier(num, pier) {
   return result
 }
 
-let piers 
+let piers
 let numberOfPiers = 0
-let needToBeUpdated = []
+const needToBeUpdated = []
 try {
   if (options?.dryRun) {
     log('DRY RUN!!!!\n')
   }
   if (options?.town) {
     piers = await town(options.town)
+    // eslint-disable-next-line
     for await (const pierNumber of piers) {
-      const town = options[options.town]
+      const _town = options[options.town]
       const pier = await getPier(pierNumber)
       log(pier.property.address)
       if (pier.property.address.zip !== town.zip) {
         log(`Zip Code needs to be updated! ${pier.property.address.zip} != ${town.zip}`)
         needToBeUpdated.push(pierNumber)
       }
-      const saved = await setPier(pierNumber, pier)
-      const pierDir = (town?.dir) ? town.dir
-        : ((Number.parseInt(pierNumber, 10) <= Number.parseInt(town.dir1.key, 10))
-          ? town.dir1.dir
-          : town.dir2.dir)
+      // const saved = await setPier(pierNumber, pier)
+      await setPier(pierNumber, pier)
+      // eslint-disable-next-line
+      const pierDir = (_town?.dir) ? _town.dir
+        : ((Number.parseInt(pierNumber, 10) <= Number.parseInt(_town.dir1.key, 10))
+          ? _town.dir1.dir
+          : _town.dir2.dir)
       const pierFile = path.resolve(dataRoot, pierDir, `pier-${pierNumber}.json`)
       log('pierFile', pierFile)
       log('\n')
@@ -170,6 +175,7 @@ try {
     numberOfPiers = piers.length
     // log(piers)
   } else {
+    // eslint-disable-next-line
     for await (const t of towns) {
       piers = await town(t)
       numberOfPiers += piers.length

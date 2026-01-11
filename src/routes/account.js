@@ -12,11 +12,14 @@ import { ulid } from 'ulid'
 // import { ObjectId } from 'mongodb'
 import formidable from 'formidable'
 import { _log, _error } from '../utils/logging.js'
-import { Users, AdminUser } from '../models/users.js'
 import {
-  addIpToSession,
-  doTokensMatch,
-  processFormData,
+  Users,
+  // AdminUser,
+} from '../models/users.js'
+import {
+  // addIpToSession,
+  // doTokensMatch,
+  // processFormData,
   hasFlash,
 } from './middlewares.js'
 
@@ -188,69 +191,70 @@ router.get(
   '/account/:username/createKeys/:type?',
   hasFlash,
   async (ctx) => {
-  const log = accountLog.extend('GET-account-generateKeys')
-  const error = accountError.extend('GET-account-generateKeys')
-  let status
-  let body
-  log(ctx.headers)
-  if (!ctx.state?.isAuthenticated) {
-    error('User is not authenticated.  Redirect to /')
-    ctx.status = 401
-    ctx.redirect('/')
-  } else if (ctx.request.header.csrftoken !== ctx.session.csrfToken) {
-    error(
-      `CSR-Token mismatch: header:${ctx.request.header.csrftoken} - `
-      + `session:${ctx.session.csrfToken}`
-    )
-    status = 401
-    ctx.body = { error: 'csrf token mismatch' }
-  } else {
-    const db = ctx.state.mongodb.client.db()
-    const collection = db.collection(USERS)
-    const users = new Users(collection, ctx)
-    let username = sanitize(ctx.params.username)
-    if (username[0] === '@') {
-      username = username.slice(1)
-    }
-    let user = await users.getByUsername(username)
-    const createTypes = { signing: false, encrypting: false }
-    if (ctx.params.type === 'signing') {
-      createTypes.signing = true
-      log('Request to generate signing key type')
-    } else if (ctx.params.type === 'encrypting') {
-      createTypes.encrypting = true
-      log('Request to generate encrypting key type')
+    const log = accountLog.extend('GET-account-generateKeys')
+    const error = accountError.extend('GET-account-generateKeys')
+    let status
+    let body
+    log(ctx.headers)
+    if (!ctx.state?.isAuthenticated) {
+      error('User is not authenticated.  Redirect to /')
+      ctx.status = 401
+      ctx.redirect('/')
+    } else if (ctx.request.header.csrftoken !== ctx.session.csrfToken) {
+      error(
+        `CSR-Token mismatch: header:${ctx.request.header.csrftoken} - `
+        + `session:${ctx.session.csrfToken}`,
+      )
+      status = 401
+      ctx.body = { error: 'csrf token mismatch' }
     } else {
-      createTypes.signing = true
-      createTypes.encrypting = true
-      log('Request to generate both signing and encrypting keypairs.')
-    }
-    let keys
-    try {
-      keys = await user.generateKeys(createTypes)
-      user = await user.update()
-      if (keys.status === 'success') {
-        status = 200
-        body = {
-          status: 'success',
-          url: `${ctx.state.origin}/${user.url}/jwks.json`,
-          keys: await user.publicKeys(0, 'jwk'),
-        }
-      } else {
-        status = 418
-        body = { error: 'I\'m a teapot' }
+      const db = ctx.state.mongodb.client.db()
+      const collection = db.collection(USERS)
+      const users = new Users(collection, ctx)
+      let username = sanitize(ctx.params.username)
+      if (username[0] === '@') {
+        username = username.slice(1)
       }
-    } catch (e) {
-      error(`Failed to generate key pair for ${ctx.state.sessionUser.username}`)
-      error(e)
-      status = 500
-      body = { error: 'No webcrypto keys were created.' }
+      let user = await users.getByUsername(username)
+      const createTypes = { signing: false, encrypting: false }
+      if (ctx.params.type === 'signing') {
+        createTypes.signing = true
+        log('Request to generate signing key type')
+      } else if (ctx.params.type === 'encrypting') {
+        createTypes.encrypting = true
+        log('Request to generate encrypting key type')
+      } else {
+        createTypes.signing = true
+        createTypes.encrypting = true
+        log('Request to generate both signing and encrypting keypairs.')
+      }
+      let keys
+      try {
+        keys = await user.generateKeys(createTypes)
+        user = await user.update()
+        if (keys.status === 'success') {
+          status = 200
+          body = {
+            status: 'success',
+            url: `${ctx.state.origin}/${user.url}/jwks.json`,
+            keys: await user.publicKeys(0, 'jwk'),
+          }
+        } else {
+          status = 418
+          body = { error: 'I\'m a teapot' }
+        }
+      } catch (e) {
+        error(`Failed to generate key pair for ${ctx.state.sessionUser.username}`)
+        error(e)
+        status = 500
+        body = { error: 'No webcrypto keys were created.' }
+      }
+      ctx.status = status
+      ctx.type = 'application/json; charset=utf-8'
+      ctx.body = body
     }
-    ctx.status = status
-    ctx.type = 'application/json; charset=utf-8'
-    ctx.body = body
-  }
-})
+  },
+)
 
 router.get('accountPublicKeys', '/account/pubkeys', hasFlash, async (ctx) => {
   const log = accountLog.extend('GET-account-publickeys')
@@ -475,7 +479,7 @@ router.post('accountEditPost', '/account/edit', hasFlash, async (ctx) => {
         // )
         const avatarSaved = path.resolve(
           `${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}`
-            + `avatar-${avatarOriginalFilenameCleaned}`
+            + `avatar-${avatarOriginalFilenameCleaned}`,
         )
         await rename(avatar.filepath, avatarSaved)
         // ctx.state.sessionUser.avatar = `${ctx.state.sessionUser.publicDir}`
@@ -493,7 +497,7 @@ router.post('accountEditPost', '/account/edit', hasFlash, async (ctx) => {
         // )
         const headerSaved = path.resolve(
           `${ctx.app.dirs.public.dir}/${ctx.state.sessionUser.publicDir}`
-          + `header-${headerOriginalFilenameCleaned}`
+          + `header-${headerOriginalFilenameCleaned}`,
         )
         await rename(header.filepath, headerSaved)
         // ctx.state.sessionUser.header = `${ctx.state.sessionUser.publicDir}`
@@ -788,7 +792,7 @@ router.post('adminEditUserPost', '/admin/account/edit', hasFlash, async (ctx) =>
           // )
           const avatarSaved = path.resolve(
             `${ctx.app.dirs.public.dir}/${displayUser.publicDir}`
-              + `avatar-${avatarOriginalFilenameCleaned}`
+              + `avatar-${avatarOriginalFilenameCleaned}`,
           )
           await rename(avatar.filepath, avatarSaved)
           // displayUser.avatar = `${displayUser.publicDir}avatar-${avatar.originalFilename}`
@@ -804,7 +808,7 @@ router.post('adminEditUserPost', '/admin/account/edit', hasFlash, async (ctx) =>
           // )
           const headerSaved = path.resolve(
             `${ctx.app.dirs.public.dir}/${displayUser.publicDir}`
-            + `header-${headerOriginalFilenameCleaned}`
+            + `header-${headerOriginalFilenameCleaned}`,
           )
           await rename(header.filepath, headerSaved)
           // displayUser.header = `${displayUser.publicDir}header-${header.originalFilename}`

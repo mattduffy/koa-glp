@@ -133,7 +133,6 @@ const o = {
   db_name: mongoClient.dbname ?? appEnv.MONGODB_DBNAME ?? 'test',
 }
 
-app.use(banner.use())
 let isHTTPS
 log(`isHTTPS: ${isHTTPS}`)
 app.use(async (ctx, next) => {
@@ -415,6 +414,7 @@ async function logRequest(ctx, next) {
 
 app.use(isMongo)
 app.use(logRequest)
+app.use(banner.use())
 app.use(viewGlobals)
 app.use(openGraph)
 app.use(errors)

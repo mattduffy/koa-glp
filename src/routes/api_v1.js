@@ -6,14 +6,14 @@
  */
 
 import Router from '@koa/router'
-import { ObjectId } from 'mongodb'
-import Debug from 'debug'
-import { Users } from '../models/users.js'
+// import { ObjectId } from 'mongodb'
+// import Debug from 'debug'
+// import { Users } from '../models/users.js'
 
-function sanitize(param) {
-  // fill in with some effective input scubbing logic
-  return param
-}
+// function sanitize(param) {
+//   // fill in with some effective input scubbing logic
+//   return param
+// }
 
 const router = new Router({ prefix: '/api/v1' })
 

@@ -94,11 +94,15 @@ export function heading(p1, p2, l = false) {
      - (Math.sin(rads(A.latitude)) * Math.cos(rads(B.latitude)) * Math.cos(rads(deltaLongitude)))
   if (l) {
     console.log(`Y = ${Y} = (Math.cos(${rads(A.latitude)} * Math.sin(${rads(B.latitude)}))`
-    + `- (Math.sin(${rads(A.latitude)}) * Math.cos(${rads(B.latitude)}) * Math.cos(${rads(deltaLongitude)}))`)
+    + `- (Math.sin(${rads(A.latitude)}) `
+    + `* Math.cos(${rads(B.latitude)}) `
+    + `* Math.cos(${rads(deltaLongitude)}))`)
   }
   if (l) {
     console.log(`Y = ${Y} = (${Math.cos(rads(A.latitude))} * ${Math.sin(rads(B.latitude))})`
-    + `- (${Math.sin(rads(A.latitude))} * ${Math.cos(rads(B.latitude))} * ${Math.cos(rads(deltaLongitude))})`)
+    + `- (${Math.sin(rads(A.latitude))} `
+    + `* ${Math.cos(rads(B.latitude))} `
+    + `* ${Math.cos(rads(deltaLongitude))})`)
   }
   const β = Math.atan2(X, Y)
   if (l) console.log(`${β} = Math.atan2(${X}, ${Y})`)

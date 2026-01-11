@@ -1,7 +1,8 @@
 /**
  * @module @mattduffy/koa-glp
  * @author Matthew Duffy <mattduffy@gmail.com>
- * @summary The script to perform a one-time normalization to abbreviated versions of Assocciation (assn, Assoc, Ass, etc).
+ * @summary The script to perform a one-time normalization to abbreviated versions of
+ * Assocciation (assn, Assoc, Ass, etc).
  * @file src/utils/addNormalizeAccocs.js
  */
 import path from 'node:path'
@@ -69,8 +70,10 @@ try {
         }
         if (/(Assoc\b|Assn.?)/.test(pierJson.property.association)) {
           const paddedString = `${d}/${pier}`.padEnd(60, ' ')
-          log(`${paddedString} \tAssociation: ${pierJson.property.association} (length: ${pierJson.property.association.length})`)
-          const newAssoc = pierJson.property.association.replace(/(assoc\b|assn.?)/i, 'Association')
+          log(`${paddedString} \tAssociation: ${pierJson.property.association} `
+            + `(length: ${pierJson.property.association.length})`)
+          const newAssoc = pierJson.property.association
+            .replace(/(assoc\b|assn.?)/i, 'Association')
           log(`${pierJson.property.association} ==> ${newAssoc}`)
           pierJson.property.association = newAssoc
         }

@@ -107,7 +107,8 @@ try {
           hidden: '',
         })
       }
-      if ((pierJson.owners[0].members.length === 1) && (pierJson.owners[0].members[0]?.l === undefined)) {
+      if ((pierJson.owners[0].members.length === 1)
+        && (pierJson.owners[0].members[0]?.l === undefined)) {
         pierJson.owners[0].members[0] = {
           t: '',
           f: '',

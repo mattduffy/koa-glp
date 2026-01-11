@@ -40,8 +40,14 @@ const DB_PREFIX = redisEnv.REDIS_KEY_PREFIX
 const program = new Command()
 program.name('loadData')
   .requiredOption('--data-dir <dir>', 'Directory containing JSON data files to load.', 'data/v1')
-  .option('--key-prefix <prefix>', 'The app-specific key prefix for Redis to use to namespace loaded data.')
-  .requiredOption('--key-name <name>', 'The key name for Redis to append to the app-specific key prefix.')
+  .option(
+    '--key-prefix <prefix>',
+    'The app-specific key prefix for Redis to use to namespace loaded data.',
+  )
+  .requiredOption(
+    '--key-name <name>',
+    'The key name for Redis to append to the app-specific key prefix.',
+  )
   .option('--dry-run', 'Run the load process, but DO NOT insert or SAVE any data.')
   .option('--save-files', 'Saves updated Pier files if used with --dry-run.')
 
@@ -57,7 +63,9 @@ log(SAVEFILES)
 
 const transparentKeyPrefix = redis?.options?.keyPrefix
 let prefix
-if (transparentKeyPrefix === null || transparentKeyPrefix === undefined || transparentKeyPrefix === '') {
+if (transparentKeyPrefix === null
+  || transparentKeyPrefix === undefined
+  || transparentKeyPrefix === '') {
   prefix = `${DB_PREFIX}:${options.keyName}`
 } else {
   prefix = `${options.keyName}`
@@ -550,7 +558,10 @@ try {
           // Create a master sorted set of all piers missing lon/lat coordinates, in order.
           keyNullIslandPiers = `${options.keyPrefix}:null_island`
           log(`${keyNullIslandPiers} ${pierJson.pier}`)
-          nullIslandPiersSortedSet = await redis.zAdd(keyNullIslandPiers, [{ score: 0, value: pierJson.pier }])
+          nullIslandPiersSortedSet = await redis.zAdd(
+            keyNullIslandPiers,
+            [{ score: 0, value: pierJson.pier }],
+          )
         }
         log(`Add pier ${pierJson.pier} to set ${keyNullIslandPiers}`, nullIslandPiersSortedSet)
       }

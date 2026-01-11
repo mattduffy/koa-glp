@@ -47,7 +47,7 @@ const options = program.opts()
 options.dbPrefix = DB_PREFIX
 log('options:', options)
 
-let keyPath = `${options?.keyPrefix ?? options.dbPrefix}:piers:`
+const keyPath = `${options?.keyPrefix ?? options.dbPrefix}:piers:`
 log(`full keyPath: ${keyPath}${options.pierNumber}`)
 log(`redis.options.keyPrefix: ${redis.options.keyPrefix}`)
 // process.exit()
@@ -59,6 +59,7 @@ async function askClaude(address) {
   const anthropic = new Anthropic({
     apiKey: aiEnv.ANTHROPIC_API_KEY,
   })
+  // eslint-disable-next-line
   const system_prompt = [{
     type: 'text',
     text: 'You are a helpful agent.  '
@@ -76,30 +77,30 @@ async function askClaude(address) {
   const msg = await anthropic.messages.create({
     model: MODEL,
     max_tokens: 1024,
-    system: system_prompt,
-    messages: [{ role: "user", content: query }],
+    system: system_prompt, // eslint-disable-line
+    messages: [{ role: 'user', content: query }],
     tools: [{
       type: 'web_search_20250305',
       name: 'web_search',
       max_uses: 5,
-    }]
+    }],
   })
   return msg
 }
 
 async function pier(number) {
-  let pier 
+  let _pier
   if (!number) {
     throw new Error('Missing pier number.')
   }
   try {
-    pier = await redis.json.get(number)
+    _pier = await redis.json.get(number)
     log(pier)
   } catch (e) {
     error(e)
     throw new Error(`Failed retreiving pier ${number}`, { cause: e })
   }
-  return pier 
+  return _pier
 }
 try {
   const result = await pier(`${keyPath}${options.pierNumber}`)
@@ -109,7 +110,6 @@ try {
     + `${result.property.address.zip}`
   const claudeResponse = await askClaude(addr)
   log(claudeResponse)
-  
 } catch (e) {
   error(e)
   // throw new Error(e.message, { cause: e })

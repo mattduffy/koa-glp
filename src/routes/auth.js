@@ -7,7 +7,7 @@
 
 import Router from '@koa/router'
 import { ulid } from 'ulid'
-import { ObjectId } from 'mongodb'
+// import { ObjectId } from 'mongodb'
 import {
   addIpToSession,
   doTokensMatch,

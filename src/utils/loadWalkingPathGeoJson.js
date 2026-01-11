@@ -47,7 +47,10 @@ const dataDir = path.resolve(appRoot, options.dataDir)
 let pathJson
 let pathParsed
 try {
-  pathJson = await readFile(path.resolve(dataDir, 'geojson', 'genevalake-walking-path.geojson'), 'utf-8')
+  pathJson = await readFile(
+    path.resolve(dataDir, 'geojson', 'genevalake-walking-path.geojson'),
+    'utf-8',
+  )
   // log(pathJson)
   pathParsed = JSON.parse(pathJson)
   log(pathParsed)

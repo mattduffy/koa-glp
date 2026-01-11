@@ -40,9 +40,9 @@ router.get('seoSitemap', '/sitemap.xml', async (ctx) => {
   }
   try {
     log(
-      `ft.AGGREGATE glp:idx:piers:association "*" `
-      + `LOAD 3 $.pier AS pier GROUPBY 1 @association SORTBY 2 @association ASC `
-      + `LIMIT ${offset} ${num}`
+      'ft.AGGREGATE glp:idx:piers:association "*" '
+      + 'LOAD 3 $.pier AS pier GROUPBY 1 @association SORTBY 2 @association ASC '
+      + `LIMIT ${offset} ${num}`,
     )
     const optsAggregateAssoc = {
       LOAD: ['@pier', '@association'],

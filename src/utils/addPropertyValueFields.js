@@ -43,7 +43,7 @@ const options = program.opts()
 options.dbPrefix = DB_PREFIX
 const DRYRUN = (options?.dryRun) ? options.dryRun : false
 log(options)
-let keyPath = `${options?.keyPrefix ?? options.dbPrefix}:piers:`
+const keyPath = `${options?.keyPrefix ?? options.dbPrefix}:piers:`
 
 const dataDir = path.resolve(appRoot, options.dataDir)
 log(`dataDir ${dataDir}`)
@@ -54,19 +54,19 @@ try {
   let re
   if (options?.justTown) {
     re = new RegExp(options.justTown)
-    subDirs = subDirs.filter((x) => {
-      return re.test(x)
-    })
+    subDirs = subDirs.filter((x) => re.test(x))
   }
   log('subDirs', subDirs)
   let ttlGrand = 0
   const ttlCounts = {}
+  // eslint-disable-next-line
   for await (const d of subDirs) {
     const pierDir = path.resolve(dataDir, d)
     log(`pier dir: ${pierDir}`)
     const dir = (await readdir(pierDir)).sort()
     let ttlCounter = 0
     ttlCounts[d] = 0
+    // eslint-disable-next-line
     for await (const pier of dir) {
       const file = path.resolve(dataDir, d, pier)
       let pierJson = await readFile(file, 'utf-8')
@@ -76,7 +76,7 @@ try {
       // Get pierJson.pier from redis
       const key = `${keyPath}${pierJson.pier}`
       log(key)
-      let pierFromRedis = await redis.json.get(key) 
+      let pierFromRedis = await redis.json.get(key)
       const value = {
         value: '',
         source: '',

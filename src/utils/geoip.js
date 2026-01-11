@@ -16,7 +16,11 @@ const appRoot = path.resolve(`${__dirname}/../..`)
 // console.log(`geoip appRoot: ${appRoot}`)
 const geoEnv = {}
 const showDebug = process.env.NODE_ENV !== 'production'
-dotenv.config({ path: path.resolve(appRoot, 'config/geoip.env'), processEnv: geoEnv, debug: showDebug })
+dotenv.config({
+  path: path.resolve(appRoot, 'config/geoip.env'),
+  processEnv: geoEnv,
+  debug: showDebug,
+})
 // console.log('GeoIP database locations: %o', geoEnv)
 
 let city

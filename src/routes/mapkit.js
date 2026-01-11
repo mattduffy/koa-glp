@@ -45,9 +45,7 @@ router.get('allPiers', '/mapkit/allPiers', addIpToSession, async (ctx) => {
     const csrfTokenCookie = ctx.cookies.get('csrfToken')
     const csrfTokenSession = ctx.session.csrfToken
     if (!doTokensMatch(ctx)) {
-      error(
-        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
-      )
+      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
     } else {
@@ -61,7 +59,7 @@ router.get('allPiers', '/mapkit/allPiers', addIpToSession, async (ctx) => {
         optsAllPiers.LIMIT = { from: 0, size: 1000 }
         log(
           `ft.search ${idxAllPiers} "*" `
-            + 'RETURN 4 pierNumber $.loc AS coords SORTBY pierNumber ASC LIMIT 0 1000'
+            + 'RETURN 4 pierNumber $.loc AS coords SORTBY pierNumber ASC LIMIT 0 1000',
         )
         allPiers = await redis.ft.search(idxAllPiers, queryAllPiers, optsAllPiers)
         log(allPiers)
@@ -86,65 +84,66 @@ router.get(
   processFormData,
   addIpToSession,
   async (ctx) => {
-  const log = Log.extend('GET-mapkitSwim')
-  const info = Info.extend('GET-mapkitSwim')
-  const error = Error.extend('GET-mapkitSwim')
-  log(`ctx.state.isAsyncRequest: ${ctx.state.isAsyncRequest}`)
-  if (ctx.state.isAsyncRequest === true) {
-    log('Async query received.')
-    const csrfTokenCookie = ctx.cookies.get('csrfToken')
-    const csrfTokenSession = ctx.session.csrfToken
-    info(`csrfTokenCookie: ${csrfTokenCookie},\ncsrfTokenSession: ${csrfTokenSession}`)
-    if (!doTokensMatch(ctx)) {
-      error(
-        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
-      )
-      ctx.status = 401
-      ctx.body = { error: 'csrf token mismatch' }
-    } else {
-      let result
-      const from = 0
-      const size = 100
-      ctx.type = 'application/json; charset=utf-8'
-      ctx.status = 200
-      try {
-        log(
-          'FT.SEARCH glp:idx:piers:swim "*" '
-            + 'RETURN 13 pier $.loc AS coords '
-            + '$.property.association AS assoc '
-            + '$.property.associationUrl AS url '
-            + '$.owners[*].members[*].f AS name '
-            + 'SORTBY pier ASC'
+    const log = Log.extend('GET-mapkitSwim')
+    const info = Info.extend('GET-mapkitSwim')
+    const error = Error.extend('GET-mapkitSwim')
+    log(`ctx.state.isAsyncRequest: ${ctx.state.isAsyncRequest}`)
+    if (ctx.state.isAsyncRequest === true) {
+      log('Async query received.')
+      const csrfTokenCookie = ctx.cookies.get('csrfToken')
+      const csrfTokenSession = ctx.session.csrfToken
+      info(`csrfTokenCookie: ${csrfTokenCookie},\ncsrfTokenSession: ${csrfTokenSession}`)
+      if (!doTokensMatch(ctx)) {
+        error(
+          `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`,
         )
-        const idxPierSwim = 'glp:idx:piers:swim'
-        const queryPierSwim = '*'
-        const optsPierSwim = {}
-        optsPierSwim.RETURN = [
-          'pier',
-          '$.loc', 'AS', 'coords',
-          '$.property.association', 'AS', 'assoc',
-          '$.owners[*].members[*].f', 'AS', 'name',
-        ]
-        optsPierSwim.LIMIT = { from, size }
-        optsPierSwim.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
-        const piersInSwim = await redis.ft.search(
-          idxPierSwim,
-          queryPierSwim,
-          optsPierSwim,
-        )
-        log(piersInSwim)
-        result = piersInSwim
-      } catch (e) {
-        error('Failed to get association first pier coordinate data.')
-        ctx.status = 500
-        result = { error: 'Failed to get association first pier coordinate data.' }
+        ctx.status = 401
+        ctx.body = { error: 'csrf token mismatch' }
+      } else {
+        let result
+        const from = 0
+        const size = 100
+        ctx.type = 'application/json; charset=utf-8'
+        ctx.status = 200
+        try {
+          log(
+            'FT.SEARCH glp:idx:piers:swim "*" '
+              + 'RETURN 13 pier $.loc AS coords '
+              + '$.property.association AS assoc '
+              + '$.property.associationUrl AS url '
+              + '$.owners[*].members[*].f AS name '
+              + 'SORTBY pier ASC',
+          )
+          const idxPierSwim = 'glp:idx:piers:swim'
+          const queryPierSwim = '*'
+          const optsPierSwim = {}
+          optsPierSwim.RETURN = [
+            'pier',
+            '$.loc', 'AS', 'coords',
+            '$.property.association', 'AS', 'assoc',
+            '$.owners[*].members[*].f', 'AS', 'name',
+          ]
+          optsPierSwim.LIMIT = { from, size }
+          optsPierSwim.SORTBY = { BY: 'pier', DIRECTION: 'ASC' }
+          const piersInSwim = await redis.ft.search(
+            idxPierSwim,
+            queryPierSwim,
+            optsPierSwim,
+          )
+          log(piersInSwim)
+          result = piersInSwim
+        } catch (e) {
+          error('Failed to get association first pier coordinate data.')
+          ctx.status = 500
+          result = { error: 'Failed to get association first pier coordinate data.' }
+        }
+        ctx.body = result
       }
-      ctx.body = result
+    } else {
+      ctx.redirect('/')
     }
-  } else {
-    ctx.redirect('/')
-  }
-})
+  },
+)
 
 router.get('poisList', '/mapkit/pois', async (ctx) => {
   const log = Log.extend('GET-mapkitPoints-of-interest')
@@ -154,9 +153,7 @@ router.get('poisList', '/mapkit/pois', async (ctx) => {
     const csrfTokenCookie = ctx.cookies.get('csrfToken')
     const csrfTokenSession = ctx.session.csrfToken
     if (!doTokensMatch(ctx)) {
-      error(
-        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
-      )
+      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
     } else {
@@ -206,9 +203,7 @@ router.get('walkingPathPois', '/mapkit/walking-path-pois', async (ctx) => {
     const csrfTokenCookie = ctx.cookies.get('csrfToken')
     const csrfTokenSession = ctx.session.csrfToken
     if (!doTokensMatch(ctx)) {
-      error(
-        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
-      )
+      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
     } else {
@@ -257,9 +252,7 @@ router.get('walkingPathGeoJson', '/mapkit/walking-path', async (ctx) => {
     info(`${csrfTokenCookie},\n${csrfTokenSession}`)
     if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
     if (!(csrfTokenCookie === csrfTokenSession)) {
-      error(
-        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
-      )
+      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
@@ -295,9 +288,7 @@ router.get('mapkitFood', '/mapkit/food', async (ctx) => {
     info(`${csrfTokenCookie},\n${csrfTokenSession}`)
     if (csrfTokenCookie === csrfTokenSession) info('cookie ===session')
     if (!(csrfTokenCookie === csrfTokenSession)) {
-      error(
-        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
-      )
+      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
@@ -313,7 +304,7 @@ router.get('mapkitFood', '/mapkit/food', async (ctx) => {
             + 'RETURN 10 pier $.loc AS coords '
             + '$.property.business AS business '
             + '$.property.associationUrl AS url '
-            + 'SORTBY pier ASC'
+            + 'SORTBY pier ASC',
         )
         const idxPierFood = 'glp:idx:piers:food'
         const queryPierFood = '*'
@@ -351,9 +342,7 @@ router.get('mapkitPublicPiers', '/mapkit/public', async (ctx) => {
     info(`${csrfTokenCookie},\n${csrfTokenSession}`)
     if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
     if (!(csrfTokenCookie === csrfTokenSession)) {
-      error(
-        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
-      )
+      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
@@ -370,7 +359,7 @@ router.get('mapkitPublicPiers', '/mapkit/public', async (ctx) => {
             + '$.property.association AS association '
             + '$.property.business AS business '
             + '$.owners[*].members[*].f AS name '
-            + 'SORTBY pier ASC'
+            + 'SORTBY pier ASC',
         )
         const idxPierPublic = 'glp:idx:piers:public'
         const queryPierPublic = '*'
@@ -409,9 +398,7 @@ router.get('mapkitBusinesses', '/mapkit/businesses', async (ctx) => {
     info(`${csrfTokenCookie},\n${csrfTokenSession}`)
     if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
     if (!(csrfTokenCookie === csrfTokenSession)) {
-      error(
-        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
-      )
+      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
@@ -427,7 +414,7 @@ router.get('mapkitBusinesses', '/mapkit/businesses', async (ctx) => {
             + 'pier $.loc AS coords '
             + '$.property.business AS business '
             + '$.property.associationUrl AS url '
-            + 'SORTBY business ASC'
+            + 'SORTBY business ASC',
         )
         const idxPierBusiness = 'glp:idx:piers:business'
         const queryPierBusiness = '*'
@@ -504,9 +491,7 @@ router.get('mapkitMarinas', '/mapkit/marinas', async (ctx) => {
     info(`${csrfTokenCookie},\n${csrfTokenSession}`)
     if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
     if (!(csrfTokenCookie === csrfTokenSession)) {
-      error(
-        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
-      )
+      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
@@ -522,7 +507,7 @@ router.get('mapkitMarinas', '/mapkit/marinas', async (ctx) => {
             + 'pier $.loc AS coords '
             + '$.property.business AS business '
             + '$.property.associationUrl AS url '
-            + 'SORTBY pier ASC'
+            + 'SORTBY pier ASC',
         )
         const idxPierMarina = 'glp:idx:piers:marina'
         const queryPierMarina = '*'
@@ -560,9 +545,7 @@ router.get('mapkitAssociations', '/mapkit/associations', async (ctx) => {
     info(`${csrfTokenCookie},\n${csrfTokenSession}`)
     if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
     if (!(csrfTokenCookie === csrfTokenSession)) {
-      error(
-        `CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`
-      )
+      error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401
       ctx.body = { error: 'csrf token mismatch' }
@@ -578,7 +561,7 @@ router.get('mapkitAssociations', '/mapkit/associations', async (ctx) => {
             + '$.pier as pier '
             + '$.loc AS coords '
             + 'GROUPBY 1 @association REDUCE TOLIST 1 @coords '
-            + 'SORTBY 2 @association ASC LIMIT 0 15'
+            + 'SORTBY 2 @association ASC LIMIT 0 15',
         )
         const optsAggregateAssociation = {
           LOAD: ['$.loc', '$.pier'],
@@ -669,7 +652,7 @@ router.get('mapkitLocate', '/mapkit/locate/:lon/:lat/:radius/:units', async (ctx
           + '$.property.business AS business '
           + '$.property.association AS association '
           + '$.property.associationUrl AS url '
-          + 'SORTBY pier ASC'
+          + 'SORTBY pier ASC',
       )
       const idxPierCoords = 'glp:idx:piers:coords'
       const queryPierCoords = `@coords:[${lon} ${lat} ${radius} ${units}]`

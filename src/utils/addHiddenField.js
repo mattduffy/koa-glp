@@ -26,7 +26,11 @@ dotenv.config({ path: path.resolve(appRoot, 'config/redis.env'), processEnv: red
 
 const program = new Command()
 program.name('addHiddenField')
-  .requiredOption('--data-dir <dir>', 'Directory containing JSON data files to update with $.owners[*].members[*].hidden field.', 'test')
+  .requiredOption(
+    '--data-dir <dir>',
+    'Directory containing JSON data files to update with $.owners[*].members[*].hidden field.',
+    'test',
+  )
   .option('--dry-run', 'Run the script as a dry-run, so no changes are saved.')
 
 program.parse(process.argv)

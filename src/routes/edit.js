@@ -226,12 +226,14 @@ async function getNextRedisJsonKey(keyPattern) {
       TYPE: 'ReJSON-RL',
       COUNT: 2000,
     }
-    let myIterator = await redis.scanIterator(scanOpts)
+    const myIterator = await redis.scanIterator(scanOpts)
     let batch
+    // eslint-disable-next-line
     while (batch = await myIterator.next()) {
       if (batch.done) {
         break
       }
+      // eslint-disable-next-line
       for await (const key of batch.value) {
         log('key', key)
         const keyNum = Number.parseInt(key.split(':').pop(), 10)
@@ -580,12 +582,12 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
     if (csrfTokenCookie === csrfTokenSession) info('cookie === session')
     if (csrfTokenSession === csrfTokenHidden) info('session === hidden')
     if (csrfTokenCookie === csrfTokenHidden) info('cookie === hidden')
-    if (!(csrfTokenCookie === csrfTokenSession 
+    if (!(csrfTokenCookie === csrfTokenSession
       && csrfTokenSession === csrfTokenHidden)) {
       error(
         `CSRF-Token mismatch: header:${csrfTokenCookie} `
           + `hidden:${csrfTokenHidden} - `
-          + `session:${csrfTokenSession}`
+          + `session:${csrfTokenSession}`,
       )
       error(`CSR-Token mismatch: header:${csrfTokenCookie} - session:${csrfTokenSession}`)
       ctx.type = 'application/json; charset=utf-8'
@@ -685,7 +687,7 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
           fileUploadStatus = 'success'
           info(
             `${fileUploadStatus} - saved new pier ${pierUpdated.pier} `
-              + `photo: ${savePath}/image_${pierUpdated.images.length}.${fileExt}`
+              + `photo: ${savePath}/image_${pierUpdated.images.length}.${fileExt}`,
           )
           pierUpdated.images.unshift(imgSrc)
           okPierImage = true
@@ -744,7 +746,7 @@ router.post('geohash', '/edit/geohash', processFormData, async (ctx) => {
     if (!doTokensMatch(ctx)) {
       error(
         `CSRF-Token mismatch: header:${csrfTokenCookie} `
-          + `hidden:${csrfTokenHidden} - session:${csrfTokenSession}`
+          + `hidden:${csrfTokenHidden} - session:${csrfTokenSession}`,
       )
       ctx.type = 'application/json; charset=utf-8'
       ctx.status = 401

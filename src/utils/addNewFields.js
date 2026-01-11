@@ -42,14 +42,22 @@ const failedToSaveFiles = []
 const marinaPiers = ['290', '415', '419', '899']
 const foodPiers = ['290', '416', '804', '805', '811', '898']
 // const publicRestRooms = ['260', '349A', '430', '900']
-const publicPiers = ['250', '255', '260', '265', '349A', '350', '407', '414', '420', '430', '679A', '898', '900', '901', '902', '903', '904']
+const publicPiers = [
+  '250', '255', '260', '265', '349A', '350', '407',
+  '414', '420', '430', '679A', '898', '900', '901',
+  '902', '903', '904']
 const swimPiers = [
-  '16', '30A', '103A', '104', '140A', '149', '191', '219', '232', '236', '239', '250', '255', '286', '312', '333', '349A', '350', '360',
-  '361', '386', '407', '412', '435', '441', '466', '497', '519A', '525', '529', '536', '542', '544', '545', '550A', '580', '616', '628',
-  '672', '777', '804', '836', '837', '874', '893', '897', '901', '902',
+  '16', '30A', '103A', '104', '140A', '149', '191', '219', '232', '236',
+  '239', '250', '255', '286', '312', '333', '349A', '350', '360', '361',
+  '386', '407', '412', '435', '441', '466', '497', '519A', '525', '529',
+  '536', '542', '544', '545', '550A', '580', '616', '628', '672', '777',
+  '804', '836', '837', '874', '893', '897', '901', '902',
 ]
-const businesses = ['030', '030A', '290', '291', '292', '325', '333', '349', '349A', '350', '350A', '351', '360', '361', '361A', '415', '416',
-  '417', '418', '419', '427', '439', '440', '804', '805', '811', '836', '837', '897', '898', '899', '899A', '900']
+const businesses = [
+  '030', '030A', '290', '291', '292', '325', '333', '349', '349A', '350',
+  '350A', '351', '360', '361', '361A', '415', '416', '417', '418', '419',
+  '427', '439', '440', '804', '805', '811', '836', '837', '897', '898',
+  '899', '899A', '900']
 try {
   subDirs = (await readdir(dataDir)).sort().filter((x) => /^\d/.test(x))
   log(subDirs)
@@ -85,9 +93,13 @@ try {
       // if (pierJson.loc?.longitude) {
       //   if (pierJson.loc.longitude === 0 && pierJson.loc.latitude === 0) {
       //     ttlNullIsland += 1
-      //     info(`Pier ${pierJson.pier} has Null Island coordinates (ttl null islands: ${ttlNullIsland}).`)
+      //     info(
+      //       `Pier ${pierJson.pier} has Null Island coordinates `
+      //       + `(ttl null islands: ${ttlNullIsland}).`,
+      //     )
       //   }
-      //   const tempLoc = `${pierJson.loc.longitude.toString()},${pierJson.loc.latitude.toString()}`
+      //   const tempLoc = `${pierJson.loc.longitude.toString()},`
+      //     + `${pierJson.loc.latitude.toString()}`
       //   pierJson.loc = tempLoc
       //   info(`Normalized pier.loc property to: ${pierJson.loc}`)
       //   changed = true

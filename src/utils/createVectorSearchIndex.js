@@ -10,7 +10,7 @@ import * as dotenv from 'dotenv'
 import * as transformers from '@xenova/transformers'
 import {
   SCHEMA_VECTOR_FIELD_ALGORITHM,
-  createClient,
+  // createClient,
   SCHEMA_FIELD_TYPE,
 } from 'redis'
 import { Command } from 'commander'
@@ -45,7 +45,7 @@ transformers.env.localModelPath = path.resolve(appRoot, aiEnv.MODEL_CACHE_DIR)
 transformers.env.cacheDir = path.resolve(appRoot, aiEnv.MODEL_CACHE_DIR)
 transformers.env.IS_NODE_ENV = true
 // transformers.env.allowRemoteModels = false
-let pipeline = await transformers.pipeline(aiEnv.EMBEDDING_TASK, aiEnv.EMBEDDING_MODEL)
+const pipeline = await transformers.pipeline(aiEnv.EMBEDDING_TASK, aiEnv.EMBEDDING_MODEL)
 // log('what is pipeline', pipeline)
 // log(transformers.env)
 const pipeOptions = {
@@ -75,13 +75,13 @@ if (options.test) {
 }
 log('options:', options)
 
-let scanKeyPrefix
+// let scanKeyPrefix
 if (options?.scanKeyPrefix && options?.scanKeyPrefix.slice(-1) !== ':') {
   options.scanKeyPrefix += ':'
 }
 log('options.scanKeyPrefix', options.scanKeyPrefix)
-scanKeyPrefix = `${options.dbPrefix}:${options.scanKeyPrefix}`
-const scanKeyPrefixStar = scanKeyPrefix + '*'
+const scanKeyPrefix = `${options.dbPrefix}:${options.scanKeyPrefix}`
+const scanKeyPrefixStar = `${scanKeyPrefix} *`
 log('scanKeyPrefixStar', scanKeyPrefixStar)
 
 const vectorSet = `${options.dbPrefix}:vectors:${options?.vectorSetName}`
@@ -96,7 +96,7 @@ async function deleteVectorIndex(idxName) {
   log('dropping vector index (if it exists): ', idxName)
   try {
     // log(await redis.ft.info(idxName))
-    result = await redis.ft.dropIndex(idxName) 
+    result = await redis.ft.dropIndex(idxName)
   } catch (e) {
     log(`Redis responded to ft.dropIndex(${idxName}) with: ${e.message}`)
     // throw new Error('Redis Drop Index failed.', { cause: e })
@@ -109,36 +109,39 @@ async function createVectorIndex(idxName, keyPrefix) {
   log('referencing embedding keys with prefix: ', keyPrefix)
   let result
   try {
-    result = await redis.ft.create(idxName, {
-      '$.content': {
-        type: SCHEMA_FIELD_TYPE.TEXT,
-        AS: 'content',
+    result = await redis.ft.create(
+      idxName,
+      {
+        '$.content': {
+          type: SCHEMA_FIELD_TYPE.TEXT,
+          AS: 'content',
+        },
+        '$.pier': {
+          type: SCHEMA_FIELD_TYPE.TAG,
+          AS: 'pier',
+        },
+        '$.estateName': {
+          type: SCHEMA_FIELD_TYPE.TEXT,
+          AS: 'estateName',
+        },
+        '$.coords': {
+          type: SCHEMA_FIELD_TYPE.GEO,
+          AS: 'coords',
+        },
+        '$.embedding': {
+          type: SCHEMA_FIELD_TYPE.VECTOR,
+          ALGORITHM: SCHEMA_VECTOR_FIELD_ALGORITHM.FLAT,
+          TYPE: aiEnv.VECTOR_TYPE,
+          DISTANCE_METRIC: aiEnv.VECTOR_DIST_METRIC,
+          DIM: aiEnv.VECTOR_DIM,
+          AS: 'embedding',
+        },
       },
-      '$.pier': {
-        type: SCHEMA_FIELD_TYPE.TAG,
-        AS: 'pier',
+      {
+        ON: 'JSON',
+        PREFIX: keyPrefix,
       },
-      '$.estateName': {
-        type: SCHEMA_FIELD_TYPE.TEXT,
-        AS: 'estateName',
-      },
-      '$.coords': {
-        type: SCHEMA_FIELD_TYPE.GEO,
-        AS: 'coords',
-      },
-      '$.embedding': {
-        type: SCHEMA_FIELD_TYPE.VECTOR,
-        ALGORITHM: SCHEMA_VECTOR_FIELD_ALGORITHM.FLAT,
-        TYPE: aiEnv.VECTOR_TYPE,
-        DISTANCE_METRIC: aiEnv.VECTOR_DIST_METRIC,
-        DIM: aiEnv.VECTOR_DIM,
-        AS: 'embedding',
-      },
-    },
-    {
-      ON: 'JSON',
-      PREFIX: keyPrefix,
-    })
+    )
   } catch (e) {
     log(e)
     throw new Error('Redis Create Index failed.', { cause: e })
@@ -151,9 +154,9 @@ async function jsonSet(idx, input, coords) {
   // info('jsonSet', idx, input)
   const pier = input.slice(5, input.indexOf(','))
   const estateName = input.slice(
-    input.indexOf(',', input.indexOf(',')+1)+2,
-    input.indexOf(':')
-  ) 
+    input.indexOf(',', input.indexOf(',') + 1) + 2,
+    input.indexOf(':'),
+  )
   const content = input.toLowerCase()
   const embedding = [...(await pipeline(content, pipeOptions)).data]
   const key = pierEmbeddingsPrefix + pier
@@ -182,19 +185,19 @@ async function knn(token) {
     idxVectorsPiers,
     // '*=>[KNN 3 @embedding $B AS score]',
     '(-@estateName:<est>)=>[KNN 4 @embedding $B AS score]',
-    { PARAMS:
+    {
+      PARAMS:
       {
         B: vector,
       },
       RETURN: ['score', 'pier', 'estateName', 'coords'],
       SORTBY: { BY: 'score', DIRECTION: 'ASC' },
       DIALECT: 2,
-    }
+    },
   )
   if (result.total > 0) {
     result.documents.forEach((d) => {
       log('pier', d)
-
     })
   }
 }
@@ -220,35 +223,37 @@ async function vsDel(vs, input) {
 async function delVss(key) {
   const info = log.extend('delVss(key)')
   const result = await redis.json.del(key)
-  log('deleted?', result)
+  info('deleted?', result)
 }
 
 async function addVss(key) {
   const info = log.extend('addVss(key)')
-  const pier = key 
+  const pier = key
   const street = pier.property.address.street || '<add>'
   info('street', street)
+  /* eslint-disable arrow-body-style */
   const lines = pier.owners.map((o) => {
     return `${o.estateName || '<est>'}: `
       + `${o.members.map((m) => {
         return (m.hidden === 0) ? `${m.f} ${m.l}` : '<unk>'
       }).join(', ')}`
   }).join(', ')
+  /* eslint-enable arrow-body-style */
   const text = `pier ${pier.pier}, ${street}, ${lines}`
   info(text)
   if (options.vectorSetName) {
-    await vAdd(vectorSet, text)
+    await vsAdd(vectorSet, text)
   }
   if (options.vssIdxName) {
     await jsonSet(idxVectorsPiers, text, pier.loc)
   }
 }
 
-async function scan(keyPath=null) {
+async function scan(keyPath = null) {
   const info = log.extend('scan()')
   const scanArgs = {
     CURSOR: '0',
-    COUNT:  options.scanCount,
+    COUNT: options.scanCount,
   }
   if (options.scanKeyPrefix) {
     scanArgs.MATCH = (keyPath !== null) ? keyPath : scanKeyPrefixStar
@@ -260,13 +265,15 @@ async function scan(keyPath=null) {
   const myIterator = await redis.scanIterator(scanArgs)
   let batch
   let count = 0
+  // eslint-disable-next-line
   while (batch = await myIterator.next()) {
     if (batch.done) {
       break
     }
+    // eslint-disable-next-line
     for await (const k of batch.value) {
       const key = await redis.json.get(k)
-      switch(options.scanAction) {
+      switch (options.scanAction) {
         case 'addVss':
           info('key', key)
           await addVss(key)
@@ -300,7 +307,9 @@ try {
   if (options?.vssIdxName && ['addVss', 'delVss'].includes(options?.scanAction)) {
     log('dropping and recreating vss index:', idxVectorsPiers)
     deleteResult = await deleteVectorIndex(idxVectorsPiers)
+    log(deleteResult)
     createResult = await createVectorIndex(idxVectorsPiers, pierEmbeddingsPrefix)
+    log(createResult)
   }
   if (options?.scanAction) {
     scanResult = await scan()
@@ -308,7 +317,6 @@ try {
   } else if (options?.knnQuery) {
     await knn(options.knnQuery)
   }
-  
 } catch (e) {
   error(e)
   // throw new Error(e.message, { cause: e })

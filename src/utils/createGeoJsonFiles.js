@@ -61,7 +61,10 @@ if (options?.town === undefined) {
 
 async function saveGeoJsonFile(data, town) {
   const geojsonData = new Uint8Array(Buffer.from(JSON.stringify(data)))
-  const file = await writeFile(path.resolve(appRoot, 'data', 'geojson', `${town}.geojson`), geojsonData)
+  const file = await writeFile(
+    path.resolve(appRoot, 'data', 'geojson', `${town}.geojson`),
+    geojsonData,
+  )
   return file
 }
 
@@ -155,7 +158,11 @@ try {
     }
     if (options.combined === true) {
       await saveGeoJsonFile(combinedGeoJson, 'combined_geneva_lake')
-      rSaved = await redis.json.set(`${DB_PREFIX}:geojson:combined_geneva_lake`, '$', combinedGeoJson)
+      rSaved = await redis.json.set(
+        `${DB_PREFIX}:geojson:combined_geneva_lake`,
+        '$',
+        combinedGeoJson,
+      )
       console.log(combinedGeoJson, { depth: null })
     }
     log(rSaved)

@@ -47,7 +47,9 @@ program.name('newUser')
   .requiredOption('--email <addr>', 'User\'s email address')
   .requiredOption(
     '--desc <description>',
-    'Short description of the account', 'New account created using cli.')
+    'Short description of the account',
+    'New account created using cli.',
+  )
   .requiredOption('--password <password>', 'The new user\'s initial password.')
   .option('-a, --admin', 'Make this user account admin, otherwise regular.')
   .option('-t, --test', 'A test user account, not a real user.')
