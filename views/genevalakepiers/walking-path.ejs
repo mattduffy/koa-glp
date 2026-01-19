@@ -60,6 +60,9 @@
       <span id="landmarks" class="landmarks" data-type='landmarks' data-n=0>Landmarks 
         <span></span>
       </span>
+      <span id="mileMarkers" class="mileMarkers mileMarkersOn" data-type='mileMarkers' data-n=0>Mile Markers
+        <span></span>
+      </span>
     </div>
   </section>
   <section class="map">
@@ -192,6 +195,7 @@
       }
       await showWalkingPath()
 
+      // window._mileMarkers = []
       async function showWalkingPathMileMarkers() {
         const annotations = []
         const miles = <%- JSON.stringify(mileMarkers) %>
@@ -227,9 +231,19 @@
             selected: false,
             color: 'royalblue',
             callout: annotationCallout,
+            data: { type: 'mileMarker' }, 
           })
+          const miles = document.querySelector("span[data-type='mileMarkers']")
+          if (!miles.style.display) {
+            miles.style.display = 'inline'
+            miles.firstElementChild.textContent = 1
+          } else {
+            miles.firstElementChild.textContent = (Number.parseInt(
+              miles.firstElementChild.textContent, 10) + 1)
+          }
           annotations.push(annotation)
         })
+        window._mileMarkers = [...annotations]
         window.map.showItems(annotations.reverse())
         window.map.cameraDistance = window.cameraDistance
         window.map.region = window.genevaBay
@@ -256,6 +270,7 @@
           const food = document.querySelector("span[data-type='food']")
           const landmarks = document.querySelector("span[data-type='landmarks']")
           const restrooms = document.querySelector("span[data-type='restrooms']")
+          const mileMarkers = document.querySelector("span[data-type='mileMarkers']")
           response.documents.forEach((m) => {
             // console.log('m', m)
             let [lon, lat] = m.value.geometry.coordinates
@@ -294,6 +309,7 @@
                       // window.map.addItems([p])
                       switch (m.value.properties.type) {
                         case 'Access':
+                          p.data = { type: 'access' }
                           window._access.push(p)
                           access.dataset.n = parseInt(access.dataset.n) + 1
                           if (!access.style.display) {
@@ -305,6 +321,7 @@
                           }
                           break     
                         case 'Food':
+                          p.data = { type: 'food' }
                           food.dataset.n = parseInt(food.dataset.n) + 1
                           window._food.push(p)
                           if (!food.style.display) {
@@ -316,6 +333,7 @@
                           }
                           break     
                         case 'Landmark':
+                          p.data = { type: 'landmark' }
                           landmarks.dataset.n = parseInt(landmarks.dataset.n) + 1
                           window._landmarks.push(p)
                           if (!landmarks.style.display) {
@@ -327,6 +345,7 @@
                           }
                           break     
                         case 'Restroom':
+                          p.data = { type: 'restroom' }
                           restrooms.dataset.n = parseInt(restrooms.dataset.n) + 1
                           window._restrooms.push(p)
                           if (!restrooms.style.display) {
@@ -338,6 +357,7 @@
                           }
                           break     
                         default:
+                          console.info(p)
                           window._default.push(p)
                       }
                     }
@@ -357,10 +377,12 @@
           food.addEventListener('click', poiButtonsHandler)
           landmarks.addEventListener('click', poiButtonsHandler)
           restrooms.addEventListener('click', poiButtonsHandler)
+          mileMarkers.addEventListener('click', poiButtonsHandler)
         } catch (e) {
           console.error(e)
         }
       }
+      
       function poiButtonsHandler(e) {
         e.preventDefault()
         e.stopPropagation()
