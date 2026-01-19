@@ -384,8 +384,14 @@ div#searchResults > ul.searchResults:before {
   margin-left: -15px;
 }
 
+div#poiTypes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .poiButtons {
-  margin-bottom: 1em;
+  margin-bottom: 0em;
   text-align: center;
 }
 
@@ -505,6 +511,39 @@ span#landmarks:before {
 }
 
 span#landmarks {
+  cursor: pointer;
+  border-radius: 10px;
+  padding-top: 5px;
+  padding-bottom: 1px;
+  padding-right: 5px;
+  padding-left: 4px;
+  margin-bottom: 1em;
+  margin-right: .25em;
+  font-size: .75em;
+  display: none;
+  white-space: nowrap;
+}
+
+.mileMarkers {
+  background-color: royalblue;
+  border: 1px solid white;
+}
+
+.mileMarkersOn {
+  background-color: royalblue;
+  font-weight: 500;
+  border: 1px solid black;
+}
+
+span#mileMarkers:before {
+  content: url('/i/mileMarker.png');
+  zoom: 17%;
+  vertical-align: sub;
+  padding-left: .24em;
+  padding-right: .24em;
+}
+
+span#mileMarkers {
   cursor: pointer;
   border-radius: 10px;
   padding-top: 5px;
