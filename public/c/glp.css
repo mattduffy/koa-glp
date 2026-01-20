@@ -400,10 +400,11 @@ div#poiTypes {
   background-color: #62C8EF;
   border: 1px solid white;
 }
+
 .accessOn {
-  /*background-color: lightgoldenrodyellow;*/
   background-color: #62C8EF;
   font-weight: 500;
+  color: white;
   border: 1px solid black;
 }
 
@@ -429,14 +430,13 @@ span#access {
 }
 
 .food {
-  /*background-color: lightgreen;*/
   background-color: #FD9F59;
   border: 1px solid white;
 }
 .foodOn {
-  /*background-color: palegreen;*/
   background-color: #FD9F59;
   font-weight: 500;
+  color: white;
   border: 1px solid black;
 }
 
@@ -469,6 +469,7 @@ span#food {
 .restroomsOn {
   background-color: #9F69D7;
   font-weight: 500;
+  color: white;
   border: 1px solid black;
 }
 
@@ -500,6 +501,7 @@ span#restrooms {
 .landmarksOn {
   background-color: pink;
   font-weight: 500;
+  color: white;
   border: 1px solid black;
 }
 
@@ -532,6 +534,7 @@ span#landmarks {
 .mileMarkersOn {
   background-color: royalblue;
   font-weight: 500;
+  color: white;
   border: 1px solid black;
 }
 
