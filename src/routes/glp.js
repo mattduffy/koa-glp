@@ -518,7 +518,8 @@ router.get('poiList', '/pois/list', hasFlash, addIpToSession, async (ctx) => {
     const s = (ctx.request.query?.s !== undefined)
       ? Math.abs(parseInt(sanitize(ctx.request.query.s), 10))
       : 1
-    const num = 12
+    // const num = 12
+    const num = 30
     const offset = (s === 1) ? 0 : (s - 1) * num
     const skipBack = (s <= 1) ? 0 : s - 1
     const skipForward = s + 1
@@ -536,7 +537,8 @@ router.get('poiList', '/pois/list', hasFlash, addIpToSession, async (ctx) => {
       const dialect = 2
       const optsPois = {
         SORTBY: {
-          BY: 'id',
+          // BY: 'id',
+          BY: 'type',
           DIRECTION: sortDir,
         },
         LIMIT: { from: offset, size: num },

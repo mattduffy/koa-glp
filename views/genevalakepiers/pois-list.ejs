@@ -58,6 +58,7 @@
                 id: poi.extra_attributes['$'].properties.id,
                 placeId: poi.extra_attributes['$'].properties.placeId,
                 name: poi.extra_attributes['$'].properties.name,
+                type: poi.extra_attributes['$'].properties.type,
               },
             }
           }
@@ -66,12 +67,12 @@
         }
         console.log(p)
       %>
-        <li><a 
+        <li><%= p.value.properties.type %> - <a 
             href="/edit/poi/<%= encodeURI(p.value.properties.placeId) %>"
             data-id="<%= encodeURI((p.value.properties.id + '').padStart(3, 0)) %>"
             data-placeId="<%= p.value.properties.placeId %>"><%=
               p.value.properties.name
-            %></a></li>
+              %></a></li>
       <% }) %>
     </ul>
     <script nonce="<%= nonce %>">
