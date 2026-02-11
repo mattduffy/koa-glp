@@ -411,8 +411,9 @@ div#poiTypes {
 span#access:before {
   content: url('/i/access.png');
   zoom: 19%;
-  vertical-align: sub;
   padding-right: .24em;
+  position: relative;
+  top: -10px;
 }
 
 span#access {
@@ -443,9 +444,9 @@ span#access {
 span#food:before {
   content: url('/i/food.png');
   zoom: 19%;
-  vertical-align: sub;
   padding-right: .24em;
-}
+  position: relative;
+  top: -10px;}
 
 span#food {
   cursor: pointer;
@@ -476,8 +477,9 @@ span#food {
 span#restrooms:before {
   content: url('/i/restroom.png');
   zoom: 19%;
-  vertical-align: sub;
   padding-right: .24em;
+  position: relative;
+  top: -10px;
 }
 
 span#restrooms {
@@ -508,9 +510,9 @@ span#restrooms {
 span#landmarks:before {
   content: url('/i/landmark.png');
   zoom: 19%;
-  vertical-align: sub;
   padding-right: .24em;
-}
+  position: relative;
+  top: -10px;}
 
 span#landmarks {
   cursor: pointer;
@@ -541,10 +543,10 @@ span#landmarks {
 span#mileMarkers:before {
   content: url('/i/mileMarker.png');
   zoom: 17%;
-  vertical-align: sub;
   padding-left: .24em;
   padding-right: .24em;
-}
+  position: relative;
+  top: -10px;}
 
 span#mileMarkers {
   cursor: pointer;

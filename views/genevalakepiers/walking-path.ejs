@@ -49,19 +49,19 @@
     </p>
     <div id="poiTypes" class="poiButtons">
       <span id="restrooms" class="restrooms" data-type='restrooms' data-n=0>Restrooms 
-        <span></span>
+        <span style="margin-left: .25em;"></span>
       </span>
       <span id="access" class="access" data-type='access' data-n=0>Access 
-        <span></span>
+        <span style="margin-left: .25em;"></span>
       </span>
       <span id="food" class="food" data-type='food' data-n=0>Food 
-        <span></span>
+        <span style="margin-left: .25em;"></span>
       </span>
       <span id="landmarks" class="landmarks" data-type='landmarks' data-n=0>Landmarks 
-        <span></span>
+        <span style="margin-left: .25em;"></span>
       </span>
       <span id="mileMarkers" class="mileMarkers mileMarkersOn" data-type='mileMarkers' data-n=0>Mile Markers
-        <span></span>
+        <span style="margin-left: .25em;"></span>
       </span>
     </div>
   </section>
@@ -235,7 +235,7 @@
           })
           const miles = document.querySelector("span[data-type='mileMarkers']")
           if (!miles.style.display) {
-            miles.style.display = 'inline'
+            miles.style.display = 'flex'
             miles.firstElementChild.textContent = 1
           } else {
             miles.firstElementChild.textContent = (Number.parseInt(
@@ -313,7 +313,7 @@
                           window._access.push(p)
                           access.dataset.n = parseInt(access.dataset.n) + 1
                           if (!access.style.display) {
-                            access.style.display = 'inline'
+                            access.style.display = 'flex'
                             access.firstElementChild.textContent = 1
                           } else {
                             access.firstElementChild.textContent = (Number.parseInt(
@@ -325,7 +325,7 @@
                           food.dataset.n = parseInt(food.dataset.n) + 1
                           window._food.push(p)
                           if (!food.style.display) {
-                            food.style.display = 'inline'
+                            food.style.display = 'flex'
                             food.firstElementChild.textContent = 1
                           } else {
                             food.firstElementChild.textContent = (Number.parseInt(
@@ -337,7 +337,7 @@
                           landmarks.dataset.n = parseInt(landmarks.dataset.n) + 1
                           window._landmarks.push(p)
                           if (!landmarks.style.display) {
-                            landmarks.style.display = 'inline'
+                            landmarks.style.display = 'flex'
                             landmarks.firstElementChild.textContent = 1
                           } else {
                             landmarks.firstElementChild.textContent = (Number.parseInt(
@@ -349,7 +349,7 @@
                           restrooms.dataset.n = parseInt(restrooms.dataset.n) + 1
                           window._restrooms.push(p)
                           if (!restrooms.style.display) {
-                            restrooms.style.display = 'inline'
+                            restrooms.style.display = 'flex'
                             restrooms.firstElementChild.textContent = 1
                           } else {
                             restrooms.firstElementChild.textContent = (Number.parseInt(
