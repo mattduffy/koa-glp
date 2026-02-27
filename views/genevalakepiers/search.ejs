@@ -206,7 +206,6 @@
             addressesResultsList.setAttribute('aria-label', 'Addresses:')
             addressesResultsList.classList.add('searchResults', 'addressesResults')
             const addresses = json.addresses.documents || json.addresses.results
-            // json.addresses.documents.forEach((a) => {
             addresses.forEach((address) => {
               let a
               if (address.extra_attributes) {
@@ -222,7 +221,8 @@
               }
               console.log(a)
               const li = document.createElement('li')
-              const link = `<a href="<%= origin %>/pier/${a.value.pierNumber}">`
+              const id = a.value.pierNumber
+              const link = `<a href="<%= origin %>/pier/${a.value.pierNumber}" data-id="${id}">`
                 + `Pier ${a.value.pierNumber} - ${a.value.address}`
                 + '</a>'
               li.innerHTML = link
@@ -254,6 +254,7 @@
                 pierAnnotation.animates = true
                 pierAnnotation.selected = true
                 pierAnnotation.color = "#4B93E0"
+                pierAnnotation.data = { id: id }
                 pierAnnotation.callout = annotationCallout
                 annotations.push(pierAnnotation)
               }
@@ -266,7 +267,6 @@
             businessResultsList.setAttribute('aria-label', 'Businesses:')
             businessResultsList.classList.add('searchResults', 'businessResults')
             const businesses = json.businesses.documents || json.businesses.results
-            // json.businesses.documents.forEach((b) => {
             businesses.forEach((business) => {
               let b
               if (business.extra_attributes) {
@@ -281,7 +281,8 @@
                 b = business
               }
               const li = document.createElement('li')
-              const link = `<a href="<%= origin %>/pier/${b.value['pier']}">`
+              const id = b.value['pier']
+              const link = `<a href="<%= origin %>/pier/${b.value['pier']}" data-="${id}">`
                 + `Pier ${b.value['pier']} ${b.value.business}`
                 + '</a>'
               li.innerHTML = link
@@ -313,6 +314,7 @@
                 pierAnnotation.animates = true
                 pierAnnotation.selected = true
                 pierAnnotation.color = "#4B93E0"
+                pierAnnotation.data = { id: id }
                 pierAnnotation.callout = annotationCallout
                 annotations.push(pierAnnotation)
               }
@@ -325,7 +327,6 @@
             estateNameVssResultsList.setAttribute('aria-label', 'Estate Names:')
             estateNameVssResultsList.classList.add('searchResults', 'estateNameVssResults')
             const estateNamesVss = json.vss.documents || json.vss.results
-            // json.vss.documents.forEach((e) => {
             console.log(estateNamesVss)
             estateNamesVss.forEach((estate) => {
               console.log(estate)
@@ -342,7 +343,8 @@
                 e = estate
               }
               const li = document.createElement('li')
-              const link = `<a href="<%= origin %>/pier/${e.value['pier']}">`
+              const id = e.value['pier']
+              const link = `<a href="<%= origin %>/pier/${e.value['pier']}" data-id="${id}">`
                 + `Pier ${e.value['pier']} `
                 + `${(e.value.estateName) ? e.value.estateName: e.value.estateNameDM}`
                 + '</a>'
@@ -375,6 +377,7 @@
                 pierAnnotation.animates = true
                 pierAnnotation.selected = true
                 pierAnnotation.color = "#4B93E0"
+                pierAnnotation.data = { id: id }
                 pierAnnotation.callout = annotationCallout
                 annotations.push(pierAnnotation)
               }
@@ -388,7 +391,6 @@
             estateNameResultsList.setAttribute('aria-label', 'Estate Names:')
             estateNameResultsList.classList.add('searchResults', 'estateNameResults')
             const estateNames = json.estateNames.documents || json.estateNames.results
-            // json.estateNames.documents.forEach((e) => {
             console.log(estateNames)
             estateNames.forEach((estate) => {
               console.log(estate)
@@ -405,7 +407,8 @@
                 e = estate
               }
               const li = document.createElement('li')
-              const link = `<a href="<%= origin %>/pier/${e.value['pier']}">`
+              const id = e.value['pier']
+              const link = `<a href="<%= origin %>/pier/${e.value['pier']}" data-id="${id}">`
                 + `Pier ${e.value['pier']} `
                 + `${(e.value.estateName) ? e.value.estateName: e.value.estateNameDM}`
                 + '</a>'
@@ -438,6 +441,7 @@
                 pierAnnotation.animates = true
                 pierAnnotation.selected = true
                 pierAnnotation.color = "#4B93E0"
+                pierAnnotation.data = { id: id }
                 pierAnnotation.callout = annotationCallout
                 annotations.push(pierAnnotation)
               }
@@ -450,7 +454,6 @@
             pierFoodResultsList.setAttribute('aria-label', 'Piers with food:')
             pierFoodResultsList.classList.add('searchResults', 'pierFoodResults')
             const food = json.food.documents || json.food.results
-            // json.food.documents.forEach((p) => {
             food.forEach((food) => {
               let f
               if (food.extra_attributes) {
@@ -465,7 +468,8 @@
                 f = food
               }
               const li = document.createElement('li')
-              const link = `<a href="<%= origin %>/pier/${f.value.pier}">`
+              const id = f.value.pier
+              const link = `<a href="<%= origin %>/pier/${f.value.pier}" data-id="${id}">`
                 + `Pier ${f.value.pier} ${f.value.business}`
                 + '</a>'
               li.innerHTML = link
@@ -497,6 +501,7 @@
                 pierAnnotation.animates = true
                 pierAnnotation.selected = true
                 pierAnnotation.color = "#4B93E0"
+                pierAnnotation.data = { id: id }
                 pierAnnotation.callout = annotationCallout
                 annotations.push(pierAnnotation)
               }
@@ -509,7 +514,6 @@
             ownerNamesResultsList.setAttribute('aria-label', 'Family Names:')
             ownerNamesResultsList.classList.add('searchResults', 'ownerNamesResults')
             const ownerNames = json.ownerNames.documents || json.ownerNames.results
-            // json.ownerNames.documents.forEach((o) => {
             ownerNames.forEach((owner) => {
               let o
               if (owner.extra_attributes) {
@@ -526,7 +530,8 @@
               }
               const li = document.createElement('li')
               const name = `${o.value.firstname} ${o.value.lastname}`
-              const link = `<a href="<%= origin %>/pier/${o.value['pier']}">`
+              const id = o.value['pier']
+              const link = `<a href="<%= origin %>/pier/${o.value['pier']}" data-id="${id}">`
                 + `Pier ${o.value['pier']} ${name}`
                 + '</a>'
               li.innerHTML = link
@@ -558,6 +563,7 @@
                 pierAnnotation.animates = true
                 pierAnnotation.selected = true
                 pierAnnotation.color = "#4B93E0"
+                pierAnnotation.data = { id: id }
                 pierAnnotation.callout = annotationCallout
                 annotations.push(pierAnnotation)
               }
@@ -570,7 +576,6 @@
             pierNumberResultsList.setAttribute('aria-label', 'Pier Numbers:')
             pierNumberResultsList.classList.add('searchResults', 'pierNumberResults')
             const pierNumbers = json.pierNumbers.documents || json.pierNumbers.results
-            // json.pierNumbers.documents.forEach((p) => {
             pierNumbers.forEach((pierNumber) => {
               let p
               if (pierNumber.extra_attributes) {
@@ -584,7 +589,8 @@
                 p = pierNumber
               }
               const li = document.createElement('li')
-              const link = `<a href="<%= origin %>/pier/${p.value.pierNumber}">`
+              const id = p.value.pierNumber
+              const link = `<a href="<%= origin %>/pier/${p.value.pierNumber}" data-id="${id}">`
                 + `Pier ${p.value.pierNumber}`
                 + '</a>'
               li.innerHTML = link
@@ -616,6 +622,7 @@
                 pierAnnotation.animates = true
                 pierAnnotation.selected = true
                 pierAnnotation.color = "#4B93E0"
+                pierAnnotation.data = { id: id }
                 pierAnnotation.callout = annotationCallout
                 annotations.push(pierAnnotation)
               }
@@ -628,7 +635,6 @@
             pierPublicResultsList.setAttribute('aria-label', 'Public Piers:')
             pierPublicResultsList.classList.add('searchResults', 'pierPublicResults')
             const _public = json.public.documents || json.public.results
-            // json.public.documents.forEach((p) => {
             _public.forEach((_public) => {
               let p
               if (_public.extra_attributes) {
@@ -643,7 +649,8 @@
                 p = _public
               }
               const li = document.createElement('li')
-              const link = `<a href="<%= origin %>/pier/${p.value.pier}">`
+              const id = p.value.pier
+              const link = `<a href="<%= origin %>/pier/${p.value.pier}" data-id="${id}">`
                 + `Pier ${p.value.pier} ${p.value.firstname}`
                 + '</a>'
               li.innerHTML = link
@@ -675,6 +682,7 @@
                 pierAnnotation.animates = true
                 pierAnnotation.selected = true
                 pierAnnotation.color = "#4B93E0"
+                pierAnnotation.data = { id: id }
                 pierAnnotation.callout = annotationCallout
                 annotations.push(pierAnnotation)
               }
@@ -687,7 +695,6 @@
             associationsResultsList.setAttribute('aria-label', 'Associations:')
             associationsResultsList.classList.add('searchResults', 'associationsResults')
             const associations = json.associations.documents || json.associations.results
-            // json.associations.documents.forEach((a) => {
             associations.forEach((association) => {
               let a
               if (association.extra_attributes) {
@@ -702,7 +709,8 @@
                 a = association
               }
               const li = document.createElement('li')
-              const link = `<a href="<%= origin %>/pier/${a.value['pier']}">`
+              const id = a.value['pier']
+              const link = `<a href="<%= origin %>/pier/${a.value['pier']}" data-id="${id}">`
                 + `Pier ${a.value['pier']} ${a.value.association}`
                 + '</a>'
               li.innerHTML = link
@@ -734,6 +742,7 @@
                 pierAnnotation.animates = true
                 pierAnnotation.selected = true
                 pierAnnotation.color = "#4B93E0"
+                pierAnnotation.data = { id: id }
                 pierAnnotation.callout = annotationCallout
                 annotations.push(pierAnnotation)
               }
@@ -741,16 +750,26 @@
             searchResults.appendChild(associationsResultsList)
           }
           if (window.map) {
-            // console.log(window.map)
             if (annotations.length > 0) {
-              // console.log(annotations)
               if (window.map) {
                 window.map.showItems(annotations?.reverse())
+                 document.querySelectorAll('a[data-id]').forEach((a) => {
+                   a.addEventListener('mouseover', linkAnnotationHandler)
+                 })
               }
             }
-            // await annotateSearchResults(searchResults)
           }
         }
+      }
+      
+    }
+    function linkAnnotationHandler(e) {
+      e.preventDefault()
+      e.stopPropagation()
+      const pierId = e.target.dataset.id
+      const annotation = window.map.annotations.find((a) => a.data.id === pierId)
+      if (annotation) {
+        annotation.selected = true
       }
     }
   </script>
