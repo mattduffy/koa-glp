@@ -53,7 +53,8 @@
         window.map.annotations = []
         annotations.length = 0
         document.querySelector('div#searchResults').innerHTML = ''
-        history.back()
+        // history.back()
+        history.replaceState(null, '', '/')
       }
     })
     search.addEventListener('submit', await doSearch)
