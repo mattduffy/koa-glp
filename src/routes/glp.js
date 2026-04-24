@@ -10,7 +10,7 @@ import path from 'node:path'
 import Router from '@koa/router'
 import { ulid } from 'ulid'
 import * as transformers from '@xenova/transformers'
-import { Albums } from '@mattduffy/albums/Albums'
+// import { Albums } from '@mattduffy/albums/Albums'
 import {
   FT_AGGREGATE_GROUP_BY_REDUCERS as AggregateGroupByReducers,
   FT_AGGREGATE_STEPS as AggregateSteps,
@@ -1687,53 +1687,53 @@ router.post(
   },
 )
 
-router.get('galleries', '/galleries', hasFlash, addIpToSession, async (ctx) => {
-  const log = glpLog.extend('galleries')
-  const error = glpError.extend('galleries')
-  log('inside index router: /galleries')
-  ctx.status = 200
-  let recent10
-  try {
-    recent10 = await Albums.recentlyAdded(redis)
-  } catch (e) {
-    error(e)
-  }
-  log('recent10: ', recent10)
-  if (recent10?.length < 1) {
-    recent10 = [
-      { name: 'one' },
-      { name: 'two' },
-      { name: 'three' },
-      { name: 'four' },
-      { name: 'five' },
-      { name: 'six' },
-      { name: 'seven' },
-    ]
-  }
-  let userAlbums
-  try {
-    userAlbums = await Albums.usersWithPublicAlbums(ctx.state.mongodb.client.db())
-  } catch (e) {
-    error(e)
-  }
-  if (userAlbums?.length < 1) {
-    userAlbums = [
-      { ownerUsername: '@user1', url: '/@user1' },
-      { ownerUsername: '@user1', url: '/@user1' },
-      { ownerUsername: '@user1', url: '/@user1' },
-    ]
-  }
-  log('userAlbums: ', userAlbums)
-  await ctx.render('galleries', {
-    recent10,
-    userAlbums,
-    body: ctx.body,
-    flash: ctx.flash?.galleries ?? {},
-    title: `${ctx.app.site}: Galleries`,
-    sessionUser: ctx.state.sessionUser,
-    isAuthenticated: ctx.state.isAuthenticated,
-  })
-})
+// router.get('galleries', '/galleries', hasFlash, addIpToSession, async (ctx) => {
+//   const log = glpLog.extend('galleries')
+//   const error = glpError.extend('galleries')
+//   log('inside index router: /galleries')
+//   ctx.status = 200
+//   let recent10
+//   try {
+//     recent10 = await Albums.recentlyAdded(redis)
+//   } catch (e) {
+//     error(e)
+//   }
+//   log('recent10: ', recent10)
+//   if (recent10?.length < 1) {
+//     recent10 = [
+//       { name: 'one' },
+//       { name: 'two' },
+//       { name: 'three' },
+//       { name: 'four' },
+//       { name: 'five' },
+//       { name: 'six' },
+//       { name: 'seven' },
+//     ]
+//   }
+//   let userAlbums
+//   try {
+//     userAlbums = await Albums.usersWithPublicAlbums(ctx.state.mongodb.client.db())
+//   } catch (e) {
+//     error(e)
+//   }
+//   if (userAlbums?.length < 1) {
+//     userAlbums = [
+//       { ownerUsername: '@user1', url: '/@user1' },
+//       { ownerUsername: '@user1', url: '/@user1' },
+//       { ownerUsername: '@user1', url: '/@user1' },
+//     ]
+//   }
+//   log('userAlbums: ', userAlbums)
+//   await ctx.render('galleries', {
+//     recent10,
+//     userAlbums,
+//     body: ctx.body,
+//     flash: ctx.flash?.galleries ?? {},
+//     title: `${ctx.app.site}: Galleries`,
+//     sessionUser: ctx.state.sessionUser,
+//     isAuthenticated: ctx.state.isAuthenticated,
+//   })
+// })
 
 router.get('about', '/about', hasFlash, addIpToSession, async (ctx) => {
   const log = glpLog.extend('about')
