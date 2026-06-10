@@ -120,7 +120,11 @@
         window.map = new mapkit.Map('map', opts)
         window.map.region = genevaBay
       }
-      await main()
+      try {
+        await main()
+      } catch (e) {
+        console.log(e)
+      }
 
       async function showAllPiers() {
         try {
