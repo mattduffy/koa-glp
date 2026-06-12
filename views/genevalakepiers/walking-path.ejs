@@ -157,316 +157,320 @@
         window.map.region = window.genevaBay
         window.map.cameraDistance = window.cameraDistance
       }
-      await main()
-      const annotations = []
-
-      async function showWalkingPath() {
-        try {
-          const opts = {
-            method: 'GET',
-            headers: {
-              Accept: 'application/json',
-              Authorization: `Bearer ${jwtAccess}`,
-            },
-          }
-        const request = new Request(`${origin}/mapkit/walking-path`, opts)
-          const response = await (await fetch(request)).json()
-          // console.log(response)
-          window.mapkit.importGeoJSON(response, {
-            itemForFeature: (overlay, geoJSON) => {
-              overlay.style = new window.mapkit.Style({
-                lineWidth: 1.5,
-                lineJoin: "round",
-                lineDash: [],
-                strokeColor: "royalblue",
-              })
-              return overlay
-            },
-            geoJSONDidComplete: overlays => {
-              window.map.showItems(overlays)
-              window.map.cameraDistance = window.cameraDistance
-              window.map.region = window.genevaBay
-            },
-          })
-        } catch (e) {
-          console.error(e)
-        }
-        await showWalkingPathMileMarkers()
-      }
-      await showWalkingPath()
-
-      // window._mileMarkers = []
-      async function showWalkingPathMileMarkers() {
+      try {
+        await main()
         const annotations = []
-        const miles = <%- JSON.stringify(mileMarkers) %>
-        miles.forEach((mile) => {
-          let m
-          if (mile.extra_attributes) {
-            m = {
-              value: JSON.parse(mile.extra_attributes.$),
-            }
-          } else {
-            m = mile
-          }
-          console.log(m.value.properties.name, m.value.properties.waypoint)
-          let [lon, lat] = m.value.geometry.coordinates
-          lon = parseFloat(lon, 10)
-          lat = parseFloat(lat, 10)
-          const coordinate = new mapkit.Coordinate(lat, lon)
-          const annotationCallout = {
-            calloutLeftAccessoryForAnnotations: () => {
-              const accessoryViewLeft = document.createElement("div")
 
-              return accessoryViewLeft
-            },
-            calloutRightAccessoryForAnnotation: () => {
-               const accessoryViewRight = document.createElement('div')
-               return accessoryViewRight
+        async function showWalkingPath() {
+          try {
+            const opts = {
+              method: 'GET',
+              headers: {
+                Accept: 'application/json',
+                Authorization: `Bearer ${jwtAccess}`,
+              },
             }
+          const request = new Request(`${origin}/mapkit/walking-path`, opts)
+            const response = await (await fetch(request)).json()
+            // console.log(response)
+            window.mapkit.importGeoJSON(response, {
+              itemForFeature: (overlay, geoJSON) => {
+                overlay.style = new window.mapkit.Style({
+                  lineWidth: 1.5,
+                  lineJoin: "round",
+                  lineDash: [],
+                  strokeColor: "royalblue",
+                })
+                return overlay
+              },
+              geoJSONDidComplete: overlays => {
+                window.map.showItems(overlays)
+                window.map.cameraDistance = window.cameraDistance
+                window.map.region = window.genevaBay
+              },
+            })
+          } catch (e) {
+            console.error(e)
           }
-          const annotation  = new mapkit.MarkerAnnotation(coordinate, {
-            title: m.value.properties.name,
-            subtitle: '',
-            animates: true,
-            selected: false,
-            color: 'royalblue',
-            callout: annotationCallout,
-            data: { type: 'mileMarker' }, 
-          })
-          const miles = document.querySelector("span[data-type='mileMarkers']")
-          if (!miles.style.display) {
-            miles.style.display = 'flex'
-            miles.firstElementChild.textContent = 1
-          } else {
-            miles.firstElementChild.textContent = (Number.parseInt(
-              miles.firstElementChild.textContent, 10) + 1)
-          }
-          annotations.push(annotation)
-        })
-        window._mileMarkers = [...annotations]
-        window.map.showItems(annotations.reverse())
-        window.map.cameraDistance = window.cameraDistance
-        window.map.region = window.genevaBay
-        await showPointsOfInterest()
-      }
-      window._access = []
-      window._food = []
-      window._restrooms = []
-      window._landmarks = []
-      window._default = []
-      async function showPointsOfInterest() {
-        try {
-          const opts = {
-            method: 'GET',
-            headers: {
-              Accept: 'application/json',
-              Authorization: `Bearer ${jwtAccess}`,
-            },
-          }
-          const request = new Request(`${origin}/mapkit/walking-path-pois`, opts)
-          const response = await (await fetch(request)).json()
-          // console.log(response)
-          const access = document.querySelector("span[data-type='access']")
-          const food = document.querySelector("span[data-type='food']")
-          const landmarks = document.querySelector("span[data-type='landmarks']")
-          const restrooms = document.querySelector("span[data-type='restrooms']")
-          const mileMarkers = document.querySelector("span[data-type='mileMarkers']")
-          response.documents.forEach((m) => {
-            // console.log('m', m)
+          await showWalkingPathMileMarkers()
+        }
+        await showWalkingPath()
+
+        // window._mileMarkers = []
+        async function showWalkingPathMileMarkers() {
+          const annotations = []
+          const miles = <%- JSON.stringify(mileMarkers) %>
+          miles.forEach((mile) => {
+            let m
+            if (mile.extra_attributes) {
+              m = {
+                value: JSON.parse(mile.extra_attributes.$),
+              }
+            } else {
+              m = mile
+            }
+            console.log(m.value.properties.name, m.value.properties.waypoint)
             let [lon, lat] = m.value.geometry.coordinates
             lon = parseFloat(lon, 10)
             lat = parseFloat(lat, 10)
-            let places = []
-            if (lat !== 0 && lon !== 0) {
-              if (m.value.properties?.placeId && m.value.properties.placeId !== '') {
-                const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
-                place.getPlace(
-                  m.value.properties.placeId,
-                  function(error, data) {
-                    if (error) {
-                      console.warn(error)
-                      console.warn(m.value.properties.placeId)
-                    }
-                    if (data) {
-                      // console.log('data', data)
-                      if (m.value.properties.name) {
-                        data.name = m.value.properties.name
-                      }
-                      if (m.value.properties.tel) {
-                        data.telephone = m.value.properties.tel
-                      }
-                      if (m.value.properties.url) {
-                        data.urls[0] = m.value.properties.url
-                      }
-                      if (m.value.properties.type !== data.pointOfInterestCategory) {
-                        data.pointOfInterestCategory = m.value.properties.type
-                      }
-                      // console.log('data improved', data)
-                      const p = new window.mapkit.PlaceAnnotation(data)
-                      const accessory = new mapkit.PlaceSelectionAccessory()
-                      p.selectionAccessory = accessory
-                      // console.log('p', p)
-                      // window.map.addItems([p])
-                      switch (m.value.properties.type) {
-                        case 'Access':
-                          p.data = { type: 'access' }
-                          window._access.push(p)
-                          access.dataset.n = parseInt(access.dataset.n) + 1
-                          if (!access.style.display) {
-                            access.style.display = 'flex'
-                            access.firstElementChild.textContent = 1
-                          } else {
-                            access.firstElementChild.textContent = (Number.parseInt(
-                              access.firstElementChild.textContent, 10) + 1)
-                          }
-                          break     
-                        case 'Food':
-                          p.data = { type: 'food' }
-                          food.dataset.n = parseInt(food.dataset.n) + 1
-                          window._food.push(p)
-                          if (!food.style.display) {
-                            food.style.display = 'flex'
-                            food.firstElementChild.textContent = 1
-                          } else {
-                            food.firstElementChild.textContent = (Number.parseInt(
-                              food.firstElementChild.textContent, 10) + 1)
-                          }
-                          break     
-                        case 'Landmark':
-                          p.data = { type: 'landmark' }
-                          landmarks.dataset.n = parseInt(landmarks.dataset.n) + 1
-                          window._landmarks.push(p)
-                          if (!landmarks.style.display) {
-                            landmarks.style.display = 'flex'
-                            landmarks.firstElementChild.textContent = 1
-                          } else {
-                            landmarks.firstElementChild.textContent = (Number.parseInt(
-                              landmarks.firstElementChild.textContent, 10) + 1)
-                          }
-                          break     
-                        case 'Restroom':
-                          p.data = { type: 'restroom' }
-                          restrooms.dataset.n = parseInt(restrooms.dataset.n) + 1
-                          window._restrooms.push(p)
-                          if (!restrooms.style.display) {
-                            restrooms.style.display = 'flex'
-                            restrooms.firstElementChild.textContent = 1
-                          } else {
-                            restrooms.firstElementChild.textContent = (Number.parseInt(
-                              restrooms.firstElementChild.textContent, 10) + 1)
-                          }
-                          break     
-                        default:
-                          console.info(p)
-                          window._default.push(p)
-                      }
-                    }
-                    const buttons = document.querySelectorAll('span[data-n]')
-                    Array.from(buttons).sort((a, b) => {
-                      // console.log(a.dataset.n, b.dataset.n)
-                      return parseInt(a.dataset.n) < parseInt(b.dataset.n)
-                    }).forEach((b) => {
-                      buttons[0].parentElement.appendChild(b)
-                    })
-                  }
-                )
-              }
-            }
-          })
-          access.addEventListener('click', poiButtonsHandler)
-          food.addEventListener('click', poiButtonsHandler)
-          landmarks.addEventListener('click', poiButtonsHandler)
-          restrooms.addEventListener('click', poiButtonsHandler)
-          mileMarkers.addEventListener('click', poiButtonsHandler)
-        } catch (e) {
-          console.error(e)
-        }
-      }
-      
-      function poiButtonsHandler(e) {
-        e.preventDefault()
-        e.stopPropagation()
-        let _target
-        // console.log(e.target) 
-        if (e.target?.dataset.n) {
-          _target = e.target
-        } else {
-          _target = e.target.parentElement
-        }
-        if (!_target.classList.contains(`${_target.dataset.type}On`)) {
-          _target.classList.add(`${_target.dataset.type}On`)
-          window.map.addItems(window[`_${_target.dataset.type}`])
-        } else {
-          _target.classList.remove(`${_target.dataset.type}On`)
-          window.map.removeAnnotations(window[`_${_target.dataset.type}`])
-        }
-      }
-      window.map.addEventListener("single-tap", async (e) => {
-        e.preventDefault()
-        e.stopPropagation()
-        // window._map.annotations.forEach(a => a.selected = false)
-        window.map.annotations.forEach(a => a.selected = false)
-        const {latitude, longitude} = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
-        const defaultRadius = 50
-        const defaultUnits = 'ft'
-        console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: `
-          + `${longitude}, ${latitude}`)
-        const results = await (
-          await fetch(
-            `${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`
-          )
-        ).json()
-        console.log(results)
-        if (results?.total > 0) {
-          results.documents.forEach((p) => {
-            console.log(
-              `${p.value.pier}, ${p.value.coords}, ${p.value.estateName}, `
-              + `${p.value.business}, ${p.value.association}`
-            )
-            let subtitle = ' '
-            if (p.value.business !== '' && p.value.association === '') {
-              subtitle = p.value.business
-            }
-            if (p.value.association !== '' && p.value.business === '') {
-              subtitle = p.value.association
-            }
-            if (p.value.firstname !== '' && p.value.lastname !== '') {
-              subtitle = `${p.value.firstname} ${p.value.lastname}`
-            }
-            if (p.value.firstname !== '' && p.value.lastname === '') {
-              subtitle = p.value.firstname
-            }
-            if (p.value.firstname === '' && p.value.lastname !== '') {
-              subtitle = p.value.lastname
-            }
-            if (p.value.estateName !== '') subtitle = p.value.estateName
-            console.info(`subtitle: ${subtitle}`)
+            const coordinate = new mapkit.Coordinate(lat, lon)
             const annotationCallout = {
-              calloutLeftAccessoryForAnnotation: () => {
+              calloutLeftAccessoryForAnnotations: () => {
                 const accessoryViewLeft = document.createElement("div")
+
                 return accessoryViewLeft
               },
               calloutRightAccessoryForAnnotation: () => {
-                const accessoryViewRight = document.createElement("a")
-                accessoryViewRight.className = "right-accessory-view"
-                accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
-                accessoryViewRight.target = "_self"
-                accessoryViewRight.textContent = "\u{24D8}"
-                return accessoryViewRight
+                 const accessoryViewRight = document.createElement('div')
+                 return accessoryViewRight
               }
             }
-            const pierMarker = new window.mapkit.Coordinate(latitude, longitude)
-            const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
-            pierAnnotation.title = `Pier ${p.value.pier}`
-            pierAnnotation.subtitle = subtitle 
-            pierAnnotation.animates = true
-            pierAnnotation.selected = true
-            pierAnnotation.color = "#4B93E0"
-            pierAnnotation.callout = annotationCallout
-            window.map.addAnnotation(pierAnnotation)
+            const annotation  = new mapkit.MarkerAnnotation(coordinate, {
+              title: m.value.properties.name,
+              subtitle: '',
+              animates: true,
+              selected: false,
+              color: 'royalblue',
+              callout: annotationCallout,
+              data: { type: 'mileMarker' }, 
+            })
+            const miles = document.querySelector("span[data-type='mileMarkers']")
+            if (!miles.style.display) {
+              miles.style.display = 'flex'
+              miles.firstElementChild.textContent = 1
+            } else {
+              miles.firstElementChild.textContent = (Number.parseInt(
+                miles.firstElementChild.textContent, 10) + 1)
+            }
+            annotations.push(annotation)
           })
+          window._mileMarkers = [...annotations]
+          window.map.showItems(annotations.reverse())
+          window.map.cameraDistance = window.cameraDistance
+          window.map.region = window.genevaBay
+          await showPointsOfInterest()
         }
-      })
+        window._access = []
+        window._food = []
+        window._restrooms = []
+        window._landmarks = []
+        window._default = []
+        async function showPointsOfInterest() {
+          try {
+            const opts = {
+              method: 'GET',
+              headers: {
+                Accept: 'application/json',
+                Authorization: `Bearer ${jwtAccess}`,
+              },
+            }
+            const request = new Request(`${origin}/mapkit/walking-path-pois`, opts)
+            const response = await (await fetch(request)).json()
+            // console.log(response)
+            const access = document.querySelector("span[data-type='access']")
+            const food = document.querySelector("span[data-type='food']")
+            const landmarks = document.querySelector("span[data-type='landmarks']")
+            const restrooms = document.querySelector("span[data-type='restrooms']")
+            const mileMarkers = document.querySelector("span[data-type='mileMarkers']")
+            response.documents.forEach((m) => {
+              // console.log('m', m)
+              let [lon, lat] = m.value.geometry.coordinates
+              lon = parseFloat(lon, 10)
+              lat = parseFloat(lat, 10)
+              let places = []
+              if (lat !== 0 && lon !== 0) {
+                if (m.value.properties?.placeId && m.value.properties.placeId !== '') {
+                  const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
+                  place.getPlace(
+                    m.value.properties.placeId,
+                    function(error, data) {
+                      if (error) {
+                        console.warn(error)
+                        console.warn(m.value.properties.placeId)
+                      }
+                      if (data) {
+                        // console.log('data', data)
+                        if (m.value.properties.name) {
+                          data.name = m.value.properties.name
+                        }
+                        if (m.value.properties.tel) {
+                          data.telephone = m.value.properties.tel
+                        }
+                        if (m.value.properties.url) {
+                          data.urls[0] = m.value.properties.url
+                        }
+                        if (m.value.properties.type !== data.pointOfInterestCategory) {
+                          data.pointOfInterestCategory = m.value.properties.type
+                        }
+                        // console.log('data improved', data)
+                        const p = new window.mapkit.PlaceAnnotation(data)
+                        const accessory = new mapkit.PlaceSelectionAccessory()
+                        p.selectionAccessory = accessory
+                        // console.log('p', p)
+                        // window.map.addItems([p])
+                        switch (m.value.properties.type) {
+                          case 'Access':
+                            p.data = { type: 'access' }
+                            window._access.push(p)
+                            access.dataset.n = parseInt(access.dataset.n) + 1
+                            if (!access.style.display) {
+                              access.style.display = 'flex'
+                              access.firstElementChild.textContent = 1
+                            } else {
+                              access.firstElementChild.textContent = (Number.parseInt(
+                                access.firstElementChild.textContent, 10) + 1)
+                            }
+                            break     
+                          case 'Food':
+                            p.data = { type: 'food' }
+                            food.dataset.n = parseInt(food.dataset.n) + 1
+                            window._food.push(p)
+                            if (!food.style.display) {
+                              food.style.display = 'flex'
+                              food.firstElementChild.textContent = 1
+                            } else {
+                              food.firstElementChild.textContent = (Number.parseInt(
+                                food.firstElementChild.textContent, 10) + 1)
+                            }
+                            break     
+                          case 'Landmark':
+                            p.data = { type: 'landmark' }
+                            landmarks.dataset.n = parseInt(landmarks.dataset.n) + 1
+                            window._landmarks.push(p)
+                            if (!landmarks.style.display) {
+                              landmarks.style.display = 'flex'
+                              landmarks.firstElementChild.textContent = 1
+                            } else {
+                              landmarks.firstElementChild.textContent = (Number.parseInt(
+                                landmarks.firstElementChild.textContent, 10) + 1)
+                            }
+                            break     
+                          case 'Restroom':
+                            p.data = { type: 'restroom' }
+                            restrooms.dataset.n = parseInt(restrooms.dataset.n) + 1
+                            window._restrooms.push(p)
+                            if (!restrooms.style.display) {
+                              restrooms.style.display = 'flex'
+                              restrooms.firstElementChild.textContent = 1
+                            } else {
+                              restrooms.firstElementChild.textContent = (Number.parseInt(
+                                restrooms.firstElementChild.textContent, 10) + 1)
+                            }
+                            break     
+                          default:
+                            console.info(p)
+                            window._default.push(p)
+                        }
+                      }
+                      const buttons = document.querySelectorAll('span[data-n]')
+                      Array.from(buttons).sort((a, b) => {
+                        // console.log(a.dataset.n, b.dataset.n)
+                        return parseInt(a.dataset.n) < parseInt(b.dataset.n)
+                      }).forEach((b) => {
+                        buttons[0].parentElement.appendChild(b)
+                      })
+                    }
+                  )
+                }
+              }
+            })
+            access.addEventListener('click', poiButtonsHandler)
+            food.addEventListener('click', poiButtonsHandler)
+            landmarks.addEventListener('click', poiButtonsHandler)
+            restrooms.addEventListener('click', poiButtonsHandler)
+            mileMarkers.addEventListener('click', poiButtonsHandler)
+          } catch (e) {
+            console.error(e)
+          }
+        }
+        
+        function poiButtonsHandler(e) {
+          e.preventDefault()
+          e.stopPropagation()
+          let _target
+          // console.log(e.target) 
+          if (e.target?.dataset.n) {
+            _target = e.target
+          } else {
+            _target = e.target.parentElement
+          }
+          if (!_target.classList.contains(`${_target.dataset.type}On`)) {
+            _target.classList.add(`${_target.dataset.type}On`)
+            window.map.addItems(window[`_${_target.dataset.type}`])
+          } else {
+            _target.classList.remove(`${_target.dataset.type}On`)
+            window.map.removeAnnotations(window[`_${_target.dataset.type}`])
+          }
+        }
+        window.map.addEventListener("single-tap", async (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          // window._map.annotations.forEach(a => a.selected = false)
+          window.map.annotations.forEach(a => a.selected = false)
+          const {latitude, longitude} = window.map.convertPointOnPageToCoordinate(e.pointOnPage)
+          const defaultRadius = 50
+          const defaultUnits = 'ft'
+          console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: `
+            + `${longitude}, ${latitude}`)
+          const results = await (
+            await fetch(
+              `${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`
+            )
+          ).json()
+          console.log(results)
+          if (results?.total > 0) {
+            results.documents.forEach((p) => {
+              console.log(
+                `${p.value.pier}, ${p.value.coords}, ${p.value.estateName}, `
+                + `${p.value.business}, ${p.value.association}`
+              )
+              let subtitle = ' '
+              if (p.value.business !== '' && p.value.association === '') {
+                subtitle = p.value.business
+              }
+              if (p.value.association !== '' && p.value.business === '') {
+                subtitle = p.value.association
+              }
+              if (p.value.firstname !== '' && p.value.lastname !== '') {
+                subtitle = `${p.value.firstname} ${p.value.lastname}`
+              }
+              if (p.value.firstname !== '' && p.value.lastname === '') {
+                subtitle = p.value.firstname
+              }
+              if (p.value.firstname === '' && p.value.lastname !== '') {
+                subtitle = p.value.lastname
+              }
+              if (p.value.estateName !== '') subtitle = p.value.estateName
+              console.info(`subtitle: ${subtitle}`)
+              const annotationCallout = {
+                calloutLeftAccessoryForAnnotation: () => {
+                  const accessoryViewLeft = document.createElement("div")
+                  return accessoryViewLeft
+                },
+                calloutRightAccessoryForAnnotation: () => {
+                  const accessoryViewRight = document.createElement("a")
+                  accessoryViewRight.className = "right-accessory-view"
+                  accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
+                  accessoryViewRight.target = "_self"
+                  accessoryViewRight.textContent = "\u{24D8}"
+                  return accessoryViewRight
+                }
+              }
+              const pierMarker = new window.mapkit.Coordinate(latitude, longitude)
+              const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+              pierAnnotation.title = `Pier ${p.value.pier}`
+              pierAnnotation.subtitle = subtitle 
+              pierAnnotation.animates = true
+              pierAnnotation.selected = true
+              pierAnnotation.color = "#4B93E0"
+              pierAnnotation.callout = annotationCallout
+              window.map.addAnnotation(pierAnnotation)
+            })
+          }
+        })
+      } catch (e) {
+        console.log(e)
+      }
     </script>
   </section>
 </article>

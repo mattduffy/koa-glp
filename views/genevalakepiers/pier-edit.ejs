@@ -570,8 +570,11 @@
             source: propertyValueSource.value ?? null,
             link: propertyValueLink.value ?? null,
           }
-          pier.property.value = value 
+          // console.log('value:', value)
+          property.value = value 
+          // console.log('property:', property)
           pier.property = property
+          // console.log('pier:', pier)
           const owners = []
           const ownerNodes = document.querySelectorAll('div.editOwner')
           ownerNodes.forEach((o) => {
@@ -836,107 +839,110 @@
         window._map.region = genevaCenter
         window._map.cameraDistance = window.cameraDistance
       }
-      await main()
+      try {
+        await main()
+        let pierNumber = '<%= pier.pier %>'
+        let coords = '<%= pier.loc %>'
+        let [lon, lat] = coords.split(',')
+        lon = parseFloat(lon, 10)
+        lat = parseFloat(lat, 10)
 
-      let pierNumber = '<%= pier.pier %>'
-      let coords = '<%= pier.loc %>'
-      let [lon, lat] = coords.split(',')
-      lon = parseFloat(lon, 10)
-      lat = parseFloat(lat, 10)
-
-      async function showThisPier() {
-        const annotations = []
-        if (lat !== 0 && lon !== 0) {
-          console.log(`(lat, lon): ${lat}, ${lon}`)
-          const pierMarker = new window.mapkit.Coordinate(lat, lon)
-          const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
-          pierAnnotation.title = `Pier ${pierNumber}`
-          annotations.push(pierAnnotation)
-        }
-        if (annotations.length > 0) {
-          // console.dir(annotations, { depth: null })
-          window._map.showItems(annotations)
-        }
-      }
-      await showThisPier()
-      let selectCoordsMarker = null
-      window._map.addEventListener("single-tap", async (e) => {
-        if (selectCoordsMarker) {
-          window._map.removeAnnotation(selectCoordsMarker)
-        }
-        e.preventDefault()
-        e.stopPropagation()
-        const {latitude, longitude} = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
-        // const coordinate = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
-        const defaultRadius = 50
-        const defaultUnits = 'ft'
-        console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: ${longitude}, ${latitude}`)
-        const results = await (await fetch(`${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`)).json()
-        console.log(results)
-        if (results?.total > 0) {
-          results.documents.forEach((p) => {
-            console.log(`${p.value.pier}, ${p.value.coords}, ${p.value.estateName}, ${p.value.business}, ${p.value.association}`)
-              let subtitle = ' '
-              if (p.value.business !== '' && p.value.association === '') subtitle = p.value.business
-              if (p.value.association !== '' && p.value.business === '') subtitle = p.value.association
-              if (p.value.firstname !== '' && p.value.lastname !== '') subtitle = `${p.value.firstname} ${p.value.lastname}`
-              if (p.value.firstname !== '' && p.value.lastname === '') subtitle = p.value.firstname
-              if (p.value.firstname === '' && p.value.lastname !== '') subtitle = p.value.lastname
-              if (p.value.estateName !== '') subtitle = p.value.estateName
-              console.info(`subtitle: ${subtitle}`)
-              const annotationCallout = {
-                calloutLeftAccessoryForAnnotation: () => {
-                  const accessoryViewLeft = document.createElement("div")
-                  return accessoryViewLeft
-                },
-                calloutRightAccessoryForAnnotation: () => {
-                  const accessoryViewRight = document.createElement("a")
-                  accessoryViewRight.className = "right-accessory-view"
-                  accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
-                  accessoryViewRight.target = "_self"
-                  accessoryViewRight.textContent = "\u{24D8}"
-                  return accessoryViewRight
-                }
-              }
-              const pierMarker = new window.mapkit.Coordinate(latitude, longitude)
-              const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
-              pierAnnotation.title = `Pier ${p.value.pier}`
-              pierAnnotation.subtitle = subtitle 
-              pierAnnotation.animates = true
-              pierAnnotation.selected = true
-              pierAnnotation.color = "#4B93E0"
-              pierAnnotation.callout = annotationCallout
-              window._map.addAnnotation(pierAnnotation)
-          })
-        } else {
-          console.log(`pointOnPageToCoordinate... lon: ${longitude}, lat: ${latitude}`)
-          const annotationCallout = {
-            calloutLeftAccessoryForAnnotation: () => {
-              const accessoryViewLeft = document.createElement("div")
-              return accessoryViewLeft
-            },
-            calloutRightAccessoryForAnnotation: () => {
-              const accessoryViewRight = document.createElement("a")
-              // accessoryViewRight.className = "right-accessory-view"
-              // accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
-              // accessoryViewRight.target = "_self"
-              // accessoryViewRight.textContent = `lon/lat: ${longitude},${latitude}`
-              return accessoryViewRight
-            }
+        async function showThisPier() {
+          const annotations = []
+          if (lat !== 0 && lon !== 0) {
+            console.log(`(lat, lon): ${lat}, ${lon}`)
+            const pierMarker = new window.mapkit.Coordinate(lat, lon)
+            const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+            pierAnnotation.title = `Pier ${pierNumber}`
+            annotations.push(pierAnnotation)
           }
-          const selectCoords = new window.mapkit.Coordinate(latitude, longitude)
-          selectCoordsMarker = new window.mapkit.MarkerAnnotation(selectCoords)
-          selectCoordsMarker.title = `lon/lat: ${Number.parseFloat(longitude).toFixed(6)},${Number.parseFloat(latitude).toFixed(6)}`
-          selectCoordsMarker.animates = true
-          selectCoordsMarker.selected = true
-          selectCoordsMarker.color = "#4B93E0"
-          selectCoordsMarker.callout = annotationCallout
-          window._map.addAnnotation(selectCoordsMarker)
-          document.forms.pierEditId.lonId.value = Number.parseFloat(longitude).toFixed(6)
-          document.forms.pierEditId.latId.value = Number.parseFloat(latitude).toFixed(6)
-          document.forms.pierEditId.latId.dispatchEvent(new InputEvent('change'))
+          if (annotations.length > 0) {
+            // console.dir(annotations, { depth: null })
+            window._map.showItems(annotations)
+          }
         }
-      })
+        await showThisPier()
+        let selectCoordsMarker = null
+        window._map.addEventListener("single-tap", async (e) => {
+          if (selectCoordsMarker) {
+            window._map.removeAnnotation(selectCoordsMarker)
+          }
+          e.preventDefault()
+          e.stopPropagation()
+          const {latitude, longitude} = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
+          // const coordinate = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
+          const defaultRadius = 50
+          const defaultUnits = 'ft'
+          console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: ${longitude}, ${latitude}`)
+          const results = await (await fetch(`${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`)).json()
+          console.log(results)
+          if (results?.total > 0) {
+            results.documents.forEach((p) => {
+              console.log(`${p.value.pier}, ${p.value.coords}, ${p.value.estateName}, ${p.value.business}, ${p.value.association}`)
+                let subtitle = ' '
+                if (p.value.business !== '' && p.value.association === '') subtitle = p.value.business
+                if (p.value.association !== '' && p.value.business === '') subtitle = p.value.association
+                if (p.value.firstname !== '' && p.value.lastname !== '') subtitle = `${p.value.firstname} ${p.value.lastname}`
+                if (p.value.firstname !== '' && p.value.lastname === '') subtitle = p.value.firstname
+                if (p.value.firstname === '' && p.value.lastname !== '') subtitle = p.value.lastname
+                if (p.value.estateName !== '') subtitle = p.value.estateName
+                console.info(`subtitle: ${subtitle}`)
+                const annotationCallout = {
+                  calloutLeftAccessoryForAnnotation: () => {
+                    const accessoryViewLeft = document.createElement("div")
+                    return accessoryViewLeft
+                  },
+                  calloutRightAccessoryForAnnotation: () => {
+                    const accessoryViewRight = document.createElement("a")
+                    accessoryViewRight.className = "right-accessory-view"
+                    accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
+                    accessoryViewRight.target = "_self"
+                    accessoryViewRight.textContent = "\u{24D8}"
+                    return accessoryViewRight
+                  }
+                }
+                const pierMarker = new window.mapkit.Coordinate(latitude, longitude)
+                const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+                pierAnnotation.title = `Pier ${p.value.pier}`
+                pierAnnotation.subtitle = subtitle 
+                pierAnnotation.animates = true
+                pierAnnotation.selected = true
+                pierAnnotation.color = "#4B93E0"
+                pierAnnotation.callout = annotationCallout
+                window._map.addAnnotation(pierAnnotation)
+            })
+          } else {
+            console.log(`pointOnPageToCoordinate... lon: ${longitude}, lat: ${latitude}`)
+            const annotationCallout = {
+              calloutLeftAccessoryForAnnotation: () => {
+                const accessoryViewLeft = document.createElement("div")
+                return accessoryViewLeft
+              },
+              calloutRightAccessoryForAnnotation: () => {
+                const accessoryViewRight = document.createElement("a")
+                // accessoryViewRight.className = "right-accessory-view"
+                // accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
+                // accessoryViewRight.target = "_self"
+                // accessoryViewRight.textContent = `lon/lat: ${longitude},${latitude}`
+                return accessoryViewRight
+              }
+            }
+            const selectCoords = new window.mapkit.Coordinate(latitude, longitude)
+            selectCoordsMarker = new window.mapkit.MarkerAnnotation(selectCoords)
+            selectCoordsMarker.title = `lon/lat: ${Number.parseFloat(longitude).toFixed(6)},${Number.parseFloat(latitude).toFixed(6)}`
+            selectCoordsMarker.animates = true
+            selectCoordsMarker.selected = true
+            selectCoordsMarker.color = "#4B93E0"
+            selectCoordsMarker.callout = annotationCallout
+            window._map.addAnnotation(selectCoordsMarker)
+            document.forms.pierEditId.lonId.value = Number.parseFloat(longitude).toFixed(6)
+            document.forms.pierEditId.latId.value = Number.parseFloat(latitude).toFixed(6)
+            document.forms.pierEditId.latId.dispatchEvent(new InputEvent('change'))
+          }
+        })
+      } catch (e) {
+        console.log(e)
+      }
     </script>
   </section>
 </article>

@@ -294,123 +294,126 @@
         window._map = new mapkit.Map("map", opts)
         window._map.region = genevaBay
       }
-      await main()
+      try {
+        await main()
+        const annotations = []
 
-      const annotations = []
-
-      async function showPointsOfInterest() {
-        try {
-          const opts = {
-            method: 'GET',
-            headers: {
-              Accept: 'application/json',
-              Authorization: `Bearer ${jwtAccess}`,
-            },
-          }
-          const request = new Request(`${origin}/mapkit/walking-path-pois`, opts)
-          const response = await (await fetch(request)).json()
-          console.log(response)
-          response.documents.forEach((m) => {
-            // console.log('m', m)
-            let [lon, lat] = m.value.geometry.coordinates
-            lon = parseFloat(lon, 10)
-            lat = parseFloat(lat, 10)
-            let places = []
-            if (lat !== 0 && lon !== 0) {
-              if (m.value.properties?.placeId && m.value.properties.placeId !== '') {
-                const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
-                place.getPlace(
-                  m.value.properties.placeId,
-                  function(error, data) {
-                    if (error) {
-                      console.warn(error)
-                    }
-                    if (data) {
-                      console.log('data', data)
-                      const p = new window.mapkit.PlaceAnnotation(data)
-                      console.log('p', p)
-                      window._map.addItems([p])
-                      const accessory = new mapkit.PlaceSelectionAccessory()
-                      p.selectionAccessory = accessory
-                    }
-                  }
-                )
-              }
-            }
-          })
-        } catch (e) {
-          console.error(e)
-        }
-      }
-      await showPointsOfInterest()
-
-      window._map.addEventListener("single-tap", async (e) => {
-        e.preventDefault()
-        e.stopPropagation()
-        const {latitude, longitude} = window._map.convertPointOnPageToCoordinate(
-          e.pointOnPage
-        )
-        const defaultRadius = 50
-        const defaultUnits = 'ft'
-        console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: `
-          + `${longitude}, ${latitude}`)
-        const results = await (
-          await fetch(
-            `${origin}/mapkit/locate/${longitude}/${latitude}/`
-            + `${defaultRadius}/${defaultUnits}`
-          )
-        ).json()
-        console.log(results)
-        if (results?.total > 0) {
-          results.documents.forEach((p) => {
-            console.log(`${p.value?.poi}, ${p.value?.coords}, ${p.value?.estateName}, `
-              + `${p.value?.business}, ${p.value?.association}`)
-            let subtitle = ' '
-            if (p.value.business !== '' && p.value.association === '') {
-              subtitle = p.value.business
-            }
-            if (p.value.association !== '' && p.value.business === '') {
-              subtitle = p.value.association
-            }
-            if (p.value.firstname !== '' && p.value.lastname !== '') {
-              subtitle = `${p.value.firstname} ${p.value.lastname}`
-            }
-            if (p.value.firstname !== '' && p.value.lastname === '') {
-              subtitle = p.value.firstname
-            }
-            if (p.value.firstname === '' && p.value.lastname !== '') {
-              subtitle = p.value.lastname
-            }
-            if (p.value.estateName !== '') subtitle = p.value.estateName
-            console.info(`subtitle: ${subtitle}`)
-            const annotationCallout = {
-              calloutLeftAccessoryForAnnotation: () => {
-                const accessoryViewLeft = document.createElement("div")
-                return accessoryViewLeft
+        async function showPointsOfInterest() {
+          try {
+            const opts = {
+              method: 'GET',
+              headers: {
+                Accept: 'application/json',
+                Authorization: `Bearer ${jwtAccess}`,
               },
-              calloutRightAccessoryForAnnotation: () => {
-                const accessoryViewRight = document.createElement("a")
-                accessoryViewRight.className = "right-accessory-view"
-                accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
-                accessoryViewRight.target = "_self"
-                accessoryViewRight.textContent = "\u{24D8}"
-                return accessoryViewRight
-              }
             }
-            const pierMarker = new window.mapkit.Coordinate(latitude, longitude)
-            const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
-            pierAnnotation.title = `Pier ${p.value.pier}`
-            pierAnnotation.subtitle = subtitle 
-            pierAnnotation.animates = true 
-            pierAnnotation.selected = false
-            pierAnnotation.color = "#4B93E0"
-            pierAnnotation.callout = annotationCallout
-            window._map.addAnnotation(pierAnnotation)
-          })
-          window._map.region = window.genevaCenter
-          window._map.cameraDistance = window.cameraDistance
+            const request = new Request(`${origin}/mapkit/walking-path-pois`, opts)
+            const response = await (await fetch(request)).json()
+            console.log(response)
+            response.documents.forEach((m) => {
+              // console.log('m', m)
+              let [lon, lat] = m.value.geometry.coordinates
+              lon = parseFloat(lon, 10)
+              lat = parseFloat(lat, 10)
+              let places = []
+              if (lat !== 0 && lon !== 0) {
+                if (m.value.properties?.placeId && m.value.properties.placeId !== '') {
+                  const place = new window.mapkit.PlaceLookup({ language: 'en-US' })
+                  place.getPlace(
+                    m.value.properties.placeId,
+                    function(error, data) {
+                      if (error) {
+                        console.warn(error)
+                      }
+                      if (data) {
+                        console.log('data', data)
+                        const p = new window.mapkit.PlaceAnnotation(data)
+                        console.log('p', p)
+                        window._map.addItems([p])
+                        const accessory = new mapkit.PlaceSelectionAccessory()
+                        p.selectionAccessory = accessory
+                      }
+                    }
+                  )
+                }
+              }
+            })
+          } catch (e) {
+            console.error(e)
+          }
         }
-      })
+        await showPointsOfInterest()
+
+        window._map.addEventListener("single-tap", async (e) => {
+          e.preventDefault()
+          e.stopPropagation()
+          const {latitude, longitude} = window._map.convertPointOnPageToCoordinate(
+            e.pointOnPage
+          )
+          const defaultRadius = 50
+          const defaultUnits = 'ft'
+          console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: `
+            + `${longitude}, ${latitude}`)
+          const results = await (
+            await fetch(
+              `${origin}/mapkit/locate/${longitude}/${latitude}/`
+              + `${defaultRadius}/${defaultUnits}`
+            )
+          ).json()
+          console.log(results)
+          if (results?.total > 0) {
+            results.documents.forEach((p) => {
+              console.log(`${p.value?.poi}, ${p.value?.coords}, ${p.value?.estateName}, `
+                + `${p.value?.business}, ${p.value?.association}`)
+              let subtitle = ' '
+              if (p.value.business !== '' && p.value.association === '') {
+                subtitle = p.value.business
+              }
+              if (p.value.association !== '' && p.value.business === '') {
+                subtitle = p.value.association
+              }
+              if (p.value.firstname !== '' && p.value.lastname !== '') {
+                subtitle = `${p.value.firstname} ${p.value.lastname}`
+              }
+              if (p.value.firstname !== '' && p.value.lastname === '') {
+                subtitle = p.value.firstname
+              }
+              if (p.value.firstname === '' && p.value.lastname !== '') {
+                subtitle = p.value.lastname
+              }
+              if (p.value.estateName !== '') subtitle = p.value.estateName
+              console.info(`subtitle: ${subtitle}`)
+              const annotationCallout = {
+                calloutLeftAccessoryForAnnotation: () => {
+                  const accessoryViewLeft = document.createElement("div")
+                  return accessoryViewLeft
+                },
+                calloutRightAccessoryForAnnotation: () => {
+                  const accessoryViewRight = document.createElement("a")
+                  accessoryViewRight.className = "right-accessory-view"
+                  accessoryViewRight.href = `${origin}/pier/${p.value.pier}`
+                  accessoryViewRight.target = "_self"
+                  accessoryViewRight.textContent = "\u{24D8}"
+                  return accessoryViewRight
+                }
+              }
+              const pierMarker = new window.mapkit.Coordinate(latitude, longitude)
+              const pierAnnotation = new window.mapkit.MarkerAnnotation(pierMarker)
+              pierAnnotation.title = `Pier ${p.value.pier}`
+              pierAnnotation.subtitle = subtitle 
+              pierAnnotation.animates = true 
+              pierAnnotation.selected = false
+              pierAnnotation.color = "#4B93E0"
+              pierAnnotation.callout = annotationCallout
+              window._map.addAnnotation(pierAnnotation)
+            })
+            window._map.region = window.genevaCenter
+            window._map.cameraDistance = window.cameraDistance
+          }
+        })
+      } catch (e) {
+        console.log(e)
+      }
     </script>
   </section>
 </article>
