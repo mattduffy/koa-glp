@@ -55,7 +55,7 @@ dotenv.config({
   processEnv: appEnv,
   debug: showDebug,
 })
-let aiEnv = {}
+const aiEnv = {}
 dotenv.config({
   path: path.resolve(appRoot, 'config/ai.env'),
   processEnv: aiEnv,
@@ -197,24 +197,19 @@ async function openGraph(ctx, next) {
   ogArray.push('<meta property="og:image:width" content="450">')
   ogArray.push('<meta property="og:image:height" content="295">')
   ogArray.push('<meta property="og:image:alt" content='
-    + '"Arial photo of the municipal piers in The City of Lake Geneva, Wisconsin.">'
-  )
+    + '"Aerial photo of the municipal piers in The City of Lake Geneva, Wisconsin.">')
   ogArray.push('<meta property="og:description" content='
-    + '"Information and location of all the piers on Genava Lake.">'
-  )
+    + '"Information and location of all the piers on Genava Lake.">')
   const twitArray = []
   twitArray.push('<meta name="twitter:card" content="summary_large_image">')
   twitArray.push('<meta property="twitter:domain" content="genevalakepiers.com">')
   twitArray.push('<meta property="twitter:url" content="'
-    + `${ctx.request.href}${ctx.request.search}">`
-  )
+    + `${ctx.request.href}${ctx.request.search}">`)
   twitArray.push('<meta name="twitter:image" content="'
-    + `${ctx.state.origin}/i/ogEmbed-450x295.jpg">`
-  )
+    + `${ctx.state.origin}/i/ogEmbed-450x295.jpg">`)
   twitArray.push('<meta name="twitter:title" content="The Piers of Geneva Lake">')
   twitArray.push('<meta name="twitter:description" content='
-    + '"Information and location of all the piers on Genava Lake.">'
-  )
+    + '"Information and location of all the piers on Genava Lake.">')
   ctx.state.openGraph = ogArray.concat(twitArray).join('\n')
   logg(ctx.state.openGraph)
   await next()
@@ -247,6 +242,7 @@ async function csp(ctx, next) {
   // nonce assignment moved to the viewGlobals() middleware function.
   // ctx.app.nonce = crypto.randomBytes(16).toString('base64')
   const { nonce } = ctx.state
+  /* eslint-disable max-len */
   const policy = 'base-uri \'none\'; '
     + 'default-src \'self\'; '
     + 'frame-ancestors \'none\'; '
@@ -266,6 +262,7 @@ async function csp(ctx, next) {
     + `worker-src 'self' blob: ${ctx.request.protocol}://${ctx.app.domain} https://*.apple-mapkit.com blob:; `
     + `manifest-src 'self' blob: ${ctx.request.protocol}://${ctx.app.domain}; `
     + `connect-src 'self' blob: ${ctx.request.protocol}://${ctx.app.domain} https://plus.codes *.apple-mapkit.com *.geo.apple.com https://mw-ci1-mapkitjs.geo.apple.com; `
+  /* eslint-enable max-len */
   ctx.set('Content-Security-Policy', policy)
   logg(`Content-Security-Policy: ${policy}`)
   try {
@@ -342,6 +339,8 @@ async function viewGlobals(ctx, next) {
 async function logRequest(ctx, next) {
   const logg = log.extend('logRequest')
   const err = error.extend('logRequest')
+  const logEntry = {}
+  const geos = []
   try {
     /* eslint-disable-next-line */
     const ignore = ['favicon', 'c/.+\.css']
@@ -353,16 +352,15 @@ async function logRequest(ctx, next) {
     if (ignore.find(find) === undefined) {
       const db = ctx.state.mongodb.client.db(ctx.state.mongodb.dbName)
       const mainLog = db.collection('mainLog')
-      const logEntry = {}
       logEntry.remoteIps = ctx.request.ips
-      const geos = []
       if (geoIPCity && ctx.request.ips) {
         try {
-          if (Array.isArray(ctx.request.ips)) {
+          if (Array.isArray(ctx.request.ips) && ctx.request.ips.length > 0) {
             ctx.request.ips.forEach((ip, i) => {
-              const city = geoIPCity.city(ip)
+              const _ip = /^::ffff:(?<ip4>.*)$/.exec(ip)?.groups.ip4 ?? ip
+              const city = geoIPCity.city(_ip)
               const geo = {}
-              geo.ip = ip
+              geo.ip = _ip
               geo.country = city?.country?.names?.en
               geo.city = city?.city?.names?.en
               geo.subdivision = city?.subdivisions?.[0]?.names?.en
@@ -370,12 +368,13 @@ async function logRequest(ctx, next) {
               geo.coords = [city?.location?.latitude, city?.location?.longitude]
               logEntry[`geo_${i}`] = geo
               geos.push(geo)
-              logg('Request ip geo:     %o', geo)
+              // logg('Request ip geo:     %o', geo)
             })
           } else {
             const city = geoIPCity.city(ctx.request.ip)
             const geo = {}
-            geo.ip = ctx.request.ip
+            // Find IPv6 addresses with ::ffff prefix that is just masking an IPv4 address.
+            geo.ip = /^::ffff:(?<ip4>.*)$/.exec(ctx.request.ip)?.groups.ip4 ?? ctx.request.ip
             geo.country = city?.country?.names?.en
             geo.city = city?.city?.names?.en
             geo.subdivision = city?.subdivisions?.[0]?.names?.en
@@ -383,10 +382,10 @@ async function logRequest(ctx, next) {
             geo.coords = [city?.location?.latitude, city?.location?.longitude]
             logEntry.geo = geo
             geos.push(geo)
-            logg('Request ip geo:     %O', geo)
+            // logg('Request ip geo:     %O', geo)
           }
         } catch (e) {
-          err(e.message)
+          err('logEntry error: ', e.message)
         }
       } else {
         logg(`failed to log ip geo for ${ctx.request.ips}`)
@@ -397,13 +396,20 @@ async function logRequest(ctx, next) {
       logEntry.httpVersion = `${ctx.req.httpVersionMajor}.${ctx.req.httpVersionMinor}`
       logEntry.referer = ctx.request.headers?.referer
       logEntry.userAgent = ctx.request.headers['user-agent']
-      ctx.state.logEntry = { ip: logEntry.remoteIps, geos }
+      ctx.state.logEntry = {
+        ip: (geos.length > 0 && geos[0]?.ip) ? geos[0].ip : ctx.request.ip,
+        geos,
+      }
       await mainLog.insertOne(logEntry)
     }
+    const remoteIps = (logEntry?.geos && logEntry.geos.length > 0)
+      ? logEntry.geos[0].ip
+      : ctx.request.ips
+    logg('geos:                %O', geos)
     logg(`Request href:        ${ctx.request.href}`)
-    logg(`Request remote ips:  ${ctx.request.ips}`)
+    logg(`Request remote ips:  ${remoteIps}`)
     logg(`Request remote ip:   ${ctx.request.ip}`)
-    logg('Request headers:     %O', ctx.request.headers)
+    logg('Request user-agent:  %O', ctx.request.headers['user-agent'])
     logg('Request querystring: %O', ctx.request.query)
     await next()
   } catch (e) {
