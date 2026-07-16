@@ -343,7 +343,7 @@ async function logRequest(ctx, next) {
   const geos = []
   try {
     /* eslint-disable-next-line */
-    const ignore = ['favicon', 'c/.+\.css']
+    const ignore = ['favicon', 'c/.+\.css', 'j/*.js']
     /* eslint-disable-next-line */
     function find(x) {
       const re = new RegExp(x)
@@ -357,6 +357,7 @@ async function logRequest(ctx, next) {
         try {
           if (Array.isArray(ctx.request.ips) && ctx.request.ips.length > 0) {
             ctx.request.ips.forEach((ip, i) => {
+              // Find IPv6 addresses with ::ffff prefix that is just masking an IPv4 address.
               const _ip = /^::ffff:(?<ip4>.*)$/.exec(ip)?.groups.ip4 ?? ip
               const city = geoIPCity.city(_ip)
               const geo = {}
@@ -368,7 +369,7 @@ async function logRequest(ctx, next) {
               geo.coords = [city?.location?.latitude, city?.location?.longitude]
               logEntry[`geo_${i}`] = geo
               geos.push(geo)
-              // logg('Request ip geo:     %o', geo)
+              // logg('Request ip geo:     %O', geo)
             })
           } else {
             const city = geoIPCity.city(ctx.request.ip)
