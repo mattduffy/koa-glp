@@ -1,7 +1,10 @@
 {
   "pier": "017",
   "version": "1",
-  "loc": "-88.445825,42.587445",
+  "loc": {
+    "longitude": -88.445825,
+    "latitude": 42.587445
+  },
   "geohash": "dp9472g9yg0",
   "pluscode": "HHP3+XMF Lake Geneva, Wisconsin",
   "public": 0,
@@ -57,7 +60,7 @@
         },
         {
           "t": "",
-          "f": "Louis",
+          "f": "Louise",
           "m": "",
           "l": "Frost",
           "s": "",
@@ -141,17 +144,17 @@
       "members": [
         {
           "t": "",
-          "f": "David",
+          "f": "Tom",
           "m": "",
-          "l": "Tanking",
+          "l": "Myers",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Aimee",
+          "f": "Mary",
           "m": "",
-          "l": "Tanking",
+          "l": "Myers",
           "s": "",
           "hidden": 0
         }
@@ -159,7 +162,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-15T03:10:12.795Z",
-    "2024-05-12T23:46:59.821Z"
+    "2026-08-13T19:43:38.643Z"
   ]
 }

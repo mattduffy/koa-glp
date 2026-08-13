@@ -1,20 +1,28 @@
 {
   "pier": "033",
-  "loc": "-88.450452,42.582655",
+  "version": "1",
+  "loc": {
+    "longitude": -88.450452,
+    "latitude": 42.582655
+  },
+  "geohash": "dp945rbmgn0",
+  "pluscode": "HGMX+3R7 Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Geneva Bay Estates",
-    "established": "1956",
+    "established": 1956,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "837 Bayview Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
     },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0,
     "value": {
       "value": "",
       "source": "",
@@ -24,26 +32,29 @@
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "George",
+          "f": "",
           "m": "",
-          "l": "Roth",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Abel",
+          "m": "",
+          "l": "Valdivia",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp945rbmgn0",
-  "pluscode": "HGMX+3R7 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1,
   "updatedOn": [
-    "2025-10-15T03:10:12.862Z"
+    "2026-08-13T19:50:43.573Z"
   ]
 }

@@ -1,20 +1,28 @@
 {
   "pier": "032",
-  "loc": "-88.450384,42.582909",
+  "version": "1",
+  "loc": {
+    "longitude": -88.450384,
+    "latitude": 42.582909
+  },
+  "geohash": "dp945rbrkt0",
+  "pluscode": "HGMX+5R9 Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Geneva Bay Estates",
-    "established": "1956",
+    "established": 1956,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "831 Bayview Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
     },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0,
     "value": {
       "value": "",
       "source": "",
@@ -24,34 +32,37 @@
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Bill",
+          "f": "",
           "m": "",
-          "l": "Young",
+          "l": "",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Carla",
+          "f": "",
           "m": "",
-          "l": "Young",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Phillip",
+          "m": "",
+          "l": "Lekousis",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp945rbrkt0",
-  "pluscode": "HGMX+5R9 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1,
   "updatedOn": [
-    "2025-10-15T03:10:12.857Z"
+    "2026-08-13T19:49:31.864Z"
   ]
 }

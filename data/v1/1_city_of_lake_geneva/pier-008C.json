@@ -1,20 +1,28 @@
 {
   "pier": "008C",
-  "loc": "-88.445294,42.589294",
+  "version": "1",
+  "loc": {
+    "longitude": -88.445294,
+    "latitude": 42.589294
+  },
+  "geohash": "dp9473hhe70",
+  "pluscode": "HHQ3+PV8 Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "8 Hillside Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
     },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0,
     "value": {
       "value": "",
       "source": "",
@@ -24,8 +32,8 @@
   "owners": [
     {
       "estateName": "",
-      "member": true,
       "membershipType": "Benefactor",
+      "member": true,
       "members": [
         {
           "t": "",
@@ -34,16 +42,19 @@
           "l": "Owens",
           "s": "",
           "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Vineyard Boathouse, LLC",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp9473hhe70",
-  "pluscode": "HHQ3+PV8 Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1,
   "updatedOn": [
-    "2025-10-15T03:10:12.740Z"
+    "2026-08-13T19:35:43.190Z"
   ]
 }
