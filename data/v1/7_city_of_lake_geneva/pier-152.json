@@ -1,0 +1,60 @@
+{
+  "pier": "152",
+  "version": "1",
+  "loc": {
+    "longitude": -88.511871,
+    "latitude": 42.574795
+  },
+  "geohash": "dp941ye85v0",
+  "pluscode": "HFFQ+W76 Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "",
+    "established": null,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "W4321 N Lake Shore Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Karen",
+          "m": "",
+          "l": "Coley",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Brian",
+          "m": "",
+          "l": "Flood",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-08-16T15:00:08.242Z"
+  ]
+}

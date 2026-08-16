@@ -1,0 +1,52 @@
+{
+  "pier": "073",
+  "version": "1",
+  "loc": {
+    "longitude": -88.479873,
+    "latitude": 42.571979
+  },
+  "geohash": "dp944tfzv80",
+  "pluscode": "HGCC+Q3R Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "The Folly",
+    "established": null,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "N2270 Folly Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Stony Hollow",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Andrea",
+          "m": "",
+          "l": "Burridge",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-08-16T13:52:05.707Z"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "pier": "078A",
+  "version": "1",
+  "loc": {
+    "longitude": -88.482896,
+    "latitude": 42.571199
+  },
+  "geohash": "dp944tbepn0",
+  "pluscode": "86JHHGC8+FR",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "Bonnie Brae",
+    "established": 1916,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "N2202 Bonnie Brae Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Diane",
+          "m": "",
+          "l": "Dowd",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-08-16T14:17:32.730Z"
+  ]
+}

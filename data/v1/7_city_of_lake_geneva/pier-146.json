@@ -1,0 +1,60 @@
+{
+  "pier": "146",
+  "version": "1",
+  "loc": {
+    "longitude": -88.509922,
+    "latitude": 42.576043
+  },
+  "geohash": "dp941ytp3m0",
+  "pluscode": "86JHHFGR+C2",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "Knollwood",
+    "established": 1926,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "W4265 Oriole Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Catherine",
+          "m": "",
+          "l": "Carpenter",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "David",
+          "m": "",
+          "l": "Baker",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-08-16T14:57:47.000Z"
+  ]
+}

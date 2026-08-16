@@ -1,0 +1,106 @@
+{
+  "pier": "046",
+  "version": "1",
+  "loc": {
+    "longitude": -88.457396,
+    "latitude": 42.578513
+  },
+  "geohash": "dp945p5mc60",
+  "pluscode": "HGHV+C25 Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "",
+    "established": null,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "W3203 Snake Rd",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Shoreside",
+      "membershipType": "Benefactor",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Dana",
+          "m": "",
+          "l": "Hagenah",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "Hagenah",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "The Lodge at Northwoodside",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Susan",
+          "m": "",
+          "l": "Hagenah",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Phil",
+          "m": "",
+          "l": "Hagenah",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "Northwoodside",
+      "membershipType": "Benefactor",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Tricia",
+          "m": "",
+          "l": "Hagenah",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Will",
+          "m": "",
+          "l": "Hagenah",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-08-16T13:42:42.989Z"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "pier": "089",
+  "version": "1",
+  "loc": {
+    "longitude": -88.489118,
+    "latitude": 42.572507
+  },
+  "geohash": "dp944qh4y40",
+  "pluscode": "HGF6+292 Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "S. B. Chapin",
+    "established": 1921,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "W3835 Creek Ln",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Benefactor",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Thomas",
+          "m": "",
+          "l": "Gleitsman",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Taylor",
+          "m": "",
+          "l": "Gleitsman",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-08-16T14:32:41.877Z"
+  ]
+}

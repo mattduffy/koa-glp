@@ -1,0 +1,68 @@
+{
+  "pier": "151",
+  "version": "1",
+  "loc": {
+    "longitude": -88.511615,
+    "latitude": 42.574911
+  },
+  "geohash": "dp941yebcf0",
+  "pluscode": "HFFQ+X96 Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "",
+    "established": null,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "N2301 Knollwood Dr",
+      "city": "Lake Geneva",
+      "state": "WI",
+      "zip": "53147"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Michael",
+          "m": "",
+          "l": "Fieri",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-08-16T14:59:20.494Z"
+  ]
+}
