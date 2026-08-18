@@ -1,0 +1,144 @@
+{
+  "pier": "311",
+  "version": "1",
+  "loc": {
+    "longitude": -88.54138,
+    "latitude": 42.568639
+  },
+  "geohash": "dp941jqhk30",
+  "pluscode": "HF95+FC5 Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "Congress Club",
+    "established": 1882,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "200 Conference Point Rd",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Congress Club North Dock",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Donor",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Arlene",
+          "m": "",
+          "l": "Rose",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "Rose",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Diane",
+          "m": "",
+          "l": "Bjorkman",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "William",
+          "m": "",
+          "l": "Lehman",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Donor",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Jeanette",
+          "m": "",
+          "l": "D'Arcy",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "D'Arcy",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Brian",
+          "m": "",
+          "l": "Corcoran",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Kristen",
+          "m": "",
+          "l": "Corcoran",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-08-17T21:22:40.189Z"
+  ]
+}

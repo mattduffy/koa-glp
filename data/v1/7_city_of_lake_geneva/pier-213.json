@@ -1,0 +1,52 @@
+{
+  "pier": "213",
+  "version": "1",
+  "loc": {
+    "longitude": -88.529576,
+    "latitude": 42.569525
+  },
+  "geohash": "dp941mw9rq0",
+  "pluscode": "HF9C+R53 Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "Cedar Point Park",
+    "established": 1922,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "198 Cir Pkwy",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Edward W. Boehm III Trust",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-08-17T20:51:16.446Z"
+  ]
+}

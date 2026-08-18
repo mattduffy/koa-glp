@@ -1,0 +1,75 @@
+{
+  "pier": "288",
+  "version": "1",
+  "loc": {
+    "longitude": -88.538783,
+    "latitude": 42.574209
+  },
+  "geohash": "dp941q2h8z0",
+  "pluscode": "HFF6+MFP Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "Bay Colony South Condo",
+    "established": null,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "35 S Walworth Ave",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Bay Colony South Condo Pier",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Linda",
+          "m": "",
+          "l": "Wolf",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Greg",
+          "m": "",
+          "l": "Wolf",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-08-17T21:14:16.446Z"
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "pier": "293",
+  "version": "1",
+  "loc": {
+    "longitude": -88.539196,
+    "latitude": 42.572535
+  },
+  "geohash": "dp941npdzp0",
+  "pluscode": "HFF6+287 Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "Oakwood Estates",
+    "established": 1921,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "102 Healy Dr",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Oakwood Estates Pier",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Connie",
+          "m": "",
+          "l": "Gluth",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Rich",
+          "m": "",
+          "l": "Gluth",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Regular",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Bob",
+          "m": "",
+          "l": "Jelinek",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Susan",
+          "m": "",
+          "l": "Collins",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Jon",
+          "m": "",
+          "l": "Clare",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Patty",
+          "m": "",
+          "l": "Clare",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Karin",
+          "m": "",
+          "l": "Thogersen",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-08-17T21:17:18.956Z"
+  ]
+}

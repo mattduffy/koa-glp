@@ -1,0 +1,60 @@
+{
+  "pier": "294",
+  "version": "1",
+  "loc": {
+    "longitude": -88.539791,
+    "latitude": 42.571273
+  },
+  "geohash": "dp941jz79k0",
+  "pluscode": "HFC6+G34 Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "",
+    "established": null,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "132 Conference Point Rd",
+      "city": "Williams Bay",
+      "state": "WI",
+      "zip": "53191"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Robert",
+          "m": "",
+          "l": "Forbis",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Debbie",
+          "m": "",
+          "l": "Forbis",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-08-17T21:19:14.852Z"
+  ]
+}
