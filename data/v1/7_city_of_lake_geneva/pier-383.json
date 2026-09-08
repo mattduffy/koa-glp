@@ -1,0 +1,60 @@
+{
+  "pier": "383",
+  "version": "1",
+  "loc": {
+    "longitude": -88.567667,
+    "latitude": 42.55834
+  },
+  "geohash": "dp940edbrc0",
+  "pluscode": "HC5J+8WP Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "",
+    "established": null,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "479A N Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Indian Creek",
+      "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Edward",
+          "m": "",
+          "l": "Cox",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Cindi",
+          "m": "",
+          "l": "Cox",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-09-08T03:22:05.763Z"
+  ]
+}

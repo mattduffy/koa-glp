@@ -1,0 +1,60 @@
+{
+  "pier": "394",
+  "version": "1",
+  "loc": {
+    "longitude": -88.570068,
+    "latitude": 42.555637
+  },
+  "geohash": "dp940e10xc0",
+  "pluscode": "86JHHC4H+7X",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "",
+    "established": null,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "405 N Lakeshore Dr",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Leigh",
+          "m": "",
+          "l": "Otzen",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Kelly",
+          "m": "",
+          "l": "Otzen",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-09-08T03:24:53.449Z"
+  ]
+}

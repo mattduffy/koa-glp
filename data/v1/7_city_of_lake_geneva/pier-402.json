@@ -1,0 +1,212 @@
+{
+  "pier": "402",
+  "version": "1",
+  "loc": {
+    "longitude": -88.570851,
+    "latitude": 42.553806
+  },
+  "geohash": "dp940d8tvs0",
+  "pluscode": "HC3H+GMC Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "Buena Vista",
+    "established": 1912,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Regular",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Buena Vista Club",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Regular",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Robert",
+          "m": "",
+          "l": "Ahern",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Sharna",
+          "m": "",
+          "l": "Ahern",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Gwen",
+          "m": "",
+          "l": "Clausius",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Regular",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Bob",
+          "m": "",
+          "l": "Doherty",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Maggie",
+          "m": "",
+          "l": "Doherty",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Karen",
+          "m": "",
+          "l": "Gizzi",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Alec",
+          "m": "",
+          "l": "Gizzi",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Michael",
+          "m": "",
+          "l": "Keeling",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Mary",
+          "m": "",
+          "l": "Keeling",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "Libit’s Landing",
+      "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Libit Family",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Regular",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Doris",
+          "m": "",
+          "l": "Mosser",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Regular",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Richard",
+          "m": "",
+          "l": "Dousman",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Michele",
+          "m": "",
+          "l": "Dousman",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-09-08T03:27:54.982Z"
+  ]
+}

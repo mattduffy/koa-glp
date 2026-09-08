@@ -1,0 +1,76 @@
+{
+  "pier": "363C",
+  "version": "1",
+  "loc": {
+    "longitude": -88.563074,
+    "latitude": 42.562052
+  },
+  "geohash": "dp940snmfv0",
+  "pluscode": "86JHHC6P+RQ",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "",
+    "established": null,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "",
+      "city": "Walworth",
+      "state": "WI",
+      "zip": "53125"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Michael",
+          "m": "",
+          "l": "McCabe",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Nancy",
+          "m": "",
+          "l": "McCabe",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-09-08T03:18:05.882Z"
+  ]
+}

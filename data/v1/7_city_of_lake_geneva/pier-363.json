@@ -1,0 +1,60 @@
+{
+  "pier": "363",
+  "version": "1",
+  "loc": {
+    "longitude": -88.562264,
+    "latitude": 42.562582
+  },
+  "geohash": "dp940sqcj80",
+  "pluscode": "86JHHC7Q+23",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "",
+    "established": null,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "N1984 N Lakeshore Dr",
+      "city": "Walworth",
+      "state": "WI",
+      "zip": "53125"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Angel's Flight",
+      "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "Dr",
+          "f": "Keith",
+          "m": "",
+          "l": "Gibson",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "Mrs",
+          "f": "",
+          "m": "",
+          "l": "Gibson",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-09-08T03:16:29.158Z"
+  ]
+}
