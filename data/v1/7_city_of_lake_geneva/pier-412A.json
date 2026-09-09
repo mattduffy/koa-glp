@@ -1,0 +1,60 @@
+{
+  "pier": "412A",
+  "version": "1",
+  "loc": {
+    "longitude": -88.572296,
+    "latitude": 42.550846
+  },
+  "geohash": "dp9406pseu0",
+  "pluscode": "86JHHC2H+83",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "",
+    "established": null,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "127 Brooks St",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "Blue Heaven",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Todd",
+          "m": "",
+          "l": "Reschke",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Suzy",
+          "m": "",
+          "l": "Brady",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-09-09T02:57:41.194Z"
+  ]
+}

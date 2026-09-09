@@ -1,0 +1,105 @@
+{
+  "pier": "437AY",
+  "version": "1",
+  "loc": {
+    "longitude": -88.570152,
+    "latitude": 42.546636
+  },
+  "geohash": "dp94093hjg0",
+  "pluscode": "GCWH+MW5 Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "Abbey Harbor Yacht Club",
+    "established": null,
+    "associationUrl": "",
+    "tel": "+1(262) 394-5544",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "271 Fontana Blvd",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Abbey Harbor Y.C. Docks",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Edward",
+          "m": "",
+          "l": "Breen",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Elizabeth",
+          "m": "",
+          "l": "Davis",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "David",
+          "m": "A",
+          "l": "Rasmussen",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Janiece",
+          "m": "",
+          "l": "Theeke",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-09-09T03:02:19.251Z"
+  ]
+}

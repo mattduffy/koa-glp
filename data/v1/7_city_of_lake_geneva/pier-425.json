@@ -1,0 +1,75 @@
+{
+  "pier": "425",
+  "version": "1",
+  "loc": {
+    "longitude": -88.571173,
+    "latitude": 42.548954
+  },
+  "geohash": "dp9409b3w50",
+  "pluscode": "GCXH+HGP Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "",
+    "established": null,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "Lake St",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Fontana Municipal Pier #3",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Chet",
+          "m": "",
+          "l": "Balder",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Jenny",
+          "m": "",
+          "l": "Balder",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-09-09T03:00:39.804Z"
+  ]
+}
