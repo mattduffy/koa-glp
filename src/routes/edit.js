@@ -72,14 +72,18 @@ async function townForPier(pierNumber, townsArray) {
       const setkey = `glp:piers_by_town:${set}`
       log(setkey, pierNumber)
       /* eslint-disable-next-line */
-      for await (const { value } of redis.zScanIterator(
+      for await (const key of redis.zScanIterator(
         setkey,
         { MATCH: pierNumber, COUNT: 1000 },
       )) {
-        if (value !== null) {
+        log('value is', key)
+        if (key === undefined) {
+          throw new Error(`townForPier: ${pierNumber}, ${setkey}`, { key })
+        }
+        if (key.length > 0) {
           town = set.split('_').map((e) => e.toProperCase()).join(' ')
           setTown = set
-          log(`Found ${value} in ${set}`)
+          log(`Found ${pierNumber} in ${setTown}`)
           found = true
         }
       }
@@ -565,7 +569,8 @@ router.post('postEdit', '/edit/pier/:pier', hasFlash, async (ctx) => {
         log('Multipart form data was successfully parsed.')
         ctx.state.fields = fields
         ctx.state.files = files
-        info(`form fields: ${fields}`)
+        // info(`form fields: ${fields}`, { depth: null })
+        console.log('form fields:', fields, { depth: null })
         info(`form files: ${files}`)
         resolve()
       })
