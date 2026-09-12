@@ -1,7 +1,10 @@
 {
   "pier": "531",
   "version": "1",
-  "loc": "-88.532495,42.550134",
+  "loc": {
+    "longitude": -88.532495,
+    "latitude": 42.550134
+  },
   "geohash": "dp9416h8e20",
   "pluscode": "HF29+322 Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
@@ -90,22 +93,29 @@
     },
     {
       "estateName": "",
-      "membershipType": "Regular",
-      "member": true,
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Joe ",
+          "f": "Marty",
           "m": "",
-          "l": "Gardella",
+          "l": "Rexinger",
           "s": "",
           "hidden": 0
-        },
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
         {
           "t": "",
-          "f": "Leta",
+          "f": "",
           "m": "",
-          "l": "Gardella",
+          "l": "Vitale Family",
           "s": "",
           "hidden": 0
         }
@@ -113,7 +123,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:31:31.369Z",
-    "2024-05-19T18:57:55.705Z"
+    "2026-09-12T03:02:41.731Z"
   ]
 }

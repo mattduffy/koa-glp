@@ -1,20 +1,28 @@
 {
   "pier": "542",
-  "loc": "-88.529596,42.550364",
+  "version": "1",
+  "loc": {
+    "longitude": -88.529596,
+    "latitude": 42.550364
+  },
+  "geohash": "dp9416n9yf0",
+  "pluscode": "HF2C+45R Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 1,
   "property": {
     "association": "Shore Haven",
-    "established": "1926",
+    "established": 1926,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
     },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0,
     "value": {
       "value": "",
       "source": "",
@@ -24,8 +32,8 @@
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -36,14 +44,32 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Matt",
+          "m": "",
+          "l": "Gryzlo",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Tricia",
+          "m": "",
+          "l": "Crosby",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
-  "geohash": "dp9416n9yf0",
-  "pluscode": "HF2C+45R Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 1,
-  "version": 1,
   "updatedOn": [
-    "2025-10-17T03:31:31.397Z"
+    "2026-09-12T03:05:20.254Z"
   ]
 }

@@ -1,7 +1,10 @@
 {
   "pier": "560",
   "version": "1",
-  "loc": "-88.518754,42.552177",
+  "loc": {
+    "longitude": -88.518754,
+    "latitude": 42.552177
+  },
   "geohash": "dp941dqs7s0",
   "pluscode": "HF2J+VFH Williams Bay, Wisconsin",
   "public": 0,
@@ -71,10 +74,54 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Dragan",
+          "m": "",
+          "l": "Dovric",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Michael",
+          "m": "",
+          "l": "Simon",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "T",
+          "m": "",
+          "l": "Schurtz",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:31:31.502Z",
-    "2024-05-19T19:31:24.978Z"
+    "2026-09-12T03:11:16.102Z"
   ]
 }
