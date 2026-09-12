@@ -1,7 +1,10 @@
 {
   "pier": "501",
   "version": "1",
-  "loc": "-88.548665,42.547855",
+  "loc": {
+    "longitude": -88.548665,
+    "latitude": 42.547855
+  },
   "geohash": "dp94118g4x0",
   "pluscode": "GFX2+4GW Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
@@ -34,9 +37,9 @@
       "members": [
         {
           "t": "",
-          "f": "",
+          "f": "Tom",
           "m": "",
-          "l": "",
+          "l": "Moliter",
           "s": "",
           "hidden": 0
         }
@@ -44,7 +47,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:35:13.512Z",
-    "2024-05-18T14:28:59.266Z"
+    "2026-09-12T02:52:47.896Z"
   ]
 }

@@ -1,7 +1,10 @@
 {
   "pier": "519",
   "version": "1",
-  "loc": "-88.539253,42.549215",
+  "loc": {
+    "longitude": -88.539253,
+    "latitude": 42.549215
+  },
   "geohash": "dp9411zeju0",
   "pluscode": "GFX6+M7Q Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
@@ -41,10 +44,32 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "Echoes",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Louis",
+          "m": "",
+          "l": "Schriber",
+          "s": "III",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Andrea",
+          "m": "",
+          "l": "Schriber",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:35:13.630Z",
-    "2024-05-18T14:37:43.164Z"
+    "2026-09-12T02:59:05.475Z"
   ]
 }

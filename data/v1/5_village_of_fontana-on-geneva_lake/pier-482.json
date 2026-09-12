@@ -1,20 +1,28 @@
 {
   "pier": "482",
-  "loc": "-88.559544,42.546688",
+  "version": "1",
+  "loc": {
+    "longitude": -88.559544,
+    "latitude": 42.546688
+  },
+  "geohash": "dp940c2umj0",
+  "pluscode": "GCWR+M5G Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "620a S Lakeshore Dr",
       "city": "Fontana",
       "state": "WI",
       "zip": "53125"
     },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0,
     "value": {
       "value": "",
       "source": "",
@@ -24,26 +32,21 @@
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Susan L. Origer Family",
-          "m": "",
-          "l": "",
+          "f": "Susan",
+          "m": "L",
+          "l": "Origer",
           "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp940c2umj0",
-  "pluscode": "GCWR+M5G Fontana-On-Geneva Lake, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1,
   "updatedOn": [
-    "2025-10-17T03:35:13.392Z"
+    "2026-09-12T02:47:22.751Z"
   ]
 }

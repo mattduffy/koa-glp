@@ -1,7 +1,10 @@
 {
   "pier": "518B",
   "version": "1",
-  "loc": "-88.539614,42.54913",
+  "loc": {
+    "longitude": -88.539614,
+    "latitude": 42.54913
+  },
   "geohash": "tzwfncbdds0",
   "pluscode": "8MJCGGXQ+MR",
   "public": 0,
@@ -34,9 +37,17 @@
       "members": [
         {
           "t": "",
-          "f": "",
+          "f": "Dan",
           "m": "",
-          "l": "",
+          "l": "Gallagher",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Sarah",
+          "m": "",
+          "l": "Gallagher",
           "s": "",
           "hidden": 0
         }
@@ -44,7 +55,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:35:13.625Z",
-    "2024-05-18T14:37:16.625Z"
+    "2026-09-12T02:57:54.848Z"
   ]
 }
