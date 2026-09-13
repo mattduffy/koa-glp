@@ -1,7 +1,10 @@
 {
   "pier": "700",
   "version": "1",
-  "loc": "-88.474001,42.563468",
+  "loc": {
+    "longitude": -88.474001,
+    "latitude": 42.563468
+  },
   "geohash": "dp944srnnm0",
   "pluscode": "HG7G+99Q Lake Geneva, Wisconsin",
   "public": 0,
@@ -87,10 +90,55 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Larry",
+          "m": "",
+          "l": "Moelmann",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Colleen",
+          "m": "",
+          "l": "Moelmann",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Bridget",
+          "m": "",
+          "l": "Van Eekeren",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "David",
+          "m": "",
+          "l": "Van Eekeren",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:31:32.075Z",
-    "2024-05-19T20:18:23.601Z"
+    "2026-09-13T02:41:59.755Z"
   ]
 }

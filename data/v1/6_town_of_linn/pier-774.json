@@ -1,7 +1,10 @@
 {
   "pier": "774",
   "version": "1",
-  "loc": "-88.452988,42.560058",
+  "loc": {
+    "longitude": -88.452988,
+    "latitude": 42.560058
+  },
   "geohash": "dp9455y6rc0",
   "pluscode": "HG6W+2RC Lake Geneva, Wisconsin",
   "public": 0,
@@ -81,23 +84,23 @@
       ]
     },
     {
-      "estateName": "",
+      "estateName": "Loramoor Gatehouse",
       "membershipType": "Donor",
       "member": true,
       "members": [
         {
           "t": "",
-          "f": "John",
+          "f": "Joseph",
           "m": "",
-          "l": "Nanna",
+          "l": "Kotlarz",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Marilyn",
+          "f": "Heather",
           "m": "",
-          "l": "Nanna",
+          "l": "Kotlarz",
           "s": "",
           "hidden": 0
         }
@@ -105,7 +108,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:31:32.260Z",
-    "2024-05-20T12:23:23.415Z"
+    "2026-09-13T02:59:09.746Z"
   ]
 }

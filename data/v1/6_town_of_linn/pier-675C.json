@@ -1,20 +1,28 @@
 {
   "pier": "675C",
-  "loc": "0,0",
+  "version": "1",
+  "loc": {
+    "longitude": -88.484358,
+    "latitude": 42.563558
+  },
+  "geohash": "dp944krwtn0",
+  "pluscode": "86JHHG78+C7",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Birches",
-    "established": "1924",
+    "established": 1924,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "N1967 Birches Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
     },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0,
     "value": {
       "value": "",
       "source": "",
@@ -24,8 +32,8 @@
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
@@ -38,12 +46,7 @@
       ]
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1,
   "updatedOn": [
-    "2025-10-17T03:31:31.957Z"
+    "2026-09-13T02:34:49.708Z"
   ]
 }

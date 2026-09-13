@@ -1,7 +1,10 @@
 {
   "pier": "643",
   "version": "1",
-  "loc": "-88.49607,42.559717",
+  "loc": {
+    "longitude": -88.49607,
+    "latitude": 42.559717
+  },
   "geohash": "dp9445z0k40",
   "pluscode": "HG53+VHM Williams Bay, Wisconsin",
   "public": 0,
@@ -34,9 +37,17 @@
       "members": [
         {
           "t": "",
-          "f": "Eilena",
+          "f": "Matthew",
           "m": "",
-          "l": "Athens",
+          "l": "Camden",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Kerry",
+          "m": "",
+          "l": "Camden",
           "s": "",
           "hidden": 0
         }
@@ -44,7 +55,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:31:31.790Z",
-    "2024-05-19T19:55:09.968Z"
+    "2026-09-13T02:22:47.121Z"
   ]
 }

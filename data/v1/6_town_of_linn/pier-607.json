@@ -1,20 +1,28 @@
 {
   "pier": "607",
-  "loc": "-88.504226,42.559607",
+  "version": "1",
+  "loc": {
+    "longitude": -88.504226,
+    "latitude": 42.559607
+  },
+  "geohash": "dp94459pwj0",
+  "pluscode": "HF5W+R8R Williams Bay, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "Lake Geneva Highlands",
-    "established": "1922",
+    "established": 1922,
     "associationUrl": "https://www.lakegenevahighlands.com/home/",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
     },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0,
     "value": {
       "value": "",
       "source": "",
@@ -24,12 +32,12 @@
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Lake Geneva Highlands",
+          "f": "Lake Geneva Highlands Piers",
           "m": "",
           "l": "",
           "s": "",
@@ -38,12 +46,7 @@
       ]
     }
   ],
-  "geohash": "dp94459pwj0",
-  "pluscode": "HF5W+R8R Williams Bay, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1,
   "updatedOn": [
-    "2025-10-17T03:31:31.668Z"
+    "2026-09-13T02:01:23.973Z"
   ]
 }

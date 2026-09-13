@@ -1,20 +1,28 @@
 {
   "pier": "786",
-  "loc": "-88.443675,42.56371",
+  "version": "1",
+  "loc": {
+    "longitude": -88.443675,
+    "latitude": 42.56371
+  },
+  "geohash": "dp945kmr940",
+  "pluscode": "HH74+FGP Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "W2908 Walcowis Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
     },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0,
     "value": {
       "value": "",
       "source": "",
@@ -24,26 +32,21 @@
   "owners": [
     {
       "estateName": "Koinonia",
-      "member": true,
       "membershipType": "Donor",
+      "member": true,
       "members": [
         {
           "t": "",
-          "f": "Janice Van Dyke-Zeilstra Family",
+          "f": "Janice ",
           "m": "",
-          "l": "",
-          "s": "",
+          "l": "Van Dyke-Zeilstra",
+          "s": "Family",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "dp945kmr940",
-  "pluscode": "HH74+FGP Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1,
   "updatedOn": [
-    "2025-10-17T03:31:32.335Z"
+    "2026-09-13T03:24:32.461Z"
   ]
 }

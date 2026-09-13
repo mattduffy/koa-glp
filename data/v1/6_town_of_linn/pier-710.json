@@ -1,7 +1,10 @@
 {
   "pier": "710",
   "version": "1",
-  "loc": "-88.471709,42.562925",
+  "loc": {
+    "longitude": -88.471709,
+    "latitude": 42.562925
+  },
   "geohash": "dp944u2g5b0",
   "pluscode": "HG7H+58F Lake Geneva, Wisconsin",
   "public": 0,
@@ -64,10 +67,24 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Dick",
+          "m": "",
+          "l": "Pfeil",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:31:32.097Z",
-    "2024-05-19T20:40:52.746Z"
+    "2026-09-13T02:43:10.046Z"
   ]
 }

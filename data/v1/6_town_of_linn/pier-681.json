@@ -1,7 +1,10 @@
 {
   "pier": "681",
   "version": "1",
-  "loc": "-88.482085,42.564317",
+  "loc": {
+    "longitude": -88.482085,
+    "latitude": 42.564317
+  },
   "geohash": "dp944s971g0",
   "pluscode": "86JHHG79+P5",
   "public": 0,
@@ -28,7 +31,7 @@
   },
   "owners": [
     {
-      "estateName": "",
+      "estateName": "Cozy Cottage",
       "membershipType": "Regular",
       "member": true,
       "members": [
@@ -44,7 +47,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:31:31.985Z",
-    "2023-12-18T03:33:52.718Z"
+    "2026-09-13T02:36:37.812Z"
   ]
 }

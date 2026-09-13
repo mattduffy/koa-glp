@@ -1,7 +1,10 @@
 {
   "pier": "758",
   "version": "1",
-  "loc": "-88.459569,42.557586",
+  "loc": {
+    "longitude": -88.459569,
+    "latitude": 42.557586
+  },
   "geohash": "dp94553eyt0",
   "pluscode": "HG5R+25M Lake Geneva, Wisconsin",
   "public": 0,
@@ -34,9 +37,9 @@
       "members": [
         {
           "t": "",
-          "f": "Thomas",
+          "f": "Catherine",
           "m": "",
-          "l": "Ryan",
+          "l": "Demoon",
           "s": "",
           "hidden": 0
         }
@@ -44,7 +47,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:31:32.193Z",
-    "2024-05-20T12:12:52.276Z"
+    "2026-09-13T02:48:58.707Z"
   ]
 }

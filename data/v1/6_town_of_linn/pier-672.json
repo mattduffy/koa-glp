@@ -1,7 +1,10 @@
 {
   "pier": "672",
   "version": "1",
-  "loc": "-88.486661,42.562965",
+  "loc": {
+    "longitude": -88.486661,
+    "latitude": 42.562965
+  },
   "geohash": "dp944kmgpr0",
   "pluscode": "HG77+58P Lake Geneva, Wisconsin",
   "public": 0,
@@ -87,10 +90,70 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "ack",
+          "m": "",
+          "l": "Dalsanto",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Patricia",
+          "m": "",
+          "l": "Dalsanto",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Pattie",
+          "m": "",
+          "l": "Murray",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Jim",
+          "m": "",
+          "l": "Scott",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Jodi",
+          "m": "",
+          "l": "Scott",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:31:31.938Z",
-    "2024-05-19T20:06:25.193Z"
+    "2026-09-13T02:30:43.950Z"
   ]
 }

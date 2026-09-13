@@ -1,9 +1,12 @@
 {
   "pier": "616A",
   "version": "1",
-  "loc": "-88.501656,42.559094",
-  "geohash": "dp9445eh9y0",
-  "pluscode": "86JHHF5X+J8",
+  "loc": {
+    "longitude": -88.501631,
+    "latitude": 42.559302
+  },
+  "geohash": "dp9445ejft0",
+  "pluscode": "86JHHF5X+P8",
   "public": 0,
   "bigSwimPier": 0,
   "property": {
@@ -44,7 +47,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:31:31.711Z",
-    "2023-12-16T04:29:44.098Z"
+    "2026-09-13T02:16:16.894Z"
   ]
 }

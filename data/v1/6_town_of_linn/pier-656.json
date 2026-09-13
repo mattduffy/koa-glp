@@ -1,7 +1,10 @@
 {
   "pier": "656",
   "version": "1",
-  "loc": "-88.493438,42.560392",
+  "loc": {
+    "longitude": -88.493438,
+    "latitude": 42.560392
+  },
   "geohash": "dp9447ch320",
   "pluscode": "86JHHG64+5J",
   "public": 0,
@@ -34,17 +37,17 @@
       "members": [
         {
           "t": "",
-          "f": "Joe",
+          "f": "Cheryl",
           "m": "",
-          "l": "Fragale",
+          "l": "Wormley",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Sal",
+          "f": "Jim",
           "m": "",
-          "l": "Fragale",
+          "l": "Wormley",
           "s": "",
           "hidden": 0
         }
@@ -52,7 +55,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:31:31.859Z",
-    "2023-11-30T03:53:59.576Z"
+    "2026-09-13T02:24:58.915Z"
   ]
 }

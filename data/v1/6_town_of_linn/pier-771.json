@@ -1,7 +1,10 @@
 {
   "pier": "771",
   "version": "1",
-  "loc": "-88.453978,42.559521",
+  "loc": {
+    "longitude": -88.453978,
+    "latitude": 42.559521
+  },
   "geohash": "dp9455tz0v0",
   "pluscode": "86JHHG5W+RC",
   "public": 0,
@@ -28,15 +31,23 @@
   },
   "owners": [
     {
-      "estateName": "Three Pines",
+      "estateName": "",
       "membershipType": "Contributing",
       "member": true,
       "members": [
         {
           "t": "",
-          "f": "Timothy",
+          "f": "Matt",
           "m": "",
-          "l": "Kane",
+          "l": "Pettinelli",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Kristi",
+          "m": "",
+          "l": "Pettinelli",
           "s": "",
           "hidden": 0
         }
@@ -44,7 +55,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:31:32.247Z",
-    "2023-12-18T05:32:44.784Z"
+    "2026-09-13T02:56:33.817Z"
   ]
 }

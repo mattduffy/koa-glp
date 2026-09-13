@@ -1,20 +1,28 @@
 {
   "pier": "783",
-  "loc": "-88.444761,42.563562",
+  "version": "1",
+  "loc": {
+    "longitude": -88.444761,
+    "latitude": 42.563562
+  },
+  "geohash": "dp945kkqxw0",
+  "pluscode": "HH74+C3H Lake Geneva, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
       "street": "",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
     },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0,
     "value": {
       "value": "",
       "source": "",
@@ -24,12 +32,12 @@
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Subdiv. Pier Southeast LG Assn.",
+          "f": "Southeast LG Association",
           "m": "",
           "l": "",
           "s": "",
@@ -38,12 +46,7 @@
       ]
     }
   ],
-  "geohash": "dp945kkqxw0",
-  "pluscode": "HH74+C3H Lake Geneva, Wisconsin",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1,
   "updatedOn": [
-    "2025-10-17T03:31:32.323Z"
+    "2026-09-13T03:23:44.102Z"
   ]
 }

@@ -1,7 +1,10 @@
 {
   "pier": "779",
   "version": "1",
-  "loc": "-88.447118,42.56261",
+  "loc": {
+    "longitude": -88.447118,
+    "latitude": 42.56261
+  },
   "geohash": "dp945k6c0v0",
   "pluscode": "HH73+25R Lake Geneva, Wisconsin",
   "public": 0,
@@ -41,10 +44,32 @@
           "hidden": 0
         }
       ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "John",
+          "m": "",
+          "l": "Cooney",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Barbara",
+          "m": "",
+          "l": "Cooney",
+          "s": "",
+          "hidden": 0
+        }
+      ]
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:31:32.303Z",
-    "2024-05-20T12:26:09.997Z"
+    "2026-09-13T03:21:58.738Z"
   ]
 }
