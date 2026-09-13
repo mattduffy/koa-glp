@@ -863,15 +863,20 @@
         }
         await showThisPier()
         let selectCoordsMarker = null
-        window._map.addEventListener("single-tap", async (e) => {
+        async function showPointCoords(e) {
+          const {latitude, longitude} = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
+          window.alert(`latitude ${latitude},\nlongitude ${longitude}`)
+        }
+        // window._map.addEventListener("single-tap", showPointCoords)
+        async function showPierAnnotation(e) {
           if (selectCoordsMarker) {
             window._map.removeAnnotation(selectCoordsMarker)
           }
           e.preventDefault()
           e.stopPropagation()
           const {latitude, longitude} = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
-          // const coordinate = window._map.convertPointOnPageToCoordinate(e.pointOnPage)
-          const defaultRadius = 50
+          // const defaultRadius = 50
+          const defaultRadius = 10
           const defaultUnits = 'ft'
           console.log(`locate piers within ${defaultRadius} ${defaultUnits} of coords: ${longitude}, ${latitude}`)
           const results = await (await fetch(`${origin}/mapkit/locate/${longitude}/${latitude}/${defaultRadius}/${defaultUnits}`)).json()
@@ -939,7 +944,9 @@
             document.forms.pierEditId.latId.value = Number.parseFloat(latitude).toFixed(6)
             document.forms.pierEditId.latId.dispatchEvent(new InputEvent('change'))
           }
-        })
+        // })
+        }
+        window._map.addEventListener("single-tap", showPierAnnotation)
       } catch (e) {
         console.log(e)
       }
