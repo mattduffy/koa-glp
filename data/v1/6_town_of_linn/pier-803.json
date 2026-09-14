@@ -1,20 +1,28 @@
 {
   "pier": "803",
-  "loc": "0,0",
+  "version": "1",
+  "loc": {
+    "longitude": -88.439975,
+    "latitude": 42.564876
+  },
+  "geohash": "dp945kxyrh0",
+  "pluscode": "86JHHH76+X2",
+  "public": 0,
+  "bigSwimPier": 0,
   "property": {
     "association": "",
-    "established": "",
+    "established": null,
     "associationUrl": "",
     "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
     "address": {
-      "street": "",
+      "street": "N1995 S Lake Shore Dr",
       "city": "Lake Geneva",
       "state": "WI",
       "zip": "53147"
     },
-    "business": "",
-    "isMarina": 0,
-    "hasFood": 0,
     "value": {
       "value": "",
       "source": "",
@@ -24,26 +32,29 @@
   "owners": [
     {
       "estateName": "",
-      "member": false,
       "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "",
+          "f": "Brian",
           "m": "",
+          "l": "Flanagan",
           "s": "",
-          "l": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Kim",
+          "m": "",
+          "l": "Flanagan",
+          "s": "",
           "hidden": 0
         }
       ]
     }
   ],
-  "geohash": "",
-  "pluscode": "",
-  "public": 0,
-  "bigSwimPier": 0,
-  "version": 1,
   "updatedOn": [
-    "2025-10-17T03:31:32.395Z"
+    "2026-09-14T00:25:07.212Z"
   ]
 }

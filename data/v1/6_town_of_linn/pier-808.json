@@ -1,7 +1,10 @@
 {
   "pier": "808",
   "version": "1",
-  "loc": "-88.438849,42.564974",
+  "loc": {
+    "longitude": -88.438849,
+    "latitude": 42.564974
+  },
   "geohash": "dp945s8ycq0",
   "pluscode": "HH76+XFJ Lake Geneva, Wisconsin",
   "public": 0,
@@ -34,9 +37,9 @@
       "members": [
         {
           "t": "",
-          "f": "",
+          "f": "Michael",
           "m": "",
-          "l": "",
+          "l": "Kocourek",
           "s": "",
           "hidden": 0
         }
@@ -44,7 +47,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-17T03:31:32.408Z",
-    "2024-05-20T12:33:53.336Z"
+    "2026-09-14T00:26:05.067Z"
   ]
 }
