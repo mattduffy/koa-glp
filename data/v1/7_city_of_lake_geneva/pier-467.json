@@ -1,27 +1,27 @@
 {
-  "pier": "866",
+  "pier": "467",
   "version": "1",
   "loc": {
-    "longitude": -88.437621,
-    "latitude": 42.580523
+    "longitude": -88.564776,
+    "latitude": 42.546146
   },
-  "geohash": "dp945x99w00",
-  "pluscode": "86JHHHJ6+6X",
+  "geohash": "dp9409m1700",
+  "pluscode": "86JHGCWP+F3",
   "public": 0,
   "bigSwimPier": 0,
   "property": {
-    "association": "",
-    "established": null,
-    "associationUrl": "",
+    "association": "Glenwood Springs",
+    "established": 1892,
+    "associationUrl": "http://glenwoodspringsclub.com/",
     "tel": "",
     "business": "",
     "isMarina": 0,
     "hasFood": 0,
     "address": {
-      "street": "978 N Knoll Lane",
-      "city": "Lake Geneva",
+      "street": "",
+      "city": "Fontana",
       "state": "WI",
-      "zip": "53147"
+      "zip": "53125"
     },
     "value": {
       "value": "",
@@ -37,17 +37,9 @@
       "members": [
         {
           "t": "",
-          "f": "John",
-          "m": "",
-          "l": "Bottros",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Laura",
-          "m": "",
-          "l": "Bottros",
+          "f": "Test",
+          "m": "M",
+          "l": "test",
           "s": "",
           "hidden": 0
         }
@@ -55,6 +47,6 @@
     }
   ],
   "updatedOn": [
-    "2026-09-14T01:10:29.398Z"
+    "2026-09-10T03:34:31.163Z"
   ]
 }

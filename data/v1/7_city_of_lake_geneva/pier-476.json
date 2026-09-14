@@ -1,27 +1,27 @@
 {
-  "pier": "866",
+  "pier": "476",
   "version": "1",
   "loc": {
-    "longitude": -88.437621,
-    "latitude": 42.580523
+    "longitude": -88.562161,
+    "latitude": 42.546701
   },
-  "geohash": "dp945x99w00",
-  "pluscode": "86JHHHJ6+6X",
+  "geohash": "dp9409rh2p0",
+  "pluscode": "GCWQ+M4P Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
   "property": {
-    "association": "",
-    "established": null,
+    "association": "Indian Hills",
+    "established": 1927,
     "associationUrl": "",
     "tel": "",
     "business": "",
     "isMarina": 0,
     "hasFood": 0,
     "address": {
-      "street": "978 N Knoll Lane",
-      "city": "Lake Geneva",
+      "street": "560 Sauk Trl",
+      "city": "Fontana",
       "state": "WI",
-      "zip": "53147"
+      "zip": "53125"
     },
     "value": {
       "value": "",
@@ -37,17 +37,17 @@
       "members": [
         {
           "t": "",
-          "f": "John",
+          "f": "Thomas ",
           "m": "",
-          "l": "Bottros",
+          "l": "Schmidt",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Laura",
+          "f": "Jennifer",
           "m": "",
-          "l": "Bottros",
+          "l": "Schmidt",
           "s": "",
           "hidden": 0
         }
@@ -55,6 +55,6 @@
     }
   ],
   "updatedOn": [
-    "2026-09-14T01:10:29.398Z"
+    "2026-09-10T02:48:47.456Z"
   ]
 }

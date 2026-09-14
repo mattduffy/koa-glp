@@ -1,7 +1,10 @@
 {
   "pier": "861",
   "version": "1",
-  "loc": "-88.439107,42.579015",
+  "loc": {
+    "longitude": -88.439107,
+    "latitude": 42.579015
+  },
   "geohash": "dp945x28er0",
   "pluscode": "86JHHHH6+J9",
   "public": 0,
@@ -72,9 +75,17 @@
       "members": [
         {
           "t": "",
-          "f": "Beth & John Long Family",
+          "f": "John",
           "m": "",
-          "l": "",
+          "l": "Long",
+          "s": "Family",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Beth",
+          "m": "",
+          "l": "Long",
           "s": "",
           "hidden": 0
         }
@@ -105,7 +116,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-15T03:10:13.028Z",
-    "2024-05-20T12:47:48.996Z"
+    "2026-09-14T01:09:25.962Z"
   ]
 }

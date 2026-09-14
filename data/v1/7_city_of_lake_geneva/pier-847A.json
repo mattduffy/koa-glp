@@ -1,7 +1,10 @@
 {
   "pier": "847A",
   "version": "1",
-  "loc": "-88.440213,42.573552",
+  "loc": {
+    "longitude": -88.440213,
+    "latitude": 42.573552
+  },
   "geohash": "dp945qrbct0",
   "pluscode": "HHF5+CWF Lake Geneva, Wisconsin",
   "public": 0,
@@ -67,11 +70,34 @@
     },
     {
       "estateName": "",
-      "membershipType": "Regular",
+      "membershipType": "Contributing",
       "member": true,
       "members": [
         {
-          "t": "Dr",
+          "t": "",
+          "f": "Frank",
+          "m": "",
+          "l": "Moyrihan Oddo",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Sian",
+          "m": "",
+          "l": "Moyrihan Oddo",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Contributing",
+      "member": true,
+      "members": [
+        {
+          "t": "",
           "f": "Diane",
           "m": "",
           "l": "Wayne",
@@ -80,47 +106,9 @@
         },
         {
           "t": "",
-          "f": "Jeffrey",
+          "f": "Jeff",
           "m": "",
           "l": "Wayne",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Contributing",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "Frank",
-          "m": "",
-          "l": "Oddo",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Sian",
-          "m": "",
-          "l": "Oddo",
-          "s": "",
-          "hidden": 0
-        }
-      ]
-    },
-    {
-      "estateName": "",
-      "membershipType": "Contributing",
-      "member": true,
-      "members": [
-        {
-          "t": "",
-          "f": "Hugh",
-          "m": "",
-          "l": "Plunkett",
           "s": "",
           "hidden": 0
         }
@@ -128,7 +116,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-15T03:10:12.972Z",
-    "2024-05-20T12:42:47.924Z"
+    "2026-09-14T01:06:47.306Z"
   ]
 }

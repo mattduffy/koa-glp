@@ -1,0 +1,83 @@
+{
+  "pier": "443",
+  "version": "1",
+  "loc": {
+    "longitude": -88.569261,
+    "latitude": 42.545692
+  },
+  "geohash": "dp94091yde0",
+  "pluscode": "86JHGCWJ+77",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "Glenwood Springs",
+    "established": 1892,
+    "associationUrl": "http://glenwoodspringsclub.com/",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "423 Harvard Ave",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Regular",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "Donovan",
+          "m": "",
+          "l": "Eckhardt",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Erica",
+          "m": "",
+          "l": "Eckhardt",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Andrea",
+          "m": "",
+          "l": "FitzGerald",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Tim",
+          "m": "",
+          "l": "FitzGerald",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-09-10T02:39:50.638Z"
+  ]
+}

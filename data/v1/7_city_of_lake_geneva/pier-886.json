@@ -1,7 +1,10 @@
 {
   "pier": "886",
   "version": "1",
-  "loc": "-88.434014,42.585034",
+  "loc": {
+    "longitude": -88.434014,
+    "latitude": 42.585034
+  },
   "geohash": "dp9478k7f10",
   "pluscode": "86JHHHP8+29",
   "public": 0,
@@ -34,17 +37,17 @@
       "members": [
         {
           "t": "",
-          "f": "Jim",
+          "f": "Vincent",
           "m": "",
-          "l": "Heimann",
+          "l": "Kolber",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Lynette",
+          "f": "Patricia",
           "m": "",
-          "l": "Heimann",
+          "l": "Kolber",
           "s": "",
           "hidden": 0
         }
@@ -52,7 +55,6 @@
     }
   ],
   "updatedOn": [
-    "2025-10-15T03:10:13.129Z",
-    "2023-12-19T03:54:24.133Z"
+    "2026-09-14T01:13:06.998Z"
   ]
 }

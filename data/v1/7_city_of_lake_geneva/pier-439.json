@@ -1,27 +1,27 @@
 {
-  "pier": "854",
+  "pier": "439",
   "version": "1",
   "loc": {
-    "longitude": -88.439858,
-    "latitude": 42.576645
+    "longitude": -88.569949,
+    "latitude": 42.546349
   },
-  "geohash": "dp945wb4cv0",
-  "pluscode": "HHG6+M32 Lake Geneva, Wisconsin",
+  "geohash": "dp9409366w0",
+  "pluscode": "GCWJ+G2M Fontana-On-Geneva Lake, Wisconsin",
   "public": 0,
   "bigSwimPier": 0,
   "property": {
-    "association": "Somerset Condo Association",
-    "established": null,
-    "associationUrl": "",
-    "tel": "",
+    "association": "Country Club Estates",
+    "established": 1926,
+    "associationUrl": "https://www.ccehoaonline.com/",
+    "tel": "+1 (262) 949-5504",
     "business": "",
     "isMarina": 0,
     "hasFood": 0,
     "address": {
-      "street": "1120 Lake Shore Dr",
-      "city": "Lake Geneva",
+      "street": "Harvard Ave",
+      "city": "Fontana",
       "state": "WI",
-      "zip": "53147"
+      "zip": "53125"
     },
     "value": {
       "value": "",
@@ -37,7 +37,7 @@
       "members": [
         {
           "t": "",
-          "f": "Somerset Association Pier",
+          "f": "Country Club Estates Boat Pier",
           "m": "",
           "l": "",
           "s": "",
@@ -47,22 +47,14 @@
     },
     {
       "estateName": "",
-      "membershipType": "Regular",
-      "member": true,
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Larry",
+          "f": "Laurie",
           "m": "",
-          "l": "Happ",
-          "s": "",
-          "hidden": 0
-        },
-        {
-          "t": "",
-          "f": "Kelly",
-          "m": "",
-          "l": "Happ",
+          "l": "Ames",
           "s": "",
           "hidden": 0
         }
@@ -70,22 +62,22 @@
     },
     {
       "estateName": "",
-      "membershipType": "Contributing",
-      "member": true,
+      "membershipType": "Residential Non-member",
+      "member": false,
       "members": [
         {
           "t": "",
-          "f": "Gil",
+          "f": "Steve",
           "m": "",
-          "l": "Kirkpatrick",
+          "l": "Kaufman",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Lisa Lynnele",
+          "f": "Maureen",
           "m": "",
-          "l": "Kirkpatrick",
+          "l": "Kaufman",
           "s": "",
           "hidden": 0
         }
@@ -93,6 +85,6 @@
     }
   ],
   "updatedOn": [
-    "2026-09-14T01:07:53.429Z"
+    "2026-09-10T02:38:18.689Z"
   ]
 }

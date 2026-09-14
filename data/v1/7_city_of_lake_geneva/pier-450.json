@@ -1,0 +1,75 @@
+{
+  "pier": "450",
+  "version": "1",
+  "loc": {
+    "longitude": -88.568008,
+    "latitude": 42.545818
+  },
+  "geohash": "dp94094xrg0",
+  "pluscode": "GCWJ+8QH Fontana-On-Geneva Lake, Wisconsin",
+  "public": 0,
+  "bigSwimPier": 0,
+  "property": {
+    "association": "Glenwood Springs",
+    "established": 1892,
+    "associationUrl": "",
+    "tel": "",
+    "business": "",
+    "isMarina": 0,
+    "hasFood": 0,
+    "address": {
+      "street": "",
+      "city": "Fontana",
+      "state": "WI",
+      "zip": "53125"
+    },
+    "value": {
+      "value": "",
+      "source": "",
+      "link": ""
+    }
+  },
+  "owners": [
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
+          "f": "Glenwood Springs Pier",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "Maus Haus",
+      "membershipType": "Benefactor",
+      "member": true,
+      "members": [
+        {
+          "t": "",
+          "f": "James",
+          "m": "",
+          "l": "Maus",
+          "s": "",
+          "hidden": 0
+        },
+        {
+          "t": "",
+          "f": "Michelle",
+          "m": "",
+          "l": "Maus",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    }
+  ],
+  "updatedOn": [
+    "2026-09-10T02:41:39.933Z"
+  ]
+}

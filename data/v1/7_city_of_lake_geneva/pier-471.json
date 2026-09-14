@@ -1,27 +1,27 @@
 {
-  "pier": "866",
+  "pier": "471",
   "version": "1",
   "loc": {
-    "longitude": -88.437621,
-    "latitude": 42.580523
+    "longitude": -88.564336,
+    "latitude": 42.546642
   },
-  "geohash": "dp945x99w00",
-  "pluscode": "86JHHHJ6+6X",
+  "geohash": "dp9409mkjk0",
+  "pluscode": "86JHGCWP+M7",
   "public": 0,
   "bigSwimPier": 0,
   "property": {
-    "association": "",
-    "established": null,
+    "association": "Indian Hills",
+    "established": 1927,
     "associationUrl": "",
     "tel": "",
     "business": "",
     "isMarina": 0,
     "hasFood": 0,
     "address": {
-      "street": "978 N Knoll Lane",
-      "city": "Lake Geneva",
+      "street": "",
+      "city": "Fontana",
       "state": "WI",
-      "zip": "53147"
+      "zip": "53125"
     },
     "value": {
       "value": "",
@@ -37,17 +37,32 @@
       "members": [
         {
           "t": "",
+          "f": "Indian Hills Subdivision Pier",
+          "m": "",
+          "l": "",
+          "s": "",
+          "hidden": 0
+        }
+      ]
+    },
+    {
+      "estateName": "",
+      "membershipType": "Residential Non-member",
+      "member": false,
+      "members": [
+        {
+          "t": "",
           "f": "John",
           "m": "",
-          "l": "Bottros",
+          "l": "Lynch",
           "s": "",
           "hidden": 0
         },
         {
           "t": "",
-          "f": "Laura",
+          "f": "Ali",
           "m": "",
-          "l": "Bottros",
+          "l": "Lynch",
           "s": "",
           "hidden": 0
         }
@@ -55,6 +70,6 @@
     }
   ],
   "updatedOn": [
-    "2026-09-14T01:10:29.398Z"
+    "2026-09-10T02:46:40.696Z"
   ]
 }
