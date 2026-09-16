@@ -112,7 +112,8 @@
         const rel = e.target.getAttribute('rel') 
         s = (rel === 'prev') ? parseInt(s) - 1 : parseInt(s) + 1
         // console.info(`rel: ${rel}, s: ${s}`)
-        const links = await getAssocs(s)
+        const results = await getAssocs(s)
+        const links = results.documents 
         console.log(links)
         if (links.length > 0) {
           updatePrevLink()
@@ -122,8 +123,8 @@
           ulResultsList.replaceChildren()
           links.forEach((p) => {
             const li = document.createElement('li')
-            li.innerHTML = `<a href="${origin}/point-of-interest/${encodeURI(p.properties.id)}" `
-              + `data-id='${p.properties.id}'>${p.properties.name}</a>`
+            li.innerHTML = `<a href="${origin}/point-of-interest/${encodeURI(p.value.properties.id)}" `
+              + `data-id='${p.value.properties.id}'>${p.value.properties.name}</a>`
             li.firstChild.addEventListener('mouseover', linkAnnotationHandler)
             ulResultsList.appendChild(li)
           })
