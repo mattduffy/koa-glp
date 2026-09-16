@@ -25,21 +25,14 @@ Dotenv.config({
 
 const sentinelPort = redisEnv.REDIS_SENTINEL_PORT ?? 26379
 const redisConnOpts = {
-  RESP: 3,
-  unstableResp3: true,
-  name: 'myprimary',
-  database: redisEnv.REDIS_DB,
-  sentinelRetryDelayOnFailover: 100,
-  maxRetriesPerRequest: 3,
-  lazyConnect: true,
-  role: 'master',
-  keyPrefix: `${redisEnv.REDIS_KEY_PREFIX}:` ?? 'koa:',
   sentinelRootNodes: [
     { host: redisEnv.REDIS_SENTINEL_01, port: sentinelPort },
     { host: redisEnv.REDIS_SENTINEL_02, port: sentinelPort },
     { host: redisEnv.REDIS_SENTINEL_03, port: sentinelPort },
   ],
-   sentinelClientOptions: {
+  name: 'myprimary',
+  database: redisEnv.REDIS_DB,
+  sentinelClientOptions: {
     username: redisEnv.REDIS_SENTINEL_USER,
     password: redisEnv.REDIS_SENTINEL_PASSWORD,
     socket: {
@@ -48,7 +41,7 @@ const redisConnOpts = {
       ca: await fs.readFile(redisEnv.REDIS_CACERT),
     },
   },
-  nodeClientOptions: {       
+  nodeClientOptions: {
     username: redisEnv.REDIS_USER,
     password: redisEnv.REDIS_PASSWORD,
     socket: {
@@ -57,21 +50,27 @@ const redisConnOpts = {
       ca: await fs.readFile(redisEnv.REDIS_CACERT),
     },
   },
+  sentinelRetryDelayOnFailover: 100,
+  maxRetriesPerRequest: 3,
+  lazyConnect: true,
+  role: 'master',
+  keyPrefix: `${redisEnv.REDIS_KEY_PREFIX}:` ?? 'koa:',
+  // RESP: 3,
+  // unstableResp3: true,
 }
 // console.log(redisConnOpts)
-let sentinel
+let _sentinel
 try {
-  sentinel = await createSentinel(redisConnOpts)
-    .on('reconnecting', () => {
-      console.log('Redis sentinel reconnecting')
-    })
+  _sentinel = await createSentinel(redisConnOpts)
+    .on('reconnecting', () => { console.log('Redis sentinel reconnecting') })
     .on('error', (err) => { console.error('Redis Sentinel Error', err) })
     .on('ready', () => { console.log('Redis Sentinel connection is ready') })
 
-  await sentinel.connect()
+  await _sentinel.connect()
 } catch (e) {
   console.log(e)
 }
+const sentinel = _sentinel
 export {
   sentinel as redis,
 }

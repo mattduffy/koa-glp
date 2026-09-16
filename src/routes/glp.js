@@ -28,7 +28,6 @@ import {
   getSetName,
   TOWNS,
 } from '../utils/logging.js'
-// import { redis } from '../daos/impl/redis/redis-om.js'
 import { redis } from '../daos/impl/redis/redis-client.js'
 import { redis_single as redisSingle } from '../daos/impl/redis/redis-single.js'
 
