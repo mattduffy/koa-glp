@@ -21,8 +21,8 @@ import {
   // getSetName,
   getTownDirName,
 } from '../utils/logging.js'
-// import { redis } from '../daos/impl/redis/redis-om.js'
-import { redis_single as redis } from '../daos/impl/redis/redis-single.js'
+// import { redis_single as redis } from '../daos/impl/redis/redis-single.js'
+import { redis } from '../daos/impl/redis/redis-client.js'
 
 const editLog = _log.extend('edit')
 const editInfo = _info.extend('edit')
@@ -67,26 +67,48 @@ async function townForPier(pierNumber, townsArray) {
   let town
   try {
     /* eslint-disable-next-line */
-    for (const set of townsArray) {
+    for await (const set of townsArray) {
       let found = false
       const setkey = `glp:piers_by_town:${set}`
       log(setkey, pierNumber)
-      /* eslint-disable-next-line */
-      for await (const key of redis.zScanIterator(
-        setkey,
-        { MATCH: pierNumber, COUNT: 1000 },
-      )) {
-        log('value is', key)
-        if (key === undefined) {
-          throw new Error(`townForPier: ${pierNumber}, ${setkey}`, { key })
-        }
-        if (key.length > 0) {
+      let cursor = '0'
+      do {
+        /* official redis-node client does not support zScanIterator() function
+         * when connecting via redis sentinel.  Must use traditional zScan()
+         * function instead.
+         */
+        /* eslint-disable-next-line */
+        const result = await redis.zScan(
+          setkey,
+          cursor,
+          { MATCH: pierNumber, COUNT: 1000 },
+        )
+        cursor = result.cursor
+        const { members } = result
+        if (members.length > 0) {
           town = set.split('_').map((e) => e.toProperCase()).join(' ')
           setTown = set
           log(`Found ${pierNumber} in ${setTown}`)
           found = true
         }
-      }
+      } while (cursor !== '0')
+
+      /* eslint-disable-next-line */
+      // for await (const key of redis.zScanIterator(
+      //   setkey,
+      //   { MATCH: pierNumber, COUNT: 1000 },
+      // )) {
+      //   log('value is', key)
+      //   if (key === undefined) {
+      //     throw new Error(`townForPier: ${pierNumber}, ${setkey}`, { key })
+      //   }
+      //   if (key.length > 0) {
+      //     town = set.split('_').map((e) => e.toProperCase()).join(' ')
+      //     setTown = set
+      //     log(`Found ${pierNumber} in ${setTown}`)
+      //     found = true
+      //   }
+      // }
       if (found) break
     }
   } catch (e) {
