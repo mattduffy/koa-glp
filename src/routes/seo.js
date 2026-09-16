@@ -14,7 +14,7 @@ import {
   FT_AGGREGATE_GROUP_BY_REDUCERS as AggregateGroupByReducers,
   FT_AGGREGATE_STEPS as AggregateSteps,
 } from 'redis'
-import { redis } from '../daos/impl/redis/redis-om.js'
+import { redis } from '../daos/impl/redis/redis-client.js'
 import { _log, _info, _error } from '../utils/logging.js'
 
 const seoLog = _log.extend('seo')

@@ -7,7 +7,7 @@
 
 import Router from '@koa/router'
 // import { ulid } from 'ulid'
-import { redis } from '../daos/impl/redis/redis-om.js'
+import { redis } from '../daos/impl/redis/redis-client.js'
 import {
   _log,
   _error,
