@@ -29,7 +29,7 @@ import {
   TOWNS,
 } from '../utils/logging.js'
 import { redis } from '../daos/impl/redis/redis-client.js'
-import { redis_single as redisSingle } from '../daos/impl/redis/redis-single.js'
+// import { redis_single as redisSingle } from '../daos/impl/redis/redis-single.js'
 
 const glpLog = _log.extend('glp')
 const glpError = _error.extend('glp')
@@ -62,6 +62,47 @@ function leftZeroPad(x) {
 
 // const ASC = 'ASC'
 // const DESC = 'DESC'
+
+// Get Town name for pier number
+async function townForPier(pierNumber, townsArray) {
+  const log = glpLog.extend('townForPier')
+  const error = glpError.extend('townForPier')
+  let setTown
+  let town
+  try {
+    /* eslint-disable-next-line */
+    for await (const set of townsArray) {
+      let found = false
+      const setkey = `glp:piers_by_town:${set}`
+      log(setkey, pierNumber)
+      let cursor = '0'
+      do {
+        /* eslint-disable-next-line */
+        const result = await redis.zScan(
+          setkey,
+          cursor,
+          { MATCH: pierNumber, COUNT: 1000 },
+        )
+        cursor = result.cursor
+        const { members } = result
+        if (members.length > 0) {
+          town = set.split('_').map((e) => e.toProperCase()).join(' ')
+          setTown = set
+          log(`Found ${pierNumber} in ${setTown}`)
+          found = true
+        }
+      } while (cursor !== '0')
+      if (found) break
+    }
+  } catch (e) {
+    error(e)
+    throw new Error(
+      `Could not match pier ${pierNumber} to any town set in redis.`,
+      { cause: e },
+    )
+  }
+  return { setTown, town }
+}
 
 const router = new Router()
 
@@ -204,8 +245,7 @@ router.get('pierBigSwimPiers', '/swim', hasFlash, addIpToSession, async (ctx) =>
     locals.skipBack = skipBack
     locals.offset = offset
     locals.num = num
-    // locals.total = swimPiers.total
-    locals.total = swimPiers.total_results
+    locals.total = swimPiers.total
     locals.swim = swimPiers.results
     locals.photo = false
     locals.flash = ctx.flash.view ?? {}
@@ -287,8 +327,7 @@ router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
     locals.offset = offset
     locals.skipBack = skipBack
     locals.skipForward = skipForward
-    // locals.total = publicPiers.total
-    locals.total = publicPiers.total_results
+    locals.total = publicPiers.total
     locals.public = publicPiers.results
     locals.photo = false
     locals.flash = ctx.flash.view ?? {}
@@ -358,8 +397,8 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
       '*',
       optsAggregateBusiness,
     )
-    log('businesses', businesses.results)
-    // log(businesses.results)
+    log('businesses results')
+    log(businesses.results)
   } catch (e) {
     error('Failed to get list of businesses.')
     error(e.message)
@@ -376,8 +415,7 @@ router.get('pierBusinesses', '/businesses', hasFlash, addIpToSession, async (ctx
     locals.skipBack = skipBack
     locals.offset = offset
     locals.num = num
-    // locals.total = businesses.total
-    locals.total = businesses.total_results
+    locals.total = businesses.total
     locals.businesses = businesses.results
     locals.flash = ctx.flash.view ?? {}
     locals.title = `${ctx.app.site}: Businesses on Geneva Lake`
@@ -437,7 +475,8 @@ router.get('poiList', '/points-of-interest', hasFlash, addIpToSession, async (ct
       + `SORTBY id ${sortDir} LIMIT ${offset} ${num} DIALECT ${dialect}`
     log('query', query)
     pois = await redis.ft.search(idxPoiType, queryPointsOfInterest, optsPois)
-    // log(pois.results)
+    log('pois total', pois.total)
+    log(pois.documents[0])
   } catch (e) {
     error('Failed to get list of points-of-interest.')
     error(e.message)
@@ -447,7 +486,8 @@ router.get('poiList', '/points-of-interest', hasFlash, addIpToSession, async (ct
   if (ctx.state.isAsyncRequest === true) {
     ctx.status = 200
     ctx.type = 'application/json; charset=utf-8'
-    ctx.body = pois.results
+    // ctx.body = pois.results
+    ctx.body = pois
   } else {
     const locals = {}
     locals.s = s
@@ -455,7 +495,8 @@ router.get('poiList', '/points-of-interest', hasFlash, addIpToSession, async (ct
     locals.skipForward = skipforward
     locals.skipBack = skipback
     locals.num = num
-    locals.total = pois.total_results
+    // locals.total = pois.total_results
+    locals.total = pois.total
     locals.pois = pois
     locals.flash = ctx.flash.view ?? {}
     locals.title = `${ctx.app.site}: Points of Interest on Geneva Lake`
@@ -690,9 +731,9 @@ router.get('pierMarinas', '/marinas', hasFlash, addIpToSession, async (ctx) => {
     log(marinas.total)
     log(marinas.results)
   } catch (e) {
-    error('Failed to get list of businesses.')
+    error('Failed to get list of marinas.')
     error(e.message)
-    const err = new Error('Redis query failed \'businesses\'.', { cause: e })
+    const err = new Error('Redis query failed \'marinas\'.', { cause: e })
     ctx.throw(500, err)
   }
   const locals = {}
@@ -783,7 +824,8 @@ router.get('pierFood', '/food', hasFlash, addIpToSession, async (ctx) => {
   locals.offset = offset
   locals.num = num
   // locals.total = foods.total
-  locals.total = foods.total_results
+  // locals.total = foods.total_results
+  locals.total = foods.total
   locals.foods = foods.results
   locals.flash = ctx.flash.view ?? {}
   locals.title = `${ctx.app.site}: Restaurants with piers on Geneva Lake`
@@ -882,8 +924,8 @@ router.get(
       locals.offset = offset
       locals.num = num
       locals.s = s
-      // locals.total = associations.total
-      locals.total = associations.total_results
+      locals.total = associations.total
+      // locals.total = associations.total_results
       locals.associations = associations.results
       locals.flash = ctx.flash.view ?? {}
       locals.title = `${ctx.app.site}: Associations with piers on Geneva Lake`
@@ -963,7 +1005,8 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) 
     const locals = {}
     let key = `glp:piers:${pierNumber}`
     let pier
-    let town
+    // let town
+    const town = await townForPier(pierNumber, ctx.state.TOWNS)
     log(pierNumber)
     log(ctx.state.structuredData)
     if (pierNumber.length > 6 || !/^\d/.test(pierNumber)) {
@@ -972,35 +1015,35 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) 
       locals.pier = `${pierNumber} is not a valid pier number.`
     }
     let setTown
-    try {
-      /* eslint-disable-next-line */
-      for (const set of ctx.state.TOWNS) {
-        let found = false
-        const setkey = `glp:piers_by_town:${set}`
-        log(setkey, pierNumber)
-        /* eslint-disable-next-line */
-        for await (const { value } of redisSingle.zScanIterator(
-          setkey,
-          { MATCH: pierNumber, COUNT: 900 },
-        )) {
-          log('iterator value?', value)
-          if (value !== null) {
-            town = set.split('_').map((e) => e.toProperCase()).join(' ')
-            setTown = set
-            log(`Found ${value} in ${set}`)
-            found = true
-          }
-        }
-        if (found) break
-      }
-    } catch (e) {
-      error(e)
-      const err = new Error(
-        `Could not match pier ${pierNumber} to any town set in redis.`,
-        { cause: e },
-      )
-      ctx.throw(500, err)
-    }
+    // try {
+    //   /* eslint-disable-next-line */
+    //   for (const set of ctx.state.TOWNS) {
+    //     let found = false
+    //     const setkey = `glp:piers_by_town:${set}`
+    //     log(setkey, pierNumber)
+    //     /* eslint-disable-next-line */
+    //     for await (const { value } of redisSingle.zScanIterator(
+    //       setkey,
+    //       { MATCH: pierNumber, COUNT: 900 },
+    //     )) {
+    //       log('iterator value?', value)
+    //       if (value !== null) {
+    //         town = set.split('_').map((e) => e.toProperCase()).join(' ')
+    //         setTown = set
+    //         log(`Found ${value} in ${set}`)
+    //         found = true
+    //       }
+    //     }
+    //     if (found) break
+    //   }
+    // } catch (e) {
+    //   error(e)
+    //   const err = new Error(
+    //     `Could not match pier ${pierNumber} to any town set in redis.`,
+    //     { cause: e },
+    //   )
+    //   ctx.throw(500, err)
+    // }
     try {
       pier = await redis.json.get(key)
       let leading0s = 0
@@ -1118,7 +1161,8 @@ router.get(
       const locals = {}
       const key = `glp:piers:${pierNumber}`
       let pier
-      let town
+      const town = await townForPier(pierNumber, ctx.state.TOWNS)
+      // let town
       log(pierNumber)
       if (pierNumber.length > 6 || !/^\d/.test(pierNumber)) {
         error('Pier number looks invalid')
@@ -1126,37 +1170,37 @@ router.get(
         locals.pier = `${pierNumber} is not a valid pier number.`
       }
       let setTown
-      try {
-        /* eslint-disable-next-line */
-        for (const set of ctx.state.TOWNS) {
-          let found = false
-          const setkey = `glp:piers_by_town:${set}`
-          log(setkey, pierNumber)
-          /* eslint-disable-next-line */
-          for await (const { value } of redisSingle.zScanIterator(
-            setkey,
-            {
-              MATCH: pierNumber,
-              COUNT: 900,
-            },
-          )) {
-            if (value !== null) {
-              town = set.split('_').map((e) => e.toProperCase()).join(' ')
-              setTown = set
-              log(`Found ${value} in ${set}`)
-              found = true
-            }
-          }
-          if (found) break
-        }
-      } catch (e) {
-        error(e)
-        const err = new Error(
-          `Could not match pier ${pierNumber} to any town set in redis.`,
-          { cause: e },
-        )
-        ctx.throw(500, err)
-      }
+      // try {
+      //   /* eslint-disable-next-line */
+      //   for (const set of ctx.state.TOWNS) {
+      //     let found = false
+      //     const setkey = `glp:piers_by_town:${set}`
+      //     log(setkey, pierNumber)
+      //     /* eslint-disable-next-line */
+      //     for await (const { value } of redisSingle.zScanIterator(
+      //       setkey,
+      //       {
+      //         MATCH: pierNumber,
+      //         COUNT: 900,
+      //       },
+      //     )) {
+      //       if (value !== null) {
+      //         town = set.split('_').map((e) => e.toProperCase()).join(' ')
+      //         setTown = set
+      //         log(`Found ${value} in ${set}`)
+      //         found = true
+      //       }
+      //     }
+      //     if (found) break
+      //   }
+      // } catch (e) {
+      //   error(e)
+      //   const err = new Error(
+      //     `Could not match pier ${pierNumber} to any town set in redis.`,
+      //     { cause: e },
+      //   )
+      //   ctx.throw(500, err)
+      // }
       try {
         pier = await redis.json.get(key)
         locals.pier = pier
