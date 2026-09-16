@@ -11,7 +11,7 @@ import { writeFile } from 'node:fs/promises'
 import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
 import { Command } from 'commander'
-import { redis } from '../daos/impl/redis/redis-om.js'
+import { redis_single as redis } from '../daos/impl/redis/redis-single.js'
 import { _log, _error } from './logging.js'
 /* eslint-enable import/no-extraneous-dependencies */
 

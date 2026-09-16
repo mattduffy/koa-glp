@@ -9,7 +9,6 @@ import { readdir, readFile, writeFile } from 'node:fs/promises'
 import * as dotenv from 'dotenv'
 import { fileURLToPath } from 'node:url'
 import { Command } from 'commander'
-// import { redis } from '../daos/impl/redis/redis-om.js'
 import { _log, _error } from './logging.js'
 
 const log = _log.extend('utils:add-hidden-field')

@@ -571,7 +571,7 @@ try {
       log(' ')
 
       if (!DRYRUN || SAVEFILES) { // DRYRUN CHECK
-        // save the pier with redis-om repository
+        // save the pier with redis om repository
         const saved = await pierRepository.save(pierJson.pier, pierJson)
         log(saved)
       }
