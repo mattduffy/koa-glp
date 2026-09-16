@@ -36,7 +36,7 @@ const redisConnOpts = {
   database: redisEnv.REDIS_DB,
   username: redisEnv.REDIS_USER,
   password: redisEnv.REDIS_PASSWORD,
-  socket: {       
+  socket: {
     host: redisEnv.REDIS_HOST,
     port: redisEnv.REDIS_HOST_PORT,
     tls: true,
@@ -46,21 +46,23 @@ const redisConnOpts = {
   keyPrefix: `${redisEnv.REDIS_KEY_PREFIX}:` ?? 'koa:',
 }
 // console.log('redis_single connection options', redisConnOpts)
-let client 
+let _client
 try {
-  client = await createClient(redisConnOpts)
+  _client = await createClient(redisConnOpts)
     .on('reconnecting', () => {
       console.log('Redis Client reconnecting')
     })
     .on('error', (err) => { console.error('Redis Client Error', err) })
     .on('ready', () => { console.log('Redis Client connection is ready') })
 
-  await client.connect()
-  console.log('client isOpen?', client.isOpen)
-  console.log('client isReady?', client.isReady)
+  await _client.connect()
+  console.log('client isOpen?', _client.isOpen)
+  console.log('client isReady?', _client.isReady)
 } catch (e) {
   console.log(e)
 }
+const client = _client
 export {
+  // eslint-disable-next-line
   client as redis_single,
 }
