@@ -283,11 +283,6 @@ router.get('pierPublic', '/public', hasFlash, addIpToSession, async (ctx) => {
   )
   let publicPiers
   try {
-    // log(
-    //   'ft.aggregate glp:idx:piers:public "*" '
-    //   + 'LOAD 3 $.pier AS pier '
-    //   + `SORTBY 2 @pier ${sortDir} LIMIT 0 100`
-    // )
     const optsAggregatePublic = {
       LOAD: ['@pier', '$.owners[*].members[*].f', 'AS', 'name'],
       STEPS: [
@@ -946,8 +941,8 @@ router.get(
     const error = glpError.extend('GET-piersByAssoc')
     const assoc = sanitize(ctx.params.assoc)
     const decodedAssoc = decodeURI(assoc)
-    log(assoc)
-    log(decodedAssoc)
+    log('assoc param', assoc)
+    log('decoded assoc param', decodedAssoc)
     const from = 0
     const size = 60
     const sortDir = 'ASC'
@@ -971,7 +966,7 @@ router.get(
         optsPierAssociation,
       )
       // log(piersInAssoc)
-      console.dir(piersInAssoc.results)
+      console.dir(piersInAssoc.documents)
     } catch (e) {
       error('Failed to get list of associations.')
       error(e.message)
@@ -980,8 +975,9 @@ router.get(
     }
     const locals = {}
     locals.associationName = decodedAssoc
-    locals.total = piersInAssoc.total_results
-    locals.association = piersInAssoc.results
+    // locals.total = piersInAssoc.total_results
+    locals.total = piersInAssoc.total
+    locals.association = piersInAssoc.documents
     locals.flash = ctx.flash.view ?? {}
     locals.title = `${ctx.app.site}: ${decodedAssoc}`
     locals.sessionUser = ctx.state.sessionUser
@@ -1005,45 +1001,15 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) 
     const locals = {}
     let key = `glp:piers:${pierNumber}`
     let pier
-    // let town
-    const town = await townForPier(pierNumber, ctx.state.TOWNS)
-    log(pierNumber)
+    const { town, setTown } = await townForPier(pierNumber, ctx.state.TOWNS)
+    log('pierNumber', pierNumber)
+    log('town', town)
     log(ctx.state.structuredData)
     if (pierNumber.length > 6 || !/^\d/.test(pierNumber)) {
       error('Pier number looks invalid')
       error(pierNumber.length, !/^\d/.test(pierNumber))
       locals.pier = `${pierNumber} is not a valid pier number.`
     }
-    let setTown
-    // try {
-    //   /* eslint-disable-next-line */
-    //   for (const set of ctx.state.TOWNS) {
-    //     let found = false
-    //     const setkey = `glp:piers_by_town:${set}`
-    //     log(setkey, pierNumber)
-    //     /* eslint-disable-next-line */
-    //     for await (const { value } of redisSingle.zScanIterator(
-    //       setkey,
-    //       { MATCH: pierNumber, COUNT: 900 },
-    //     )) {
-    //       log('iterator value?', value)
-    //       if (value !== null) {
-    //         town = set.split('_').map((e) => e.toProperCase()).join(' ')
-    //         setTown = set
-    //         log(`Found ${value} in ${set}`)
-    //         found = true
-    //       }
-    //     }
-    //     if (found) break
-    //   }
-    // } catch (e) {
-    //   error(e)
-    //   const err = new Error(
-    //     `Could not match pier ${pierNumber} to any town set in redis.`,
-    //     { cause: e },
-    //   )
-    //   ctx.throw(500, err)
-    // }
     try {
       pier = await redis.json.get(key)
       let leading0s = 0
@@ -1056,7 +1022,7 @@ router.get('pierByNumber', '/pier/:pier', hasFlash, addIpToSession, async (ctx) 
         pier.strippedPier = pier.pierNumber
       }
       log(`stipping leading 0's from pier number: ${pier.stippedPier}`)
-      log(pier)
+      log('pier', pier)
       log(`has hidden members? ${pier.pier}`)
       pier.owners.forEach((o, j) => {
         const filtered = []
@@ -1161,7 +1127,7 @@ router.get(
       const locals = {}
       const key = `glp:piers:${pierNumber}`
       let pier
-      const town = await townForPier(pierNumber, ctx.state.TOWNS)
+      const { town, setTown } = await townForPier(pierNumber, ctx.state.TOWNS)
       // let town
       log(pierNumber)
       if (pierNumber.length > 6 || !/^\d/.test(pierNumber)) {
@@ -1169,38 +1135,6 @@ router.get(
         error(pierNumber.length, !/^\d/.test(pierNumber))
         locals.pier = `${pierNumber} is not a valid pier number.`
       }
-      let setTown
-      // try {
-      //   /* eslint-disable-next-line */
-      //   for (const set of ctx.state.TOWNS) {
-      //     let found = false
-      //     const setkey = `glp:piers_by_town:${set}`
-      //     log(setkey, pierNumber)
-      //     /* eslint-disable-next-line */
-      //     for await (const { value } of redisSingle.zScanIterator(
-      //       setkey,
-      //       {
-      //         MATCH: pierNumber,
-      //         COUNT: 900,
-      //       },
-      //     )) {
-      //       if (value !== null) {
-      //         town = set.split('_').map((e) => e.toProperCase()).join(' ')
-      //         setTown = set
-      //         log(`Found ${value} in ${set}`)
-      //         found = true
-      //       }
-      //     }
-      //     if (found) break
-      //   }
-      // } catch (e) {
-      //   error(e)
-      //   const err = new Error(
-      //     `Could not match pier ${pierNumber} to any town set in redis.`,
-      //     { cause: e },
-      //   )
-      //   ctx.throw(500, err)
-      // }
       try {
         pier = await redis.json.get(key)
         locals.pier = pier
