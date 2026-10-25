@@ -46,16 +46,34 @@ function sanitize(param) {
 // Null Island check
 async function isPierNullIsland(pierNumber) {
   let isNullIsland = false
-  const nullIslandIterator = await redis.zScanIterator(
-    'glp:null_island',
-    { MATCH: pierNumber, COUNT: 1 },
-  )
-  /* eslint-disable-next-line */
-  for await(const { score, value } of nullIslandIterator) {
-    if (value === pierNumber) {
-      isNullIsland = true
+  // const nullIslandIterator = await redis.zScanIterator(
+  //   'glp:null_island',
+  //   { MATCH: pierNumber, COUNT: 1 },
+  // )
+  // /* eslint-disable-next-line */
+  // for await(const { score, value } of nullIslandIterator) {
+  //   if (value === pierNumber) {
+  //     isNullIsland = true
+  //   }
+  // }
+  let cursor = '0'
+  do {
+    /* official redis-node client does not support zScanIterator() function
+     * when connecting via redis sentinel.  Must use traditional zScan()
+     * function instead.
+     */
+    /* eslint-disable-next-line */
+    const result = await redis.zScan(
+      'glp:null_island',
+      cursor,
+      { MATCH: pierNumber, COUNT: 1 },
+    )
+    cursor = result.cursor
+    const { members } = result
+    if (members.length > 0) {
+      isNullIsland = members[0] === pierNumber
     }
-  }
+  } while (cursor !== '0')
   return isNullIsland
 }
 
