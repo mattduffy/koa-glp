@@ -7,7 +7,7 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import * as dotenv from 'dotenv'
-import * as transformers from '@xenova/transformers'
+import * as transformers from '@huggingface/transformers'
 import {
   SCHEMA_VECTOR_FIELD_ALGORITHM,
   // createClient,
@@ -88,8 +88,12 @@ const vectorSet = `${options.dbPrefix}:vectors:${options?.vectorSetName}`
 
 const idxVectorsPrefix = `${options.dbPrefix}:idx:vectors:`
 const idxVectorsPiers = `${idxVectorsPrefix}${options.vssIdxName}`
-const pierEmbeddingsPrefix = `${options.dbPrefix}:embeddings:pier:`
-// process.exit()
+// const pierEmbeddingsPrefix = `${options.dbPrefix}:embeddings:pier:`
+const pierEmbeddingsPrefix = `${options.dbPrefix}:embeddings2:pier:`
+if (options?.test) {
+  log('Test run.  Ending here.')
+  process.exit()
+}
 
 async function deleteVectorIndex(idxName) {
   let result
