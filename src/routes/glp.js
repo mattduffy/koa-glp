@@ -9,7 +9,8 @@ import path from 'node:path'
 // import { fileURLToPath } from 'node:url'
 import Router from '@koa/router'
 import { ulid } from 'ulid'
-import * as transformers from '@xenova/transformers'
+// import * as transformers from '@xenova/transformers'
+import * as transformers from '@huggingface/transformers'
 // import { Albums } from '@mattduffy/albums/Albums'
 import {
   FT_AGGREGATE_GROUP_BY_REDUCERS as AggregateGroupByReducers,
