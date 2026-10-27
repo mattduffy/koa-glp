@@ -842,9 +842,15 @@ footer > section {
 /* iPad sizes */
 @media screen and (min-width: 768px) and (max-width: 1180px) {
   nav.small-landscape-nav {
-    display: none;
+    display: block;
   }
-
+  
+  nav > ul.nav-links-inline > li {
+    font-size: 1.25em;
+    margin: .25em .25em .25em 0em;
+    padding: .125em .5em .125em .5em;
+    border-radius: .5em
+  }
 
 }
 
